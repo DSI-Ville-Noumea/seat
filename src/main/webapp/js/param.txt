@@ -1,0 +1,2 @@
+﻿margebpc = 10;
+nbbpc = 12;

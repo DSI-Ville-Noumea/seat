@@ -1,0 +1,48 @@
+﻿<!-- Sample JSP file --> <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="IBM WebSphere Page Designer V3.5.3 for Windows">
+<META http-equiv="Content-Style-Type" content="text/css">
+<LINK href="theme/sigp2.css" rel="stylesheet" type="text/css">
+<TITLE>Put Your Title Here</TITLE>
+<SCRIPT language="javascript" src="js/GestionBoutonDroit.js"></SCRIPT>
+<SCRIPT language="JavaScript">
+
+//afin de sélectionner un élément dans une liste
+function executeBouton(nom)
+{
+document.formu.elements[nom].click();
+}
+
+// afin de mettre le focus sur une zone précise
+function setfocus(nom)
+{
+if (document.formu.elements[nom] != null)
+	document.formu.elements[nom].focus();
+}
+
+</SCRIPT>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</HEAD>
+<BODY bgcolor="#FFFFFF" BGPROPERTIES="FIXED" background="images/fond.jpg" class="sigp2-BODY">
+<TABLE border="0" width="580" style="text-align : center;">
+  <TBODY align="center">
+    <%@ include file="BanniereErreur.jsp" %>
+    <TR>
+      <TD style="text-align : center;">
+      <FORM name="formu" method="POST"><BR>
+      <BR>
+      <BR>
+      METTRE LE CORPS ICI
+    
+
+        <INPUT name="JSP" type="hidden" value="<%= process.getJSP() %>"><BR>
+      <BR>
+      <BR>
+      </FORM>
+      </TD>
+    </TR>
+  </TBODY>
+</TABLE>
+</BODY>
+</HTML>

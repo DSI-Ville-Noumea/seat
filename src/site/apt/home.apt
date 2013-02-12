@@ -1,0 +1,21 @@
+ -----
+ seat
+ -----
+ Frédéric Dos Santos
+ -----
+  12/02/2013
+
+Suivi des équipements de l'atelier Municipal
+
+ Ce projet a pour objectif d’optimiser et simplifier la gestion quotidienne des Ateliers Municipaux de la Ville de Nouméa tout en apportant les indicateurs décisionnels nécessaires aux décideurs.
+
+ Le présent projet se propose donc d’automatiser la gestion du suivi de véhicules c'est-à-dire :
+
+  * L’amélioration du circuit de gestion du suivi des véhicules,
+
+  * La simplification des recherches,
+
+  * L’amélioration et la simplification du contrôle de gestion ainsi que de la prise de décision.
+
+ 
+ Pour plus d'informations, voir la {{{./docs/Gestion des équipements.pdf}documentation}} au format PDF.
