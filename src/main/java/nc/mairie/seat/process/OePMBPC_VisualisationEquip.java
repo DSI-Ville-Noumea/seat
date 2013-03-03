@@ -1,11 +1,17 @@
 package nc.mairie.seat.process;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.vfs.FileObject;
 
 import nc.mairie.seat.metier.AgentCCAS;
 import nc.mairie.seat.metier.AgentCDE;
@@ -38,6 +44,7 @@ public class OePMBPC_VisualisationEquip extends nc.mairie.technique.BasicProcess
 	public int quantiteTotal = 0;
 	public int kmParcourusTotal = 0;
 	private String starjetMode = (String)Frontale.getMesParametres().get("STARJET_MODE");
+	private String starjetServer = (String)Frontale.getMesParametres().get("STARJET_SERVER");
 	private String script;
 	public boolean isVide = true;
 	public String codeService ;
@@ -713,46 +720,53 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 	
 	if (getLB_BPC().length>0){
 		StarjetGeneration g = new StarjetGeneration(getTransaction(), "MAIRIE", starjetMode, "SEAT", "listeBPCEquip.sp", "listeBPCEquip");
-		File f = g.getFileData();
-		
-		FileWriter fw = new FileWriter(f);
-		PrintWriter pw = new PrintWriter(fw);
+		g.setStarjetServer(starjetServer);
+		FileObject f = g.getFileObjectData();
+		OutputStream output = f.getContent().getOutputStream();
+		OutputStreamWriter ouw = new OutputStreamWriter(output, "UTF8");
+		BufferedWriter out = new BufferedWriter(ouw);
 		try {	
 			for (int i=1;i<getLB_BPC().length;i++){
 				
 				//Entete
-				pw.print("1");
-				pw.print(Services.lpad(numinv,10," "));
-				pw.print(Services.lpad(numimmat,10," "));
-				pw.print(Services.lpad(nomequip,64," "));
-				pw.print(Services.lpad(type,32," "));
+				out.write("1");
+				out.write(StringUtils.leftPad(numinv,10," "));
+				out.write(StringUtils.leftPad(numimmat,10," "));
+				out.write(StringUtils.leftPad(nomequip,64," "));
+				out.write(StringUtils.leftPad(type,32," "));
 				stService = codeService+" "+service.trim();
 				if(stService.length()>64){
 					stService = stService.substring(0,64);
-					pw.print(stService);
+					out.write(stService);
 				}else{
-					pw.print(Services.lpad(codeService+" "+service,64," "));
+					out.write(StringUtils.leftPad(codeService+" "+service,64," "));
 				}
-				pw.print(Services.lpad(Services.formateDate(ddebut),10," "));
-				pw.print(Services.lpad(Services.formateDate(dfin),10," "));
-				pw.print(Services.lpad(nomAgent,50," "));
+				out.write(StringUtils.leftPad(Services.formateDate(ddebut),10," "));
+				out.write(StringUtils.leftPad(Services.formateDate(dfin),10," "));
+				out.write(StringUtils.leftPad(nomAgent,50," "));
 				//BPC
-				pw.print(getLB_BPC()[i]);
-				pw.println();
+				out.write(getLB_BPC()[i]);
+				out.write("\n");
 				
 				
 			}
 //			Total
-			pw.print("2");
-			pw.print(Services.lpad(numinv,10," "));
-			pw.print(getLB_TOTAL()[0]);
-			pw.println();
+			out.write("2");
+			out.write(StringUtils.leftPad(numinv,10," "));
+			out.write(getLB_TOTAL()[0]);
+			out.write("\n");
 			
-			pw.close();
-			fw.close();
+			out.flush();
+			out.close();
+			ouw.close();
+			output.close();
+			f.close();
 		} catch (Exception e) {
-			pw.close();
-			fw.close();
+			out.flush();
+			out.close();
+			ouw.close();
+			output.close();
+			f.close();
 			throw e;
 		}
 		

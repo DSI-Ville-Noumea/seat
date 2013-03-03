@@ -1,9 +1,15 @@
 package nc.mairie.seat.process;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.vfs.FileObject;
 
 import nc.mairie.seat.metier.Agents;
 import nc.mairie.seat.metier.ENGJU;
@@ -41,6 +47,7 @@ public class OeFPM_Visualisation extends nc.mairie.technique.BasicProcess {
 	public String messErreur;
 	private String focus = null;
 	private String starjetMode = (String)Frontale.getMesParametres().get("STARJET_MODE");
+	private String starjetServer = (String)Frontale.getMesParametres().get("STARJET_SERVER");
 	private String script;
 	public int	montantTotalPieces;
 /**
@@ -1087,31 +1094,33 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 		commentaireOt = commentaireOt.replace('\n',' ');
 		commentaireOt = commentaireOt.replace('\r',' ');
 		StarjetGeneration g = new StarjetGeneration(getTransaction(), "MAIRIE", starjetMode, "SEAT", "ficheFpm.sp", "ficheFpm");
-		File f = g.getFileData();
-		FileWriter fw = new FileWriter(f);
-		PrintWriter pw = new PrintWriter(fw);
+		g.setStarjetServer(starjetServer);
+		FileObject f = g.getFileObjectData();
+		OutputStream output = f.getContent().getOutputStream();
+		OutputStreamWriter ouw = new OutputStreamWriter(output, "UTF8");
+		BufferedWriter out = new BufferedWriter(ouw);
 		try {	
 			//	Entete
-			pw.print("1");
-			pw.print(Services.lpad(numinv,32," "));
-			pw.print(Services.lpad(numimmat,50," "));
-			pw.print(Services.lpad(nomequip,64," "));
-			pw.print(Services.lpad(type,32," "));
+			out.write("1");
+			out.write(StringUtils.leftPad(numinv,32," "));
+			out.write(StringUtils.leftPad(numimmat,50," "));
+			out.write(StringUtils.leftPad(nomequip,64," "));
+			out.write(StringUtils.leftPad(type,32," "));
 			stService = service.trim();
 			if(stService.length()>64){
 				stService = stService.substring(0,64);
-				pw.print(stService);
+				out.write(stService);
 			}else{
-				pw.print(Services.lpad(service,64," "));
+				out.write(StringUtils.leftPad(service,64," "));
 			}
 			// OT
-			pw.print(Services.lpad(numFiche,8," "));
-			pw.print(Services.lpad(dEntree,10," "));
-			pw.print(Services.lpad(dSortie,10," "));
-			pw.print(Services.lpad(compteur,10," "));
-			pw.print(Services.lpad(montantTotal,10," "));
-			pw.print(Services.lpad(commentaireOt,600," "));
-			pw.println();
+			out.write(StringUtils.leftPad(numFiche,8," "));
+			out.write(StringUtils.leftPad(dEntree,10," "));
+			out.write(StringUtils.leftPad(dSortie,10," "));
+			out.write(StringUtils.leftPad(compteur,10," "));
+			out.write(StringUtils.leftPad(montantTotal,10," "));
+			out.write(StringUtils.leftPad(commentaireOt,600," "));
+			out.write("\n");
 			
 //			 liste des interventions
 			for (int i=0;i<getListeInterventions().size();i++){
@@ -1121,26 +1130,26 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 					if(getTransaction().isErreur()){
 						return false;
 					}
-					pw.print("2");
-					pw.print(Services.lpad(unPeP.getLibelleentretien(),31," "));
-					pw.print(Services.lpad(unPeP.getDreal(),11," "));
-					pw.print(Services.lpad(unPeP.getDuree(),6," "));
-					pw.println();
+					out.write("2");
+					out.write(StringUtils.leftPad(unPeP.getLibelleentretien(),31," "));
+					out.write(StringUtils.leftPad(unPeP.getDreal(),11," "));
+					out.write(StringUtils.leftPad(unPeP.getDuree(),6," "));
+					out.write("\n");
 				}
 			}
 			// liste des pièces
 			for (int i=0;i<getListePieces().size();i++){
 				if(!getListePieces().get(i).equals("")){
 					PiecesFpmInfos unPI = (PiecesFpmInfos)getListePieces().get(i);
-					pw.print("3");
-					pw.print(Services.lpad(unPI.getDesignationpiece(),3," "));
-					pw.print(Services.lpad(unPI.getDsortie(),10," "));
-					pw.print(Services.lpad(unPI.getPrix(),7," "));
-					pw.print(Services.lpad(unPI.getQuantite(),7," "));
+					out.write("3");
+					out.write(StringUtils.leftPad(unPI.getDesignationpiece(),3," "));
+					out.write(StringUtils.leftPad(unPI.getDsortie(),10," "));
+					out.write(StringUtils.leftPad(unPI.getPrix(),7," "));
+					out.write(StringUtils.leftPad(unPI.getQuantite(),7," "));
 					montantPieces = Integer.parseInt(unPI.getPrix())*Integer.parseInt(unPI.getQuantite());
-					pw.print(Services.lpad(String.valueOf(montantPieces),7," "));
-					pw.print(getListePieces().get(i));
-					pw.println();
+					out.write(StringUtils.leftPad(String.valueOf(montantPieces),7," "));
+					out.write(getListePieces().get(i).toString());
+					out.write("\n");
 				}
 			}
 			
@@ -1150,26 +1159,26 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 					PM_BE unBe = (PM_BE)getListePmBe().get(i);
 					infosBe = ListeBe(request,unBe);
 					
-					pw.print("4");
-					pw.print(Services.lpad(unBe.getNoengj(),11," "));
+					out.write("4");
+					out.write(StringUtils.leftPad(unBe.getNoengj(),11," "));
 					//System.out.println("infosBE="+infosBe);
 					if(!infosBe.equals("")){
 						inter1 = infosBe.indexOf(";");
 						inter2 = inter1 + 1;
-						pw.print(Services.lpad(infosBe.substring(0,inter1),11," "));
+						out.write(StringUtils.leftPad(infosBe.substring(0,inter1),11," "));
 						inter1 = infosBe.indexOf(";",inter2);
 						//inter1 = inter2+1;
-						pw.print(Services.lpad(infosBe.substring(inter2,inter1),31," "));
+						out.write(StringUtils.leftPad(infosBe.substring(inter2,inter1),31," "));
 						//inter2 = infosBe.indexOf(";",inter1);
 						inter1=inter1+1;
 						inter2 = infosBe.length();
-						pw.print(Services.lpad(infosBe.substring(inter1,inter2),11," "));
+						out.write(StringUtils.leftPad(infosBe.substring(inter1,inter2),11," "));
 					}else{
-						pw.print(Services.lpad(" ",42," "));
-						pw.print(Services.lpad("0",11," "));
+						out.write(StringUtils.leftPad(" ",42," "));
+						out.write(StringUtils.leftPad("0",11," "));
 					}
-					pw.print(getListePmBe().get(i));
-					pw.println();
+					out.write(getListePmBe().get(i).toString());
+					out.write("\n");
 				}
 			}
 			
@@ -1181,17 +1190,22 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 					if(getTransaction().isErreur()){
 						return false;
 					}
-					pw.print("5");
-					pw.print(Services.lpad(unAgent.getNom().trim()+" "+unAgent.getPrenom(),31," "));
-					pw.println();
+					out.write("5");
+					out.write(StringUtils.leftPad(unAgent.getNom().trim()+" "+unAgent.getPrenom(),31," "));
+					out.write("\n");
 				}
 			}
-					
-			pw.close();
-			fw.close();
+			out.flush();
+			out.close();
+			ouw.close();
+			output.close();
+			f.close();
 		} catch (Exception e) {
-			pw.close();
-			fw.close();
+			out.flush();
+			out.close();
+			ouw.close();
+			output.close();
+			f.close();
 			throw e;
 		}
 			setScript(g.getScriptOuverture());		

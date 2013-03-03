@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ï»¿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
 <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,13 +10,13 @@
 <SCRIPT type="text/javascript" src="js/GestionBoutonDroit.js"></SCRIPT>
 <SCRIPT language="JavaScript">
 
-//afin de sélectionner un élément dans une liste
+//afin de sÃ©lectionner un Ã©lÃ©ment dans une liste
 function executeBouton(nom)
 {
 document.formu.elements[nom].click();
 }
 
-// afin de mettre le focus sur une zone précise
+// afin de mettre le focus sur une zone prÃ©cise
 function setfocus(nom)
 {
 if (document.formu.elements[nom] != null)
@@ -35,7 +35,7 @@ if (document.formu.elements[nom] != null)
       <TD style="text-align : center;" align="center">
 			<FORM name="formu" method="POST"><SPAN class="sigp2-titre"></SPAN>
 <%if (!process.estEnregistre){ %>		
-<FIELDSET><LEGEND class="sigp2Fieldset" align="left">Fiches d'entretiens non validé</LEGEND><TABLE border="0" class="sigp2">
+<FIELDSET><LEGEND class="sigp2Fieldset" align="left">Fiches d'entretiens non validÃ©</LEGEND><TABLE border="0" class="sigp2">
 				<TR align="center">
 					<TD align="left" height="35">
 				<TABLE class="sigp2" border="0" cellspacing="1">
@@ -43,7 +43,7 @@ if (document.formu.elements[nom] != null)
 						<TD class="sigp2-titre-liste">
 						<TABLE class="sigp2" border="1">
 							<TR>
-								<TD class="sigp2-titre-liste">N°Fiche    Inv.  Série.               Entrée     Sortie      </TD>
+								<TD class="sigp2-titre-liste">NÂ°FicheÂ Â Â Â Inv.Â Â SÃ©rie.Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â EntrÃ©eÂ Â Â Â Â SortieÂ Â Â Â Â Â </TD>
 								<!-- <TD height="29" width="87">Service d'affectation</TD>-->
 							</TR>
 						</TABLE></TD>
@@ -82,12 +82,12 @@ if (document.formu.elements[nom] != null)
 			</TABLE>
 				
 			</FIELDSET><br>
-<FIELDSET><LEGEND class="sigp2Fieldset" align="left">Fiches d'entretiens à valider</LEGEND><TABLE border="0" class="sigp2">
+<FIELDSET><LEGEND class="sigp2Fieldset" align="left">Fiches d'entretiens Ã  valider</LEGEND><TABLE border="0" class="sigp2">
 				<TR align="center">
 					<TD align="left" height="35">
 				<TABLE class="sigp2" border="1">
 					<TR>
-						<TD class="sigp2-titre-liste">N°Fiche     Inv.  Série.               Entrée     Sortie      </TD>
+						<TD class="sigp2-titre-liste">NÂ°FicheÂ Â Â Â Â Inv.Â Â SÃ©rie.Â Â Â Â Â Â Â Â Â Â Â Â Â Â Â EntrÃ©eÂ Â Â Â Â SortieÂ Â Â Â Â Â </TD>
 						<!-- <TD height="29" width="87">Service d'affectation</TD>-->
 					</TR>
 				</TABLE>
@@ -121,13 +121,13 @@ if (document.formu.elements[nom] != null)
 				</table>
 			</FIELDSET>
 <%}else{ %>
-			<FIELDSET><LEGEND class="sigp2Fieldset">La validation des OT suivants a bien été effectuée</LEGEND>
+			<FIELDSET><LEGEND class="sigp2Fieldset">La validation des OT suivants a bien Ã©tÃ© effectuÃ©e</LEGEND>
 		<TABLE border="0" class="sigp2">
 			<TR align="center">
 				<TD align="left" height="35">
 				<TABLE class="sigp2" border="1">
 					<TR>
-						<TD height="29" class="sigp2-titre-liste">N°OT      Inv.  Immat.     Entrée     Sortie     Compteur   </TD>
+						<TD height="29" class="sigp2-titre-liste">NÂ°OTÂ Â Â Â Â Â Inv.Â Â Immat.Â Â Â Â Â EntrÃ©eÂ Â Â Â Â SortieÂ Â Â Â Â CompteurÂ Â Â </TD>
 						<!-- <TD height="29" width="87">Service d'affectation</TD>-->
 					</TR>
 				</TABLE>

@@ -1,9 +1,15 @@
 package nc.mairie.seat.process;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.vfs.FileObject;
 
 import nc.mairie.seat.metier.FPM;
 import nc.mairie.seat.metier.PM_Affectation_Sce_Infos;
@@ -30,6 +36,7 @@ public class OeFPM_Impression extends nc.mairie.technique.BasicProcess {
 	public boolean afficheRetour = false;
 	private String focus = null;
 	private String starjetMode = (String)Frontale.getMesParametres().get("STARJET_MODE");
+	private String starjetServer = (String)Frontale.getMesParametres().get("STARJET_SERVER");
 	private String script;
 /**
  * Initialisation des zones à afficher dans la JSP
@@ -274,42 +281,48 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 		commentaireOt = commentaireOt.replace('\n',' ');
 		commentaireOt = commentaireOt.replace('\r',' ');
 		StarjetGeneration g = new StarjetGeneration(getTransaction(), "MAIRIE", starjetMode, "SEAT", "ficheFPM_Vierge.sp", "ficheFPM_Vierge");
-		File f = g.getFileData();
-		FileWriter fw = new FileWriter(f);
-		PrintWriter pw = new PrintWriter(fw);
+		g.setStarjetServer(starjetServer);
+		FileObject f = g.getFileObjectData();
+		OutputStream output = f.getContent().getOutputStream();
+		OutputStreamWriter ouw = new OutputStreamWriter(output, "UTF8");
+		BufferedWriter out = new BufferedWriter(ouw);
 		try {	
 			//	Entete
-			pw.print("1");
-			pw.print(Services.lpad(numinv,32," "));
-			pw.print(Services.lpad(numserie,50," "));
-			pw.print(Services.lpad(nomequip,64," "));
-			pw.print(Services.lpad(type,32," "));
+			out.write("1");
+			out.write(StringUtils.leftPad(numinv,32," "));
+			out.write(StringUtils.leftPad(numserie,50," "));
+			out.write(StringUtils.leftPad(nomequip,64," "));
+			out.write(StringUtils.leftPad(type,32," "));
 			// OT
-			pw.print(Services.lpad(numFpm,8," "));
-			pw.print(Services.lpad(dEntree,10," "));
-			pw.print(Services.lpad(dSortie,10," "));
-			pw.print(Services.lpad(compteur,10," "));
-			pw.print(Services.lpad(commentaireOt,600," "));
-			pw.println();
+			out.write(StringUtils.leftPad(numFpm,8," "));
+			out.write(StringUtils.leftPad(dEntree,10," "));
+			out.write(StringUtils.leftPad(dSortie,10," "));
+			out.write(StringUtils.leftPad(compteur,10," "));
+			out.write(StringUtils.leftPad(commentaireOt,600," "));
+			out.write("\n");
 			
 //			 liste des interventions
 			for (int i=0;i<getListEntretien().size();i++){
 				if(!getListEntretien().get(i).equals("")){
 					PM_Planning unPMp = (PM_Planning)getListEntretien().get(i);
-					pw.print("2");
-					pw.print(Services.lpad(unPMp.getLibelleentretien(),31," "));
-					pw.print(Services.lpad(unPMp.getDreal(),11," "));
-					pw.print(Services.lpad(unPMp.getDuree(),6," "));
-					pw.println();
+					out.write("2");
+					out.write(StringUtils.leftPad(unPMp.getLibelleentretien(),31," "));
+					out.write(StringUtils.leftPad(unPMp.getDreal(),11," "));
+					out.write(StringUtils.leftPad(unPMp.getDuree(),6," "));
+					out.write("\n");
 				}
 			}
-
-					
-			pw.close();
-			fw.close();
+			out.flush();
+			out.close();
+			ouw.close();
+			output.close();
+			f.close();
 		} catch (Exception e) {
-			pw.close();
-			fw.close();
+			out.flush();
+			out.close();
+			ouw.close();
+			output.close();
+			f.close();
 			throw e;
 		}
 			setScript(g.getScriptOuverture());		

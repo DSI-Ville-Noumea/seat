@@ -1,9 +1,15 @@
 package nc.mairie.seat.process;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.vfs.FileObject;
 
 import nc.mairie.seat.metier.AffectationServiceInfos;
 import nc.mairie.seat.metier.Agents;
@@ -36,6 +42,7 @@ public class OeOT_Visualisation extends nc.mairie.technique.BasicProcess {
 	public boolean isDebranche = false;
 	public String messErreur;
 	private String starjetMode = (String)Frontale.getMesParametres().get("STARJET_MODE");
+	private String starjetServer = (String)Frontale.getMesParametres().get("STARJET_SERVER");
 	private String script;
 	public boolean isTrouve = false;
 	public boolean isErreur = false;
@@ -1007,55 +1014,57 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 		commentaireOt = commentaireOt.replace('\n',' ');
 		commentaireOt = commentaireOt.replace('\r',' ');
 		StarjetGeneration g = new StarjetGeneration(getTransaction(), "MAIRIE", starjetMode, "SEAT", "ficheOT.sp", "ficheOT");
-		File f = g.getFileData();
-		FileWriter fw = new FileWriter(f);
-		PrintWriter pw = new PrintWriter(fw);
+		g.setStarjetServer(starjetServer);
+		FileObject f = g.getFileObjectData();
+		OutputStream output = f.getContent().getOutputStream();
+		OutputStreamWriter ouw = new OutputStreamWriter(output, "UTF8");
+		BufferedWriter out = new BufferedWriter(ouw);
 		try {	
 			//	Entete
-			pw.print("1");
-			pw.print(Services.lpad(numinv,32," "));
-			pw.print(Services.lpad(numimmat,50," "));
-			pw.print(Services.lpad(nomequip,64," "));
-			pw.print(Services.lpad(type,32," "));
+			out.write("1");
+			out.write(StringUtils.leftPad(numinv,32," "));
+			out.write(StringUtils.leftPad(numimmat,50," "));
+			out.write(StringUtils.leftPad(nomequip,64," "));
+			out.write(StringUtils.leftPad(type,32," "));
 			if(service.length()>64){
 				service = service.substring(0,64);
-				pw.print(service);
+				out.write(service);
 			}else{
-				pw.print(Services.lpad(service,64," "));
+				out.write(StringUtils.leftPad(service,64," "));
 			}
 			// OT
-			pw.print(Services.lpad(numOt,8," "));
-			pw.print(Services.lpad(dEntree,10," "));
-			pw.print(Services.lpad(dSortie,10," "));
-			pw.print(Services.lpad(compteur,10," "));
-			pw.print(Services.lpad(montantTotal,10," "));
-			pw.print(Services.lpad(commentaireOt,600," "));
-			pw.println();
+			out.write(StringUtils.leftPad(numOt,8," "));
+			out.write(StringUtils.leftPad(dEntree,10," "));
+			out.write(StringUtils.leftPad(dSortie,10," "));
+			out.write(StringUtils.leftPad(compteur,10," "));
+			out.write(StringUtils.leftPad(montantTotal,10," "));
+			out.write(StringUtils.leftPad(commentaireOt,600," "));
+			out.write("\n");
 			
 //			 liste des interventions
 			for (int i=0;i<getListeInterventions().size();i++){
 				if(!getListeInterventions().get(i).equals("")){
 					PePersoInfos unPeP = (PePersoInfos)getListeInterventions().get(i);
-					pw.print("2");
-					pw.print(Services.lpad(unPeP.getLibelleentretien(),31," "));
-					pw.print(Services.lpad(unPeP.getDatereal(),11," "));
-					pw.print(Services.lpad(unPeP.getDuree(),6," "));
-					pw.println();
+					out.write("2");
+					out.write(StringUtils.leftPad(unPeP.getLibelleentretien(),31," "));
+					out.write(StringUtils.leftPad(unPeP.getDatereal(),11," "));
+					out.write(StringUtils.leftPad(unPeP.getDuree(),6," "));
+					out.write("\n");
 				}
 			}
 			// liste des pièces
 			for (int i=0;i<getListePieces().size();i++){
 				if(!getListePieces().get(i).equals("")){
 					PiecesInfos unPI = (PiecesInfos)getListePieces().get(i);
-					pw.print("3");
-					pw.print(Services.lpad(unPI.getDesignationpiece(),3," "));
-					pw.print(Services.lpad(unPI.getDatesortie(),10," "));
-					pw.print(Services.lpad(unPI.getPrix(),7," "));
-					pw.print(Services.lpad(unPI.getQuantite(),7," "));
+					out.write("3");
+					out.write(StringUtils.leftPad(unPI.getDesignationpiece(),3," "));
+					out.write(StringUtils.leftPad(unPI.getDatesortie(),10," "));
+					out.write(StringUtils.leftPad(unPI.getPrix(),7," "));
+					out.write(StringUtils.leftPad(unPI.getQuantite(),7," "));
 					montantPieces = Integer.parseInt(unPI.getPrix())*Integer.parseInt(unPI.getQuantite());
-					pw.print(Services.lpad(String.valueOf(montantPieces),7," "));
-					pw.print(getListePieces().get(i));
-					pw.println();
+					out.write(StringUtils.leftPad(String.valueOf(montantPieces),7," "));
+					out.write(getListePieces().get(i).toString());
+					out.write("\n");
 				}
 			}
 			
@@ -1070,29 +1079,29 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 					ENGJU unENGJU = (ENGJU)getListeENGJUGroupByCdepNoengjIdetbs().get(i);
 					infosBe = ListeBe(request,unENGJU);
 					
-					pw.print("4");
-					pw.print(Services.lpad(unENGJU.getNoengj(),11," "));
+					out.write("4");
+					out.write(StringUtils.leftPad(unENGJU.getNoengj(),11," "));
 					if(!infosBe.equals("")){
 						inter1 = infosBe.indexOf(";");
 						inter2 = inter1 + 1;
-						pw.print(Services.lpad(infosBe.substring(0,inter1),11," "));
+						out.write(StringUtils.leftPad(infosBe.substring(0,inter1),11," "));
 						inter1 = infosBe.indexOf(";",inter2);
 						
 						if(infosBe.substring(inter2,inter1).length()>31){
 							chainedeb = infosBe.substring(inter2,31+inter2);
-							pw.print(chainedeb);
+							out.write(chainedeb);
 						}else{
-							pw.print(Services.lpad(infosBe.substring(inter2,inter1),31," "));
+							out.write(StringUtils.leftPad(infosBe.substring(inter2,inter1),31," "));
 						}
 						//inter1 = inter2+1;
 						inter2 = inter1+1;//infosBe.indexOf(";",inter1);
-						pw.print(Services.lpad(infosBe.substring(inter2,infosBe.length()),11," "));
+						out.write(StringUtils.leftPad(infosBe.substring(inter2,infosBe.length()),11," "));
 					}else{
-						pw.print(Services.lpad(" ",42," "));
-						pw.print(Services.lpad("0",11," "));
+						out.write(StringUtils.leftPad(" ",42," "));
+						out.write(StringUtils.leftPad("0",11," "));
 					}
-					//pw.print(getListeBe().get(i));
-					pw.println();
+					//out.write(getListeBe().get(i));
+					out.write("\n");
 				}
 			}
 			
@@ -1104,17 +1113,22 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 					if(getTransaction().isErreur()){
 						return false;
 					}
-					pw.print("5");
-					pw.print(Services.lpad(unAgent.getNom().trim()+" "+unAgent.getPrenom(),31," "));
-					pw.println();
+					out.write("5");
+					out.write(StringUtils.leftPad(unAgent.getNom().trim()+" "+unAgent.getPrenom(),31," "));
+					out.write("\n");
 				}
 			}
-					
-			pw.close();
-			fw.close();
+			out.flush();
+			out.close();
+			ouw.close();
+			output.close();
+			f.close();
 		} catch (Exception e) {
-			pw.close();
-			fw.close();
+			out.flush();
+			out.close();
+			ouw.close();
+			output.close();
+			f.close();
 			throw e;
 		}
 			setScript(g.getScriptOuverture());		

@@ -1,11 +1,17 @@
 package nc.mairie.seat.process;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.vfs.FileObject;
 
 import nc.mairie.seat.metier.AgentCCAS;
 import nc.mairie.seat.metier.AgentCDE;
@@ -40,6 +46,7 @@ public class OePMBPC_VisualisationComplete extends nc.mairie.technique.BasicProc
 	private String nbBPC;
 	private String totalQte;
 	private String starjetMode = (String)Frontale.getMesParametres().get("STARJET_MODE");
+	private String starjetServer = (String)Frontale.getMesParametres().get("STARJET_SERVER");
 	private String script;
 	public boolean isVide = true;
 	public int kmParcourusTotal = 0;
@@ -718,10 +725,11 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 	
 	if(getListBPCInfos().size()>0){
 		StarjetGeneration g = new StarjetGeneration(getTransaction(), "MAIRIE", starjetMode, "SEAT", "listeBPCEquip.sp", "listeBPCEquip");
-		File f = g.getFileData();
-		
-		FileWriter fw = new FileWriter(f);
-		PrintWriter pw = new PrintWriter(fw);
+		g.setStarjetServer(starjetServer);
+		FileObject f = g.getFileObjectData();
+		OutputStream output = f.getContent().getOutputStream();
+		OutputStreamWriter ouw = new OutputStreamWriter(output, "UTF8");
+		BufferedWriter out = new BufferedWriter(ouw);
 		try {	
 			if(getListBPCInfos().size()>0){
 				BPCInfosCompletes unBPC = (BPCInfosCompletes)getListBPCInfos().get(0);
@@ -775,39 +783,39 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 				}else{
 					initialiseListeTotalEquip(request,listeBPCEquip);
 //					Total
-					pw.print("2");
-					pw.print(Services.lpad(numinvder,10," "));
-					pw.print(getLB_TOTALEQUIP()[0]);
-					pw.println();
+					out.write("2");
+					out.write(StringUtils.leftPad(numinvder,10," "));
+					out.write(getLB_TOTALEQUIP()[0]);
+					out.write("\n");
 					setLB_TOTALEQUIP(null);
 					kmParcourus = 0;
 					listeBPCEquip = new ArrayList();
 				}
 				//Entete
-				pw.print("1");
-				pw.print(Services.lpad(unBPCComplet.getNumeroinventaire(),10," "));
-				pw.print(Services.lpad(unBPCComplet.getNumeroimmatriculation(),10," "));
+				out.write("1");
+				out.write(StringUtils.leftPad(unBPCComplet.getNumeroinventaire(),10," "));
+				out.write(StringUtils.leftPad(unBPCComplet.getNumeroimmatriculation(),10," "));
 				EquipementInfos unEI = EquipementInfos.chercherEquipementInfos(getTransaction(),unBPCComplet.getNumeroinventaire());
 				if(getTransaction().isErreur()){
 					return false;
 				}
-				pw.print(Services.lpad(unEI.getDesignationmarque().trim()+" "+unEI.getDesignationmodele().trim(),64," "));
-				pw.print(Services.lpad(unEI.getDesignationtypeequip().trim(),32," "));
+				out.write(StringUtils.leftPad(unEI.getDesignationmarque().trim()+" "+unEI.getDesignationmodele().trim(),64," "));
+				out.write(StringUtils.leftPad(unEI.getDesignationtypeequip().trim(),32," "));
 				stService = unBPCComplet.getCodeservice()+" "+unBPCComplet.getLiserv().trim();
 				if(stService.length()>64){
 					stService = stService.substring(0,64);
-					pw.print(stService);
+					out.write(stService);
 				}else{
-					pw.print(Services.lpad(unBPCComplet.getCodeservice().trim()+" "+unBPCComplet.getLiserv().trim(),64," "));
+					out.write(StringUtils.leftPad(unBPCComplet.getCodeservice().trim()+" "+unBPCComplet.getLiserv().trim(),64," "));
 				}
-				pw.print(Services.lpad(Services.formateDate(ddeb),10," "));
-				pw.print(Services.lpad(Services.formateDate(dfin),10," "));
-				pw.print(Services.lpad(agentResponsable,50," "));
+				out.write(StringUtils.leftPad(Services.formateDate(ddeb),10," "));
+				out.write(StringUtils.leftPad(Services.formateDate(dfin),10," "));
+				out.write(StringUtils.leftPad(agentResponsable,50," "));
 				//BPC
-				pw.print(Services.lpad(unBPCComplet.getNumerobpc(),10," "));
-				pw.print(Services.lpad(unBPCComplet.getDate(),10," "));
-				pw.print(Services.lpad(unBPCComplet.getValeurcompteur(),10," "));
-				pw.print(Services.lpad(unBPCComplet.getQuantite(),6," "));
+				out.write(StringUtils.leftPad(unBPCComplet.getNumerobpc(),10," "));
+				out.write(StringUtils.leftPad(unBPCComplet.getDate(),10," "));
+				out.write(StringUtils.leftPad(unBPCComplet.getValeurcompteur(),10," "));
+				out.write(StringUtils.leftPad(unBPCComplet.getQuantite(),6," "));
 				if ((null != bpcAvant)&&(numinv.equals(bpcAvant.getNumeroinventaire()))){
 					kmParcourus =  Integer.parseInt(unBPCComplet.getValeurcompteur())-Integer.parseInt(bpcAvant.getValeurcompteur());
 					int qteAvant = Integer.parseInt(bpcAvant.getQuantite());
@@ -822,9 +830,9 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 					moyenneL = moyenneFormat.format(moyennecalcul);
 					kmParcouru = ""+kmParcourus;
 				}
-				pw.print(Services.lpad(kmParcouru,10," "));
-				pw.print(Services.lpad(moyenneL,10," "));
-				pw.println();
+				out.write(StringUtils.leftPad(kmParcouru,10," "));
+				out.write(StringUtils.leftPad(moyenneL,10," "));
+				out.write("\n");
 				quantiteTotal = quantiteTotal + Integer.parseInt(unBPCComplet.getQuantite());
 				kmParcourusTotal = kmParcourusTotal + Integer.parseInt(unBPCComplet.getValeurcompteur());
 				numinvder = unBPCComplet.getNumeroinventaire().trim();
@@ -833,18 +841,24 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 			// pour le dernier équipment
 			initialiseListeTotalEquip(request,listeBPCEquip);
 //			Total
-			pw.print("2");
-			pw.print(Services.lpad(numinvder,10," "));
-			pw.print(getLB_TOTALEQUIP()[0]);
-			pw.println();
+			out.write("2");
+			out.write(StringUtils.leftPad(numinvder,10," "));
+			out.write(getLB_TOTALEQUIP()[0]);
+			out.write("\n");
 			setLB_TOTALEQUIP(null);
 			//kmParcourus = 0;
-			pw.close();
-			fw.close();
+			out.flush();
+			out.close();
+			ouw.close();
+			output.close();
+			f.close();
 			
 		} catch (Exception e) {
-			pw.close();
-			fw.close();
+			out.flush();
+			out.close();
+			ouw.close();
+			output.close();
+			f.close();
 			throw e;
 		}
 		

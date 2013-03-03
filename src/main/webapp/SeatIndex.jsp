@@ -325,11 +325,11 @@ menuService.ajouterFils(Module_SPMateriel);
 	String dpt = (String)h.get("department");
 %>
 
-<% if (aUser.getUserName().equals("boulu72") || aUser.getUserName().equals("peymi67")) {%>
+<% if (aUser.getUserName().equals("boulu72") || aUser.getUserName().equals("peymi67") || aUser.getUserName().equals("dosfr75")) {%>
 menu.ajouterFils(new Lien("ZZZTESTEUR", "Testeur de process", "Testeur de process", true));
 <%}%>
 <% 
-if(aUser.getUserName().equals("boulu72")||aUser.getUserName().equals("fonol77")){
+if(aUser.getUserName().equals("boulu72")||aUser.getUserName().equals("fonol77")||aUser.getUserName().equals("dosfr75")){
 	dpt = "ATM";
 }
 //if ((aUser.getUserName().equals("nicco81"))||(!process.dpt.equals("ATM"))) {
