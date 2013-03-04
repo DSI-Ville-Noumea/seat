@@ -79,12 +79,6 @@
 			<artifactId>servlet-api</artifactId>
 			<version>6.0.36</version>
 		</dependency> -->
-
-		<dependency>
-			<groupId>nc.mairie</groupId>
-			<artifactId>framework</artifactId>
-			<version>1.5</version>
-		</dependency>
 		<!-- <dependency>
 			<groupId>nc.mairie</groupId>
 			<artifactId>commun</artifactId>
