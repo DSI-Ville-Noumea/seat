@@ -11,7 +11,7 @@ import nc.mairie.technique.*;
 /**
  * Process OeFPM_Validation
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
 */
 public class OeFPM_Validation extends nc.mairie.technique.BasicProcess {
 	public static final int STATUT_VISUALISER = 2;
@@ -35,7 +35,7 @@ public class OeFPM_Validation extends nc.mairie.technique.BasicProcess {
  * ATTENTION : Les Objets dans la liste doivent avoir les Fields PUBLIC
  * Utilisation de la méthode addZone(getNOMxxx, String);
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 @Override
 public void initialiseZones(javax.servlet.http.HttpServletRequest request) throws Exception{
@@ -184,7 +184,7 @@ public void initialiseListFpmAValider(javax.servlet.http.HttpServletRequest requ
 /**
  * Constructeur du process OeFPM_Validation.
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public OeFPM_Validation() {
 	super();
@@ -193,7 +193,7 @@ public OeFPM_Validation() {
  * Retourne le nom d'un bouton pour la JSP :
  * PB_AJOUTER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public java.lang.String getNOM_PB_AJOUTER() {
 	return "NOM_PB_AJOUTER";
@@ -204,7 +204,7 @@ public java.lang.String getNOM_PB_AJOUTER() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public boolean performPB_AJOUTER(javax.servlet.http.HttpServletRequest request) throws Exception {
 //	 on ajoute FPM dans la liste à valider
@@ -226,7 +226,7 @@ public boolean performPB_AJOUTER(javax.servlet.http.HttpServletRequest request) 
  * Retourne le nom d'un bouton pour la JSP :
  * PB_ANNULER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public java.lang.String getNOM_PB_ANNULER() {
 	return "NOM_PB_ANNULER";
@@ -237,7 +237,7 @@ public java.lang.String getNOM_PB_ANNULER() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	setStatut(STATUT_PROCESS_APPELANT);
@@ -247,7 +247,7 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * Retourne le nom d'un bouton pour la JSP :
  * PB_ENLEVER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public java.lang.String getNOM_PB_ENLEVER() {
 	return "NOM_PB_ENLEVER";
@@ -258,7 +258,7 @@ public java.lang.String getNOM_PB_ENLEVER() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public boolean performPB_ENLEVER(javax.servlet.http.HttpServletRequest request) throws Exception {
 //	 on ajoute l'entretien à faire dans la liste des FPM en cours 
@@ -280,7 +280,7 @@ public boolean performPB_ENLEVER(javax.servlet.http.HttpServletRequest request) 
  * Retourne le nom d'un bouton pour la JSP :
  * PB_VALIDER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public java.lang.String getNOM_PB_VALIDER() {
 	return "NOM_PB_VALIDER";
@@ -291,7 +291,7 @@ public java.lang.String getNOM_PB_VALIDER() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	// on valide toutes les fiches d'entretiens qui ont été sélectionnées
@@ -323,7 +323,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * Getter de la liste avec un lazy initialize :
  * LB_FPMAVALIDER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 private String [] getLB_FPMAVALIDER() {
 	if (LB_FPMAVALIDER == null)
@@ -334,7 +334,7 @@ private String [] getLB_FPMAVALIDER() {
  * Setter de la liste:
  * LB_FPMAVALIDER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 private void setLB_FPMAVALIDER(java.lang.String[] newLB_FPMAVALIDER) {
 	LB_FPMAVALIDER = newLB_FPMAVALIDER;
@@ -343,7 +343,7 @@ private void setLB_FPMAVALIDER(java.lang.String[] newLB_FPMAVALIDER) {
  * Retourne le nom de la zone pour la JSP :
  * NOM_LB_FPMAVALIDER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public java.lang.String getNOM_LB_FPMAVALIDER() {
 	return "NOM_LB_FPMAVALIDER";
@@ -353,7 +353,7 @@ public java.lang.String getNOM_LB_FPMAVALIDER() {
  * Retourne le nom de la zone de la ligne sélectionnée pour la JSP :
  * NOM_LB_FPMAVALIDER_SELECT
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public java.lang.String getNOM_LB_FPMAVALIDER_SELECT() {
 	return "NOM_LB_FPMAVALIDER_SELECT";
@@ -363,7 +363,7 @@ public java.lang.String getNOM_LB_FPMAVALIDER_SELECT() {
  * Retourne la valeur à afficher pour la zone de la JSP :
  * LB_FPMAVALIDER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public java.lang.String [] getVAL_LB_FPMAVALIDER() {
 	return getLB_FPMAVALIDER();
@@ -373,7 +373,7 @@ public java.lang.String [] getVAL_LB_FPMAVALIDER() {
  * Retourne l'indice à sélectionner pour la zone de la JSP :
  * LB_FPMAVALIDER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public java.lang.String getVAL_LB_FPMAVALIDER_SELECT() {
 	return getZone(getNOM_LB_FPMAVALIDER_SELECT());
@@ -382,7 +382,7 @@ public java.lang.String getVAL_LB_FPMAVALIDER_SELECT() {
  * Getter de la liste avec un lazy initialize :
  * LB_FPMENCOURS
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 private String [] getLB_FPMENCOURS() {
 	if (LB_FPMENCOURS == null)
@@ -393,7 +393,7 @@ private String [] getLB_FPMENCOURS() {
  * Setter de la liste:
  * LB_FPMENCOURS
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 private void setLB_FPMENCOURS(java.lang.String[] newLB_FPMENCOURS) {
 	LB_FPMENCOURS = newLB_FPMENCOURS;
@@ -402,7 +402,7 @@ private void setLB_FPMENCOURS(java.lang.String[] newLB_FPMENCOURS) {
  * Retourne le nom de la zone pour la JSP :
  * NOM_LB_FPMENCOURS
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public java.lang.String getNOM_LB_FPMENCOURS() {
 	return "NOM_LB_FPMENCOURS";
@@ -411,7 +411,7 @@ public java.lang.String getNOM_LB_FPMENCOURS() {
  * Retourne le nom de la zone de la ligne sélectionnée pour la JSP :
  * NOM_LB_FPMENCOURS_SELECT
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public java.lang.String getNOM_LB_FPMENCOURS_SELECT() {
 	return "NOM_LB_FPMENCOURS_SELECT";
@@ -421,7 +421,7 @@ public java.lang.String getNOM_LB_FPMENCOURS_SELECT() {
  * Retourne la valeur à afficher pour la zone de la JSP :
  * LB_FPMENCOURS
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public java.lang.String [] getVAL_LB_FPMENCOURS() {
 	return getLB_FPMENCOURS();
@@ -431,7 +431,7 @@ public java.lang.String [] getVAL_LB_FPMENCOURS() {
  * Retourne l'indice à sélectionner pour la zone de la JSP :
  * LB_FPMENCOURS
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 public java.lang.String getVAL_LB_FPMENCOURS_SELECT() {
 	return getZone(getNOM_LB_FPMENCOURS_SELECT());
@@ -471,7 +471,7 @@ public void setEstEnregistre(boolean estEnregistre) {
  * Retourne le nom d'un bouton pour la JSP :
  * PB_OK_VALIDATION
  * Date de création : (03/08/05 07:50:43)
- * @author : Générateur de process
+* 
  */
 public java.lang.String getNOM_PB_OK_VALIDATION() {
 	return "NOM_PB_OK_VALIDATION";
@@ -482,7 +482,7 @@ public java.lang.String getNOM_PB_OK_VALIDATION() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (03/08/05 07:50:43)
- * @author : Générateur de process
+* 
  */
 //retour à l'écran d'origine
 public boolean performPB_OK_VALIDATION(javax.servlet.http.HttpServletRequest request) throws Exception {
@@ -504,7 +504,7 @@ public boolean performPB_OK_VALIDATION(javax.servlet.http.HttpServletRequest req
  * Retourne pour la JSP le nom de la zone statique :
  * ST_COMPTEUR
  * Date de création : (23/08/05 08:57:12)
- * @author : Générateur de process
+* 
  */
 public java.lang.String getNOM_ST_COMPTEUR() {
 	return "NOM_ST_COMPTEUR";
@@ -513,7 +513,7 @@ public java.lang.String getNOM_ST_COMPTEUR() {
  * Retourne la valeur à afficher par la JSP  pour la zone :
  * ST_COMPTEUR
  * Date de création : (23/08/05 08:57:12)
- * @author : Générateur de process
+* 
  */
 public java.lang.String getVAL_ST_COMPTEUR() {
 	return getZone(getNOM_ST_COMPTEUR());
@@ -522,7 +522,7 @@ public java.lang.String getVAL_ST_COMPTEUR() {
  * Retourne le nom d'un bouton pour la JSP :
  * PB_MODIFIER
  * Date de création : (03/04/07 08:57:36)
- * @author : Générateur de process
+* 
  */
 public java.lang.String getNOM_PB_MODIFIER() {
 	return "NOM_PB_MODIFIER";
@@ -533,7 +533,7 @@ public java.lang.String getNOM_PB_MODIFIER() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (03/04/07 08:57:36)
- * @author : Générateur de process
+* 
  */
 public boolean performPB_MODIFIER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	int indice  = (Services.estNumerique(getVAL_LB_FPMENCOURS_SELECT()) ? Integer.parseInt(getVAL_LB_FPMENCOURS_SELECT()): -1);
@@ -564,7 +564,7 @@ public boolean performPB_MODIFIER(javax.servlet.http.HttpServletRequest request)
  * Retourne le nom d'un bouton pour la JSP :
  * PB_VISUALISER
  * Date de création : (03/04/07 08:57:36)
- * @author : Générateur de process
+* 
  */
 public java.lang.String getNOM_PB_VISUALISER() {
 	return "NOM_PB_VISUALISER";
@@ -575,7 +575,7 @@ public java.lang.String getNOM_PB_VISUALISER() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (03/04/07 08:57:36)
- * @author : Générateur de process
+* 
  */
 public boolean performPB_VISUALISER(javax.servlet.http.HttpServletRequest request) throws Exception {
 //	 on envoie FPM sélectionné
@@ -616,7 +616,7 @@ public void setFpmCourant(FPM fpmCourant) {
  * Méthode appelée par la servlet qui aiguille le traitement : 
  * en fonction du bouton de la JSP 
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+* 
  */
 @Override
 public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) throws Exception{
@@ -668,7 +668,7 @@ public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) th
  * Retourne le nom de la JSP du process
  * Zone à utiliser dans un champ caché dans chaque formulaire de la JSP.
  * Date de création : (03/04/07 09:12:12)
- * @author : Générateur de process
+* 
  */
 @Override
 public String getJSP() {

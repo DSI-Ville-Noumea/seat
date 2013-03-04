@@ -8,7 +8,7 @@ import nc.mairie.technique.*;
 /**
  * Process SeatIndex
  * Date de création : (24/08/07 07:53:07)
- * @author : Générateur de process
+* 
 */
 public class SeatIndex extends nc.mairie.technique.BasicProcess {
 	private String focus = null;
@@ -19,7 +19,7 @@ public class SeatIndex extends nc.mairie.technique.BasicProcess {
  * ATTENTION : Les Objets dans la liste doivent avoir les Fields PUBLIC
  * Utilisation de la méthode addZone(getNOMxxx, String);
  * Date de création : (24/08/07 07:53:07)
- * @author : Générateur de process
+* 
  */
 @Override
 public void initialiseZones(javax.servlet.http.HttpServletRequest request) throws Exception{
@@ -41,7 +41,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
  * Méthode appelée par la servlet qui aiguille le traitement : 
  * en fonction du bouton de la JSP 
  * Date de création : (24/08/07 07:53:07)
- * @author : Générateur de process
+* 
  */
 @Override
 public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) throws Exception{
@@ -57,7 +57,7 @@ public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) th
 /**
  * Constructeur du process SeatIndex.
  * Date de création : (24/08/07 07:53:07)
- * @author : Générateur de process
+* 
  */
 public SeatIndex() {
 	super();
@@ -66,7 +66,7 @@ public SeatIndex() {
  * Retourne le nom de la JSP du process
  * Zone à utiliser dans un champ caché dans chaque formulaire de la JSP.
  * Date de création : (24/08/07 07:53:07)
- * @author : Générateur de process
+* 
  */
 @Override
 public String getJSP() {

@@ -110,7 +110,7 @@ public java.util.ArrayList listeBPCEquipAnnee(nc.mairie.technique.Transaction aT
 }
 
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
- * @author : Coralie NICOLAS
+* 
  */
 public int nouvBPC(nc.mairie.technique.Transaction aTransaction) throws Exception{
 

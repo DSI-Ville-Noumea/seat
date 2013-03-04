@@ -2,7 +2,7 @@ package nc.mairie.seat.process;
 /**
  * Process OeAccueil
  * Date de création : (28/04/05 13:36:04)
- * @author : Générateur de process
+* 
 */
 public class Outils {
 
@@ -12,7 +12,7 @@ public class Outils {
  * ATTENTION : Les Objets dans la liste doivent avoir les Fields PUBLIC
  * Utilisation de la méthode addZone(getNOMxxx, String);
  * Date de création : (28/04/05 13:36:04)
- * @author : Générateur de process
+* 
  */
 public static String enleveEspace(String uneChaine) throws Exception{
 	String chaineEpure = "";
@@ -28,7 +28,7 @@ public static String enleveEspace(String uneChaine) throws Exception{
 /**
  * Constructeur du process OeAccueil.
  * Date de création : (28/04/05 13:36:04)
- * @author : Générateur de process
+* 
  */
 public Outils() {
 	super();

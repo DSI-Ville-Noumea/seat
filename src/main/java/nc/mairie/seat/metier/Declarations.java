@@ -481,7 +481,7 @@ public boolean supprimerDeclarations(nc.mairie.technique.Transaction aTransactio
 }
 
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
- * @author : Coralie NICOLAS
+* 
  */
 public int nouvCodeDecl(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//	recherche du dernier code

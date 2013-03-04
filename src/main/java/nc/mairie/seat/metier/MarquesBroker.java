@@ -6,7 +6,7 @@ import nc.mairie.technique.BasicRecord;
  */
 public class MarquesBroker extends nc.mairie.technique.BasicBroker {
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
- * @author : Coralie NICOLAS
+* 
  */
 public int nouvMarques(nc.mairie.technique.Transaction aTransaction) throws Exception{
 

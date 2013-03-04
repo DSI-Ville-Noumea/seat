@@ -47,7 +47,7 @@ protected java.util.Hashtable definirMappageTable() throws NoSuchFieldException 
 
 
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
- * @author : Coralie NICOLAS
+* 
  */
 public int nouvPieces(nc.mairie.technique.Transaction aTransaction) throws Exception{
 
