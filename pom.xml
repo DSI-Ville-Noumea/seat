@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nc.mairie</groupId>
 	<artifactId>seat</artifactId>
@@ -54,7 +54,7 @@
 		<site>
 			<id>seat.website</id>
 			<name>SEAT Website</name>
-			<url>file:R:\PROJETS\1 - EN COURS\2 - Métiers\seat\docs\htmldoc\</url>
+			<url>file:\\cristal\DSI$\DSI\PROJETS\doxia\${project.name}</url>
 		</site>
 	</distributionManagement>
 
@@ -129,13 +129,12 @@
 						<phase>package</phase>
 						<configuration>
 							<tasks>
-								<copy todir="src/site/resources/war/${project.version}"
-									file="target/${project.artifactId}##${project.version}.war">
+								<copy file="target/${project.artifactId}##${project.version}.war" todir="src/site/resources/war/${project.version}">
 								</copy>
 								<checksum algorithm="md5">
 									<fileset dir="src/site/resources/war/${project.version}">
-										<include name="*.war" />
-										<include name="*.jar" />
+										<include name="*.war"/>
+										<include name="*.jar"/>
 									</fileset>
 								</checksum>
 							</tasks>
