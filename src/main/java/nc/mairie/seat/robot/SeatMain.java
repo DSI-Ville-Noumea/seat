@@ -7,6 +7,10 @@ package nc.mairie.seat.robot;
  */
 public class SeatMain extends nc.mairie.technique.BasicProcess {
 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+/**
  * Commentaire relatif au constructeur DefaultProcess.
  */
 public SeatMain() {

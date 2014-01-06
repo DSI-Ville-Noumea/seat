@@ -103,6 +103,11 @@ import nc.mairie.technique.BasicProcess;
  */
 public class RobotSeat extends Robot {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/* (non-Javadoc)
 	 * @see nc.mairie.robot.Robot#getDefaultProcess()
 	 */
@@ -228,6 +233,7 @@ public class RobotSeat extends Robot {
 	/* (non-Javadoc)
 	 * @see nc.mairie.robot.Robot#initialiseNavigation()
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	protected Hashtable initialiseNavigation() {
 		Hashtable nav = new Hashtable();

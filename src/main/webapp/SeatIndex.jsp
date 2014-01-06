@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<%@page contentType="text/html;charset=UTF-8"%>
 <HTML>
 <HEAD>
 <META name="GENERATOR" content="IBM WebSphere Page Designer V3.5.3 for Windows">
@@ -325,11 +325,11 @@ menuService.ajouterFils(Module_SPMateriel);
 	String dpt = (String)h.get("department");
 %>
 
-<% if (aUser.getUserName().equals("boulu72") || aUser.getUserName().equals("peymi67") || aUser.getUserName().equals("dosfr75")) {%>
+<% if (aUser.getUserName().equals("boulu72") || aUser.getUserName().equals("peymi67")) {%>
 menu.ajouterFils(new Lien("ZZZTESTEUR", "Testeur de process", "Testeur de process", true));
 <%}%>
 <% 
-if(aUser.getUserName().equals("boulu72")||aUser.getUserName().equals("fonol77")||aUser.getUserName().equals("dosfr75")){
+if(aUser.getUserName().equals("boulu72")||aUser.getUserName().equals("fonol77")){
 	dpt = "ATM";
 }
 //if ((aUser.getUserName().equals("nicco81"))||(!process.dpt.equals("ATM"))) {

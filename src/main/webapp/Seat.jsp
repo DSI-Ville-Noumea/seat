@@ -1,9 +1,10 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<%@page contentType="text/html;charset=UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
 <META name="GENERATOR" content="IBM WebSphere Page Designer V3.5.3 for Windows">
 <META http-equiv="Content-Style-Type" content="text/css">
-<TITLE>SEAT V2 - Suivi des Equipements de l'ATelier Municipal</TITLE>
+<TITLE>SEAT V${project.version} - Suivi des Equipements de l'ATelier Municipal</TITLE>
 <SCRIPT language="javascript" src="js/GestionBoutonDroit.js"></SCRIPT>
 <LINK href="theme/sigp2.css" rel="stylesheet" type="text/css">
 </HEAD>
@@ -20,6 +21,7 @@
 <frameset rows="*" cols="170,*" frameborder="0" border="0" framespacing="0">
 <!--     <FRAME src="file:///C:/Documents and Settings/boulu72/Mes documents/Studio 3.5 Projects/TestLuc/PrincipalIndex.jsp" name="Index" frameborder="no" scrolling="NO" noresize marginwidth="0" marginheight="0"> -->
   <FRAMESET rows="91,*">
+  
     <FRAME src="SeatLogo.jsp" name="Logo" scrolling="NO" noresize marginwidth="0" marginheight="0">
     <FRAME src="SeatIndex.jsp" name="Index" frameborder="no" noresize marginwidth="0" marginheight="0">
   </FRAMESET>

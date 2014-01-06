@@ -87,7 +87,7 @@ public boolean existeFre_PM(nc.mairie.technique.Transaction aTransaction, String
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where upper(libellefre) = '"+param.toUpperCase()+"'and upper(observationsfre)='"+observation.toUpperCase()+"' and upper(contact)='"+contact.toUpperCase()+"'");
 }
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
-* 
+ * @author : Coralie NICOLAS
  */
 public int nouvFre_PM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 

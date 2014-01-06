@@ -1,4 +1,4 @@
-﻿//Mask JavaScript API (v0.3) - dswitzer [at] pengoworks [dot] com
+//Mask JavaScript API (v0.3) - dswitzer [at] pengoworks [dot] com
 //http://www.pengoworks.com/workshop/js/mask/
 //
 //Some new features by Sylvain Machefert - http://iubito.free.fr

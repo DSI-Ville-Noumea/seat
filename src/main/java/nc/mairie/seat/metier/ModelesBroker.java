@@ -50,7 +50,7 @@ public Modeles chercherModeles(nc.mairie.technique.Transaction aTransaction, Str
 }
 
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
-* 
+ * @author : Coralie NICOLAS
  */
 public int nouvModeles(nc.mairie.technique.Transaction aTransaction) throws Exception{
 

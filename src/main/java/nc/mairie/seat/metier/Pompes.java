@@ -157,7 +157,7 @@ public int nouvCodePompe(nc.mairie.technique.Transaction aTransaction) throws Ex
 
 /*
  * vérifie que la pompe n'existe pas
-* 
+ * @author nicco81
  *
  * TODO Pour changer le modèle de ce commentaire de type généré, allez à :
  */

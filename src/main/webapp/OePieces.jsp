@@ -1,10 +1,9 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@page contentType="text/html;charset=UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
 <HTML>
 <HEAD>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <META name="GENERATOR" content="IBM Software Development Platform">
 <META http-equiv="Content-Style-Type" content="text/css">
 <LINK href="theme/sigp2.css" rel="stylesheet" type="text/css">
@@ -41,7 +40,7 @@ if (document.formu.elements[nom] != null)
 							<TD>
 						<TABLE class="sigp2" border="1" cellspacing="1">
 							<TR>
-								<TD width="200" class="sigp2-titre-liste">Libellé&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+								<TD width="200" class="sigp2-titre-liste">Libellé&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 
 							</TR>
 						</TABLE></TD>

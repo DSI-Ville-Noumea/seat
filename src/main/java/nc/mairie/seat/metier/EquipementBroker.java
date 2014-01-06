@@ -81,7 +81,7 @@ public java.util.ArrayList listerEquipementParam(nc.mairie.technique.Transaction
  * @return java.util.ArrayList
  * On cherche les équipements qui font parti d'un modèle
  */
-public java.util.ArrayList listerEquipementModele(nc.mairie.technique.Transaction aTransaction, String mod) throws Exception {
+public java.util.ArrayList listerEquipementModèle(nc.mairie.technique.Transaction aTransaction, String mod) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemodele="+mod);
 }
 

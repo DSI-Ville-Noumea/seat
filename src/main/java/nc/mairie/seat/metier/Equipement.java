@@ -511,7 +511,7 @@ public boolean existeEquipementModele(nc.mairie.technique.Transaction aTransacti
 
 public static java.util.ArrayList listerEquipementModele(nc.mairie.technique.Transaction aTransaction,String mod) throws Exception{
 	Equipement unEquipement = new Equipement();
-	return unEquipement.getMyEquipementBroker().listerEquipementModele(aTransaction,mod);
+	return unEquipement.getMyEquipementBroker().listerEquipementModèle(aTransaction,mod);
 }
 
 }

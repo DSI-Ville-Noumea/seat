@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nc.mairie</groupId>
 	<artifactId>seat</artifactId>
-	<version>2.0</version>
+	<version>2.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<organization>
 		<name>Mairie de Nouméa</name>
@@ -12,36 +12,24 @@
 	<developers>
 		<developer>
 			<id>BOULU72</id>
-			<name>Olivier FONTENEAU</name>
+			<name>Luc BOURDIL</name>
 			<email>boulu72@ville-noumea.nc</email>
 			<url>svpatdi/annuaire/vcards/904117.vcf</url>
 			<roles>
 				<role>Développeur</role>
 			</roles>
 		</developer>
-		<developer>
-			<id>DOSFR75</id>
-			<name>Frédéric DOS SANTOS</name>
-			<email>dosfr75@ville-noumea.nc</email>
-			<url>svpatdi/annuaire/vcards/904445.vcf</url>
-			<roles>
-				<role>Correcteur</role>
-			</roles>
-		</developer>
 	</developers>
 
 
 	<name>seat</name>
-	<url>file://///cristal/dsi$/DSI/PROJETS/1%20-%20EN%20COURS/2%20-%20M%C3%A9tiers/seat/docs/htmldoc/index.html</url>
 	<description>
 	SEAT est l'application de suivi des équipements de l'Atelier Municipal.
 	</description>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<svnurl>https://svn.ville-noumea.nc/sed/seat</svnurl>
-	</properties>
-
+	<prerequisites>
+		<maven>2.2.1</maven>
+	</prerequisites>
 
 	<scm>
 		<connection>scm:svn:${svnurl}/trunk</connection>
@@ -72,39 +60,34 @@
 			<version>1.0.4</version>
 		</dependency>
 
-
-
-
-		<!-- <dependency>
-			<groupId>org.apache.tomcat</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>6.0.36</version>
-		</dependency> -->
-		<!-- <dependency>
-			<groupId>nc.mairie</groupId>
-			<artifactId>commun</artifactId>
-			<version>1.4</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-impl</artifactId>
-			<version>2.2.0-m09</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<version>2.2.0-m09</version>
-		</dependency> -->
 	</dependencies>
 
 	<build>
-		<finalName>${project.artifactId}##${project.version}</finalName>
-		<!-- <finalName>droits-applis##${maven.build.timestamp}-${project.version}</finalName> -->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.7</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.15</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.2</version>
+				<version>2.3</version>
 				<configuration>
 					<webResources>
 						<resource>
@@ -130,8 +113,11 @@
 						<phase>package</phase>
 						<configuration>
 							<tasks>
-								<copy file="target/${project.artifactId}##${project.version}.war" todir="src/site/resources/war/${project.version}">
+								<copy file="${project.build.directory}/${project.build.finalName}.${project.packaging}" tofile="src/site/resources/war/${project.version}/${project.artifactId}##${project.version}.${project.packaging}">
 								</copy>
+								<copy file="${project.build.directory}/${project.build.finalName}.${project.packaging}" tofile="${project.build.directory}/${project.artifactId}##${project.version}.${project.packaging}">
+								</copy>
+								<delete file="${project.build.directory}/${project.build.finalName}.${project.packaging}"/>
 								<checksum algorithm="md5">
 									<fileset dir="src/site/resources/war/${project.version}">
 										<include name="*.war"/>
@@ -147,11 +133,10 @@
 				</executions>
 			</plugin>
 
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>3.1</version>
+				<version>3.3</version>
 				<configuration>
 					<reportPlugins>
 						<plugin>
@@ -213,26 +198,25 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-scm-plugin</artifactId>
-				<version>1.6</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
+				<version>3.1</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.5</version>
+				<version>2.6</version>
 				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
+					<nonFilteredFileExtensions>
+						<nonFilteredFileExtension>ico</nonFilteredFileExtension>
+						<nonFilteredFileExtension>pdf</nonFilteredFileExtension>
+						<nonFilteredFileExtension>swf</nonFilteredFileExtension>
+					</nonFilteredFileExtensions>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-plugin</artifactId>
+				<version>1.8.1</version>
 			</plugin>
 		</plugins>
 	</build>
@@ -242,11 +226,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>2.4</version>
+				<version>2.7</version>
 				<configuration>
-					<webAccessUrl>https://dvlp.site-mairie.noumea.nc:8080/svn/seat/trunk</webAccessUrl>
-					<anonymousConnection>scm:svn:https://dvlp.site-mairie.noumea.nc:8080/svn/seat/trunk</anonymousConnection>
-					<developerConnection>scm:svn:https://dvlp.site-mairie.noumea.nc:8080/svn/seat/trunk</developerConnection>
+					<webAccessUrl>${svnurl}/trunk</webAccessUrl>
+					<anonymousConnection>scm:svn:${svnurl}/trunk</anonymousConnection>
+					<developerConnection>scm:svn:${svnurl}</developerConnection>
 				</configuration>
 				<reportSets>
 					<reportSet>
@@ -255,7 +239,6 @@
 							<report>project-team</report>
 							<report>mailing-list</report>
 							<report>cim</report>
-							<!-- <report>issue-tracking</report> -->
 							<report>license</report>
 							<report>scm</report>
 						</reports>
@@ -289,5 +272,12 @@
 		</plugins>
 
 	</reporting>
-
+	
+	<properties>
+		<artifactId>${project.artifactId}</artifactId>
+		<version>${project.version}</version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<svnurl>https://svn.ville-noumea.nc/sed/seat</svnurl>
+		<framework_version>1.8</framework_version>
+	</properties>
 </project>

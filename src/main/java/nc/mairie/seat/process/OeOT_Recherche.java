@@ -8,7 +8,7 @@ import nc.mairie.technique.*;
 /**
  * Process OeOT_Recherche
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
 */
 public class OeOT_Recherche extends nc.mairie.technique.BasicProcess {
 	private java.lang.String[] LB_OT;
@@ -24,7 +24,7 @@ public class OeOT_Recherche extends nc.mairie.technique.BasicProcess {
  * ATTENTION : Les Objets dans la liste doivent avoir les Fields PUBLIC
  * Utilisation de la méthode addZone(getNOMxxx, String);
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 @Override
 public void initialiseZones(javax.servlet.http.HttpServletRequest request) throws Exception{
@@ -72,7 +72,7 @@ public void initialiseOT(javax.servlet.http.HttpServletRequest request,ArrayList
  * Méthode appelée par la servlet qui aiguille le traitement : 
  * en fonction du bouton de la JSP 
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 @Override
 public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) throws Exception{
@@ -108,7 +108,7 @@ public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) th
 /**
  * Constructeur du process OeOT_Recherche.
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public OeOT_Recherche() {
 	super();
@@ -117,7 +117,7 @@ public OeOT_Recherche() {
  * Retourne le nom de la JSP du process
  * Zone à utiliser dans un champ caché dans chaque formulaire de la JSP.
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 @Override
 public String getJSP() {
@@ -127,7 +127,7 @@ public String getJSP() {
  * Retourne le nom d'un bouton pour la JSP :
  * PB_ANNULER
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public java.lang.String getNOM_PB_ANNULER() {
 	return "NOM_PB_ANNULER";
@@ -138,7 +138,7 @@ public java.lang.String getNOM_PB_ANNULER() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	equipementInfosCourant = null;
@@ -151,7 +151,7 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * Retourne le nom d'un bouton pour la JSP :
  * PB_OK
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public java.lang.String getNOM_PB_OK() {
 	return "NOM_PB_OK";
@@ -162,7 +162,7 @@ public java.lang.String getNOM_PB_OK() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String param = getZone(getNOM_EF_DESIGNATION());
@@ -186,7 +186,7 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
  * Retourne le nom d'un bouton pour la JSP :
  * PB_OK_EQUIPEMENT
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public java.lang.String getNOM_PB_OK_EQUIPEMENT() {
 	return "NOM_PB_OK_EQUIPEMENT";
@@ -197,7 +197,7 @@ public java.lang.String getNOM_PB_OK_EQUIPEMENT() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public boolean performPB_OK_EQUIPEMENT(javax.servlet.http.HttpServletRequest request) throws Exception {
 //	Récup de l'indice sélectionné
@@ -224,7 +224,7 @@ public boolean performPB_OK_EQUIPEMENT(javax.servlet.http.HttpServletRequest req
  * Retourne le nom d'un bouton pour la JSP :
  * PB_VALIDER
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public java.lang.String getNOM_PB_VALIDER() {
 	return "NOM_PB_VALIDER";
@@ -235,7 +235,7 @@ public java.lang.String getNOM_PB_VALIDER() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) throws Exception {
 //	Récup de l'indice sélectionné
@@ -271,7 +271,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * Retourne le nom d'une zone de saisie pour la JSP :
  * EF_DESIGNATION
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public java.lang.String getNOM_EF_DESIGNATION() {
 	return "NOM_EF_DESIGNATION";
@@ -280,7 +280,7 @@ public java.lang.String getNOM_EF_DESIGNATION() {
  * Retourne la valeur à afficher par la JSP pour la zone de saisie  :
  * EF_DESIGNATION
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public java.lang.String getVAL_EF_DESIGNATION() {
 	return getZone(getNOM_EF_DESIGNATION());
@@ -289,7 +289,7 @@ public java.lang.String getVAL_EF_DESIGNATION() {
  * Getter de la liste avec un lazy initialize :
  * LB_BPC
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 private String [] getLB_OT() {
 	if (LB_OT == null)
@@ -300,7 +300,7 @@ private String [] getLB_OT() {
  * Setter de la liste:
  * LB_BPC
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 private void setLB_OT(java.lang.String[] newLB_OT) {
 	LB_OT = newLB_OT;
@@ -309,7 +309,7 @@ private void setLB_OT(java.lang.String[] newLB_OT) {
  * Retourne le nom de la zone pour la JSP :
  * NOM_LB_BPC
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public java.lang.String getNOM_LB_OT() {
 	return "NOM_LB_OT";
@@ -318,7 +318,7 @@ public java.lang.String getNOM_LB_OT() {
  * Retourne le nom de la zone de la ligne sélectionnée pour la JSP :
  * NOM_LB_BPC_SELECT
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public java.lang.String getNOM_LB_OT_SELECT() {
 	return "NOM_LB_OT_SELECT";
@@ -328,7 +328,7 @@ public java.lang.String getNOM_LB_OT_SELECT() {
  * Retourne la valeur à afficher pour la zone de la JSP :
  * LB_BPC
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public java.lang.String [] getVAL_LB_OT() {
 	return getLB_OT();
@@ -338,7 +338,7 @@ public java.lang.String [] getVAL_LB_OT() {
  * Retourne l'indice à sélectionner pour la zone de la JSP :
  * LB_BPC
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public java.lang.String getVAL_LB_OT_SELECT() {
 	return getZone(getNOM_LB_OT_SELECT());
@@ -347,7 +347,7 @@ public java.lang.String getVAL_LB_OT_SELECT() {
  * Getter de la liste avec un lazy initialize :
  * LB_EQUIPEMENT
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 private String [] getLB_EQUIPEMENT() {
 	if (LB_EQUIPEMENT == null)
@@ -358,7 +358,7 @@ private String [] getLB_EQUIPEMENT() {
  * Setter de la liste:
  * LB_EQUIPEMENT
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 private void setLB_EQUIPEMENT(java.lang.String[] newLB_EQUIPEMENT) {
 	LB_EQUIPEMENT = newLB_EQUIPEMENT;
@@ -367,7 +367,7 @@ private void setLB_EQUIPEMENT(java.lang.String[] newLB_EQUIPEMENT) {
  * Retourne le nom de la zone pour la JSP :
  * NOM_LB_EQUIPEMENT
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public java.lang.String getNOM_LB_EQUIPEMENT() {
 	return "NOM_LB_EQUIPEMENT";
@@ -376,7 +376,7 @@ public java.lang.String getNOM_LB_EQUIPEMENT() {
  * Retourne le nom de la zone de la ligne sélectionnée pour la JSP :
  * NOM_LB_EQUIPEMENT_SELECT
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public java.lang.String getNOM_LB_EQUIPEMENT_SELECT() {
 	return "NOM_LB_EQUIPEMENT_SELECT";
@@ -386,7 +386,7 @@ public java.lang.String getNOM_LB_EQUIPEMENT_SELECT() {
  * Retourne la valeur à afficher pour la zone de la JSP :
  * LB_EQUIPEMENT
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public java.lang.String [] getVAL_LB_EQUIPEMENT() {
 	return getLB_EQUIPEMENT();
@@ -396,7 +396,7 @@ public java.lang.String [] getVAL_LB_EQUIPEMENT() {
  * Retourne l'indice à sélectionner pour la zone de la JSP :
  * LB_EQUIPEMENT
  * Date de création : (09/06/05 08:25:03)
-* 
+ * @author : Générateur de process
  */
 public java.lang.String getVAL_LB_EQUIPEMENT_SELECT() {
 	return getZone(getNOM_LB_EQUIPEMENT_SELECT());
@@ -417,7 +417,7 @@ public void setFocus(String focus) {
 	this.focus = focus;
 }
 /**
- * @return focus focus à définir.
+ * @param focus focus à définir.
  */
 public String getDefaultFocus() {
 	return getNOM_EF_DESIGNATION();

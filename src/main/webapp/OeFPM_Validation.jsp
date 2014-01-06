@@ -1,7 +1,9 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@page contentType="text/html;charset=UTF-8"%>
+<%@page contentType="text/html;charset=UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <META name="GENERATOR" content="IBM Software Development Platform">
 <META http-equiv="Content-Style-Type" content="text/css">
 <link href="theme/sigp2.css" rel="stylesheet" type="text/css">
@@ -34,7 +36,7 @@ if (document.formu.elements[nom] != null)
     <TR>
       <TD style="text-align : center;" align="center">
 			<FORM name="formu" method="POST"><SPAN class="sigp2-titre"></SPAN>
-<%if (!process.estEnregistre){ %>		
+<%if (!process.estEnregistré){ %>		
 <FIELDSET><LEGEND class="sigp2Fieldset" align="left">Fiches d'entretiens non validé</LEGEND><TABLE border="0" class="sigp2">
 				<TR align="center">
 					<TD align="left" height="35">

@@ -1,4 +1,4 @@
-﻿// fonction.js
+// fonction.js
 
 // newFunction
 function ouvrePopup(page, largeur, hauteur) {

@@ -42,7 +42,7 @@ public TIntervalle chercherTIntervalle(nc.mairie.technique.Transaction aTransact
 }
 
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
-* 
+ * @author : Coralie NICOLAS
  */
 public int nouvTIntervalle(nc.mairie.technique.Transaction aTransaction) throws Exception{
 

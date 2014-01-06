@@ -1,9 +1,8 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@page contentType="text/html;charset=UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <META name="GENERATOR" content="IBM Software Development Platform">
 <META http-equiv="Content-Style-Type" content="text/css">
 <link href="theme/sigp2.css" rel="stylesheet" type="text/css">
@@ -40,7 +39,7 @@ if (document.formu.elements[nom] != null)
 			<TR>
 				<TD class="sigp2-titre">Modèle</TD>
 				<TD></TD>
-				<TD><INPUT size="1" type="text" class="sigp2-saisie" maxlength="1" name="ZoneTampon" style="display : 'none';">
+				<TD><INPUT size="1" type="text" class="sigp2-saisie" maxlength="1" name="ZoneTampon" style="display : none;">
 				<INPUT type="text" name="<%=process.getNOM_EF_RECHERCHE() %>"
 					value="<%=process.getVAL_EF_RECHERCHE() %>" class="sigp2-saisie"
 					size="20"></TD>

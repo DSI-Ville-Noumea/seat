@@ -101,7 +101,7 @@ public static Fre_PM chercherFre_PM(nc.mairie.technique.Transaction aTransaction
 	return unFre_PM.getMyFre_PMBroker().chercherFre_PM(aTransaction, code);
 }
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
-* 
+ * @author : Coralie NICOLAS
  */
 public int nouvFre_PM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//	recherche du dernier codeCarburant

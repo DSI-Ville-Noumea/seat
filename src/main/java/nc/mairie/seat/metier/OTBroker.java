@@ -97,7 +97,7 @@ public OT chercherOT(nc.mairie.technique.Transaction aTransaction, String cle) t
 }
 
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
-* 
+ * @author : Coralie NICOLAS
  */
 public int nouvCodeOt(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//	recherche du dernier numeroot

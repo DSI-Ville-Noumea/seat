@@ -1,10 +1,9 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@page contentType="text/html;charset=UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
 <HTML>
 <HEAD>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <META name="GENERATOR" content="IBM Software Development Platform">
 <META http-equiv="Content-Style-Type" content="text/css">
 <LINK href="theme/sigp2.css" rel="stylesheet" type="text/css">
@@ -32,7 +31,11 @@ if (document.formu.elements[nom] != null)
 <TABLE border="0" align="center" class="sigp2" width="580">
 <%@ include file="BanniereErreur.jsp" %>
     <TR>
-      <TD style="text-align : center;"><FORM name="formu" method="POST"><FIELDSET><LEGEND class="sigp2Fieldset" align="left"></LEGEND><TABLE border="0" cellspacing="0" cellpadding="0" class="sigp2">
+      <TD style="text-align : center;">
+      <FORM name="formu" method="POST">
+      <FIELDSET align="Center">
+      <LEGEND class="sigp2Fieldset" align="left"></LEGEND>
+      <TABLE border="0" cellspacing="0" cellpadding="0" class="sigp2">
 				<TR>
 					<TD height="26" width="126">
 					<TABLE border="0" class="sigp2">
@@ -44,7 +47,7 @@ if (document.formu.elements[nom] != null)
 						<TABLE border="1">
 							<TBODY>
 								<TR>
-									<TD class="sigp2-titre-liste">Libellé                        Pompe           </TD>
+									<TD class="sigp2-titre-liste">Libellé                        Pompe                   </TD>
 								</TR>
 							</TBODY>
 						</TABLE>

@@ -86,7 +86,7 @@ public boolean existeTEntretien(nc.mairie.technique.Transaction aTransaction, St
 }
 
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
-* 
+ * @author : Coralie NICOLAS
  */
 public int nouvCodeTe(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//	recherche du dernier code

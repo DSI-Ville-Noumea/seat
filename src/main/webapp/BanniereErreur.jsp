@@ -1,4 +1,5 @@
-﻿<%@page import="nc.mairie.technique.BasicProcess"%>
+<%@page contentType="text/html;charset=UTF-8"%>
+<%@page import="nc.mairie.technique.BasicProcess"%>
 <%@page import="nc.mairie.technique.VariableGlobale"%>
 <%
 BasicProcess processCourant = (BasicProcess)VariableGlobale.recuperer(request,VariableGlobale.GLOBAL_PROCESS);

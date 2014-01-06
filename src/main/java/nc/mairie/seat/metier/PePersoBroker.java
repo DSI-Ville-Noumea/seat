@@ -154,7 +154,7 @@ public boolean existePePerso(nc.mairie.technique.Transaction aTransaction, Strin
 }
 
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
-* 
+ * @author : Coralie NICOLAS
  */
 public int nouvPePerso(nc.mairie.technique.Transaction aTransaction) throws Exception{
 //	recherche du dernier code
@@ -163,7 +163,7 @@ public int nouvPePerso(nc.mairie.technique.Transaction aTransaction) throws Exce
 }
 
 /* On recherche le dernier peperso pour un équipement et un entretien
-* 
+ * @author : Coralie NICOLAS
  */
 public int maxPePersoEquipEnt(nc.mairie.technique.Transaction aTransaction,String inv,String ent) throws Exception{
 //	recherche du dernier 

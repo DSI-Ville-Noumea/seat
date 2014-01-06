@@ -1,4 +1,5 @@
-﻿<!-- Sample JSP file --> <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<%@page contentType="text/html;charset=UTF-8"%>
+<!-- Sample JSP file --> <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
 <META name="GENERATOR" content="IBM WebSphere Page Designer V3.5.3 for Windows">
@@ -21,14 +22,14 @@ document.formu.elements[nom].focus();
 }
 
 </SCRIPT>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 </HEAD>
 <%
 	if (!nc.mairie.seat.servlet.ServletSeat.controlerHabilitation(request)) {
 		response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); 
 		response.setHeader("WWW-Authenticate","BASIC realm=\"Habilitation HTTP pour la Mairie\"");
 		javax.servlet.ServletContext sc= getServletContext();
-		javax.servlet.RequestDispatcher rd = sc.getRequestDispatcher("ConnectionInsulte.jsp");
+		javax.servlet.RequestDispatcher rd = sc.getRequestDispatcher("/ConnectionInsulte.jsp");
 		rd.forward(request,response);
 	}
 %>

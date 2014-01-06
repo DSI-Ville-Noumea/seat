@@ -3,6 +3,7 @@ package nc.mairie.seat.metier;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import nc.mairie.seat.metier.PiecesOT;
 import nc.mairie.seat.process.Outils;
 import nc.mairie.technique.Services;
 
@@ -801,7 +802,7 @@ public boolean suppressionOT(nc.mairie.technique.Transaction aTransaction) throw
 }
 
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
-* 
+ * @author : Coralie NICOLAS
  */
 public int nouvCodeOt(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//	recherche du dernier code
