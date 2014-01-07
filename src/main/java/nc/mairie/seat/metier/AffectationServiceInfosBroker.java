@@ -21,7 +21,7 @@ public java.util.ArrayList listerAffectationServiceInfos(nc.mairie.technique.Tra
 public java.util.ArrayList listerAffectationServiceInfosAgent(nc.mairie.technique.Transaction aTransaction,String nomatr) throws Exception {
 	if (nomatr.equals("")){
 		aTransaction.declarerErreur("Le numéro d'agent n'a pas été renseigné");
-		ArrayList listVide = new ArrayList();
+		ArrayList listVide = new ArrayList<AffectationServiceInfos>();
 		return listVide;
 	}
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where dfin='0001-01-01' and nomatr="+nomatr+" with ur");
@@ -89,8 +89,8 @@ protected java.lang.String definirNomTable() {
  * Retourne le mappage de chaque colonne de la table.
  */
 @Override
-protected java.util.Hashtable definirMappageTable() throws NoSuchFieldException {
-	java.util.Hashtable mappage = new java.util.Hashtable();
+protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws NoSuchFieldException {
+	java.util.Hashtable<String, BasicRecord> mappage = new java.util.Hashtable<String, BasicRecord>();
 	mappage.put("NUMEROINVENTAIRE", new BasicRecord("NUMEROINVENTAIRE", "VARCHAR", getMyAffectationServiceInfos().getClass().getField("numeroinventaire"), "STRING"));
 	mappage.put("NUMEROIMMATRICULATION", new BasicRecord("NUMEROIMMATRICULATION", "VARCHAR", getMyAffectationServiceInfos().getClass().getField("numeroimmatriculation"), "STRING"));
 	mappage.put("DATEMISEENCIRCULATION", new BasicRecord("DATEMISEENCIRCULATION", "DATE", getMyAffectationServiceInfos().getClass().getField("datemiseencirculation"), "DATE"));

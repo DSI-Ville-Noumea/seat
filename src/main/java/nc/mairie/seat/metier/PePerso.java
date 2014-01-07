@@ -395,7 +395,7 @@ public boolean creerPePerso(nc.mairie.technique.Transaction aTransaction,Equipem
 			}else{
 				int code = maxPePersoEquipEnt(aTransaction,unEquipement.getNumeroinventaire(),unEntretien.getCodeentretien());
 				PePerso unPePerso = chercherPePerso(aTransaction,String.valueOf(code));
-				setDateprev(Services.ajouteJours(getDatereal(),nbjours));
+				setDateprev(Services.ajouteJours(unPePerso.getDatereal(),nbjours));
 			}
 		}
 		//AJOUT OFONTENEAU 20090403
@@ -674,7 +674,7 @@ public boolean modifierPePersoInfos(nc.mairie.technique.Transaction aTransaction
 			}else{
 				int code = maxPePersoEquipEnt(aTransaction,unEquipement.getNumeroinventaire(),unEntretien.getCodeentretien());
 				PePerso unPePerso = chercherPePerso(aTransaction,String.valueOf(code));
-				setDateprev(Services.ajouteJours(getDatereal(),nbjours));
+				setDateprev(Services.ajouteJours(unPePerso.getDatereal(),nbjours));
 			}
 		}
 	}

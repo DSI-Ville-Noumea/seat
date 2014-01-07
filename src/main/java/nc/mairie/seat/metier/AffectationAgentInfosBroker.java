@@ -52,7 +52,7 @@ public java.util.ArrayList listAffectationsSceEquipDate(nc.mairie.technique.Tran
 	if(Services.estUneDate(date)){
 		date = Services.formateDateInternationale(date);
 	}else{
-		return new ArrayList();
+		return new ArrayList<AffectationAgentInfos>();
 	}
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where matricule in(select nomatr from mairie.spmtsr where servi like '"+servi+"%' and datedebut>='"+date+"' and numeroinventaire='"+inv+"') with ur");
 }
@@ -87,8 +87,8 @@ protected java.lang.String definirNomTable() {
  * Retourne le mappage de chaque colonne de la table.
  */
 @Override
-protected java.util.Hashtable definirMappageTable() throws NoSuchFieldException {
-	java.util.Hashtable mappage = new java.util.Hashtable();
+protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws NoSuchFieldException {
+	java.util.Hashtable<String, BasicRecord> mappage = new java.util.Hashtable<String, BasicRecord>();
 	mappage.put("MATRICULE", new BasicRecord("MATRICULE", "NUMERIC", getMyAffectationAgentInfos().getClass().getField("matricule"), "STRING"));
 	mappage.put("NUMEROINVENTAIRE", new BasicRecord("NUMEROINVENTAIRE", "VARCHAR", getMyAffectationAgentInfos().getClass().getField("numeroinventaire"), "STRING"));
 	mappage.put("DATEDEBUT", new BasicRecord("DATEDEBUT", "DATE", getMyAffectationAgentInfos().getClass().getField("datedebut"), "DATE"));

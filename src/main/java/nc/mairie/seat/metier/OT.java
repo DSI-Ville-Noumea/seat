@@ -316,7 +316,7 @@ public boolean creerOT(nc.mairie.technique.Transaction aTransaction,Equipement u
 		aTransaction.declarerErreur("Le modèle n'a pas été reconnu.");
 		return false;
 	}
-	TYPEEQUIP unTe = TYPEEQUIP.chercherTYPEEQUIP(aTransaction,unModele.getCodete());
+	TYPEEQUIP.chercherTYPEEQUIP(aTransaction,unModele.getCodete());
 	if(aTransaction.isErreur()){
 		aTransaction.declarerErreur("Le type d'équipement n'a pas été reconnu.");
 		return false;

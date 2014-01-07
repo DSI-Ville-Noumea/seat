@@ -35,7 +35,7 @@ public PM_Affectation_Sce_Infos chercherPM_Affectation_Sce_InfosCourantPmEnCours
 public java.util.ArrayList listerPmAffectationSceInfosAgent(nc.mairie.technique.Transaction aTransaction,String nomatr) throws Exception {
 	if (nomatr.equals("")){
 		aTransaction.declarerErreur("Le numéro d'agent n'a pas été renseigné");
-		ArrayList listVide = new ArrayList();
+		ArrayList<PM_Affectation_Sce_Infos> listVide = new ArrayList<PM_Affectation_Sce_Infos>();
 		return listVide;
 	}
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where dfin='0001-01-01' and nomatr="+nomatr);
@@ -75,8 +75,8 @@ protected java.lang.String definirNomTable() {
  * Retourne le mappage de chaque colonne de la table.
  */
 @Override
-protected java.util.Hashtable definirMappageTable() throws NoSuchFieldException {
-	java.util.Hashtable mappage = new java.util.Hashtable();
+protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws NoSuchFieldException {
+	java.util.Hashtable<String, BasicRecord> mappage = new java.util.Hashtable<String, BasicRecord>();
 	mappage.put("PMINV", new BasicRecord("PMINV", "VARCHAR", getMyPM_Affectation_Sce_Infos().getClass().getField("pminv"), "STRING"));
 	mappage.put("PMSERIE", new BasicRecord("PMSERIE", "VARCHAR", getMyPM_Affectation_Sce_Infos().getClass().getField("pmserie"), "STRING"));
 	mappage.put("DMES", new BasicRecord("DMES", "DATE", getMyPM_Affectation_Sce_Infos().getClass().getField("dmes"), "DATE"));

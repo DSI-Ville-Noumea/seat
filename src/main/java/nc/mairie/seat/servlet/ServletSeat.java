@@ -18,6 +18,11 @@ import nc.mairie.servlets.Frontale;
  */
 public class ServletSeat extends Frontale {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6676500516715817275L;
+
 	/* (non-Javadoc)
 	 * @see nc.mairie.servlets.Frontale#getServletRobot()
 	 */

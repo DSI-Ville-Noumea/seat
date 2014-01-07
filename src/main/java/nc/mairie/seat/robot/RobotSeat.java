@@ -106,7 +106,7 @@ public class RobotSeat extends Robot {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -9153302647661192348L;
 
 	/* (non-Javadoc)
 	 * @see nc.mairie.robot.Robot#getDefaultProcess()

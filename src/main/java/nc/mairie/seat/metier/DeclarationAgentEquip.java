@@ -1,6 +1,5 @@
 package nc.mairie.seat.metier;
 
-import nc.mairie.technique.MairieMessages;
 /**
  * Objet métier DeclarationAgentEquip
  */

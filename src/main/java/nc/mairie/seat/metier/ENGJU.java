@@ -1,7 +1,6 @@
 package nc.mairie.seat.metier;
 
 import java.util.ArrayList;
-import nc.mairie.technique.MairieMessages;
 /**
  * Objet métier ENGJU
  */

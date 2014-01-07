@@ -24,7 +24,6 @@ public boolean modifierAffecter_Service(nc.mairie.technique.Transaction aTransac
  * true ou false
  */
 public boolean supprimerAffecter_Service(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
-	int t=0;
 	return supprimer(aTransaction);
 }
 /**
@@ -88,8 +87,8 @@ protected java.lang.String definirNomTable() {
  * Retourne le mappage de chaque colonne de la table.
  */
 @Override
-protected java.util.Hashtable definirMappageTable() throws NoSuchFieldException {
-	java.util.Hashtable mappage = new java.util.Hashtable();
+protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws NoSuchFieldException {
+	java.util.Hashtable<String, BasicRecord> mappage = new java.util.Hashtable<String, BasicRecord>();
 	mappage.put("CODESERVICE", new BasicRecord("CODESERVICE", "VARCHAR", getMyAffecter_Service().getClass().getField("codeservice"), "STRING"));
 	mappage.put("NUMEROINVENTAIRE", new BasicRecord("NUMEROINVENTAIRE", "VARCHAR", getMyAffecter_Service().getClass().getField("numeroinventaire"), "STRING"));
 	mappage.put("DDEBUT", new BasicRecord("DDEBUT", "DATE", getMyAffecter_Service().getClass().getField("ddebut"), "DATE"));

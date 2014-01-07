@@ -276,7 +276,7 @@ public boolean creerPM_PePerso(nc.mairie.technique.Transaction aTransaction,PMat
 		setSinistre("N");
 	}
 	//calcul de la date de prévision
-	int nbjours = 0; 
+	//int nbjours = 0; 
 	
 	
 	setPminv(unPMateriel.getPminv());
@@ -370,7 +370,7 @@ public boolean modifierPM_PePerso(nc.mairie.technique.Transaction aTransaction,P
 				}
 				//	 si la date de réalisation est renseignée alors le compteur de FPM rattaché doit être renseignée
 				if((getDreal()!=null)&&(!getDreal().equals(("")))){
-					Modeles unModele = Modeles.chercherModeles(aTransaction,unPMateriel.getCodemodele());
+					Modeles.chercherModeles(aTransaction,unPMateriel.getCodemodele());
 					if(aTransaction.isErreur()){
 						aTransaction.declarerErreur("Le modèle n'a pas été trouvé.");
 						return false;
@@ -439,7 +439,7 @@ public boolean modifierPmPePersoInfos(nc.mairie.technique.Transaction aTransacti
 			if(aTransaction.isErreur()){
 				return false;
 			}
-			PMateriel unPMateriel= PMateriel.chercherPMateriel(aTransaction,unFPM.getPminv());
+			PMateriel.chercherPMateriel(aTransaction,unFPM.getPminv());
 			if(aTransaction.isErreur()){
 				aTransaction.declarerErreur("Le petit matériel n'a pas été trouvé.");
 				return false;

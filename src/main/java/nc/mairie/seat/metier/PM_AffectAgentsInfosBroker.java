@@ -21,7 +21,7 @@ public ArrayList listerPM_AffectAgentInfosScePMatDate(nc.mairie.technique.Transa
 	if(Services.estUneDate(date)){
 		date = Services.formateDateInternationale(date);
 	}else{
-		return new ArrayList();
+		return new ArrayList<PM_AffectAgentsInfos>();
 	}
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where matricule in(select nomatr from mairie.spmtsr where codesce like '"+servi+"%' and ddeb>='"+date+"' and pminv='"+inv+"')");
 }
@@ -71,8 +71,8 @@ protected java.lang.String definirNomTable() {
  * Retourne le mappage de chaque colonne de la table.
  */
 @Override
-protected java.util.Hashtable definirMappageTable() throws NoSuchFieldException {
-	java.util.Hashtable mappage = new java.util.Hashtable();
+protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws NoSuchFieldException {
+	java.util.Hashtable<String, BasicRecord> mappage = new java.util.Hashtable<String, BasicRecord>();
 	mappage.put("MATRICULE", new BasicRecord("MATRICULE", "INTEGER", getMyPM_AffectAgentsInfos().getClass().getField("matricule"), "STRING"));
 	mappage.put("PMINV", new BasicRecord("PMINV", "VARCHAR", getMyPM_AffectAgentsInfos().getClass().getField("pminv"), "STRING"));
 	mappage.put("DDEB", new BasicRecord("DDEB", "DATE", getMyPM_AffectAgentsInfos().getClass().getField("ddeb"), "DATE"));

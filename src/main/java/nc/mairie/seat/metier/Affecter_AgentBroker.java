@@ -96,8 +96,8 @@ protected java.lang.String definirNomTable() {
  * Retourne le mappage de chaque colonne de la table.
  */
 @Override
-protected java.util.Hashtable definirMappageTable() throws NoSuchFieldException {
-	java.util.Hashtable mappage = new java.util.Hashtable();
+protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws NoSuchFieldException {
+	java.util.Hashtable<String, BasicRecord> mappage = new java.util.Hashtable<String, BasicRecord>();
 	mappage.put("MATRICULE", new BasicRecord("MATRICULE", "NUMERIC", getMyAffecter_Agent().getClass().getField("matricule"), "STRING"));
 	mappage.put("NUMEROINVENTAIRE", new BasicRecord("NUMEROINVENTAIRE", "VARCHAR", getMyAffecter_Agent().getClass().getField("numeroinventaire"), "STRING"));
 	mappage.put("DATEDEBUT", new BasicRecord("DATEDEBUT", "DATE", getMyAffecter_Agent().getClass().getField("datedebut"), "DATE"));

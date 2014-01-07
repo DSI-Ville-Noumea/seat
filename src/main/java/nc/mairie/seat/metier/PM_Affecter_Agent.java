@@ -163,7 +163,7 @@ public boolean supprimerPM_Affecter_Agent(nc.mairie.technique.Transaction aTrans
 }
 
 public boolean affecter_agent(nc.mairie.technique.Transaction aTransaction,PMateriel unPMateriel,Agents unAgent, PM_Affecter_Agent unPMAffecter_Agent,Service unService, String date,PM_Affecter_Agent unPmAffecterAgentPrec) throws Exception{
-	int heureFin;
+	//int heureFin;
 //	on vérifie ques les paramètres ne sont pas null
 	if (null == unPMateriel.getPminv()){
 		aTransaction.declarerErreur(nc.mairie.technique.MairieMessages.getMessage("ERR999","Petit matériel"));

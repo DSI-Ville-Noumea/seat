@@ -9,7 +9,7 @@ public class SeatMain extends nc.mairie.technique.BasicProcess {
 /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5646570683102644465L;
 /**
  * Commentaire relatif au constructeur DefaultProcess.
  */
