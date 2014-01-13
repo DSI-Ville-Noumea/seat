@@ -42,7 +42,7 @@
         	<item name="Tomcat" href="exploitation/tomcat.html"/>
         </menu>
 		<menu name="Développement">
-			<item name="Specifications" href="doc/specifications/ACTES-ETATCIVIL-AEC-DOC-EXP-01.doc"/>
+			<item name="Specifications" href="docs/SCSI-SEAT-CDCv2-V3.pdf"/>
         	<item name="Application" href="developpement/application.html"/>
 			<item name="Importet Projet" href="developpement/importProjet.html"/>
         	<item name="Builder WAR" href="developpement/creerWAR.html"/>
