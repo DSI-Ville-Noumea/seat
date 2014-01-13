@@ -691,13 +691,10 @@ public String getJSP() {
 	return "OeOT_Validation.jsp";
 }
 
-public Hashtable<String, Equipement> getHashEquipement() {
+private Hashtable<String, Equipement> getHashEquipement() {
 	if (hashEquipement == null)
 			hashEquipement=new Hashtable<String, Equipement>();
 	return hashEquipement;
 }
 
-public void setHashEquipement(Hashtable<String, Equipement> hashEquipement) {
-	this.hashEquipement = hashEquipement;
-}
 }

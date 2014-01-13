@@ -21,7 +21,7 @@ public class OeFre_OT extends nc.mairie.technique.BasicProcess {
 	private java.lang.String[] LB_FRE_OT;
 	private String ACTION_SUPPRESSION = "Suppression";
 //	private String ACTION_CREATION = "Création";
-	public boolean Suppresion;
+	public boolean suppresion;
 	private String focus = null;
 	public boolean action;
 	private ArrayList<Fournisseurs> listFre;
@@ -695,10 +695,10 @@ public String getDefaultFocus() {
 		this.action = action;
 	}
 	public boolean isSuppresion() {
-		return Suppresion;
+		return suppresion;
 	}
 	public void setSuppresion(boolean suppresion) {
-		Suppresion = suppresion;
+		this.suppresion = suppresion;
 	}
 	public Fournisseurs getFreCourant() {
 		return freCourant;

@@ -734,8 +734,8 @@ public void trier(ArrayList<EquipementInfos> a,String colonne) throws Exception{
 			
 			if (getEquipementInfosCourant()!=null){
 				if (unEquipInfos.getNumeroinventaire().equals(getEquipementInfosCourant().getNumeroinventaire())){
-					getLB_EQUIP_Couleurs()[i] = "white";
-					getLB_EQUIP_FCouleurs()[i] = "teal";
+					LB_EQUIP_Couleurs[i] = "white";
+					LB_EQUIP_FCouleurs[i] = "teal";
 				}
 			}
 			String ligne [] = { unEquipInfos.getNumeroinventaire(),unEquipInfos.getNumeroimmatriculation(),unEquipInfos.getDesignationmarque(),unEquipInfos.getDesignationmodele(),unEquipInfos.getDesignationtypeequip(),unEquipInfos.getDatemiseencirculation()};
@@ -975,15 +975,15 @@ public java.lang.String getNOM_RB_TRI_ENSERVICE() {
 }
 
 public java.lang.String[] getLB_EQUIP_Couleurs() {
-	return LB_EQUIP_Couleurs;
+	return LB_EQUIP_Couleurs == null ? null : LB_EQUIP_Couleurs.clone();
 }
-public void setLB_EQUIP_Couleurs(java.lang.String[] couleurs) {
+private void setLB_EQUIP_Couleurs(java.lang.String[] couleurs) {
 	LB_EQUIP_Couleurs = couleurs;
 }
 public java.lang.String[] getLB_EQUIP_FCouleurs() {
-	return LB_EQUIP_FCouleurs;
+	return LB_EQUIP_FCouleurs == null ? null : LB_EQUIP_FCouleurs.clone();
 }
-public void setLB_EQUIP_FCouleurs(java.lang.String[] fcouleurs) {
+private void setLB_EQUIP_FCouleurs(java.lang.String[] fcouleurs) {
 	LB_EQUIP_FCouleurs = fcouleurs;
 }
 }

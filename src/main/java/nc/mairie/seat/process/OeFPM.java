@@ -527,7 +527,7 @@ public boolean performPB_OK_TRI(javax.servlet.http.HttpServletRequest request) t
 		param = "";
 	}
 	
-	if (oldParam != param) {
+	if (! param.equals(oldParam)) {
 		setLB_FPM(LBVide);
 		initialiseListeFPM(request);
 	}

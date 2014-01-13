@@ -93,7 +93,7 @@ public OeFPM_Lancement() {
  */
 public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	// on supprime les fpm créer
-	FPM unFPM = new FPM();
+	FPM unFPM;
 	// pour chaque FPM créée on les supprime
 	int premierFPM = Integer.parseInt(firstNoFiche);
 	int dernierFPM = Integer.parseInt(lastNoFiche);

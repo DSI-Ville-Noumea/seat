@@ -581,7 +581,7 @@ public void verifEntretiens (javax.servlet.http.HttpServletRequest request) thro
 	String dateDerReal=null;
 	String dateBPC=null;
 	int compteur = 0;
-	ArrayList<PePerso> listEntretien = new ArrayList<PePerso>();
+	ArrayList<PePerso> listEntretien;
 	boolean isVidangeCompleteAFaire=false;
 
 	if(getEquipementInfosCourant()!=null){
@@ -635,7 +635,7 @@ public void verifEntretiens (javax.servlet.http.HttpServletRequest request) thro
 					getTransaction().traiterErreur();
 					//return;
 				}else{
-					if (unPePersoDer.getCodeot()!=null){
+					if (unPePersoDer!=null && unPePersoDer.getCodeot()!=null){
 						//	on récupère la valeur du compteur lors du dernier OT
 						OT unOT = OT.chercherOT(getTransaction(),unPePersoDer.getCodeot());
 						if(getTransaction().isErreur()){

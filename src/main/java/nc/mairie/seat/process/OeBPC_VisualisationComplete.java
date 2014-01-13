@@ -1,7 +1,8 @@
 package nc.mairie.seat.process;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -873,27 +874,27 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 	//si l'utilisateur a oublié de cliquer sur rechercher
 	if(!getZone(getNOM_EF_RECH_SERVICE()).equals("")){
 		performPB_RECH_SERVICE(request);
-		if(getServiceCourant().getServi()!=null){
-			servi = getServiceCourant().getServi();
-		}
+//		if(getServiceCourant().getServi()!=null){
+//			servi = getServiceCourant().getServi();
+//		}
 	}else{
 		setServiceCourant(new Service());
 	}
 	if(!getZone(getNOM_EF_RECHE_EQUIP()).equals("")){
 		performPB_RECHE_EQUIP(request);
-		if(!isMateriel){
-			if(getEquipementCourant()!=null){
-				if(getEquipementCourant().getNumeroinventaire()!=null){
-					inv=getEquipementCourant().getNumeroinventaire();
-				}
-			}
-		}else{
-			if(getPMaterielCourant()!=null){
-				if(getPMaterielCourant().getPminv()!=null){
-					inv = getPMaterielCourant().getPminv();
-				}
-			}
-		}
+//		if(!isMateriel){
+//			if(getEquipementCourant()!=null){
+//				if(getEquipementCourant().getNumeroinventaire()!=null){
+//					inv=getEquipementCourant().getNumeroinventaire();
+//				}
+//			}
+//		}else{
+//			if(getPMaterielCourant()!=null){
+//				if(getPMaterielCourant().getPminv()!=null){
+//					inv = getPMaterielCourant().getPminv();
+//				}
+//			}
+//		}
 	}
 	if(getTransaction().isErreur()){
 		return false;
@@ -918,7 +919,8 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 		StarjetGeneration g = new StarjetGeneration(getTransaction(), "MAIRIE", starjetMode, "SEAT", "listeBPCEquip.sp", "listeBPCEquip");
 		File f = g.getFileData();
 		
-		FileWriter fw = new FileWriter(f);
+		//FileWriter fw = new FileWriter(f);
+		OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(f),"iso-8859-1");
 		PrintWriter pw = new PrintWriter(fw);
 		try {	
 			if(getListBPCInfos().size()>0){
@@ -1066,7 +1068,7 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 				//Entete
 				pw.print("1");
 				pw.print(Services.lpad(unBPCComplet.getNumeroinventaire(),10," "));
-				ModeleInfos unMI = new ModeleInfos();
+				ModeleInfos unMI;
 				if(!isMateriel&&null!=getEquipementCourant()){
 					pw.print(Services.lpad(getEquipementCourant().getNumeroimmatriculation(),10," "));
 					unMI = ModeleInfos.chercherModeleInfos(getTransaction(),getEquipementCourant().getCodemodele());
@@ -1154,7 +1156,7 @@ public void initialiseListeTotalEquip(javax.servlet.http.HttpServletRequest requ
 	NumberFormat moyenneTotalFormat = new DecimalFormat("0.00");
 	int kmParcouru = 0;
 	int total = 0;
-	if(listBPC.size()>0){
+	if(listBPC !=null && listBPC.size()>0){
 		//if(!isMateriel){
 			for (int i=0;i<listBPC.size();i++){
 				//BPCInfosCompletes unBPCIC = (BPCInfosCompletes)listBPC.get(i);
@@ -1179,7 +1181,7 @@ public void initialiseListeTotalEquip(javax.servlet.http.HttpServletRequest requ
 //		}
 	}
 
-	if(listBPC.size()>0){
+	if(listBPC != null && listBPC.size()>0){
 		//BPCInfosCompletes unBPC = (BPCInfosCompletes)listBPC.get(0);
 		double MoyenneTotal = (double)quantiteTotal/(double)kmParcouru*100;
 		if(listBPC!=null){
@@ -1213,7 +1215,7 @@ public void setScript(String script) {
 }
 public String afficheScript() {
 	
-	String res = new String(getScript());
+	String res = getScript();
 	setScript(null);
 	return res;
 }

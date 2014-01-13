@@ -1,7 +1,8 @@
 package nc.mairie.seat.process;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -931,8 +932,6 @@ public boolean performPB_OT(javax.servlet.http.HttpServletRequest request) throw
 			return false;
 		}
 		setEquipementInfosCourant(unEquipementInfos);
-	}else{
-		unOT = new OT();
 	}
 	// on renseigne la liste des BPC
 	VariableGlobale.ajouter(request,"OT",getOtCourant());
@@ -1001,18 +1000,28 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 		int indice ;
 		//commentaire = commentaire.replace('\n',' ');
 		indice = 0;
+		
+		StringBuffer sb = new StringBuffer();
 		for (int i=0;i<comlen;i++){
 			if(commentaire.charAt(i)=='\n'){
-				commentaireOt = commentaireOt+commentaire.substring(indice,i)+"$";
-				indice = i;
+				sb.append(commentaire.substring(indice,i)+"$");
 			}
 		}
+		commentaireOt = sb.toString();
+		
+//		for (int i=0;i<comlen;i++){
+//			if(commentaire.charAt(i)=='\n'){
+//				commentaireOt = commentaireOt+commentaire.substring(indice,i)+"$";
+//				indice = i;
+//			}
+//		}
 		commentaireOt = commentaireOt + commentaire.substring(indice,comlen);
 		commentaireOt = commentaireOt.replace('\n',' ');
 		commentaireOt = commentaireOt.replace('\r',' ');
 		StarjetGeneration g = new StarjetGeneration(getTransaction(), "MAIRIE", starjetMode, "SEAT", "ficheOT.sp", "ficheOT");
 		File f = g.getFileData();
-		FileWriter fw = new FileWriter(f);
+		//FileWriter fw = new FileWriter(f);
+		OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(f),"iso-8859-1");
 		PrintWriter pw = new PrintWriter(fw);
 		try {	
 			//	Entete
@@ -1072,7 +1081,7 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 			for(int i=0;i<getListeENGJUGroupByCdepNoengjIdetbs().size();i++){
 				if(!getListeENGJUGroupByCdepNoengjIdetbs().get(i).equals("")){
 					ENGJU unENGJU = (ENGJU)getListeENGJUGroupByCdepNoengjIdetbs().get(i);
-					infosBe = ListeBe(request,unENGJU);
+					infosBe = listeBe(request,unENGJU);
 					
 					pw.print("4");
 					pw.print(Services.lpad(unENGJU.getNoengj(),11," "));
@@ -1129,8 +1138,8 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 	return true;
 }
 
-public String ListeBe(javax.servlet.http.HttpServletRequest request,ENGJU unENGJU) throws Exception {
-	String be = "";
+private String listeBe(javax.servlet.http.HttpServletRequest request,ENGJU unENGJU) throws Exception {
+	String be;
 	/* LB Correction et ioptimisation 8/11/11
 	ENGJU unEnju = ENGJU.chercherpremierENGJU(getTransaction(),unBe.getExerci(),unBe.getNoengj());
 	if(getTransaction().isErreur()){
@@ -1162,7 +1171,7 @@ public String ListeBe(javax.servlet.http.HttpServletRequest request,ENGJU unENGJ
 		this.script = script;
 	}
 	public String afficheScript() {	
-		String res = new String(getScript());
+		String res = getScript();
 		setScript(null);
 		return res;
 	}

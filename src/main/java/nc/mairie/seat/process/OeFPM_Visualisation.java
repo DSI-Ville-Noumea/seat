@@ -1,7 +1,8 @@
 package nc.mairie.seat.process;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -56,7 +57,7 @@ public class OeFPM_Visualisation extends nc.mairie.technique.BasicProcess {
  */
 public void initialiseZones(javax.servlet.http.HttpServletRequest request) throws Exception{
 	String debranche = (String)VariableActivite.recuperer(this,"DEBRANCHE");
-	PM_Affectation_Sce_Infos unASI = new PM_Affectation_Sce_Infos();
+	PM_Affectation_Sce_Infos unASI;
 	if(debranche==null){
 		setDebranche(false);
 	}else{
@@ -1080,18 +1081,28 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 		int indice ;
 		//commentaire = commentaire.replace('\n',' ');
 		indice = 0;
+		
+		StringBuffer sb = new StringBuffer();
 		for (int i=0;i<comlen;i++){
 			if(commentaire.charAt(i)=='\n'){
-				commentaireOt = commentaireOt+commentaire.substring(indice,i)+"$";
-				indice = i;
+				sb.append(commentaire.substring(indice,i)+"$");
 			}
 		}
+		commentaireOt = sb.toString();
+		
+//		for (int i=0;i<comlen;i++){
+//			if(commentaire.charAt(i)=='\n'){
+//				commentaireOt = commentaireOt+commentaire.substring(indice,i)+"$";
+//				indice = i;
+//			}
+//		}
 		commentaireOt = commentaireOt + commentaire.substring(indice,comlen);
 		commentaireOt = commentaireOt.replace('\n',' ');
 		commentaireOt = commentaireOt.replace('\r',' ');
 		StarjetGeneration g = new StarjetGeneration(getTransaction(), "MAIRIE", starjetMode, "SEAT", "ficheFpm.sp", "ficheFpm");
 		File f = g.getFileData();
-		FileWriter fw = new FileWriter(f);
+		//FileWriter fw = new FileWriter(f);
+		OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(f),"iso-8859-1");
 		PrintWriter pw = new PrintWriter(fw);
 		try {	
 			//	Entete
@@ -1151,7 +1162,7 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 			for(int i=0;i<getListePmBe().size();i++){
 				if(!getListePmBe().get(i).equals("")){
 					PM_BE unBe = (PM_BE)getListePmBe().get(i);
-					infosBe = ListeBe(request,unBe);
+					infosBe = listeBe(request,unBe);
 					
 					pw.print("4");
 					pw.print(Services.lpad(unBe.getNoengj(),11," "));
@@ -1204,8 +1215,8 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 	}
 	return true;
 }
-public String ListeBe(javax.servlet.http.HttpServletRequest request,PM_BE unBe) throws Exception {
-	String be = "";
+public String listeBe(javax.servlet.http.HttpServletRequest request,PM_BE unBe) throws Exception {
+	String be;
 	ENGJU unEnju = ENGJU.chercherpremierENGJU(getTransaction(),unBe.getExerci(),unBe.getNoengj());
 	if(getTransaction().isErreur()){
 		messErreur = "Une erreur s'est produite lors du calcul du montant du bon d'engagement.";
@@ -1233,7 +1244,7 @@ public void setScript(String script) {
 	this.script = script;
 }
 public String afficheScript() {	
-	String res = new String(getScript());
+	String res = getScript();
 	setScript(null);
 	return res;
 }

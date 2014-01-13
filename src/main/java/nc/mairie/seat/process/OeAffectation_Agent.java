@@ -121,7 +121,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 				getTransaction().declarerErreur("L'équipement n'est affecté à aucun service.");
 				return;
 			}
-			dateAff = unASI.getDdebut();
+			dateAff = unASI == null ? null : unASI.getDdebut();
 			if(menuService){
 				if(null!=getServiceCourant()){
 					if(!getServiceCourant().getServi().substring(0,3).equals(unASI.getCodeservice().substring(0,3))){
@@ -1144,18 +1144,18 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
 }
 
 public void trier(ArrayList<Affecter_Agent> a) throws Exception{
-	String[] colonnes = tri;//{tri};//"datedebut","hdeb"};
+//	String[] colonnes = tri;//{tri};//"datedebut","hdeb"};
 	//ordre croissant
-	boolean[] ordres = tOrdre;//false,false};
+//	boolean[] ordres = tOrdre;//false,false};
 	String heuredeb="";
 	String heurefin="";	
 	
 //	Si au moins une affectation
 	if (a.size() !=0 ) {
 		ArrayList<Affecter_Agent> aTrier = a;
-		if (!tri.equals("nom")){
-			aTrier = Services.trier(a,colonnes,ordres);
-		}
+//		if (!tri.equals("nom")){
+//			aTrier = Services.trier(a,colonnes,ordres);
+//		}
 		setListeAffectation(aTrier);
 		int tailles [] = {5,35,10,5,10,5};
 		String[] padding = {"C","G","C","C","C","C"};

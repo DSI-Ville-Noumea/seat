@@ -1,7 +1,8 @@
 package nc.mairie.seat.process;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -179,7 +180,7 @@ public boolean initialiseListeBPC(javax.servlet.http.HttpServletRequest request)
 		inventaire = getPMatInfosCourant().getPminv();
 	}
 	
-	java.util.ArrayList<BPC> a = new ArrayList<BPC>();
+	java.util.ArrayList<BPC> a;
 	if(!isMateriel){
 		a = BPC.listerBPCEquipement(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
 	}else{
@@ -801,7 +802,8 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 		StarjetGeneration g = new StarjetGeneration(getTransaction(), "MAIRIE", starjetMode, "SEAT", "listeBPCEquip.sp", "listeBPCEquip");
 		File f = g.getFileData();
 		
-		FileWriter fw = new FileWriter(f);
+		//FileWriter fw = new FileWriter(f);
+		OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(f),"iso-8859-1");
 		PrintWriter pw = new PrintWriter(fw);
 		try {	
 			for (int i=0;i<getLB_BPC().length;i++){
@@ -856,7 +858,7 @@ public void setScript(String script) {
 }
 public String afficheScript() {
 	
-	String res = new String(getScript());
+	String res = getScript();
 	setScript(null);
 	return res;
 }

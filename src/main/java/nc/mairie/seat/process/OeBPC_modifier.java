@@ -375,7 +375,7 @@ public void verifEntretiens (javax.servlet.http.HttpServletRequest request) thro
 	String dateDerReal;
 	String dateBPC;
 	int compteur = 0;
-	ArrayList<PePerso> listEntretien = new ArrayList<PePerso>();
+	ArrayList<PePerso> listEntretien;
 	boolean isVidangeCompleteAFaire=false;
 
 	if(getEquipementInfosCourant()!=null){
@@ -412,14 +412,25 @@ public void verifEntretiens (javax.servlet.http.HttpServletRequest request) thro
 		for (int i=0;i<listEntretien.size();i++){
 			PePerso monPePerso = (PePerso)listEntretien.get(i);
 			//AJOUT OFONTENEAU 20090313
-			if(Integer.parseInt(monPePerso.getCodeentretien())==1 && isVidangeCompleteAFaire)
+			int codeEntretien;
+			try {
+				codeEntretien = Integer.parseInt(monPePerso.getCodeentretien());
+			} catch  (Exception e) {
+				codeEntretien = -1;
+			}
+			if(codeEntretien==1 && isVidangeCompleteAFaire)
 				continue;
-			margeMin = Integer.parseInt(monPePerso.getIntervallepep())*0.9;
+			try {
+				margeMin = Integer.parseInt(monPePerso.getIntervallepep())*0.9;
+			} catch (Exception e) {
+				margeMin = 0;
+			}
+			
 			// selon le type d'intervalle 
 			// RG : si le type d'intervalle est Km ou horaire on compare à la valeur du compteur
 			// si le type est année ou jours on compare avec la date
 //			AJOUT OFONTENEAU 20090414  6: semestriel, 8:10000km/dateanniv
-			if (monPePerso.getCodeti().equals("1")||(monPePerso.getCodeti().equals("5"))||(monPePerso.getCodeti().equals("8"))){
+			if (monPePerso != null && monPePerso.getCodeti() != null && (monPePerso.getCodeti().equals("1")||(monPePerso.getCodeti().equals("5"))||(monPePerso.getCodeti().equals("8")))){
 				compteur = Integer.parseInt(getBpcCourant().getValeurcompteur());
 				//	on recherche la valeur du compteur entree pour le dernier type d'entretien fait
 				PePerso unPePersoDer = PePerso.chercherPePersoEquipEntRealise(getTransaction(),monPePerso.getCodeequip(),monPePerso.getCodeentretien());
@@ -453,7 +464,7 @@ public void verifEntretiens (javax.servlet.http.HttpServletRequest request) thro
 				}
 			}else{
 				// si le type d'intervalle est jour(3) ou année(2)
-				if (monPePerso.getCodeti().equals("2")||(monPePerso.getCodeti().equals("3"))||(monPePerso.getCodeti().equals("6"))){
+				if (monPePerso != null && monPePerso.getCodeti() != null &&( monPePerso.getCodeti().equals("2")||(monPePerso.getCodeti().equals("3"))||(monPePerso.getCodeti().equals("6")))){
 					// pour faciliter les calculs on convertit en jours
 					if (monPePerso.getCodeti().equals("2")){
 						//etrange ça...., je remplace et j'ajoute le cas semsestriel (6) OFONTENEAU

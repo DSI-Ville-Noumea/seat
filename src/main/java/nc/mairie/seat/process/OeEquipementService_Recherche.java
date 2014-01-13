@@ -161,10 +161,7 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
 		getTransaction().declarerErreur(getTransaction().traiterErreur()+"Le service de l'équipement n'a pas été trouvé.");
 		return false;
 	}
-	if (unService==null){
-		unService = new Service();
-	}
-	setServiceCourant(getServiceCourant());
+	setServiceCourant(unService);
 	
 //	On met la variable 
 	VariableGlobale.ajouter(request, "SERVICE", getServiceCourant());

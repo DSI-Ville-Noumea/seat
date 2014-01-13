@@ -312,7 +312,7 @@ public void trier(ArrayList<PM_Planning> a,String colonne) throws Exception{
 				if(unPMatFiche.getValide().trim().equals("F")){
 					encours = "EN COURS";
 					// on met soit le nom de la couleur soit le code
-					getLB_PLANNING_Couleurs()[i] = "blue";
+					LB_PLANNING_Couleurs[i] = "blue";
 				}else{
 					encours="NON EFFECTUE";
 				}
@@ -331,7 +331,7 @@ public void trier(ArrayList<PM_Planning> a,String colonne) throws Exception{
 						return;
 					}else if (enRetard==-1){
 						if (aPlanning.getNumfiche()==null){
-							getLB_PLANNING_Couleurs()[i] = "red";
+							LB_PLANNING_Couleurs[i] = "red";
 							encours = "EN RETARD";
 						}
 					}
@@ -347,8 +347,8 @@ public void trier(ArrayList<PM_Planning> a,String colonne) throws Exception{
 				if(getPMatInfosCourant().getPminv()!=null){
 //					 si l'entretien appartient au petit matériel en cours on le surligne
 					if (aPlanning.pminv.equals(getPMatInfosCourant().getPminv())){
-						getLB_PLANNING_Couleurs()[i] = "white";
-						getLB_PLANNING_FCouleurs()[i] = "teal";
+						LB_PLANNING_Couleurs[i] = "white";
+						LB_PLANNING_FCouleurs[i] = "teal";
 					}
 				}
 			}
@@ -586,15 +586,15 @@ public void setTri(String tri) {
 	this.tri = tri;
 }
 	public java.lang.String[] getLB_PLANNING_Couleurs() {
-		return LB_PLANNING_Couleurs;
+		return LB_PLANNING_Couleurs == null ? null : LB_PLANNING_Couleurs.clone() ;
 	}
-	public void setLB_PLANNING_Couleurs(java.lang.String[] couleurs) {
+	private void setLB_PLANNING_Couleurs(java.lang.String[] couleurs) {
 		LB_PLANNING_Couleurs = couleurs;
 	}
 	public java.lang.String[] getLB_PLANNING_FCouleurs() {
-		return LB_PLANNING_FCouleurs;
+		return LB_PLANNING_FCouleurs == null ? null : LB_PLANNING_FCouleurs.clone();
 	}
-	public void setLB_PLANNING_FCouleurs(java.lang.String[] fcouleurs) {
+	private void setLB_PLANNING_FCouleurs(java.lang.String[] fcouleurs) {
 		LB_PLANNING_FCouleurs = fcouleurs;
 	}	
 /**

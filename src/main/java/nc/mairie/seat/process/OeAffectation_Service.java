@@ -219,9 +219,7 @@ private void initialiseListeAffectation(javax.servlet.http.HttpServletRequest re
 //	Recherche des affectations des équipement aux services
 	ArrayList<AffectationServiceInfos> a = AffectationServiceInfos.chercherListAffectationServiceInfosEquip(getTransaction(),equipementInfosCourant.getNumeroinventaire());
 	//java.util.ArrayList a = AActifs.chercherListAffectationServiceInfosEquip(getTransaction(),equipementInfosCourant.getNumeroinventaire());
-	if (null == a){
-		System.out.println("Aucun élément enregistré dans la base.");
-	}
+
 	setListeAffectation(a);
 	trier(a);
 	return ;		
@@ -1148,9 +1146,7 @@ public boolean performPB_AFFICH_AGENT(javax.servlet.http.HttpServletRequest requ
 	//String reserve = getZone(getNOM_CK_RESERVE());
 //	 pour réservé
 	ArrayList<AgentServiceInfos> a = AgentServiceInfos.chercherListAgentServiceInfosSce(getTransaction(),serviceCourant.getServi());
-	if (null == a){
-		System.out.println("Aucun élément enregistré dans la base.");
-	}
+
 	setListeAgent(new ArrayList<AgentInterface>());
 	getListeAgent().addAll(a);
 //	Si au moins un modèle

@@ -1,7 +1,8 @@
 package nc.mairie.seat.process;
 
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.ListIterator;
@@ -212,7 +213,7 @@ public java.lang.String getNOM_PB_IMPRIMER() {
  * @author : Générateur de process
  */
 public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request) throws Exception {
-	Equipement unEquipement = new Equipement();
+	Equipement unEquipement;
 	//on enregistre le commentaire s'il y en a un
 	String newCommentaire = getZone(getNOM_EF_COMMENTAIRE()).toUpperCase();
 	if (!newCommentaire.equals("")){
@@ -262,18 +263,28 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 		int indice ;
 		//commentaire = commentaire.replace('\n',' ');
 		indice = 0;
+		
+		StringBuffer sb = new StringBuffer();
 		for (int i=0;i<comlen;i++){
 			if(commentaire.charAt(i)=='\n'){
-				commentaireOt = commentaireOt+commentaire.substring(indice,i)+"$";
-				indice = i;
+				sb.append(commentaire.substring(indice,i)+"$");
 			}
 		}
+		commentaireOt = sb.toString();
+		
+//		for (int i=0;i<comlen;i++){
+//			if(commentaire.charAt(i)=='\n'){
+//				commentaireOt = commentaireOt+commentaire.substring(indice,i)+"$";
+//				indice = i;
+//			}
+//		}
 		commentaireOt = commentaireOt + commentaire.substring(indice,comlen);
 		commentaireOt = commentaireOt.replace('\n',' ');
 		commentaireOt = commentaireOt.replace('\r',' ');
 		StarjetGeneration g = new StarjetGeneration(getTransaction(), "MAIRIE", starjetMode, "SEAT", "ficheOT_Vierge.sp", "ficheOT_Vierge");
 		File f = g.getFileData();
-		FileWriter fw = new FileWriter(f);
+		//FileWriter fw = new FileWriter(f);
+		OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(f),"iso-8859-1");
 		PrintWriter pw = new PrintWriter(fw);
 		try {	
 			//	Entete
@@ -891,7 +902,7 @@ public boolean performPB_COMMENTAIRE(javax.servlet.http.HttpServletRequest reque
 		this.script = script;
 	}
 	public String afficheScript() {	
-		String res = new String(getScript());
+		String res = getScript();
 		setScript(null);
 		return res;
 	}

@@ -98,7 +98,7 @@ public boolean creerAffecter_Agent(nc.mairie.technique.Transaction aTransaction,
 		return false;
 	}
 	//RG : controle des dates
-	if((getDatedebut()!=null)&(getDatedebut().equals(""))){
+	if((getDatedebut()==null)||(getDatedebut().equals(""))){
 		if(!Services.estUneDate(getDatedebut())){
 			aTransaction.declarerErreur("La date de début n'est pas correcte.");
 			return false;
@@ -194,7 +194,7 @@ public boolean creerAffecter_AgentCCAS(nc.mairie.technique.Transaction aTransact
 		return false;
 	}
 	//RG : controle des dates
-	if((getDatedebut()!=null)&(getDatedebut().equals(""))){
+	if((getDatedebut()==null)||(getDatedebut().equals(""))){
 		if(!Services.estUneDate(getDatedebut())){
 			aTransaction.declarerErreur("La date de début n'est pas correcte.");
 			return false;
@@ -290,7 +290,7 @@ public boolean creerAffecter_AgentCDE(nc.mairie.technique.Transaction aTransacti
 		return false;
 	}
 	//RG : controle des dates
-	if((getDatedebut()!=null)&(getDatedebut().equals(""))){
+	if((getDatedebut()==null)||(getDatedebut().equals(""))){
 		if(!Services.estUneDate(getDatedebut())){
 			aTransaction.declarerErreur("La date de début n'est pas correcte.");
 			return false;

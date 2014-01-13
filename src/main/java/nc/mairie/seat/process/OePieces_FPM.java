@@ -37,8 +37,8 @@ public class OePieces_FPM extends nc.mairie.technique.BasicProcess {
 	private PMatInfos pMatInfosCourant;
 	private String focus = null;
 	public boolean afficheQuantite;
-	public boolean Modif;
-	public boolean Suppresion;
+	private boolean modif;
+	private boolean suppresion;
 	public boolean action;
 	private String newQte;
 	private String newDate;
@@ -747,16 +747,16 @@ public java.lang.String getVAL_ST_TITRE_ACTION() {
 		this.pieceFpmInfosCourant = pieceFpmInfosCourant;
 	}
 	public boolean isModif() {
-		return Modif;
+		return modif;
 	}
 	public void setModif(boolean modif) {
-		Modif = modif;
+		this.modif = modif;
 	}
 	public boolean isSuppresion() {
-		return Suppresion;
+		return suppresion;
 	}
 	public void setSuppresion(boolean suppresion) {
-		Suppresion = suppresion;
+		this.suppresion = suppresion;
 	}
 /**
  * Retourne pour la JSP le nom de la zone statique :

@@ -79,8 +79,8 @@ public void trier(ArrayList<PMatInfos> a,String colonne) throws Exception{
 			
 			if (getPMatInfosCourant()!=null){
 				if (unPMatInfos.getPminv().equals(getPMatInfosCourant().getPminv())){
-					getLB_PMAT_Couleurs()[i] = "white";
-					getLB_PMAT_FCouleurs()[i] = "teal";
+					LB_PMAT_Couleurs[i] = "white";
+					LB_PMAT_FCouleurs[i] = "teal";
 				}
 			}
 			String ligne [] = { unPMatInfos.getPminv(),unPMatInfos.getPmserie(),unPMatInfos.getDesignationmarque(),unPMatInfos.getDesignationmodele(),unPMatInfos.getDesignationtypeequip()};
@@ -474,15 +474,15 @@ public boolean performPB_OK_TRI(javax.servlet.http.HttpServletRequest request) t
 }
 	
 public java.lang.String[] getLB_PMAT_Couleurs() {
-	return LB_PMAT_Couleurs;
+	return LB_PMAT_Couleurs == null ? null : LB_PMAT_Couleurs.clone();
 }
-public void setLB_PMAT_Couleurs(java.lang.String[] couleurs) {
+private void setLB_PMAT_Couleurs(java.lang.String[] couleurs) {
 	LB_PMAT_Couleurs = couleurs;
 }
 public java.lang.String[] getLB_PMAT_FCouleurs() {
-	return LB_PMAT_FCouleurs;
+	return LB_PMAT_FCouleurs== null ? null : LB_PMAT_FCouleurs.clone();
 }
-public void setLB_PMAT_FCouleurs(java.lang.String[] fcouleurs) {
+private void setLB_PMAT_FCouleurs(java.lang.String[] fcouleurs) {
 	LB_PMAT_FCouleurs = fcouleurs;
 }
 /**

@@ -129,7 +129,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 
 public boolean initialiseInfos(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	 pour renseigner les infos du service
-	AgentsMunicipaux unAgent = new AgentsMunicipaux();
+	AgentsMunicipaux unAgent;
 	if(getServiceCourant()!=null){
 		unAgent = AgentsMunicipaux.chercherAgentsMunicipauxService(getTransaction(),matricule,getServiceCourant().getServi());
 	}else{

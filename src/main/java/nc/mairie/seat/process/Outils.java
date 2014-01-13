@@ -15,15 +15,16 @@ public class Outils {
  * @author : Générateur de process
  */
 public static String enleveEspace(String uneChaine) throws Exception{
-	String chaineEpure = "";
+
+	StringBuffer sb = new StringBuffer();
 	
 	for (int i=0;i<uneChaine.length();i++){
 		if(!String.valueOf(uneChaine.charAt(i)).equals(" ")){
-			chaineEpure = chaineEpure + uneChaine.charAt(i);
+			sb.append(uneChaine.charAt(i));
 		}
 	};
 	
-	return chaineEpure;
+	return sb.toString();
 }
 /**
  * Constructeur du process OeAccueil.

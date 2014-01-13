@@ -382,7 +382,7 @@ public java.lang.String getNOM_PB_VALIDER() {
 public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	// on récupère l'agent
 	String type = (String)VariableActivite.recuperer(this,"TYPE");
-	ArrayList<?> a = new ArrayList<Object>();
+	ArrayList<?> a;
 	int indice  = (Services.estNumerique(getVAL_LB_AGENT_SELECT()) ? Integer.parseInt(getVAL_LB_AGENT_SELECT()): -1);
 //	if (indice == -1 || getListAgents().size() == 0 || indice > getListAgents().size() -1) {
 //		getTransaction().declarerErreur(MairieMessages.getMessage("ERR997","Agent"));

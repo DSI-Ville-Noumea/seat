@@ -679,13 +679,9 @@ public String getJSP() {
 	return "OeFPM_Validation.jsp";
 }
 
-public Hashtable<String, PMateriel> getHashPMateriel() {
+private Hashtable<String, PMateriel> getHashPMateriel() {
 	if (hashPMateriel == null)
 			hashPMateriel=new Hashtable<String, PMateriel>();
 	return hashPMateriel;
-}
-
-public void setHashPMateriel(Hashtable<String, PMateriel> hashPMateriel) {
-	this.hashPMateriel = hashPMateriel;
 }
 }

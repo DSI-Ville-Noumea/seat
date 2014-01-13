@@ -269,9 +269,7 @@ public void initialiseListFpm(HttpServletRequest request)throws Exception{
 public void initialiseListServices(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	Recherche des affectations des petits matériels aux services
 	ArrayList<PM_Affectation_Sce_Infos> a = PM_Affectation_Sce_Infos.chercherListPM_Affectation_Sce_InfosPm(getTransaction(),getPMatInfosCourant().getPminv());
-	if (null == a){
-		System.out.println("Aucun élément enregistré dans la base.");
-	}
+
 	setListServices(a);
 	trierServices(a);
 	return ;	

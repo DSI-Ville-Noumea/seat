@@ -22,7 +22,6 @@ public class OT extends BasicMetier {
 	public String numerobc;
 	public String commentaire;
 	public String compteur;
-	public String code;
 	public String numinv;
 	
 /**
@@ -652,8 +651,8 @@ public boolean modifierOT(nc.mairie.technique.Transaction aTransaction,Equipemen
 		}
 	}
 	//selon la date, le compteur doit être supérieur ou égale au compteur le précédent et inférieur ou égale au compteur suivant par rapport aux BPC
-	BPC unBPCPrec = new BPC();
-	BPC unBPCSuiv = new BPC();
+	BPC unBPCPrec = null;
+	BPC unBPCSuiv = null;
 	//String numinv = "";
 	/*OTInfos unOTInfos = OTInfos.chercherOTInfos(aTransaction,getNumeroot());
 	if(aTransaction.isErreur()){
@@ -994,6 +993,7 @@ public String getNuminv() {
 public void setNuminv(String newNuminv) { 
 	numinv = newNuminv;
 }
+
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */

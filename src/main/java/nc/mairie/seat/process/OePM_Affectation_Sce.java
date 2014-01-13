@@ -232,11 +232,6 @@ private void initialiseListeAffectation(javax.servlet.http.HttpServletRequest re
 		return ;
 	}
 	//java.util.ArrayList a = AActifs.chercherListAffectationServiceInfosEquip(getTransaction(),equipementInfosCourant.getNumeroinventaire());
-	if (null == a){
-		System.out.println("Aucun élément enregistré dans la base.");
-	}
-	if (a!=null)
-	
 	setListeAffectation(a);
 	trier(a);
 	return ;		
@@ -1128,9 +1123,7 @@ public java.lang.String getNOM_PB_AFFICH_AGENT() {
  */
 public boolean performPB_AFFICH_AGENT(javax.servlet.http.HttpServletRequest request) throws Exception {
 	ArrayList<AgentServiceInfos> a = AgentServiceInfos.chercherListAgentServiceInfosSce(getTransaction(),serviceCourant.getServi());
-	if (null == a){
-		System.out.println("Aucun élément enregistré dans la base.");
-	}
+	
 	setListeAgent(new ArrayList<AgentInterface>());
 	getListeAgent().addAll(a);
 //	Si au moins un modèle

@@ -208,7 +208,7 @@ private boolean initialisePMateriel(javax.servlet.http.HttpServletRequest reques
  */
 private boolean initialiseListeBPC(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	Recherche des bpc
-	java.util.ArrayList<BPC> a = new ArrayList<BPC>();
+	java.util.ArrayList<BPC> a;
 	if(!isMateriel){
 		a = BPC.listerBPCEquipement(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
 	}else{
@@ -216,9 +216,6 @@ private boolean initialiseListeBPC(javax.servlet.http.HttpServletRequest request
 	}
 	if(getTransaction().isErreur()){
 		return false;
-	}
-	if (null == a){
-		System.out.println("Aucun élément enregistré dans la base.");
 	}
 	setListeBPC(a);
 	trier(a);	

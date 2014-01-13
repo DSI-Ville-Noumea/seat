@@ -93,7 +93,7 @@ public OeOT_Lancement() {
  */
 public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	// on supprime les ot créer
-	OT unOT = new OT();
+	OT unOT;
 	// pour chaque OT créée on les supprime
 	int premierOT = Integer.parseInt(firstNoOT);
 	int dernierOT = Integer.parseInt(lastNoOT);

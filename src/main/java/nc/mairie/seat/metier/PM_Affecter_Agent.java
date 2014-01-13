@@ -58,7 +58,7 @@ public boolean creerPm_Affecter_Agent(nc.mairie.technique.Transaction aTransacti
 		return false;
 	}
 	//RG : controle des dates
-	if((getDdeb()!=null)&(getDdeb().equals(""))){
+	if((getDdeb()==null)||(getDdeb().equals(""))){
 		if(!Services.estUneDate(getDdeb())){
 			aTransaction.declarerErreur("La date de début n'est pas correcte.");
 			return false;
@@ -444,7 +444,7 @@ public boolean creerPmAffecter_AgentCCAS(nc.mairie.technique.Transaction aTransa
 		return false;
 	}
 	//RG : controle des dates
-	if((getDdeb()!=null)&(getDdeb().equals(""))){
+	if((getDdeb()==null)||(getDdeb().equals(""))){
 		if(!Services.estUneDate(getDdeb())){
 			aTransaction.declarerErreur("La date de début n'est pas correcte.");
 			return false;
@@ -670,7 +670,7 @@ public boolean creerPmAffecter_AgentCDE(nc.mairie.technique.Transaction aTransac
 		return false;
 	}
 	//RG : controle des dates
-	if((getDdeb()!=null)&(getDdeb().equals(""))){
+	if((getDdeb()==null)||(getDdeb().equals(""))){
 		if(!Services.estUneDate(getDdeb())){
 			aTransaction.declarerErreur("La date de début n'est pas correcte.");
 			return false;

@@ -233,7 +233,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		setCreation(false);
 	}
 	// si un message d'erreur
-	if(!messageErreur.equals("")&&(messageErreur!=null)){
+	if((messageErreur!=null) && !messageErreur.equals("")){
 		getTransaction().declarerErreur(messageErreur);
 		messageErreur = "";
 	}

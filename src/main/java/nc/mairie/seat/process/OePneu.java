@@ -20,7 +20,6 @@ public class OePneu extends nc.mairie.technique.BasicProcess {
 	private String ACTION_CREATION = "Création d'un pneu.";
 	private ArrayList<Pneu> listePneu = null;
 	private Pneu pneuCourant;
-	boolean premierFois = true;	
 	private String focus = null;
 	public int isVide = 0;
 	

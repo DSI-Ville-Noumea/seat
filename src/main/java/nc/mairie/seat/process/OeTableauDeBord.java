@@ -64,9 +64,9 @@ public class OeTableauDeBord extends nc.mairie.technique.BasicProcess {
 	public String reserve = "";
 	public boolean isDebranche = false;
 	String agent = "";
-	public Hashtable<String, AgentCDE> hashAgentCDE;
-	public Hashtable<String, AgentCCAS> hashAgentCCAS;
-	public Hashtable<String, AActifs> hashAActifs;
+	private Hashtable<String, AgentCDE> hashAgentCDE;
+	private Hashtable<String, AgentCCAS> hashAgentCCAS;
+	private Hashtable<String, AActifs> hashAActifs;
 	
 	
 /**
@@ -418,9 +418,6 @@ public boolean initialiseListOT(javax.servlet.http.HttpServletRequest request) t
 public void initialiseListServices(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	Recherche des affectations des équipement aux services
 	ArrayList<AffectationServiceInfos> a = AffectationServiceInfos.chercherListAffectationServiceInfosEquip(getTransaction(),equipementInfosCourant.getNumeroinventaire());
-	if (null == a){
-		System.out.println("Aucun élément enregistré dans la base.");
-	}
 	setListServices(a);
 	trierServices(a);
 	//return ;	
@@ -2100,25 +2097,17 @@ public boolean performPB_RETOUR(javax.servlet.http.HttpServletRequest request) t
 	setStatut(STATUT_SELECTION,true);
 	return true;
 }
-public Hashtable<String, AActifs> getHashAActifs() {
+private Hashtable<String, AActifs> getHashAActifs() {
 	if (hashAActifs ==  null) hashAActifs = new Hashtable<String, AActifs>();
 	return hashAActifs;
 }
-public void setHashAActifs(Hashtable<String, AActifs> hashAActifs) {
-	this.hashAActifs = hashAActifs;
-}
-public Hashtable<String, AgentCCAS> getHashAgentCCAS() {
+private Hashtable<String, AgentCCAS> getHashAgentCCAS() {
 	if (hashAgentCCAS ==  null) hashAgentCCAS = new Hashtable<String, AgentCCAS>();
 	return hashAgentCCAS;
 }
-public void setHashAgentCCAS(Hashtable<String, AgentCCAS> hashAgentCCAS) {
-	this.hashAgentCCAS = hashAgentCCAS;
-}
-public Hashtable<String, AgentCDE> getHashAgentCDE() {
+private Hashtable<String, AgentCDE> getHashAgentCDE() {
 	if (hashAgentCDE ==  null) hashAgentCDE = new Hashtable<String, AgentCDE>();
 	return hashAgentCDE;
 }
-public void setHashAgentCDE(Hashtable<String, AgentCDE> hashAgentCDE) {
-	this.hashAgentCDE = hashAgentCDE;
-}
+
 }

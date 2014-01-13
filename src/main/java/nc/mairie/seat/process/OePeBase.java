@@ -120,7 +120,7 @@ private void initialiseListePe(javax.servlet.http.HttpServletRequest request) th
 	String desactiv = "";
 	String date = "";
 	
-	if (a.size()>0){
+	if (a!=null && a.size()>0){
 		//les élèments de la liste seront le codemarque pour pouvoir récupérer le dernier élément et les dimensions des marques.
 		int [] tailles = {30,6,10,7,10,};
 		String [] padding = {"G","D","G","C","C"};
@@ -133,7 +133,7 @@ private void initialiseListePe(javax.servlet.http.HttpServletRequest request) th
 			if(aPeBaseInfos.getDesactive().equals("OUI")){
 				desactiv = "X";
 				date = aPeBaseInfos.getDatedesactivation();
-				getLB_PE_Couleurs()[i] = "red";
+				LB_PE_Couleurs[i] = "red";
 			}else{
 				desactiv = "";
 				date="";
@@ -156,7 +156,7 @@ private void initialiseListePe(javax.servlet.http.HttpServletRequest request) th
 	}else{
 		setLB_PE(null);
 	}
-	setIsVide(a.size());		
+	setIsVide(a == null ? 0 : a.size());		
 }
 
 /**
@@ -729,9 +729,9 @@ public java.lang.String getVAL_CK_DESACTIV() {
 		this.tintervalleCourant = tintervalleCourant;
 	}
 	public java.lang.String[] getLB_PE_Couleurs() {
-		return LB_PE_Couleurs;
+		return LB_PE_Couleurs == null ? null : LB_PE_Couleurs.clone();
 	}
-	public void setLB_PE_Couleurs(java.lang.String[] couleurs) {
+	private void setLB_PE_Couleurs(java.lang.String[] couleurs) {
 		LB_PE_Couleurs = couleurs;
 	}
 /**

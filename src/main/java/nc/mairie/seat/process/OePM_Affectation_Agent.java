@@ -118,7 +118,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			getTransaction().declarerErreur("Le petit matériel n'est affecté à aucun service.");
 			return ;
 		}
-		dateAff = unASI.getDdebut();
+		dateAff = unASI == null ? null : unASI.getDdebut();
 		if(menuService){
 			if(null!=getServiceCourant()){
 				if(!getServiceCourant().getServi().substring(0,3).equals(unASI.getSiserv().substring(0,3))){
@@ -251,7 +251,7 @@ private void initialiseListeAffectation(javax.servlet.http.HttpServletRequest re
 		return;
 	}
 	if (null == a){
-		System.out.println("Aucun élément enregistré dans la base.");
+		return;
 	}
 	if (a.size()>0){
 		setListeAffectation(a);

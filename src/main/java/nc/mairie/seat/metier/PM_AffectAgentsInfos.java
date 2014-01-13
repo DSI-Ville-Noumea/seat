@@ -34,12 +34,6 @@ public String toString() {
  */
 public static ArrayList<PM_AffectAgentsInfos> listerPM_AffectAgentsInfosScePMatDate(nc.mairie.technique.Transaction aTransaction,String servi,String inv, String date) throws Exception {
 	PM_AffectAgentsInfos unPM_AffectAgentsInfos = new PM_AffectAgentsInfos();
-	String param = servi;
-	if (param.trim().length()==4){
-		if(param.substring(3,4).equals("0")){
-			param=servi.substring(0,3);
-		}
-	}
 	return unPM_AffectAgentsInfos.getMyPM_AffectAgentsInfosBroker().listerPM_AffectAgentInfosScePMatDate(aTransaction,servi,inv,date);
 }
 public static ArrayList<PM_AffectAgentsInfos> listerPM_AffectAgentsInfos(nc.mairie.technique.Transaction aTransaction,String servi,String inv, String date) throws Exception {
@@ -52,23 +46,11 @@ public static ArrayList<PM_AffectAgentsInfos> listerPM_AffectAgentsInfos(nc.mair
  */
 public static ArrayList<PM_AffectAgentsInfos> chercherPM_AffectAgentsInfosSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception{
 	PM_AffectAgentsInfos unPM_AffectAgentsInfos = new PM_AffectAgentsInfos();
-	String param = servi;
-	if (param.trim().length()==4){
-		if(param.substring(3,4).equals("0")){
-			param=servi.substring(0,3);
-		}
-	}
 	return unPM_AffectAgentsInfos.getMyPM_AffectAgentsInfosBroker().chercherPM_AffectAgentsInfosSce(aTransaction, servi);
 }
 
 public static ArrayList<PM_AffectAgentsInfos> chercherPM_AffectAgentsInfosScePM(nc.mairie.technique.Transaction aTransaction, String inv, String servi) throws Exception{
 	PM_AffectAgentsInfos unPM_AffectAgentsInfos = new PM_AffectAgentsInfos();
-	String param = servi;
-	if (param.trim().length()==4){
-		if(param.substring(3,4).equals("0")){
-			param=servi.substring(0,3);
-		}
-	}
 	return unPM_AffectAgentsInfos.getMyPM_AffectAgentsInfosBroker().chercherPM_AffectAgentsInfosScePM(aTransaction, inv, servi);
 }
 

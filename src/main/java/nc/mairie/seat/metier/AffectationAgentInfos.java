@@ -86,12 +86,6 @@ public static ArrayList<AffectationAgentInfos> chercherListAffectationsSceEquip(
  */
 public static ArrayList<AffectationAgentInfos> listAffectationsSceEquipDate(nc.mairie.technique.Transaction aTransaction,String servi,String inv, String date) throws Exception {
 	AffectationAgentInfos unAffectationAgentInfos = new AffectationAgentInfos();
-	String param = servi;
-	if (param.trim().length()==4){
-		if(param.substring(3,4).equals("0")){
-			param=servi.substring(0,3);
-		}
-	}
 	return unAffectationAgentInfos.getMyAffectationAgentInfosBroker().listAffectationsSceEquipDate(aTransaction,servi,inv,date);
 }
 
