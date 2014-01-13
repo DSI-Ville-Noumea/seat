@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier BE
  */
-public class BEBroker extends nc.mairie.technique.BasicBroker {
+public class BEBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -31,7 +34,7 @@ public boolean supprimerBE(nc.mairie.technique.Transaction aTransaction) throws 
  * Retourne un ArrayList d'objet métier : BE.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerBEOTNumInv(nc.mairie.technique.Transaction aTransaction,String numot, String numInv) throws Exception {
+public ArrayList<BE> listerBEOTNumInv(nc.mairie.technique.Transaction aTransaction,String numot, String numInv) throws Exception {
 	return executeSelectListe(aTransaction,
 			" select * from "+getTable()+" be "+
 			" inner join SEAT.V_ENJU enju on enju.noengj = be.noengj "+
@@ -63,14 +66,14 @@ public BE chercheBE(nc.mairie.technique.Transaction aTransaction, String noot,St
 /**
  * Constructeur BEBroker.
  */
-public BEBroker(nc.mairie.technique.BasicMetier aMetier) {
+public BEBroker(BE aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.BEMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected BE definirMyMetier() {
 	return new BE() ;
 }
 /**

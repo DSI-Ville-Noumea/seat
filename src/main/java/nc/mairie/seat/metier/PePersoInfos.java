@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier PePersoInfos
  */
-public class PePersoInfos extends nc.mairie.technique.BasicMetier {
+public class PePersoInfos extends BasicMetier {
 	public String codeot;
 	public String codeequip;
 	public String sinistre;
@@ -33,7 +38,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : PePersoInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPePersoInfosEquip(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
+public static ArrayList<PePersoInfos> listerPePersoInfosEquip(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
 	if (tri.equals("")){
 		tri = "codepep";
 	}
@@ -54,7 +59,7 @@ public static PePersoInfos chercherPePersoInfos(nc.mairie.technique.Transaction 
  * true ou false
  */
 
-public static java.util.ArrayList listerPePersoInfosFait(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
+public static ArrayList<PePersoInfos> listerPePersoInfosFait(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
 	PePersoInfos unPePersoInfos = new PePersoInfos();
 	return unPePersoInfos.getMyPePersoInfosBroker().listerPePersoInfosFait(aTransaction,inv,tri);
 }
@@ -65,7 +70,7 @@ public static java.util.ArrayList listerPePersoInfosFait(nc.mairie.technique.Tra
  * on retourne la liste des Ot d'un équipement
  */
 
-public static java.util.ArrayList listerPePersoInfosOTEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
+public static ArrayList<PePersoInfos> listerPePersoInfosOTEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
 	PePersoInfos unPePersoInfos = new PePersoInfos();
 	return unPePersoInfos.getMyPePersoInfosBroker().listerPePersoInfosOTEquip(aTransaction,inv);
 }
@@ -74,7 +79,7 @@ public static java.util.ArrayList listerPePersoInfosOTEquip(nc.mairie.technique.
  * Retourne un ArrayList d'objet métier : PePerso.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList chercherPePersoInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
+public static ArrayList<PePersoInfos> chercherPePersoInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	PePersoInfos unPePersoInfos = new PePersoInfos();
 	return unPePersoInfos.getMyPePersoInfosBroker().chercherPePersoInfosOT(aTransaction,numot);
 }
@@ -84,7 +89,7 @@ public static java.util.ArrayList chercherPePersoInfosOT(nc.mairie.technique.Tra
  * true ou false
  */
 
-public static java.util.ArrayList listerPePersoInfosAFaire(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
+public static ArrayList<PePersoInfos> listerPePersoInfosAFaire(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
 	PePersoInfos unPePersoInfos = new PePersoInfos();
 	return unPePersoInfos.getMyPePersoInfosBroker().listerPePersoInfosAFaire(aTransaction,inv,tri);
 }
@@ -279,7 +284,7 @@ public void setDateprev(String newDateprev) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PePersoInfosBroker(this); 
 }
 /**

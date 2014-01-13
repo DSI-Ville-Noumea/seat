@@ -1,8 +1,6 @@
 /*
  * Créé le 28 avr. 2005
  *
- * TODO Pour changer le modèle de ce fichier généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
  */
 package nc.mairie.seat.servlet;
 
@@ -13,8 +11,6 @@ import nc.mairie.servlets.Frontale;
 /**
  * @author ssi
  *
- * TODO Pour changer le modèle de ce commentaire de type généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
  */
 public class ServletSeat extends Frontale {
 

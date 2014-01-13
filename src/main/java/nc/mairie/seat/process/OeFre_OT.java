@@ -13,15 +13,19 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeFre_OT extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5739481172023778776L;
 	private java.lang.String[] LB_FRE;
 	private java.lang.String[] LB_FRE_OT;
 	private String ACTION_SUPPRESSION = "Suppression";
-	private String ACTION_CREATION = "Création";
+//	private String ACTION_CREATION = "Création";
 	public boolean Suppresion;
 	private String focus = null;
 	public boolean action;
-	private ArrayList listFre;
-	private ArrayList listFreOT;
+	private ArrayList<Fournisseurs> listFre;
+	private ArrayList<Fournisseurs> listFreOT;
 	private Fournisseurs freCourant;
 	private Fre_OT freOtCourant;
 	private EquipementInfos equipementInfos;
@@ -253,7 +257,7 @@ public java.lang.String getNOM_PB_RECHERCHE() {
  */
 public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String param = getZone(getNOM_EF_RECHERCHE());
-	ArrayList resultatFre = Fournisseurs.listerFournisseursNom(getTransaction(),param);
+	ArrayList<Fournisseurs> resultatFre = Fournisseurs.listerFournisseursNom(getTransaction(),param);
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -708,22 +712,22 @@ public String getDefaultFocus() {
 	public void setFreOtCourant(Fre_OT freOtCourant) {
 		this.freOtCourant = freOtCourant;
 	}
-	public ArrayList getListFre() {
+	public ArrayList<Fournisseurs> getListFre() {
 		if(listFre==null){
-			listFre = new ArrayList();
+			listFre = new ArrayList<Fournisseurs>();
 		}
 		return listFre;
 	}
-	public void setListFre(ArrayList listFre) {
+	public void setListFre(ArrayList<Fournisseurs> listFre) {
 		this.listFre = listFre;
 	}
-	public ArrayList getListFreOT() {
+	public ArrayList<Fournisseurs> getListFreOT() {
 		if(listFreOT==null){
-			listFreOT = new ArrayList();
+			listFreOT = new ArrayList<Fournisseurs>();
 		}
 		return listFreOT;
 	}
-	public void setListFreOT(ArrayList listFreOT) {
+	public void setListFreOT(ArrayList<Fournisseurs> listFreOT) {
 		this.listFreOT = listFreOT;
 	}
 	public EquipementInfos getEquipementInfos() {

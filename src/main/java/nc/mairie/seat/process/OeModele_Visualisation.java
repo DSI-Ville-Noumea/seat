@@ -10,6 +10,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeModele_Visualisation extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -116868125791752139L;
 	private ModeleInfos modeleInfosCourant;
 	public static final int STATUT_RECHERCHE= 1 ;
 /**

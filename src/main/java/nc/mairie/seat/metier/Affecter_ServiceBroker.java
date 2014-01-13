@@ -1,10 +1,14 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
+
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Affecter_Service
  */
-public class Affecter_ServiceBroker extends nc.mairie.technique.BasicBroker {
+public class Affecter_ServiceBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -30,7 +34,7 @@ public boolean supprimerAffecter_Service(nc.mairie.technique.Transaction aTransa
  * Retourne un ArrayList d'objet métier : Affecter_Service.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAffecter_Service(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Affecter_Service> listerAffecter_Service(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -45,7 +49,7 @@ public Affecter_Service chercherAffecter_Service(nc.mairie.technique.Transaction
  * Retourne un ArrayList d'objet métier : Affecter_Service.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList chercherListerAffecter_ServiceEquip(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<Affecter_Service> chercherListerAffecter_ServiceEquip(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+param+"'");
 }
 
@@ -60,14 +64,14 @@ public Affecter_Service chercherListerAffecter_ServiceEquipSce(nc.mairie.techniq
 /**
  * Constructeur Affecter_ServiceBroker.
  */
-public Affecter_ServiceBroker(nc.mairie.technique.BasicMetier aMetier) {
+public Affecter_ServiceBroker(Affecter_Service aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.Affecter_ServiceMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Affecter_Service definirMyMetier() {
 	return new Affecter_Service() ;
 }
 /**

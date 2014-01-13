@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Pneu
  */
-public class PneuBroker extends nc.mairie.technique.BasicBroker {
+public class PneuBroker extends BasicBroker {
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
  * @author : Coralie NICOLAS
  */
@@ -40,7 +43,7 @@ public boolean supprimerPneu(nc.mairie.technique.Transaction aTransaction) throw
  * Retourne un ArrayList d'objet métier : Pneu.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPneu(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Pneu> listerPneu(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by dimension");
 }
 /**
@@ -63,14 +66,14 @@ public boolean existePneu(nc.mairie.technique.Transaction aTransaction, String p
 /**
  * Constructeur PneuBroker.
  */
-public PneuBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PneuBroker(Pneu aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PneuMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Pneu definirMyMetier() {
 	return new Pneu() ;
 }
 /**

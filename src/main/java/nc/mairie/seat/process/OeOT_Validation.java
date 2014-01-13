@@ -14,12 +14,16 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeOT_Validation extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2208624490682058647L;
 	public static final int STATUT_VISUALISER = 2;
 	public static final int STATUT_MODIFIER = 1;
 	private java.lang.String[] LB_OTAVALIDER;
 	private java.lang.String[] LB_OTENCOURS;
-	private ArrayList listOTEncours = new ArrayList();
-	private ArrayList listOTAValider = new ArrayList();
+	private ArrayList<OT> listOTEncours = new ArrayList<OT>();
+	private ArrayList<OT> listOTAValider = new ArrayList<OT>();
 	private Hashtable<String, Equipement> hashEquipement;
 	private boolean first = true;
 	public boolean AValider;
@@ -51,7 +55,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	//	initialisation de la liste des OT en cours
 	if(first){
 		//ArrayList a = OTInfos.listerOTInfosAValider(getTransaction());
-		ArrayList a = OT.listerOTAValider(getTransaction());
+		ArrayList<OT> a = OT.listerOTAValider(getTransaction());
 		if(getTransaction().isErreur()){
 			return;
 		}
@@ -75,9 +79,9 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
  * 
  */
 public void initialiseListeEquipements() throws Exception{
-	ArrayList arr = Equipement.listerEquipement(getTransaction());
+	ArrayList<Equipement> arr = Equipement.listerEquipement(getTransaction());
 	
-	for (Iterator iter = arr.iterator(); iter.hasNext();) {
+	for (Iterator<Equipement> iter = arr.iterator(); iter.hasNext();) {
 		Equipement equipement = (Equipement) iter.next();
 		getHashEquipement().put(equipement.getNumeroinventaire(), equipement);
 	}
@@ -316,7 +320,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 	commitTransaction();
 	setEstEnregistre(true);
 	// on recherche les OT validé avec les infos mises à jour
-	ArrayList listAjour = new ArrayList();
+	ArrayList<OT> listAjour = new ArrayList<OT>();
 	for(int i=0;i<getListOTAValider().size();i++){
 	//	OTInfos unOTInfos = (OTInfos)getListOTAValider().get(i);
 		OT unOT = (OT)getListOTAValider().get(i);
@@ -448,16 +452,16 @@ public java.lang.String [] getVAL_LB_OTENCOURS() {
 public java.lang.String getVAL_LB_OTENCOURS_SELECT() {
 	return getZone(getNOM_LB_OTENCOURS_SELECT());
 }
-public ArrayList getListOTAValider() {
+public ArrayList<OT> getListOTAValider() {
 	return listOTAValider;
 }
-public void setListOTAValider(ArrayList listOTAValider) {
+public void setListOTAValider(ArrayList<OT> listOTAValider) {
 	this.listOTAValider = listOTAValider;
 }
-public ArrayList getListOTEncours() {
+public ArrayList<OT> getListOTEncours() {
 	return listOTEncours;
 }
-public void setListOTEncours(ArrayList listOTEncours) {
+public void setListOTEncours(ArrayList<OT> listOTEncours) {
 	this.listOTEncours = listOTEncours;
 }
 public boolean isFirst() {
@@ -499,7 +503,7 @@ public java.lang.String getNOM_PB_OK_VALIDATION() {
 //retour à l'écran d'origine
 public boolean performPB_OK_VALIDATION(javax.servlet.http.HttpServletRequest request) throws Exception {
 	// on vide la listes des OT à valider
-	setListOTAValider(new ArrayList());
+	setListOTAValider(new ArrayList<OT>());
 	setLB_OTAVALIDER(LBVide);
 	setEstEnregistre(false);
 	setAValider(false);

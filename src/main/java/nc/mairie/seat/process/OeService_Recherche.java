@@ -1,6 +1,7 @@
 package nc.mairie.seat.process;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import nc.mairie.seat.metier.Service;
 import nc.mairie.technique.*;
@@ -10,9 +11,13 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeService_Recherche extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4383240057481922979L;
 	private java.lang.String[] LB_SERVICE;
-	private ArrayList listeService;
-	private ArrayList listeServiceEpuree;
+	private ArrayList<Service> listeService;
+	private ArrayList<Service> listeServiceEpuree;
 	private String focus = null;
 	private Service serviceCourant;
 	private boolean first = true;
@@ -101,7 +106,7 @@ public java.lang.String getNOM_PB_RECHERCHE() {
  */
 public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String param = getZone(getNOM_EF_RECHERCHE());
-	ArrayList resultat = Service.chercherListServiceTous(getTransaction(),param);
+	ArrayList<Service> resultat = Service.chercherListServiceTous(getTransaction(),param);
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -116,7 +121,7 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
 		//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
 		String [] padding = {"G","G"};
 		FormateListe aFormat = new FormateListe(tailles,padding, false);
-		for (java.util.ListIterator list = resultat.listIterator(); list.hasNext(); ) {
+		for (ListIterator<Service> list = resultat.listIterator(); list.hasNext(); ) {
 			Service aService = (Service)list.next();
 			// on teste si le code service a 4 caractères si oui on regarde s'il se termine par un 0
 			/*int codeservice = aService.getServi().trim().length();
@@ -336,13 +341,13 @@ public void setFocus(String focus) {
 	/**
 	 * @return Renvoie listeService.
 	 */
-	public ArrayList getListeService() {
+	public ArrayList<Service> getListeService() {
 		return listeService;
 	}
 	/**
 	 * @param listeService listeService à définir.
 	 */
-	public void setListeService(ArrayList listeService) {
+	public void setListeService(ArrayList<Service> listeService) {
 		this.listeService = listeService;
 	}
 	/**
@@ -357,10 +362,10 @@ public void setFocus(String focus) {
 	public void setServiceCourant(Service serviceCourant) {
 		this.serviceCourant = serviceCourant;
 	}
-	public ArrayList getListeServiceEpuree() {
+	public ArrayList<Service> getListeServiceEpuree() {
 		return listeServiceEpuree;
 	}
-	public void setListeServiceEpuree(ArrayList listeServiceEpuree) {
+	public void setListeServiceEpuree(ArrayList<Service> listeServiceEpuree) {
 		this.listeServiceEpuree = listeServiceEpuree;
 	}
 	public boolean isFirst() {

@@ -10,11 +10,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeCompteur extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1133663544517208994L;
 	private java.lang.String[] LB_COMPTEUR;
 	private String ACTION_SUPPRESSION = "Suppression d'un type de compteur.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification d'un type de compteur.";
 	private String ACTION_CREATION = "Création d'un type de compteur.";
-	private ArrayList listeCompteur = null;
+	private ArrayList<Compteur> listeCompteur = null;
 	private Compteur compteurCourant;
 	private String focus = null;
 	public int isVide = 0;
@@ -32,7 +36,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 
 //	Si liste des compteurs est vide
 	if (getLB_COMPTEUR() == LBVide) {
-		java.util.ArrayList a = Compteur.listerCompteur(getTransaction());
+		ArrayList<Compteur> a = Compteur.listerCompteur(getTransaction());
 		setListeCompteur(a);
 		
 		if(a.size()>0){
@@ -45,8 +49,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
 			String [] padding = {"G"};
 			
-			FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-			String [] l = f.getListeFormatee();
 			setLB_COMPTEUR(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 		}else{
 			setLB_COMPTEUR(null);
@@ -56,7 +58,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	 on sélectionne l'élément en cours
 	if(getCompteurCourant()!=null){
 		if(getCompteurCourant().getCodecompteur()!=null){
-			int position = -1;
 			addZone(getNOM_LB_COMPTEUR_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListeCompteur().size(); i++) {
 				Compteur unCompteur = (Compteur)getListeCompteur().get(i);
@@ -69,36 +70,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	}
 
 }
-
-/**
- * Initialisation de la liste des compteurs
- * @author : Coralie NICOLAS
- */
-private void initialiseListeCompteur(javax.servlet.http.HttpServletRequest request) throws Exception{
-	//Recherche des compteurs
-	/*java.util.ArrayList a = Compteur.listerCompteur(getTransaction());
-	setListeCompteur(a);
-	
-	//Si au moins un compteur
-	if (a.size() !=0 ) {
-		int tailles [] = {20};
-		FormateListe aFormat = new FormateListe(tailles);
-		for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
-			Compteur aCompteur = (Compteur)list.next();
-			String ligne [] = { aCompteur.getDesignationcompteur()};
-			aFormat.ajouteLigne(ligne);
-			
-		}
-		setLB_COMPTEUR(aFormat.getListeFormatee());
-	} else {
-		setLB_COMPTEUR(null);
-	}
-	
-	addZone(getNOM_ST_TITRE_ACTION(),"");
-	addZone(getNOM_LB_COMPTEUR_SELECT(),"0");
-	addZone(getNOM_EF_DESIGNATION(),"");*/
-}
-
 
 /**
  * Constructeur du process OeCompteur.
@@ -486,13 +457,13 @@ public java.lang.String getVAL_LB_COMPTEUR_SELECT() {
 	/**
 	 * @return Renvoie listeCompteur.
 	 */
-	private ArrayList getListeCompteur() {
+	private ArrayList<Compteur> getListeCompteur() {
 		return listeCompteur;
 	}
 	/**
 	 * @param listeCompteur listeCompteur à définir.
 	 */
-	private void setListeCompteur(ArrayList listeCompteur) {
+	private void setListeCompteur(ArrayList<Compteur> listeCompteur) {
 		this.listeCompteur = listeCompteur;
 	}
 	/**

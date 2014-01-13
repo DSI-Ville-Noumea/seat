@@ -26,14 +26,14 @@ if (document.formu.elements[nom] != null)
 <TITLE>OeCarburant.jsp</TITLE>
 </HEAD>
 <jsp:useBean class="nc.mairie.seat.process.OeCarburant" id="process" scope="session"></jsp:useBean>
-<BODY BGPROPERTIES="FIXED" background="images/fond.jpg" class="sigp2-BODY" onload="return setfocus('<%=process.getFocus() %>')">
+<BODY background="images/fond.jpg" class="sigp2-BODY" onload="return setfocus('<%=process.getFocus() %>')">
 
 <TABLE border="0" align="center" class="sigp2" width="580">
 <%@ include file="BanniereErreur.jsp" %>
     <TR>
       <TD style="text-align : center;">
       <FORM name="formu" method="POST">
-      <FIELDSET align="Center">
+      <FIELDSET>
       <LEGEND class="sigp2Fieldset" align="left"></LEGEND>
       <TABLE border="0" cellspacing="0" cellpadding="0" class="sigp2">
 				<TR>

@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
 import java.util.ArrayList;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier AgentCCAS
  */
-public class AgentCCAS extends nc.mairie.technique.BasicMetier implements AgentInterface{
+public class AgentCCAS extends BasicMetier implements AgentInterface{
 	public String idindi;
 	public String nomatr;
 	public String nom;
@@ -444,7 +447,7 @@ public void setCdetud(String newCdetud) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new AgentCCASBroker(this); 
 }
 /**
@@ -467,10 +470,10 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : AgentCCAS.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerAgentCCAS(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<AgentCCAS> listerAgentCCAS(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	AgentCCAS unAgentCCAS = new AgentCCAS();
 //	ArrayList listFinale = new ArrayList();
-	ArrayList listeAgentCCAS = unAgentCCAS.getMyAgentCCASBroker().listerAgentCCAS(aTransaction);
+	ArrayList<AgentCCAS> listeAgentCCAS = unAgentCCAS.getMyAgentCCASBroker().listerAgentCCAS(aTransaction);
 /*	if(aTransaction.isErreur()){
 		return new ArrayList();
 	}
@@ -506,9 +509,9 @@ public static AgentCCAS chercherAgentCCAS(nc.mairie.technique.Transaction aTrans
  * Retourne un AgentCCAS.
  * @return AgentCCAS
  */
-public static java.util.ArrayList chercherAgentCCASNom(nc.mairie.technique.Transaction aTransaction, String nom) throws Exception{
+public static ArrayList<AgentCCAS> listerAgentCCASNom(nc.mairie.technique.Transaction aTransaction, String nom) throws Exception{
 	AgentCCAS unAgentCCAS = new AgentCCAS();
-	return unAgentCCAS.getMyAgentCCASBroker().chercherAgentCCASNom(aTransaction, nom);
+	return unAgentCCAS.getMyAgentCCASBroker().listerAgentCCASNom(aTransaction, nom);
 }
 }
 

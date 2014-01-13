@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier TDuree
  */
-public class TDuree extends nc.mairie.technique.BasicMetier {
+public class TDuree extends BasicMetier {
 	public String codetd;
 	public String designationduree;
 /**
@@ -39,7 +44,7 @@ public void setDesignationduree(String newDesignationduree) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new TDureeBroker(this); 
 }
 /**
@@ -62,7 +67,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : TDuree.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerTDuree(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<TDuree> listerTDuree(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	TDuree unTDuree = new TDuree();
 	return unTDuree.getMyTDureeBroker().listerTDuree(aTransaction);
 }

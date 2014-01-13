@@ -1,8 +1,11 @@
 package nc.mairie.seat.metier;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Equip
  */
-public class Equip extends nc.mairie.technique.BasicMetier {
+public class Equip extends BasicMetier {
 	public String numinv;
 	public String numimmat;
 	public String dmes;
@@ -130,7 +133,7 @@ public void setDgarantie(String newDgarantie) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new EquipBroker(this); 
 }
 /**

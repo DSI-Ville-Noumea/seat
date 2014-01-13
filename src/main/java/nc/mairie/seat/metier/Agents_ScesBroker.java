@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Agents_Sces
  */
-public class Agents_ScesBroker extends nc.mairie.technique.BasicBroker {
+public class Agents_ScesBroker extends BasicBroker {
 /**
  * Constructeur Agents_ScesBroker.
  */
-public Agents_ScesBroker(nc.mairie.technique.BasicMetier aMetier) {
+public Agents_ScesBroker(Agents_Sces aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.Agents_ScesMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Agents_Sces definirMyMetier() {
 	return new Agents_Sces() ;
 }
 /**
@@ -49,7 +52,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * Retourne un ArrayList d'objet métier : Agents_Sces.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAgents_Sces(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Agents_Sces> listerAgents_Sces(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**

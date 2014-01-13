@@ -1,10 +1,14 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Equipement
  */
-public class EquipementBroker extends nc.mairie.technique.BasicBroker {
+public class EquipementBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -30,7 +34,7 @@ public boolean supprimerEquipement(nc.mairie.technique.Transaction aTransaction)
  * Retourne un ArrayList d'objet métier : Equipement.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerEquipement(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Equipement> listerEquipement(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -62,7 +66,7 @@ public int chercherEquipementImmat(nc.mairie.technique.Transaction aTransaction,
  * @return java.util.ArrayList
  * On fait un Tri selon le paramètre
  */
-public java.util.ArrayList listerEquipementTri(nc.mairie.technique.Transaction aTransaction, String tri) throws Exception {
+public ArrayList<Equipement> listerEquipementTri(nc.mairie.technique.Transaction aTransaction, String tri) throws Exception {
 	//return executeSelectListe(aTransaction,"select * from "+getTable()+", SEAT.F_MODELES, SEAT.F_MARQUES, SEAT.F_TYPEEQUIP where F_MARQUES.CODEMARQUE=F_MODELES.CODEMARQUE and F_MODELES.CODETE=F_TYPEEQUIP.CODETYPEEQUIP and F_MODELES.CODEMODELE=F_EQUIPEMENT.CODEMODELE order by "+tri+"");
 	return executeSelectListe(aTransaction,"select * from "+getTable()+", SEAT.F_MODELES, SEAT.F_MARQUES, SEAT.F_TYPEEQUIP where SEAT.F_MARQUES.CODEMARQUE=SEAT.F_MODELES.CODEMARQUE and SEAT.F_MODELES.CODETE=SEAT.F_TYPEEQUIP.CODETYPEEQUIP and SEAT.F_MODELES.CODEMODELE=SEAT.F_EQUIPEMENT.CODEMODELE order by "+tri+"");
 }
@@ -72,7 +76,7 @@ public java.util.ArrayList listerEquipementTri(nc.mairie.technique.Transaction a
  * @return java.util.ArrayList
  * On fait un Tri selon le paramètre
  */
-public java.util.ArrayList listerEquipementParam(nc.mairie.technique.Transaction aTransaction, String param,String tri) throws Exception {
+public ArrayList<Equipement> listerEquipementParam(nc.mairie.technique.Transaction aTransaction, String param,String tri) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+", SEAT/f_modeles, SEAT/f_marques, SEAT/f_typeequip where f_marques.codemarque=f_modeles.codemarque and f_modeles.codete=f_typeequip.codetypeequip and f_modeles.codemodel=f_equipement.codemodele and f_equipement.datehorscircuit "+param+" '0001-01-01' order by "+tri+"");
 }
 
@@ -81,21 +85,21 @@ public java.util.ArrayList listerEquipementParam(nc.mairie.technique.Transaction
  * @return java.util.ArrayList
  * On cherche les équipements qui font parti d'un modèle
  */
-public java.util.ArrayList listerEquipementModèle(nc.mairie.technique.Transaction aTransaction, String mod) throws Exception {
+public ArrayList<Equipement> listerEquipementModele(nc.mairie.technique.Transaction aTransaction, String mod) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemodele="+mod);
 }
 
 /**
  * Constructeur EquipementBroker.
  */
-public EquipementBroker(nc.mairie.technique.BasicMetier aMetier) {
+public EquipementBroker(Equipement aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.EquipementMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Equipement definirMyMetier() {
 	return new Equipement() ;
 }
 /**

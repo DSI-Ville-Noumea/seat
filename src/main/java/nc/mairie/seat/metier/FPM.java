@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier FPM
  */
-public class FPM extends nc.mairie.technique.BasicMetier {
+public class FPM extends BasicMetier {
 	public String numfiche;
 	public String pminv;
 	public String dentree;
@@ -28,7 +31,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : FPM.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerFPM(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<FPM> listerFPM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	FPM unPMateriel_Fiche = new FPM();
 	return unPMateriel_Fiche.getMyFPMBroker().listerFPM(aTransaction);
 }
@@ -84,7 +87,7 @@ public boolean creerFPM(nc.mairie.technique.Transaction aTransaction,PMateriel u
 	if((getDentree()!=null)&&(!getDentree().equals(""))){
 //		RG : date de sortie >= date de réalisation
 		if((getNumfiche()!=null)&&(!getNumfiche().equals(""))){
-			ArrayList listEntretien = PM_PePerso.chercherPmPePersoFiche(aTransaction,getNumfiche());
+			ArrayList<PM_PePerso> listEntretien = PM_PePerso.chercherPmPePersoFiche(aTransaction,getNumfiche());
 			if(aTransaction.isErreur()){
 				return false;
 			}
@@ -130,7 +133,7 @@ public boolean creerFPM(nc.mairie.technique.Transaction aTransaction,PMateriel u
 	if((getDsortie()!=null)&&(!getDsortie().equals(""))){
 		if((getNumfiche()!=null)&&(!getNumfiche().equals(""))){
 			//ArrayList listEntretien = PePerso.chercherPePersoOT(aTransaction,getNumfiche());
-			ArrayList listEntretien = PM_PePerso.chercherPmPePersoFiche(aTransaction,getNumfiche());
+			ArrayList<PM_PePerso> listEntretien = PM_PePerso.chercherPmPePersoFiche(aTransaction,getNumfiche());
 			if(aTransaction.isErreur()){
 				return false;
 			}
@@ -251,7 +254,7 @@ public boolean modifierPMateriel_Fiche(nc.mairie.technique.Transaction aTransact
 	//Date d'entrée
 	if((getDentree()!=null)&&(!getDentree().equals(""))){
 //		RG : date de sortie >= date de réalisation
-		ArrayList listEntretien = PM_PePerso.chercherPmPePersoFiche(aTransaction,getNumfiche());
+		ArrayList<PM_PePerso> listEntretien = PM_PePerso.chercherPmPePersoFiche(aTransaction,getNumfiche());
 		if(aTransaction.isErreur()){
 			// pas d'entretiens encore réaliser
 			aTransaction.traiterErreur();
@@ -293,7 +296,7 @@ public boolean modifierPMateriel_Fiche(nc.mairie.technique.Transaction aTransact
 		}
 	}
 	//RG : date de sortie >= date de réalisation
-	ArrayList listEntretien = PM_PePerso.chercherPmPePersoFiche(aTransaction,getNumfiche());
+	ArrayList<PM_PePerso> listEntretien = PM_PePerso.chercherPmPePersoFiche(aTransaction,getNumfiche());
 	if(aTransaction.isErreur()){
 		// pas d'entretiens à réalisé enregistré
 		aTransaction.traiterErreur();
@@ -328,7 +331,7 @@ public boolean supprimerPMateriel_Fiche(nc.mairie.technique.Transaction aTransac
 
 public boolean suppressionFPM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	// RG controle : si la FPM a eu des interventions de mécaniciens : pas de suppression possible
-	ArrayList listIntervenant = PM_ATM.listerPM_ATM_FPM(aTransaction,getNumfiche());
+	ArrayList<PM_ATM> listIntervenant = PM_ATM.listerPM_ATM_FPM(aTransaction,getNumfiche());
 	if(aTransaction.isErreur()){
 		return false;
 	}
@@ -337,7 +340,7 @@ public boolean suppressionFPM(nc.mairie.technique.Transaction aTransaction) thro
 		return false;
 	}
 	//RG controle : si la FPM fait l'objet d'un Bon d'engagement ==> FPM ne peut pas être supprimé
-	ArrayList listBe = PM_BE.listerPM_BE_FPM(aTransaction,getNumfiche());
+	ArrayList<PM_BE> listBe = PM_BE.listerPM_BE_FPM(aTransaction,getNumfiche());
 	if(aTransaction.isErreur()){
 		return false;
 	}
@@ -346,7 +349,7 @@ public boolean suppressionFPM(nc.mairie.technique.Transaction aTransaction) thro
 		return false;
 	}
 //	RG controle : si des pièces ont été sorties pour ce FPM ==> FPM ne peut pas être supprimé
-	ArrayList listPieces = Pieces_FPM.listerPieces_FPMFPM(aTransaction,getNumfiche());
+	ArrayList<Pieces_FPM> listPieces = Pieces_FPM.listerPieces_FPMFPM(aTransaction,getNumfiche());
 	if(aTransaction.isErreur()){
 		return false;
 	}
@@ -364,7 +367,7 @@ public boolean suppressionFPM(nc.mairie.technique.Transaction aTransaction) thro
 //		return false;
 //	}
 	//pour tous les entretiens prévus dans cet FPM on modifie pour mettre le PePerso.numfiche à null
-	ArrayList listEntretiens = PM_PePerso.chercherPmPePersoFiche(aTransaction,getNumfiche());
+	ArrayList<PM_PePerso> listEntretiens = PM_PePerso.chercherPmPePersoFiche(aTransaction,getNumfiche());
 	if(aTransaction.isErreur()){
 		return false;
 	}
@@ -470,7 +473,7 @@ public void setCommentaire(String newCommentaire) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new FPMBroker(this); 
 }
 /**
@@ -546,7 +549,7 @@ public int calculCoutTotal(nc.mairie.technique.Transaction aTransaction,FPM unFP
 */
 
 // liste des à valider
-public static java.util.ArrayList listerFPMAValider(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<FPM> listerFPMAValider(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	FPM unPMateriel_Fiche = new FPM();
 	return unPMateriel_Fiche.getMyFPMBroker().listerFPMAValider(aTransaction);
 }
@@ -571,7 +574,7 @@ public String validationFPM(nc.mairie.technique.Transaction aTransaction )  thro
 	}
 	// controle de la Date
 	// la date de sortie du véhicule ne doit pas être inférieur aux dates de réalisation des entretiens
-	ArrayList listPePersoPasFait = PM_PePerso.chercherPmPePersoPasFaitFPM(aTransaction,getNumfiche());
+	ArrayList<PM_PePerso> listPePersoPasFait = PM_PePerso.chercherPmPePersoPasFaitFPM(aTransaction,getNumfiche());
 	if(aTransaction.isErreur()){
 		return "erreur";
 	}
@@ -583,7 +586,7 @@ public String validationFPM(nc.mairie.technique.Transaction aTransaction )  thro
 		msg = "";
 	}
 	
-	ArrayList listPePerso = PM_PePerso.chercherPmPePersoFiche(aTransaction,getNumfiche());
+	ArrayList<PM_PePerso> listPePerso = PM_PePerso.chercherPmPePersoFiche(aTransaction,getNumfiche());
 	if(aTransaction.isErreur()){
 		return "erreur";
 	}
@@ -613,7 +616,7 @@ public String validationFPM(nc.mairie.technique.Transaction aTransaction )  thro
 	return "ok";
 }
 
-public static java.util.ArrayList listerFpmPmat(nc.mairie.technique.Transaction aTransaction,String numinv) throws Exception{
+public static ArrayList<FPM> listerFpmPmat(nc.mairie.technique.Transaction aTransaction,String numinv) throws Exception{
 	FPM unFPM = new FPM();
 	return unFPM.getMyFPMBroker().listerFpmPmat(aTransaction,numinv);
 }

@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Fre_OT
  */
-public class Fre_OT extends nc.mairie.technique.BasicMetier {
+public class Fre_OT extends BasicMetier {
 	public String codefournisseur;
 	public String numeroot;
 /**
@@ -19,7 +24,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Fre_OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerFre_OT(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Fre_OT> listerFre_OT(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Fre_OT unFre_OT = new Fre_OT();
 	return unFre_OT.getMyFre_OTBroker().listerFre_OT(aTransaction);
 }
@@ -28,7 +33,7 @@ public static java.util.ArrayList listerFre_OT(nc.mairie.technique.Transaction a
  * Retourne un ArrayList d'objet métier : Fre_OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerFre_OTOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
+public static ArrayList<Fre_OT> listerFre_OTOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	Fre_OT unFre_OT = new Fre_OT();
 	return unFre_OT.getMyFre_OTBroker().listerFre_OTOT(aTransaction,numot);
 }
@@ -126,7 +131,7 @@ public void setNumeroot(String newNumeroot) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new Fre_OTBroker(this); 
 }
 /**

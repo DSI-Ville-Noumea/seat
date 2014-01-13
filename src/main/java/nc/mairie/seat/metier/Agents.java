@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Agents
  */
-public class Agents extends nc.mairie.technique.BasicMetier implements AgentInterface {
+public class Agents extends BasicMetier implements AgentInterface {
 	public String idindi;
 	public String nomatr;
 	public String nom;
@@ -442,7 +447,7 @@ public void setCdetud(String newCdetud) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new AgentsBroker(this); 
 }
 /**
@@ -465,7 +470,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Agents.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerAgents(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Agents> listerAgents(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Agents unAgents = new Agents();
 	return unAgents.getMyAgentsBroker().listerAgents(aTransaction);
 }
@@ -481,9 +486,9 @@ public static Agents chercherAgents(nc.mairie.technique.Transaction aTransaction
  * Retourne un Agents.
  * @return Agents
  */
-public static java.util.ArrayList chercherAgentsNom(nc.mairie.technique.Transaction aTransaction, String nom) throws Exception{
+public static ArrayList<Agents> listerAgentsNom(nc.mairie.technique.Transaction aTransaction, String nom) throws Exception{
 	Agents unAgents = new Agents();
-	return unAgents.getMyAgentsBroker().chercherAgentsNom(aTransaction, nom);
+	return unAgents.getMyAgentsBroker().listerAgentsNom(aTransaction, nom);
 }
 
 }

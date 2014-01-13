@@ -18,11 +18,14 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeEntretiens_OT extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -534433608870834132L;
 	private String ACTION_SUPPRESSION = "Suppression";
 	private String ACTION_MODIFICATION = "Modification";
 	private String ACTION_CREATION = "Création";
 	private java.lang.String[] LB_ENTRETIENS;
-	private java.lang.String[] LB_ENTRETIENS_OT;
 	private java.lang.String[] LB_TENT;
 	private java.lang.String[] LB_TINT;
 	public boolean isOcassionnel;
@@ -36,10 +39,9 @@ public class OeEntretiens_OT extends nc.mairie.technique.BasicProcess {
 	private TIntervalle tintCourant;
 	private Declarations declarationCourante;
 	private String titreAction="";
-	private ArrayList listEntretiens;
-	private ArrayList listEntretiensOT;
-	private ArrayList listTEnt;
-	private ArrayList listTInt;
+	private ArrayList<Entretien> listEntretiens;
+	private ArrayList<TypeEntretien> listTEnt;
+	private ArrayList<TIntervalle> listTInt;
 	private boolean isFirst = true;
 	private String newCommentaire;
 	private String newDuree;
@@ -180,7 +182,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 }
 
 public void initialiseListEntretiens(javax.servlet.http.HttpServletRequest request) throws Exception{
-	ArrayList a = Entretien.listerEntretien(getTransaction());
+	ArrayList<Entretien> a = Entretien.listerEntretien(getTransaction());
 	String[] colonnes = {"libelleentretien"};
 	//ordre croissant
 	boolean[] ordres = {true};
@@ -206,7 +208,6 @@ public void initialiseListEntretiens(javax.servlet.http.HttpServletRequest reque
 //		 on trouve le bon  entretien
 		if(getEntretienCourant()!=null){
 			//	recherche du type d'intervalle courant
-			int position = -1;
 			addZone(getNOM_LB_ENTRETIENS_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListEntretiens().size(); i++) {
 				Entretien unEntretien = (Entretien)getListEntretiens().get(i);
@@ -232,7 +233,7 @@ public void initialiseListEntretiensOT(javax.servlet.http.HttpServletRequest req
 	}*/
 }
 public void initialiseListTEnt(javax.servlet.http.HttpServletRequest request) throws Exception{
-	ArrayList a = TypeEntretien.listerTypeEntretien(getTransaction());
+	ArrayList<TypeEntretien> a = TypeEntretien.listerTypeEntretien(getTransaction());
 	String[] colonnes = {"designationtypeent"};
 	//ordre croissant
 	boolean[] ordres = {true};
@@ -258,7 +259,6 @@ public void initialiseListTEnt(javax.servlet.http.HttpServletRequest request) th
 //		 on trouve le bon typeent
 		if(getTypeentCourant()!=null){
 			//	recherche du type d'intervalle courant
-			int position = -1;
 			addZone(getNOM_LB_TENT_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListTEnt().size(); i++) {
 				TypeEntretien unTypeEntretien = (TypeEntretien)getListTEnt().get(i);
@@ -271,7 +271,7 @@ public void initialiseListTEnt(javax.servlet.http.HttpServletRequest request) th
 	}
 }
 public void initialiseTInt(javax.servlet.http.HttpServletRequest request) throws Exception{
-	ArrayList a = TIntervalle.listerTIntervalle(getTransaction());
+	ArrayList<TIntervalle> a = TIntervalle.listerTIntervalle(getTransaction());
 	String[] colonnes = {"designation"};
 	//ordre croissant
 	boolean[] ordres = {true};
@@ -297,7 +297,6 @@ public void initialiseTInt(javax.servlet.http.HttpServletRequest request) throws
 //		 on trouve le bon tintervalle
 		if(getTintCourant()!=null){
 			//	recherche du type d'intervalle courant
-			int position = -1;
 			addZone(getNOM_LB_TINT_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListTInt().size(); i++) {
 				TIntervalle unTIntervalle = (TIntervalle)getListTInt().get(i);
@@ -340,7 +339,7 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
 	if(actionOT.equals(ACTION_CREATION)){
 		// recherche des entretiens
 		if(getOtCourant().getNumeroot()!=null){
-			ArrayList listEntretiens = PePersoInfos.chercherPePersoInfosOT(getTransaction(),getOtCourant().getNumeroot());
+			ArrayList<PePersoInfos> listEntretiens = PePersoInfos.chercherPePersoInfosOT(getTransaction(),getOtCourant().getNumeroot());
 			if(getTransaction().isErreur()){
 				return false;
 			}
@@ -369,24 +368,6 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  */
 public java.lang.String getNOM_PB_ENLEVER() {
 	return "NOM_PB_ENLEVER";
-}
-/**
- * - Traite et affecte les zones saisies dans la JSP.
- * - Implémente les règles de gestion du process
- * - Positionne un statut en fonction de ces règles :
- *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public boolean performPB_ENLEVER(javax.servlet.http.HttpServletRequest request) throws Exception {
-	int indice = (Services.estNumerique(getVAL_LB_ENTRETIENS_OT_SELECT()) ? Integer.parseInt(getVAL_LB_ENTRETIENS_OT_SELECT()): -1);
-	if (indice == -1) {
-		getTransaction().declarerErreur("Vous devez sélectionner un élement dans la liste des pièces");
-		return false;
-	}
-	getListEntretiensOT().remove(indice);
-	initialiseListEntretiensOT(request);
-	return true;
 }
 /**
  * Retourne le nom d'un bouton pour la JSP :
@@ -928,64 +909,6 @@ public java.lang.String getVAL_LB_ENTRETIENS_SELECT() {
 }
 /**
  * Getter de la liste avec un lazy initialize :
- * LB_ENTRETIENS_OT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-private String [] getLB_ENTRETIENS_OT() {
-	if (LB_ENTRETIENS_OT == null)
-		LB_ENTRETIENS_OT = initialiseLazyLB();
-	return LB_ENTRETIENS_OT;
-}
-/**
- * Setter de la liste:
- * LB_ENTRETIENS_OT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-private void setLB_ENTRETIENS_OT(java.lang.String[] newLB_ENTRETIENS_OT) {
-	LB_ENTRETIENS_OT = newLB_ENTRETIENS_OT;
-}
-/**
- * Retourne le nom de la zone pour la JSP :
- * NOM_LB_ENTRETIENS_OT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public java.lang.String getNOM_LB_ENTRETIENS_OT() {
-	return "NOM_LB_ENTRETIENS_OT";
-}
-/**
- * Retourne le nom de la zone de la ligne sélectionnée pour la JSP :
- * NOM_LB_ENTRETIENS_OT_SELECT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public java.lang.String getNOM_LB_ENTRETIENS_OT_SELECT() {
-	return "NOM_LB_ENTRETIENS_OT_SELECT";
-}
-/**
- * Méthode à personnaliser
- * Retourne la valeur à afficher pour la zone de la JSP :
- * LB_ENTRETIENS_OT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public java.lang.String [] getVAL_LB_ENTRETIENS_OT() {
-	return getLB_ENTRETIENS_OT();
-}
-/**
- * Méthode à personnaliser
- * Retourne l'indice à sélectionner pour la zone de la JSP :
- * LB_ENTRETIENS_OT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public java.lang.String getVAL_LB_ENTRETIENS_OT_SELECT() {
-	return getZone(getNOM_LB_ENTRETIENS_OT_SELECT());
-}
-/**
- * Getter de la liste avec un lazy initialize :
  * LB_TENT
  * Date de création : (29/07/05 09:18:57)
  * @author : Générateur de process
@@ -1145,28 +1068,22 @@ public PePerso getPePersoCourant() {
 public void setPePersoCourant(PePerso pePersoCourant) {
 	this.pePersoCourant = pePersoCourant;
 }
-public ArrayList getListEntretiens() {
+public ArrayList<Entretien> getListEntretiens() {
 	return listEntretiens;
 }
-public void setListEntretiens(ArrayList listEntretiens) {
+public void setListEntretiens(ArrayList<Entretien> listEntretiens) {
 	this.listEntretiens = listEntretiens;
 }
-public ArrayList getListEntretiensOT() {
-	return listEntretiensOT;
-}
-public void setListEntretiensOT(ArrayList listEntretiensOT) {
-	this.listEntretiensOT = listEntretiensOT;
-}
-public ArrayList getListTEnt() {
+public ArrayList<TypeEntretien> getListTEnt() {
 	return listTEnt;
 }
-public void setListTEnt(ArrayList listTEnt) {
+public void setListTEnt(ArrayList<TypeEntretien> listTEnt) {
 	this.listTEnt = listTEnt;
 }
-public ArrayList getListTInt() {
+public ArrayList<TIntervalle> getListTInt() {
 	return listTInt;
 }
-public void setListTInt(ArrayList listTInt) {
+public void setListTInt(ArrayList<TIntervalle> listTInt) {
 	this.listTInt = listTInt;
 }
 	public Entretien getEntretienCourant() {
@@ -1268,11 +1185,6 @@ public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) th
 		//Si clic sur le bouton PB_ANNULER
 		if (testerParametre(request, getNOM_PB_ANNULER())) {
 			return performPB_ANNULER(request);
-		}
-
-		//Si clic sur le bouton PB_ENLEVER
-		if (testerParametre(request, getNOM_PB_ENLEVER())) {
-			return performPB_ENLEVER(request);
 		}
 
 		//Si clic sur le bouton PB_OK

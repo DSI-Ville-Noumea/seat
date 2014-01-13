@@ -17,6 +17,10 @@ import nc.mairie.technique.*;
 */
 public class OeDeclaration_Visualisation extends nc.mairie.technique.BasicProcess {
 /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3088016365554775066L;
+/**
  * Initialisation des zones à afficher dans la JSP
  * Alimentation des listes, s'il y en a, avec setListeLB_XXX()
  * ATTENTION : Les Objets dans la liste doivent avoir les Fields PUBLIC

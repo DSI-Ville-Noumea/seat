@@ -12,13 +12,17 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OePMPePerso extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5661004737931408042L;
 	public static final int STATUT_ACCES_FPM = 5;
 	public static final int STATUT_RETOURFPM = 4;
 	public static final int STATUT_RECHERCHEEQUIP = 3;
 	public static final int STATUT_MODIFIER = 2;
 	public static final int STATUT_AJOUTER = 1;
 	private String ACTION_SUPPRESSION = "Suppression d'un entretien pour un petit matériel.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
-	private ArrayList listePePerso = null;
+	private ArrayList<PM_Planning> listePePerso = null;
 	private java.lang.String[] LB_PE;
 	private PMatInfos pMatInfosCourant;
 	private PM_Planning pmPlanningCourant;
@@ -83,7 +87,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
  */
 private void initialiseListePe(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	 Si param = "" on liste tous les entretiens
-	java.util.ArrayList a = PM_Planning.listerPM_EntretiensPm(getTransaction(),getPMatInfosCourant().getPminv(),tri);
+	ArrayList<PM_Planning> a = PM_Planning.listerPM_EntretiensPm(getTransaction(),getPMatInfosCourant().getPminv(),tri);
 	// Si param = afaire on liste les entretiens à faire
 	if ("afaire".equals(param)){
 		a = PM_Planning.listerPePersoInfosAFaire(getTransaction(),getPMatInfosCourant().getPminv(),tri);
@@ -483,10 +487,10 @@ public java.lang.String getVAL_ST_TITRE_ACTION() {
 	public void setPMatInfosCourant(PMatInfos pMatInfosCourant) {
 		this.pMatInfosCourant = pMatInfosCourant;
 	}
-	public ArrayList getListePePerso() {
+	public ArrayList<PM_Planning> getListePePerso() {
 		return listePePerso;
 	}
-	public void setListePePerso(ArrayList listePePerso) {
+	public void setListePePerso(ArrayList<PM_Planning> listePePerso) {
 		this.listePePerso = listePePerso;
 	}
 	/**
@@ -691,7 +695,7 @@ public boolean performPB_TRI(javax.servlet.http.HttpServletRequest request) thro
 		param = "Tous";
 	}
 	if(getPMatInfosCourant()!=null){
-		java.util.ArrayList a = PM_Planning.listerPM_EntretiensPm(getTransaction(),getPMatInfosCourant().getPminv(),tri);
+		java.util.ArrayList<PM_Planning> a = PM_Planning.listerPM_EntretiensPm(getTransaction(),getPMatInfosCourant().getPminv(),tri);
 		// Si param = actifs on liste les petits matériels actifs
 		if ("afaire".equals(param)){
 			a = PM_Planning.listerPePersoInfosAFaire(getTransaction(),getPMatInfosCourant().getPminv(),tri);
@@ -753,9 +757,8 @@ public java.lang.String getNOM_RB_AFFICHAGE_FAIT() {
 public java.lang.String getNOM_RB_AFFICHAGE_TOUS() {
 	return "NOM_RB_AFFICHAGE_TOUS";
 }
-public void trier(ArrayList a,String colonne) throws Exception{
+public void trier(ArrayList<PM_Planning> a,String colonne) throws Exception{
 	String[] colonnes = {colonne};
-	String intervalle;
 	//ordre croissant
 	boolean[] ordres = {true};
 	String date = "";

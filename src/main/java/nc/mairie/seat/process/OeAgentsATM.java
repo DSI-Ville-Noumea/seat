@@ -16,16 +16,19 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeAgentsATM extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -955661390844447526L;
 	private java.lang.String[] LB_AGENTS;
 	private java.lang.String[] LB_MECANICIEN;
 	private java.lang.String[] LB_SPE;
 	private String ACTION_SUPPRESSION = "Suppression d'un mécanicien<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification d'un mécanicien.";
 	private String ACTION_CREATION = "Création d'un mécanicien.";
-	private ArrayList listeAgents;
-	private ArrayList listeMecaniciens;
-	private ArrayList listeSpe;
-	private ArrayList listeSpecMeca;
+	private ArrayList<AActifs> listeAgents;
+	private ArrayList<AgentAtmRenseignements> listeMecaniciens;
+	private ArrayList<Specialite> listeSpe;
 	private AgentServiceInfos agentServiceInfosCourant;
 	private AActifs AActifsCourant;
 	private Specialite specialiteCourant;
@@ -57,7 +60,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		Service aService = Service.chercherServiceActifAvecAcronyme(getTransaction(), "ATM");
 		
 		// initialisation de la liste des agents du service de l'ATM
-		ArrayList listeAgents = AActifs.chercherListAgentServiceInfosSce(getTransaction(),aService.getServi());
+		ArrayList<AActifs> listeAgents = AActifs.chercherListAgentServiceInfosSce(getTransaction(),aService.getServi());
 		//ArrayList listeAgents = AgentServiceInfos.chercherListAgentServiceInfosSce(getTransaction(),"2030");
 		if(getTransaction().isErreur()){
 			return ;
@@ -156,7 +159,7 @@ public void initialiseListeAgents(javax.servlet.http.HttpServletRequest request)
  */
 public void initialiseListeMecaniciens(javax.servlet.http.HttpServletRequest request) throws Exception{
 	
-	ArrayList listMeca = AgentAtmRenseignements.listerAgentAtmRenseignements(getTransaction());
+	ArrayList<AgentAtmRenseignements> listMeca = AgentAtmRenseignements.listerAgentAtmRenseignements(getTransaction());
 	if(getTransaction().isErreur()){
 		return;
 	}
@@ -193,7 +196,7 @@ public void initialiseListeMecaniciens(javax.servlet.http.HttpServletRequest req
  * initialise la liste des spécialités
  */
 public void initialiseListespe(javax.servlet.http.HttpServletRequest request) throws Exception{
-	ArrayList liste = Specialite.listerSpecialite(getTransaction());
+	ArrayList<Specialite> liste = Specialite.listerSpecialite(getTransaction());
 	setListeSpe(liste);
 	if (liste.size()!=0){
 		int [] tailles = {20};
@@ -619,25 +622,25 @@ public java.lang.String getVAL_LB_SPE_SELECT() {
 	public void setVide(boolean isVide) {
 		this.isVide = isVide;
 	}
-	public ArrayList getListeAgents() {
+	public ArrayList<AActifs> getListeAgents() {
 		return listeAgents;
 	}
-	public void setListeAgents(ArrayList listeAgents) {
+	public void setListeAgents(ArrayList<AActifs> listeAgents) {
 		this.listeAgents = listeAgents;
 	}
-	public ArrayList getListeMecaniciens() {
+	public ArrayList<AgentAtmRenseignements> getListeMecaniciens() {
 		if(listeMecaniciens==null){
-			listeMecaniciens = new ArrayList();
+			listeMecaniciens = new ArrayList<AgentAtmRenseignements>();
 		}
 		return listeMecaniciens;
 	}
-	public void setListeMecaniciens(ArrayList listeMecaniciens) {
+	public void setListeMecaniciens(ArrayList<AgentAtmRenseignements> listeMecaniciens) {
 		this.listeMecaniciens = listeMecaniciens;
 	}
-	public ArrayList getListeSpe() {
+	public ArrayList<Specialite> getListeSpe() {
 		return listeSpe;
 	}
-	public void setListeSpe(ArrayList listeSpe) {
+	public void setListeSpe(ArrayList<Specialite> listeSpe) {
 		this.listeSpe = listeSpe;
 	}
 	public AgentServiceInfos getAgentServiceInfosCourant() {
@@ -658,12 +661,6 @@ public java.lang.String getVAL_LB_SPE_SELECT() {
 	}
 	public void setSpecialiteCourant(Specialite specialiteCourant) {
 		this.specialiteCourant = specialiteCourant;
-	}
-	public ArrayList getListeSpecMeca() {
-		return listeSpecMeca;
-	}
-	public void setListeSpecMeca(ArrayList listeSpecMeca) {
-		this.listeSpecMeca = listeSpecMeca;
 	}
 	public boolean isVideMeca() {
 		return isVideMeca;

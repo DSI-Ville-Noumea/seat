@@ -5,11 +5,14 @@ import java.util.ArrayList;
 import nc.mairie.technique.Services;
 import nc.mairie.seat.metier.PeBase;
 import nc.mairie.seat.process.Outils;
-;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Equipement
  */
-public class Equipement extends nc.mairie.technique.BasicMetier {
+public class Equipement extends BasicMetier {
 	public String numeroinventaire;
 	public String numeroimmatriculation;
 	public String datemiseencirculation;
@@ -47,7 +50,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Equipement.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerEquipement(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Equipement> listerEquipement(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Equipement unEquipement = new Equipement();
 	return unEquipement.getMyEquipementBroker().listerEquipement(aTransaction);
 }
@@ -125,11 +128,11 @@ public boolean creerEquipement(nc.mairie.technique.Transaction aTransaction,Equi
 		if (!creatOK)
 			return false;
 		//Creation du plan d'entretien personnalisé
-		ArrayList aEntretien = PeBase.listerPeBaseModeleActif(aTransaction,getCodemodele());
+		ArrayList<PeBase> aEntretien = PeBase.listerPeBaseModeleActif(aTransaction,getCodemodele());
 		
 		//Si au moins un entretien
 		if (aEntretien.size() !=0 ) {					
-			for (java.util.ListIterator list = aEntretien.listIterator(); list.hasNext(); ) {
+			for (java.util.ListIterator<PeBase> list = aEntretien.listIterator(); list.hasNext(); ) {
 				PeBase aPeBase = (PeBase)list.next();
 				Entretien unEntretien = Entretien.chercherEntretien(aTransaction,aPeBase.getCodeentretien());
 				if(aTransaction.isErreur()){
@@ -166,7 +169,7 @@ public boolean modifierEquipement(nc.mairie.technique.Transaction aTransaction,S
 	// on vérifie que l'équipement n'est pas déjà utilisé
 	if(!ancienNuminv.equals(getNumeroinventaire())){
 		// BPC
-		ArrayList listBPC = BPC.listerBPCEquipement(aTransaction,ancienNuminv);
+		ArrayList<BPC> listBPC = BPC.listerBPCEquipement(aTransaction,ancienNuminv);
 		if(aTransaction.isErreur()){
 			aTransaction.traiterErreur();
 		}
@@ -177,7 +180,7 @@ public boolean modifierEquipement(nc.mairie.technique.Transaction aTransaction,S
 			}
 		}
 		//OT
-		ArrayList listOT = OT.listerOTEquip(aTransaction,ancienNuminv);
+		ArrayList<OT> listOT = OT.listerOTEquip(aTransaction,ancienNuminv);
 		if(aTransaction.isErreur()){
 			aTransaction.traiterErreur();
 		}
@@ -188,7 +191,7 @@ public boolean modifierEquipement(nc.mairie.technique.Transaction aTransaction,S
 			}
 		}
 		//Déclarations
-		ArrayList listDecl = Declarations.listerDeclarationsEquip(aTransaction,ancienNuminv);
+		ArrayList<Declarations> listDecl = Declarations.listerDeclarationsEquip(aTransaction,ancienNuminv);
 		if(aTransaction.isErreur()){
 			aTransaction.traiterErreur();
 		}
@@ -199,7 +202,7 @@ public boolean modifierEquipement(nc.mairie.technique.Transaction aTransaction,S
 			}
 		}
 		//Affectation service
-		ArrayList listAffSce = Affecter_Service.chercherListAffecter_ServiceEquip(aTransaction,ancienNuminv);
+		ArrayList<Affecter_Service> listAffSce = Affecter_Service.chercherListAffecter_ServiceEquip(aTransaction,ancienNuminv);
 		if(aTransaction.isErreur()){
 			aTransaction.traiterErreur();
 		}
@@ -210,7 +213,7 @@ public boolean modifierEquipement(nc.mairie.technique.Transaction aTransaction,S
 			}
 		}
 		//Affectation agent
-		ArrayList listAffAgent = Affecter_Agent.chercherListAffecter_AgentEquip(aTransaction,ancienNuminv);
+		ArrayList<Affecter_Agent> listAffAgent = Affecter_Agent.chercherListAffecter_AgentEquip(aTransaction,ancienNuminv);
 		if(aTransaction.isErreur()){
 			aTransaction.traiterErreur();
 		}
@@ -221,7 +224,7 @@ public boolean modifierEquipement(nc.mairie.technique.Transaction aTransaction,S
 			}
 		}
 		// Pe Perso
-		ArrayList listPePerso = PePerso.listerPePersoEquip(aTransaction,ancienNuminv);
+		ArrayList<PePerso> listPePerso = PePerso.listerPePersoEquip(aTransaction,ancienNuminv);
 		if(aTransaction.isErreur()){
 			aTransaction.traiterErreur();
 		}
@@ -279,7 +282,7 @@ public boolean modifierEquipement(nc.mairie.technique.Transaction aTransaction,S
 		}
 		//on modifie les date prévues pour les entretiens
 		String tri = "";
-		ArrayList listEntretien = PePersoInfos.listerPePersoInfosEquip(aTransaction,getNumeroinventaire(),tri);
+		ArrayList<PePersoInfos> listEntretien = PePersoInfos.listerPePersoInfosEquip(aTransaction,getNumeroinventaire(),tri);
 		if (listEntretien.size()>0){
 			for (int i = 0;i<listEntretien.size();i++){
 				//on regarde si les dates de prévus sont renseignées ou pas
@@ -320,7 +323,7 @@ public boolean supprimerEquipement(nc.mairie.technique.Transaction aTransaction)
  * true ou false
  */
 
-public static java.util.ArrayList listerEquipementTri(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception{
+public static ArrayList<Equipement> listerEquipementTri(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception{
 	Equipement unEquipement = new Equipement();
 	return unEquipement.getMyEquipementBroker().listerEquipementTri(aTransaction,tri);
 }
@@ -330,7 +333,7 @@ public static java.util.ArrayList listerEquipementTri(nc.mairie.technique.Transa
  * @return java.util.ArrayList
  * Selon le paramètre on liste les équipements
  */
-public static java.util.ArrayList listerEquipementParam(nc.mairie.technique.Transaction aTransaction,String param,String tri) throws Exception{
+public static ArrayList<Equipement> listerEquipementParam(nc.mairie.technique.Transaction aTransaction,String param,String tri) throws Exception{
 	Equipement unEquipement = new Equipement();
 	return unEquipement.getMyEquipementBroker().listerEquipementParam(aTransaction,param,tri);
 }
@@ -465,7 +468,7 @@ public void setDureegarantie(String newDureegarantie) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new EquipementBroker(this); 
 }
 /**
@@ -509,9 +512,9 @@ public boolean existeEquipementModele(nc.mairie.technique.Transaction aTransacti
  * true ou false
  */
 
-public static java.util.ArrayList listerEquipementModele(nc.mairie.technique.Transaction aTransaction,String mod) throws Exception{
+public static ArrayList<Equipement> listerEquipementModele(nc.mairie.technique.Transaction aTransaction,String mod) throws Exception{
 	Equipement unEquipement = new Equipement();
-	return unEquipement.getMyEquipementBroker().listerEquipementModèle(aTransaction,mod);
+	return unEquipement.getMyEquipementBroker().listerEquipementModele(aTransaction,mod);
 }
 
 }

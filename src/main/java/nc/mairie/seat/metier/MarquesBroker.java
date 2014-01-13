@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Marques
  */
-public class MarquesBroker extends nc.mairie.technique.BasicBroker {
+public class MarquesBroker extends BasicBroker {
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
  * @author : Coralie NICOLAS
  */
@@ -40,7 +43,7 @@ public boolean supprimerMarques(nc.mairie.technique.Transaction aTransaction) th
  * Retourne un ArrayList d'objet métier : Marques.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerMarques(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Marques> listerMarques(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by designationmarque");
 }
 /**
@@ -56,11 +59,11 @@ public Marques chercherMarques(nc.mairie.technique.Transaction aTransaction, Str
  * On sélectionne toutes les marques qui ont des modèles
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerMarquesModele(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Marques> listerMarquesModele(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemarque in (select codemarque from SEAT.f_modeles) order by designationmarque");
 }
 
-public java.util.ArrayList listerMarquesModeleMT(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Marques> listerMarquesModeleMT(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemarque in (select codemarque from SEAT.f_modeles, SEAT.f_typeequip where SEAT.f_modeles.codete=SEAT.f_typeequip.codetypeequip and SEAT.f_typeequip.typete='MT') order by designationmarque");
 }
 
@@ -76,14 +79,14 @@ public boolean existeMarques(nc.mairie.technique.Transaction aTransaction, Strin
 /**
  * Constructeur MarquesBroker.
  */
-public MarquesBroker(nc.mairie.technique.BasicMetier aMetier) {
+public MarquesBroker(Marques aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.MarquesMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Marques definirMyMetier() {
 	return new Marques() ;
 }
 /**

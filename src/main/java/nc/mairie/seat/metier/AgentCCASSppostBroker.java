@@ -1,20 +1,23 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier AgentCCASSppost
  */
-public class AgentCCASSppostBroker extends nc.mairie.technique.BasicBroker {
+public class AgentCCASSppostBroker extends BasicBroker {
 /**
  * Constructeur AgentCCASSppostBroker.
  */
-public AgentCCASSppostBroker(nc.mairie.technique.BasicMetier aMetier) {
+public AgentCCASSppostBroker(AgentCCASSppost aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.AgentCCASSppostMetier
  */
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected AgentCCASSppost definirMyMetier() {
 	return new AgentCCASSppost() ;
 }
 /**
@@ -60,7 +63,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * Retourne un ArrayList d'objet métier : AgentCCASSppost.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAgentCCASSppost(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<AgentCCASSppost> listerAgentCCASSppost(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**

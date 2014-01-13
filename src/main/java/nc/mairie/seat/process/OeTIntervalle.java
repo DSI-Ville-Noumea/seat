@@ -10,11 +10,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeTIntervalle extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8703930364709054565L;
 	private java.lang.String[] LB_LIBELLE;
 	private String ACTION_SUPPRESSION = "Suppression d'un type d'intervalle.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification du nom d'un type d'intervalle.";
 	private String ACTION_CREATION = "Création d'un type d'intervalle.";
-	private ArrayList listeTIntervalle = null;
+	private ArrayList<TIntervalle> listeTIntervalle = null;
 	private TIntervalle tintervalleCourant;
 	private String focus = null;
 	public int isVide = 0;
@@ -31,7 +35,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 
 	//	Si liste des types d'intervalle est vide
 	if (getLB_LIBELLE() == LBVide) {
-		java.util.ArrayList a = TIntervalle.listerTIntervalle(getTransaction());
+		ArrayList<TIntervalle> a = TIntervalle.listerTIntervalle(getTransaction());
 		setListeTIntervalle(a);
 		
 		if (a.size()>0){
@@ -44,8 +48,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
 			String [] padding = {"G"};
 			
-			FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-			String [] l = f.getListeFormatee();
 			setLB_LIBELLE(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 		}else{
 			setLB_LIBELLE(null);
@@ -55,7 +57,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	 on sélectionne l'élément en cours
 	if(getTintervalleCourant()!=null){
 		if(getTintervalleCourant().getCodeti()!=null){
-			int position = -1;
 			addZone(getNOM_LB_LIBELLE_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListeTIntervalle().size(); i++) {
 				TIntervalle unTi = (TIntervalle)getListeTIntervalle().get(i);
@@ -470,13 +471,13 @@ public java.lang.String getVAL_LB_LIBELLE_SELECT() {
 	/**
 	 * @return Renvoie listeTIntervalle.
 	 */
-	private ArrayList getListeTIntervalle() {
+	private ArrayList<TIntervalle> getListeTIntervalle() {
 		return listeTIntervalle;
 	}
 	/**
 	 * @param listeTIntervalle listeTIntervalle à définir.
 	 */
-	private void setListeTIntervalle(ArrayList listeTIntervalle) {
+	private void setListeTIntervalle(ArrayList<TIntervalle> listeTIntervalle) {
 		this.listeTIntervalle = listeTIntervalle;
 	}
 	/**

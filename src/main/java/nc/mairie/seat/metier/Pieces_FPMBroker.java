@@ -1,11 +1,14 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Pieces_FPM
  */
-public class Pieces_FPMBroker extends nc.mairie.technique.BasicBroker {
+public class Pieces_FPMBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -31,7 +34,7 @@ public boolean supprimerPieces_FPM(nc.mairie.technique.Transaction aTransaction)
  * Retourne un ArrayList d'objet métier : Pieces_FPM.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPieces_FPM(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Pieces_FPM> listerPieces_FPM(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -50,20 +53,20 @@ public Pieces_FPM chercherPieces_FPM(nc.mairie.technique.Transaction aTransactio
 public boolean existePiecesFPM(nc.mairie.technique.Transaction aTransaction, String numfiche,String numpiece,String date) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numfiche = "+numfiche+" and numpiece = "+numpiece+" and dsortie='"+date+"'");
 }
-public java.util.ArrayList listerPieces_FPMFPM(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception {
+public ArrayList<Pieces_FPM> listerPieces_FPMFPM(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numfiche = "+numfiche);
 }
 /**
  * Constructeur Pieces_FPMBroker.
  */
-public Pieces_FPMBroker(nc.mairie.technique.BasicMetier aMetier) {
+public Pieces_FPMBroker(Pieces_FPM aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.Pieces_FPMMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Pieces_FPM definirMyMetier() {
 	return new Pieces_FPM() ;
 }
 /**

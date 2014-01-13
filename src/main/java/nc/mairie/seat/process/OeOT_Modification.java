@@ -24,6 +24,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeOT_Modification extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8811717508743153012L;
 	public static final int STATUT_DECLARATIONS = 7;
 	public static final int STATUT_CREATIONOT = 6;
 	public static final int STATUT_FRE = 5;
@@ -40,10 +44,10 @@ public class OeOT_Modification extends nc.mairie.technique.BasicProcess {
 	private EquipementInfos equipementInfosCourant;
 	private OT otCourant;
 	private OTInfos otInfosCourant;
-	private ArrayList listInterventions;
-	private ArrayList listIntervenants;
-	private ArrayList listPieces;
-	private ArrayList listBe;
+	private ArrayList<PePersoInfos> listInterventions;
+	private ArrayList<OT_ATM> listIntervenants;
+	private ArrayList<PiecesInfos> listPieces;
+	private ArrayList<BE> listBe;
 	private String newDSortie;
 	private String newDEntree;
 	private String newCompteur;
@@ -96,7 +100,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		setOtCourant(unOT);
 		if(getOtCourant()!=null){
 			if(getOtCourant().getNumeroot()!=null){
-				OT aOT = OT.chercherOT(getTransaction(),getOtCourant().getNumeroot());
+				OT.chercherOT(getTransaction(),getOtCourant().getNumeroot());
 				if (getTransaction().isErreur()){
 					getTransaction().traiterErreur();
 					addZone(getNOM_ST_TITRE_ACTION(),ACTION_CREATION);
@@ -151,7 +155,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	// controle pour initialisation des champs
 	if (getOtCourant()!=null){
 		if(getOtCourant().getNumeroot()!=null){
-			OT unOT = OT.chercherOT(getTransaction(),getOtCourant().getNumeroot());
+			OT.chercherOT(getTransaction(),getOtCourant().getNumeroot());
 			if (getTransaction().isErreur()){
 				getTransaction().traiterErreur();
 			}else{
@@ -281,7 +285,7 @@ public boolean initialiseListInterventions(javax.servlet.http.HttpServletRequest
 	String intervalle;
 	// on initialise la liste des interventions réalisées pendant l'OT
 	if(getOtCourant()!=null){
-		ArrayList listInterventions= PePersoInfos.chercherPePersoInfosOT(getTransaction(),getOtCourant().getNumeroot());
+		ArrayList<PePersoInfos> listInterventions= PePersoInfos.chercherPePersoInfosOT(getTransaction(),getOtCourant().getNumeroot());
 		if(getTransaction().isErreur()){
 			return false;
 		}
@@ -324,14 +328,14 @@ public boolean initialiseListInterventions(javax.servlet.http.HttpServletRequest
 }
 
 public boolean initialiseListBe(javax.servlet.http.HttpServletRequest request) throws Exception{
-	ArrayList listBe = BE.listerBEOTNumInv(getTransaction(),getOtCourant().getNumeroot(),getOtCourant().getNuminv());
+	ArrayList<BE> listBe = BE.listerBEOTNumInv(getTransaction(),getOtCourant().getNumeroot(),getOtCourant().getNuminv());
 	if(getTransaction().isErreur()){
 		return false;
 	}
 	setListBe(listBe);
 	
 //	Alim de la liste des EngJU
-	ArrayList arrENGJU = ENGJU.listerENGJUGroupByCdepNoengjIdetbs(getTransaction(), getOtCourant().getNumeroot(), getOtCourant().getNuminv());
+	ArrayList<ENGJU> arrENGJU = ENGJU.listerENGJUGroupByCdepNoengjIdetbs(getTransaction(), getOtCourant().getNumeroot(), getOtCourant().getNuminv());
 		
 	if(arrENGJU.size()>0){
 		int tailles [] = {10,10,30,10};
@@ -403,7 +407,7 @@ public int montantBE(javax.servlet.http.HttpServletRequest request,ENJU unEnju) 
 }
 */
 public boolean initialiseListIntervenants(javax.servlet.http.HttpServletRequest request) throws Exception{
-	ArrayList listMeca = OT_ATM.listerOT_ATMOT(getTransaction(),getOtCourant().getNumeroot());
+	ArrayList<OT_ATM> listMeca = OT_ATM.listerOT_ATMOT(getTransaction(),getOtCourant().getNumeroot());
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -432,7 +436,7 @@ public boolean initialiseListIntervenants(javax.servlet.http.HttpServletRequest 
 public boolean initialiseListPieces(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	 on initialise la liste des pièces sorties du stock pour l'OT
 	if(getOtCourant()!=null){
-		ArrayList listPiecesInfos = PiecesInfos.chercherPiecesInfosOT(getTransaction(),getOtCourant().getNumeroot());
+		ArrayList<PiecesInfos> listPiecesInfos = PiecesInfos.chercherPiecesInfosOT(getTransaction(),getOtCourant().getNumeroot());
 		if(getTransaction().isErreur()){
 			return false;
 		}
@@ -1271,31 +1275,31 @@ public java.lang.String getVAL_LB_PIECES_SELECT() {
 	public void setOtCourant(OT otCourant) {
 		this.otCourant = otCourant;
 	}
-	public ArrayList getListIntervenants() {
+	public ArrayList<OT_ATM> getListIntervenants() {
 		if(listIntervenants==null){
-			listIntervenants = new ArrayList();
+			listIntervenants = new ArrayList<OT_ATM>();
 		}
 		return listIntervenants;
 	}
-	public void setListIntervenants(ArrayList listIntervenants) {
+	public void setListIntervenants(ArrayList<OT_ATM> listIntervenants) {
 		this.listIntervenants = listIntervenants;
 	}
-	public ArrayList getListInterventions() {
+	public ArrayList<PePersoInfos> getListInterventions() {
 		if(listInterventions==null){
-			listInterventions = new ArrayList();
+			listInterventions = new ArrayList<PePersoInfos>();
 		}
 		return listInterventions;
 	}
-	public void setListInterventions(ArrayList listInterventions) {
+	public void setListInterventions(ArrayList<PePersoInfos> listInterventions) {
 		this.listInterventions = listInterventions;
 	}
-	public ArrayList getListPieces() {
+	public ArrayList<PiecesInfos> getListPieces() {
 		if(listPieces==null){
-			listPieces = new ArrayList();
+			listPieces = new ArrayList<PiecesInfos>();
 		}
 		return listPieces;
 	}
-	public void setListPieces(ArrayList listPieces) {
+	public void setListPieces(ArrayList<PiecesInfos> listPieces) {
 		this.listPieces = listPieces;
 	}
 	public OTInfos getOtInfosCourant() {
@@ -1479,10 +1483,10 @@ public java.lang.String [] getVAL_LB_FRE() {
 public java.lang.String getVAL_LB_FRE_SELECT() {
 	return getZone(getNOM_LB_FRE_SELECT());
 }
-	public ArrayList getListBe() {
+	public ArrayList<BE> getListBe() {
 		return listBe;
 	}
-	public void setListBe(ArrayList listBe) {
+	public void setListBe(ArrayList<BE> listBe) {
 		this.listBe = listBe;
 	}
 /**

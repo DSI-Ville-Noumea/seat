@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PM_ATM
  */
-public class PM_ATMBroker extends nc.mairie.technique.BasicBroker {
+public class PM_ATMBroker extends BasicBroker {
 /**
  * Constructeur PM_ATMBroker.
  */
-public PM_ATMBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PM_ATMBroker(PM_ATM aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PM_ATMMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PM_ATM definirMyMetier() {
 	return new PM_ATM() ;
 }
 /**
@@ -66,7 +69,7 @@ public boolean supprimerPM_ATM(nc.mairie.technique.Transaction aTransaction) thr
  * Retourne un ArrayList d'objet métier : PM_ATM.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPM_ATM(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<PM_ATM> listerPM_ATM(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -86,7 +89,7 @@ public boolean existePM_ATM(nc.mairie.technique.Transaction aTransaction, String
 }
 
 // liste des pm_atm pour un numfiche
-public java.util.ArrayList listerPM_ATM_FPM(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception {
+public ArrayList<PM_ATM> listerPM_ATM_FPM(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numfiche="+numfiche);
 }
 

@@ -1,11 +1,15 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.seat.process.Outils;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Pieces
  */
-public class Pieces extends nc.mairie.technique.BasicMetier {
+public class Pieces extends BasicMetier {
 	public String codepiece;
 	public String designationpiece;
 	public String pu;
@@ -55,7 +59,7 @@ public void setPu(String newPu) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PiecesBroker(this); 
 }
 /**
@@ -78,7 +82,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Pieces.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPieces(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Pieces> listerPieces(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Pieces unPieces = new Pieces();
 	return unPieces.getMyPiecesBroker().listerPieces(aTransaction);
 }
@@ -96,7 +100,7 @@ public static Pieces chercherPieces(nc.mairie.technique.Transaction aTransaction
  * @return java.util.ArrayList
  * on cherche les pièces qui comment par lib...
  */
-public static java.util.ArrayList chercherPiecesLib(nc.mairie.technique.Transaction aTransaction,String lib) throws Exception{
+public static ArrayList<Pieces> chercherPiecesLib(nc.mairie.technique.Transaction aTransaction,String lib) throws Exception{
 	Pieces unPieces = new Pieces();
 	return unPieces.getMyPiecesBroker().chercherPiecesLib(aTransaction,lib);
 }

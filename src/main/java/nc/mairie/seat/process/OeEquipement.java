@@ -3,7 +3,6 @@ package nc.mairie.seat.process;
 import java.util.ArrayList;
 import nc.mairie.seat.metier.EquipementInfos;
 import nc.mairie.seat.metier.Equipement;
-import nc.mairie.seat.metier.Modeles;
 import nc.mairie.technique.*;
 /**
  * Process OeEquipement
@@ -11,11 +10,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeEquipement extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1367655578465978329L;
 	public static final int STATUT_AJOUTER = 1;
 	public static final int STATUT_MODIFIER = 2;
 	private java.lang.String[] LB_EQUIPEMENTINFOS;
 	private String ACTION_SUPPRESSION = "Mise hors service d'un équipement.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
-	private ArrayList listeEquipementInfos;
+	private ArrayList<EquipementInfos> listeEquipementInfos;
 	private Equipement equipementCourant;
 	private EquipementInfos equipementInfosCourant;
 	private String tri = "numeroinventaire";
@@ -48,7 +51,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		// Si param = "" on liste tous les équipements
 		//optimisation de luc 01/09/11
 		//java.util.ArrayList a = EquipementInfos.listerEquipementInfos(getTransaction(),tri);
-		java.util.ArrayList a = null; 
+		java.util.ArrayList<EquipementInfos> a = null; 
 		// Si param = actifs on liste les équipements actifs
 		if ("actifs".equals(param)){
 			a = EquipementInfos.listerEquipementInfosActifs(getTransaction(),tri);
@@ -471,13 +474,13 @@ public java.lang.String getVAL_LB_EQUIPEMENTINFOS_SELECT() {
 	/**
 	 * @return Renvoie listeEquipement.
 	 */
-	private ArrayList getListeEquipementInfos() {
+	private ArrayList<EquipementInfos> getListeEquipementInfos() {
 		return listeEquipementInfos;
 	}
 	/**
 	 * @param listeEquipement listeEquipement à définir.
 	 */
-	private void setListeEquipementInfos(ArrayList listeEquipement) {
+	private void setListeEquipementInfos(ArrayList<EquipementInfos> listeEquipement) {
 		this.listeEquipementInfos = listeEquipement;
 	}
 /**
@@ -707,27 +710,9 @@ public boolean performPB_OK_TRI(javax.servlet.http.HttpServletRequest request) t
 	
 	return true;
 }
-public void trier2(ArrayList a,String colonne) throws Exception{
-	
-	//a= Services.trier(a,colonnes,ordres);
-	setListeEquipementInfos(a);
 
-	if(a.size()>0){
-		//les élèments de la liste 
-		int [] tailles = {5,10,10,20,15,10};
-		String [] champs = {"numeroinventaire","numeroimmatriculation","designationmarque","designationmodele","designationtypeequip","datemiseencirculation"};
-		//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
-		String [] padding = {"G","G","G","G","G","C"};
-		
-		setLB_EQUIPEMENTINFOS(new FormateListe(tailles,a,champs,padding,true).getListeFormatee());
-	}else{
-		setLB_EQUIPEMENTINFOS(LBVide);
-	}
-	setIsVide(a.size());
-	return ;
-}
 
-public void trier(ArrayList a,String colonne) throws Exception{
+public void trier(ArrayList<EquipementInfos> a,String colonne) throws Exception{
 	boolean[] ordres = {true};//,true};
 	String[] colonnes = {colonne};
 	if (tri.indexOf("date")>=0)

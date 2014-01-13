@@ -25,15 +25,18 @@ document.formu.elements[nom].focus();
 </SCRIPT>
 <TITLE>OeOT.jsp</TITLE>
 </HEAD>
-<BODY BGPROPERTIES="FIXED" background="images/fond.jpg" class="sigp2-BODY"><jsp:useBean class="nc.mairie.seat.process.OeDeclarations" id="process" scope="session"></jsp:useBean>
+<BODY background="images/fond.jpg" class="sigp2-BODY"><jsp:useBean class="nc.mairie.seat.process.OeDeclarations" id="process" scope="session"></jsp:useBean>
 <TABLE border="0" width="580" style="text-align : center;" class="sigp2">
 <%@ include file="BanniereErreur.jsp" %>
     <TR>
       <TD style="text-align : center;">
-			<FORM name="formu" method="POST"><FIELDSET><LEGEND class="sigp2Fieldset" align="left"></LEGEND>
-<%if (null==process.getVAL_LB_DECLARATIONS_SELECT()||process.getVAL_ST_TITRE_ACTION().equals("")){ %><INPUT
-			type="submit" value="OK" name="<%=process.getNOM_PB_TRI() %>"
-			style="visibility : hidden;"><TABLE border="1" class="sigp2">
+<FORM name="formu" method="POST">
+			
+<%if (null==process.getVAL_LB_DECLARATIONS_SELECT()||process.getVAL_ST_TITRE_ACTION().equals("")){ %>
+	<FIELDSET><LEGEND class="sigp2Fieldset" align="left"></LEGEND>
+<%-- <INPUT			type="submit" value="OK" name="<%=process.getNOM_PB_TRI() %>"
+			style="visibility : hidden;"><TABLE border="1" class="sigp2"> --%>
+			<TABLE>
 				<TR align="center">
 					<TD align="left"><TABLE width="100%" border="1">
 					<TBODY>

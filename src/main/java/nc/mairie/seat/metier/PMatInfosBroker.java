@@ -1,11 +1,14 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PMatInfos
  */
-public class PMatInfosBroker extends nc.mairie.technique.BasicBroker {
+public class PMatInfosBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -31,14 +34,14 @@ public boolean supprimerPMatInfos(nc.mairie.technique.Transaction aTransaction) 
  * Retourne un ArrayList d'objet métier : PMatInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPMatInfos(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<PMatInfos> listerPMatInfos(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by "+param);
 }
 /**
  * Retourne un ArrayList d'objet métier : PMatInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPMatInfosSansEntretienPlanifie(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<PMatInfos> listerPMatInfosSansEntretienPlanifie(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"" +
 			" where dmes < current date - 1 year" +
 			" and not exists (select pminv from SEAT.F_PMPE_PERSO" +
@@ -48,7 +51,7 @@ public java.util.ArrayList listerPMatInfosSansEntretienPlanifie(nc.mairie.techni
  * Retourne un ArrayList d'objet métier : PMatInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPMatInfosRecherche(nc.mairie.technique.Transaction aTransaction,String pminv,String param) throws Exception {
+public ArrayList<PMatInfos> listerPMatInfosRecherche(nc.mairie.technique.Transaction aTransaction,String pminv,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv like '"+pminv+"%' order by "+param);
 }
 /**
@@ -63,7 +66,7 @@ public PMatInfos chercherPMatInfos(nc.mairie.technique.Transaction aTransaction,
  * Retourne un ArrayList d'objet métier : EquipementInfosActifs.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPMatInfosActifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception {
+public ArrayList<PMatInfos> listerPMatInfosActifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception {
 	if(tri.equals("")){
 		tri="pminv";
 	}
@@ -75,7 +78,7 @@ public java.util.ArrayList listerPMatInfosActifs(nc.mairie.technique.Transaction
  * Retourne un ArrayList d'objet métier : EquipementInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPMatInfosInactifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception {
+public ArrayList<PMatInfos> listerPMatInfosInactifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception {
 	if(tri.equals("")){
 		tri="pminv";
 	}
@@ -90,13 +93,13 @@ public boolean existePMatInfosPm(nc.mairie.technique.Transaction aTransaction, S
 /**
  * Constructeur PMatInfosBroker.
  */
-public PMatInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PMatInfosBroker(PMatInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PMatInfosMetier
  */
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PMatInfos definirMyMetier() {
 	return new PMatInfos() ;
 }
 /**
@@ -141,7 +144,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 	return mappage;
 }
 
-public java.util.ArrayList chercherListPMatInfosTous(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
+public ArrayList<PMatInfos> chercherListPMatInfosTous(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where char(pminv) like '"+cle+"%' OR char(pmserie)  like '"+cle+"%'");
 }
 

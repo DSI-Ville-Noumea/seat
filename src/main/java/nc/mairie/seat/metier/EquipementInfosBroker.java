@@ -1,16 +1,19 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier EquipementInfos
  */
-public class EquipementInfosBroker extends nc.mairie.technique.BasicBroker {
+public class EquipementInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : EquipementInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerEquipementInfos(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception {
+public ArrayList<EquipementInfos> listerEquipementInfos(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception {
 	if(tri.equals("")){
 		tri="numeroinventaire";
 	}
@@ -21,7 +24,7 @@ public java.util.ArrayList listerEquipementInfos(nc.mairie.technique.Transaction
  * Retourne un ArrayList d'objet métier : EquipementInfosActifs.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerEquipementInfosActifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception {
+public ArrayList<EquipementInfos> listerEquipementInfosActifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception {
 	if(tri.equals("")){
 		tri="numeroinventaire";
 	}
@@ -33,7 +36,7 @@ public java.util.ArrayList listerEquipementInfosActifs(nc.mairie.technique.Trans
  * Retourne un ArrayList d'objet métier : EquipementInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerEquipementInfosInactifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception {
+public ArrayList<EquipementInfos> listerEquipementInfosInactifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception {
 	if(tri.equals("")){
 		tri="numeroinventaire";
 	}
@@ -46,7 +49,7 @@ public java.util.ArrayList listerEquipementInfosInactifs(nc.mairie.technique.Tra
  * Retourne un EquipementInfos.
  * @return EquipementInfos
  */
-public java.util.ArrayList chercherListEquipementInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
+public ArrayList<EquipementInfos> chercherListEquipementInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	//return executeSelectListe(aTransaction,"select * from "+getTable()+" where dateventeoureforme='0001-01-01' and char(NUMEROINVENTAIRE) like '"+cle+"%' OR char(NUMEROIMMATRICULATION)  like '"+cle+"%'");
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where char(numeroinventaire) like '"+cle+"%' OR char(numeroimmatriculation)  like '"+cle+"%' order by numeroimmatriculation");
 }
@@ -61,7 +64,7 @@ public EquipementInfos chercherEquipementInfos(nc.mairie.technique.Transaction a
  * Retourne un EquipementInfos.
  * @return EquipementInfos
  */
-public java.util.ArrayList chercherListEquipementInfosTous(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
+public ArrayList<EquipementInfos> chercherListEquipementInfosTous(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where char(NUMEROINVENTAIRE) like '"+cle+"%' OR char(NUMEROIMMATRICULATION)  like '"+cle+"%'");
 }
 
@@ -85,14 +88,14 @@ public boolean existeEquipementInfosEquip(nc.mairie.technique.Transaction aTrans
 /**
  * Constructeur EquipementInfosBroker.
  */
-public EquipementInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public EquipementInfosBroker(EquipementInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.EquipementInfosMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected EquipementInfos definirMyMetier() {
 	return new EquipementInfos() ;
 }
 /**

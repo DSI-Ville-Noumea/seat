@@ -17,18 +17,22 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeDeclarations extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4083631567137632946L;
 	public static final int STATUT_MODIFIER = 2;
 	public static final int STATUT_AJOUTER = 1;
 	private java.lang.String[] LB_DECLARATIONS;
 	private String ACTION_SUPPRESSION = "Suppression<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification";
 	private String ACTION_CREATION = "Création";
-	private ArrayList listeDeclarationsAgentEquip;
+	private ArrayList<DeclarationAgentEquip> listeDeclarationsAgentEquip;
 	private Declarations declarationCourante;
 	private EquipementInfos equipementInfosCourant;
 	private PMatInfos pMatInfosCourant;
 	public boolean isVide;
-	private String tri;
+//	private String tri;
 /**
  * Initialisation des zones à afficher dans la JSP
  * Alimentation des listes, s'il y en a, avec setListeLB_XXX()
@@ -49,7 +53,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 }
 
 public void initialiseListeDeclarations(javax.servlet.http.HttpServletRequest request) throws Exception{
-	ArrayList arr = DeclarationAgentEquip.listerDeclarationAgentEquip(getTransaction());
+	ArrayList<DeclarationAgentEquip> arr = DeclarationAgentEquip.listerDeclarationAgentEquip(getTransaction());
 	if (arr.size() != 0) {
 	
 		setListeDeclarationsAgentEquip(arr);
@@ -357,7 +361,7 @@ public java.lang.String getNOM_PB_VALIDER() {
 public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	if(getVAL_ST_TITRE_ACTION().equals(ACTION_SUPPRESSION)){
 		if((getDeclarationCourante().getCodeot()!=null)&&(!getDeclarationCourante().getCodeot().equals(""))){
-			OT unOT = OT.chercherOT(getTransaction(),getDeclarationCourante().getCodeot());
+			OT.chercherOT(getTransaction(),getDeclarationCourante().getCodeot());
 			if(getTransaction().isErreur()){
 				getTransaction().traiterErreur();
 				getDeclarationCourante().supprimerDeclarations(getTransaction());
@@ -396,12 +400,12 @@ public Declarations getDeclarationCourante() {
 public void setDeclarationCourante(Declarations declarationCourante) {
 	this.declarationCourante = declarationCourante;
 }
-public ArrayList getListeDeclarationsAgentEquip() {
+public ArrayList<DeclarationAgentEquip> getListeDeclarationsAgentEquip() {
 	if (listeDeclarationsAgentEquip == null)
-		listeDeclarationsAgentEquip=new ArrayList();
+		listeDeclarationsAgentEquip=new ArrayList<DeclarationAgentEquip>();
 	return listeDeclarationsAgentEquip;
 }
-public void setListeDeclarationsAgentEquip(ArrayList listeDeclarationsAgentEquip) {
+public void setListeDeclarationsAgentEquip(ArrayList<DeclarationAgentEquip> listeDeclarationsAgentEquip) {
 	this.listeDeclarationsAgentEquip = listeDeclarationsAgentEquip;
 }
 /**
@@ -476,32 +480,32 @@ public java.lang.String getNOM_RB_TRI_OT() {
 public java.lang.String getNOM_PB_TRI() {
 	return "NOM_PB_TRI";
 }
-/**
- * - Traite et affecte les zones saisies dans la JSP.
- * - Implémente les règles de gestion du process
- * - Positionne un statut en fonction de ces règles :
- *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
- * Date de création : (22/08/05 13:57:35)
- * @author : Générateur de process
- */
-public boolean performPB_TRI(javax.servlet.http.HttpServletRequest request) throws Exception {
-	if (getNOM_RB_TRI_INV().equals(getZone(getNOM_RG_TRI()))){
-		tri = "numeroinventaire";
-	}
-	if (getNOM_RB_TRI_AGENT().equals(getZone(getNOM_RG_TRI()))){
-		tri = "nomatr";
-	}
-	if (getNOM_RB_TRI_DATE().equals(getZone(getNOM_RG_TRI()))){
-		tri = "date";
-	}
-	if (getNOM_RB_TRI_IMMAT().equals(getZone(getNOM_RG_TRI()))){
-		tri = "numeroimmatriculation";
-	}
-	if (getNOM_RB_TRI_OT().equals(getZone(getNOM_RG_TRI()))){
-		tri = "numeroot";
-	}
-	return true;
-}
+///**
+// * - Traite et affecte les zones saisies dans la JSP.
+// * - Implémente les règles de gestion du process
+// * - Positionne un statut en fonction de ces règles :
+// *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
+// * Date de création : (22/08/05 13:57:35)
+// * @author : Générateur de process
+// */
+//public boolean performPB_TRI(javax.servlet.http.HttpServletRequest request) throws Exception {
+//	if (getNOM_RB_TRI_INV().equals(getZone(getNOM_RG_TRI()))){
+//		tri = "numeroinventaire";
+//	}
+//	if (getNOM_RB_TRI_AGENT().equals(getZone(getNOM_RG_TRI()))){
+//		tri = "nomatr";
+//	}
+//	if (getNOM_RB_TRI_DATE().equals(getZone(getNOM_RG_TRI()))){
+//		tri = "date";
+//	}
+//	if (getNOM_RB_TRI_IMMAT().equals(getZone(getNOM_RG_TRI()))){
+//		tri = "numeroimmatriculation";
+//	}
+//	if (getNOM_RB_TRI_OT().equals(getZone(getNOM_RG_TRI()))){
+//		tri = "numeroot";
+//	}
+//	return true;
+//}
 /**
  * Méthode appelée par la servlet qui aiguille le traitement : 
  * en fonction du bouton de la JSP 
@@ -519,10 +523,10 @@ public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) th
 			return performPB_RECHERCHE(request);
 		}
 
-		//Si clic sur le bouton PB_TRI
-		if (testerParametre(request, getNOM_PB_TRI())) {
-			return performPB_TRI(request);
-		}
+//		//Si clic sur le bouton PB_TRI
+//		if (testerParametre(request, getNOM_PB_TRI())) {
+//			return performPB_TRI(request);
+//		}
 
 		//Si clic sur le bouton PB_ANNULER
 		if (testerParametre(request, getNOM_PB_ANNULER())) {

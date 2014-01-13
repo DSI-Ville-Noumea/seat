@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+
+import java.util.ArrayList;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Service
  */
-public class Service extends nc.mairie.technique.BasicMetier {
+public class Service extends BasicMetier {
 	public String servi;
 	public String liserv;
 	public String li22;
@@ -65,7 +70,7 @@ public void setCodact(String newCodact) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new ServiceBroker(this); 
 }
 /**
@@ -88,7 +93,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Service.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerService(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Service> listerService(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Service unService = new Service();
 	return unService.getMyServiceBroker().listerService(aTransaction);
 }
@@ -116,7 +121,7 @@ public static Service chercherServiceActifAvecAcronyme(nc.mairie.technique.Trans
  * Retourne un Service.
  * @return Service
  */
-public static java.util.ArrayList chercherListServiceTous(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
+public static ArrayList<Service> chercherListServiceTous(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	Service unService = new Service();
 	return unService.getMyServiceBroker().chercherListServiceTous(aTransaction, param);
 }
@@ -125,12 +130,12 @@ public static java.util.ArrayList chercherListServiceTous(nc.mairie.technique.Tr
  * Retourne un Service.
  * @return Service
  */
-public static java.util.ArrayList chercherListServiceEquip(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
+public static ArrayList<Service> chercherListServiceEquip(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	Service unService = new Service();
 	return unService.getMyServiceBroker().chercherListServiceEquip(aTransaction, param);
 }
 
-public static java.util.ArrayList chercherListServiceAccro(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
+public static ArrayList<Service> chercherListServiceAccro(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	Service unService = new Service();
 	return unService.getMyServiceBroker().chercherListServiceAccro(aTransaction, param);
 }

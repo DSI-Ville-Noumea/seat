@@ -8,7 +8,7 @@ if (processCourant !=null && processCourant.getTransaction() != null && processC
 <TR>
 <TD align="center">
   <FIELDSET style="border-color : red red red red;">
-  <TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+  <TABLE border="" style="width : 100%">
   <TBODY>
     <TR>
 	<%String message = processCourant.getTransaction().getMessageErreur();%>

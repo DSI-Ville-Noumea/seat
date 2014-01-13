@@ -29,6 +29,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeTableauDeBord extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5906766909734437730L;
 	public static final int STATUT_SELECTION = 6;
 	public static final int STATUT_AGENT = 5;
 	public static final int STATUT_DECLARATIONS = 4;
@@ -37,11 +41,11 @@ public class OeTableauDeBord extends nc.mairie.technique.BasicProcess {
 	public static final int STATUT_RECHERCHER = 1;
 	private java.lang.String[] LB_BPC;
 	private java.lang.String[] LB_OT;
-	private ArrayList listBPC;
-	private ArrayList listDeclarations;
-	private ArrayList listOTInfos;
-	private ArrayList listEntretiens;
-	private ArrayList listServices;
+	private ArrayList<BPC> listBPC;
+	private ArrayList<Declarations> listDeclarations;
+	private ArrayList<OT> listOTInfos;
+	private ArrayList<PePersoInfos> listEntretiens;
+	private ArrayList<AffectationServiceInfos> listServices;
 	private EquipementInfos equipementInfosCourant;
 	private OT otCourant;
 	private BPC bpcCourant;
@@ -91,22 +95,22 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 
 	//Si liste des actifs vide
 	if (getHashAActifs().size() == 0) {
-		ArrayList arr = AActifs.listerAActifs(getTransaction());
-		for (Iterator iter = arr.iterator(); iter.hasNext();) {
+		ArrayList<?> arr = AActifs.listerAActifs(getTransaction());
+		for (Iterator<?> iter = arr.iterator(); iter.hasNext();) {
 			AActifs objet = (AActifs) iter.next();
 			getHashAActifs().put(objet.getNomatr(), objet);
 		}
 	}
 	if (getHashAgentCCAS().size() == 0) {
-		ArrayList arr = AgentCCAS.listerAgentCCAS(getTransaction());
-		for (Iterator iter = arr.iterator(); iter.hasNext();) {
+		ArrayList<?> arr = AgentCCAS.listerAgentCCAS(getTransaction());
+		for (Iterator<?> iter = arr.iterator(); iter.hasNext();) {
 			AgentCCAS objet = (AgentCCAS) iter.next();
 			getHashAgentCCAS().put(objet.getNomatr(), objet);
 		}
 	}
 	if (getHashAgentCDE().size() == 0) {
-		ArrayList arr = AgentCDE.listerAgentCDE(getTransaction());
-		for (Iterator iter = arr.iterator(); iter.hasNext();) {
+		ArrayList<?> arr = AgentCDE.listerAgentCDE(getTransaction());
+		for (Iterator<?> iter = arr.iterator(); iter.hasNext();) {
 			AgentCDE objet = (AgentCDE) iter.next();
 			getHashAgentCDE().put(objet.getNomatr(), objet);
 		}
@@ -338,7 +342,7 @@ public boolean initialiseListBPC(javax.servlet.http.HttpServletRequest request) 
 	}
 	// on veut les BPC de l'année en cours
 	String annee = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
-	ArrayList listBPC = BPC.listeBPCEquipAnnee(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),annee);
+	ArrayList<BPC> listBPC = BPC.listeBPCEquipAnnee(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),annee);
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -346,7 +350,7 @@ public boolean initialiseListBPC(javax.servlet.http.HttpServletRequest request) 
 	if(getListBPC().size()>0){
 		trierBPC(listBPC);
 	}else{
-		setListBPC(new ArrayList());
+		setListBPC(new ArrayList<BPC>());
 	}
 	initialiseListeTotal(request);
 	return true;
@@ -358,7 +362,7 @@ public boolean initialiseListDec (javax.servlet.http.HttpServletRequest request)
 	}
 	// on veut toutes les déclarations concernant l'équipement
 	
-	ArrayList listDec = Declarations.listerDeclarationsEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
+	ArrayList<Declarations> listDec = Declarations.listerDeclarationsEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -370,7 +374,7 @@ public boolean initialiseListDec (javax.servlet.http.HttpServletRequest request)
 		//AJOUT OFONTENEAU
 		//setListDeclarations(getListServices());
 	}else{
-		setListDeclarations(new ArrayList());
+		setListDeclarations(new ArrayList<Declarations>());
 		isVideDec = true;
 	}
 	return true;
@@ -401,7 +405,7 @@ public boolean initialiseListOT(javax.servlet.http.HttpServletRequest request) t
 		return false;
 	}
 	//ArrayList listOTInfos = OTInfos.listerOTInfosEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
-	ArrayList listOT = OT.listerOTEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
+	ArrayList<OT> listOT = OT.listerOTEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -413,7 +417,7 @@ public boolean initialiseListOT(javax.servlet.http.HttpServletRequest request) t
 }
 public void initialiseListServices(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	Recherche des affectations des équipement aux services
-	java.util.ArrayList a = AffectationServiceInfos.chercherListAffectationServiceInfosEquip(getTransaction(),equipementInfosCourant.getNumeroinventaire());
+	ArrayList<AffectationServiceInfos> a = AffectationServiceInfos.chercherListAffectationServiceInfosEquip(getTransaction(),equipementInfosCourant.getNumeroinventaire());
 	if (null == a){
 		System.out.println("Aucun élément enregistré dans la base.");
 	}
@@ -426,7 +430,7 @@ public void initialiseListServices(javax.servlet.http.HttpServletRequest request
  * autheur : CN
  */
 public boolean initialiseListEntretiens(javax.servlet.http.HttpServletRequest request) throws Exception{
-	ArrayList listEntretiens = PePersoInfos.listerPePersoInfosFait(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),"datereal desc");
+	ArrayList<PePersoInfos> listEntretiens = PePersoInfos.listerPePersoInfosFait(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),"datereal desc");
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -462,14 +466,14 @@ public boolean initialiseListEntretiens(javax.servlet.http.HttpServletRequest re
 	return true;
 }
 
-public void trierBPC(ArrayList a) throws Exception{
+public void trierBPC(ArrayList<BPC> a) throws Exception{
 	String[] colonnes = {"date","valeurcompteur"};
 	//ordre croissant
 	boolean[] ordres = {false,false};
 	
 //	Si au moins un bpc
 	if (a.size() !=0 ) {
-		ArrayList aTrier = Services.trier(a,colonnes,ordres);
+		ArrayList<BPC> aTrier = Services.trier(a,colonnes,ordres);
 		setListBPC(aTrier);
 		int tailles [] = {10,10,10,6,11,8};
 		String[] padding = {"D","C","D","D","D","D"};
@@ -526,19 +530,19 @@ public void trierBPC(ArrayList a) throws Exception{
 	
 	//return ;
 }
-public void trierServices(ArrayList a) throws Exception{
+public void trierServices(ArrayList<AffectationServiceInfos> a) throws Exception{
 	String[] colonnes = {"ddebut","dfin"};
 	//ordre croissant
 	boolean[] ordres = {false,true};
 	
 //	Si au moins une affectation
 	if (a.size() !=0 ) {
-		ArrayList aTrier = Services.trier(a,colonnes,ordres);
+		ArrayList<AffectationServiceInfos> aTrier = Services.trier(a,colonnes,ordres);
 		setListServices(aTrier);
 		int tailles [] = {55,10,10};
 		String[] padding = {"G","C","C"};
 		FormateListe aFormat = new FormateListe(tailles,padding,false);
-		for (java.util.ListIterator list = aTrier.listIterator(); list.hasNext(); ) {
+		for (java.util.ListIterator<AffectationServiceInfos> list = aTrier.listIterator(); list.hasNext(); ) {
 			AffectationServiceInfos aAffectationServiceInfos = (AffectationServiceInfos)list.next();
 			String datefin = "";
 			if (!aAffectationServiceInfos.getDfin().equals("01/01/0001")){
@@ -555,7 +559,7 @@ public void trierServices(ArrayList a) throws Exception{
 }
 
 //MODIF OFONTENEAU 20090408
-public void trierDecl(ArrayList a) throws Exception{
+public void trierDecl(ArrayList<Declarations> a) throws Exception{
 	String declarant = "agent non trouvé";
 	String[] colonnes = {"date"};
 	//ordre croissant
@@ -563,14 +567,14 @@ public void trierDecl(ArrayList a) throws Exception{
 	
 //	Si au moins une affectation
 	if (a.size() !=0 ) {
-		ArrayList aTrier = Services.trier(a,colonnes,ordres);
+		ArrayList<Declarations> aTrier = Services.trier(a,colonnes,ordres);
 		//MODIF OFONTENEAU
 		//setListServices(aTrier);
 		setListDeclarations(aTrier);
 		int tailles [] = {10,49,10,10};
 		String[] padding = {"C","G","C","C"};
 		FormateListe aFormat = new FormateListe(tailles,padding,false);
-		for (java.util.ListIterator list = aTrier.listIterator(); list.hasNext(); ) {
+		for (java.util.ListIterator<Declarations> list = aTrier.listIterator(); list.hasNext(); ) {
 			Declarations aDeclarations = (Declarations)list.next();
 			// recherche de l'agent selon le service affecté
 			if (aDeclarations.getCodeservice().equals("4000")){
@@ -613,7 +617,7 @@ public void trierDecl(ArrayList a) throws Exception{
 		setLB_DECLARATIONS(null);
 	}
 }
-public boolean trierOT(ArrayList a) throws Exception{
+public boolean trierOT(ArrayList<OT> a) throws Exception{
 	String[] colonnes = {"numeroot","dateentre"};
 	//ordre decroissant
 	boolean[] ordres = {false,false};
@@ -623,7 +627,7 @@ public boolean trierOT(ArrayList a) throws Exception{
 	
 //	Si au moins un OT pour PePerso
 	if (a.size() !=0 ) {
-		ArrayList aTrier = Services.trier(a,colonnes,ordres);
+		ArrayList<OT> aTrier = Services.trier(a,colonnes,ordres);
 		setListOTInfos(aTrier);
 		int tailles [] = {10,10,10,10,10};
 		String[] padding = {"D","C","C","D","D"};
@@ -1210,31 +1214,31 @@ public java.lang.String getVAL_ST_VERSION() {
 		this.equipementInfosCourant = equipementInfosCourant;
 		equipementInfosCourantChange=true;
 	}
-	public ArrayList getListBPC() {
+	public ArrayList<BPC> getListBPC() {
 		if(listBPC==null){
-			listBPC = new ArrayList();
+			listBPC = new ArrayList<BPC>();
 		}
 		return listBPC;
 	}
-	public void setListDeclarations(ArrayList listDeclarations) {
+	public void setListDeclarations(ArrayList<Declarations> listDeclarations) {
 		this.listDeclarations = listDeclarations;
 	}
-	public ArrayList getListDeclarations() {
+	public ArrayList<Declarations> getListDeclarations() {
 		if(listDeclarations==null){
-			listDeclarations = new ArrayList();
+			listDeclarations = new ArrayList<Declarations>();
 		}
 		return listDeclarations;
 	}
-	public void setListBPC(ArrayList listBPC) {
+	public void setListBPC(ArrayList<BPC> listBPC) {
 		this.listBPC = listBPC;
 	}
-	public ArrayList getListOTInfos() {
+	public ArrayList<OT> getListOTInfos() {
 		if(listOTInfos==null){
-			listOTInfos = new ArrayList();
+			listOTInfos = new ArrayList<OT>();
 		}
 		return listOTInfos;
 	}
-	public void setListOTInfos(ArrayList listOTInfos) {
+	public void setListOTInfos(ArrayList<OT> listOTInfos) {
 		this.listOTInfos = listOTInfos;
 	}
 	public OT getOtCourant() {
@@ -1285,10 +1289,10 @@ public java.lang.String getVAL_ST_NOMEQUIP() {
 	public void setVideDec(boolean isVideDec) {
 		this.isVideDec = isVideDec;
 	}
-	public ArrayList getListEntretiens() {
+	public ArrayList<PePersoInfos> getListEntretiens() {
 		return listEntretiens;
 	}
-	public void setListEntretiens(ArrayList listEntretiens) {
+	public void setListEntretiens(ArrayList<PePersoInfos> listEntretiens) {
 		this.listEntretiens = listEntretiens;
 	}
 	private java.lang.String[] LB_ENTRETIENS;
@@ -1476,7 +1480,7 @@ public boolean performPB_RECHERCHE_EQUIP(javax.servlet.http.HttpServletRequest r
 			if(getTransaction().isErreur()){
 				return false;
 			}
-			if(unEquipementInfos==null){
+			if(unEquipementInfos!=null){
 				if(unEquipementInfos.getNumeroinventaire()==null){
 					getTransaction().declarerErreur("L'équipement recherché n'a pas été trouvé.");
 					return false;
@@ -1492,9 +1496,9 @@ public boolean performPB_RECHERCHE_EQUIP(javax.servlet.http.HttpServletRequest r
 	if(getTransaction().isErreur()){
 		setEquipementCourant(new Equipement());
 		setEquipementInfosCourant(new EquipementInfos());
-		setListBPC(new ArrayList());
-		setListEntretiens(new ArrayList());
-		setListOTInfos(new ArrayList());
+		setListBPC(new ArrayList<BPC>());
+		setListEntretiens(new ArrayList<PePersoInfos>());
+		setListOTInfos(new ArrayList<OT>());
 		setLB_BPC(LBVide);
 		setLB_BPC_TOTAL(LBVide);
 		setLB_OT(LBVide);
@@ -1593,10 +1597,10 @@ public java.lang.String [] getVAL_LB_SERVICES() {
 public java.lang.String getVAL_LB_SERVICES_SELECT() {
 	return getZone(getNOM_LB_SERVICES_SELECT());
 }
-	public ArrayList getListServices() {
+	public ArrayList<AffectationServiceInfos> getListServices() {
 		return listServices;
 	}
-	public void setListServices(ArrayList listServices) {
+	public void setListServices(ArrayList<AffectationServiceInfos> listServices) {
 		this.listServices = listServices;
 	}
 	private java.lang.String[] LB_DECLARATIONS;
@@ -1707,7 +1711,7 @@ public boolean recherche_SERVICE(javax.servlet.http.HttpServletRequest request) 
 	// on recherche la liste des équipements dont l'agent est responsable car s'il en a plusieurs 
 	//on débranche sur une autre fenêtre sinon on affiche celui dont il est responsable
 	
-	ArrayList listeASI = AffectationServiceInfos.chercherAffectationServiceInfosService(getTransaction(),getZone(getNOM_EF_SERVICE()).toUpperCase());
+	ArrayList<?> listeASI = AffectationServiceInfos.chercherAffectationServiceInfosService(getTransaction(),getZone(getNOM_EF_SERVICE()).toUpperCase());
 	if(getTransaction().isErreur()){
 		getTransaction().declarerErreur("Le service n'a aucun équipement.");
 		return false;
@@ -1795,7 +1799,7 @@ public java.lang.String getVAL_EF_SERVICE() {
  * @author : Générateur de process
  */
 public boolean recherche_AGENT(javax.servlet.http.HttpServletRequest request) throws Exception {
-	ArrayList listAgent = new ArrayList();
+	ArrayList<?> listAgent = new ArrayList<Object>();
 	boolean trouve = false;
 	String nom = "";
 	/*if (!Services.estNumerique(getZone(getNOM_EF_AGENT()))){
@@ -1806,7 +1810,7 @@ public boolean recherche_AGENT(javax.servlet.http.HttpServletRequest request) th
 	// on recherche la liste des équipements dont l'agent est responsable car s'il en a plusieurs 
 	//on débranche sur une autre fenêtre sinon on affiche celui dont il est responsable
 	if (Services.estNumerique(getZone(getNOM_EF_AGENT()))){
-		ArrayList listeASI = AffectationServiceInfos.listerAffectationServiceInfosAgent(getTransaction(),getZone(getNOM_EF_AGENT()));
+		ArrayList<?> listeASI = AffectationServiceInfos.listerAffectationServiceInfosAgent(getTransaction(),getZone(getNOM_EF_AGENT()));
 		if((getTransaction().isErreur())||(listeASI.size()==0)){
 			getTransaction().declarerErreur("L'agent n'est responsable d'aucun équipement.");
 			return false;
@@ -1840,7 +1844,7 @@ public boolean recherche_AGENT(javax.servlet.http.HttpServletRequest request) th
 //				getTransaction().declarerErreur("Vous devez saisir le nom de l'agent ");
 //				return false;
 //			}
-//				listInter = AgentCDE.chercherAgentCDENom(getTransaction(),nom);
+//				listInter = AgentCDE.listerAgentCDENom(getTransaction(),nom);
 //				if(getTransaction().isErreur()){
 //					getTransaction().traiterErreur();
 //					trouve = false;
@@ -1852,7 +1856,7 @@ public boolean recherche_AGENT(javax.servlet.http.HttpServletRequest request) th
 //						listAgent.add(listInter.get(i));
 //					}
 //				}
-//				listInter = AgentCCAS.chercherAgentCCASNom(getTransaction(),nom);
+//				listInter = AgentCCAS.listerAgentCCASNom(getTransaction(),nom);
 //				if(getTransaction().isErreur()){
 //					getTransaction().traiterErreur();
 //					trouve = false;
@@ -1864,7 +1868,7 @@ public boolean recherche_AGENT(javax.servlet.http.HttpServletRequest request) th
 //						listAgent.add(listInter.get(i));
 //					}
 //				}
-//				listInter = Agents.chercherAgentsNom(getTransaction(),nom);
+//				listInter = Agents.listerAgentsNom(getTransaction(),nom);
 //				if(getTransaction().isErreur()){
 //					getTransaction().traiterErreur();
 //					trouve = false;
@@ -1880,7 +1884,7 @@ public boolean recherche_AGENT(javax.servlet.http.HttpServletRequest request) th
 				if (listAgent.size()==1){
 					AgentsMunicipaux unAgent = (AgentsMunicipaux)listAgent.get(0);
 					// s'il n'a qu'un équipement on débranche directement sur la fenêtre visu sinon on les affiche
-					ArrayList a = AffectationServiceInfos.listerAffectationServiceInfosAgent(getTransaction(),unAgent.getNomatr());
+					ArrayList<?> a = AffectationServiceInfos.listerAffectationServiceInfosAgent(getTransaction(),unAgent.getNomatr());
 					if(getTransaction().isErreur()){
 						return false;
 					}

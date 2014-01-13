@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import nc.mairie.seat.metier.Agents;
 import nc.mairie.seat.metier.AgentsMunicipaux;
 import nc.mairie.seat.metier.Declarations;
+import nc.mairie.seat.metier.Entretien;
 import nc.mairie.seat.metier.Equipement;
 import nc.mairie.seat.metier.EquipementInfos;
 import nc.mairie.seat.metier.PMatInfos;
@@ -16,6 +17,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeDeclaration_VisualisationEquip extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1304228634346293682L;
 	public static final int STATUT_RECHERCHE = 1;
 	public static final int STATUT_RECH_PM = 2;
 	private java.lang.String[] LB_DECLARATIONS;
@@ -24,8 +29,8 @@ public class OeDeclaration_VisualisationEquip extends nc.mairie.technique.BasicP
 	private PMatInfos pMatInfosCourant;
 	private Declarations declarationCourante;
 	private PePerso pepersoCourant;
-	private ArrayList listeDeclarations;
-	private ArrayList listEntretiens;
+	private ArrayList<Declarations> listeDeclarations;
+	private ArrayList<Entretien> listEntretiens;
 	private boolean first=true;
 	private boolean isDeclaration; 
 	private String focus = null;
@@ -115,7 +120,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 }
 public void initialiseListDeclarations(javax.servlet.http.HttpServletRequest request) throws Exception{
 	String declarant = "agent non trouvé";
-	ArrayList listDeclarations = new ArrayList();
+	ArrayList<Declarations> listDeclarations = new ArrayList<Declarations>();
 	if(!isMateriel){
 		listDeclarations = Declarations.listerDeclarationsEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
 	}else{
@@ -282,8 +287,8 @@ public boolean performPB_RECHERCHE_EQUIP(javax.servlet.http.HttpServletRequest r
 	setLB_DECLARATIONS(LBVide);
 	
 	setLB_ENTRETIENS(LBVide);
-	setListeDeclarations(new ArrayList());
-	setListEntretiens(new ArrayList());
+	setListeDeclarations(new ArrayList<Declarations>());
+	setListEntretiens(new ArrayList<Entretien>());
 	setEquipementInfosCourant(new EquipementInfos());
 			
 	//recherche l'équipement voulu
@@ -584,16 +589,16 @@ public java.lang.String getVAL_LB_ENTRETIENS_SELECT() {
 	public void setPepersoCourant(PePerso pepersoCourant) {
 		this.pepersoCourant = pepersoCourant;
 	}
-	public ArrayList getListeDeclarations() {
+	public ArrayList<Declarations> getListeDeclarations() {
 		return listeDeclarations;
 	}
-	public void setListeDeclarations(ArrayList listeDeclarations) {
+	public void setListeDeclarations(ArrayList<Declarations> listeDeclarations) {
 		this.listeDeclarations = listeDeclarations;
 	}
-	public ArrayList getListEntretiens() {
+	public ArrayList<Entretien> getListEntretiens() {
 		return listEntretiens;
 	}
-	public void setListEntretiens(ArrayList listEntretiens) {
+	public void setListEntretiens(ArrayList<Entretien> listEntretiens) {
 		this.listEntretiens = listEntretiens;
 	}
 /**

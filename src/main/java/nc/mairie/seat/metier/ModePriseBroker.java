@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier ModePrise
  */
-public class ModePriseBroker extends nc.mairie.technique.BasicBroker {
+public class ModePriseBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -30,7 +33,7 @@ public boolean supprimerModePrise(nc.mairie.technique.Transaction aTransaction) 
  * Retourne un ArrayList d'objet métier : ModePrise.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerModePrise(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<ModePrise> listerModePrise(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -63,14 +66,14 @@ public boolean existeModePrise(nc.mairie.technique.Transaction aTransaction, Str
 /**
  * Constructeur ModePriseBroker.
  */
-public ModePriseBroker(nc.mairie.technique.BasicMetier aMetier) {
+public ModePriseBroker(ModePrise aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.ModePriseMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected ModePrise definirMyMetier() {
 	return new ModePrise() ;
 }
 /**

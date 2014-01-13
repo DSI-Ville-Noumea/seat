@@ -1,16 +1,20 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
+
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier DeclarationsInfos
  */
-public class DeclarationsInfosBroker extends nc.mairie.technique.BasicBroker {
+public class DeclarationsInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : DeclarationsInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerDeclarationsInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<DeclarationsInfos> listerDeclarationsInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 
@@ -18,7 +22,7 @@ public java.util.ArrayList listerDeclarationsInfos(nc.mairie.technique.Transacti
  * Retourne un ArrayList d'objet métier : DeclarationsInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerDeclarationsInfosEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
+public ArrayList<DeclarationsInfos> listerDeclarationsInfosEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numinv='"+inv+"' with ur");
 }
 
@@ -26,7 +30,7 @@ public java.util.ArrayList listerDeclarationsInfosEquip(nc.mairie.technique.Tran
  * Retourne un ArrayList d'objet métier : DeclarationsInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerDeclarationsInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
+public ArrayList<DeclarationsInfos> listerDeclarationsInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeot="+numot+" with ur");
 }
 
@@ -38,20 +42,20 @@ public DeclarationsInfos chercherDeclarationsInfos(nc.mairie.technique.Transacti
 	return (DeclarationsInfos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+" with ur");
 }
 // recherche des déclarations pour un service et un équipement à partir d'une date
-public java.util.ArrayList listerDeclarationsInfosSce(nc.mairie.technique.Transaction aTransaction,String sce,String ddeb,String numinv,String dfin) throws Exception {
+public ArrayList<DeclarationsInfos> listerDeclarationsInfosSce(nc.mairie.technique.Transaction aTransaction,String sce,String ddeb,String numinv,String dfin) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice = '"+sce+"' and date>='"+Services.formateDateInternationale(ddeb)+"' and numinv='"+numinv+"' and date<='"+Services.formateDateInternationale(dfin)+"' with ur");
 }
 
 /**
  * Constructeur DeclarationsInfosBroker.
  */
-public DeclarationsInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public DeclarationsInfosBroker(DeclarationsInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.DeclarationsInfosMetier
  */
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected DeclarationsInfos definirMyMetier() {
 	return new DeclarationsInfos() ;
 }
 /**

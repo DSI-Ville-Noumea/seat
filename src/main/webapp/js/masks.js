@@ -42,7 +42,7 @@ Mask.prototype.attach = function (o)
 		o.onkeyup = new Function("return " + this.ref + ".getKeyPress(event, this)");
 		o.onblur = new Function("this.value = " + this.ref + ".format(this.value)");
 	}
-}
+};
 
 Mask.prototype.isAllowKeyPress = function (e, o)
 {
@@ -51,7 +51,7 @@ Mask.prototype.isAllowKeyPress = function (e, o)
 
 	if( ((xe.keyCode > 47) && (o.value.length >= this.mask.length)) && !xe.ctrlKey ) return false;
 	return true;
-}
+};
 
 Mask.prototype.getKeyPress = function (e, o, _u)
 {
@@ -63,7 +63,7 @@ Mask.prototype.getKeyPress = function (e, o, _u)
 	if( (xe.keyCode > 47) || (_u == true) || (xe.keyCode == 8 || xe.keyCode == 46) ){
 		var v = o.value, d;
 		if( xe.keyCode == 8 || xe.keyCode == 46 ) d = true;
-		else d = false
+		else d = false;
 
 		if( this.type == "number" ) this.value = this.setNumber(v, d);
 		else if( this.type == "date" ) this.value = this.setDateKeyPress(v, d);
@@ -75,7 +75,7 @@ Mask.prototype.getKeyPress = function (e, o, _u)
 
 	this.allowPartial = false;
 	return true;
-}
+};
 
 Mask.prototype.format = function (s)
 {
@@ -83,7 +83,7 @@ Mask.prototype.format = function (s)
 	else if( this.type == "date" ) this.value = this.setDate(s);
 	else this.value = this.setGeneric(s);
 	return this.value;
-}
+};
 
 Mask.prototype.throwError = function (c, e, v)
 {
@@ -95,7 +95,7 @@ Mask.prototype.throwError = function (c, e, v)
 	this.errorCodes[this.errorCodes.length] = c;
 	if( typeof v == "string" ) return v;
 	return true;
-}
+};
 
 // ************************ GENERIC *********************** //
 
@@ -107,7 +107,7 @@ Mask.prototype.setGeneric = function (_v, _d){
 	v = v.replace(new RegExp("[^" + rx["*"] + "]", "gi"), "");
 	if( (_d == true) && (v.length == this.strippedValue.length) ) v = v.substring(0, v.length-1);
 	this.strippedValue = v;
-	var b=[];
+	//var b=[];
 	for( var i=0; i < m.length; i++ ){
 		// grab the current character
 		x = m.charAt(i);
@@ -142,7 +142,7 @@ Mask.prototype.setGeneric = function (_v, _d){
 	if( this.allowPartial && !hasOneValidChar ) nv = "";
 
 	return nv;
-}
+};
 
 // ************************ NUMBERS *********************** //
 
@@ -184,7 +184,7 @@ Mask.prototype.setNumber = function(_v, _d){
 		"%" : (m.indexOf("%") != -1), // Percentage
 		"(" : (isNegative && (m.indexOf("(") > -1)),
 		"+" : ( (m.indexOf("+") != -1) && !isNegative )
-	}
+	};
 	show["-"] = (isNegative && (!show["("] || (m.indexOf("-") != -1)));
 	// if mask contain more than one symbol ¥ € $ and %, select just one
 	if (show["¥"] && ( show["£"] || show["€"] || show["$"] || show["%"] )) show["¥"] = false;
@@ -291,7 +291,7 @@ Mask.prototype.setNumber = function(_v, _d){
 	if( show["-"] ) v = "-" + v;
 	if( show["("] ) v = "(" + v + ")";
 	return v;
-}
+};
 
 // ************************ HEURE *********************** //
 
@@ -333,7 +333,7 @@ Mask.prototype.setHeure = function(_v, _d){
 		"%" : (m.indexOf("%") != -1), // Percentage
 		"(" : (isNegative && (m.indexOf("(") > -1)),
 		"+" : ( (m.indexOf("+") != -1) && !isNegative )
-	}
+	};
 	show["-"] = (isNegative && (!show["("] || (m.indexOf("-") != -1)));
 	// if mask contain more than one symbol ¥ € $ and %, select just one
 	if (show["¥"] && ( show["£"] || show["€"] || show["$"] || show["%"] )) show["¥"] = false;
@@ -440,7 +440,7 @@ Mask.prototype.setHeure = function(_v, _d){
 	if( show["-"] ) v = "-" + v;
 	if( show["("] ) v = "(" + v + ")";
 	return v;
-}
+};
 /////////////////////////////////////////////////////////////
 
 // ************************ DATES *********************** //
@@ -448,7 +448,7 @@ Mask.prototype.setHeure = function(_v, _d){
 Mask.prototype.setDate = function (_v)
 {
 	var v=_v, m=this.mask;
-	var a,e,mm,dd,yy,x,s;
+	var a,e,mm=0,dd=0,yy=0,x,s;
 
 	// split mask into array, to see position of each day, month & year
 	a = m.split(/[^mdy]+/);
@@ -504,12 +504,12 @@ Mask.prototype.setDate = function (_v)
 	}
 
 	return nv;
-}
+};
 
 Mask.prototype.setDateKeyPress = function (_v, _d)
 {
 	var v = _v, m = this.mask, k = v.charAt(v.length-1);
-	var a, e, c, ml, vl, mm = "", dd = "", yy = "", x, p, z;
+	var a, e, c, ml, vl=0, mm = "", dd = "", yy = "", x, p, z=null;
 
 	if( _d == true ){
 		while( (/[^0-9]/gi).test(v.charAt(v.length-1)) ) v = v.substring(0, v.length-1);
@@ -540,7 +540,7 @@ Mask.prototype.setDateKeyPress = function (_v, _d)
 	}
 
 	var nv = "";
-	var j=0;
+	//var j=0;
 
 	for( i=0; i < e.length; i++ ){
 		x = a[i].charAt(0).toLowerCase();
@@ -612,7 +612,7 @@ Mask.prototype.setDateKeyPress = function (_v, _d)
 	this.strippedValue = (nv == "NaN") ? "" : nv;
 
 	return this.strippedValue;
-}
+};
 
 
 function xEvent(e)
@@ -682,10 +682,10 @@ xEvent.prototype.translateKeyCode = function (i)
 			93:221,91:219,123:219,39:222,34:222,47:191,63:191,46:190,62:190,44:188,60:188,45:189,95:189,43:187,
 			61:187,59:186,58:186,
 			"null": null
-		}
+		};
 	}
 	return (!!l[i]) ? l[i] : i;
-}
+};
 
 		
 // try to determine the actual value of the key pressed
@@ -697,7 +697,7 @@ xEvent.prototype.setKP = function (i, s)
 	this.isNumeric = (parseInt(this.keyPressed, 10) == this.keyPressed);
 	this.isAlpha = ((this.keyCode > 64 && this.keyCode < 91) && !this.altKey && !this.ctrlKey);
 	return true;
-}
+};
 
 // try to determine the actual value of the key pressed
 xEvent.prototype.setKeyPressed = function (i)
@@ -760,5 +760,5 @@ xEvent.prototype.setKeyPressed = function (i)
 	if( i > 111 && i < 124 ) return this.setKP(i*-1, "[f" + (i-111) + "]");
 
 	return this.setKP(i);
-}
+};
 

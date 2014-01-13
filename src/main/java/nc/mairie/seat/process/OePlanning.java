@@ -8,12 +8,10 @@ import java.util.Iterator;
 import nc.mairie.seat.metier.Entretien;
 import nc.mairie.seat.metier.Equipement;
 import nc.mairie.seat.metier.EquipementInfos;
-import nc.mairie.seat.metier.Modeles;
 import nc.mairie.seat.metier.OT;
 import nc.mairie.seat.metier.PePerso;
 import nc.mairie.seat.metier.Planning;
 import nc.mairie.seat.metier.TIntervalle;
-import nc.mairie.seat.metier.TYPEEQUIP;
 import nc.mairie.seat.metier.TypeEntretien;
 import nc.mairie.technique.*;
 /**
@@ -22,15 +20,17 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OePlanning extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5868852414808233144L;
 	public static final int STATUT_VALIDATION = 2;
 	public static final int STATUT_PEPERSO = 1;
 	private Planning planningCourant;
 	private String tri = "numeroimmatriculation";
 	private String param ="";
-	private ArrayList listePlanning;
-	private ArrayList listeAFaire;
-	private ArrayList listInventaire;
-	private ArrayList listPourOt;
+	private ArrayList<Planning> listePlanning;
+	private ArrayList<Planning> listeAFaire;
 	private java.lang.String[] LB_PLANNING;
 	private java.lang.String[] LB_PLANNING_Couleurs;
 	private java.lang.String[] LB_PLANNING_FCouleurs;
@@ -78,10 +78,10 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	addZone(getNOM_EF_DATEFINPLANNING(),dateFinPlanning);
 
 	
-	ArrayList a = new ArrayList();
+	ArrayList<Planning> a = new ArrayList<Planning>();
 	// Si param = encours on liste les équipements actifs
 	if ("encours".equals(param)){
-		ArrayList listEnCours = Planning.listerPlanningEnCoursAvecOTValideDifferentT(getTransaction(),firstNoOt);
+		ArrayList<Planning> listEnCours = Planning.listerPlanningEnCoursAvecOTValideDifferentT(getTransaction(),firstNoOt);
 		a=listEnCours;
 		//optimisation luc 9/9/11
 /*		if(getTransaction().isErreur()){
@@ -104,7 +104,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	*/
 	} else 	// si param = "enretard" : on liste les entretiens en retard
 		if ("enretard".equals(param)){
-			ArrayList listEnRetard = Planning.listerPlanningEnRetard(getTransaction(),Services.dateDuJour());
+			ArrayList<Planning> listEnRetard = Planning.listerPlanningEnRetard(getTransaction(),Services.dateDuJour());
 			if(getTransaction().isErreur()){
 				return;
 			}
@@ -162,9 +162,9 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
  * 
  */
 public void initialiseListeTypeEntretien() throws Exception{
-	ArrayList arr = TypeEntretien.listerTypeEntretien(getTransaction());
+	ArrayList<TypeEntretien> arr = TypeEntretien.listerTypeEntretien(getTransaction());
 	
-	for (Iterator iter = arr.iterator(); iter.hasNext();) {
+	for (Iterator<TypeEntretien> iter = arr.iterator(); iter.hasNext();) {
 		TypeEntretien typeEntretien = (TypeEntretien) iter.next();
 		getHashTypeEntretien().put(typeEntretien.getCodetypeent(), typeEntretien);
 	}
@@ -266,7 +266,7 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
 	
 }
 
-public void trier(ArrayList a,String colonne) throws Exception{
+public void trier(ArrayList<Planning> a,String colonne) throws Exception{
 	String[] colonnes = {colonne};
 	//ordre croissant
 	boolean[] ordres = {true};
@@ -572,11 +572,11 @@ public Planning getPlanningCourant() {
 public void setPlanningCourant(Planning planningCourant) {
 	this.planningCourant = planningCourant;
 }
-public ArrayList getListePlanning() {
+public ArrayList<Planning> getListePlanning() {
 	
 	return listePlanning;
 }
-public void setListePlanning(ArrayList listePlanning) {
+public void setListePlanning(ArrayList<Planning> listePlanning) {
 	this.listePlanning = listePlanning;
 }
 public String getParam() {
@@ -778,14 +778,14 @@ public boolean performPB_ENLEVER(javax.servlet.http.HttpServletRequest request) 
 	initialiseListeAFaire(request);
 	return true;
 }
-	public ArrayList getListeAFaire() {
+	public ArrayList<Planning> getListeAFaire() {
 		//on initialise
 		if (listeAFaire==null){
-			listeAFaire = new ArrayList();
+			listeAFaire = new ArrayList<Planning>();
 		}
 		return listeAFaire;
 	}
-	public void setListeAFaire(ArrayList listeAFaire) {
+	public void setListeAFaire(ArrayList<Planning> listeAFaire) {
 		this.listeAFaire = listeAFaire;
 	}
 /**
@@ -812,22 +812,22 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 			
 		}
 	}*/
-	Hashtable hRegroupEnt = new Hashtable();
+	Hashtable<String, ArrayList<Planning>> hRegroupEnt = new Hashtable<String, ArrayList<Planning>>();
 	for (int i = 0; i < getListeAFaire().size(); i++){
 		Planning unPlanning = (Planning)getListeAFaire().get(i);
 		// on regroupe les entretiens par équipements dans une hashtable
 		//on liste d'abord les entretiens d'un équipement
-		ArrayList listeEnt = (ArrayList)hRegroupEnt.get(unPlanning.getNumeroinventaire());
+		ArrayList<Planning> listeEnt = hRegroupEnt.get(unPlanning.getNumeroinventaire());
 		//ArrayList listPePerso = unPlanning;
 		if (listeEnt == null) 
-			listeEnt = new ArrayList();
+			listeEnt = new ArrayList<Planning>();
 		listeEnt.add(unPlanning);
 		// on rajoute dans la hashtable à l'indice numéroinventaire
 		hRegroupEnt.put(unPlanning.getNumeroinventaire(),listeEnt);
 	}
 
 	//Hashtable hOt = new Hashtable();
-	Enumeration enumer = hRegroupEnt.keys();
+	Enumeration<String> enumer = hRegroupEnt.keys();
 	//pour chaque équipement on crée un OT avec le max trouvé dans la table
 	while (enumer.hasMoreElements()) {
 		String noinvent = String.valueOf(enumer.nextElement());
@@ -841,7 +841,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 			return false;
 		}
 		//on récupère la liste des entretiens à faire pour l'équipement
-		ArrayList array = (ArrayList)hRegroupEnt.get(noinvent);
+		ArrayList<Planning> array = hRegroupEnt.get(noinvent);
 		for (int i = 0; i < array.size(); i++){
 			Planning unPlanning = (Planning)array.get(i);
 			// on modifie le code OT des peperso
@@ -905,26 +905,7 @@ public boolean modifiePePerso(javax.servlet.http.HttpServletRequest request,Plan
 	return true;
 }
 
-public ArrayList getListInventaire() {
-	//initialisation
-	if (listInventaire == null){
-		listInventaire = new ArrayList();
-	}
-	return listInventaire;
-}
-public void setListInventaire(ArrayList listInventaire) {
-	this.listInventaire = listInventaire;
-}
-public ArrayList getListPourOt() {
-	//initialise
-	if (listPourOt == null){
-		listPourOt = new ArrayList();
-	}
-	return listPourOt;
-}
-public void setListPourOt(ArrayList listPourOt) {
-	this.listPourOt = listPourOt;
-}
+
 	public boolean isAfaire() {
 		return isAfaire;
 	}

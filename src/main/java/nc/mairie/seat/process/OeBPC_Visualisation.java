@@ -18,13 +18,16 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeBPC_Visualisation extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7153387823143055100L;
 	private EquipementInfos equipementInfosCourant;
 	private Equipement equipementCourant;
 	private PMateriel pMaterielCourant;
 	private PMatInfos pMatInfosCourant;
 	private BPC bpcCourant;
 	public static final int STATUT_RECHERCHE= 1 ;
-	private boolean isFirst = true;
 	public boolean isDebranche = false;
 	private boolean isMateriel = false;
 /**
@@ -174,8 +177,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 				addZone(getNOM_ST_HEURE(),bpcCourant.getHeure());
 			}
 			addZone(getNOM_ST_NOBPC(),bpcCourant.getNumerobpc());
-			//mode de prise
-			ModePrise monMP = ModePrise.chercherModePrise(getTransaction(),bpcCourant.getModedeprise());
+			ModePrise.chercherModePrise(getTransaction(),bpcCourant.getModedeprise());
 			if (getTransaction().isErreur()){
 				return;
 			}
@@ -222,7 +224,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			}
 		}
 	}
-	isFirst=false;
 }
 /**
  * Constructeur du process OeBPC_Visualisation.

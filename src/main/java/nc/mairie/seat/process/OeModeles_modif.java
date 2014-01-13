@@ -15,14 +15,18 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeModeles_modif extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private java.lang.String[] LB_CARBU;
 	private java.lang.String[] LB_COMPTEUR;
 	private java.lang.String[] LB_PNEU;
 	private java.lang.String[] LB_TYPEEQUIP;
-	private ArrayList listeTEquip = null;
-	private ArrayList listePneu = null;
-	private ArrayList listeCarburant = null;
-	private ArrayList listeCompteur = null;
+	private ArrayList<TYPEEQUIP> listeTEquip = null;
+	private ArrayList<Pneu> listePneu = null;
+	private ArrayList<Carburant> listeCarburant = null;
+	private ArrayList<Compteur> listeCompteur = null;
 	private Modeles modeleCourant;
 	private Marques marquesCourant;
 	private TYPEEQUIP tEquipCourant;
@@ -96,7 +100,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		//	 on remplit la liste déroulante avec la table f_pneu
 		//	 Si liste des pneu est vide
 		if (getLB_PNEU() == LBVide) {
-			java.util.ArrayList a = Pneu.listerPneu(getTransaction());
+			ArrayList<Pneu> a = Pneu.listerPneu(getTransaction());
 			setListePneu(a);
 			//les élèments de la liste 
 			int [] tailles = {30};
@@ -119,7 +123,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		//	 on remplit la liste déroulante avec la table f_compteur
 		//	 Si liste des compteurs est vide
 		if (getLB_COMPTEUR() == LBVide) {
-			java.util.ArrayList a = Compteur.listerCompteur(getTransaction());
+			ArrayList<Compteur> a = Compteur.listerCompteur(getTransaction());
 			setListeCompteur(a);
 			//les élèments de la liste 
 			int [] tailles = {15};
@@ -142,7 +146,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		//	 on remplit la liste déroulante avec la table f_carburant
 		//	 Si liste des carburants est vide
 		if (getLB_CARBU() == LBVide) {
-			java.util.ArrayList a = Carburant.listerCarburant(getTransaction());
+			ArrayList<Carburant> a = Carburant.listerCarburant(getTransaction());
 			setListeCarburant(a);
 			//les élèments de la liste 
 			int [] tailles = {10};
@@ -166,7 +170,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		//	 on remplit la liste déroulante avec la table f_tequip
 		//	 Si liste des types d'équipements est vide
 		if (getLB_TYPEEQUIP() == LBVide) {
-			java.util.ArrayList a = TYPEEQUIP.listerTYPEEQUIP(getTransaction());
+			ArrayList<TYPEEQUIP> a = TYPEEQUIP.listerTYPEEQUIP(getTransaction());
 			setListeTEquip(a);
 			//les élèments de la liste 
 			int [] tailles = {20};
@@ -1009,25 +1013,25 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 	/**
 	 * @return Renvoie listeCarburant.
 	 */
-	private ArrayList getListeCarburant() {
+	private ArrayList<Carburant> getListeCarburant() {
 		return listeCarburant;
 	}
 	/**
 	 * @param listeCarburant listeCarburant à définir.
 	 */
-	private void setListeCarburant(ArrayList listeCarburant) {
+	private void setListeCarburant(ArrayList<Carburant> listeCarburant) {
 		this.listeCarburant = listeCarburant;
 	}
 	/**
 	 * @return Renvoie listeCompteur.
 	 */
-	private ArrayList getListeCompteur() {
+	private ArrayList<Compteur> getListeCompteur() {
 		return listeCompteur;
 	}
 	/**
 	 * @param listeCompteur listeCompteur à définir.
 	 */
-	private void setListeCompteur(ArrayList listeCompteur) {
+	private void setListeCompteur(ArrayList<Compteur> listeCompteur) {
 		this.listeCompteur = listeCompteur;
 	}
 	/**
@@ -1036,25 +1040,25 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 	/**
 	 * @return Renvoie listePneu.
 	 */
-	private ArrayList getListePneu() {
+	private ArrayList<Pneu> getListePneu() {
 		return listePneu;
 	}
 	/**
 	 * @param listePneu listePneu à définir.
 	 */
-	private void setListePneu(ArrayList listePneu) {
+	private void setListePneu(ArrayList<Pneu> listePneu) {
 		this.listePneu = listePneu;
 	}
 	/**
 	 * @return Renvoie listeTEquip.
 	 */
-	private ArrayList getListeTEquip() {
+	private ArrayList<TYPEEQUIP> getListeTEquip() {
 		return listeTEquip;
 	}
 	/**
 	 * @param listeTEquip listeTEquip à définir.
 	 */
-	private void setListeTEquip(ArrayList listeTEquip) {
+	private void setListeTEquip(ArrayList<TYPEEQUIP> listeTEquip) {
 		this.listeTEquip = listeTEquip;
 	}
 	/**

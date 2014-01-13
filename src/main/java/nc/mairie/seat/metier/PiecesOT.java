@@ -1,13 +1,17 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import nc.mairie.seat.process.Outils;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier PiecesOT
  */
-public class PiecesOT extends nc.mairie.technique.BasicMetier {
+public class PiecesOT extends BasicMetier {
 	public String numot;
 	public String numpiece;
 	public String datesortie;
@@ -26,7 +30,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : PiecesOT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPiecesOT(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<PiecesOT> listerPiecesOT(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PiecesOT unPiecesOT = new PiecesOT();
 	return unPiecesOT.getMyPiecesOTBroker().listerPiecesOT(aTransaction);
 }
@@ -43,7 +47,7 @@ public static PiecesOT chercherPiecesOT(nc.mairie.technique.Transaction aTransac
  * Retourne un arrayList.
  * @return PiecesOT
  */
-public static java.util.ArrayList chercherPiecesOTOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception{
+public static ArrayList<PiecesOT> chercherPiecesOTOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception{
 	PiecesOT unPiecesOT = new PiecesOT();
 	return unPiecesOT.getMyPiecesOTBroker().chercherPiecesOTOT(aTransaction, numot);
 }
@@ -291,7 +295,7 @@ public void setPrix(String newPrix) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PiecesOTBroker(this); 
 }
 /**

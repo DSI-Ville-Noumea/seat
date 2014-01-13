@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Pm_PePersoInfos
  */
-public class Pm_PePersoInfosBroker extends nc.mairie.technique.BasicBroker {
+public class Pm_PePersoInfosBroker extends BasicBroker {
 /**
  * Constructeur Pm_PePersoInfosBroker.
  */
-public Pm_PePersoInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public Pm_PePersoInfosBroker(Pm_PePersoInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.Pm_PePersoInfosMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Pm_PePersoInfos definirMyMetier() {
 	return new Pm_PePersoInfos() ;
 }
 /**
@@ -57,7 +60,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * Retourne un ArrayList d'objet métier : Pm_PePersoInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPm_PePersoInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Pm_PePersoInfos> listerPm_PePersoInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -69,14 +72,14 @@ public Pm_PePersoInfos chercherPm_PePersoInfos(nc.mairie.technique.Transaction a
 }
 
 // liste des peperso d'une fiche
-public java.util.ArrayList chercherPmPePersoInfosFPM(nc.mairie.technique.Transaction aTransaction, String numfiche) throws Exception {
+public ArrayList<Pm_PePersoInfos> chercherPmPePersoInfosFPM(nc.mairie.technique.Transaction aTransaction, String numfiche) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numfiche = "+numfiche);
 }
 
 /**
  *liste des peperso fait
  */
-public java.util.ArrayList listerPmPePersoInfosFait(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
+public ArrayList<Pm_PePersoInfos> listerPmPePersoInfosFait(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where dreal <> '0001-01-01' and pminv='"+inv+"' order by "+tri+"");
 }
 

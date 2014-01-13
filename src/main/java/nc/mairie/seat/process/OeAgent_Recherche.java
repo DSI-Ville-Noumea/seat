@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import nc.mairie.seat.metier.AffectationServiceInfos;
 import nc.mairie.seat.metier.AgentCCAS;
 import nc.mairie.seat.metier.AgentCDE;
+import nc.mairie.seat.metier.AgentInterface;
 import nc.mairie.seat.metier.Agents;
 import nc.mairie.seat.metier.AgentsMunicipaux;
 import nc.mairie.seat.metier.EquipementInfos;
@@ -18,6 +19,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeAgent_Recherche extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2862610822622316028L;
 	public static final int STATUT_PMATAGENT = 16;
 	public static final int STATUT_TDBPMAT = 15;
 	public static final int STATUT_VISUPMAT = 14;
@@ -36,13 +41,9 @@ public class OeAgent_Recherche extends nc.mairie.technique.BasicProcess {
 	public static final int STATUT_VISUALISER = 1;
 	private java.lang.String[] LB_AGENT;
 	private java.lang.String[] LB_SERVICE;
-	private ArrayList listeService;
-	private ArrayList listeServiceEpuree;
-	private ArrayList listAgents;
+	private ArrayList<AgentInterface> listAgents;
 	private Service serviceCourant;
 	private String modeRenvoie;
-	private boolean estPMat = false;
-	private String type = "";
 	private boolean first = true;
 	public boolean menuService = false;
 /**
@@ -67,7 +68,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		
 		String nom = (String) VariableActivite.recuperer(this,"NOM");
 		modeRenvoie = (String)VariableActivite.recuperer(this,"MODE");
-		type = (String)VariableActivite.recuperer(this,"TYPE");
 		VariableActivite.enlever(this,"NOM");
 		addZone(getNOM_EF_AGENT(),nom);
 		if((nom!=null)&&(!nom.equals(""))){
@@ -80,11 +80,11 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 
 
 public void initialiseListeAgent(javax.servlet.http.HttpServletRequest request,String nom) throws Exception{
-	ArrayList listeAgent = new ArrayList();
+	ArrayList<AgentInterface> listeAgent = new ArrayList<AgentInterface>();
 	if(getServiceCourant()!=null){
-		listeAgent = AgentsMunicipaux.listerAgentsMunicipauxNomServi(getTransaction(),nom,getServiceCourant().getServi());
+		listeAgent.addAll(AgentsMunicipaux.listerAgentsMunicipauxNomServi(getTransaction(),nom,getServiceCourant().getServi()));
 	}else{
-		listeAgent = AgentsMunicipaux.listerAgentsMunicipauxNom(getTransaction(),nom);
+		listeAgent.addAll(AgentsMunicipaux.listerAgentsMunicipauxNom(getTransaction(),nom));
 	}
 	
 	if(getTransaction().isErreur()){
@@ -111,104 +111,7 @@ public void initialiseListeAgent(javax.servlet.http.HttpServletRequest request,S
 	}
 	
 }
-public void initialiseListeAgent_old(javax.servlet.http.HttpServletRequest request,String nom) throws Exception{
-	ArrayList listInter = new ArrayList();
-	String agentTrouve = "";
-	boolean trouve;
-	ArrayList listAgent = new ArrayList();
-		// on regarde dans le fichier des agents CDE		
-		listInter = AgentCDE.chercherAgentCDENom(getTransaction(),nom);
-		if(getTransaction().isErreur()){
-			getTransaction().traiterErreur();
-			trouve = false;
-		}else{
-			trouve = true;
-		}
-		if (listInter.size()>0){
-			for (int i=0;i<listInter.size();i++){
-				//listAgent.add(listInter.get(i));
-				AgentCDE unAgentCDE = (AgentCDE)listInter.get(i);
-				agentTrouve = unAgentCDE.getNomatr()+";2000";
-				listAgent.add(agentTrouve);
-			}
-		}
-		// on regarde dans le fichier des agents CCAS
-		listInter = AgentCCAS.chercherAgentCCASNom(getTransaction(),nom);
-		if(getTransaction().isErreur()){
-			getTransaction().traiterErreur();
-			trouve = false;
-		}else{
-			trouve = true;
-		}
-		if (listInter.size()>0){
-			for (int i=0;i<listInter.size();i++){
-				//listAgent.add(listInter.get(i));
-				AgentCCAS unAgentCCAS = (AgentCCAS)listInter.get(i);
-				agentTrouve = unAgentCCAS.getNomatr()+";5000";
-				listAgent.add(agentTrouve);
-			}
-		}
-		// on regarde dans le fichier de tous les autres agents
-		listInter = Agents.chercherAgentsNom(getTransaction(),nom);
-		if(getTransaction().isErreur()){
-			getTransaction().traiterErreur();
-			trouve = false;
-		}else{
-			trouve = true;
-		}
-		if (listInter.size()>0){
-			for (int i=0;i<listInter.size();i++){
-				//listAgent.add(listInter.get(i));
-				Agents unAgents = (Agents)listInter.get(i);
-				agentTrouve = unAgents.getNomatr()+";0000";
-				listAgent.add(agentTrouve);
-			}
-		}
-	setListAgents(listAgent);
-	if(listAgent.size()>0){
-		//les élèments de la liste 
-		int [] tailles = {70};
-		//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
-		String [] padding = {"G"};
-		FormateListe aFormat = new FormateListe(tailles,padding, false);
-		for (int i=0;i<listAgent.size();i++ ) {
-			//Agents unAgent = (Agents)getListAgents().get(i);
-			String agentChaine = (String)listAgent.get(i);
-			int ind = agentChaine.indexOf(";");
-			String service = agentChaine.substring(ind+1,agentChaine.length());
-			String agent = agentChaine.substring(0,ind);
-			
-			// selon le service on recherche les infos
-			if(("EAAA").equals(service)){
-				AgentCDE unAgentCDE = AgentCDE.chercherAgentCDE(getTransaction(),agent);
-				if(getTransaction().isErreur()){
-					return;
-				}
-				String ligne[] = { unAgentCDE.getNom().trim()+" "+ unAgentCDE.getPrenom().trim()};
-				aFormat.ajouteLigne(ligne);
-			}else if (("5000").equals(service)){
-				AgentCCAS unAgentCCAS = AgentCCAS.chercherAgentCCAS(getTransaction(),agent);
-				if(getTransaction().isErreur()){
-					return;
-				}
-				String ligne[] = { unAgentCCAS.getNom().trim()+" "+ unAgentCCAS.getPrenom().trim()};
-				aFormat.ajouteLigne(ligne);
-			}else{
-				Agents unAgent = Agents.chercherAgents(getTransaction(),agent);
-				if(getTransaction().isErreur()){
-					return;
-				}
-				String ligne[] = { unAgent.getNom().trim()+" "+ unAgent.getPrenom().trim()};
-				aFormat.ajouteLigne(ligne);
-			}
-			
-		}
-		setLB_AGENT(aFormat.getListeFormatee());
-	}else{
-		setLB_AGENT(LBVide);
-	}
-	
-}
+
 
 /**
  * Constructeur du process OeAgent_Recherche.
@@ -242,16 +145,16 @@ public boolean performPB_AGENT(javax.servlet.http.HttpServletRequest request) th
 		return false;
 	}
 	String nom = getZone(getNOM_EF_AGENT()).toUpperCase();
-	String codeservice = getZone(getNOM_EF_SERVICE());
-	ArrayList listAgent = new ArrayList();
-	ArrayList listInter = new ArrayList();
-	boolean trouve = false;
+//	String codeservice = getZone(getNOM_EF_SERVICE());
+//	ArrayList listAgent = new ArrayList();
+//	ArrayList listInter = new ArrayList();
+//	boolean trouve = false;
 	if(getZone(getNOM_EF_AGENT()).equals("")){//||getZone(getNOM_EF_SERVICE()).equals("")){
 		getTransaction().declarerErreur("Vous devez saisir le nom de l'agent ");
 		return false;
 	}
 	initialiseListeAgent(request,nom);
-//		listInter = AgentCDE.chercherAgentCDENom(getTransaction(),nom);
+//		listInter = AgentCDE.listerAgentCDENom(getTransaction(),nom);
 //		if(getTransaction().isErreur()){
 //			getTransaction().traiterErreur();
 //			trouve = false;
@@ -261,7 +164,7 @@ public boolean performPB_AGENT(javax.servlet.http.HttpServletRequest request) th
 //				listAgent.add(listInter.get(i));
 //			}
 //		}
-//		listInter = AgentCCAS.chercherAgentCCASNom(getTransaction(),nom);
+//		listInter = AgentCCAS.listerAgentCCASNom(getTransaction(),nom);
 //		if(getTransaction().isErreur()){
 //			getTransaction().traiterErreur();
 //			trouve = false;
@@ -271,7 +174,7 @@ public boolean performPB_AGENT(javax.servlet.http.HttpServletRequest request) th
 //				listAgent.add(listInter.get(i));
 //			}
 //		}
-//		listInter = Agents.chercherAgentsNom(getTransaction(),nom);
+//		listInter = Agents.listerAgentsNom(getTransaction(),nom);
 //		if(getTransaction().isErreur()){
 //			getTransaction().traiterErreur();
 //			trouve = false;
@@ -417,6 +320,7 @@ private String [] getLB_SERVICE() {
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
  */
+@SuppressWarnings("unused")
 private void setLB_SERVICE(java.lang.String[] newLB_SERVICE) {
 	LB_SERVICE = newLB_SERVICE;
 }
@@ -477,9 +381,8 @@ public java.lang.String getNOM_PB_VALIDER() {
  */
 public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	// on récupère l'agent
-	int position;
 	String type = (String)VariableActivite.recuperer(this,"TYPE");
-	ArrayList a = new ArrayList();
+	ArrayList<?> a = new ArrayList<Object>();
 	int indice  = (Services.estNumerique(getVAL_LB_AGENT_SELECT()) ? Integer.parseInt(getVAL_LB_AGENT_SELECT()): -1);
 //	if (indice == -1 || getListAgents().size() == 0 || indice > getListAgents().size() -1) {
 //		getTransaction().declarerErreur(MairieMessages.getMessage("ERR997","Agent"));
@@ -661,22 +564,22 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
 	}
 	//	 on liste les agents du service
 	//String param = getZone(getNOM_EF_SERVICE());
-	ArrayList liste = new ArrayList();
+	ArrayList<AgentInterface> liste = new ArrayList<AgentInterface>();
 //	 selon le code service
 	if(getServiceCourant()!=null){
 		if(getServiceCourant().getServi()!=null){
 			if(getServiceCourant().getServi().equals("4000")){
-				liste = AgentCDE.listerAgentCDE(getTransaction());
+				liste.addAll(AgentCDE.listerAgentCDE(getTransaction()));
 				if(getTransaction().isErreur()){
 					return false;
 				}
 			}else if (getServiceCourant().getServi().equals("5000")){
-				liste = AgentCCAS.listerAgentCCAS(getTransaction());
+				liste.addAll(AgentCCAS.listerAgentCCAS(getTransaction()));
 				if(getTransaction().isErreur()){
 					return false;
 				}
 			}else{
-				liste = Agents.listerAgents(getTransaction());
+				liste.addAll(Agents.listerAgents(getTransaction()));
 				if(getTransaction().isErreur()){
 					return false;
 				}
@@ -690,38 +593,13 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
 /**
  * @return Renvoie listeAffectation.
  */
-public ArrayList getListeService() {
-	return listeService;
-}
-/**
- * @param listeAffectation listeAffectation à définir.
- */
-public void setListeService(ArrayList listeService) {
-	this.listeService = listeService;
-}
-/**
- * @return Renvoie listeAffectation.
- */
-public ArrayList getListeServiceEpuree() {
-	return listeServiceEpuree;
-}
-/**
- * @param listeAffectation listeAffectation à définir.
- */
-public void setListeServiceEpuree(ArrayList listeServiceEpuree) {
-	this.listeServiceEpuree = listeServiceEpuree;
-}
-
-/**
- * @return Renvoie listeAffectation.
- */
-public ArrayList getListAgents() {
+public ArrayList<AgentInterface> getListAgents() {
 	return listAgents;
 }
 /**
  * @param listeAffectation listeAffectation à définir.
  */
-public void setListAgents(ArrayList listAgents) {
+public void setListAgents(ArrayList<AgentInterface> listAgents) {
 	this.listAgents = listAgents;
 }
 /**

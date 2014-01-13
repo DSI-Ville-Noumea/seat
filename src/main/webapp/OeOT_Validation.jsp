@@ -28,7 +28,7 @@ if (document.formu.elements[nom] != null)
 <TITLE>OeOT_Validation.jsp</TITLE>
 </HEAD>
 <jsp:useBean class="nc.mairie.seat.process.OeOT_Validation" id="process" scope="session"></jsp:useBean>
-<BODY BGPROPERTIES="FIXED" background="images/fond.jpg" class="sigp2-BODY">
+<BODY background="images/fond.jpg" class="sigp2-BODY">
 
 <TABLE border="0" width="580" style="text-align : center;" class="sigp2">
 <%@ include file="BanniereErreur.jsp" %>

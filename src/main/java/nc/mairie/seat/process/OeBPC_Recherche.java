@@ -12,11 +12,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeBPC_Recherche extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1669983261656131263L;
 	private java.lang.String[] LB_BPC;
 	private java.lang.String[] LB_EQUIPEMENT;
-	private ArrayList listeEquipementInfos;
+	private ArrayList<EquipementInfos> listeEquipementInfos;
 	private BPC bpcCourant;
-	private ArrayList listeBPC;
+	private ArrayList<BPC> listeBPC;
 	private EquipementInfos equipementInfosCourant;
 	private PMatInfos pMatInfosCourant;
 	private String focus = null;
@@ -34,7 +38,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	String param = getZone(getNOM_EF_DESIGNATION()).toUpperCase();
 	//initialisation des listes
 	if (null!=(equipementInfosCourant)){
-		java.util.ArrayList equipement = EquipementInfos.chercherListEquipementInfosTous(getTransaction(),param);
+		ArrayList<EquipementInfos> equipement = EquipementInfos.chercherListEquipementInfosTous(getTransaction(),param);
 		if(getTransaction().isErreur()){
 			getTransaction().declarerErreur(getTransaction().traiterErreur());
 			return ;
@@ -43,7 +47,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			System.out.println("Aucun équipement enregistré dans la base.");
 		}
 		setListeEquipementInfos(equipement);
-		java.util.ArrayList bpc = BPC.listerBPCEquipement(getTransaction(),equipementInfosCourant.getNumeroinventaire());
+		ArrayList<BPC> bpc = BPC.listerBPCEquipement(getTransaction(),equipementInfosCourant.getNumeroinventaire());
 		if (null == bpc){
 			System.out.println("Aucun BPC enregistré dans la base.");
 		}
@@ -154,7 +158,7 @@ public java.lang.String getNOM_PB_OK() {
  */
 public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String param = getZone(getNOM_EF_DESIGNATION()).toUpperCase() ;
-	ArrayList resultatEquipementInfos = EquipementInfos.chercherListEquipementInfosTous(getTransaction(),param);
+	ArrayList<EquipementInfos> resultatEquipementInfos = EquipementInfos.chercherListEquipementInfosTous(getTransaction(),param);
 	if(getTransaction().isErreur()){
 		getTransaction().declarerErreur(getTransaction().traiterErreur()+"L'équipement n'a pas été trouvé.");
 		return false;
@@ -203,13 +207,13 @@ public boolean performPB_OK_EQUIPEMENT(javax.servlet.http.HttpServletRequest req
 //		return false;
 //	}
 	setEquipementInfosCourant(monEquipementInfos);
-	ArrayList resultat = BPC.chercherListBPC(getTransaction(),equipementInfosCourant.getNumeroinventaire());
+	ArrayList<BPC> resultat = BPC.listerBPCInventaire(getTransaction(),equipementInfosCourant.getNumeroinventaire());
 	if(getTransaction().isErreur()){
 		getTransaction().declarerErreur(getTransaction().traiterErreur());
 		return false;
 	}
 	// on remplit la liste des BPC
-	setListeEquipementInfos(resultat);
+	setListeBPC(resultat);
 	if(resultat.size()>0){
 		//les élèments de la liste 
 		int [] tailles = {10,10,15,10};
@@ -458,25 +462,25 @@ public String getDefaultFocus() {
 	/**
 	 * @return Renvoie listeEquipementInfos.
 	 */
-	public ArrayList getListeEquipementInfos() {
+	public ArrayList<EquipementInfos> getListeEquipementInfos() {
 		return listeEquipementInfos;
 	}
 	/**
 	 * @param listeEquipementInfos listeEquipementInfos à définir.
 	 */
-	public void setListeEquipementInfos(ArrayList listeEquipementInfos) {
+	public void setListeEquipementInfos(ArrayList<EquipementInfos> listeEquipementInfos) {
 		this.listeEquipementInfos = listeEquipementInfos;
 	}
 	/**
 	 * @return Renvoie listeBPC.
 	 */
-	public ArrayList getListeBPC() {
+	public ArrayList<BPC> getListeBPC() {
 		return listeBPC;
 	}
 	/**
 	 * @param listeBPC listeBPC à définir.
 	 */
-	public void setListeBPC(ArrayList listeBPC) {
+	public void setListeBPC(ArrayList<BPC> listeBPC) {
 		this.listeBPC = listeBPC;
 	}
 }

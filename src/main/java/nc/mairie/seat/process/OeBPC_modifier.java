@@ -1,7 +1,6 @@
 package nc.mairie.seat.process;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 import nc.mairie.seat.metier.AffectationServiceInfos;
 import nc.mairie.seat.metier.BPC;
@@ -24,27 +23,24 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeBPC_modifier extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7546397421936678246L;
 	private java.lang.String[] LB_IMMAT;
 	private java.lang.String[] LB_INVENTAIRE;
 	private java.lang.String[] LB_MODEPRISE;
 	private java.lang.String[] LB_POMPE;
-	private ArrayList listeBPC;
-	private ArrayList listeCarbu;
-	private ArrayList listePompe;
-	private ArrayList listeEquipement;
-	private ArrayList listeEquipementInfos;
-	private ArrayList listeModePrise;
+//	private ArrayList listeCarbu;
+	private ArrayList<Pompes> listePompe;
+	private ArrayList<Equipement> listeEquipement;
+	private ArrayList<ModePrise> listeModePrise;
 	private Modeles modeleCourant;
 	private BPC bpcCourant;
 	private BPC bpcAvant;
 	private Equipement equipementCourant;
 	private EquipementInfos equipementInfosCourant;
-	private PMateriel pMaterielCourant;
 	private PMatInfos pMatInfosCourant;
-	private int codeCarburant;
-	private int codeModePrise;
-	private Hashtable hashInventaire;
-	private Hashtable hashImmat;
 	private String focus = null;
 	private boolean first = true;
 	private String newNumeroBpc;
@@ -52,7 +48,6 @@ public class OeBPC_modifier extends nc.mairie.technique.BasicProcess {
 	private String newDate;
 	private String newQte;
 	private String indiceMode="1";
-	private String indicePompe="1";
 	private String newHeure;
 	private Pompes pompeCourante ;
 	private boolean isMateriel = false;
@@ -95,7 +90,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		newDate = getBpcCourant().getDate();
 		newNumeroBpc = getBpcCourant().getNumerobpc();
 		//indiceMode = String.valueOf(Integer.parseInt(getBpcCourant().getModedeprise())-1);
-		indicePompe = String.valueOf(Integer.parseInt(getBpcCourant().getNumeropompe())-1);
+//		indicePompe = String.valueOf(Integer.parseInt(getBpcCourant().getNumeropompe())-1);
 		newQte = getBpcCourant().getQuantite();
 		
 		BPC monBPC = (BPC)VariableActivite.recuperer(this, "BPCAVANT");
@@ -196,7 +191,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		// on initialise les listes déroulantes
 //		 Si liste des modes de prise de carburant est vide
 		if (getLB_MODEPRISE() == LBVide) {
-			java.util.ArrayList a = ModePrise.listerModePrise(getTransaction());
+			ArrayList<ModePrise> a = ModePrise.listerModePrise(getTransaction());
 			setListeModePrise(a);
 			//les élèments de la liste 
 			int [] tailles = {10};
@@ -204,14 +199,12 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
 			String [] padding = {"G"};
 			
-			FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-			String [] l = f.getListeFormatee();
 			setLB_MODEPRISE(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 		}
 			
 //		 Si liste des inventaires et immatriculation est vide
 		if (getLB_INVENTAIRE() == LBVide) {
-			java.util.ArrayList a = Equipement.listerEquipement(getTransaction());
+			ArrayList<Equipement> a = Equipement.listerEquipement(getTransaction());
 			setListeEquipement(a);
 			//les élèments de la liste 
 			int [] tailles = {13};
@@ -221,13 +214,10 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			String [] padding = {"D"};
 			String [] padding2 = {"D"};
 			
-			FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-			String [] l = f.getListeFormatee();
 			setLB_INVENTAIRE(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 			setLB_IMMAT(new FormateListe(tailles,a,champs2,padding2,false).getListeFormatee());
 			
 			//recherche de l'équipement courant
-			int position = -1;
 			addZone(getNOM_LB_INVENTAIRE_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListeEquipement().size(); i++) {
 				Equipement eq = (Equipement)getListeEquipement().get(i);
@@ -285,7 +275,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
  * initialisation de la liste des pompes
  */
 public void initialiseListePompes(javax.servlet.http.HttpServletRequest request) throws Exception{
-	ArrayList a = Pompes.listerPompes(getTransaction());
+	ArrayList<Pompes> a = Pompes.listerPompes(getTransaction());
 	if (getTransaction().isErreur()){
 		return;
 	}
@@ -299,8 +289,6 @@ public void initialiseListePompes(javax.servlet.http.HttpServletRequest request)
 		a = Services.trier(a,champs,colonnes);
 		setListePompe(a);
 		
-		FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-		String [] l = f.getListeFormatee();
 		setLB_POMPE(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 	}else{
 		setLB_POMPE(null);
@@ -308,7 +296,6 @@ public void initialiseListePompes(javax.servlet.http.HttpServletRequest request)
 //	 on sélectionne la pompe en cours
 	if(getPompeCourante()!=null){
 		if(getPompeCourante().getNum_pompe()!=null){
-			int position = -1;
 			addZone(getNOM_LB_POMPE_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListePompe().size(); i++) {
 				Pompes unePompe = (Pompes)getListePompe().get(i);
@@ -388,7 +375,7 @@ public void verifEntretiens (javax.servlet.http.HttpServletRequest request) thro
 	String dateDerReal;
 	String dateBPC;
 	int compteur = 0;
-	ArrayList listEntretien = new ArrayList();
+	ArrayList<PePerso> listEntretien = new ArrayList<PePerso>();
 	boolean isVidangeCompleteAFaire=false;
 
 	if(getEquipementInfosCourant()!=null){
@@ -512,30 +499,30 @@ public void verifEntretiens (javax.servlet.http.HttpServletRequest request) thro
 	
 }
 
-public ArrayList epureListeEntretiensAFaire(javax.servlet.http.HttpServletRequest request,ArrayList listEntretiens) throws Exception {
-	ArrayList listEntretiensEpure = new ArrayList();
-	int aVidSimple = -1;
-	int aVidComplete = -1;
-	
-	// on regarde si dans la liste des entretiens à faire il y a les 2 types de vidange (simple code 1 ou complète code 3)
-	// si oui on ne fait que la vidange complète
-	for (int indice=0;indice<listEntretiens.size();indice++){
-		PePerso unPePerso = (PePerso)listEntretiens.get(indice);
-		if(Integer.parseInt(unPePerso.getCodeentretien())==1){
-			aVidSimple = indice;
-		}
-		if (Integer.parseInt(unPePerso.getCodeentretien())==3){
-			aVidComplete = indice;
-		}
-	}
-	
-	// si les 2 types de vidange on enlève la vidange simple
-	if((aVidSimple>-1)&&(aVidComplete>-1)){
-		listEntretiens.remove(aVidSimple);
-	}
-	listEntretiensEpure = listEntretiens;
-	return listEntretiensEpure;
-}
+//public ArrayList epureListeEntretiensAFaire(javax.servlet.http.HttpServletRequest request,ArrayList listEntretiens) throws Exception {
+//	ArrayList listEntretiensEpure = new ArrayList();
+//	int aVidSimple = -1;
+//	int aVidComplete = -1;
+//	
+//	// on regarde si dans la liste des entretiens à faire il y a les 2 types de vidange (simple code 1 ou complète code 3)
+//	// si oui on ne fait que la vidange complète
+//	for (int indice=0;indice<listEntretiens.size();indice++){
+//		PePerso unPePerso = (PePerso)listEntretiens.get(indice);
+//		if(Integer.parseInt(unPePerso.getCodeentretien())==1){
+//			aVidSimple = indice;
+//		}
+//		if (Integer.parseInt(unPePerso.getCodeentretien())==3){
+//			aVidComplete = indice;
+//		}
+//	}
+//	
+//	// si les 2 types de vidange on enlève la vidange simple
+//	if((aVidSimple>-1)&&(aVidComplete>-1)){
+//		listEntretiens.remove(aVidSimple);
+//	}
+//	listEntretiensEpure = listEntretiens;
+//	return listEntretiensEpure;
+//}
 
 /**
  * Constructeur du process OeBPC_modifier.
@@ -638,30 +625,30 @@ public boolean performPB_INVENTAIRE(javax.servlet.http.HttpServletRequest reques
 public java.lang.String getNOM_PB_OK_MODEPRISE() {
 	return "NOM_PB_OK_MODEPRISE";
 }
-/**
- * - Traite et affecte les zones saisies dans la JSP.
- * - Implémente les règles de gestion du process
- * - Positionne un statut en fonction de ces règles :
- *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
- * Date de création : (02/06/05 14:41:58)
- * @author : Générateur de process
- */
-public boolean performPB_OK_MODEPRISE(javax.servlet.http.HttpServletRequest request) throws Exception {
-//	Récup de l'indice sélectionné
-	int indice = (Services.estNumerique(getVAL_LB_MODEPRISE_SELECT()) ? Integer.parseInt(getVAL_LB_MODEPRISE_SELECT()): -1); 
-		
-	if (indice == -1) {
-		getTransaction().declarerErreur("Vous devez sélectionner un élement");
-		return false;
-	}
-	
-	BPC monBpc = (BPC)getListeModePrise().get(indice);
-	setBpcCourant(monBpc);
-
-	codeModePrise= indice +1;
-	
-	return true;
-}
+///**
+// * - Traite et affecte les zones saisies dans la JSP.
+// * - Implémente les règles de gestion du process
+// * - Positionne un statut en fonction de ces règles :
+// *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
+// * Date de création : (02/06/05 14:41:58)
+// * @author : Générateur de process
+// */
+//public boolean performPB_OK_MODEPRISE(javax.servlet.http.HttpServletRequest request) throws Exception {
+////	Récup de l'indice sélectionné
+//	int indice = (Services.estNumerique(getVAL_LB_MODEPRISE_SELECT()) ? Integer.parseInt(getVAL_LB_MODEPRISE_SELECT()): -1); 
+//		
+//	if (indice == -1) {
+//		getTransaction().declarerErreur("Vous devez sélectionner un élement");
+//		return false;
+//	}
+//	
+//	BPC monBpc = (BPC)getListeModePrise().get(indice);
+//	setBpcCourant(monBpc);
+//
+//	codeModePrise= indice +1;
+//	
+//	return true;
+//}
 
 /**
  * - Traite et affecte les zones saisies dans la JSP.
@@ -715,7 +702,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 	
 	//int modeprise  = Integer.parseInt(getZone(getNOM_LB_MODEPRISE_SELECT()))+1;
 	//String newmodeprise = String.valueOf(modeprise);
-	int indice = (Services.estNumerique(getVAL_LB_INVENTAIRE_SELECT()) ? Integer.parseInt(getVAL_LB_INVENTAIRE_SELECT()): -1); 
+//	int indice = (Services.estNumerique(getVAL_LB_INVENTAIRE_SELECT()) ? Integer.parseInt(getVAL_LB_INVENTAIRE_SELECT()): -1); 
 	
 //	Equipement monEquipement = (Equipement)getListeEquipement().get(indice);
 //	setEquipementCourant(monEquipement);
@@ -1220,30 +1207,30 @@ public java.lang.String getVAL_LB_POMPE_SELECT() {
 	private void setBpcCourant(BPC bpcCourant) {
 		this.bpcCourant = bpcCourant;
 	}
-	/**
-	 * @return Renvoie codeCarburant.
-	 */
-	private int getCodeCarburant() {
-		return codeCarburant;
-	}
-	/**
-	 * @param codeCarburant codeCarburant à définir.
-	 */
-	private void setCodeCarburant(int codeCarburant) {
-		this.codeCarburant = codeCarburant;
-	}
-	/**
-	 * @return Renvoie codeModePrise.
-	 */
-	private int getCodeModePrise() {
-		return codeModePrise;
-	}
-	/**
-	 * @param codeModePrise codeModePrise à définir.
-	 */
-	private void setCodeModePrise(int codeModePrise) {
-		this.codeModePrise = codeModePrise;
-	}
+//	/**
+//	 * @return Renvoie codeCarburant.
+//	 */
+//	private int getCodeCarburant() {
+//		return codeCarburant;
+//	}
+//	/**
+//	 * @param codeCarburant codeCarburant à définir.
+//	 */
+//	private void setCodeCarburant(int codeCarburant) {
+//		this.codeCarburant = codeCarburant;
+//	}
+//	/**
+//	 * @return Renvoie codeModePrise.
+//	 */
+//	private int getCodeModePrise() {
+//		return codeModePrise;
+//	}
+//	/**
+//	 * @param codeModePrise codeModePrise à définir.
+//	 */
+//	private void setCodeModePrise(int codeModePrise) {
+//		this.codeModePrise = codeModePrise;
+//	}
 	/**
 	 * @return Renvoie equipementCourant.
 	 */
@@ -1269,17 +1256,16 @@ public java.lang.String getVAL_LB_POMPE_SELECT() {
 			EquipementInfos equipementInfosCourant) {
 		this.equipementInfosCourant = equipementInfosCourant;
 	}
-	/**
-	 * @return Renvoie pMaterielCourant.
-	 */
-	private PMateriel getPMaterielCourant() {
-		return pMaterielCourant;
-	}
+//	/**
+//	 * @return Renvoie pMaterielCourant.
+//	 */
+//	private PMateriel getPMaterielCourant() {
+//		return pMaterielCourant;
+//	}
 	/**
 	 * @param pMaterielCourant pMaterielCourant à définir.
 	 */
 	private void setPMaterielCourant(PMateriel pMaterielCourant) {
-		this.pMaterielCourant = pMaterielCourant;
 	}
 	
 	/**
@@ -1295,76 +1281,77 @@ public java.lang.String getVAL_LB_POMPE_SELECT() {
 			PMatInfos pMatInfosCourant) {
 		this.pMatInfosCourant = pMatInfosCourant;
 	}
-	/**
-	 * @return Renvoie listeBPC.
-	 */
-	private ArrayList getListeBPC() {
-		return listeBPC;
-	}
-	/**
-	 * @param listeBPC listeBPC à définir.
-	 */
-	private void setListeBPC(ArrayList listeBPC) {
-		this.listeBPC = listeBPC;
-	}
-	/**
-	 * @return Renvoie listeCarbu.
-	 */
-	private ArrayList getListeCarbu() {
-		return listeCarbu;
-	}
-	/**
-	 * @param listeCarbu listeCarbu à définir.
-	 */
-	private void setListeCarbu(ArrayList listeCarbu) {
-		this.listeCarbu = listeCarbu;
-	}
+//	/**
+//	 * @return Renvoie listeBPC.
+//	 */
+//	private ArrayList getListeBPC() {
+//		return listeBPC;
+//	}
+//	/**
+//	 * @param listeBPC listeBPC à définir.
+//	 */
+//	private void setListeBPC(ArrayList listeBPC) {
+//		this.listeBPC = listeBPC;
+//	}
+//	/**
+//	 * @return Renvoie listeCarbu.
+//	 */
+//	private ArrayList getListeCarbu() {
+//		return listeCarbu;
+//	}
+//	/**
+//	 * @param listeCarbu listeCarbu à définir.
+//	 */
+//	private void setListeCarbu(ArrayList listeCarbu) {
+//		this.listeCarbu = listeCarbu;
+//	}
 	/**
 	 * @return Renvoie listeEquipement.
 	 */
-	private ArrayList getListeEquipement() {
+	private ArrayList<Equipement> getListeEquipement() {
 		return listeEquipement;
 	}
 	/**
 	 * @param listeEquipement listeEquipement à définir.
 	 */
-	private void setListeEquipement(ArrayList listeEquipement) {
+	private void setListeEquipement(ArrayList<Equipement> listeEquipement) {
 		this.listeEquipement = listeEquipement;
 	}
-	/**
-	 * @return Renvoie listeEquipementInfos.
-	 */
-	private ArrayList getListeEquipementInfos() {
-		return listeEquipementInfos;
-	}
-	/**
-	 * @param listeEquipementInfos listeEquipementInfos à définir.
-	 */
-	private void setListeEquipementInfos(ArrayList listeEquipementInfos) {
-		this.listeEquipementInfos = listeEquipementInfos;
-	}
+//	/**
+//	 * @return Renvoie listeEquipementInfos.
+//	 */
+//	private ArrayList getListeEquipementInfos() {
+//		return listeEquipementInfos;
+//	}
+//	/**
+//	 * @param listeEquipementInfos listeEquipementInfos à définir.
+//	 */
+//	private void setListeEquipementInfos(ArrayList listeEquipementInfos) {
+//		this.listeEquipementInfos = listeEquipementInfos;
+//	}
 	/**
 	 * @return Renvoie listeModePrise.
 	 */
-	private ArrayList getListeModePrise() {
+	@SuppressWarnings("unused")
+	private ArrayList<ModePrise> getListeModePrise() {
 		return listeModePrise;
 	}
 	/**
 	 * @param listeModePrise listeModePrise à définir.
 	 */
-	private void setListeModePrise(ArrayList listeModePrise) {
+	private void setListeModePrise(ArrayList<ModePrise> listeModePrise) {
 		this.listeModePrise = listeModePrise;
 	}
 	/**
 	 * @return Renvoie listePompe.
 	 */
-	private ArrayList getListePompe() {
+	private ArrayList<Pompes> getListePompe() {
 		return listePompe;
 	}
 	/**
 	 * @param listePompe listePompe à définir.
 	 */
-	private void setListePompe(ArrayList listePompe) {
+	private void setListePompe(ArrayList<Pompes> listePompe) {
 		this.listePompe = listePompe;
 	}
 	/**
@@ -1510,10 +1497,10 @@ public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) th
 			return performPB_INVENTAIRE(request);
 		}
 
-		//Si clic sur le bouton PB_OK_MODEPRISE
-		if (testerParametre(request, getNOM_PB_OK_MODEPRISE())) {
-			return performPB_OK_MODEPRISE(request);
-		}
+//		//Si clic sur le bouton PB_OK_MODEPRISE
+//		if (testerParametre(request, getNOM_PB_OK_MODEPRISE())) {
+//			return performPB_OK_MODEPRISE(request);
+//		}
 
 		//Si clic sur le bouton PB_VALIDER
 		if (testerParametre(request, getNOM_PB_VALIDER())) {

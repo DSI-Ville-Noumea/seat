@@ -1,22 +1,26 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
+
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier AffectationInfos
  */
-public class AffectationInfosBroker extends nc.mairie.technique.BasicBroker {
+public class AffectationInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : AffectationInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAffectationInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<AffectationInfos> listerAffectationInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**
  * Retourne un AffectationInfos.
  * @return AffectationInfos
  */
-public java.util.ArrayList chercherAffectationInfosAgentEquip(nc.mairie.technique.Transaction aTransaction, String matr,String inv) throws Exception {
+public ArrayList<AffectationInfos> chercherAffectationInfosAgentEquip(nc.mairie.technique.Transaction aTransaction, String matr,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where matricule = "+matr+" and numeroinventaire='"+inv+"' with ur");
 }
 
@@ -24,14 +28,14 @@ public java.util.ArrayList chercherAffectationInfosAgentEquip(nc.mairie.techniqu
  * Retourne un AffectationInfos.
  * @return AffectationInfos
  */
-public java.util.ArrayList chercherAffectationInfosAgent(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
+public ArrayList<AffectationInfos> chercherAffectationInfosAgent(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where matricule = "+cle+" with ur");
 }
 /**
  * Retourne un AffectationInfos.
  * @return AffectationInfos
  */
-public java.util.ArrayList chercherAffectationInfosEquip(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception {
+public ArrayList<AffectationInfos> chercherAffectationInfosEquip(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+inv+"' with ur");
 }
 
@@ -39,14 +43,14 @@ public java.util.ArrayList chercherAffectationInfosEquip(nc.mairie.technique.Tra
  * Retourne un ArrayList d'objet métier : AffectationInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList chercherListAffectationInfosEquip(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<AffectationInfos> chercherListAffectationInfosEquip(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+param+"' with ur");
 }
 /**
  * Retourne un ArrayList d'objet métier : AffectationInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList chercherListAffectationInfosSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<AffectationInfos> chercherListAffectationInfosSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	String codeservice = param.substring(0,3);
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice like '"+codeservice+"%' with ur");
 }
@@ -55,7 +59,7 @@ public java.util.ArrayList chercherListAffectationInfosSce(nc.mairie.technique.T
  * Retourne un AffectationInfos.
  * @return AffectationInfos
  */
-public java.util.ArrayList chercherListAgentEquipSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception {
+public ArrayList<AffectationInfos> chercherListAgentEquipSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception {
 	String param = servi.substring(0,3);	
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice like '"+param+"%' with ur");
 }
@@ -63,13 +67,13 @@ public java.util.ArrayList chercherListAgentEquipSce(nc.mairie.technique.Transac
 /**
  * Constructeur AffectationInfosBroker.
  */
-public AffectationInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public AffectationInfosBroker(AffectationInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.AffectationInfosMetier
  */
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected AffectationInfos definirMyMetier() {
 	return new AffectationInfos() ;
 }
 /**

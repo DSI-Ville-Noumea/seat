@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier BeOtInfos
  */
-public class BeOtInfosBroker extends nc.mairie.technique.BasicBroker {
+public class BeOtInfosBroker extends BasicBroker {
 /**
  * Constructeur BeOtInfosBroker.
  */
-public BeOtInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public BeOtInfosBroker(BeOtInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.BeOtInfosMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected BeOtInfos definirMyMetier() {
 	return new BeOtInfos() ;
 }
 /**
@@ -53,7 +56,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * Retourne un ArrayList d'objet métier : BeOtInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerBeOtInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<BeOtInfos> listerBeOtInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -67,7 +70,7 @@ public BeOtInfos chercherBeOtInfos(nc.mairie.technique.Transaction aTransaction,
  * Retourne un ArrayList d'objet métier : BeOtInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerBeOtInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
+public ArrayList<BeOtInfos> listerBeOtInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroot="+numot);
 }
 

@@ -33,7 +33,7 @@ document.formu.elements[nom].focus();
 		rd.forward(request,response);
 	}
 %>
-<BODY bgcolor="#FFFFFF" bgproperties="fixed" background="images/fond.jpg" class="sigp2-BODY">
+<BODY bgcolor="#FFFFFF" background="images/fond.jpg" class="sigp2-BODY">
 
 <jsp:useBean class="nc.mairie.seat.process.OeAccueil" id="process" scope="session"></jsp:useBean>
 <TABLE border="0" width="580" style="text-align : center;">

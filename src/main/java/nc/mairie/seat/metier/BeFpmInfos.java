@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier BeFpmInfos
  */
-public class BeFpmInfos extends nc.mairie.technique.BasicMetier {
+public class BeFpmInfos extends BasicMetier {
 	public String numfiche;
 	public String pminv;
 	public String dentree;
@@ -143,7 +148,7 @@ public void setNoengj(String newNoengj) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new BeFpmInfosBroker(this); 
 }
 /**
@@ -166,7 +171,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : BeFpmInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerBeFpmInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<BeFpmInfos> listerBeFpmInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	BeFpmInfos unBeFpmInfos = new BeFpmInfos();
 	return unBeFpmInfos.getMyBeFpmInfosBroker().listerBeFpmInfos(aTransaction);
 }
@@ -180,7 +185,7 @@ public static BeFpmInfos chercherBeFpmInfos(nc.mairie.technique.Transaction aTra
 }
 
 // recherche pour la numfiche passée en param
-public static java.util.ArrayList listerBeFpmInfosFpm(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
+public static ArrayList<BeFpmInfos> listerBeFpmInfosFpm(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
 	BeFpmInfos unBeFpmInfos = new BeFpmInfos();
 	return unBeFpmInfos.getMyBeFpmInfosBroker().listerBeFpmInfosFpm(aTransaction,numfiche);
 }

@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier TypeEntretien
  */
-public class TypeEntretien extends nc.mairie.technique.BasicMetier {
+public class TypeEntretien extends BasicMetier {
 	public String codetypeent;
 	public String designationtypeent;
 /**
@@ -39,7 +44,7 @@ public void setDesignationtypeent(String newDesignationtypeent) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new TypeEntretienBroker(this); 
 }
 /**
@@ -62,7 +67,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : TypeEntretien.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerTypeEntretien(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<TypeEntretien> listerTypeEntretien(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	TypeEntretien unTypeEntretien = new TypeEntretien();
 	return unTypeEntretien.getMyTypeEntretienBroker().listerTypeEntretien(aTransaction);
 }

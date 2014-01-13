@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html;charset=UTF-8"%>
 <HTML>
 <HEAD>
@@ -11,7 +12,7 @@
 nc.mairie.technique.UserAppli aUser= (nc.mairie.technique.UserAppli)nc.mairie.technique.VariableGlobale.recuperer(request,nc.mairie.technique.VariableGlobale.GLOBAL_USER_APPLI);
 //java.util.ArrayList droits = aUser.getListeDroits();
 // on déclare tous les liens
-java.util.ArrayList droits = new java.util.ArrayList();
+ArrayList<String> droits = new ArrayList<String>();
 droits.add("GestionMarques");
 droits.add("GestionModePrise");
 droits.add("GestionCarburant");
@@ -83,14 +84,14 @@ res+=")</script>";
 %>
 <%=res%>
 
-<script language="javascript" src="js/GestionMenu.js"> </script>
+<script src="js/GestionMenu.js"> </script>
 <LINK rel="stylesheet" href="theme/menu.css" type="text/css">
 
 </HEAD>
-<BODY bgcolor="#ffffff" background="images/fond_menu.jpg" text="#000000" onload="preload();" style="cursor : auto;"><BASEFONT FACE="Arial" SIZE=2>
-<nobr>
-<FORM name="leForm" method="POST" target="Main" action="ServletSeat"><INPUT type="hidden" name="ACTIVITE" value="">
+<BODY bgcolor="#ffffff" background="images/fond_menu.jpg" text="#000000" onload="preload();" style="cursor : auto;" class="sigp2">
 
+<FORM name="leForm" method="POST" target="Main" action="ServletSeat"><INPUT type="hidden" name="ACTIVITE" value="">
+<nobr>
 
 <script>
 <!-- 
@@ -321,7 +322,7 @@ menuService.ajouterFils(Module_SPMateriel);
 //menu.ajouterFils(new Lien("GestionMarques", "Marques", "Gestion d'une marque", true));
 //menu.ajouterFils(new Lien("GestionBPC", "BPC", "Gestion des BPC", true));
 <%
-	java.util.Hashtable h = nc.mairie.technique.MairieLDAP.chercherUserLDAPAttributs(aUser.getUserName());
+	java.util.Hashtable<Object, Object> h = nc.mairie.technique.MairieLDAP.chercherUserLDAPAttributs(aUser.getUserName());
 	String dpt = (String)h.get("department");
 %>
 
@@ -359,12 +360,13 @@ if ((dpt!=null)&&(!dpt.equals(""))){
 %>
 
 	//document.write(menu.afficher());
--->
 </script><BR>
 <BR>
 <BR>
 <BR>
 <BR>
+</nobr>
 </FORM>
+
 </BODY>
 </HTML>

@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PiecesFpmInfos
  */
-public class PiecesFpmInfosBroker extends nc.mairie.technique.BasicBroker {
+public class PiecesFpmInfosBroker extends BasicBroker {
 /**
  * Constructeur PiecesFpmInfosBroker.
  */
-public PiecesFpmInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PiecesFpmInfosBroker(PiecesFpmInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PiecesFpmInfosMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PiecesFpmInfos definirMyMetier() {
 	return new PiecesFpmInfos() ;
 }
 /**
@@ -51,7 +54,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * Retourne un ArrayList d'objet métier : PiecesFpmInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPiecesFpmInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<PiecesFpmInfos> listerPiecesFpmInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -65,7 +68,7 @@ public PiecesFpmInfos chercherPiecesFpmInfos(nc.mairie.technique.Transaction aTr
  * Retourne un PiecesInfos.
  * @return PiecesInfos
  */
-public java.util.ArrayList chercherPiecesFpmInfosFpm(nc.mairie.technique.Transaction aTransaction, String numfiche) throws Exception {
+public ArrayList<PiecesFpmInfos> chercherPiecesFpmInfosFpm(nc.mairie.technique.Transaction aTransaction, String numfiche) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numfiche = "+numfiche);
 }
 /**

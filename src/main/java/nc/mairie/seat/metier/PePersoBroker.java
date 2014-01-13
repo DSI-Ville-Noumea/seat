@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PePerso
  */
-public class PePersoBroker extends nc.mairie.technique.BasicBroker {
+public class PePersoBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -30,11 +33,11 @@ public boolean supprimerPePerso(nc.mairie.technique.Transaction aTransaction) th
  * Retourne un ArrayList d'objet métier : PePerso.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPePerso(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<PePerso> listerPePerso(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 
-public java.util.ArrayList listerPePersoEquipMoinsUnAn(nc.mairie.technique.Transaction aTransaction,String pdate) throws Exception {
+public ArrayList<PePerso> listerPePersoEquipMoinsUnAn(nc.mairie.technique.Transaction aTransaction,String pdate) throws Exception {
 	return executeSelectListe(aTransaction,"select distinct(codeequip) from "+getTable()+" where datereal<'"+pdate+"'");
 }
 
@@ -42,7 +45,7 @@ public java.util.ArrayList listerPePersoEquipMoinsUnAn(nc.mairie.technique.Trans
  * Retourne un ArrayList d'objet métier : PePerso.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPePersoDecl(nc.mairie.technique.Transaction aTransaction,String decl) throws Exception {
+public ArrayList<PePerso> listerPePersoDecl(nc.mairie.technique.Transaction aTransaction,String decl) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codedec="+decl);
 }
 
@@ -50,7 +53,7 @@ public java.util.ArrayList listerPePersoDecl(nc.mairie.technique.Transaction aTr
  * on liste les peperso qui ont un intervalle en km
  * autheur : OF 09-04-15
  */
-public java.util.ArrayList listerPePersoRecond(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
+public ArrayList<PePerso> listerPePersoRecond(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeequip = '"+inv+"' and datereal='0001-01-01' and codetypeent<>2 order by INTERVALLE DESC");
 }
 
@@ -59,7 +62,7 @@ public java.util.ArrayList listerPePersoRecond(nc.mairie.technique.Transaction a
  * on liste les peperso qui ont un intervalle en km
  * autheur : CN 05-07-27
  */
-public java.util.ArrayList listerPePersoKm(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
+public ArrayList<PePerso> listerPePersoKm(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeequip = '"+inv+"' and datereal='0001-01-01' and codeti=1 and codetypeent<>2 order by INTERVALLE DESC");
 }
 
@@ -68,7 +71,7 @@ public java.util.ArrayList listerPePersoKm(nc.mairie.technique.Transaction aTran
  * autheur : CN 05-07-27
  */
 //UNUSED: comment by OFONTENEAU 20090313
-//public java.util.ArrayList listerPePersoAFaireKm(nc.mairie.technique.Transaction aTransaction,String mod,String inv) throws Exception {
+//public ArrayList<PePerso> listerPePersoAFaireKm(nc.mairie.technique.Transaction aTransaction,String mod,String inv) throws Exception {
 //	return executeSelectListe(aTransaction,"select * from SEAT.F_PE_BASE where codemodele = '"+mod+"' and codeti=1 and codeentretien<>2 and codemodele not in(select codeentretien from  "+getTable()+" where codeequip='"+inv+"')");
 //}
 
@@ -76,14 +79,14 @@ public java.util.ArrayList listerPePersoKm(nc.mairie.technique.Transaction aTran
  * on liste les peperso qui ont un intervalle en km
  * autheur : CN 05-07-27
  */
-public java.util.ArrayList listerPePersoKmAFaire(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
+public ArrayList<PePerso> listerPePersoKmAFaire(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select distinct(codeentretien) from "+getTable()+" where codeequip = '"+inv+"' and codeti=1 and codetypeent<>2");
 }
 /*renvoi un arrayList 
  * on liste les peperso qui ont un intervalle horaire
  * autheur : CN 05-07-27
  */
-public java.util.ArrayList listerPePersoHr(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
+public ArrayList<PePerso> listerPePersoHr(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeequip = '"+inv+"' and datereal='0001-01-01' and codeti=5 and codetypeent<>2 order by intervalle desc");
 }
 
@@ -100,7 +103,7 @@ public PePerso chercherPePerso(nc.mairie.technique.Transaction aTransaction, Str
  * Retourne un PePerso.
  * @return PePerso
  */
-public java.util.ArrayList chercherPePersoEquipEnt(nc.mairie.technique.Transaction aTransaction, String inv,String ent) throws Exception {
+public ArrayList<PePerso> chercherPePersoEquipEnt(nc.mairie.technique.Transaction aTransaction, String inv,String ent) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeequip = '"+inv+"' and codeentretien="+ent+" order by codepep");
 }
 
@@ -108,7 +111,7 @@ public java.util.ArrayList chercherPePersoEquipEnt(nc.mairie.technique.Transacti
  * Retourne un PePerso.
  * @return PePerso
  */
-public java.util.ArrayList listerPePersoEquip(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception {
+public ArrayList<PePerso> listerPePersoEquip(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeequip = '"+inv+"' order by codepep");
 }
 
@@ -116,7 +119,7 @@ public java.util.ArrayList listerPePersoEquip(nc.mairie.technique.Transaction aT
  * Retourne un PePerso.
  * @return PePerso
  */
-public java.util.ArrayList chercherPePersoOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception {
+public ArrayList<PePerso> chercherPePersoOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeot = "+numot);
 }
 
@@ -124,7 +127,7 @@ public java.util.ArrayList chercherPePersoOT(nc.mairie.technique.Transaction aTr
  * Retourne un PePerso.
  * @return PePerso
  */
-public java.util.ArrayList chercherPePersoPasFaitOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception {
+public ArrayList<PePerso> chercherPePersoPasFaitOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeot = "+numot+" and datereal='0001-01-01'");
 }
 
@@ -184,13 +187,13 @@ public boolean existePePersoTEnt(nc.mairie.technique.Transaction aTransaction, S
 /**
  * Constructeur PePersoBroker.
  */
-public PePersoBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PePersoBroker(PePerso aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PePersoMetier
  */
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PePerso definirMyMetier() {
 	return new PePerso() ;
 }
 /**

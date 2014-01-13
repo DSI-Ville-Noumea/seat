@@ -25,7 +25,7 @@ document.formu.elements[nom].focus();
 </SCRIPT>
 <TITLE>OeOT.jsp</TITLE>
 </HEAD>
-<BODY BGPROPERTIES="FIXED" background="images/fond.jpg"
+<BODY background="images/fond.jpg"
 	class="sigp2-BODY">
 <jsp:useBean class="nc.mairie.seat.process.OeOT" id="process"
 	scope="session"></jsp:useBean>

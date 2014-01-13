@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Fre_PM
  */
-public class Fre_PMBroker extends nc.mairie.technique.BasicBroker {
+public class Fre_PMBroker extends BasicBroker {
 /**
  * Constructeur Fre_PMBroker.
  */
-public Fre_PMBroker(nc.mairie.technique.BasicMetier aMetier) {
+public Fre_PMBroker(Fre_PM aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.Fre_PMMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Fre_PM definirMyMetier() {
 	return new Fre_PM() ;
 }
 /**
@@ -68,7 +71,7 @@ public boolean supprimerFre_PM(nc.mairie.technique.Transaction aTransaction) thr
  * Retourne un ArrayList d'objet métier : Fre_PM.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerFre_PM(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Fre_PM> listerFre_PM(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**

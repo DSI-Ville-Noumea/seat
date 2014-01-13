@@ -3,7 +3,10 @@ package nc.mairie.seat.process;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.ListIterator;
 import java.util.Locale;
+
+
 
 
 import nc.mairie.seat.metier.AActifs;
@@ -11,6 +14,7 @@ import nc.mairie.seat.metier.AffectationServiceInfos;
 import nc.mairie.seat.metier.Affecter_Agent;
 import nc.mairie.seat.metier.AgentCCAS;
 import nc.mairie.seat.metier.AgentCDE;
+import nc.mairie.seat.metier.AgentInterface;
 //import nc.mairie.seat.metier.AgentServiceInfos;
 import nc.mairie.seat.metier.Agents;
 import nc.mairie.seat.metier.Service;
@@ -23,6 +27,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeAffectation_Agent extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2541822876307570931L;
 	private java.lang.String[] LB_AFFECTATION;
 	private java.lang.String[] LB_AGENT;
 	public static final int STATUT_RECHERCHER = 2;
@@ -35,8 +43,8 @@ public class OeAffectation_Agent extends nc.mairie.technique.BasicProcess {
 	private Agents agentCourant;
 	private Affecter_Agent affecterAgentCourant;
 	private Affecter_Agent affecterAgentPrecedent;
-	private ArrayList listeAffectation;
-	private ArrayList listeAgent;
+	private ArrayList<Affecter_Agent> listeAffectation;
+	private ArrayList<AgentInterface> listeAgent;
 	private String focus = null;
 	private String codeservice = "";
 	public int isVide = 0;
@@ -67,7 +75,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			menuService = true;
 //			 récupération du Service
 			String accro = (String)VariableGlobale.recuperer(request,"ACCRONYME");
-			ArrayList listService = Service.chercherListServiceAccro(getTransaction(),accro);
+			ArrayList<Service> listService = Service.chercherListServiceAccro(getTransaction(),accro);
 			if(getTransaction().isErreur()){
 				return ;
 			}
@@ -180,15 +188,16 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	if (null!=getServiceCourant()){
 		//on remplit la liste des agents du service
 		if(getServiceCourant().getServi().equals("4000")){
-			java.util.ArrayList a = AgentCDE.listerAgentCDE(getTransaction());
-			setListeAgent(a);
+			ArrayList<AgentCDE> a = AgentCDE.listerAgentCDE(getTransaction());
+			setListeAgent(new ArrayList<AgentInterface>());
+			getListeAgent().addAll(a);
 			if (a.size()>0){
 				//les élèments de la liste 
 				int [] tailles = {40};
 				//String [] champs = {"nom", "prenom"};
 				String [] padding = {"G"};
 				FormateListe aFormat = new FormateListe(tailles,padding, true);
-				for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
+				for (ListIterator<AgentCDE> list = a.listIterator(); list.hasNext(); ) {
 					AgentCDE aAActifs = (AgentCDE)list.next();
 					String ligne [] = { aAActifs.getNom().trim()+" "+aAActifs.getPrenom().trim()};
 					aFormat.ajouteLigne(ligne);
@@ -198,15 +207,16 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 				setLB_AGENT(LBVide);
 			}
 		}else if(getServiceCourant().getServi().equals("5000")){
-			java.util.ArrayList a = AgentCCAS.listerAgentCCAS(getTransaction());
-			setListeAgent(a);
+			ArrayList<AgentCCAS> a = AgentCCAS.listerAgentCCAS(getTransaction());
+			setListeAgent(new ArrayList<AgentInterface>());
+			getListeAgent().addAll(a);
 			if (a.size()>0){
 				//les élèments de la liste 
 				int [] tailles = {40};
 				//String [] champs = {"nom", "prenom"};
 				String [] padding = {"G"};
 				FormateListe aFormat = new FormateListe(tailles,padding, true);
-				for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
+				for (ListIterator<AgentCCAS> list = a.listIterator(); list.hasNext(); ) {
 					AgentCCAS aAActifs = (AgentCCAS)list.next();
 					String ligne [] = { aAActifs.getNom().trim()+" "+aAActifs.getPrenom().trim()};
 					aFormat.ajouteLigne(ligne);
@@ -216,15 +226,16 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 				setLB_AGENT(LBVide);
 			}
 		}else{
-			java.util.ArrayList a = AActifs.listerAActifsService(getTransaction(),serviceCourant.getServi());
-			setListeAgent(a);
+			ArrayList<AActifs> a = AActifs.listerAActifsService(getTransaction(),serviceCourant.getServi());
+			setListeAgent(new ArrayList<AgentInterface>());
+			getListeAgent().addAll(a);
 			if (a.size()>0){
 				//les élèments de la liste 
 				int [] tailles = {40};
 				//String [] champs = {"nom", "prenom"};
 				String [] padding = {"G"};
 				FormateListe aFormat = new FormateListe(tailles,padding, true);
-				for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
+				for (ListIterator<AActifs> list = a.listIterator(); list.hasNext(); ) {
 					AActifs aAActifs = (AActifs)list.next();
 					String ligne [] = { aAActifs.getNom().trim()+" "+aAActifs.getPrenom().trim()};
 					aFormat.ajouteLigne(ligne);
@@ -259,7 +270,7 @@ private void initialiseListeAffectation(javax.servlet.http.HttpServletRequest re
 	if(null==dateAff){
 		dateAff = Services.dateDuJour();
 	}
-	ArrayList a = Affecter_Agent.chercherListAffecter_AgentEquipSceEnCours(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),getServiceCourant().getServi(),Services.formateDateInternationale(dateAff));
+	ArrayList<Affecter_Agent> a = Affecter_Agent.chercherListAffecter_AgentEquipSceEnCours(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),getServiceCourant().getServi(),Services.formateDateInternationale(dateAff));
 	if(getTransaction().isErreur()){
 		return;
 	}
@@ -1132,7 +1143,7 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
 	return true;
 }
 
-public void trier(ArrayList a) throws Exception{
+public void trier(ArrayList<Affecter_Agent> a) throws Exception{
 	String[] colonnes = tri;//{tri};//"datedebut","hdeb"};
 	//ordre croissant
 	boolean[] ordres = tOrdre;//false,false};
@@ -1141,7 +1152,7 @@ public void trier(ArrayList a) throws Exception{
 	
 //	Si au moins une affectation
 	if (a.size() !=0 ) {
-		ArrayList aTrier = a;
+		ArrayList<Affecter_Agent> aTrier = a;
 		if (!tri.equals("nom")){
 			aTrier = Services.trier(a,colonnes,ordres);
 		}
@@ -1149,7 +1160,7 @@ public void trier(ArrayList a) throws Exception{
 		int tailles [] = {5,35,10,5,10,5};
 		String[] padding = {"C","G","C","C","C","C"};
 		FormateListe aFormat = new FormateListe(tailles,padding,false);
-		for (java.util.ListIterator list = aTrier.listIterator(); list.hasNext(); ) {
+		for (ListIterator<Affecter_Agent> list = aTrier.listIterator(); list.hasNext(); ) {
 			Affecter_Agent aAffecter_Agent = (Affecter_Agent)list.next();
 			String datefin =aAffecter_Agent.getDatefin();
 			// 1 : on vérifie que l'heure a été renseigné si non l'équipement à été affecter pour la journée
@@ -1240,13 +1251,13 @@ public boolean performPB_OK_AGENT(javax.servlet.http.HttpServletRequest request)
 	/**
 	 * @return Renvoie listeAffectation.
 	 */
-	public ArrayList getListeAffectation() {
+	public ArrayList<Affecter_Agent> getListeAffectation() {
 		return listeAffectation;
 	}
 	/**
 	 * @param listeAffectation listeAffectation à définir.
 	 */
-	public void setListeAffectation(ArrayList listeAffectation) {
+	public void setListeAffectation(ArrayList<Affecter_Agent> listeAffectation) {
 		this.listeAffectation = listeAffectation;
 	}
 	
@@ -1299,13 +1310,13 @@ public boolean performPB_OK_AGENT(javax.servlet.http.HttpServletRequest request)
 	/**
 	 * @return Renvoie listeAgent.
 	 */
-	public ArrayList getListeAgent() {
+	public ArrayList<AgentInterface> getListeAgent() {
 		return listeAgent;
 	}
 	/**
 	 * @param listeAgent listeAgent à définir.
 	 */
-	public void setListeAgent(ArrayList listeAgent) {
+	public void setListeAgent(ArrayList<AgentInterface> listeAgent) {
 		this.listeAgent = listeAgent;
 	}
 /**

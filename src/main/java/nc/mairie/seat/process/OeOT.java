@@ -1,6 +1,5 @@
 package nc.mairie.seat.process;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -17,13 +16,17 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeOT extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5547170503609921847L;
 	public static final int STATUT_MODIFIER = 2;
 	public static final int STATUT_RECHERCHE_EQUIP = 1;
 	private java.lang.String[] LB_OT;
 	private String ACTION_MODIFICATION = "Modification";
 	private String ACTION_CREATION = "Création";
 	private String ACTION_SUPPRESSION = "Suppression d'un OT.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
-	private ArrayList listeOT;
+	private ArrayList<OTComplet> listeOT;
 	private OT otCourant;
 	private OTInfos otInfosCourant;
 	private OTComplet otCompletCourant;
@@ -84,7 +87,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 
 public void initialiseListeOT(javax.servlet.http.HttpServletRequest request) throws Exception{
 
-	ArrayList listOT = new ArrayList();
+	ArrayList<OTComplet> listOT = new ArrayList<OTComplet>();
 	
 	String andLaDate = getVAL_LB_DATE_SELECT().equals("0") ? "" : 
 		" (DATEENTREE " + (getLB_DATE()[Integer.parseInt(getVAL_LB_DATE_SELECT())]).replace(' ', '\'')+"-01-01\' " +
@@ -110,7 +113,7 @@ public void initialiseListeOT(javax.servlet.http.HttpServletRequest request) thr
  *  (non-Javadoc)
  * @see nc.mairie.technique.BasicProcess#recupererStatut(javax.servlet.http.HttpServletRequest)
  */
-public void trier(ArrayList a) throws Exception{
+public void trier(ArrayList<OTComplet> a) throws Exception{
 	String[] colonnes = {tri};//"numeroot","dateentre"};
 	//ordre decroissant
 	boolean[] ordres = {tOrdre};//false,false};
@@ -119,7 +122,7 @@ public void trier(ArrayList a) throws Exception{
 	
 //	Si au moins un OT pour PePerso
 	if (a.size() !=0 ) {
-		ArrayList aTrier = Services.trier(a,colonnes,ordres);
+		ArrayList<OTComplet> aTrier = Services.trier(a,colonnes,ordres);
 		setListeOT(aTrier);
 		int tailles [] = {10,5,10,10,10,12};
 		String[] padding = {"D","G","G","C","C","D"};
@@ -470,10 +473,10 @@ public int getIsVide() {
 public void setIsVide(int isVide) {
 	this.isVide = isVide;
 }
-public ArrayList getListeOT() {
+public ArrayList<OTComplet> getListeOT() {
 	return listeOT;
 }
-public void setListeOT(ArrayList listeOT) {
+public void setListeOT(ArrayList<OTComplet> listeOT) {
 	this.listeOT = listeOT;
 }
 public OT getOtCourant() {

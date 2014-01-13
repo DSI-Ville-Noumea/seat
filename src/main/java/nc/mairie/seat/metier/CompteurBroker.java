@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Compteur
  */
-public class CompteurBroker extends nc.mairie.technique.BasicBroker {
+public class CompteurBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -30,7 +33,7 @@ public boolean supprimerCompteur(nc.mairie.technique.Transaction aTransaction) t
  * Retourne un ArrayList d'objet métier : Compteur.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerCompteur(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Compteur> listerCompteur(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by designationcompteur");
 }
 /**
@@ -61,14 +64,14 @@ public boolean existeCompteur(nc.mairie.technique.Transaction aTransaction, Stri
 /**
  * Constructeur CompteurBroker.
  */
-public CompteurBroker(nc.mairie.technique.BasicMetier aMetier) {
+public CompteurBroker(Compteur aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.CompteurMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Compteur definirMyMetier() {
 	return new Compteur() ;
 }
 /**

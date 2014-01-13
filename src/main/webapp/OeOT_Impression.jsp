@@ -45,7 +45,7 @@ function imprimOt()
 </STYLE>
 </HEAD>
 
-<BODY BGPROPERTIES="FIXED" background="images/fond.jpg" class="sigp2-BODY" onload="return setfocus('<%=process.getFocus() %>')">
+<BODY background="images/fond.jpg" class="sigp2-BODY" onload="return setfocus('<%=process.getFocus() %>')">
 <FORM name="formu" method="POST">
 <TABLE border="0" width="100%" style="text-align : center;" class="sigp2">
 <%@ include file="BanniereErreur.jsp" %>

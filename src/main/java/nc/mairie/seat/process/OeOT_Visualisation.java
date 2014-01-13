@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import nc.mairie.seat.metier.AffectationServiceInfos;
 import nc.mairie.seat.metier.Agents;
-import nc.mairie.seat.metier.BE;
 import nc.mairie.seat.metier.ENGJU;
 import nc.mairie.seat.metier.EquipementInfos;
 import nc.mairie.seat.metier.OT;
@@ -22,16 +21,20 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeOT_Visualisation extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8101003389776393252L;
 	public static final int STATUT_RECHERCHER = 1;
 	private java.lang.String[] LB_INTERVENANTS;
 	private java.lang.String[] LB_INTERVENTIONS;
 	private java.lang.String[] LB_PIECES;
 	private EquipementInfos equipementInfosCourant;
 	private OT otCourant;
-	private ArrayList listePieces;
-	private ArrayList listeInterventions;
-	private ArrayList listeIntervenants;
-	private ArrayList listeENGJUGroupByCdepNoengjIdetbs;
+	private ArrayList<PiecesInfos> listePieces;
+	private ArrayList<PePersoInfos> listeInterventions;
+	private ArrayList<OT_ATM> listeIntervenants;
+	private ArrayList<ENGJU> listeENGJUGroupByCdepNoengjIdetbs;
 	public int	montantTotalPieces;
 	public boolean isDebranche = false;
 	public String messErreur;
@@ -144,7 +147,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 public void initialiseListInterventions(javax.servlet.http.HttpServletRequest request) throws Exception{
 	// on initialise la liste des interventions réalisées pendant l'OT
 	if(getOtCourant().getNumeroot()!=null){
-		ArrayList listInterventions = PePersoInfos.chercherPePersoInfosOT(getTransaction(),getOtCourant().getNumeroot());
+		ArrayList<PePersoInfos> listInterventions = PePersoInfos.chercherPePersoInfosOT(getTransaction(),getOtCourant().getNumeroot());
 		if(getTransaction().isErreur()){
 			return;
 		}
@@ -183,7 +186,7 @@ public void initialiseListFre(javax.servlet.http.HttpServletRequest request) thr
 	*/
 	
 	//Alim de la liste des EngJU
-	ArrayList arrENGJU = ENGJU.listerENGJUGroupByCdepNoengjIdetbs(getTransaction(), getOtCourant().getNumeroot(), getOtCourant().getNuminv());
+	ArrayList<ENGJU> arrENGJU = ENGJU.listerENGJUGroupByCdepNoengjIdetbs(getTransaction(), getOtCourant().getNumeroot(), getOtCourant().getNuminv());
 	setListeENGJUGroupByCdepNoengjIdetbs(arrENGJU);
 	
 	if(getListeENGJUGroupByCdepNoengjIdetbs().size()>0){
@@ -253,7 +256,7 @@ public int montantBE(javax.servlet.http.HttpServletRequest request,ENJU unEnju) 
 public void initialiseListIntervenants(javax.servlet.http.HttpServletRequest request) throws Exception{
 	//on initialise la liste des intervenants de l'ATM
 	if(getOtCourant().getNumeroot()!=null){
-		ArrayList listAgents = OT_ATM.listerOT_ATMOT(getTransaction(),getOtCourant().getNumeroot());
+		ArrayList<OT_ATM> listAgents = OT_ATM.listerOT_ATMOT(getTransaction(),getOtCourant().getNumeroot());
 		if(getTransaction().isErreur()){
 			return;
 		}
@@ -283,7 +286,7 @@ public void initialiseListIntervenants(javax.servlet.http.HttpServletRequest req
 public void initialiseListPieces(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	 on initialise la liste des pièces sorties du stock pour l'OT
 	if(getOtCourant().getNumeroot()!=null){
-		ArrayList listPiecesInfos = PiecesInfos.chercherPiecesInfosOT(getTransaction(),getOtCourant().getNumeroot());
+		ArrayList<PiecesInfos> listPiecesInfos = PiecesInfos.chercherPiecesInfosOT(getTransaction(),getOtCourant().getNumeroot());
 		if(getTransaction().isErreur()){
 			return;
 		}
@@ -697,31 +700,31 @@ public java.lang.String getVAL_LB_PIECES_SELECT() {
 //	public void setOtInfosCourant(OTInfos otInfosCourant) {
 //		this.otInfosCourant = otInfosCourant;
 //	}
-	public ArrayList getListeIntervenants() {
+	public ArrayList<OT_ATM> getListeIntervenants() {
 		if(listeIntervenants==null){
-			listeIntervenants=new ArrayList();
+			listeIntervenants=new ArrayList<OT_ATM>();
 		}
 		return listeIntervenants;
 	}
-	public void setListeIntervenants(ArrayList listeIntervenants) {
+	public void setListeIntervenants(ArrayList<OT_ATM> listeIntervenants) {
 		this.listeIntervenants = listeIntervenants;
 	}
-	public ArrayList getListeInterventions() {
+	public ArrayList<PePersoInfos> getListeInterventions() {
 		if(listeInterventions==null){
-			listeInterventions=new ArrayList();
+			listeInterventions=new ArrayList<PePersoInfos>();
 		}
 		return listeInterventions;
 	}
-	public void setListeInterventions(ArrayList listeInterventions) {
+	public void setListeInterventions(ArrayList<PePersoInfos> listeInterventions) {
 		this.listeInterventions = listeInterventions;
 	}
-	public ArrayList getListePieces() {
+	public ArrayList<PiecesInfos> getListePieces() {
 		if(listePieces==null){
-			listePieces=new ArrayList();
+			listePieces=new ArrayList<PiecesInfos>();
 		}
 		return listePieces;
 	}
-	public void setListePieces(ArrayList listePieces) {
+	public void setListePieces(ArrayList<PiecesInfos> listePieces) {
 		this.listePieces = listePieces;
 	}
 /**
@@ -971,6 +974,7 @@ public java.lang.String getNOM_PB_IMPRIMER() {
  * Date de création : (11/06/07 13:12:25)
  * @author : Générateur de process
  */
+@SuppressWarnings("deprecation")
 public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	int montantPieces = 0;
 	String infosBe = "";
@@ -1116,6 +1120,9 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 			pw.close();
 			fw.close();
 			throw e;
+		} finally {
+			pw.close();
+			fw.close();
 		}
 			setScript(g.getScriptOuverture());		
 	}
@@ -1245,12 +1252,12 @@ public String getDefaultFocus() {
 	return getNOM_EF_OT();
 }
 
-public ArrayList getListeENGJUGroupByCdepNoengjIdetbs() {
+public ArrayList<ENGJU> getListeENGJUGroupByCdepNoengjIdetbs() {
 	return listeENGJUGroupByCdepNoengjIdetbs;
 }
 
 public void setListeENGJUGroupByCdepNoengjIdetbs(
-		ArrayList listeENGJUGroupByCdepNoengjIdetbs) {
+		ArrayList<ENGJU> listeENGJUGroupByCdepNoengjIdetbs) {
 	this.listeENGJUGroupByCdepNoengjIdetbs = listeENGJUGroupByCdepNoengjIdetbs;
 }
 

@@ -1,15 +1,18 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
 import nc.mairie.technique.BasicRecord;
-/**
+/**
  * Broker de l'Objet métier AActifs
  */
-public class AActifsBroker extends nc.mairie.technique.BasicBroker {
+public class AActifsBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : AActifs.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAActifs(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<AActifs> listerAActifs(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**
@@ -24,7 +27,7 @@ public AActifs chercherAActifs(nc.mairie.technique.Transaction aTransaction, Str
  * Retourne un ArrayList d'objet métier : AActifs.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAActifsService(nc.mairie.technique.Transaction aTransaction,String servi) throws Exception {
+public ArrayList<AActifs> listerAActifsService(nc.mairie.technique.Transaction aTransaction,String servi) throws Exception {
 	if (!servi.substring(0,1).equals("A")){
 		servi = servi.substring(0,3);
 	}
@@ -35,7 +38,7 @@ public java.util.ArrayList listerAActifsService(nc.mairie.technique.Transaction 
  * Retourne un ArrayList d'objet métier : AActifs.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList chercherListAgentServiceInfosSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<AActifs> chercherListAgentServiceInfosSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	String servi = param.substring(0,3); 
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where servi like '"+servi+"%' order by nom  with ur");
 }
@@ -44,14 +47,14 @@ public java.util.ArrayList chercherListAgentServiceInfosSce(nc.mairie.technique.
 /**
  * Constructeur AActifsBroker.
  */
-public AActifsBroker(nc.mairie.technique.BasicMetier aMetier) {
+public AActifsBroker(AActifs aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.AActifsMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected AActifs definirMyMetier() {
 	return new AActifs() ;
 }
 /**

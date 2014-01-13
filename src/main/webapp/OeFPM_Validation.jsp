@@ -29,14 +29,14 @@ if (document.formu.elements[nom] != null)
 <TITLE>OeOT_Validation.jsp</TITLE>
 </HEAD>
 <jsp:useBean class="nc.mairie.seat.process.OeFPM_Validation" id="process" scope="session"></jsp:useBean>
-<BODY BGPROPERTIES="FIXED" background="images/fond.jpg" class="sigp2-BODY">
+<BODY background="images/fond.jpg" class="sigp2-BODY">
 
 <TABLE border="0" width="580" style="text-align : center;" class="sigp2">
 <%@ include file="BanniereErreur.jsp" %>
     <TR>
       <TD style="text-align : center;" align="center">
 			<FORM name="formu" method="POST"><SPAN class="sigp2-titre"></SPAN>
-<%if (!process.estEnregistré){ %>		
+<%if (!process.estEnregistre){ %>		
 <FIELDSET><LEGEND class="sigp2Fieldset" align="left">Fiches d'entretiens non validé</LEGEND><TABLE border="0" class="sigp2">
 				<TR align="center">
 					<TD align="left" height="35">

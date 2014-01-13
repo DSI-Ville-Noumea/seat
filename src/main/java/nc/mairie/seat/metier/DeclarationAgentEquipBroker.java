@@ -1,20 +1,23 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier DeclarationAgentEquip
  */
-public class DeclarationAgentEquipBroker extends nc.mairie.technique.BasicBroker {
+public class DeclarationAgentEquipBroker extends BasicBroker {
 /**
  * Constructeur DeclarationAgentEquipBroker.
  */
-public DeclarationAgentEquipBroker(nc.mairie.technique.BasicMetier aMetier) {
+public DeclarationAgentEquipBroker(DeclarationAgentEquip aMetier) {
 	super(aMetier);
 }
 /**
  * @return src/nc.mairie.seat.metier.DeclarationAgentEquipMetier
  */
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected DeclarationAgentEquip definirMyMetier() {
 	return new DeclarationAgentEquip() ;
 }
 /**
@@ -46,7 +49,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * Retourne un ArrayList d'objet métier : DeclarationAgentEquip.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerDeclarationAgentEquip(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<DeclarationAgentEquip> listerDeclarationAgentEquip(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by \"DATE\" desc, codedec desc with ur");
 }
 }

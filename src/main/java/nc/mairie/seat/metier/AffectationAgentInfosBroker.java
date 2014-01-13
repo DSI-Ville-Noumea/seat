@@ -4,15 +4,17 @@ import java.util.ArrayList;
 
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier AffectationAgentInfos
  */
-public class AffectationAgentInfosBroker extends nc.mairie.technique.BasicBroker {
+public class AffectationAgentInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : AffectationAgentInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAffectationAgentInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<AffectationAgentInfos> listerAffectationAgentInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**
@@ -27,16 +29,16 @@ public AffectationAgentInfos chercherAffectationAgentInfos(nc.mairie.technique.T
  * Retourne un ArrayList d'objet métier : AffectationAgentInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList chercherListAffectationsSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<AffectationAgentInfos> chercherListAffectationsSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	// on prend le code du service et pas le code du sous service
 	param = param.substring(0,3);
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where matricule in(select nomatr from mairie.spmtsr where servi like '"+param+"%') order by datedebut desc, datefin desc with ur");
 }
 
-public java.util.ArrayList chercherListAffectationsSce2(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<AffectationAgentInfos> chercherListAffectationsSce2(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where matricule in(select nomatr from mairie.spmtsr where servi like '"+param+"%')");
 }
-public java.util.ArrayList chercherListAffectationsSceEquip(nc.mairie.technique.Transaction aTransaction,String param,String numinv) throws Exception {
+public ArrayList<AffectationAgentInfos> chercherListAffectationsSceEquip(nc.mairie.technique.Transaction aTransaction,String param,String numinv) throws Exception {
 	// on prend le code du service et pas le code du sous service
 	param = param.substring(0,3);
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire="+numinv+" and matricule in(select nomatr from mairie.spmtsr where servi like '"+param+"%') order by datedebut desc, datefin desc  with ur");
@@ -46,7 +48,7 @@ public java.util.ArrayList chercherListAffectationsSceEquip(nc.mairie.technique.
  * @return java.util.ArrayList
  * on recherche les affectations des agents pour un équipement
  */
-public java.util.ArrayList listAffectationsSceEquipDate(nc.mairie.technique.Transaction aTransaction,String servi,String inv, String date) throws Exception {
+public ArrayList<AffectationAgentInfos> listAffectationsSceEquipDate(nc.mairie.technique.Transaction aTransaction,String servi,String inv, String date) throws Exception {
 	// on prend le code du service et pas le code du sous service
 	servi = servi.substring(0,3);
 	if(Services.estUneDate(date)){
@@ -60,14 +62,14 @@ public java.util.ArrayList listAffectationsSceEquipDate(nc.mairie.technique.Tran
 /**
  * Constructeur AffectationAgentInfosBroker.
  */
-public AffectationAgentInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public AffectationAgentInfosBroker(AffectationAgentInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.AffectationAgentInfosMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected AffectationAgentInfos definirMyMetier() {
 	return new AffectationAgentInfos() ;
 }
 /**

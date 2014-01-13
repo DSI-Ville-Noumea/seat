@@ -10,11 +10,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OePieces extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 983552708203316339L;
 	private java.lang.String[] LB_PIECES;
 	private String ACTION_SUPPRESSION = "Suppression d'une pièce.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification d'une pièce.";
 	private String ACTION_CREATION = "Création d'une pièce.";
-	private ArrayList listePieces = null;
+	private ArrayList<Pieces> listePieces = null;
 	private Pieces piecesCourant;
 	private String focus = null;
 	private String isAction = "";
@@ -44,7 +48,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	
 	//	Si liste des pièces est vide
 	if (getLB_PIECES() == LBVide) {
-		java.util.ArrayList a = Pieces.listerPieces(getTransaction());
+		ArrayList<Pieces> a = Pieces.listerPieces(getTransaction());
 		setListePieces(a);
 		
 		if (a.size()>0){
@@ -57,8 +61,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
 			String [] padding = {"G","C"};
 			
-			FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-			String [] l = f.getListeFormatee();
 			setLB_PIECES(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 		}else{
 			setLB_PIECES(null);
@@ -68,7 +70,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	 on sélectionne l'élément en cours
 	if(getPiecesCourant()!=null){
 		if(getPiecesCourant().getCodepiece()!=null){
-			int position = -1;
 			addZone(getNOM_LB_PIECES_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListePieces().size(); i++) {
 				Pieces unePiece = (Pieces)getListePieces().get(i);
@@ -504,13 +505,13 @@ public java.lang.String getVAL_EF_PIECES() {
 /**
  * @return Renvoie listePieces.
  */
-private ArrayList getListePieces() {
+private ArrayList<Pieces> getListePieces() {
 	return listePieces;
 }
 /**
  * @param listePieces listePieces à définir.
  */
-private void setListePieces(ArrayList listePieces) {
+private void setListePieces(ArrayList<Pieces> listePieces) {
 	this.listePieces = listePieces;
 }
 /**

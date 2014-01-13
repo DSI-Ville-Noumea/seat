@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PMateriel
  */
-public class PMaterielBroker extends nc.mairie.technique.BasicBroker {
+public class PMaterielBroker extends BasicBroker {
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
@@ -16,7 +19,7 @@ public boolean supprimerPMateriel(nc.mairie.technique.Transaction aTransaction) 
  * Retourne un ArrayList d'objet métier : PMateriel.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPMateriel(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<PMateriel> listerPMateriel(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -32,14 +35,14 @@ public boolean existePMaterielFre(nc.mairie.technique.Transaction aTransaction, 
 /**
  * Constructeur PMaterielBroker.
  */
-public PMaterielBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PMaterielBroker(PMateriel aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PMaterielMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PMateriel definirMyMetier() {
 	return new PMateriel() ;
 }
 /**

@@ -3,25 +3,27 @@ package nc.mairie.seat.metier;
 import java.util.ArrayList;
 
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier AffectationServiceInfos
  */
-public class AffectationServiceInfosBroker extends nc.mairie.technique.BasicBroker {
+public class AffectationServiceInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : AffectationServiceInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAffectationServiceInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<AffectationServiceInfos> listerAffectationServiceInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**
  * Retourne un ArrayList d'objet métier : AffectationServiceInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAffectationServiceInfosAgent(nc.mairie.technique.Transaction aTransaction,String nomatr) throws Exception {
+public ArrayList<AffectationServiceInfos> listerAffectationServiceInfosAgent(nc.mairie.technique.Transaction aTransaction,String nomatr) throws Exception {
 	if (nomatr.equals("")){
 		aTransaction.declarerErreur("Le numéro d'agent n'a pas été renseigné");
-		ArrayList listVide = new ArrayList<AffectationServiceInfos>();
+		ArrayList<AffectationServiceInfos> listVide = new ArrayList<AffectationServiceInfos>();
 		return listVide;
 	}
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where dfin='0001-01-01' and nomatr="+nomatr+" with ur");
@@ -30,7 +32,7 @@ public java.util.ArrayList listerAffectationServiceInfosAgent(nc.mairie.techniqu
  * Retourne un AffectationServiceInfos.
  * @return AffectationServiceInfos
  */
-public java.util.ArrayList chercherAffectationServiceInfosService(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
+public ArrayList<AffectationServiceInfos> chercherAffectationServiceInfosService(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return  executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice like '"+cle+"%' and dfin = '0001-01-01' with ur");
 }
 
@@ -48,28 +50,28 @@ public AffectationServiceInfos chercherAffectationServiceInfosCourantEquip(nc.ma
  * Retourne un AffectationServiceInfos.
  * @return AffectationServiceInfos
  */
-public java.util.ArrayList chercherAffectationServiceInfosEquip(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
+public ArrayList<AffectationServiceInfos> chercherAffectationServiceInfosEquip(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return  executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+cle+"' with ur");
 }
 /**
  * Retourne un ArrayList d'objet métier : AffectationServiceInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList chercherListAffectationServiceInfosEquip(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<AffectationServiceInfos> chercherListAffectationServiceInfosEquip(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+param+"' order by ddebut desc,dfin with ur");
 }
 
 /**
  * Constructeur AffectationServiceInfosBroker.
  */
-public AffectationServiceInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public AffectationServiceInfosBroker(AffectationServiceInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.AffectationServiceInfosMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected AffectationServiceInfos definirMyMetier() {
 	return new AffectationServiceInfos() ;
 }
 /**

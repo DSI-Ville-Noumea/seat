@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Fournisseurs
  */
-public class Fournisseurs extends nc.mairie.technique.BasicMetier {
+public class Fournisseurs extends BasicMetier {
 	public String idetbs;
 	public String enscom;
 	public String ridet;
@@ -156,7 +161,7 @@ public void setCdnajd(String newCdnajd) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new FournisseursBroker(this); 
 }
 /**
@@ -179,7 +184,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Fournisseurs.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerFournisseurs(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Fournisseurs> listerFournisseurs(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Fournisseurs unFournisseurs = new Fournisseurs();
 	return unFournisseurs.getMyFournisseursBroker().listerFournisseurs(aTransaction);
 }
@@ -188,7 +193,7 @@ public static java.util.ArrayList listerFournisseurs(nc.mairie.technique.Transac
  * Retourne un ArrayList d'objet métier : Fournisseurs.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerFournisseursNom(nc.mairie.technique.Transaction aTransaction,String param) throws Exception{
+public static ArrayList<Fournisseurs> listerFournisseursNom(nc.mairie.technique.Transaction aTransaction,String param) throws Exception{
 	Fournisseurs unFournisseurs = new Fournisseurs();
 	return unFournisseurs.getMyFournisseursBroker().listerFournisseursNom(aTransaction,param);
 }

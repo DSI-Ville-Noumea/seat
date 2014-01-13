@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier AgentsATM
  */
-public class AgentsATM extends nc.mairie.technique.BasicMetier {
+public class AgentsATM extends BasicMetier {
 	public String matricule;
 	public String estmecanicien;
 	public String codespe;
@@ -20,7 +25,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : AgentsATM.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerAgentsATM(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<AgentsATM> listerAgentsATM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	AgentsATM unAgentsATM = new AgentsATM();
 	return unAgentsATM.getMyAgentsATMBroker().listerAgentsATM(aTransaction);
 }
@@ -164,7 +169,7 @@ public void setCodespe(String newCodespe) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new AgentsATMBroker(this); 
 }
 /**

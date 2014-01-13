@@ -11,8 +11,12 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeModele_Recherche extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7172159404263484575L;
 	private java.lang.String[] LB_MODELE;
-	private ArrayList listeModeles;
+	private ArrayList<ModeleInfos> listeModeles;
 	private ModeleInfos modelesInfosCourant;
 	private Modeles modeleCourant;
 	private String focus = null;
@@ -92,7 +96,7 @@ public java.lang.String getNOM_PB_RECHERCHE() {
  */
 public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String param = getZone(getNOM_EF_RECHERCHE());
-	ArrayList resultat = ModeleInfos.chercherListModeleInfosTous(getTransaction(),param);
+	ArrayList<ModeleInfos> resultat = ModeleInfos.chercherListModeleInfosTous(getTransaction(),param);
 	// on remplit la liste des équipements
 	setListeModeles(resultat);
 	if(resultat.size()>0){
@@ -249,13 +253,13 @@ public String getFocus() {
 	/**
 	 * @return Renvoie listeModeles.
 	 */
-	public ArrayList getListeModeles() {
+	public ArrayList<ModeleInfos> getListeModeles() {
 		return listeModeles;
 	}
 	/**
 	 * @param listeModeles listeModeles à définir.
 	 */
-	public void setListeModeles(ArrayList listeModeles) {
+	public void setListeModeles(ArrayList<ModeleInfos> listeModeles) {
 		this.listeModeles = listeModeles;
 	}
 	/**

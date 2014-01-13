@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PM_Affecter_Sce
  */
-public class PM_Affecter_SceBroker extends nc.mairie.technique.BasicBroker {
+public class PM_Affecter_SceBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -30,7 +33,7 @@ public boolean supprimerPM_Affecter_Sce(nc.mairie.technique.Transaction aTransac
  * Retourne un ArrayList d'objet métier : PM_Affecter_Sce.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPM_Affecter_Sce(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<PM_Affecter_Sce> listerPM_Affecter_Sce(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -46,21 +49,21 @@ public PM_Affecter_Sce chercherListerPmAffecter_ServicePmSce(nc.mairie.technique
 	return (PM_Affecter_Sce)executeSelect(aTransaction,"select * from "+getTable()+" where pminv = '"+param+"' and siserv = '"+servi+"' and dfin = '0001-01-01'");
 }
 
-public java.util.ArrayList chercherListerPmAffecter_ServicePm(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<PM_Affecter_Sce> chercherListerPmAffecter_ServicePm(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv = '"+param+"'");
 }
 
 /**
  * Constructeur PM_Affecter_SceBroker.
  */
-public PM_Affecter_SceBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PM_Affecter_SceBroker(PM_Affecter_Sce aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PM_Affecter_SceMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PM_Affecter_Sce definirMyMetier() {
 	return new PM_Affecter_Sce() ;
 }
 /**

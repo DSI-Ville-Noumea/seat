@@ -15,6 +15,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeEquipement_Visualisation extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3568321179335974723L;
 	private EquipementInfos equipementInfosCourant;
 	private Equipement equipementCourant;
 	public static final int STATUT_RECHERCHE= 1 ;
@@ -643,7 +647,7 @@ public boolean performPB_RECHERCHE_EQUIP(javax.servlet.http.HttpServletRequest r
 	if(getTransaction().isErreur()){
 		return false;
 	}
-	if(unEquipementInfos==null){
+	if(unEquipementInfos!=null){
 		if(unEquipementInfos.getNumeroinventaire()==null){
 			getTransaction().declarerErreur("L'équipement recherché n'a pas été trouvé.");
 			return false;

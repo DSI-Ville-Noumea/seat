@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier OTComplet
  */
-public class OTComplet extends nc.mairie.technique.BasicMetier {
+public class OTComplet extends BasicMetier {
 	public String numeroot;
 	public String dateentree;
 	public String datesortie;
@@ -234,7 +239,7 @@ public void setDureegarantie(String newDureegarantie) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new OTCompletBroker(this); 
 }
 /**
@@ -257,7 +262,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : OTComplet.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTComplet(nc.mairie.technique.Transaction aTransaction, String and) throws Exception{
+public static ArrayList<OTComplet> listerOTComplet(nc.mairie.technique.Transaction aTransaction, String and) throws Exception{
 	OTComplet unOTComplet = new OTComplet();
 	return unOTComplet.getMyOTCompletBroker().listerOTComplet(aTransaction, and);
 }
@@ -273,7 +278,7 @@ public static OTComplet chercherOTComplet(nc.mairie.technique.Transaction aTrans
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTCompletDeclarationsValide(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<OTComplet> listerOTCompletDeclarationsValide(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OTComplet unOTComplet = new OTComplet();
 	return unOTComplet.getMyOTCompletBroker().listerOTCompletDeclarationsValide(aTransaction);
 }
@@ -281,7 +286,7 @@ public static java.util.ArrayList listerOTCompletDeclarationsValide(nc.mairie.te
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTCompletDeclarationsEncours(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<OTComplet> listerOTCompletDeclarationsEncours(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OTComplet unOTComplet = new OTComplet();
 	return unOTComplet.getMyOTCompletBroker().listerOTCompletDeclarationsEncours(aTransaction);
 }
@@ -290,7 +295,7 @@ public static java.util.ArrayList listerOTCompletDeclarationsEncours(nc.mairie.t
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTCompletEncours(nc.mairie.technique.Transaction aTransaction, String and) throws Exception{
+public static ArrayList<OTComplet> listerOTCompletEncours(nc.mairie.technique.Transaction aTransaction, String and) throws Exception{
 	OTComplet unOTComplet = new OTComplet();
 	return unOTComplet.getMyOTCompletBroker().listerOTCompletEncours(aTransaction, and);
 }
@@ -299,7 +304,7 @@ public static java.util.ArrayList listerOTCompletEncours(nc.mairie.technique.Tra
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTCompletAValider(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<OTComplet> listerOTCompletAValider(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OTComplet unOTComplet = new OTComplet();
 	return unOTComplet.getMyOTCompletBroker().listerOTCompletAValider(aTransaction);
 }
@@ -308,7 +313,7 @@ public static java.util.ArrayList listerOTCompletAValider(nc.mairie.technique.Tr
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTCompletValide(nc.mairie.technique.Transaction aTransaction, String and) throws Exception{
+public static ArrayList<OTComplet> listerOTCompletValide(nc.mairie.technique.Transaction aTransaction, String and) throws Exception{
 	OTComplet unOTComplet = new OTComplet();
 	return unOTComplet.getMyOTCompletBroker().listerOTCompletValide(aTransaction, and);
 }
@@ -317,7 +322,7 @@ public static java.util.ArrayList listerOTCompletValide(nc.mairie.technique.Tran
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTCompletEquip(nc.mairie.technique.Transaction aTransaction,String numinv) throws Exception{
+public static ArrayList<OTComplet> listerOTCompletEquip(nc.mairie.technique.Transaction aTransaction,String numinv) throws Exception{
 	OTComplet unOTComplet = new OTComplet();
 	return unOTComplet.getMyOTCompletBroker().listerOTCompletEquip(aTransaction,numinv);
 }

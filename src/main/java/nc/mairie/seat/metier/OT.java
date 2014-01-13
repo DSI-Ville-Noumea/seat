@@ -5,12 +5,16 @@ import java.util.Calendar;
 
 import nc.mairie.seat.metier.PiecesOT;
 import nc.mairie.seat.process.Outils;
-import nc.mairie.technique.Services;
 
+import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
+
 /**
  * Objet métier OT
  */
-public class OT extends nc.mairie.technique.BasicMetier {
+public class OT extends BasicMetier {
 	public String numeroot;
 	public String dateentree;
 	public String datesortie;
@@ -34,7 +38,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTValide(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<OT> listerOTValide(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OT unOT = new OT();
 	return unOT.getMyOTBroker().listerOTValide(aTransaction);
 }
@@ -43,7 +47,7 @@ public static java.util.ArrayList listerOTValide(nc.mairie.technique.Transaction
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTAValider(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<OT> listerOTAValider(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OT unOT = new OT();
 	return unOT.getMyOTBroker().listerOTAValider(aTransaction);
 }
@@ -52,7 +56,7 @@ public static java.util.ArrayList listerOTAValider(nc.mairie.technique.Transacti
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTDeclarationsValide(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<OT> listerOTDeclarationsValide(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OT unOT = new OT();
 	return unOT.getMyOTBroker().listerOTDeclarationsValide(aTransaction);
 }
@@ -61,7 +65,7 @@ public static java.util.ArrayList listerOTDeclarationsValide(nc.mairie.technique
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTDeclarationsEncours(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<OT> listerOTDeclarationsEncours(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OT unOT = new OT();
 	return unOT.getMyOTBroker().listerOTDeclarationsEncours(aTransaction);
 }
@@ -70,7 +74,7 @@ public static java.util.ArrayList listerOTDeclarationsEncours(nc.mairie.techniqu
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTEncours(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<OT> listerOTEncours(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OT unOT = new OT();
 	return unOT.getMyOTBroker().listerOTEncours(aTransaction);
 }
@@ -79,7 +83,7 @@ public static java.util.ArrayList listerOTEncours(nc.mairie.technique.Transactio
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOT(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<OT> listerOT(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OT unOT = new OT();
 	return unOT.getMyOTBroker().listerOT(aTransaction);
 }
@@ -88,7 +92,7 @@ public static java.util.ArrayList listerOT(nc.mairie.technique.Transaction aTran
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTEquip(nc.mairie.technique.Transaction aTransaction,String numinv) throws Exception{
+public static ArrayList<OT> listerOTEquip(nc.mairie.technique.Transaction aTransaction,String numinv) throws Exception{
 	OT unOT = new OT();
 	return unOT.getMyOTBroker().listerOTEquip(aTransaction,numinv);
 }
@@ -98,7 +102,7 @@ public static java.util.ArrayList listerOTEquip(nc.mairie.technique.Transaction 
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  *//*
-public static java.util.ArrayList listerOTEquip(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<OT> listerOTEquip(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OT unOT = new OT();
 	return unOT.getMyOTBroker().listerOTEquip(aTransaction);
 }*/
@@ -193,7 +197,7 @@ public boolean creerOT(nc.mairie.technique.Transaction aTransaction,Equipement u
 	if((getDateentree()!=null)&&(!getDateentree().equals(""))){
 //		RG : date de sortie >= date de réalisation
 		if((getNumeroot()!=null)&&(!getNumeroot().equals(""))){
-			ArrayList listEntretien = PePerso.chercherPePersoOT(aTransaction,getNumeroot());
+			ArrayList<PePerso> listEntretien = PePerso.chercherPePersoOT(aTransaction,getNumeroot());
 			if(aTransaction.isErreur()){
 				return false;
 			}
@@ -238,7 +242,7 @@ public boolean creerOT(nc.mairie.technique.Transaction aTransaction,Equipement u
 	//RG : date de sortie >= date de réalisation
 	if((getDatesortie()!=null)&&(!getDatesortie().equals(""))){
 		if((getNumeroot()!=null)&&(!getNumeroot().equals(""))){
-			ArrayList listEntretien = PePerso.chercherPePersoOT(aTransaction,getNumeroot());
+			ArrayList<PePerso> listEntretien = PePerso.chercherPePersoOT(aTransaction,getNumeroot());
 			if(aTransaction.isErreur()){
 				return false;
 			}
@@ -256,7 +260,7 @@ public boolean creerOT(nc.mairie.technique.Transaction aTransaction,Equipement u
 					}
 				}
 	//			RG : date de sortie doit être supérieur à date sortie des pièces
-				ArrayList listePieces = PiecesOT.chercherPiecesOTOT(aTransaction,getNumeroot());
+				ArrayList<PiecesOT> listePieces = PiecesOT.chercherPiecesOTOT(aTransaction,getNumeroot());
 				if(aTransaction.isErreur()){
 					return false;
 				}
@@ -426,7 +430,7 @@ public String validationOT(nc.mairie.technique.Transaction aTransaction )  throw
 	}
 	// controle de la Date
 	// la date de sortie du véhicule ne doit pas être inférieur aux dates de réalisation des entretiens
-	ArrayList listPePersoPasFait = PePerso.chercherPePersoPasFaitOT(aTransaction,getNumeroot());
+	ArrayList<PePerso> listPePersoPasFait = PePerso.chercherPePersoPasFaitOT(aTransaction,getNumeroot());
 	if(aTransaction.isErreur()){
 		//return "erreur";
 		// peut ne pas avoir réaliser les entretiens.
@@ -440,7 +444,7 @@ public String validationOT(nc.mairie.technique.Transaction aTransaction )  throw
 		msg = "";
 	}
 	
-	ArrayList listPePerso = PePerso.chercherPePersoOT(aTransaction,getNumeroot());
+	ArrayList<PePerso> listPePerso = PePerso.chercherPePersoOT(aTransaction,getNumeroot());
 	if(aTransaction.isErreur()){
 		//return "erreur";
 		aTransaction.traiterErreur();
@@ -468,7 +472,7 @@ public String validationOT(nc.mairie.technique.Transaction aTransaction )  throw
 		}
 	}
 //	 la date de sortie du véhicule ne doit pas être inférieur aux dates de sorties des pièces
-	ArrayList listPiecesOT = PiecesOT.chercherPiecesOTOT(aTransaction,getNumeroot());
+	ArrayList<PiecesOT> listPiecesOT = PiecesOT.chercherPiecesOTOT(aTransaction,getNumeroot());
 	if(aTransaction.isErreur()){
 		//return "erreur";
 		msg = aTransaction.traiterErreur();
@@ -549,7 +553,7 @@ public boolean modifierOT(nc.mairie.technique.Transaction aTransaction,Equipemen
 	//Date d'entrée
 	if((getDateentree()!=null)&&(!getDateentree().equals(""))){
 //		RG : date de sortie >= date de réalisation
-		ArrayList listEntretien = PePerso.chercherPePersoOT(aTransaction,getNumeroot());
+		ArrayList<PePerso> listEntretien = PePerso.chercherPePersoOT(aTransaction,getNumeroot());
 		if(aTransaction.isErreur()){
 			// pas d'entretiens encore réaliser
 			aTransaction.traiterErreur();
@@ -591,7 +595,7 @@ public boolean modifierOT(nc.mairie.technique.Transaction aTransaction,Equipemen
 		}
 	}
 	//RG : date de sortie >= date de réalisation
-	ArrayList listEntretien = PePerso.chercherPePersoOT(aTransaction,getNumeroot());
+	ArrayList<PePerso> listEntretien = PePerso.chercherPePersoOT(aTransaction,getNumeroot());
 	if(aTransaction.isErreur()){
 		// pas d'entretiens à réalisé enregistré
 		aTransaction.traiterErreur();
@@ -611,7 +615,7 @@ public boolean modifierOT(nc.mairie.technique.Transaction aTransaction,Equipemen
 		}
 	}
 	//RG : date de sortie doit être supérieur à date sortie des pièces
-	ArrayList listePieces = PiecesOT.chercherPiecesOTOT(aTransaction,getNumeroot());
+	ArrayList<PiecesOT> listePieces = PiecesOT.chercherPiecesOTOT(aTransaction,getNumeroot());
 	if(aTransaction.isErreur()){
 		return false;
 	}
@@ -707,7 +711,7 @@ public boolean supprimerOT(nc.mairie.technique.Transaction aTransaction) throws 
 
 public boolean suppressionOT(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	// RG controle : si des pièces ont été sorties pour cet OT ==> l'OT ne peut pas être supprimé
-	ArrayList listPieces = PiecesOT.chercherPiecesOTOT(aTransaction,getNumeroot());
+	ArrayList<PiecesOT> listPieces = PiecesOT.chercherPiecesOTOT(aTransaction,getNumeroot());
 	if(aTransaction.isErreur()){
 		return false;
 	}
@@ -716,7 +720,7 @@ public boolean suppressionOT(nc.mairie.technique.Transaction aTransaction) throw
 		return false;
 	}
 	// RG controle : si l'OT a eu des interventions de mécaniciens : pas de suppression possible
-	ArrayList listIntervenant = OT_ATM.listerOT_ATMOT(aTransaction,getNumeroot());
+	ArrayList<OT_ATM> listIntervenant = OT_ATM.listerOT_ATMOT(aTransaction,getNumeroot());
 	if(aTransaction.isErreur()){
 		return false;
 	}
@@ -741,7 +745,7 @@ public boolean suppressionOT(nc.mairie.technique.Transaction aTransaction) throw
 	}
 	*/
 	//pour tous les entretiens prévus dans cet OT on modifie pour mettre le PePerso.numot à null
-	ArrayList listEntretiens = PePerso.chercherPePersoOT(aTransaction,getNumeroot());
+	ArrayList<PePerso> listEntretiens = PePerso.chercherPePersoOT(aTransaction,getNumeroot());
 	if(aTransaction.isErreur()){
 		return false;
 	}
@@ -753,7 +757,7 @@ public boolean suppressionOT(nc.mairie.technique.Transaction aTransaction) throw
 		}
 	}
 	// declarations rattachées à l'OT
-	ArrayList listDeclarations = Declarations.listerDeclarationsOT(aTransaction,getNumeroot());
+	ArrayList<Declarations> listDeclarations = Declarations.listerDeclarationsOT(aTransaction,getNumeroot());
 	if(aTransaction.isErreur()){
 		return false;
 	}
@@ -993,7 +997,7 @@ public void setNuminv(String newNuminv) {
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new OTBroker(this); 
 }
 /**

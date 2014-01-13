@@ -1,11 +1,14 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PM_Affecter_Agent
  */
-public class PM_Affecter_AgentBroker extends nc.mairie.technique.BasicBroker {
+public class PM_Affecter_AgentBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -31,7 +34,7 @@ public boolean supprimerPM_Affecter_Agent(nc.mairie.technique.Transaction aTrans
  * Retourne un ArrayList d'objet métier : PM_Affecter_Agent.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPM_Affecter_Agent(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<PM_Affecter_Agent> listerPM_Affecter_Agent(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -47,29 +50,29 @@ public boolean existePmAffecter_Agent(nc.mairie.technique.Transaction aTransacti
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where pminv='"+inv+"' and matricule="+nomatr+" and ddeb='"+datedeb+"' and hdeb = "+Hdeb);
 }
 
-public java.util.ArrayList chercherListerPmAffecter_AgentSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<PM_Affecter_Agent> chercherListerPmAffecter_AgentSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codesce like '"+param+"%' order by ddeb desc,hdeb desc,hfin desc,hdebmn desc");
 }
 
-public java.util.ArrayList chercherListerPmAffecter_AgentPM(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<PM_Affecter_Agent> chercherListerPmAffecter_AgentPM(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv like '"+param+"%'");
 }
 
-public java.util.ArrayList chercherListerPmAffecter_AgentEquipSceEnCours(nc.mairie.technique.Transaction aTransaction,String param,String inv,String date) throws Exception {
+public ArrayList<PM_Affecter_Agent> chercherListerPmAffecter_AgentEquipSceEnCours(nc.mairie.technique.Transaction aTransaction,String param,String inv,String date) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codesce like '"+param+"%' and pminv='"+inv+"' and ddeb>='"+date+"' and dfin='0001-01-01' order by ddeb desc,hdeb desc,hfin desc,hdebmn desc");
 }
 
 /**
  * Constructeur PM_Affecter_AgentBroker.
  */
-public PM_Affecter_AgentBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PM_Affecter_AgentBroker(PM_Affecter_Agent aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PM_Affecter_AgentMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PM_Affecter_Agent definirMyMetier() {
 	return new PM_Affecter_Agent() ;
 }
 /**

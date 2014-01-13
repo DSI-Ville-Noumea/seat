@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier FPM_Entretiens
  */
-public class FPM_Entretiens extends nc.mairie.technique.BasicMetier {
+public class FPM_Entretiens extends BasicMetier {
 	public String numfiche;
 	public String codeentretien;
 	public String date;
@@ -65,7 +70,7 @@ public void setCommentaire(String newCommentaire) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new FPM_EntretiensBroker(this); 
 }
 /**
@@ -88,7 +93,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : FPM_Entretiens.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerFPM_Entretiens(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<FPM_Entretiens> listerFPM_Entretiens(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	FPM_Entretiens unFPM_Entretiens = new FPM_Entretiens();
 	return unFPM_Entretiens.getMyFPM_EntretiensBroker().listerFPM_Entretiens(aTransaction);
 }

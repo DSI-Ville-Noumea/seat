@@ -28,7 +28,7 @@ if (document.formu.elements[nom] != null)
 <TITLE>OeDeclaration_VisualisationEquip.jsp</TITLE>
 </HEAD>
 <jsp:useBean class="nc.mairie.seat.process.OeService_Equipements" id="process" scope="session"></jsp:useBean>
-<BODY BGPROPERTIES="FIXED" background="images/fond.jpg" class="sigp2-BODY" onload="return setfocus('<%=process.getFocus() %>')">
+<BODY background="images/fond.jpg" class="sigp2-BODY" onload="return setfocus('<%=process.getFocus() %>')">
 
 <TABLE border="0" width="580" style="text-align : center;" class="sigp2">
 <%@ include file="BanniereErreur.jsp" %>

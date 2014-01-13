@@ -1,6 +1,5 @@
 package nc.mairie.seat.process;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -11,7 +10,6 @@ import nc.mairie.seat.metier.PM_Planning;
 import nc.mairie.seat.metier.FPM;
 import nc.mairie.seat.metier.PMatInfos;
 import nc.mairie.seat.metier.PMateriel;
-import nc.mairie.servlets.Frontale;
 import nc.mairie.technique.*;
 /**
  * Process OePlanning
@@ -19,15 +17,17 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OePM_Planning extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3452339992590258561L;
 	public static final int STATUT_VALIDATION = 2;
 	public static final int STATUT_PEPERSO = 1;
 	private PM_Planning pMPlanningCourant;
 	private String tri = "pminv";
 	private String param ="";
-	private ArrayList listePlanning;
-	private ArrayList listeAFaire;
-	private ArrayList listInventaire;
-	private ArrayList listPourFiche;
+	private ArrayList<PM_Planning> listePlanning;
+	private ArrayList<PM_Planning> listeAFaire;
 	private java.lang.String[] LB_PLANNING;
 	private java.lang.String[] LB_PLANNING_Couleurs;
 	private java.lang.String[] LB_PLANNING_FCouleurs;
@@ -71,10 +71,10 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	}
 	
 	
-	ArrayList a = new ArrayList();
+	ArrayList<PM_Planning> a = new ArrayList<PM_Planning>();
 	// Si param = encours on liste les petits matériels actifs
 	if ("encours".equals(param)){
-		ArrayList listEnCours = PM_Planning.listerPlanningEnCoursAvecFPMValideDiffetentT(getTransaction(),firstNumFiche);
+		ArrayList<PM_Planning> listEnCours = PM_Planning.listerPlanningEnCoursAvecFPMValideDiffetentT(getTransaction(),firstNumFiche);
 		a=listEnCours;
 		//optimisation luc 9/9/11
 /*		a = new ArrayList();
@@ -95,7 +95,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		*/
 //		 si param = "enretard" : on liste les entretiens en retard
 	} else if ("enretard".equals(param)){
-		ArrayList listEnRetard = PM_Planning.listerPlanningEnRetard(getTransaction(),Services.dateDuJour());
+		ArrayList<PM_Planning> listEnRetard = PM_Planning.listerPlanningEnRetard(getTransaction(),Services.dateDuJour());
 		if(getTransaction().isErreur()){
 			return;
 		}
@@ -141,7 +141,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	if(getTransaction().isErreur()){
 		return ;
 	}
-	if((getListeAFaire().size()==0)&&(getListePlanning().size()==0)&&(getListPourFiche().size()==0)){
+	if((getListeAFaire().size()==0)&&(getListePlanning().size()==0)){
 		setVide(true);
 	}else{
 		setVide(false);
@@ -156,7 +156,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //on vérifie que tous les petits matériels ont été visité au moins une fois
 public void verifEntretienAnnuel(javax.servlet.http.HttpServletRequest request) throws Exception{
 	//Modif de LUC optimisation 9/9/2011
-	ArrayList listPM = PMatInfos.listerPMatInfosSansEntretienPlanifie(getTransaction());
+	ArrayList<PMatInfos> listPM = PMatInfos.listerPMatInfosSansEntretienPlanifie(getTransaction());
 
 	//Si on en trouve, on lui crée des entretiens planifiés
 	if(listPM.size()>0){
@@ -275,7 +275,7 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
 	
 }
 
-public void trier(ArrayList a,String colonne) throws Exception{
+public void trier(ArrayList<PM_Planning> a,String colonne) throws Exception{
 	String[] colonnes = {colonne};
 	//ordre croissant
 	boolean[] ordres = {true};
@@ -284,7 +284,6 @@ public void trier(ArrayList a,String colonne) throws Exception{
 	String encours = "";
 	String date = "";
 	String datedujour = Services.dateDuJour();
-	boolean estAFaire = false;
 	
 	a= Services.trier(a,colonnes,ordres);
 	setListePlanning(a);
@@ -567,11 +566,11 @@ public PM_Planning getPMPlanningCourant() {
 public void setPMPlanningCourant(PM_Planning pmPlanningCourant) {
 	this.pMPlanningCourant = pmPlanningCourant;
 }
-public ArrayList getListePlanning() {
+public ArrayList<PM_Planning> getListePlanning() {
 	
 	return listePlanning;
 }
-public void setListePlanning(ArrayList listePlanning) {
+public void setListePlanning(ArrayList<PM_Planning> listePlanning) {
 	this.listePlanning = listePlanning;
 }
 public String getParam() {
@@ -772,14 +771,14 @@ public boolean performPB_ENLEVER(javax.servlet.http.HttpServletRequest request) 
 	initialiseListeAFaire(request);
 	return true;
 }
-	public ArrayList getListeAFaire() {
+	public ArrayList<PM_Planning> getListeAFaire() {
 		//on initialise
 		if (listeAFaire==null){
-			listeAFaire = new ArrayList();
+			listeAFaire = new ArrayList<PM_Planning>();
 		}
 		return listeAFaire;
 	}
-	public void setListeAFaire(ArrayList listeAFaire) {
+	public void setListeAFaire(ArrayList<PM_Planning> listeAFaire) {
 		this.listeAFaire = listeAFaire;
 	}
 /**
@@ -806,22 +805,21 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 			
 		}
 	}*/
-	Hashtable hRegroupEnt = new Hashtable();
+	Hashtable<String, ArrayList<PM_Planning>> hRegroupEnt = new Hashtable<String, ArrayList<PM_Planning>>();
 	for (int i = 0; i < getListeAFaire().size(); i++){
-		PM_Planning unPlanning = (PM_Planning)getListeAFaire().get(i);
+		PM_Planning unPlanning = getListeAFaire().get(i);
 		// on regroupe les entretiens par petits matériels dans une hashtable
 		//on liste d'abord les entretiens d'un petit matériel
-		ArrayList listeEnt = (ArrayList)hRegroupEnt.get(unPlanning.getPminv());
+		ArrayList<PM_Planning> listeEnt = hRegroupEnt.get(unPlanning.getPminv());
 		//ArrayList listPePerso = unPlanning;
 		if (listeEnt == null) 
-			listeEnt = new ArrayList();
+			listeEnt = new ArrayList<PM_Planning>();
 		listeEnt.add(unPlanning);
 		// on rajoute dans la hashtable à l'indice numéroinventaire
 		hRegroupEnt.put(unPlanning.getPminv(),listeEnt);
 	}
-	ArrayList listeAValider = new ArrayList();
 
-	Enumeration enumer = hRegroupEnt.keys();
+	Enumeration<String> enumer = hRegroupEnt.keys();
 	//pour chaque petit matériel on crée un FPM avec le max trouvé dans la table
 	while (enumer.hasMoreElements()) {
 		String noinvent = String.valueOf(enumer.nextElement());
@@ -835,7 +833,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 			return false;
 		}
 		//on récupère la liste des entretiens à faire pour le petit matériel
-		ArrayList array = (ArrayList)hRegroupEnt.get(noinvent);
+		ArrayList<PM_Planning> array = hRegroupEnt.get(noinvent);
 		for (int i = 0; i < array.size(); i++){
 			PM_Planning unPlanning = (PM_Planning)array.get(i);
 			// on modifie le code FPM des peperso
@@ -895,26 +893,6 @@ public boolean modifiePePerso(javax.servlet.http.HttpServletRequest request,PM_P
 	return true;
 }
 
-public ArrayList getListInventaire() {
-	//initialisation
-	if (listInventaire == null){
-		listInventaire = new ArrayList();
-	}
-	return listInventaire;
-}
-public void setListInventaire(ArrayList listInventaire) {
-	this.listInventaire = listInventaire;
-}
-public ArrayList getListPourFiche() {
-	//initialise
-	if (listPourFiche == null){
-		listPourFiche = new ArrayList();
-	}
-	return listPourFiche;
-}
-public void setListPourFiche(ArrayList listPourFiche) {
-	this.listPourFiche = listPourFiche;
-}
 	public boolean isAfaire() {
 		return isAfaire;
 	}

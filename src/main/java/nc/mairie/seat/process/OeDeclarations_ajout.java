@@ -24,18 +24,22 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeDeclarations_ajout extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8341080906642833040L;
 	public static final int STATUT_FPM = 4;
 	public static final int STATUT_RECH_PM = 3;
 	public static final int STATUT_OT = 2;
 	public static final int STATUT_RECHERCHER = 1;
-	private String ACTION_SUPPRESSION = "Suppression<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
+//	private String ACTION_SUPPRESSION = "Suppression<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification";
 	private String ACTION_CREATION = "Création";
 	private EquipementInfos equipementInfosCourant;
 	private PMatInfos pMatInfosCourant;
 	private Declarations declarationCourante;
-	private ArrayList listService;
-	private ArrayList listAgent;
+	private ArrayList<Service> listService;
+	private ArrayList<?> listAgent;
 	private Service serviceCourant;
 	private Service serviceAffCourant;
 	
@@ -186,7 +190,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			if(getServiceAffCourant().getServi()!=null){
 				addZone(getNOM_LB_SERVICE_SELECT(),String.valueOf(-1));
 				for (int i = 0; i < getListService().size(); i++) {
-					Service unService = (Service)getListService().get(i);
+					Service unService = getListService().get(i);
 					if (unService.getServi().equals(getServiceAffCourant().getServi())) {
 						addZone(getNOM_LB_SERVICE_SELECT(),String.valueOf(i));
 						break;
@@ -316,7 +320,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			if(getTransaction().isErreur()){
 				return ;
 			}
-			AffectationServiceInfos unAffectationServiceInfos = AffectationServiceInfos.chercherAffectationServiceInfosCourantEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),date);
+			AffectationServiceInfos.chercherAffectationServiceInfosCourantEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),date);
 			if(getTransaction().isErreur()){
 				//si pas trouvé, c'est fonctionellement normal, on traite l'erreur
 				getTransaction().traiterErreur();
@@ -346,7 +350,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			if(getTransaction().isErreur()){
 				return ;
 			}
-			PM_Affectation_Sce_Infos unPMASI = PM_Affectation_Sce_Infos.chercherPM_Affectation_Sce_InfosCourantPm(getTransaction(),getPMatInfosCourant().getPminv(),date);
+			PM_Affectation_Sce_Infos.chercherPM_Affectation_Sce_InfosCourantPm(getTransaction(),getPMatInfosCourant().getPminv(),date);
 			if(getTransaction().isErreur()){
 				//si pas trouvé, c'est fonctionellement normal, on traite l'erreur
 				getTransaction().traiterErreur();
@@ -362,7 +366,7 @@ setFirst(false);
 
 public void initialiseListeService(javax.servlet.http.HttpServletRequest request) throws Exception{
 	// on récupère tous les services
-	ArrayList listeServices = Service.listerService(getTransaction());
+	ArrayList<Service> listeServices = Service.listerService(getTransaction());
 	if(getTransaction().isErreur()){
 		return ;
 	}
@@ -372,8 +376,8 @@ public void initialiseListeService(javax.servlet.http.HttpServletRequest request
 		String [] padding = {"G"};
 		FormateListe aFormat = new FormateListe(tailles,padding, true);
 				
-		for (java.util.ListIterator list = getListService().listIterator(); list.hasNext(); ) {
-			Service aService = (Service)list.next();
+		for (java.util.ListIterator<Service> list = getListService().listIterator(); list.hasNext(); ) {
+			Service aService = list.next();
 			
 			String ligne [] = { aService.getLiserv()};
 			aFormat.ajouteLigne(ligne);
@@ -384,7 +388,7 @@ public void initialiseListeService(javax.servlet.http.HttpServletRequest request
 		setLB_SERVICE(LBVide);
 	}
 	if(getServiceAffCourant()==null){
-		Service unService = (Service)getListService().get(0);
+		Service unService = getListService().get(0);
 		if(unService!=null){
 			setServiceCourant(unService);
 		}
@@ -402,10 +406,10 @@ public boolean initialiseListeAgents(javax.servlet.http.HttpServletRequest reque
 	if(indice<0){
 		indice = 0;
 	}
-	Service monService = (Service)getListService().get(indice);
+	Service monService = getListService().get(indice);
 	setServiceCourant(monService);
 	//ArrayList resultat = new ArrayList();
-	ArrayList resultat = AgentsMunicipaux.listerAgentsMunicipauxServi(getTransaction(),getServiceCourant().getServi());
+	ArrayList<?> resultat = AgentsMunicipaux.listerAgentsMunicipauxServi(getTransaction(),getServiceCourant().getServi());
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -434,7 +438,7 @@ public boolean initialiseListeAgents(javax.servlet.http.HttpServletRequest reque
 		int tailles [] = {60};
 		String [] padding = {"G"};
 		FormateListe aFormat = new FormateListe(tailles,padding, true);
-		for (java.util.ListIterator list = getListAgent().listIterator(); list.hasNext(); ) {
+		for (java.util.ListIterator<?> list = getListAgent().listIterator(); list.hasNext(); ) {
 		//	if(getDeclarationCourante()!=null){
 				if(getServiceCourant().getServi()!=null){
 					if(getServiceCourant().getServi().equals("4000")){
@@ -909,7 +913,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 		getTransaction().declarerErreur("Vous devez sélectionner un service");
 		return false;
 	}else{
-		Service unService = (Service)getListService().get(indiceservice);
+		Service unService = getListService().get(indiceservice);
 		setServiceCourant(unService);
 	}
 	
@@ -1087,16 +1091,16 @@ public java.lang.String [] getVAL_LB_SERVICE() {
 public java.lang.String getVAL_LB_SERVICE_SELECT() {
 	return getZone(getNOM_LB_SERVICE_SELECT());
 }
-	public ArrayList getListAgent() {
+	public ArrayList<?> getListAgent() {
 		return listAgent;
 	}
-	public void setListAgent(ArrayList listAgent) {
+	public void setListAgent(ArrayList<?> listAgent) {
 		this.listAgent = listAgent;
 	}
-	public ArrayList getListService() {
+	public ArrayList<Service> getListService() {
 		return listService;
 	}
-	public void setListService(ArrayList listService) {
+	public void setListService(ArrayList<Service> listService) {
 		this.listService = listService;
 	}
 	public Agents getAgentCourant() {
@@ -1141,7 +1145,7 @@ public boolean performPB_OK_SCE(javax.servlet.http.HttpServletRequest request) t
 		getTransaction().declarerErreur("Vous devez sélectionner un service");
 		return false;
 	}
-	Service unService = (Service)getListService().get(indice);
+	Service unService = getListService().get(indice);
 	setServiceCourant(unService);
 	setSelectionService(true);
 	return true;

@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Fre_OT
  */
-public class Fre_OTBroker extends nc.mairie.technique.BasicBroker {
+public class Fre_OTBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -30,7 +33,7 @@ public boolean supprimerFre_OT(nc.mairie.technique.Transaction aTransaction) thr
  * Retourne un ArrayList d'objet métier : Fre_OT.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerFre_OT(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Fre_OT> listerFre_OT(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 
@@ -38,7 +41,7 @@ public java.util.ArrayList listerFre_OT(nc.mairie.technique.Transaction aTransac
  * Retourne un ArrayList d'objet métier : Fre_OT.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerFre_OTOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
+public ArrayList<Fre_OT> listerFre_OTOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numot="+numot);
 }
 
@@ -61,14 +64,14 @@ public boolean existeFre_OT(nc.mairie.technique.Transaction aTransaction, String
 /**
  * Constructeur Fre_OTBroker.
  */
-public Fre_OTBroker(nc.mairie.technique.BasicMetier aMetier) {
+public Fre_OTBroker(Fre_OT aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.Fre_OTMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Fre_OT definirMyMetier() {
 	return new Fre_OT() ;
 }
 /**

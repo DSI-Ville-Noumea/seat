@@ -1,10 +1,14 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier BPCInfosCompletes
  */
-public class BPCInfosCompletes extends nc.mairie.technique.BasicMetier {
+public class BPCInfosCompletes extends BasicMetier {
 	public String numerobpc;
 	public String date;
 	public String heure;
@@ -33,7 +37,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : BPCInfosCompletes.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerBPCInfosCompletes(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<BPCInfosCompletes> listerBPCInfosCompletes(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	BPCInfosCompletes unBPCInfosCompletes = new BPCInfosCompletes();
 	return unBPCInfosCompletes.getMyBPCInfosCompletesBroker().listerBPCInfosCompletes(aTransaction);
 }
@@ -42,7 +46,7 @@ public static java.util.ArrayList listerBPCInfosCompletes(nc.mairie.technique.Tr
  * Retourne un ArrayList d'objet métier : BPCInfosCompletes.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerBPCInfosCompletesParams(nc.mairie.technique.Transaction aTransaction,String inv,String servi,String ddeb,String dfin) throws Exception{
+public static ArrayList<BPCInfosCompletes> listerBPCInfosCompletesParams(nc.mairie.technique.Transaction aTransaction,String inv,String servi,String ddeb,String dfin) throws Exception{
 	String periode = "";
 	if(inv.equals("")){
 		inv="";
@@ -275,7 +279,7 @@ public void setNomatr(String newNomatr) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new BPCInfosCompletesBroker(this); 
 }
 /**

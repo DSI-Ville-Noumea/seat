@@ -1,9 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
 
 /**
  * Objet métier DeclarationAgentEquip
  */
-public class DeclarationAgentEquip extends nc.mairie.technique.BasicMetier {
+public class DeclarationAgentEquip extends BasicMetier {
 	public String codedec;
 	public String date;
 	public String immat;
@@ -91,7 +95,7 @@ public void setCodeservice(String newCodeservice) {
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new DeclarationAgentEquipBroker(this); 
 }
 /**
@@ -113,7 +117,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : DeclarationAgentEquip.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerDeclarationAgentEquip(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<DeclarationAgentEquip> listerDeclarationAgentEquip(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	DeclarationAgentEquip unDeclarationAgentEquip = new DeclarationAgentEquip();
 	return unDeclarationAgentEquip.getMyDeclarationAgentEquipBroker().listerDeclarationAgentEquip(aTransaction);
 }

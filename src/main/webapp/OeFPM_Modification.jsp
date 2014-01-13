@@ -28,7 +28,7 @@ if (document.formu.elements[nom] != null)
 <TITLE>OeOT_Lancement.jsp</TITLE>
 </HEAD>
 <jsp:useBean class="nc.mairie.seat.process.OeFPM_Modification" id="process" scope="session"></jsp:useBean>
-<BODY background="images/fond.jpg" class="sigp2-BODY" BGPROPERTIES="FIXED">
+<BODY background="images/fond.jpg" class="sigp2-BODY">
 
 <TABLE border="0" width="580" style="text-align : center;" class="sigp2">
 <%@ include file="BanniereErreur.jsp" %>
@@ -36,6 +36,7 @@ if (document.formu.elements[nom] != null)
 		<TD style="text-align : center;" align="center">
 		<FORM name="formu" method="POST"><SPAN class="sigp2-titre"> <%=process.getVAL_ST_TITRE_ACTION() %>
 		de la fiche d'entretien <%= process.getVAL_ST_NOOT()%><BR>
+		</SPAN>
 <FIELDSET>
 <%if(process.isModif){ %>
 		<TABLE border="0" class="sigp2">
@@ -56,7 +57,7 @@ if (document.formu.elements[nom] != null)
 		</TABLE>
 <%} %>
 </FIELDSET>
-		</SPAN><BR>
+		<BR>
 		<FIELDSET>
 		
 		<TABLE border="3" bordercolor="#669999" cellpadding="2"

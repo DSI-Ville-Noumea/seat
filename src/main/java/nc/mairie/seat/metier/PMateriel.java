@@ -4,10 +4,13 @@ import java.util.ArrayList;
 
 import nc.mairie.seat.process.Outils;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier PMateriel
  */
-public class PMateriel extends nc.mairie.technique.BasicMetier {
+public class PMateriel extends BasicMetier {
 	public String pminv;
 	public String pmserie;
 	public String codemodele;
@@ -58,7 +61,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : PMateriel.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPMateriel(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<PMateriel> listerPMateriel(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PMateriel unPMateriel = new PMateriel();
 	return unPMateriel.getMyPMaterielBroker().listerPMateriel(aTransaction);
 }
@@ -212,7 +215,7 @@ public void setDachat(String newDachat) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PMaterielBroker(this); 
 }
 /**
@@ -307,7 +310,7 @@ public boolean modifierPMateriel(nc.mairie.technique.Transaction aTransaction, S
 //	 on vérifie que l'équipement n'est pas déjà utilisé
 	if(!ancienNuminv.equals(getPminv())){
 		// BPC
-		ArrayList listBPC = BPC.listerBPCEquipement(aTransaction,ancienNuminv);
+		ArrayList<BPC> listBPC = BPC.listerBPCEquipement(aTransaction,ancienNuminv);
 		if(aTransaction.isErreur()){
 			aTransaction.traiterErreur();
 		}
@@ -318,7 +321,7 @@ public boolean modifierPMateriel(nc.mairie.technique.Transaction aTransaction, S
 			}
 		}
 		//OT
-		ArrayList listFPM = FPM.listerFpmPmat(aTransaction,ancienNuminv);
+		ArrayList<FPM> listFPM = FPM.listerFpmPmat(aTransaction,ancienNuminv);
 		if(aTransaction.isErreur()){
 			aTransaction.traiterErreur();
 		}
@@ -329,7 +332,7 @@ public boolean modifierPMateriel(nc.mairie.technique.Transaction aTransaction, S
 			}
 		}
 		//Déclarations
-		ArrayList listDecl = Declarations.listerDeclarationsEquip(aTransaction,ancienNuminv);
+		ArrayList<Declarations> listDecl = Declarations.listerDeclarationsEquip(aTransaction,ancienNuminv);
 		if(aTransaction.isErreur()){
 			aTransaction.traiterErreur();
 		}
@@ -340,7 +343,7 @@ public boolean modifierPMateriel(nc.mairie.technique.Transaction aTransaction, S
 			}
 		}
 		//Affectation service
-		ArrayList listAffSce = PM_Affecter_Sce.chercherListPmAffecter_ScePm(aTransaction,ancienNuminv);
+		ArrayList<PM_Affecter_Sce> listAffSce = PM_Affecter_Sce.chercherListPmAffecter_ScePm(aTransaction,ancienNuminv);
 		if(aTransaction.isErreur()){
 			aTransaction.traiterErreur();
 		}
@@ -351,7 +354,7 @@ public boolean modifierPMateriel(nc.mairie.technique.Transaction aTransaction, S
 			}
 		}
 		//Affectation agent
-		ArrayList listAffAgent = PM_Affecter_Agent.chercherListPmAffecter_AgentPM(aTransaction,ancienNuminv);
+		ArrayList<PM_Affecter_Agent> listAffAgent = PM_Affecter_Agent.chercherListPmAffecter_AgentPM(aTransaction,ancienNuminv);
 		if(aTransaction.isErreur()){
 			aTransaction.traiterErreur();
 		}
@@ -362,7 +365,7 @@ public boolean modifierPMateriel(nc.mairie.technique.Transaction aTransaction, S
 			}
 		}
 		// Pe Perso
-		ArrayList listPePerso = PM_PePerso.listerPM_PePersoPMateriel(aTransaction,ancienNuminv);
+		ArrayList<PM_PePerso> listPePerso = PM_PePerso.listerPM_PePersoPMateriel(aTransaction,ancienNuminv);
 		if(aTransaction.isErreur()){
 			aTransaction.traiterErreur();
 		}
@@ -415,7 +418,7 @@ public boolean modifierPMateriel(nc.mairie.technique.Transaction aTransaction, S
 		
 		//on modifie les date prévues pour les entretiens
 		String tri = "";
-		ArrayList listEntretien = PePersoInfos.listerPePersoInfosEquip(aTransaction,getPminv(),tri);
+		ArrayList<PePersoInfos> listEntretien = PePersoInfos.listerPePersoInfosEquip(aTransaction,getPminv(),tri);
 		if (listEntretien.size()>0){
 			for (int i = 0;i<listEntretien.size();i++){
 				//on regarde si les dates de prévus sont renseignées ou pas

@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+
+import java.util.ArrayList;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier DeclarationsInfos
  */
-public class DeclarationsInfos extends nc.mairie.technique.BasicMetier {
+public class DeclarationsInfos extends BasicMetier {
 	public String codedec;
 	public String date;
 	public String commentaire;
@@ -36,7 +41,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : DeclarationsInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerDeclarationsInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<DeclarationsInfos> listerDeclarationsInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	DeclarationsInfos unDeclarationsInfos = new DeclarationsInfos();
 	return unDeclarationsInfos.getMyDeclarationsInfosBroker().listerDeclarationsInfos(aTransaction);
 }
@@ -45,7 +50,7 @@ public static java.util.ArrayList listerDeclarationsInfos(nc.mairie.technique.Tr
  * Retourne un ArrayList d'objet métier : DeclarationsInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerDeclarationsInfosEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
+public static ArrayList<DeclarationsInfos> listerDeclarationsInfosEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
 	DeclarationsInfos unDeclarationsInfos = new DeclarationsInfos();
 	return unDeclarationsInfos.getMyDeclarationsInfosBroker().listerDeclarationsInfosEquip(aTransaction,inv);
 }
@@ -54,7 +59,7 @@ public static java.util.ArrayList listerDeclarationsInfosEquip(nc.mairie.techniq
  * Retourne un ArrayList d'objet métier : DeclarationsInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerDeclarationsInfosOT(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
+public static ArrayList<DeclarationsInfos> listerDeclarationsInfosOT(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
 	DeclarationsInfos unDeclarationsInfos = new DeclarationsInfos();
 	return unDeclarationsInfos.getMyDeclarationsInfosBroker().listerDeclarationsInfosOT(aTransaction,inv);
 }
@@ -70,7 +75,7 @@ public static DeclarationsInfos chercherDeclarationsInfos(nc.mairie.technique.Tr
 
 	
 // recherche des déclarations pour l'équipement à partir d'une date
-public static java.util.ArrayList listerDeclarationsInfosSce(nc.mairie.technique.Transaction aTransaction,String sce,String ddeb,String numinv,String dfin) throws Exception{
+public static ArrayList<DeclarationsInfos> listerDeclarationsInfosSce(nc.mairie.technique.Transaction aTransaction,String sce,String ddeb,String numinv,String dfin) throws Exception{
 	DeclarationsInfos unDeclarationsInfos = new DeclarationsInfos();
 	return unDeclarationsInfos.getMyDeclarationsInfosBroker().listerDeclarationsInfosSce(aTransaction,sce,ddeb,numinv,dfin);
 }
@@ -314,7 +319,7 @@ public void setCodeservice(String newCodeservice) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new DeclarationsInfosBroker(this); 
 }
 /**

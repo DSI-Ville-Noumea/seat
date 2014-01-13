@@ -1,15 +1,19 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
+
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier AgentAtmRenseignements
  */
-public class AgentAtmRenseignementsBroker extends nc.mairie.technique.BasicBroker {
+public class AgentAtmRenseignementsBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : AgentAtmRenseignements.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAgentAtmRenseignements(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<AgentAtmRenseignements> listerAgentAtmRenseignements(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by nom  with ur");
 }
 /**
@@ -32,14 +36,14 @@ public boolean existeMecanicien(nc.mairie.technique.Transaction aTransaction, St
 /**
  * Constructeur AgentAtmRenseignementsBroker.
  */
-public AgentAtmRenseignementsBroker(nc.mairie.technique.BasicMetier aMetier) {
+public AgentAtmRenseignementsBroker(AgentAtmRenseignements aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.AgentAtmRenseignementsMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected AgentAtmRenseignements definirMyMetier() {
 	return new AgentAtmRenseignements() ;
 }
 /**

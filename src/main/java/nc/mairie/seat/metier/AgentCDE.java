@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
 import java.util.ArrayList;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier AgentCDE
  */
-public class AgentCDE extends nc.mairie.technique.BasicMetier {
+public class AgentCDE extends BasicMetier implements AgentInterface {
 	public String idindi;
 	public String nomatr;
 	public String nom;
@@ -444,7 +447,7 @@ public void setCdetud(String newCdetud) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new AgentCDEBroker(this); 
 }
 /**
@@ -467,10 +470,10 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : AgentCDE.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerAgentCDE(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<AgentCDE> listerAgentCDE(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	AgentCDE unAgentCDE = new AgentCDE();
 //	ArrayList listFinale = new ArrayList();
-	ArrayList listeAgentCDE =  unAgentCDE.getMyAgentCDEBroker().listerAgentCDE(aTransaction);
+	ArrayList<AgentCDE> listeAgentCDE =  unAgentCDE.getMyAgentCDEBroker().listerAgentCDE(aTransaction);
 /*	if(aTransaction.isErreur()){
 		return listFinale;
 	}
@@ -504,8 +507,8 @@ public static AgentCDE chercherAgentCDE(nc.mairie.technique.Transaction aTransac
  * Retourne un AgentCDE.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList chercherAgentCDENom(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
+public static ArrayList<AgentCDE> listerAgentCDENom(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	AgentCDE unAgentCDE = new AgentCDE();
-	return unAgentCDE.getMyAgentCDEBroker().chercherAgentCDENom(aTransaction, param);
+	return unAgentCDE.getMyAgentCDEBroker().listerAgentCDENom(aTransaction, param);
 }
 }

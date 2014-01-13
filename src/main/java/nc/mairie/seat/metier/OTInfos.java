@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier OTInfos
  */
-public class OTInfos extends nc.mairie.technique.BasicMetier {
+public class OTInfos extends BasicMetier {
 	public String numeroot;
 	public String dateentree;
 	public String datesortie;
@@ -117,7 +122,7 @@ public void setNumeroimmatriculation(String newNumeroimmatriculation) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new OTInfosBroker(this); 
 }
 /**
@@ -140,7 +145,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : OTInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<OTInfos> listerOTInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OTInfos unOTInfos = new OTInfos();
 	return unOTInfos.getMyOTInfosBroker().listerOTInfos(aTransaction);
 }
@@ -149,7 +154,7 @@ public static java.util.ArrayList listerOTInfos(nc.mairie.technique.Transaction 
  * Retourne un ArrayList d'objet métier : OTInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTInfosAValider(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<OTInfos> listerOTInfosAValider(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OTInfos unOTInfos = new OTInfos();
 	return unOTInfos.getMyOTInfosBroker().listerOTInfosAValider(aTransaction);
 }
@@ -157,7 +162,7 @@ public static java.util.ArrayList listerOTInfosAValider(nc.mairie.technique.Tran
  * Retourne un ArrayList d'objet métier : OTInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTInfosEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
+public static ArrayList<OTInfos> listerOTInfosEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
 	OTInfos unOTInfos = new OTInfos();
 	return unOTInfos.getMyOTInfosBroker().listerOTInfosEquip(aTransaction,inv);
 }
@@ -174,7 +179,7 @@ public static OTInfos chercherOTInfos(nc.mairie.technique.Transaction aTransacti
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTInfosValide(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<OTInfos> listerOTInfosValide(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OTInfos unOTInfos = new OTInfos();
 	return unOTInfos.getMyOTInfosBroker().listerOTInfosValide(aTransaction);
 }
@@ -183,7 +188,7 @@ public static java.util.ArrayList listerOTInfosValide(nc.mairie.technique.Transa
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOTInfosEncours(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<OTInfos> listerOTInfosEncours(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OTInfos unOTInfos = new OTInfos();
 	return unOTInfos.getMyOTInfosBroker().listerOTInfosEncours(aTransaction);
 }

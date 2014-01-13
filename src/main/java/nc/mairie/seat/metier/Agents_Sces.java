@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Agents_Sces
  */
-public class Agents_Sces extends nc.mairie.technique.BasicMetier {
+public class Agents_Sces extends BasicMetier {
 	public String nomatr;
 	public String servi;
 	public String refarr;
@@ -91,7 +96,7 @@ public void setCdecol(String newCdecol) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new Agents_ScesBroker(this); 
 }
 /**
@@ -114,7 +119,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Agents_Sces.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerAgents_Sces(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Agents_Sces> listerAgents_Sces(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Agents_Sces unAgents_Sces = new Agents_Sces();
 	return unAgents_Sces.getMyAgents_ScesBroker().listerAgents_Sces(aTransaction);
 }

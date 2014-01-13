@@ -1,6 +1,7 @@
 package nc.mairie.seat.process;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -32,19 +33,22 @@ import nc.mairie.technique.VariableGlobale;
  * @author : Générateur de process
 */
 public class OePM_TDB extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8969073696303928259L;
 	public static final int STATUT_DECLARATIONS = 5;
 	public static final int STATUT_SELECTION = 4;
 	public static final int STATUT_FPM = 3;
 	public static final int STATUT_AGENT = 2;
 	public static final int STATUT_RECHERCHER = 1;
-	private java.lang.String[] LB_AFFECTATION;
 	private java.lang.String[] LB_SERVICES;
 	private PMateriel pMaterielCourant;
 	private PMatInfos pMatInfosCourant;
-	private ArrayList listEntretiens;
-	private ArrayList listServices;
-	private ArrayList listDeclarations;
-	private ArrayList listFpm;
+	private ArrayList<PM_PePerso> listEntretiens;
+	private ArrayList<PM_Affectation_Sce_Infos> listServices;
+	private ArrayList<Declarations> listDeclarations;
+	private ArrayList<FPM> listFpm;
 	private boolean first = true;
 	public String messageInfo;
 	public boolean isVideFpm;
@@ -234,7 +238,7 @@ public boolean initialiseListDec (javax.servlet.http.HttpServletRequest request)
 	}
 	// on veut toutes les déclarations concernant l'équipement
 	
-	ArrayList listDec = Declarations.listerDeclarationsEquip(getTransaction(),getPMatInfosCourant().getPminv());
+	ArrayList<Declarations> listDec = Declarations.listerDeclarationsEquip(getTransaction(),getPMatInfosCourant().getPminv());
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -243,14 +247,14 @@ public boolean initialiseListDec (javax.servlet.http.HttpServletRequest request)
 	if(getListDeclarations().size()>0){
 		isVideDec = false;
 	}else{
-		setListDeclarations(new ArrayList());
+		setListDeclarations(new ArrayList<Declarations>());
 		isVideDec = true;
 	}
 	return true;
 }
 
 public void initialiseListFpm(HttpServletRequest request)throws Exception{
-	ArrayList listFpm = FPM.listerFpmPmat(getTransaction(),getPMatInfosCourant().getPminv());
+	ArrayList<FPM> listFpm = FPM.listerFpmPmat(getTransaction(),getPMatInfosCourant().getPminv());
 	if(getTransaction().isErreur()){
 		return ;
 	}
@@ -264,7 +268,7 @@ public void initialiseListFpm(HttpServletRequest request)throws Exception{
 }
 public void initialiseListServices(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	Recherche des affectations des petits matériels aux services
-	java.util.ArrayList a = PM_Affectation_Sce_Infos.chercherListPM_Affectation_Sce_InfosPm(getTransaction(),getPMatInfosCourant().getPminv());
+	ArrayList<PM_Affectation_Sce_Infos> a = PM_Affectation_Sce_Infos.chercherListPM_Affectation_Sce_InfosPm(getTransaction(),getPMatInfosCourant().getPminv());
 	if (null == a){
 		System.out.println("Aucun élément enregistré dans la base.");
 	}
@@ -272,19 +276,19 @@ public void initialiseListServices(javax.servlet.http.HttpServletRequest request
 	trierServices(a);
 	return ;	
 }
-public void trierServices(ArrayList a) throws Exception{
+public void trierServices(ArrayList<PM_Affectation_Sce_Infos> a) throws Exception{
 	String[] colonnes = {"ddebut","dfin"};
 	//ordre croissant
 	boolean[] ordres = {false,true};
 	
 //	Si au moins une affectation
 	if (a.size() !=0 ) {
-		ArrayList aTrier = Services.trier(a,colonnes,ordres);
+		ArrayList<PM_Affectation_Sce_Infos> aTrier = Services.trier(a,colonnes,ordres);
 		setListServices(aTrier);
 		int tailles [] = {60,10,10};
 		String[] padding = {"G","C","C"};
 		FormateListe aFormat = new FormateListe(tailles,padding,false);
-		for (java.util.ListIterator list = aTrier.listIterator(); list.hasNext(); ) {
+		for (ListIterator<PM_Affectation_Sce_Infos> list = aTrier.listIterator(); list.hasNext(); ) {
 			PM_Affectation_Sce_Infos aPM_Affectation_Sce_Infos= (PM_Affectation_Sce_Infos)list.next();
 			String datefin = "";
 			if (!aPM_Affectation_Sce_Infos.getDfin().equals("01/01/0001")){
@@ -308,7 +312,7 @@ public void trierServices(ArrayList a) throws Exception{
  * autheur : CN
  */
 public boolean initialiseListEntretiens(javax.servlet.http.HttpServletRequest request) throws Exception{
-	ArrayList listEntretiens = PM_PePerso.listerPM_PePersoPmFait(getTransaction(),getPMatInfosCourant().getPminv(),"dreal"); 
+	ArrayList<PM_PePerso> listEntretiens = PM_PePerso.listerPM_PePersoPmFait(getTransaction(),getPMatInfosCourant().getPminv(),"dreal"); 
 	//	Pm_PePersoInfos.listerPmPePersoInfosFait(getTransaction(),getPMatInfosCourant().getPminv(),"dreal");
 	if(getTransaction().isErreur()){
 		return false ;
@@ -396,14 +400,13 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
 	VariableActivite.ajouter(this,"TYPE","PMAT");
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 	if(!getZone(getNOM_EF_AGENT()).equals("")){
-		ArrayList listAgent = new ArrayList();
-		ArrayList listInter = new ArrayList();
+		ArrayList<AgentsMunicipaux> listAgent = new ArrayList<AgentsMunicipaux>();
 		boolean trouve = false;
 		String nom = "";
 		 
 		//on débranche sur une autre fenêtre sinon on affiche celui dont il est responsable
 		if (Services.estNumerique(getZone(getNOM_EF_AGENT()))){
-			ArrayList listeASI = PM_Affectation_Sce_Infos.listerPmAffectationSceInfosAgent(getTransaction(),getZone(getNOM_EF_AGENT()));
+			ArrayList<PM_Affectation_Sce_Infos> listeASI = PM_Affectation_Sce_Infos.listerPmAffectationSceInfosAgent(getTransaction(),getZone(getNOM_EF_AGENT()));
 			if(getTransaction().isErreur()){
 				getTransaction().declarerErreur("L'agent n'est responsable d'aucun petit matériel.");
 				return false;
@@ -443,7 +446,7 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
 					if (listAgent.size()==1){
 						AgentsMunicipaux unAgent = (AgentsMunicipaux)listAgent.get(0);
 						// s'il n'a qu'un petit matériel on débranche directement sur la fenêtre visu sinon on les affiche
-						ArrayList a = PM_Affectation_Sce_Infos.listerPmAffectationSceInfosAgent(getTransaction(),unAgent.getNomatr());
+						ArrayList<PM_Affectation_Sce_Infos> a = PM_Affectation_Sce_Infos.listerPmAffectationSceInfosAgent(getTransaction(),unAgent.getNomatr());
 						if(getTransaction().isErreur()){
 							return false;
 						}
@@ -491,7 +494,7 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
 		// on recherche la liste des petits matériels dont l'agent est responsable car s'il en a plusieurs 
 		//on débranche sur une autre fenêtre sinon on affiche celui dont il est responsable
 		
-		ArrayList listeASI = PM_Affectation_Sce_Infos.chercherPmAffectationServiceInfosService(getTransaction(),getZone(getNOM_EF_SERVICE()));
+		ArrayList<PM_Affectation_Sce_Infos> listeASI = PM_Affectation_Sce_Infos.chercherPmAffectationServiceInfosService(getTransaction(),getZone(getNOM_EF_SERVICE()));
 		if(getTransaction().isErreur()){
 			getTransaction().declarerErreur("Le service n'a aucun petit matériel.");
 			return false;
@@ -519,24 +522,12 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
 ////////////////////////////////////////////////////////////////////////////////////////////////
 	}else if(!(getZone(getNOM_EF_PMATERIEL()).equals(""))){
 		PMatInfos unPMatInfos = PMatInfos.chercherPMatInfos(getTransaction(),recherche);
-		if(unPMatInfos==null){
-			if(unPMatInfos.getPminv()==null){
-				getTransaction().declarerErreur("Le petit matériel recherché n'a pas été trouvé.");
-				return false;
-			}
-		}else{
-			if(unPMatInfos.getPminv()==null){
-				getTransaction().declarerErreur("Le petit matériel recherché n'a pas été trouvé.");
-				return false;
-			}
-		}
 		if(getTransaction().isErreur()){
 			System.out.println("Aucun résultat trouvé in OePM_TDB");
-			getTransaction().traiterErreur();
-			messageInfo = "Aucun résultat trouvé.";
+			messageInfo = getTransaction().traiterErreur();
 			setPMaterielCourant(new PMateriel());
 			setPMatInfosCourant(new PMatInfos());
-			setListEntretiens(new ArrayList());
+			setListEntretiens(new ArrayList<PM_PePerso>());
 			setLB_ENTRETIENS(LBVide);
 			setStatut(STATUT_RECHERCHER,true);
 			return false;
@@ -836,26 +827,7 @@ public java.lang.String getNOM_EF_SERVICE() {
 public java.lang.String getVAL_EF_SERVICE() {
 	return getZone(getNOM_EF_SERVICE());
 }
-/**
- * Getter de la liste avec un lazy initialize :
- * LB_AFFECTATION
- * Date de création : (10/05/07 11:11:34)
- * @author : Générateur de process
- */
-private String [] getLB_AFFECTATION() {
-	if (LB_AFFECTATION == null)
-		LB_AFFECTATION = initialiseLazyLB();
-	return LB_AFFECTATION;
-}
-/**
- * Setter de la liste:
- * LB_AFFECTATION
- * Date de création : (10/05/07 11:11:34)
- * @author : Générateur de process
- */
-private void setLB_AFFECTATION(java.lang.String[] newLB_AFFECTATION) {
-	LB_AFFECTATION = newLB_AFFECTATION;
-}
+
 /**
  * Retourne le nom de la zone pour la JSP :
  * NOM_LB_AFFECTATION
@@ -874,16 +846,7 @@ public java.lang.String getNOM_LB_AFFECTATION() {
 public java.lang.String getNOM_LB_AFFECTATION_SELECT() {
 	return "NOM_LB_AFFECTATION_SELECT";
 }
-/**
- * Méthode à personnaliser
- * Retourne la valeur à afficher pour la zone de la JSP :
- * LB_AFFECTATION
- * Date de création : (10/05/07 11:11:34)
- * @author : Générateur de process
- */
-public java.lang.String [] getVAL_LB_AFFECTATION() {
-	return getLB_AFFECTATION();
-}
+
 /**
  * Méthode à personnaliser
  * Retourne l'indice à sélectionner pour la zone de la JSP :
@@ -1097,23 +1060,23 @@ public void setPMatInfosCourant(PMatInfos pMatInfosCourant){
 	pMatInfosCourantChange=true;
 }
 
-public ArrayList getListEntretiens() {
+public ArrayList<PM_PePerso> getListEntretiens() {
 	return listEntretiens;
 }
-public void setListEntretiens(ArrayList listEntretiens) {
+public void setListEntretiens(ArrayList<PM_PePerso> listEntretiens) {
 	this.listEntretiens = listEntretiens;
 }
 
-public ArrayList getListServices() {
+public ArrayList<PM_Affectation_Sce_Infos> getListServices() {
 	return listServices;
 }
-public void setListFpm(ArrayList listFpm) {
+public void setListFpm(ArrayList<FPM> listFpm) {
 	this.listFpm = listFpm;
 }
-public ArrayList getListFpm() {
+public ArrayList<FPM> getListFpm() {
 	return listFpm;
 }
-public void setListServices(ArrayList listServices) {
+public void setListServices(ArrayList<PM_Affectation_Sce_Infos> listServices) {
 	this.listServices = listServices;
 }
 public boolean getFirst(){
@@ -1289,7 +1252,7 @@ public java.lang.String [] getVAL_LB_FPM() {
 public java.lang.String getVAL_LB_FPM_SELECT() {
 	return getZone(getNOM_LB_FPM_SELECT());
 }
-public boolean trierDecl(ArrayList a) throws Exception{
+public boolean trierDecl(ArrayList<Declarations> a) throws Exception{
 	String declarant = "agent non trouvé";
 	String[] colonnes = {"date"};
 	//ordre croissant
@@ -1297,12 +1260,12 @@ public boolean trierDecl(ArrayList a) throws Exception{
 	
 //	Si au moins une affectation
 	if (a.size() !=0 ) {
-		ArrayList aTrier = Services.trier(a,colonnes,ordres);
-		setListServices(aTrier);
+		ArrayList<Declarations> aTrier = Services.trier(a,colonnes,ordres);
+		setListDeclarations(aTrier);
 		int tailles [] = {10,49,10,10};
 		String[] padding = {"C","G","C","C"};
 		FormateListe aFormat = new FormateListe(tailles,padding,false);
-		for (java.util.ListIterator list = aTrier.listIterator(); list.hasNext(); ) {
+		for (ListIterator<Declarations> list = aTrier.listIterator(); list.hasNext(); ) {
 			Declarations aDeclarations = (Declarations)list.next();
 			// recherche de l'agent selon le service affecté
 			AgentsMunicipaux unAgent = AgentsMunicipaux.chercherAgentsMunicipauxService(getTransaction(),aDeclarations.getMatricule(),aDeclarations.getCodeservice());
@@ -1320,7 +1283,7 @@ public boolean trierDecl(ArrayList a) throws Exception{
 	}
 	return true;
 }
-public void trierFpm(ArrayList a) throws Exception{
+public void trierFpm(ArrayList<FPM> a) throws Exception{
 	String[] colonnes = {"numfiche","dentree"};
 	//ordre decroissant
 	boolean[] ordres = {false,false};
@@ -1330,7 +1293,7 @@ public void trierFpm(ArrayList a) throws Exception{
 	
 //	Si au moins une fiche pm pour PePerso
 	if (a.size() !=0 ) {
-		ArrayList aTrier = Services.trier(a,colonnes,ordres);
+		ArrayList<FPM> aTrier = Services.trier(a,colonnes,ordres);
 		setListFpm(aTrier);
 		int tailles [] = {10,10,10,10};
 		String[] padding = {"D","C","C","D"};
@@ -1339,7 +1302,7 @@ public void trierFpm(ArrayList a) throws Exception{
 			FPM unFPM = (FPM)aTrier.get(i);	
 			
 			//	calcul du montant total de la fiche pm
-			FPM aFPM = FPM.chercherFPM(getTransaction(),unFPM.getNumfiche());
+			FPM.chercherFPM(getTransaction(),unFPM.getNumfiche());
 			if(getTransaction().isErreur()){
 				return ;
 			}
@@ -1541,12 +1504,12 @@ public java.lang.String [] getVAL_LB_DECLARATIONS() {
 public java.lang.String getVAL_LB_DECLARATIONS_SELECT() {
 	return getZone(getNOM_LB_DECLARATIONS_SELECT());
 }
-public void setListDeclarations(ArrayList listDeclarations) {
+public void setListDeclarations(ArrayList<Declarations> listDeclarations) {
 	this.listDeclarations = listDeclarations;
 }
-public ArrayList getListDeclarations() {
+public ArrayList<Declarations> getListDeclarations() {
 	if(listDeclarations==null){
-		listDeclarations = new ArrayList();
+		listDeclarations = new ArrayList<Declarations>();
 	}
 	return listDeclarations;
 }

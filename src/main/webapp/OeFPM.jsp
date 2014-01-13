@@ -25,7 +25,7 @@ document.formu.elements[nom].focus();
 </SCRIPT>
 <TITLE>OeOT.jsp</TITLE>
 </HEAD>
-<BODY BGPROPERTIES="FIXED" background="images/fond.jpg" class="sigp2-BODY"><jsp:useBean class="nc.mairie.seat.process.OeFPM" id="process" scope="session"></jsp:useBean>
+<BODY background="images/fond.jpg" class="sigp2-BODY"><jsp:useBean class="nc.mairie.seat.process.OeFPM" id="process" scope="session"></jsp:useBean>
 <TABLE border="0" width="580" style="text-align : center;" class="sigp2">
 <%@ include file="BanniereErreur.jsp" %>
     <TR>

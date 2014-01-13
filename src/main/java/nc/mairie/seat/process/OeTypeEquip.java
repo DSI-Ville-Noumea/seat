@@ -10,11 +10,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeTypeEquip extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4066611968024847434L;
 	private java.lang.String[] LB_LISTE_TE;
 	private String ACTION_SUPPRESSION = "Suppression d'un type d'équipement.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification d'un type d'équipement.";
 	private String ACTION_CREATION = "Création d'un type d'équipement.";
-	private ArrayList listeTe = null;
+	private ArrayList<TYPEEQUIP> listeTe = null;
 	private TYPEEQUIP teCourant;
 	private String focus = null;
 	public int isVide = 0;
@@ -31,7 +35,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 
 	//	Si liste des te est vide
 	if (getLB_LISTE_TE() == LBVide) {
-			java.util.ArrayList a = TYPEEQUIP.listerTYPEEQUIP(getTransaction());
+			ArrayList<TYPEEQUIP> a = TYPEEQUIP.listerTYPEEQUIP(getTransaction());
 			setListeTe(a);
 			
 		if (a.size()>0){
@@ -466,13 +470,13 @@ public java.lang.String getVAL_LB_LISTE_TE_SELECT() {
 	/**
 	 * @return Renvoie listeTe.
 	 */
-	private ArrayList getListeTe() {
+	private ArrayList<TYPEEQUIP> getListeTe() {
 		return listeTe;
 	}
 	/**
 	 * @param listeTe listeTe à définir.
 	 */
-	private void setListeTe(ArrayList listeTe) {
+	private void setListeTe(ArrayList<TYPEEQUIP> listeTe) {
 		this.listeTe = listeTe;
 	}
 	/**

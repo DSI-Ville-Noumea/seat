@@ -10,8 +10,12 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeFre_Recherche extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4955670967808059243L;
 	private java.lang.String[] LB_FRE;
-	private ArrayList listFre;
+	private ArrayList<Fournisseurs> listFre;
 	private Fournisseurs fournisseurCourant;
 	private String focus = null;
 /**
@@ -157,7 +161,7 @@ public java.lang.String getNOM_PB_RECHERCHE() {
  */
 public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String param = getZone(getNOM_EF_RECHERCHE());
-	ArrayList resultatFre = Fournisseurs.listerFournisseursNom(getTransaction(),param);
+	ArrayList<Fournisseurs> resultatFre = Fournisseurs.listerFournisseursNom(getTransaction(),param);
 	// on remplit la liste des fournisseurs
 	setListFre(resultatFre);
 	if(resultatFre.size()>0){
@@ -276,10 +280,10 @@ public java.lang.String getVAL_LB_FRE_SELECT() {
 	public String getDefaultFocus() {
 		return getNOM_EF_RECHERCHE();
 	}
-	public ArrayList getListFre() {
+	public ArrayList<Fournisseurs> getListFre() {
 		return listFre;
 	}
-	public void setListFre(ArrayList listFre) {
+	public void setListFre(ArrayList<Fournisseurs> listFre) {
 		this.listFre = listFre;
 	}
 }

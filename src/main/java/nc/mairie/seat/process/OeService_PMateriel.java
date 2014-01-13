@@ -1,6 +1,7 @@
 package nc.mairie.seat.process;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import nc.mairie.seat.metier.AgentCCAS;
 import nc.mairie.seat.metier.AgentCDE;
@@ -15,13 +16,17 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeService_PMateriel extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1095921440717234810L;
 	public static final int STATUT_AFFECTATION = 4;
 	public static final int STATUT_VISUALISER = 3;
 	public static final int STATUT_TDB = 2;
 	public static final int STATUT_SCE_RECHERCHE = 1;
 	private java.lang.String[] LB_EQUIP;
 	private Service serviceCourant;
-	private ArrayList listEquip;
+	private ArrayList<PM_Affectation_Sce_Infos> listEquip;
 	public String focus=null;
 	public boolean menuService = false;
 /**
@@ -41,7 +46,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		menuService = true;
 //		 récupération du Service
 		String accro = (String)VariableGlobale.recuperer(request,"ACCRONYME");
-		ArrayList listService = Service.chercherListServiceAccro(getTransaction(),accro);
+		ArrayList<Service> listService = Service.chercherListServiceAccro(getTransaction(),accro);
 		if(getTransaction().isErreur()){
 			return ;
 		}
@@ -93,7 +98,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 
 public boolean initialiseListePMat(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	 recherche des petits matériels affectés
-	ArrayList a = PM_Affectation_Sce_Infos.chercherPmAffectationServiceInfosService3(getTransaction(),getServiceCourant().getServi());
+	ArrayList<PM_Affectation_Sce_Infos> a = PM_Affectation_Sce_Infos.chercherPmAffectationServiceInfosService3(getTransaction(),getServiceCourant().getServi());
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -106,19 +111,19 @@ public boolean initialiseListePMat(javax.servlet.http.HttpServletRequest request
 	}
 	return true;
 }
-public void trier(ArrayList a) throws Exception{
+public void trier(ArrayList<PM_Affectation_Sce_Infos> a) throws Exception{
 	String[] colonnes = {"pminv","pmserie"};
 	//ordre croissant
 	boolean[] ordres = {true,true};
 	
 //	Si au moins une affectation
 	if (a.size() !=0 ) {
-		ArrayList aTrier = Services.trier(a,colonnes,ordres);
+		ArrayList<PM_Affectation_Sce_Infos> aTrier = Services.trier(a,colonnes,ordres);
 		setListEquip(aTrier);
 		int tailles [] = {5,10,25,15,10};
 		String[] padding = {"G","G","G","G","C"};
 		FormateListe aFormat = new FormateListe(tailles,padding,false);
-		for (java.util.ListIterator list = aTrier.listIterator(); list.hasNext(); ) {
+		for (ListIterator<PM_Affectation_Sce_Infos> list = aTrier.listIterator(); list.hasNext(); ) {
 			PM_Affectation_Sce_Infos monASI = (PM_Affectation_Sce_Infos)list.next();
 			PMatInfos unEI = PMatInfos.chercherPMatInfos(getTransaction(),monASI.getPminv());
 			if(getTransaction().isErreur()){
@@ -167,7 +172,7 @@ public boolean performPB_SERVICE(javax.servlet.http.HttpServletRequest request) 
 		getTransaction().declarerErreur("Le service recherché "+recherche+" n'a pas été trouvé.");
 		return false;
 	}
-	if(unService==null){
+	if(unService!=null){
 		if(unService.getServi()==null){
 			getTransaction().declarerErreur("Le service recherché "+recherche+" n'a pas été trouvé.");
 			return false;
@@ -478,13 +483,13 @@ private void setServiceCourant(
 /**
  * @return Renvoie listeAffectation.
  */
-public ArrayList getListEquip() {
+public ArrayList<PM_Affectation_Sce_Infos> getListEquip() {
 	return listEquip;
 }
 /**
  * @param listeAffectation listeAffectation à définir.
  */
-public void setListEquip(ArrayList listEquip) {
+public void setListEquip(ArrayList<PM_Affectation_Sce_Infos> listEquip) {
 	this.listEquip = listEquip;
 }
 /**

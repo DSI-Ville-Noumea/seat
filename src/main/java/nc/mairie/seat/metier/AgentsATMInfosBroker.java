@@ -1,15 +1,18 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier AgentsATMInfos
  */
-public class AgentsATMInfosBroker extends nc.mairie.technique.BasicBroker {
+public class AgentsATMInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : AgentsATMInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAgentsATMInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<AgentsATMInfos> listerAgentsATMInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by nom with ur");
 }
 /**
@@ -22,14 +25,14 @@ public AgentsATMInfos chercherAgentsATMInfos(nc.mairie.technique.Transaction aTr
 /**
  * Constructeur AgentsATMInfosBroker.
  */
-public AgentsATMInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public AgentsATMInfosBroker(AgentsATMInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.AgentsATMInfosMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected AgentsATMInfos definirMyMetier() {
 	return new AgentsATMInfos() ;
 }
 /**

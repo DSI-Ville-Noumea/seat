@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Specialite
  */
-public class Specialite extends nc.mairie.technique.BasicMetier {
+public class Specialite extends BasicMetier {
 	public String codespecialite;
 	public String libellespe;
 /**
@@ -39,7 +44,7 @@ public void setLibellespe(String newLibellespe) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new SpecialiteBroker(this); 
 }
 /**
@@ -62,7 +67,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Specialite.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerSpecialite(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Specialite> listerSpecialite(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Specialite unSpecialite = new Specialite();
 	return unSpecialite.getMySpecialiteBroker().listerSpecialite(aTransaction);
 }

@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier TDuree
  */
-public class TDureeBroker extends nc.mairie.technique.BasicBroker {
+public class TDureeBroker extends BasicBroker {
 /**
  * Constructeur TDureeBroker.
  */
-public TDureeBroker(nc.mairie.technique.BasicMetier aMetier) {
+public TDureeBroker(TDuree aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.TDureeMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected TDuree definirMyMetier() {
 	return new TDuree() ;
 }
 /**
@@ -66,7 +69,7 @@ public boolean supprimerTDuree(nc.mairie.technique.Transaction aTransaction) thr
  * Retourne un ArrayList d'objet métier : TDuree.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerTDuree(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<TDuree> listerTDuree(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**

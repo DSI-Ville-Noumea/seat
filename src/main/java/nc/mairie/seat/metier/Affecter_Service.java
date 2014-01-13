@@ -1,13 +1,16 @@
 package nc.mairie.seat.metier;
 
-
 import java.util.ArrayList;
 
+
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Affecter_Service
  */
-public class Affecter_Service extends nc.mairie.technique.BasicMetier {
+public class Affecter_Service extends BasicMetier {
 	public String codeservice;
 	public String numeroinventaire;
 	public String ddebut;
@@ -28,7 +31,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Affecter_Service.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerAffecter_Service(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Affecter_Service> listerAffecter_Service(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Affecter_Service unAffecter_Service = new Affecter_Service();
 	return unAffecter_Service.getMyAffecter_ServiceBroker().listerAffecter_Service(aTransaction);
 }
@@ -163,7 +166,7 @@ public boolean affecter_serviceModif(nc.mairie.technique.Transaction aTransactio
 		return false;
 	}*/
 	// on teste si des agents ont été affectés à cette affectation
-	ArrayList uneListAgent = AffectationAgentInfos.chercherListAffectationsSceEquip(aTransaction,unAffecter_Service1.getCodeservice(),getNumeroinventaire());
+	ArrayList<AffectationAgentInfos> uneListAgent = AffectationAgentInfos.chercherListAffectationsSceEquip(aTransaction,unAffecter_Service1.getCodeservice(),getNumeroinventaire());
 	if (uneListAgent.size()>0){
 		AffectationAgentInfos unAAI = (AffectationAgentInfos)uneListAgent.get(0);
 		if(!unAAI.getCodeservice().substring(0,3).equals(getCodeservice().substring(0,3))){
@@ -174,7 +177,7 @@ public boolean affecter_serviceModif(nc.mairie.technique.Transaction aTransactio
 	}
 	
 	// on regarde s'il y a eu des déclarations
-	ArrayList uneListDecl = DeclarationsInfos.listerDeclarationsInfosSce(aTransaction,unAffecter_Service1.getCodeservice(),getDdebut(),getNumeroinventaire(),Services.dateDuJour());
+	ArrayList<DeclarationsInfos> uneListDecl = DeclarationsInfos.listerDeclarationsInfosSce(aTransaction,unAffecter_Service1.getCodeservice(),getDdebut(),getNumeroinventaire(),Services.dateDuJour());
 	if(aTransaction.isErreur()){
 		return false;
 	}
@@ -252,7 +255,7 @@ public boolean affecter_serviceSupp(nc.mairie.technique.Transaction aTransaction
  * Retourne un Affecter_Service.
  * @return Affecter_Service
  */
-public static java.util.ArrayList chercherListAffecter_ServiceEquip(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
+public static ArrayList<Affecter_Service> chercherListAffecter_ServiceEquip(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Affecter_Service unAffecter_Service = new Affecter_Service();
 	return unAffecter_Service.getMyAffecter_ServiceBroker().chercherListerAffecter_ServiceEquip(aTransaction, code);
 }
@@ -338,7 +341,7 @@ public void setNomatr(String newNomatr) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new Affecter_ServiceBroker(this); 
 }
 /**

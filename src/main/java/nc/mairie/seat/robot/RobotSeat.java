@@ -1,8 +1,6 @@
 /*
  * Créé le 28 avr. 2005
  *
- * TODO Pour changer le modèle de ce fichier généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
  */
 package nc.mairie.seat.robot;
 
@@ -98,8 +96,6 @@ import nc.mairie.technique.BasicProcess;
 /**
  * @author ssi
  *
- * TODO Pour changer le modèle de ce commentaire de type généré, allez à :
- * Fenêtre - Préférences - Java - Style de code - Modèles de code
  */
 public class RobotSeat extends Robot {
 
@@ -500,7 +496,6 @@ public class RobotSeat extends Robot {
 	 */
 	@Override
 	protected Testeur initialiseTesteur() {
-		// TODO Raccord de méthode auto-généré
 		return null;
 	}
 

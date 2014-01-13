@@ -24,7 +24,7 @@ document.formu.elements[nom].focus();
 </SCRIPT>
 <TITLE>OeModeles.jsp</TITLE>
 </HEAD>
-<BODY BGPROPERTIES="FIXED" background="images/fond.jpg" class="sigp2-BODY">
+<BODY background="images/fond.jpg" class="sigp2-BODY">
 <jsp:useBean class="nc.mairie.seat.process.OeModeles" id="process" scope="session"></jsp:useBean>
 <TABLE border="0" width="580" style="text-align : center;" class="sigp2">
 <%@ include file="BanniereErreur.jsp" %>
@@ -37,7 +37,7 @@ document.formu.elements[nom].focus();
 			<table class="sigp2" align="center">
 				<tr>
 					<td>
-						<SELECT name="<%= process.getNOM_LB_MARQUE() %>" class="sigp2-liste"  onchange='executeBouton("<%=process.getNOM_PB_OKMARQUES()%>")'" style="text-transform: uppercase">
+						<SELECT name="<%= process.getNOM_LB_MARQUE() %>" class="sigp2-liste"  onchange='executeBouton("<%=process.getNOM_PB_OKMARQUES()%>")' style="text-transform: uppercase">
 							<%= process.forComboHTML(process.getVAL_LB_MARQUE(),process.getVAL_LB_MARQUE_SELECT()) %>
 						</SELECT>
 					</td>

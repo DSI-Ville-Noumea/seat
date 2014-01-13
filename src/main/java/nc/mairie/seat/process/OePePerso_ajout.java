@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import nc.mairie.seat.metier.Entretien;
 import nc.mairie.seat.metier.Equipement;
 import nc.mairie.seat.metier.EquipementInfos;
-import nc.mairie.seat.metier.ModeleInfos;
 import nc.mairie.seat.metier.Modeles;
 import nc.mairie.seat.metier.PePersoInfos;
 import nc.mairie.seat.metier.PePerso;
@@ -18,15 +17,18 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OePePerso_ajout extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -663249459810213310L;
 	private java.lang.String[] LB_ENTRETIEN;
 	private java.lang.String[] LB_TINTER;
 	private String ACTION_MODIFICATION = "Modification";
 	private String ACTION_CREATION = "Création";
 	private String focus = null;
-	private ArrayList listeTintervalle;
-	private ArrayList listeEntretien;
-	private ArrayList listeTEnt;
-	private ModeleInfos modeleInfosCourant;
+	private ArrayList<TIntervalle> listeTintervalle;
+	private ArrayList<Entretien> listeEntretien;
+	private ArrayList<TypeEntretien> listeTEnt;
 	private PePersoInfos pePersoInfosCourant;
 	private TIntervalle tIntervalleCourant;
 	private Entretien entretienCourant;
@@ -136,7 +138,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	 on remplit les listes déroulante
 //	 Si liste des tintervalle est vide
 	//if (getLB_TINTER() == LBVide) {
-	java.util.ArrayList a = TIntervalle.listerTIntervalle(getTransaction());
+	ArrayList<TIntervalle> a = TIntervalle.listerTIntervalle(getTransaction());
 	setListeTintervalle(a);
 	//les élèments de la liste 
 	int [] tailles = {10};
@@ -146,7 +148,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	
 	if(getTIntervalleCourant()!=null){
 		//	recherche du type d'intervalle courant
-		int position = -1;
 		addZone(getNOM_LB_TINTER_SELECT(),String.valueOf(-1));
 		for (int i = 0; i < getListeTintervalle().size(); i++) {
 			TIntervalle unTIntervalle = (TIntervalle)getListeTintervalle().get(i);
@@ -159,7 +160,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	//}
 //	 Si liste des types d'entretien est vide
 	//if (getLB_TENT() == LBVide) {
-	java.util.ArrayList aTEnt = TypeEntretien.listerTypeEntretien(getTransaction());
+	ArrayList<TypeEntretien> aTEnt = TypeEntretien.listerTypeEntretien(getTransaction());
 	setListeTEnt(aTEnt);
 	//les élèments de la liste 
 	int [] taillesTent = {15};
@@ -169,7 +170,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	
 	if(getTypeEntretienCourant()!=null){
 		//	recherche de l'entretien courant
-		int position = -1;
 		addZone(getNOM_LB_TENT_SELECT(),String.valueOf(-1));
 		for (int i = 0; i < getListeTEnt().size(); i++) {
 			TypeEntretien unTEntretien = (TypeEntretien)getListeTEnt().get(i);
@@ -182,7 +182,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	//}
 //	 Si liste des entretien est vide
 	//if (getLB_ENTRETIEN() == LBVide) {
-	java.util.ArrayList aEnt = Entretien.listerEntretien(getTransaction());
+	ArrayList<Entretien> aEnt = Entretien.listerEntretien(getTransaction());
 	setListeEntretien(aEnt);
 	//les élèments de la liste 
 	int [] taillesEnt = {20};
@@ -192,7 +192,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	
 	if(getEntretienCourant()!=null){
 		//	recherche de l'entretien courant
-		int position = -1;
 		addZone(getNOM_LB_ENTRETIEN_SELECT(),String.valueOf(-1));
 		for (int i = 0; i < getListeEntretien().size(); i++) {
 			Entretien unEntretien = (Entretien)getListeEntretien().get(i);
@@ -595,17 +594,17 @@ public String getDefaultFocus() {
 	public void setPePersoInfosCourant(PePersoInfos pePersoInfosCourant) {
 		this.pePersoInfosCourant = pePersoInfosCourant;
 	}
-	public ArrayList getListeEntretien() {
+	public ArrayList<Entretien> getListeEntretien() {
 		return listeEntretien;
 	}
-	public void setListeEntretien(ArrayList listeEntretien) {
+	public void setListeEntretien(ArrayList<Entretien> listeEntretien) {
 		this.listeEntretien = listeEntretien;
 	}
 	
-	public ArrayList getListeTintervalle() {
+	public ArrayList<TIntervalle> getListeTintervalle() {
 		return listeTintervalle;
 	}
-	public void setListeTintervalle(ArrayList listeTintervalle) {
+	public void setListeTintervalle(ArrayList<TIntervalle> listeTintervalle) {
 		this.listeTintervalle = listeTintervalle;
 	}
 	public Entretien getEntretienCourant() {
@@ -813,10 +812,10 @@ public java.lang.String [] getVAL_LB_TENT() {
 public java.lang.String getVAL_LB_TENT_SELECT() {
 	return getZone(getNOM_LB_TENT_SELECT());
 }
-public ArrayList getListeTEnt() {
+public ArrayList<TypeEntretien> getListeTEnt() {
 	return listeTEnt;
 }
-public void setListeTEnt(ArrayList listeTEnt) {
+public void setListeTEnt(ArrayList<TypeEntretien> listeTEnt) {
 	this.listeTEnt = listeTEnt;
 }
 	public Equipement getEquipementCourant() {

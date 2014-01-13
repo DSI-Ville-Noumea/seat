@@ -2,7 +2,7 @@ if (window.Event)
 document.captureEvents(Event.MOUSEUP); 
 function fonctions_de_la_page_desactivees() 
 {
-event.touche_pas_a_ma_page = true
+event.touche_pas_a_ma_page = true;
 event.returnValue = false;
 return false;
 }
@@ -16,7 +16,7 @@ return false;
 else
 if (event.button == 2 || event.button == 3)
 {
-event.touche_pas_a_ma_page = true
+event.touche_pas_a_ma_page = true;
 event.returnValue = false;
 return false;
 }

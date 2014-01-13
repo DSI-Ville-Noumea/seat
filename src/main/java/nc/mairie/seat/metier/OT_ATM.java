@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier OT_ATM
  */
-public class OT_ATM extends nc.mairie.technique.BasicMetier {
+public class OT_ATM extends BasicMetier {
 	public String matricule;
 	public String numot;
 /**
@@ -39,7 +44,7 @@ public void setNumot(String newNumot) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new OT_ATMBroker(this); 
 }
 /**
@@ -62,7 +67,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : OT_ATM.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOT_ATM(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<OT_ATM> listerOT_ATM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OT_ATM unOT_ATM = new OT_ATM();
 	return unOT_ATM.getMyOT_ATMBroker().listerOT_ATM(aTransaction);
 }
@@ -71,7 +76,7 @@ public static java.util.ArrayList listerOT_ATM(nc.mairie.technique.Transaction a
  * Retourne un ArrayList d'objet métier : OT_ATM.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerOT_ATMOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
+public static ArrayList<OT_ATM> listerOT_ATMOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	OT_ATM unOT_ATM = new OT_ATM();
 	return unOT_ATM.getMyOT_ATMBroker().listerOT_ATMOT(aTransaction,numot);
 }

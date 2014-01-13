@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PM_BE
  */
-public class PM_BEBroker extends nc.mairie.technique.BasicBroker {
+public class PM_BEBroker extends BasicBroker {
 /**
  * Constructeur PM_BEBroker.
  */
-public PM_BEBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PM_BEBroker(PM_BE aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PM_BEMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PM_BE definirMyMetier() {
 	return new PM_BE() ;
 }
 /**
@@ -69,7 +72,7 @@ public boolean supprimerPM_BE(nc.mairie.technique.Transaction aTransaction) thro
  * Retourne un ArrayList d'objet métier : PM_BE.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPM_BE(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<PM_BE> listerPM_BE(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -88,7 +91,7 @@ public boolean existeBE(nc.mairie.technique.Transaction aTransaction, String num
 }
 
 // liste des BE pour la FPM
-public java.util.ArrayList listerPM_BE_FPM(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception {
+public ArrayList<PM_BE> listerPM_BE_FPM(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numfiche="+numfiche);
 }
 

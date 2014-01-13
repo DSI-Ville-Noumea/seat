@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PeBase
  */
-public class PeBaseBroker extends nc.mairie.technique.BasicBroker {
+public class PeBaseBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -30,7 +33,7 @@ public boolean supprimerPeBase(nc.mairie.technique.Transaction aTransaction) thr
  * Retourne un ArrayList d'objet métier : PeBase.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPeBase(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<PeBase> listerPeBase(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -65,7 +68,7 @@ public boolean existePeBaseTint(nc.mairie.technique.Transaction aTransaction, St
  * Retourne un ArrayList d'objet métier : PeBase.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPeBaseModele(nc.mairie.technique.Transaction aTransaction,String mod) throws Exception {
+public ArrayList<PeBase> listerPeBaseModele(nc.mairie.technique.Transaction aTransaction,String mod) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemodele="+mod);
 }
 
@@ -73,21 +76,21 @@ public java.util.ArrayList listerPeBaseModele(nc.mairie.technique.Transaction aT
  * Retourne un ArrayList d'objet métier : PeBase.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPeBaseModeleActif(nc.mairie.technique.Transaction aTransaction,String mod) throws Exception {
+public ArrayList<PeBase> listerPeBaseModeleActif(nc.mairie.technique.Transaction aTransaction,String mod) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemodele="+mod+" and datedesactivation = '0001-01-01'");
 }
 
 /**
  * Constructeur PeBaseBroker.
  */
-public PeBaseBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PeBaseBroker(PeBase aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PeBaseMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PeBase definirMyMetier() {
 	return new PeBase() ;
 }
 /**

@@ -14,16 +14,20 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeFPM_Validation extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5744048342393490599L;
 	public static final int STATUT_VISUALISER = 2;
 	public static final int STATUT_MODIFIER = 1;
 	private java.lang.String[] LB_FPMAVALIDER;
 	private java.lang.String[] LB_FPMENCOURS;
-	private ArrayList listFpmEncours = new ArrayList();
-	private ArrayList listFpmAValider = new ArrayList();
+	private ArrayList<FPM> listFpmEncours = new ArrayList<FPM>();
+	private ArrayList<FPM> listFpmAValider = new ArrayList<FPM>();
 	private Hashtable<String, PMateriel> hashPMateriel;
 	private boolean first = true;
 	public boolean AValider;
-	public boolean estEnregistré = false;
+	public boolean estEnregistre = false;
 	public boolean listFpmEncoursVide = true;
 	private String information = "";
 	private PMatInfos pMatInfosCourant;
@@ -51,10 +55,10 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	boolean ordres[] = {false};
 	//	initialisation de la liste des FPM en cours
 	if(first){
-		ArrayList a = FPM.listerFPMAValider(getTransaction());
+		ArrayList<FPM> a = FPM.listerFPMAValider(getTransaction());
 		a= Services.trier(a,colonnes,ordres);
 		setListFpmEncours(a);
-		setEstEnregistré(false);
+		setestEnregistre(false);
 	}
 	if(getListFPMEncours().size()>0){
 		setIsListFpmEncoursVide(false);
@@ -72,9 +76,9 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
  * 
  */
 public void initialiseListeEquipements() throws Exception{
-	ArrayList arr = PMateriel.listerPMateriel(getTransaction());
+	ArrayList<PMateriel> arr = PMateriel.listerPMateriel(getTransaction());
 	
-	for (Iterator iter = arr.iterator(); iter.hasNext();) {
+	for (Iterator<PMateriel> iter = arr.iterator(); iter.hasNext();) {
 		PMateriel pMateriel = (PMateriel) iter.next();
 		getHashPMateriel().put(pMateriel.getPminv(), pMateriel);
 	}
@@ -308,9 +312,9 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 		}
 	}
 	commitTransaction();
-	setEstEnregistré(true);
+	setestEnregistre(true);
 	// on recherche les FPM validé avec les infos mises à jour
-	ArrayList listAjour = new ArrayList();
+	ArrayList<FPM> listAjour = new ArrayList<FPM>();
 	for(int i=0;i<getListFPMAValider().size();i++){
 		FPM unFPM = (FPM)getListFPMAValider().get(i);
 		listAjour.add(unFPM);
@@ -436,16 +440,16 @@ public java.lang.String [] getVAL_LB_FPMENCOURS() {
 public java.lang.String getVAL_LB_FPMENCOURS_SELECT() {
 	return getZone(getNOM_LB_FPMENCOURS_SELECT());
 }
-public ArrayList getListFPMAValider() {
+public ArrayList<FPM> getListFPMAValider() {
 	return listFpmAValider;
 }
-public void setListFPMAValider(ArrayList listFpmAValider) {
+public void setListFPMAValider(ArrayList<FPM> listFpmAValider) {
 	this.listFpmAValider = listFpmAValider;
 }
-public ArrayList getListFPMEncours() {
+public ArrayList<FPM> getListFPMEncours() {
 	return listFpmEncours;
 }
-public void setListFpmEncours(ArrayList listFpmEncours) {
+public void setListFpmEncours(ArrayList<FPM> listFpmEncours) {
 	this.listFpmEncours = listFpmEncours;
 }
 public boolean isFirst() {
@@ -460,11 +464,11 @@ public boolean isAValider() {
 public void setAValider(boolean valider) {
 	AValider = valider;
 }
-public boolean isEstEnregistré() {
-	return estEnregistré;
+public boolean isestEnregistre() {
+	return estEnregistre;
 }
-public void setEstEnregistré(boolean estEnregistré) {
-	this.estEnregistré = estEnregistré;
+public void setestEnregistre(boolean estEnregistre) {
+	this.estEnregistre = estEnregistre;
 }
 
 /**
@@ -487,9 +491,9 @@ public java.lang.String getNOM_PB_OK_VALIDATION() {
 //retour à l'écran d'origine
 public boolean performPB_OK_VALIDATION(javax.servlet.http.HttpServletRequest request) throws Exception {
 	// on vide la listes des FPM à valider
-	setListFPMAValider(new ArrayList());
+	setListFPMAValider(new ArrayList<FPM>());
 	setLB_FPMAVALIDER(LBVide);
-	setEstEnregistré(false);
+	setestEnregistre(false);
 	setAValider(false);
 	information = "";
 	return true;

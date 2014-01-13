@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier PM_BE
  */
-public class PM_BE extends nc.mairie.technique.BasicMetier {
+public class PM_BE extends BasicMetier {
 	public String numfiche;
 	public String codcol;
 	public String exerci;
@@ -78,7 +83,7 @@ public void setNoengj(String newNoengj) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PM_BEBroker(this); 
 }
 /**
@@ -101,7 +106,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : PM_BE.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPM_BE(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<PM_BE> listerPM_BE(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PM_BE unPM_BE = new PM_BE();
 	return unPM_BE.getMyPM_BEBroker().listerPM_BE(aTransaction);
 }
@@ -164,7 +169,7 @@ public boolean supprimerPM_BE(nc.mairie.technique.Transaction aTransaction) thro
 }
 
 // liste des BE pour la fpm
-public static java.util.ArrayList listerPM_BE_FPM(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
+public static ArrayList<PM_BE> listerPM_BE_FPM(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
 	PM_BE unPM_BE = new PM_BE();
 	return unPM_BE.getMyPM_BEBroker().listerPM_BE_FPM(aTransaction,numfiche);
 }

@@ -4,26 +4,34 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import nc.mairie.seat.metier.AffectationServiceInfos;
 import nc.mairie.seat.metier.Equipement;
 import nc.mairie.seat.metier.EquipementInfos;
 import nc.mairie.seat.metier.OT;
 import nc.mairie.seat.metier.Planning;
-import nc.mairie.seat.servlet.ServletSeat;
 import nc.mairie.servlets.Frontale;
-import nc.mairie.technique.*;
+import nc.mairie.technique.FormateListe;
+import nc.mairie.technique.Services;
+import nc.mairie.technique.StarjetGeneration;
+import nc.mairie.technique.VariableGlobale;
 /**
  * Process OeOT_Impression
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
 */
+@SuppressWarnings("deprecation")
 public class OeOT_Impression extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6858884383594046956L;
 	public static final int STATUT_RECHERCHE = 1;
 	private java.lang.String[] LB_ENTRETIENS;
 	private OT otCourant;
 	private EquipementInfos equipementInfosCourant;
-	private ArrayList listEntretien;
+	private ArrayList<Planning> listEntretien;
 	public int tailleList = 0;
 	public int tailleList_suite = 0;
 	public boolean affiche;
@@ -102,7 +110,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			}else{
 				addZone(getNOM_ST_DSORTIE(),getOtCourant().getDatesortie());
 			}
-			ArrayList a = Planning.chercherPlanningOt(getTransaction(),getOtCourant().getNumeroot());
+			ArrayList<Planning> a = Planning.chercherPlanningOt(getTransaction(),getOtCourant().getNumeroot());
 			if (getTransaction().isErreur()){
 				return;
 			}
@@ -138,7 +146,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 
 }
 
-public void initialiseListEntretiens(javax.servlet.http.HttpServletRequest request,ArrayList a) throws Exception{
+public void initialiseListEntretiens(javax.servlet.http.HttpServletRequest request,ArrayList<Planning> a) throws Exception{
 	int indice = 0;
 	int i = 0;
 	setListEntretien(a);
@@ -147,7 +155,7 @@ public void initialiseListEntretiens(javax.servlet.http.HttpServletRequest reque
 		int tailles [] = {50};
 		FormateListe aFormat = new FormateListe(tailles);
 		FormateListe aFormat_suite = new FormateListe(tailles);
-		for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
+		for (ListIterator<Planning> list = a.listIterator(); list.hasNext(); ) {
 			Planning unPlanning = (Planning)list.next();
 			String ligne [] = { unPlanning.getLibelleentretien()};
 			if(a.size()>1){
@@ -234,13 +242,12 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 	//enregistrement 
 	commitTransaction();	
 
-	int montantPieces = 0;
-	String chainedeb="";
+//	int montantPieces = 0;
+//	String chainedeb="";
 	
 	// impression de l'OT
 	if(getOtCourant()!=null){
 		String commentaireOt = "";
-		String inter = "";
 		String numinv = getZone(getNOM_ST_NOINVENT());
 		String numimmat = getZone(getNOM_ST_NOIMMAT());
 		String nomequip = getZone(getNOM_ST_MARQUE())+" "+getZone(getNOM_ST_MODELE());
@@ -249,7 +256,6 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 		String dEntree = getZone(getNOM_ST_DENTREE());
 		String dSortie = getZone(getNOM_ST_DSORTIE());
 		String compteur = getZone(getNOM_ST_COMPTEUR());
-		String service = getServiceForEquipement(unEquipement,dEntree);
 		// pour les commentaires avec retour à la ligne par la touche "Entrée"
 		String commentaire = getZone(getNOM_EF_COMMENTAIRE());
 		int comlen = commentaire.length();
@@ -578,10 +584,10 @@ public EquipementInfos getEquipementInfosCourant() {
 public void setEquipementInfosCourant(EquipementInfos equipementInfosCourant) {
 	this.equipementInfosCourant = equipementInfosCourant;
 }
-	public ArrayList getListEntretien() {
+	public ArrayList<Planning> getListEntretien() {
 		return listEntretien;
 	}
-	public void setListEntretien(ArrayList listEntretien) {
+	public void setListEntretien(ArrayList<Planning> listEntretien) {
 		this.listEntretien = listEntretien;
 	}
 	public int getTailleList() {

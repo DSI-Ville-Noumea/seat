@@ -16,11 +16,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeEquipement_ajout extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3700088663766212615L;
 	private java.lang.String[] LB_MARQUE;
 	private java.lang.String[] LB_MODELE;
 	private String ACTION_MARQUE = "Sélection d'une marque";
-	private ArrayList listeMarque = null;
-	private ArrayList listeModele = null;
+	private ArrayList<Marques> listeMarque = null;
+	private ArrayList<Modeles> listeModele = null;
 	private Equipement equipementCourant;
 	private TYPEEQUIP tequipCourant;
 	private String newModele = "";
@@ -51,7 +55,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	if(first){
 	//	 Si liste des marques est vide
 		if (getLB_MARQUE() == LBVide) {
-			java.util.ArrayList a = Marques.listerMarquesModele(getTransaction());
+			ArrayList<Marques> a = Marques.listerMarquesModele(getTransaction());
 			if (getTransaction().isErreur()){
 				return;
 			}
@@ -136,7 +140,7 @@ public boolean performPB_OK_MARQUE(javax.servlet.http.HttpServletRequest request
 	
 //	 on remplit la liste déroulante avec la table f_modeles
 	//	 Si liste des modeles pour une marque est vide
-	java.util.ArrayList a = Modeles.listerModelesMarque(getTransaction(),maMarque.getCodemarque());
+	ArrayList<Modeles> a = Modeles.listerModelesMarque(getTransaction(),maMarque.getCodemarque());
 	setListeModele(a);
 	//les élèments de la liste 
 	int [] tailles = {15};
@@ -731,25 +735,25 @@ public java.lang.String getVAL_ST_VERSION() {
 	/**
 	 * @return Renvoie listeMarque.
 	 */
-	private ArrayList getListeMarque() {
+	private ArrayList<Marques> getListeMarque() {
 		return listeMarque;
 	}
 	/**
 	 * @param listeMarque listeMarque à définir.
 	 */
-	private void setListeMarque(ArrayList listeMarque) {
+	private void setListeMarque(ArrayList<Marques> listeMarque) {
 		this.listeMarque = listeMarque;
 	}
 	/**
 	 * @return Renvoie listeModele.
 	 */
-	private ArrayList getListeModele() {
+	private ArrayList<Modeles> getListeModele() {
 		return listeModele;
 	}
 	/**
 	 * @param listeModele listeModele à définir.
 	 */
-	private void setListeModele(ArrayList listeModele) {
+	private void setListeModele(ArrayList<Modeles> listeModele) {
 		this.listeModele = listeModele;
 	}
 

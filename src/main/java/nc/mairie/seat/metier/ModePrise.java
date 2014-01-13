@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier ModePrise
  */
-public class ModePrise extends nc.mairie.technique.BasicMetier {
+public class ModePrise extends BasicMetier {
 	public String codemodeprise;
 	public String designationmodeprise;
 /**
@@ -19,7 +24,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : ModePrise.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerModePrise(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<ModePrise> listerModePrise(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	ModePrise unModePrise = new ModePrise();
 	return unModePrise.getMyModePriseBroker().listerModePrise(aTransaction);
 }
@@ -139,7 +144,7 @@ public void setDesignationmodeprise(String newDesignationmodeprise) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new ModePriseBroker(this); 
 }
 /**

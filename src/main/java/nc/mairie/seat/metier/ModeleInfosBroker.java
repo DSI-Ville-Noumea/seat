@@ -1,15 +1,18 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier ModeleInfos
  */
-public class ModeleInfosBroker extends nc.mairie.technique.BasicBroker {
+public class ModeleInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : ModeleInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerModeleInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<ModeleInfos> listerModeleInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by designationmodele");
 }
 /**
@@ -24,21 +27,21 @@ public ModeleInfos chercherModeleInfos(nc.mairie.technique.Transaction aTransact
  * Retourne un arrayList ModeleInfos.
  * @return ModeleInfos
  */
-public java.util.ArrayList chercherListModeleInfosTous(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
+public ArrayList<ModeleInfos> chercherListModeleInfosTous(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where upper(designationmodele) like '"+param.toUpperCase()+"%' order by designationmodele");
 }
 
 /**
  * Constructeur ModeleInfosBroker.
  */
-public ModeleInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public ModeleInfosBroker(ModeleInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.ModeleInfosMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected ModeleInfos definirMyMetier() {
 	return new ModeleInfos() ;
 }
 /**

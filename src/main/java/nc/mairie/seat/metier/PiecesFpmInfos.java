@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier PiecesFpmInfos
  */
-public class PiecesFpmInfos extends nc.mairie.technique.BasicMetier {
+public class PiecesFpmInfos extends BasicMetier {
 	public String codepiece;
 	public String designationpiece;
 	public String pu;
@@ -117,7 +122,7 @@ public void setPrix(String newPrix) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PiecesFpmInfosBroker(this); 
 }
 /**
@@ -140,7 +145,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : PiecesFpmInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPiecesFpmInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<PiecesFpmInfos> listerPiecesFpmInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PiecesFpmInfos unPiecesFpmInfos = new PiecesFpmInfos();
 	return unPiecesFpmInfos.getMyPiecesFpmInfosBroker().listerPiecesFpmInfos(aTransaction);
 }
@@ -157,7 +162,7 @@ public static PiecesFpmInfos chercherPiecesFpmInfos(nc.mairie.technique.Transact
  * Retourne un ArrayList d'objet métier : PiecesInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList chercherFpmPiecesInfosFpm(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
+public static ArrayList<PiecesFpmInfos> chercherFpmPiecesInfosFpm(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
 	PiecesFpmInfos unPiecesInfos = new PiecesFpmInfos();
 	return unPiecesInfos.getMyPiecesFpmInfosBroker().chercherPiecesFpmInfosFpm(aTransaction,numfiche);
 }

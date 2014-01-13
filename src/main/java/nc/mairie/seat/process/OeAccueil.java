@@ -8,6 +8,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeAccueil extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5165511443515386086L;
 	public static final int STATUT_GO = 1;
 	public static final int STATUT_MARQUES = 6;
 	public static final int STATUT_BPC = 5;
@@ -151,6 +155,7 @@ public boolean performPB_MARQUES(javax.servlet.http.HttpServletRequest request) 
 	/**
 	 * @return Renvoie sTATUT_MARQUES.
 	 */
+	@SuppressWarnings("unused")
 	private static int getSTATUT_MARQUES() {
 		return STATUT_MARQUES;
 	}

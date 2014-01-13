@@ -11,6 +11,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OePMateriel extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1687515985873794675L;
 	public static final int STATUT_MODIFIER = 2;
 	public static final int STATUT_AJOUTER = 1;
 	private PMatInfos pMatInfosCourant;
@@ -19,7 +23,7 @@ public class OePMateriel extends nc.mairie.technique.BasicProcess {
 	private String ACTION_SUPPRESSION = "Suppression d'un petit matériel.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String tri = "pminv";
 	private String param ="";
-	private ArrayList listePMaterielInfos;
+	private ArrayList<PMatInfos> listePMaterielInfos;
 	public int isVide = 0;
 	private String focus = null;
 /**
@@ -39,7 +43,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	if (getLB_PMATERIEL() == LBVide || etatStatut() != STATUT_MEME_PROCESS) {
 	
 		// Si param = "" on liste tous les petits matériels
-		java.util.ArrayList a;
+		java.util.ArrayList<PMatInfos> a;
 		// Si param = actifs on liste les petits matériels actifs
 		if ("actifs".equals(param)){
 			a = PMatInfos.listerPMatInfosActifs(getTransaction(),tri);
@@ -55,7 +59,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	trier(getListePMaterielInfos(), tri);
 	cocher(param,tri);
 }
-public void trier(ArrayList a,String colonne) throws Exception{
+public void trier(ArrayList<PMatInfos> a,String colonne) throws Exception{
 	//String [] champs = {"pminv","pmserie"};
 	boolean[] ordres = {true};
 	String[] colonnes = {colonne};
@@ -496,13 +500,13 @@ private void setPMatInfosCourant(PMatInfos pMatInfosCourant) {
 /**
  * @return Renvoie listeEquipement.
  */
-private ArrayList getListePMaterielInfos() {
+private ArrayList<PMatInfos> getListePMaterielInfos() {
 	return listePMaterielInfos;
 }
 /**
  * @param listeEquipement listeEquipement à définir.
  */
-private void setListePMaterielInfos(ArrayList listePMateriel) {
+private void setListePMaterielInfos(ArrayList<PMatInfos> listePMateriel) {
 	this.listePMaterielInfos = listePMateriel;
 }
 public int getIsVide() {

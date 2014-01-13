@@ -11,12 +11,16 @@ import nc.mairie.technique.*;
 */
 public class OeFre_PM extends nc.mairie.technique.BasicProcess {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6458638005772413319L;
 	private String ACTION_SUPPRESSION = "Suppression d'un fournisseur de petit matériel<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification d'un fournisseur de petit matériel.";
 	private String ACTION_CREATION = "Création d'un fournisseur de petit matériel.";
 	private String focus = null;
 	public int isVide = 0;
-	private ArrayList listeFrePm = null;
+	private ArrayList<Fre_PM> listeFrePm = null;
 	private Fre_PM frePmCourant;
 /**
  * Initialisation des zones à afficher dans la JSP
@@ -30,7 +34,7 @@ public class OeFre_PM extends nc.mairie.technique.BasicProcess {
 public void initialiseZones(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	Si liste des carburants est vide
 	if (getLB_FOURNISSEURS() == LBVide) {
-		java.util.ArrayList a = Fre_PM.listerFre_PM(getTransaction());
+		ArrayList<Fre_PM> a = Fre_PM.listerFre_PM(getTransaction());
 		setListeFrePm(a);
 		
 		if (a.size()>0){
@@ -43,8 +47,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			a = Services.trier(a,champs,colonnes);
 			setListeFrePm(a);
 			
-			FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-			String [] l = f.getListeFormatee();
 			setLB_FOURNISSEURS(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 		}else{
 			setLB_FOURNISSEURS(null);
@@ -54,10 +56,9 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	 on sélectionne l'élément en cours
 	if(getFrePmCourant()!=null){
 		if(getFrePmCourant().getCodefre()!=null){
-			int position = -1;
 			addZone(getNOM_LB_FOURNISSEURS_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListeFrePm().size(); i++) {
-				Fre_PM unFre_PM = (Fre_PM)getListeFrePm().get(i);
+				Fre_PM unFre_PM = getListeFrePm().get(i);
 				if (unFre_PM.getCodefre().equals(getFrePmCourant().getCodefre())) {
 					addZone(getNOM_LB_FOURNISSEURS_SELECT(),String.valueOf(i));
 					performPB_OK(request);
@@ -171,7 +172,7 @@ public boolean performPB_MODIFIER(javax.servlet.http.HttpServletRequest request)
 	addZone(getNOM_ST_TITRE_ACTION(),ACTION_MODIFICATION);
 
 	//Récup du type d'intervalle courant
-	Fre_PM unFrePm = (Fre_PM)getListeFrePm().get(numligne);
+	Fre_PM unFrePm = getListeFrePm().get(numligne);
 	setFrePmCourant(unFrePm);
 
 	//Alim zones
@@ -213,7 +214,7 @@ public boolean performPB_SUPPRIMER(javax.servlet.http.HttpServletRequest request
 	addZone(getNOM_ST_TITRE_ACTION(),ACTION_SUPPRESSION);
 
 	//Récup du type d'intervalle courante
-	Fre_PM unFrePM = (Fre_PM)getListeFrePm().get(numligne);
+	Fre_PM unFrePM = getListeFrePm().get(numligne);
 	setFrePmCourant(unFrePM);
 
 	//Alim zones
@@ -559,7 +560,7 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
 		return false;
 	}
 	
-	Fre_PM monFre_Pm = (Fre_PM)getListeFrePm().get(indice);
+	Fre_PM monFre_Pm = getListeFrePm().get(indice);
 	setFrePmCourant(monFre_Pm);
 	
 	addZone(getNOM_ST_OBSERVATIONS(), monFre_Pm.getObservationsfre());
@@ -626,10 +627,10 @@ public int getIsVide() {
 public void setIsVide(int isVide) {
 	this.isVide = isVide;
 }
-public ArrayList getListeFrePm() {
+public ArrayList<Fre_PM> getListeFrePm() {
 	return listeFrePm;
 }
-public void setListeFrePm(ArrayList listeFrePm) {
+public void setListeFrePm(ArrayList<Fre_PM> listeFrePm) {
 	this.listeFrePm = listeFrePm;
 }
 public Fre_PM getFrePmCourant() {

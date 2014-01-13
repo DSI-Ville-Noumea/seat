@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier AgentCCASSppost
  */
-public class AgentCCASSppost extends nc.mairie.technique.BasicMetier {
+public class AgentCCASSppost extends BasicMetier {
 	public String poanne;
 	public String ponuor;
 	public String cdlieu;
@@ -273,7 +278,7 @@ public void setNoacti(String newNoacti) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new AgentCCASSppostBroker(this); 
 }
 /**
@@ -296,7 +301,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : AgentCCASSppost.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerAgentCCASSppost(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<AgentCCASSppost> listerAgentCCASSppost(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	AgentCCASSppost unAgentCCASSppost = new AgentCCASSppost();
 	return unAgentCCASSppost.getMyAgentCCASSppostBroker().listerAgentCCASSppost(aTransaction);
 }

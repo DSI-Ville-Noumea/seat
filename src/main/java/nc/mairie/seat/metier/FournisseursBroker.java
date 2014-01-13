@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Fournisseurs
  */
-public class FournisseursBroker extends nc.mairie.technique.BasicBroker {
+public class FournisseursBroker extends BasicBroker {
 /**
  * Constructeur FournisseursBroker.
  */
-public FournisseursBroker(nc.mairie.technique.BasicMetier aMetier) {
+public FournisseursBroker(Fournisseurs aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.FournisseursMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Fournisseurs definirMyMetier() {
 	return new Fournisseurs() ;
 }
 /**
@@ -54,7 +57,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * Retourne un ArrayList d'objet métier : Fournisseurs.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerFournisseurs(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Fournisseurs> listerFournisseurs(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 
@@ -62,7 +65,7 @@ public java.util.ArrayList listerFournisseurs(nc.mairie.technique.Transaction aT
  * Retourne un ArrayList d'objet métier : Fournisseurs.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerFournisseursNom(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<Fournisseurs> listerFournisseursNom(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where upper(enscom) like '"+param.toUpperCase()+"%' with ur");
 }
 

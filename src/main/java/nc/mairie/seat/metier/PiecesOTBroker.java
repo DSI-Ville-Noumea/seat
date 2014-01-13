@@ -1,11 +1,14 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PiecesOT
  */
-public class PiecesOTBroker extends nc.mairie.technique.BasicBroker {
+public class PiecesOTBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -50,7 +53,7 @@ public boolean supprimerPiecesOT(nc.mairie.technique.Transaction aTransaction) t
  * Retourne un ArrayList d'objet métier : PiecesOT.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPiecesOT(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<PiecesOT> listerPiecesOT(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -66,21 +69,21 @@ public PiecesOT chercherPiecesOT(nc.mairie.technique.Transaction aTransaction, S
  * Retourne un arrayList.
  * @return PiecesOT
  */
-public java.util.ArrayList chercherPiecesOTOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception {
+public ArrayList<PiecesOT> chercherPiecesOTOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numot="+numot);
 }
 
 /**
  * Constructeur PiecesOTBroker.
  */
-public PiecesOTBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PiecesOTBroker(PiecesOT aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PiecesOTMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PiecesOT definirMyMetier() {
 	return new PiecesOT() ;
 }
 /**

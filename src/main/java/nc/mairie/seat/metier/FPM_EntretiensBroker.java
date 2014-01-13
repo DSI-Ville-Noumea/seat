@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier FPM_Entretiens
  */
-public class FPM_EntretiensBroker extends nc.mairie.technique.BasicBroker {
+public class FPM_EntretiensBroker extends BasicBroker {
 /**
  * Constructeur FPM_EntretiensBroker.
  */
-public FPM_EntretiensBroker(nc.mairie.technique.BasicMetier aMetier) {
+public FPM_EntretiensBroker(FPM_Entretiens aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.FPM_EntretiensMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected FPM_Entretiens definirMyMetier() {
 	return new FPM_Entretiens() ;
 }
 /**
@@ -68,7 +71,7 @@ public boolean supprimerFPM_Entretiens(nc.mairie.technique.Transaction aTransact
  * Retourne un ArrayList d'objet métier : FPM_Entretiens.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerFPM_Entretiens(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<FPM_Entretiens> listerFPM_Entretiens(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**

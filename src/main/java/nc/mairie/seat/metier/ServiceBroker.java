@@ -1,21 +1,25 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
+
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Service
  */
-public class ServiceBroker extends nc.mairie.technique.BasicBroker {
+public class ServiceBroker extends BasicBroker {
 /**
  * Constructeur ServiceBroker.
  */
-public ServiceBroker(nc.mairie.technique.BasicMetier aMetier) {
+public ServiceBroker(Service aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.ServiceMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Service definirMyMetier() {
 	return new Service() ;
 }
 /**
@@ -47,7 +51,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * Retourne un ArrayList d'objet métier : Service.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerService(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Service> listerService(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where liserv<>'' and codact<>'I' order by liserv with ur");
 }
 /**
@@ -71,7 +75,7 @@ public Service chercherServiceActifAvecAcronyme(nc.mairie.technique.Transaction 
  * Retourne un arrayList Service.
  * @return Service
  */
-public java.util.ArrayList chercherListServiceTous(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
+public ArrayList<Service> chercherListServiceTous(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	//return executeSelectListe(aTransaction,"select * from "+getTable()+",MAIRIE.SPMTSR where mairie.siserv.servi=mairie.spmtsr.servi and CODACT<>'I' and upper(liserv) like '"+param.toUpperCase()+"%' or mairie.siserv.servi like'"+param+"%' order by liserv");
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where CODACT<>'I' and (upper(liserv) like '"+param.toUpperCase()+"%' or servi like'"+param+"%') order by liserv with ur");
 }
@@ -79,12 +83,12 @@ public java.util.ArrayList chercherListServiceTous(nc.mairie.technique.Transacti
  * Retourne un arrayList Service.
  * @return Service
  */
-public java.util.ArrayList chercherListServiceEquip(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
+public ArrayList<Service> chercherListServiceEquip(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	//return executeSelectListe(aTransaction,"select distinct(liserv),servi from "+getTable()+", SEAT.f_affecter_sce where servi = codeservice and upper(liserv) like '"+param.toUpperCase()+"%' and dfin ='0001-01-01' order by liserv");
 	return executeSelectListe(aTransaction,"select distinct(liserv),servi from "+getTable()+", SEAT.f_aff_sce where servi = codeservice and dfin ='0001-01-01' and codact<>'I' and (upper(liserv) like '"+param.toUpperCase()+"%' or codeservice like '"+param.toUpperCase()+"%') order by liserv with ur");
 }
 
-public java.util.ArrayList chercherListServiceAccro(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
+public ArrayList<Service> chercherListServiceAccro(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where sigle like '"+param+"%' order by servi");
 }
 

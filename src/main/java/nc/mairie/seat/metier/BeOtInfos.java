@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier BeOtInfos
  */ 
-public class BeOtInfos extends nc.mairie.technique.BasicMetier {
+public class BeOtInfos extends BasicMetier {
 	public String numeroot;
 	public String dateentree;
 	public String datesortie;
@@ -143,7 +148,7 @@ public void setNoengj(String newNoengj) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new BeOtInfosBroker(this); 
 }
 /**
@@ -166,7 +171,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : BeOtInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerBeOtInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<BeOtInfos> listerBeOtInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	BeOtInfos unBeOtInfos = new BeOtInfos();
 	return unBeOtInfos.getMyBeOtInfosBroker().listerBeOtInfos(aTransaction);
 }
@@ -183,7 +188,7 @@ public static BeOtInfos chercherBeOtInfos(nc.mairie.technique.Transaction aTrans
  * Retourne un ArrayList d'objet métier : BeOtInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerBeOtInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
+public static ArrayList<BeOtInfos> listerBeOtInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	BeOtInfos unBeOtInfos = new BeOtInfos();
 	return unBeOtInfos.getMyBeOtInfosBroker().listerBeOtInfosOT(aTransaction,numot);
 }

@@ -1,12 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.Services;
-
-
-/**
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+/**
  * Objet métier PM_Affectation_Sce_Infos
  */
-public class PM_Affectation_Sce_Infos extends nc.mairie.technique.BasicMetier {
+public class PM_Affectation_Sce_Infos extends BasicMetier {
 	public String pminv;
 	public String pmserie;
 	public String codemodele;
@@ -113,7 +114,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : PM_Affectation_Sce_Infos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPM_Affectation_Sce_Infos(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<PM_Affectation_Sce_Infos> listerPM_Affectation_Sce_Infos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PM_Affectation_Sce_Infos unPM_Affectation_Sce_Infos = new PM_Affectation_Sce_Infos();
 	return unPM_Affectation_Sce_Infos.getMyPM_Affectation_Sce_InfosBroker().listerPM_Affectation_Sce_Infos(aTransaction);
 }
@@ -125,7 +126,7 @@ public static PM_Affectation_Sce_Infos chercherPM_Affectation_Sce_Infos(nc.mairi
 	PM_Affectation_Sce_Infos unPM_Affectation_Sce_Infos = new PM_Affectation_Sce_Infos();
 	return unPM_Affectation_Sce_Infos.getMyPM_Affectation_Sce_InfosBroker().chercherPM_Affectation_Sce_Infos(aTransaction, code);
 }
-public static java.util.ArrayList chercherListPM_Affectation_Sce_InfosPm(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
+public static ArrayList<PM_Affectation_Sce_Infos> chercherListPM_Affectation_Sce_InfosPm(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	PM_Affectation_Sce_Infos unPM_Affectation_Sce_Infos = new PM_Affectation_Sce_Infos();
 	return unPM_Affectation_Sce_Infos.getMyPM_Affectation_Sce_InfosBroker().chercherListPM_Affectation_Sce_InfosPm(aTransaction, code);
 }
@@ -146,12 +147,12 @@ public static PM_Affectation_Sce_Infos chercherPM_Affectation_Sce_InfosCourantPm
 }
 
 
-public static java.util.ArrayList listerPmAffectationSceInfosAgent(nc.mairie.technique.Transaction aTransaction,String nomatr) throws Exception{
+public static ArrayList<PM_Affectation_Sce_Infos> listerPmAffectationSceInfosAgent(nc.mairie.technique.Transaction aTransaction,String nomatr) throws Exception{
 	PM_Affectation_Sce_Infos unPM_Affectation_Sce_Infos = new PM_Affectation_Sce_Infos();
 	return unPM_Affectation_Sce_Infos.getMyPM_Affectation_Sce_InfosBroker().listerPmAffectationSceInfosAgent(aTransaction,nomatr);
 }
 
-public static java.util.ArrayList chercherPmAffectationServiceInfosService(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
+public static ArrayList<PM_Affectation_Sce_Infos> chercherPmAffectationServiceInfosService(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	if(code.substring(code.length()-1,code.length()).equals("0")){
 		code = code.substring(0,code.length()-1);
 	}
@@ -160,7 +161,7 @@ public static java.util.ArrayList chercherPmAffectationServiceInfosService(nc.ma
 }
 
 // lors de la gestion par service : possibilité que n'importel quel agent du service (et non département par département) utilise l'appli
-public static java.util.ArrayList chercherPmAffectationServiceInfosService3(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
+public static ArrayList<PM_Affectation_Sce_Infos> chercherPmAffectationServiceInfosService3(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	code = code.substring(0,code.length()-1);
 	PM_Affectation_Sce_Infos unPM_Affectation_Sce_Infos= new PM_Affectation_Sce_Infos();
 	return unPM_Affectation_Sce_Infos.getMyPM_Affectation_Sce_InfosBroker().chercherPmAffectationSceInfosService(aTransaction, code);
@@ -344,7 +345,7 @@ public void setNomatr(String newNomatr) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PM_Affectation_Sce_InfosBroker(this); 
 }
 /**

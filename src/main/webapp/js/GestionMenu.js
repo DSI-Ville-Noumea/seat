@@ -15,9 +15,8 @@ function Menu() {
 // Implantation du code de la fonction membre 
 function afficherMenu() { 
 	var res = '';
-	var a;
 //	parcouirs des objets et de mande d'affichage
-	for (a in this.listeObjet) {
+	for (var a in this.listeObjet) {
 		res += this.listeObjet[a].afficher();
 	}
 	return res;
@@ -40,8 +39,7 @@ function Lien(aDroit, aTitreLien, aTitre, actif) {
 function afficherLien() {
 	var trouve = false;
 //	Vérif du droit de l'utilisateur
-	var a;
-	for (a in listeDroits) {
+	for (var a in listeDroits) {
 		if (listeDroits[a] == this.droit) {
 			trouve=true;
 		}
@@ -49,14 +47,14 @@ function afficherLien() {
 
 //	Si droit trouvé
 	if (trouve) {
-		var comment=''
+		var comment='';
 //		Si menu actif
 		if (this.isActif) {
 			classe = 'LienActif';
-			onclic = 'envoieFormulaire(this); changerTitre(this.title);'
+			onclic = 'envoieFormulaire(this); changerTitre(this.title);';
 		} else {
 			classe = 'LienInactif';
-			onclic = ''
+			onclic = '';
 			comment=' EN CONSTRUCTION ';
 		}
 
@@ -95,14 +93,13 @@ function incrementeNiveau(obj){
    obj.niveau=this.niveau + 1;
    if (obj.type=='dossier') {
 //      parcours des éléments et incrémente niveau
-	var a;
-	for (a in obj.listeObjet) {
-		var v = obj.incrementeFils(obj.listeObjet[a])
+	for (var a in obj.listeObjet) {
+		var v = obj.incrementeFils(obj.listeObjet[a]);
 		obj.listeObjet[a] = v;
 	}
 
    }
-   return obj
+   return obj;
 }
 
 // Implantation du code de la fonction membre 
@@ -113,13 +110,12 @@ function afficherDossier() {
 		'<font style="text-decoration:none"><IMG id="'+this.nom+'sign" src="images/menu_dossier_clos.gif"></font> '+this.titre+'</span><br>\n'+
 		'<SPAN id="'+this.nom+'o" style="display:none">';
 //	parcours des éléments et rajout
-	var a;
-	var contenu = ''
-	for (a in this.listeObjet) {
+	var contenu = '';
+	for (var a in this.listeObjet) {
 		var temp = this.listeObjet[a].afficher();
 
 		if (temp != '') {
-			for (i=1; i< this.listeObjet[a].niveau; i++) {
+			for (var i=1; i< this.listeObjet[a].niveau; i++) {
 				contenu += '<IMG src="images/carre_vide.gif">';
 			}
 			contenu += temp;
@@ -136,17 +132,17 @@ function afficherDossier() {
 	return res;
  } 
 
-var Open = ""
-var Closed = ""
+var Open = "";
+var Closed = "";
 
 var choix = '';
 
 function preload(){
     if(document.images){
-        Open = new Image(16,13)
-        Closed = new Image(16,13)
-        Open.src = "images/menu_dossier_ouvert.gif"
-        Closed.src = "images/menu_dossier_clos.gif"
+        Open = new Image(16,13);
+        Closed = new Image(16,13);
+        Open.src = "images/menu_dossier_ouvert.gif";
+        Closed.src = "images/menu_dossier_clos.gif";
     }
 }
 
@@ -154,10 +150,10 @@ function preload(){
 function showhide(what,what2){
     if (what.style.display=='none'){
         what.style.display='';
-        what2.src=Open.src
+        what2.src=Open.src;
     } else {
-        what.style.display='none'
-        what2.src=Closed.src
+        what.style.display='none';
+        what2.src=Closed.src;
     }
 }
 
@@ -178,5 +174,5 @@ function envoieFormulaire(lien) {
 
 //Change le titre de la barre des titres
 function changerTitre(titre) {
-	window.parent.frames("Titre").changerTitre(titre)
+	window.parent.frames("Titre").changerTitre(titre);
 }

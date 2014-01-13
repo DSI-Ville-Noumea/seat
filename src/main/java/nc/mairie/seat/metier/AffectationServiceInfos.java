@@ -1,11 +1,15 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier AffectationServiceInfos
  */
-public class AffectationServiceInfos extends nc.mairie.technique.BasicMetier {
+public class AffectationServiceInfos extends BasicMetier {
 	public String numeroinventaire;
 	public String numeroimmatriculation;
 	public String datemiseencirculation;
@@ -27,7 +31,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : AffectationServiceInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerAffectationServiceInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<AffectationServiceInfos> listerAffectationServiceInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	AffectationServiceInfos unAffectationServiceInfos = new AffectationServiceInfos();
 	return unAffectationServiceInfos.getMyAffectationServiceInfosBroker().listerAffectationServiceInfos(aTransaction);
 }
@@ -35,7 +39,7 @@ public static java.util.ArrayList listerAffectationServiceInfos(nc.mairie.techni
  * Retourne un ArrayList d'objet métier : AffectationServiceInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerAffectationServiceInfosAgent(nc.mairie.technique.Transaction aTransaction,String nomatr) throws Exception{
+public static ArrayList<AffectationServiceInfos> listerAffectationServiceInfosAgent(nc.mairie.technique.Transaction aTransaction,String nomatr) throws Exception{
 	AffectationServiceInfos unAffectationServiceInfos = new AffectationServiceInfos();
 	return unAffectationServiceInfos.getMyAffectationServiceInfosBroker().listerAffectationServiceInfosAgent(aTransaction,nomatr);
 }
@@ -43,7 +47,7 @@ public static java.util.ArrayList listerAffectationServiceInfosAgent(nc.mairie.t
  * Retourne un AffectationServiceInfos.
  * @return AffectationServiceInfos
  */
-public static java.util.ArrayList chercherAffectationServiceInfosService(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
+public static ArrayList<AffectationServiceInfos> chercherAffectationServiceInfosService(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	if(code.substring(code.length()-1,code.length()).equals("0")){
 		code = code.substring(0,code.length()-1);
 	}
@@ -52,7 +56,7 @@ public static java.util.ArrayList chercherAffectationServiceInfosService(nc.mair
 }
 
 //lors de la gestion par service : possibilité que n'importel quel agent du service (et non département par département) utilise l'appli
-public static java.util.ArrayList chercherAffectationServiceInfosService3(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
+public static ArrayList<AffectationServiceInfos> chercherAffectationServiceInfosService3(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	code = code.substring(0,code.length()-1);
 	AffectationServiceInfos unAffectationServiceInfos = new AffectationServiceInfos();
 	return unAffectationServiceInfos.getMyAffectationServiceInfosBroker().chercherAffectationServiceInfosService(aTransaction, code);
@@ -76,7 +80,7 @@ public static AffectationServiceInfos chercherAffectationServiceInfosCourantEqui
  * Retourne un AffectationServiceInfos.
  * @return AffectationServiceInfos
  */
-public static java.util.ArrayList chercherAffectationServiceInfosEquip(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
+public static ArrayList<AffectationServiceInfos> chercherAffectationServiceInfosEquip(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	AffectationServiceInfos unAffectationServiceInfos = new AffectationServiceInfos();
 	return unAffectationServiceInfos.getMyAffectationServiceInfosBroker().chercherAffectationServiceInfosEquip(aTransaction, code);
 }
@@ -84,7 +88,7 @@ public static java.util.ArrayList chercherAffectationServiceInfosEquip(nc.mairie
  * Retourne un AffectationServiceInfos.
  * @return AffectationServiceInfos
  */
-public static java.util.ArrayList chercherListAffectationServiceInfosEquip(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
+public static ArrayList<AffectationServiceInfos> chercherListAffectationServiceInfosEquip(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	AffectationServiceInfos unAffectationServiceInfos = new AffectationServiceInfos();
 	return unAffectationServiceInfos.getMyAffectationServiceInfosBroker().chercherListAffectationServiceInfosEquip(aTransaction, code);
 }
@@ -195,7 +199,7 @@ public void setNomatr(String newNomatr) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new AffectationServiceInfosBroker(this); 
 }
 /**

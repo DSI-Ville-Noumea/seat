@@ -1,12 +1,16 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier PM_PePerso
  */
-public class PM_PePerso extends nc.mairie.technique.BasicMetier {
+public class PM_PePerso extends BasicMetier {
 	public String codepmpep;
 	public String pminv;
 	public String numfiche;
@@ -134,7 +138,7 @@ public void setCommentaire(String newCommentaire) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PM_PePersoBroker(this); 
 }
 /**
@@ -157,7 +161,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : PM_PePerso.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPM_PePerso(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<PM_PePerso> listerPM_PePerso(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PM_PePerso unPM_PePerso = new PM_PePerso();
 	return unPM_PePerso.getMyPM_PePersoBroker().listerPM_PePerso(aTransaction);
 }
@@ -467,7 +471,7 @@ public boolean supprimerPM_PePerso(nc.mairie.technique.Transaction aTransaction)
 }
 
 // on cherche les entretiens de la fiche d'entretien
-public static java.util.ArrayList chercherPmPePersoFiche(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
+public static ArrayList<PM_PePerso> chercherPmPePersoFiche(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
 	PM_PePerso unPM_PePerso = new PM_PePerso();
 	return unPM_PePerso.getMyPM_PePersoBroker().chercherPmPePersoFiche(aTransaction,numfiche);
 }
@@ -477,23 +481,23 @@ public static PM_PePerso chercherPmPePersoEquipEntPrevu(nc.mairie.technique.Tran
 	return unPM_PePerso.getMyPM_PePersoBroker().chercherPePersoEquipEntPrevu(aTransaction,inv,ent);
 }
 
-public static java.util.ArrayList chercherPmPePersoPasFaitFPM(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
+public static ArrayList<PM_PePerso> chercherPmPePersoPasFaitFPM(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
 	PM_PePerso unPM_PePerso = new PM_PePerso();
 	return unPM_PePerso.getMyPM_PePersoBroker().chercherPmPePersoPasFaitFPM(aTransaction,numfiche);
 }
 
 // liste des peperso d'un PM pour une période (entretien annuel)
-public static java.util.ArrayList listerPM_PePersoPm(nc.mairie.technique.Transaction aTransaction,String pminv,String ddeb) throws Exception{
+public static ArrayList<PM_PePerso> listerPM_PePersoPm(nc.mairie.technique.Transaction aTransaction,String pminv,String ddeb) throws Exception{
 	PM_PePerso unPM_PePerso = new PM_PePerso();
 	return unPM_PePerso.getMyPM_PePersoBroker().listerPM_PePersoPm(aTransaction,pminv,ddeb);
 }
 
-public static java.util.ArrayList listerPM_PePersoPmFait(nc.mairie.technique.Transaction aTransaction,String pminv,String tri) throws Exception{
+public static ArrayList<PM_PePerso> listerPM_PePersoPmFait(nc.mairie.technique.Transaction aTransaction,String pminv,String tri) throws Exception{
 	PM_PePerso unPM_PePerso = new PM_PePerso();
 	return unPM_PePerso.getMyPM_PePersoBroker().listerPM_PePersoPmFait(aTransaction,pminv,tri);
 }
 
-public static java.util.ArrayList listerPM_PePersoPMateriel(nc.mairie.technique.Transaction aTransaction,String pminv) throws Exception{
+public static ArrayList<PM_PePerso> listerPM_PePersoPMateriel(nc.mairie.technique.Transaction aTransaction,String pminv) throws Exception{
 	PM_PePerso unPM_PePerso = new PM_PePerso();
 	return unPM_PePerso.getMyPM_PePersoBroker().listerPM_PePersoPMateriel(aTransaction,pminv);
 }

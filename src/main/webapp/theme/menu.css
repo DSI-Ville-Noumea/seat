@@ -1,4 +1,4 @@
-﻿.Dossier{
+.Dossier{
   cursor:pointer;
   font-Family:Verdana;
   font-weight : bold;
@@ -8,7 +8,8 @@
 
 .LienActif{
   cursor:pointer;
-  font-size : 10px;
+  font-size : 11px;
+  font-family: Arial;
 
 }
 

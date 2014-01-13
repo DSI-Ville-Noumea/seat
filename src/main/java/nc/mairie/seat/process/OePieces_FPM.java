@@ -16,6 +16,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OePieces_FPM extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3697516249405232428L;
 	public static final int STATUT_PIECES = 2;
 	public static final int STATUT_RETOUROT = 1;
 	private String ACTION_SUPPRESSION = "Suppression";
@@ -23,10 +27,10 @@ public class OePieces_FPM extends nc.mairie.technique.BasicProcess {
 	private String ACTION_CREATION = "Création";
 	private java.lang.String[] LB_PIECES;
 	private java.lang.String[] LB_PIECES_OT;
-	private ArrayList listePieces = new ArrayList();
-	private ArrayList listePiecesFPM = new ArrayList();
-	private ArrayList listeQte = new ArrayList();
-	private ArrayList listeDSortie = new ArrayList();
+	private ArrayList<Pieces> listePieces = new ArrayList<Pieces>();
+	private ArrayList<Pieces> listePiecesFPM = new ArrayList<Pieces>();
+	private ArrayList<String> listeQte = new ArrayList<String>();
+	private ArrayList<String> listeDSortie = new ArrayList<String>();
 	private FPM fpmCourant;
 	private Pieces piecesCourant;
 	private PiecesFpmInfos pieceFpmInfosCourant;
@@ -175,7 +179,6 @@ public void initialiseListPieces(javax.servlet.http.HttpServletRequest request) 
 	if(getVAL_ST_TITRE_ACTION().equals(ACTION_MODIFICATION)){
 		if(getPiecesCourant()!=null){
 	//		recherche du type d'intervalle courant
-			int position = -1;
 			addZone(getNOM_LB_PIECES_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListePieces().size(); i++) {
 				Pieces unePiece = (Pieces)getListePieces().get(i);
@@ -604,7 +607,7 @@ public java.lang.String getNOM_PB_OK_PIECES() {
  */
 public boolean performPB_OK_PIECES(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String recherche = getZone(getNOM_EF_LIBELLE());
-	ArrayList resultat = Pieces.chercherPiecesLib(getTransaction(),recherche);
+	ArrayList<Pieces> resultat = Pieces.chercherPiecesLib(getTransaction(),recherche);
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -635,16 +638,16 @@ public String getDefaultFocus() {
 	return getNOM_EF_LIBELLE();
 }
 
-public ArrayList getListePieces() {
+public ArrayList<Pieces> getListePieces() {
 	return listePieces;
 }
-public void setListePieces(ArrayList listePieces) {
+public void setListePieces(ArrayList<Pieces> listePieces) {
 	this.listePieces = listePieces;
 }
-public ArrayList getListePiecesFPM() {
+public ArrayList<Pieces> getListePiecesFPM() {
 	return listePiecesFPM;
 }
-public void setListePiecesFPM(ArrayList listePiecesFPM) {
+public void setListePiecesFPM(ArrayList<Pieces> listePiecesFPM) {
 	this.listePiecesFPM = listePiecesFPM;
 }
 public Pieces getPiecesCourant() {
@@ -707,16 +710,16 @@ public java.lang.String getVAL_ST_NOOT() {
 	public void setFirst(boolean first) {
 		this.first = first;
 	}
-	public ArrayList getListeDSortie() {
+	public ArrayList<String> getListeDSortie() {
 		return listeDSortie;
 	}
-	public void setListeDSortie(ArrayList listeDSortie) {
+	public void setListeDSortie(ArrayList<String> listeDSortie) {
 		this.listeDSortie = listeDSortie;
 	}
-	public ArrayList getListeQte() {
+	public ArrayList<String> getListeQte() {
 		return listeQte;
 	}
-	public void setListeQte(ArrayList listeQte) {
+	public void setListeQte(ArrayList<String> listeQte) {
 		this.listeQte = listeQte;
 	}
 /**

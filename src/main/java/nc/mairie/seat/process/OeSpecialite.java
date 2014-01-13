@@ -10,11 +10,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeSpecialite extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7675116543533288085L;
 	private java.lang.String[] LB_SPECIALITE;
 	private String ACTION_SUPPRESSION = "Suppression d'une spécialité.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification d'une spécialité.";
 	private String ACTION_CREATION = "Création d'une spécialité.";
-	private ArrayList listeSpecialite = null;
+	private ArrayList<Specialite> listeSpecialite = null;
 	private Specialite specialiteCourant;
 	private String focus = null;
 	public int isVide = 0;
@@ -32,7 +36,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	//	Si liste des mode de prise de carburant est vide
 	if (getLB_SPECIALITE() == LBVide) {
 		
-		java.util.ArrayList a = Specialite.listerSpecialite(getTransaction());
+		ArrayList<Specialite> a = Specialite.listerSpecialite(getTransaction());
 		setListeSpecialite(a);
 		
 		if (a.size()>0){
@@ -45,8 +49,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
 			String [] padding = {"G"};
 			
-			FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-			String [] l = f.getListeFormatee();
 			setLB_SPECIALITE(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 		}else{
 			setLB_SPECIALITE(null);
@@ -56,7 +58,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	 on sélectionne l'élément en cours
 	if(getSpecialiteCourant()!=null){
 		if(getSpecialiteCourant().getCodespecialite()!=null){
-			int position = -1;
 			addZone(getNOM_LB_SPECIALITE_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListeSpecialite().size(); i++) {
 				Specialite uneSpe = (Specialite)getListeSpecialite().get(i);
@@ -544,10 +545,10 @@ public java.lang.String getVAL_ST_DESIGNATION() {
 	public void setIsVide(int isVide) {
 		this.isVide = isVide;
 	}
-	public ArrayList getListeSpecialite() {
+	public ArrayList<Specialite> getListeSpecialite() {
 		return listeSpecialite;
 	}
-	public void setListeSpecialite(ArrayList listeSpecialite) {
+	public void setListeSpecialite(ArrayList<Specialite> listeSpecialite) {
 		this.listeSpecialite = listeSpecialite;
 	}
 	public Specialite getSpecialiteCourant() {

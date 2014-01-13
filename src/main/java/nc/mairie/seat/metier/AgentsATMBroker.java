@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier AgentsATM
  */
-public class AgentsATMBroker extends nc.mairie.technique.BasicBroker {
+public class AgentsATMBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -30,7 +33,7 @@ public boolean supprimerAgentsATM(nc.mairie.technique.Transaction aTransaction) 
  * Retourne un ArrayList d'objet métier : AgentsATM.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAgentsATM(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<AgentsATM> listerAgentsATM(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+", MAIRIE.SPPERS where "+getTable()+".matricule=MAIRIE.SPPERS.nomatr order by nom with ur");
 }
 /**
@@ -50,14 +53,14 @@ public AgentsATM chercherAgentsATMMatr(nc.mairie.technique.Transaction aTransact
 /**
  * Constructeur AgentsATMBroker.
  */
-public AgentsATMBroker(nc.mairie.technique.BasicMetier aMetier) {
+public AgentsATMBroker(AgentsATM aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.AgentsATMMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected AgentsATM definirMyMetier() {
 	return new AgentsATM() ;
 }
 /**

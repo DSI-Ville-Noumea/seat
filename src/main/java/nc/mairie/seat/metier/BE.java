@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier BE
  */
-public class BE extends nc.mairie.technique.BasicMetier {
+public class BE extends BasicMetier {
 	public String numot;
 	public String exerci;
 	public String noengj;
@@ -23,7 +28,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : BE.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerBEOTNumInv(nc.mairie.technique.Transaction aTransaction,String numot, String numInv) throws Exception{
+public static ArrayList<BE> listerBEOTNumInv(nc.mairie.technique.Transaction aTransaction,String numot, String numInv) throws Exception{
 	BE unBE = new BE();
 	return unBE.getMyBEBroker().listerBEOTNumInv(aTransaction,numot, numInv);
 }
@@ -145,7 +150,7 @@ public void setNoengj(String newNoengj) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new BEBroker(this); 
 }
 /**

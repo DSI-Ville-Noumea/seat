@@ -10,14 +10,17 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeMarques extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -611928305148064852L;
 	private java.lang.String[] LB_LISTE_MARQUES;
 	private String ACTION_SUPPRESSION = "Suppression d'une marque.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification d'une marque.";
 	private String ACTION_CREATION = "Création d'une marque.";
-	private ArrayList listeMarque = null;
+	private ArrayList<Marques> listeMarque = null;
 	private Marques marquesCourant;
 	private String focus = null;
-	private String isAction = "";
 	public int isVide = 0;
 	
 /**
@@ -34,7 +37,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	//	Si liste des marques est vide
 	if (getLB_LISTE_MARQUES() == LBVide) {
 		
-		java.util.ArrayList a = Marques.listerMarques(getTransaction());
+		ArrayList<Marques> a = Marques.listerMarques(getTransaction());
 		setListeMarque(a);
 		
 		if (a.size()>0){
@@ -47,7 +50,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
 			String [] padding = {"G"};
 			
-			FormateListe f = new FormateListe(tailles,a,champs,padding,false);
 			setLB_LISTE_MARQUES(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 		}else{
 			setLB_LISTE_MARQUES(null);
@@ -59,7 +61,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		if(getMarquesCourant().getCodemarque()!=null){
 			addZone(getNOM_LB_LISTE_MARQUES_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListeMarque().size(); i++) {
-				Marques uneMarque = (Marques)getListeMarque().get(i);
+				Marques uneMarque = getListeMarque().get(i);
 				if (uneMarque.getCodemarque().equals(getMarquesCourant().getCodemarque())) {
 					addZone(getNOM_LB_LISTE_MARQUES_SELECT(),String.valueOf(i));
 					break;
@@ -90,7 +92,6 @@ public boolean performPB_AJOUTER(javax.servlet.http.HttpServletRequest request) 
 
 	//On nomme l'action
 	addZone(getNOM_ST_TITRE_ACTION(),ACTION_CREATION);
-	isAction = "creation";
 	//On vide la zone de saisie
 	addZone(getNOM_EF_LIB_MARQUES(),"");
 
@@ -139,9 +140,8 @@ public boolean performPB_MODIFIER(javax.servlet.http.HttpServletRequest request)
 	
 	//On nomme l'action
 	addZone(getNOM_ST_TITRE_ACTION(),ACTION_MODIFICATION);
-	isAction = "modification";
 	//Récup du la marque courante
-	Marques marque = (Marques)getListeMarque().get(numligne);
+	Marques marque = getListeMarque().get(numligne);
 	setMarquesCourant(marque);
 
 	//Alim zones
@@ -176,7 +176,7 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
 		return false;
 	}
 	
-	Marques maMarque = (Marques)getListeMarque().get(indice);
+	Marques maMarque = getListeMarque().get(indice);
 	setMarquesCourant(maMarque);
 	
 	addZone(getNOM_EF_LIB_MARQUES(), maMarque.getDesignationmarque());
@@ -201,9 +201,8 @@ public boolean performPB_SUPPRIMER(javax.servlet.http.HttpServletRequest request
 	
 	//On nomme l'action
 	addZone(getNOM_ST_TITRE_ACTION(),ACTION_SUPPRESSION);
-	isAction = "suppression";
 	//Récup de la marque courante
-	Marques marque = (Marques)getListeMarque().get(numligne);
+	Marques marque = getListeMarque().get(numligne);
 	setMarquesCourant(marque);
 
 	//Alim zones
@@ -452,13 +451,13 @@ public java.lang.String getVAL_LB_LISTE_MARQUES_SELECT() {
 	/**
 	 * @return Renvoie listeMarque.
 	 */
-	private ArrayList getListeMarque() {
+	private ArrayList<Marques> getListeMarque() {
 		return listeMarque;
 	}
 	/**
 	 * @param listeMarque listeMarque à définir.
 	 */
-	private void setListeMarque(ArrayList listeMarque) {
+	private void setListeMarque(ArrayList<Marques> listeMarque) {
 		this.listeMarque = listeMarque;
 	}
 	/**

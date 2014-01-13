@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Pompes
  */
-public class PompesBroker extends nc.mairie.technique.BasicBroker {
+public class PompesBroker extends BasicBroker {
 /**
  * Constructeur PompesBroker.
  */
-public PompesBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PompesBroker(Pompes aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PompesMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Pompes definirMyMetier() {
 	return new Pompes() ;
 }
 /**
@@ -67,7 +70,7 @@ public boolean supprimerPompes(nc.mairie.technique.Transaction aTransaction) thr
  * Retourne un ArrayList d'objet métier : Pompes.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPompes(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Pompes> listerPompes(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**

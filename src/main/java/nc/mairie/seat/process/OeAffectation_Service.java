@@ -3,6 +3,7 @@ package nc.mairie.seat.process;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.ListIterator;
 import java.util.Locale;
 
 import nc.mairie.seat.metier.AActifs;
@@ -10,6 +11,7 @@ import nc.mairie.seat.metier.AffectationAgentInfos;
 import nc.mairie.seat.metier.Affecter_Agent;
 import nc.mairie.seat.metier.AgentCCAS;
 import nc.mairie.seat.metier.AgentCDE;
+import nc.mairie.seat.metier.AgentInterface;
 import nc.mairie.seat.metier.AgentServiceInfos;
 import nc.mairie.seat.metier.AffectationServiceInfos;
 import nc.mairie.seat.metier.Affecter_Service;
@@ -24,6 +26,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeAffectation_Service extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8989601785891576402L;
 	public static final int STATUT_RECHERCHESERVICE = 1;
 	private java.lang.String[] LB_AFFECTATION;
 	private java.lang.String[] LB_AGENT;
@@ -38,8 +44,8 @@ public class OeAffectation_Service extends nc.mairie.technique.BasicProcess {
 	private Affecter_Service affecterServiceCourant;
 	private Affecter_Agent affecterAgentCourant;
 	private AffectationServiceInfos affectationServiceInfosCourant;
-	private ArrayList listeAffectation;
-	private ArrayList listeAgent;
+	private ArrayList<AffectationServiceInfos> listeAffectation;
+	private ArrayList<AgentInterface> listeAgent;
 	private String focus = null;
 	private AgentCDE agentCDECourant;
 	private AgentCCAS agentCCASCourant;
@@ -92,14 +98,15 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		//on remplit la liste des agents du service
 		//java.util.ArrayList a = AgentServiceInfos.chercherListAgentServiceInfosSce(getTransaction(),serviceCourant.getServi());
 		if (getServiceCourant().getServi().equals("4000")){
-			ArrayList a =AgentCDE.listerAgentCDE(getTransaction());
-			setListeAgent(a);
+			ArrayList<AgentCDE> a =AgentCDE.listerAgentCDE(getTransaction());
+			setListeAgent(new ArrayList<AgentInterface>());
+			getListeAgent().addAll(a);
 			if(a.size()>0){
 				//	les élèments de la liste 
 				int [] tailles = {40};
 				String [] padding = {"G"};
 				FormateListe aFormat = new FormateListe(tailles,padding, true);
-				for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
+				for (ListIterator<AgentCDE> list = a.listIterator(); list.hasNext(); ) {
 					AgentCDE aAActifs = (AgentCDE)list.next();
 					String ligne [] = { aAActifs.getNom().trim()+" "+aAActifs.getPrenom().trim()};
 					aFormat.ajouteLigne(ligne);
@@ -109,14 +116,15 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 				setLB_AGENT(LBVide);
 			}
 		}else if (getServiceCourant().getServi().equals("5000")){
-			ArrayList a =AgentCCAS.listerAgentCCAS(getTransaction());
-			setListeAgent(a);
+			ArrayList<AgentCCAS> a =AgentCCAS.listerAgentCCAS(getTransaction());
+			setListeAgent(new ArrayList<AgentInterface>());
+			getListeAgent().addAll(a);
 			if(a.size()>0){
 				//	les élèments de la liste 
 				int [] tailles = {40};
 				String [] padding = {"G"};
 				FormateListe aFormat = new FormateListe(tailles,padding, true);
-				for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
+				for (ListIterator<AgentCCAS> list = a.listIterator(); list.hasNext(); ) {
 					AgentCCAS aAActifs = (AgentCCAS)list.next();
 					if(!aAActifs.getNom().equals("")){
 						String ligne [] = { aAActifs.getNom().trim()+" "+aAActifs.getPrenom().trim()};
@@ -128,14 +136,15 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 				setLB_AGENT(LBVide);
 			}
 		}else{
-			java.util.ArrayList a = AActifs.listerAActifsService(getTransaction(),serviceCourant.getServi());
-			setListeAgent(a);
+			ArrayList<AActifs> a = AActifs.listerAActifsService(getTransaction(),serviceCourant.getServi());
+			setListeAgent(new ArrayList<AgentInterface>());
+			getListeAgent().addAll(a);
 			if (a.size()>0){
 				//les élèments de la liste 
 				int [] tailles = {40};
 				String [] padding = {"G"};
 				FormateListe aFormat = new FormateListe(tailles,padding, true);
-				for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
+				for (ListIterator<AActifs> list = a.listIterator(); list.hasNext(); ) {
 					AActifs aAActifs = (AActifs)list.next();
 					String ligne [] = { aAActifs.getNom().trim()+" "+aAActifs.getPrenom().trim()};
 					aFormat.ajouteLigne(ligne);
@@ -208,7 +217,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
  */
 private void initialiseListeAffectation(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	Recherche des affectations des équipement aux services
-	java.util.ArrayList a = AffectationServiceInfos.chercherListAffectationServiceInfosEquip(getTransaction(),equipementInfosCourant.getNumeroinventaire());
+	ArrayList<AffectationServiceInfos> a = AffectationServiceInfos.chercherListAffectationServiceInfosEquip(getTransaction(),equipementInfosCourant.getNumeroinventaire());
 	//java.util.ArrayList a = AActifs.chercherListAffectationServiceInfosEquip(getTransaction(),equipementInfosCourant.getNumeroinventaire());
 	if (null == a){
 		System.out.println("Aucun élément enregistré dans la base.");
@@ -425,7 +434,7 @@ public boolean performPB_SUPPRIMER(javax.servlet.http.HttpServletRequest request
 	setAffectationServiceInfosCourant(affectationServiceInfos);
 	
 	// RG : si des affectations agents ont eu lieu on ne peut pas supprimer l'affectation service
-	ArrayList listAffectationAgent = AffectationAgentInfos.listAffectationsSceEquipDate(getTransaction(),getAffectationServiceInfosCourant().getCodeservice(),getAffectationServiceInfosCourant().getNumeroinventaire(),getAffectationServiceInfosCourant().getDdebut());
+	ArrayList<AffectationAgentInfos> listAffectationAgent = AffectationAgentInfos.listAffectationsSceEquipDate(getTransaction(),getAffectationServiceInfosCourant().getCodeservice(),getAffectationServiceInfosCourant().getNumeroinventaire(),getAffectationServiceInfosCourant().getDdebut());
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -927,13 +936,13 @@ public boolean performPB_OK_AGENT(javax.servlet.http.HttpServletRequest request)
 	/**
 	 * @return Renvoie listeAffectation.
 	 */
-	public ArrayList getListeAffectation() {
+	public ArrayList<AffectationServiceInfos> getListeAffectation() {
 		return listeAffectation;
 	}
 	/**
 	 * @param listeAffectation listeAffectation à définir.
 	 */
-	public void setListeAffectation(ArrayList listeAffectation) {
+	public void setListeAffectation(ArrayList<AffectationServiceInfos> listeAffectation) {
 		this.listeAffectation = listeAffectation;
 	}
 	
@@ -986,13 +995,13 @@ public boolean performPB_OK_AGENT(javax.servlet.http.HttpServletRequest request)
 	/**
 	 * @return Renvoie listeAgent.
 	 */
-	public ArrayList getListeAgent() {
+	public ArrayList<AgentInterface> getListeAgent() {
 		return listeAgent;
 	}
 	/**
 	 * @param listeAgent listeAgent à définir.
 	 */
-	public void setListeAgent(ArrayList listeAgent) {
+	public void setListeAgent(ArrayList<AgentInterface> listeAgent) {
 		this.listeAgent = listeAgent;
 	}
 /**
@@ -1027,13 +1036,14 @@ public boolean performPB_OK_SCE(javax.servlet.http.HttpServletRequest request) t
 	Service monService = Service.chercherService(getTransaction(),monASI.getCodeservice());
 	setServiceCourant(monService);
 	//	on remplit la liste des agents du service
-	java.util.ArrayList a = AActifs.listerAActifsService(getTransaction(),getServiceCourant().getServi());
-	setListeAgent(a);
+	ArrayList<AActifs> a = AActifs.listerAActifsService(getTransaction(),getServiceCourant().getServi());
+	setListeAgent(new ArrayList<AgentInterface>());
+	getListeAgent().addAll(a);
 	//les élèments de la liste 
 	int [] tailles = {40};
 	String [] padding = {"G"};
 	FormateListe aFormat = new FormateListe(tailles,padding, true);
-	for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
+	for (ListIterator<AActifs> list = a.listIterator(); list.hasNext(); ) {
 		AActifs aAActifs = (AActifs)list.next();
 		String ligne [] = { aAActifs.getNom().trim()+" "+aAActifs.getPrenom().trim()};
 		aFormat.ajouteLigne(ligne);
@@ -1137,11 +1147,12 @@ public java.lang.String getNOM_PB_AFFICH_AGENT() {
 public boolean performPB_AFFICH_AGENT(javax.servlet.http.HttpServletRequest request) throws Exception {
 	//String reserve = getZone(getNOM_CK_RESERVE());
 //	 pour réservé
-	java.util.ArrayList a = AgentServiceInfos.chercherListAgentServiceInfosSce(getTransaction(),serviceCourant.getServi());
+	ArrayList<AgentServiceInfos> a = AgentServiceInfos.chercherListAgentServiceInfosSce(getTransaction(),serviceCourant.getServi());
 	if (null == a){
 		System.out.println("Aucun élément enregistré dans la base.");
 	}
-	setListeAgent(a);
+	setListeAgent(new ArrayList<AgentInterface>());
+	getListeAgent().addAll(a);
 //	Si au moins un modèle
 	if (a.size() !=0 ) {
 		int [] tailles = {15,15};
@@ -1156,19 +1167,19 @@ public boolean performPB_AFFICH_AGENT(javax.servlet.http.HttpServletRequest requ
 	return true;
 }
 
-public void trier(ArrayList a) throws Exception{
+public void trier(ArrayList<AffectationServiceInfos> a) throws Exception{
 	String[] colonnes = {"ddebut","dfin"};
 	//ordre croissant
 	boolean[] ordres = {false,true};
 	
 //	Si au moins une affectation
 	if (a.size() !=0 ) {
-		ArrayList aTrier = Services.trier(a,colonnes,ordres);
+		ArrayList<AffectationServiceInfos> aTrier = Services.trier(a,colonnes,ordres);
 		setListeAffectation(aTrier);
 		int tailles [] = {60,10,10};
 		String[] padding = {"G","C","C"};
 		FormateListe aFormat = new FormateListe(tailles,padding,false);
-		for (java.util.ListIterator list = aTrier.listIterator(); list.hasNext(); ) {
+		for (ListIterator<AffectationServiceInfos> list = aTrier.listIterator(); list.hasNext(); ) {
 			AffectationServiceInfos aAffectationServiceInfos = (AffectationServiceInfos)list.next();
 			/*String responsable = "";
 			if(!aAffectationServiceInfos.getNomatr().equals("0")){

@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Fre_PM
  */
-public class Fre_PM extends nc.mairie.technique.BasicMetier {
+public class Fre_PM extends BasicMetier {
 	public String codefre;
 	public String libellefre;
 	public String observationsfre;
@@ -65,7 +70,7 @@ public void setContact(String newContact) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new Fre_PMBroker(this); 
 }
 /**
@@ -88,7 +93,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Fre_PM.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerFre_PM(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Fre_PM> listerFre_PM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Fre_PM unFre_PM = new Fre_PM();
 	return unFre_PM.getMyFre_PMBroker().listerFre_PM(aTransaction);
 }

@@ -4,13 +4,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import nc.mairie.seat.metier.FPM;
 import nc.mairie.seat.metier.PM_Affectation_Sce_Infos;
 import nc.mairie.seat.metier.PM_Planning;
 import nc.mairie.seat.metier.PMatInfos;
 import nc.mairie.seat.metier.PMateriel;
-import nc.mairie.seat.servlet.ServletSeat;
 import nc.mairie.servlets.Frontale;
 import nc.mairie.technique.*;
 /**
@@ -19,11 +19,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeFPM_Impression extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6427440715820116062L;
 	public static final int STATUT_RECHERCHE = 1;
 	private java.lang.String[] LB_ENTRETIENS;
 	private FPM fpmCourant;
 	private PMatInfos pMatInfosCourant;
-	private ArrayList listEntretien;
+	private ArrayList<PM_Planning> listEntretien;
 	public int tailleList = 0;
 	public int tailleList_suite = 0;
 	public boolean affiche;
@@ -108,7 +112,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 				}else{
 					addZone(getNOM_ST_DSORTIE(),getFpmCourant().getDsortie());
 				}
-				ArrayList a = PM_Planning.chercherPM_Planning_FPM(getTransaction(),getFpmCourant().getNumfiche());
+				ArrayList<PM_Planning> a = PM_Planning.chercherPM_Planning_FPM(getTransaction(),getFpmCourant().getNumfiche());
 				if (getTransaction().isErreur()){
 					return;
 				}
@@ -146,7 +150,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 
 }
 
-public void initialiseListEntretiens(javax.servlet.http.HttpServletRequest request,ArrayList a) throws Exception{
+public void initialiseListEntretiens(javax.servlet.http.HttpServletRequest request,ArrayList<PM_Planning> a) throws Exception{
 	int indice = 0;
 	int i = 0;
 	setListEntretien(a);
@@ -155,7 +159,7 @@ public void initialiseListEntretiens(javax.servlet.http.HttpServletRequest reque
 		int tailles [] = {50};
 		FormateListe aFormat = new FormateListe(tailles);
 		FormateListe aFormat_suite = new FormateListe(tailles);
-		for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
+		for (ListIterator<PM_Planning> list = a.listIterator(); list.hasNext(); ) {
 			PM_Planning unPlanning = (PM_Planning)list.next();
 			String ligne [] = { unPlanning.getLibelleentretien()};
 			if(a.size()>1){
@@ -211,6 +215,7 @@ public java.lang.String getNOM_PB_IMPRIMER() {
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
  */
+@SuppressWarnings("deprecation")
 public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	PMateriel unPMateriel = new PMateriel();
 	//on enregistre le commentaire s'il y en a un
@@ -242,13 +247,10 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 	//enregistrement 
 	commitTransaction();
 		
-	int montantPieces = 0;
-	String chainedeb="";
 	
 	// impression de l'OT
 	if(getFpmCourant()!=null){
 		String commentaireOt = "";
-		String inter = "";
 		String numinv = getZone(getNOM_ST_NOINVENT());
 		String numserie = getZone(getNOM_ST_NOSERIE());
 		String nomequip = getZone(getNOM_ST_MARQUE())+" "+getZone(getNOM_ST_MODELE());
@@ -257,7 +259,6 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 		String dEntree = getZone(getNOM_ST_DENTREE());
 		String dSortie = getZone(getNOM_ST_DSORTIE());
 		String compteur = getZone(getNOM_ST_COMPTEUR());
-		String service = getServiceForPmateriel(unPMateriel,dEntree);
 		// pour les commentaires avec retour à la ligne par la touche "Entrée"
 		String commentaire = getZone(getNOM_EF_COMMENTAIRE());
 		int comlen = commentaire.length();
@@ -591,10 +592,10 @@ public PMatInfos getPMatInfosCourant() {
 public void setPMatInfosCourant(PMatInfos pMatInfosCourant) {
 	this.pMatInfosCourant = pMatInfosCourant;
 }
-	public ArrayList getListEntretien() {
+	public ArrayList<PM_Planning> getListEntretien() {
 		return listEntretien;
 	}
-	public void setListEntretien(ArrayList listEntretien) {
+	public void setListEntretien(ArrayList<PM_Planning> listEntretien) {
 		this.listEntretien = listEntretien;
 	}
 	public int getTailleList() {
@@ -775,7 +776,7 @@ public boolean performPB_EQUIP(javax.servlet.http.HttpServletRequest request) th
 			}
 			setPMatInfosCourant(unPMatInfos);
 			// on recherche la liste des FPM
-			ArrayList listFpm = FPM.listerFpmPmat(getTransaction(),getPMatInfosCourant().getPminv());
+			ArrayList<?> listFpm = FPM.listerFpmPmat(getTransaction(),getPMatInfosCourant().getPminv());
 			if(getTransaction().isErreur()){
 				getTransaction().traiterErreur();
 			}

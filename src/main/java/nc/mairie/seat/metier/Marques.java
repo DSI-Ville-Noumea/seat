@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Marques
  */
-public class Marques extends nc.mairie.technique.BasicMetier {
+public class Marques extends BasicMetier {
 	public String codemarque;
 	public String designationmarque;
 /**
@@ -19,7 +24,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Marques.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerMarques(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Marques> listerMarques(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Marques unMarques = new Marques();
 	return unMarques.getMyMarquesBroker().listerMarques(aTransaction);
 }
@@ -100,12 +105,12 @@ public int nouvMarques(nc.mairie.technique.Transaction aTransaction) throws Exce
  * Retourne un ArrayList d'objet métier : Marques.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerMarquesModele(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Marques> listerMarquesModele(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Marques unMarques = new Marques();
 	return unMarques.getMyMarquesBroker().listerMarquesModele(aTransaction);
 }
 
-public static java.util.ArrayList listerMarquesModeleMT(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Marques> listerMarquesModeleMT(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Marques unMarques = new Marques();
 	return unMarques.getMyMarquesBroker().listerMarquesModeleMT(aTransaction);
 }
@@ -154,7 +159,7 @@ public void setDesignationmarque(String newDesignationmarque) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new MarquesBroker(this); 
 }
 /**

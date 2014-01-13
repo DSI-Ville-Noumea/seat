@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier TIntervalle
  */
-public class TIntervalleBroker extends nc.mairie.technique.BasicBroker {
+public class TIntervalleBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -30,7 +33,7 @@ public boolean supprimerTIntervalle(nc.mairie.technique.Transaction aTransaction
  * Retourne un ArrayList d'objet métier : TIntervalle.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerTIntervalle(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<TIntervalle> listerTIntervalle(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -54,14 +57,14 @@ public int nouvTIntervalle(nc.mairie.technique.Transaction aTransaction) throws 
 /**
  * Constructeur TIntervalleBroker.
  */
-public TIntervalleBroker(nc.mairie.technique.BasicMetier aMetier) {
+public TIntervalleBroker(TIntervalle aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.TIntervalleMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected TIntervalle definirMyMetier() {
 	return new TIntervalle() ;
 }
 /**

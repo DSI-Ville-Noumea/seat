@@ -13,9 +13,12 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeBE_OT extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8929366816148749952L;
 	private java.lang.String[] LB_BE;
 	private String ACTION_SUPPRESSION = "Suppression";
-	private String ACTION_MODIFICATION = "Modification";
 	private String ACTION_CREATION = "Création";
 	private String focus = null;
 	private String codeBE;
@@ -23,7 +26,7 @@ public class OeBE_OT extends nc.mairie.technique.BasicProcess {
 	private ENGJU enjuCourant;
 	private EquipementInfos equipementInfosCourant;
 	private BE beCourant;
-	private ArrayList listeBE;
+	private ArrayList<ENGJU> listeBE;
 	public boolean isListeVide;
 	private OT otCourant;
 	public boolean isAction;
@@ -552,13 +555,13 @@ public String getDefaultFocus() {
 	public void setFournisseurCourant(String fournisseurCourant) {
 		this.enscom = fournisseurCourant;
 	}
-	public ArrayList getListeBE() {
+	public ArrayList<ENGJU> getListeBE() {
 		if(listeBE==null){
-			listeBE = new ArrayList();
+			listeBE = new ArrayList<ENGJU>();
 		}
 		return listeBE;
 	}
-	public void setListeBE(ArrayList listeBE) {
+	public void setListeBE(ArrayList<ENGJU> listeBE) {
 		this.listeBE = listeBE;
 	}
 	public boolean isListeVide() {

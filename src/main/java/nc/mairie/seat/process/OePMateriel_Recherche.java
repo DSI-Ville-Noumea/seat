@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import nc.mairie.seat.metier.AgentCCAS;
 import nc.mairie.seat.metier.AgentCDE;
+import nc.mairie.seat.metier.AgentInterface;
 import nc.mairie.seat.metier.Agents;
 import nc.mairie.seat.metier.EquipementInfos;
 import nc.mairie.seat.metier.PM_Affectation_Sce_Infos;
@@ -15,10 +16,14 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OePMateriel_Recherche extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6260309220114423701L;
 	public static final int STATUT_AGENT = 1;
 	private java.lang.String[] LB_PMATERIEL;
 	private String focus = null;
-	private ArrayList listPMatInfos;
+	private ArrayList<PMatInfos> listPMatInfos;
 	private PMatInfos pMatInfosCourant;
 	private boolean isFirst = true;
 	private String tri = "pminv";
@@ -152,11 +157,10 @@ public java.lang.String getNOM_PB_RECHERCHE() {
 public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request) throws Exception {
 	boolean[] ordres = {true};
 	String[] colonnes = {tri};
-	ArrayList listAgent = new ArrayList();
-	ArrayList listInter = new ArrayList();
-	boolean trouve = false;
+	ArrayList<AgentInterface> listAgent = new ArrayList<AgentInterface>();
+	//ArrayList <AgentInterface>listInter = new ArrayList<AgentInterface>();
 	String nom = "";
-	ArrayList listPMat = new ArrayList();
+	ArrayList<PMatInfos> listPMat = new ArrayList<PMatInfos>();
 		
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// recherche par l'agent
@@ -165,7 +169,7 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
 		
 		String param = getZone(getNOM_EF_AGENT());
 		if(Services.estNumerique(getZone(getNOM_EF_AGENT()))){
-			ArrayList listeASI = PM_Affectation_Sce_Infos.listerPmAffectationSceInfosAgent(getTransaction(),param);
+			ArrayList<PM_Affectation_Sce_Infos> listeASI = PM_Affectation_Sce_Infos.listerPmAffectationSceInfosAgent(getTransaction(),param);
 			if(getTransaction().isErreur()){
 				getTransaction().declarerErreur("L'agent n'est responsable d'aucun petit matériel.");
 				return false;
@@ -184,47 +188,16 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
 					getTransaction().declarerErreur("Vous devez saisir le nom de l'agent ");
 					return false;
 				}
-					listInter = AgentCDE.chercherAgentCDENom(getTransaction(),nom);
-					if(getTransaction().isErreur()){
-						getTransaction().traiterErreur();
-						trouve = false;
-					}else{
-						trouve = true;
-					}
-					if (listInter.size()>0){
-						for (int i=0;i<listInter.size();i++){
-							listAgent.add(listInter.get(i));
-						}
-					}
-					listInter = AgentCCAS.chercherAgentCCASNom(getTransaction(),nom);
-					if(getTransaction().isErreur()){
-						getTransaction().traiterErreur();
-						trouve = false;
-					}else{
-						trouve = true;
-					}
-					if (listInter.size()>0){
-						for (int i=0;i<listInter.size();i++){
-							listAgent.add(listInter.get(i));
-						}
-					}
-					listInter = Agents.chercherAgentsNom(getTransaction(),nom);
-					if(getTransaction().isErreur()){
-						getTransaction().traiterErreur();
-						trouve = false;
-					}else{
-						trouve = true;
-					}
-					if (listInter.size()>0){
-						for (int i=0;i<listInter.size();i++){
-							listAgent.add(listInter.get(i));
-						}
-					}
-				if (trouve){
+				
+				listAgent.addAll(AgentCDE.listerAgentCDENom(getTransaction(),nom));
+				listAgent.addAll(AgentCCAS.listerAgentCCASNom(getTransaction(),nom));
+				listAgent.addAll(Agents.listerAgentsNom(getTransaction(),nom));
+					
+				if (listAgent.size() > 0){
 					if (listAgent.size()==1){
 						Agents unAgent = (Agents)listAgent.get(0);
 						// s'il n'a qu'un petit matériel on débranche directement sur la fenêtre visu sinon on les affiche
-						ArrayList a = PM_Affectation_Sce_Infos.listerPmAffectationSceInfosAgent(getTransaction(),unAgent.getNomatr());
+						ArrayList<PM_Affectation_Sce_Infos> a = PM_Affectation_Sce_Infos.listerPmAffectationSceInfosAgent(getTransaction(),unAgent.getNomatr());
 						if(getTransaction().isErreur()){
 							return false;
 						}
@@ -273,7 +246,7 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
 			return false;
 		}
 		*/
-		ArrayList listeASI = PM_Affectation_Sce_Infos.chercherPmAffectationServiceInfosService(getTransaction(),param);
+		ArrayList<PM_Affectation_Sce_Infos> listeASI = PM_Affectation_Sce_Infos.chercherPmAffectationServiceInfosService(getTransaction(),param);
 		if(getTransaction().isErreur()){
 			getTransaction().declarerErreur("Le service n'a aucun petit matériel.");
 			return false;
@@ -303,7 +276,7 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
 		
 	}else{
 		String recherche = getZone(getNOM_EF_RECHERCHE());
-		ArrayList list = PMatInfos.listerPMatInfosRecherche(getTransaction(),recherche,tri);
+		ArrayList<PMatInfos> list = PMatInfos.listerPMatInfosRecherche(getTransaction(),recherche,tri);
 		if(getTransaction().isErreur()){
 			return false;
 		}
@@ -485,13 +458,13 @@ public String getDefaultFocus() {
 /**
  * @return Renvoie listeEquipementInfos.
  */
-private ArrayList getListPMatInfos() {
+private ArrayList<PMatInfos> getListPMatInfos() {
 	return listPMatInfos;
 }
 /**
  * @param listeEquipementInfos listeEquipementInfos à définir.
  */
-private void setListPMatInfos(ArrayList listPMatInfos) {
+private void setListPMatInfos(ArrayList<PMatInfos> listPMatInfos) {
 	this.listPMatInfos = listPMatInfos;
 }
 /**
@@ -506,12 +479,7 @@ private PMatInfos getPMatInfosCourant() {
 private void setFirst(boolean isFirst) {
 	this.isFirst = isFirst;
 }
-/**
- * @return Renvoie pMatInfosCourant.
- */
-private boolean getFirst() {
-	return isFirst;
-}
+
 /**
  * @param pMatInfosCourant pMatInfosCourant à définir.
  */

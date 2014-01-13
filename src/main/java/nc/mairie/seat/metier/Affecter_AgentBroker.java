@@ -1,16 +1,20 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
+
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Affecter_Agent
  */
-public class Affecter_AgentBroker extends nc.mairie.technique.BasicBroker {
+public class Affecter_AgentBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : Affecter_Agent.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAffecter_Agent(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Affecter_Agent> listerAffecter_Agent(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -25,15 +29,15 @@ public Affecter_Agent chercherAffecter_Agent(nc.mairie.technique.Transaction aTr
  * Retourne un ArrayList d'objet métier : Affecter_Agent.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList chercherListerAffecter_AgentEquip(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<Affecter_Agent> chercherListerAffecter_AgentEquip(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire like '"+param+"%'");
 }
 
-public java.util.ArrayList chercherListerAffecter_AgentEquipSce(nc.mairie.technique.Transaction aTransaction,String inv,String param,String date) throws Exception {
+public ArrayList<Affecter_Agent> chercherListerAffecter_AgentEquipSce(nc.mairie.technique.Transaction aTransaction,String inv,String param,String date) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice like '"+param+"%' and numeroinventaire='"+inv+"' and datedebut<='"+date+"' and datefin='0001-01-01'");
 }
 
-public java.util.ArrayList chercherListerAffecter_AgentEquipSceEnCours(nc.mairie.technique.Transaction aTransaction,String inv,String param,String date) throws Exception {
+public ArrayList<Affecter_Agent> chercherListerAffecter_AgentEquipSceEnCours(nc.mairie.technique.Transaction aTransaction,String inv,String param,String date) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice like '"+param+"%' and numeroinventaire='"+inv+"' and datedebut>='"+date+"'");
 }
 
@@ -41,7 +45,7 @@ public java.util.ArrayList chercherListerAffecter_AgentEquipSceEnCours(nc.mairie
  * Retourne un ArrayList d'objet métier : Affecter_Agent.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList chercherListerAffecter_AgentService(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<Affecter_Agent> chercherListerAffecter_AgentService(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice = '"+param+"'");
 }
 
@@ -69,14 +73,14 @@ public boolean supprimerAffecter_Agent(nc.mairie.technique.Transaction aTransact
 /**
  * Constructeur Affecter_AgentBroker.
  */
-public Affecter_AgentBroker(nc.mairie.technique.BasicMetier aMetier) {
+public Affecter_AgentBroker(Affecter_Agent aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.Affecter_AgentMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Affecter_Agent definirMyMetier() {
 	return new Affecter_Agent() ;
 }
 /**

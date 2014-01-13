@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Modeles
  */
-public class ModelesBroker extends nc.mairie.technique.BasicBroker {
+public class ModelesBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -30,7 +33,7 @@ public boolean supprimerModeles(nc.mairie.technique.Transaction aTransaction) th
  * Retourne un ArrayList d'objet métier : Modeles.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerModeles(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Modeles> listerModeles(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by designationmodele");
 }
 /**
@@ -38,7 +41,7 @@ public java.util.ArrayList listerModeles(nc.mairie.technique.Transaction aTransa
  * @return java.util.ArrayList
  * liste de modèle de petits matériels
  */
-public java.util.ArrayList listerModelesMT(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Modeles> listerModelesMT(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+",f_typeequip where f_typeequip.codetypeequip="+getTable()+".codete and f_typeequip.typete='MT' order by designationmodele");
 }
 /**
@@ -63,15 +66,15 @@ public int nouvModeles(nc.mairie.technique.Transaction aTransaction) throws Exce
  * Retourne un ArrayList d'objet métier : Modeles.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerModelesMarque(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
+public ArrayList<Modeles> listerModelesMarque(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemarque = "+cle+" order by designationmodele");
 }
 
-public java.util.ArrayList listerModelesMarqueMT(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
+public ArrayList<Modeles> listerModelesMarqueMT(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemarque = "+cle+" and codete in(select * from SEAT.f_typeequip where typete='MT') order by designationmodele");
 }
 
-public java.util.ArrayList listerModelesLib(nc.mairie.technique.Transaction aTransaction, String modele) throws Exception {
+public ArrayList<Modeles> listerModelesLib(nc.mairie.technique.Transaction aTransaction, String modele) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where upper(designationmodele) like '"+modele.toUpperCase()+"%'");
 }
 
@@ -87,13 +90,13 @@ public int existeModeles(nc.mairie.technique.Transaction aTransaction, String co
 /**
  * Constructeur ModelesBroker.
  */
-public ModelesBroker(nc.mairie.technique.BasicMetier aMetier) {
+public ModelesBroker(Modeles aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.ModelesMetier
  */
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Modeles definirMyMetier() {
 	return new Modeles() ;
 }
 /**

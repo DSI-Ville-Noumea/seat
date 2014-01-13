@@ -16,13 +16,14 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeEntretiens_FPM extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4095294016607055471L;
 	private String ACTION_SUPPRESSION = "Suppression";
 	private String ACTION_MODIFICATION = "Modification";
 	private String ACTION_CREATION = "Création";
 	private java.lang.String[] LB_ENTRETIENS;
-	private java.lang.String[] LB_ENTRETIENS_FPM;
-	private java.lang.String[] LB_TENT;
-	private java.lang.String[] LB_TINT;
 	public boolean isOcassionnel;
 	public boolean suppresion = false;
 	private String focus = null;
@@ -32,8 +33,8 @@ public class OeEntretiens_FPM extends nc.mairie.technique.BasicProcess {
 	private Entretien entretienCourant;
 	private Declarations declarationCourante;
 	private String titreAction="";
-	private ArrayList listEntretiens;
-	private ArrayList listEntretiensFPM;
+	private ArrayList<Entretien> listEntretiens;
+	private ArrayList<?> listEntretiensFPM;
 	private boolean isFirst = true;
 	private String newCommentaire;
 	private String newDuree;
@@ -159,7 +160,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 }
 
 public void initialiseListEntretiens(javax.servlet.http.HttpServletRequest request) throws Exception{
-	ArrayList a = Entretien.listerEntretien(getTransaction());
+	ArrayList<Entretien> a = Entretien.listerEntretien(getTransaction());
 	String[] colonnes = {"libelleentretien"};
 	//ordre croissant
 	boolean[] ordres = {true};
@@ -185,7 +186,6 @@ public void initialiseListEntretiens(javax.servlet.http.HttpServletRequest reque
 //		 on trouve le bon  entretien
 		if(getEntretienCourant()!=null){
 			//	recherche du type d'intervalle courant
-			int position = -1;
 			addZone(getNOM_LB_ENTRETIENS_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListEntretiens().size(); i++) {
 				Entretien unEntretien = (Entretien)getListEntretiens().get(i);
@@ -229,7 +229,7 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
 	if(actionFPM.equals(ACTION_CREATION)){
 		// recherche des entretiens
 		if(getFpmCourant().getNumfiche()!=null){
-			ArrayList listEntretiens = Pm_PePersoInfos.chercherPmPePersoInfosFPM(getTransaction(),getFpmCourant().getNumfiche());
+			ArrayList<Pm_PePersoInfos> listEntretiens = Pm_PePersoInfos.chercherPmPePersoInfosFPM(getTransaction(),getFpmCourant().getNumfiche());
 			if(getTransaction().isErreur()){
 				return false;
 			}
@@ -262,23 +262,7 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
 public java.lang.String getNOM_PB_ENLEVER() {
 	return "NOM_PB_ENLEVER";
 }
-/**
- * - Traite et affecte les zones saisies dans la JSP.
- * - Implémente les règles de gestion du process
- * - Positionne un statut en fonction de ces règles :
- *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public boolean performPB_ENLEVER(javax.servlet.http.HttpServletRequest request) throws Exception {
-	int indice = (Services.estNumerique(getVAL_LB_ENTRETIENS_FPM_SELECT()) ? Integer.parseInt(getVAL_LB_ENTRETIENS_FPM_SELECT()): -1);
-	if (indice == -1) {
-		getTransaction().declarerErreur("Vous devez sélectionner un élement dans la liste des pièces");
-		return false;
-	}
-	getListEntretiensFPM().remove(indice);
-	return true;
-}
+
 /**
  * Retourne le nom d'un bouton pour la JSP :
  * PB_OK
@@ -752,180 +736,7 @@ public java.lang.String [] getVAL_LB_ENTRETIENS() {
 public java.lang.String getVAL_LB_ENTRETIENS_SELECT() {
 	return getZone(getNOM_LB_ENTRETIENS_SELECT());
 }
-/**
- * Getter de la liste avec un lazy initialize :
- * LB_ENTRETIENS_FPM
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-private String [] getLB_ENTRETIENS_FPM() {
-	if (LB_ENTRETIENS_FPM == null)
-		LB_ENTRETIENS_FPM = initialiseLazyLB();
-	return LB_ENTRETIENS_FPM;
-}
-/**
- * Setter de la liste:
- * LB_ENTRETIENS_FPM
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-private void setLB_ENTRETIENS_FPM(java.lang.String[] newLB_ENTRETIENS_FPM) {
-	LB_ENTRETIENS_FPM = newLB_ENTRETIENS_FPM;
-}
-/**
- * Retourne le nom de la zone pour la JSP :
- * NOM_LB_ENTRETIENS_FPM
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public java.lang.String getNOM_LB_ENTRETIENS_FPM() {
-	return "NOM_LB_ENTRETIENS_FPM";
-}
-/**
- * Retourne le nom de la zone de la ligne sélectionnée pour la JSP :
- * NOM_LB_ENTRETIENS_FPM_SELECT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public java.lang.String getNOM_LB_ENTRETIENS_FPM_SELECT() {
-	return "NOM_LB_ENTRETIENS_FPM_SELECT";
-}
-/**
- * Méthode à personnaliser
- * Retourne la valeur à afficher pour la zone de la JSP :
- * LB_ENTRETIENS_FPM
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public java.lang.String [] getVAL_LB_ENTRETIENS_FPM() {
-	return getLB_ENTRETIENS_FPM();
-}
-/**
- * Méthode à personnaliser
- * Retourne l'indice à sélectionner pour la zone de la JSP :
- * LB_ENTRETIENS_FPM
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public java.lang.String getVAL_LB_ENTRETIENS_FPM_SELECT() {
-	return getZone(getNOM_LB_ENTRETIENS_FPM_SELECT());
-}
-/**
- * Getter de la liste avec un lazy initialize :
- * LB_TENT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-private String [] getLB_TENT() {
-	if (LB_TENT == null)
-		LB_TENT = initialiseLazyLB();
-	return LB_TENT;
-}
-/**
- * Setter de la liste:
- * LB_TENT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-private void setLB_TENT(java.lang.String[] newLB_TENT) {
-	LB_TENT = newLB_TENT;
-}
-/**
- * Retourne le nom de la zone pour la JSP :
- * NOM_LB_TENT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public java.lang.String getNOM_LB_TENT() {
-	return "NOM_LB_TENT";
-}
-/**
- * Retourne le nom de la zone de la ligne sélectionnée pour la JSP :
- * NOM_LB_TENT_SELECT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public java.lang.String getNOM_LB_TENT_SELECT() {
-	return "NOM_LB_TENT_SELECT";
-}
-/**
- * Méthode à personnaliser
- * Retourne la valeur à afficher pour la zone de la JSP :
- * LB_TENT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public java.lang.String [] getVAL_LB_TENT() {
-	return getLB_TENT();
-}
-/**
- * Méthode à personnaliser
- * Retourne l'indice à sélectionner pour la zone de la JSP :
- * LB_TENT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public java.lang.String getVAL_LB_TENT_SELECT() {
-	return getZone(getNOM_LB_TENT_SELECT());
-}
-/**
- * Getter de la liste avec un lazy initialize :
- * LB_TINT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-private String [] getLB_TINT() {
-	if (LB_TINT == null)
-		LB_TINT = initialiseLazyLB();
-	return LB_TINT;
-}
-/**
- * Setter de la liste:
- * LB_TINT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-private void setLB_TINT(java.lang.String[] newLB_TINT) {
-	LB_TINT = newLB_TINT;
-}
-/**
- * Retourne le nom de la zone pour la JSP :
- * NOM_LB_TINT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public java.lang.String getNOM_LB_TINT() {
-	return "NOM_LB_TINT";
-}
-/**
- * Retourne le nom de la zone de la ligne sélectionnée pour la JSP :
- * NOM_LB_TINT_SELECT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public java.lang.String getNOM_LB_TINT_SELECT() {
-	return "NOM_LB_TINT_SELECT";
-}
-/**
- * Méthode à personnaliser
- * Retourne la valeur à afficher pour la zone de la JSP :
- * LB_TINT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public java.lang.String [] getVAL_LB_TINT() {
-	return getLB_TINT();
-}
-/**
- * Méthode à personnaliser
- * Retourne l'indice à sélectionner pour la zone de la JSP :
- * LB_TINT
- * Date de création : (29/07/05 09:18:57)
- * @author : Générateur de process
- */
-public java.lang.String getVAL_LB_TINT_SELECT() {
-	return getZone(getNOM_LB_TINT_SELECT());
-}
+
 /**
  * @return Renvoie focus.
  */
@@ -971,16 +782,16 @@ public PM_PePerso getPmPePersoCourant() {
 public void setPmPePersoCourant(PM_PePerso pmPePersoCourant) {
 	this.pmPePersoCourant = pmPePersoCourant;
 }
-public ArrayList getListEntretiens() {
+public ArrayList<Entretien> getListEntretiens() {
 	return listEntretiens;
 }
-public void setListEntretiens(ArrayList listEntretiens) {
+public void setListEntretiens(ArrayList<Entretien> listEntretiens) {
 	this.listEntretiens = listEntretiens;
 }
-public ArrayList getListEntretiensFPM() {
+public ArrayList<?> getListEntretiensFPM() {
 	return listEntretiensFPM;
 }
-public void setListEntretiensFPM(ArrayList listEntretiensFPM) {
+public void setListEntretiensFPM(ArrayList<?> listEntretiensFPM) {
 	this.listEntretiensFPM = listEntretiensFPM;
 }
 
@@ -1073,10 +884,6 @@ public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) th
 			return performPB_ANNULER(request);
 		}
 
-		//Si clic sur le bouton PB_ENLEVER
-		if (testerParametre(request, getNOM_PB_ENLEVER())) {
-			return performPB_ENLEVER(request);
-		}
 
 		//Si clic sur le bouton PB_OK
 		if (testerParametre(request, getNOM_PB_OK())) {

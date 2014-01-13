@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Declarations
  */
-public class DeclarationsBroker extends nc.mairie.technique.BasicBroker {
+public class DeclarationsBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -30,14 +33,14 @@ public boolean supprimerDeclarations(nc.mairie.technique.Transaction aTransactio
  * Retourne un ArrayList d'objet métier : Declarations.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerDeclarations(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Declarations> listerDeclarations(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by  \"DATE\" desc, codedec desc");
 }
 /**
  * Retourne un ArrayList d'objet métier : Declarations.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerDeclarationsOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
+public ArrayList<Declarations> listerDeclarationsOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeot="+numot);
 }
 
@@ -45,7 +48,7 @@ public java.util.ArrayList listerDeclarationsOT(nc.mairie.technique.Transaction 
  * Retourne un ArrayList d'objet métier : Declarations.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerDeclarationsEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
+public ArrayList<Declarations> listerDeclarationsEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numinv = '"+ inv+"'");
 }
 
@@ -87,14 +90,14 @@ public boolean existeDeclarations(nc.mairie.technique.Transaction aTransaction, 
 /**
  * Constructeur DeclarationsBroker.
  */
-public DeclarationsBroker(nc.mairie.technique.BasicMetier aMetier) {
+public DeclarationsBroker(Declarations aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.DeclarationsMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Declarations definirMyMetier() {
 	return new Declarations() ;
 }
 /**

@@ -1,13 +1,17 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import nc.mairie.seat.process.Outils;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier BPC
  */
-public class BPC extends nc.mairie.technique.BasicMetier {
+public class BPC extends BasicMetier {
 	public String numerobpc;
 	public String date;
 	public String heure;
@@ -31,7 +35,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : BPC.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerBPC(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<BPC> listerBPC(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	BPC unBPC = new BPC();
 	return unBPC.getMyBPCBroker().listerBPC(aTransaction);
 }
@@ -63,28 +67,21 @@ public static BPC chercherBPCDerOT(nc.mairie.technique.Transaction aTransaction,
 	BPC unBPC = new BPC();
 	return unBPC.getMyBPCBroker().chercherBPCDerOT(aTransaction, date,inv);
 }
+
 /**
  * Retourne un BPC.
  * @return BPC
  */
-public static java.util.ArrayList chercherListBPC(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
+public static ArrayList<BPC> listerBPCInventaire(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception{
 	BPC unBPC = new BPC();
-	return unBPC.getMyBPCBroker().chercherListBPC(aTransaction, code);
-}
-/**
- * Retourne un BPC.
- * @return BPC
- */
-public static java.util.ArrayList chercherBPCEquip(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception{
-	BPC unBPC = new BPC();
-	return unBPC.getMyBPCBroker().chercherListBPC(aTransaction, inv);
+	return unBPC.getMyBPCBroker().listerBPCInventaire(aTransaction, inv);
 }
 
 /**
  * Retourne un BPC.
  * @return BPC
  */
-public static java.util.ArrayList listeBPCEquipAnnee(nc.mairie.technique.Transaction aTransaction, String inv,String annee) throws Exception{
+public static ArrayList<BPC> listeBPCEquipAnnee(nc.mairie.technique.Transaction aTransaction, String inv,String annee) throws Exception{
 	if(annee.equals("")){
 		//on met l'année en cours
 //		 récupération de l'année courante
@@ -428,7 +425,7 @@ public int nouvBPC(nc.mairie.technique.Transaction aTransaction) throws Exceptio
  * Retourne un ArrayList d'objet métier : BPC.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerBPCEquipement(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception{
+public static ArrayList<BPC> listerBPCEquipement(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception{
 	BPC unBPC = new BPC();
 	return unBPC.getMyBPCBroker().listerBPCEquipement(aTransaction,cle);
 }
@@ -539,7 +536,7 @@ public void setNumeroinventaire(String newNumeroinventaire) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new BPCBroker(this); 
 }
 /**
@@ -584,7 +581,7 @@ public boolean existeBPCPompes(nc.mairie.technique.Transaction aTransaction, Str
 	BPC unBPC = new BPC();
 	return unBPC.getMyBPCBroker().existeBPCPompe(aTransaction,numPompe);
 }
-public static java.util.ArrayList listerBPCParams(nc.mairie.technique.Transaction aTransaction,String inv,String ddeb,String dfin) throws Exception{
+public static ArrayList<BPC> listerBPCParams(nc.mairie.technique.Transaction aTransaction,String inv,String ddeb,String dfin) throws Exception{
 	String periode = "";
 	if(inv.equals("")){
 		inv="";

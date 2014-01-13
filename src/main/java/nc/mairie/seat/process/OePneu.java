@@ -10,11 +10,15 @@ import nc.mairie.seat.metier.Pneu;
  * @author : Générateur de process
 */
 public class OePneu extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9044548498724417907L;
 	private java.lang.String[] LB_LIST_DIMENSION;
 	private String ACTION_SUPPRESSION = "Suppression d'un pneu.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification d'un pneu.";
 	private String ACTION_CREATION = "Création d'un pneu.";
-	private ArrayList listePneu = null;
+	private ArrayList<Pneu> listePneu = null;
 	private Pneu pneuCourant;
 	boolean premierFois = true;	
 	private String focus = null;
@@ -34,7 +38,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		//	Si liste des pneus est vide
 	if (getLB_LIST_DIMENSION() == LBVide) {
 		
-		java.util.ArrayList a = Pneu.listerPneu(getTransaction());
+		ArrayList<Pneu> a = Pneu.listerPneu(getTransaction());
 		setListePneu(a);
 		if (a.size()!=0){
 			//les élèments de la liste seront le codePneu pour pouvoir récupérer le dernier élément et les dimensions des pneus.
@@ -43,8 +47,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
 			String [] padding = {"G"};
 			
-			FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-			String [] l = f.getListeFormatee();
 			setLB_LIST_DIMENSION(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 			
 		}else{
@@ -55,7 +57,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	 on sélectionne l'élément en cours
 	if(getPneuCourant()!=null){
 		if(getPneuCourant().getCodepneu()!=null){
-			int position = -1;
 			addZone(getNOM_LB_LIST_DIMENSION_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListePneu().size(); i++) {
 				Pneu unPneu = (Pneu)getListePneu().get(i);
@@ -254,40 +255,6 @@ public java.lang.String getNOM_PB_VALIDER() {
 }
 
 /**
- * Initialisation de la liste des pneus
- * @author : Coralie NICOLAS
- */
-private void initialiseListePneus(javax.servlet.http.HttpServletRequest request) throws Exception{
-	//Recherche des pneus
-	/*java.util.ArrayList a = Pneu.listerPneu(getTransaction());
-	if (null == a){
-		System.out.println("Aucun élément enregistré dans la base.");
-	}
-	setListePneu(a);
-	
-	//Si au moins un pneu
-	if (a.size() !=0 ) {
-		int tailles [] = {5,20};
-		FormateListe aFormat = new FormateListe(tailles);
-		for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
-			Pneu aPneu = (Pneu)list.next();
-			//TypeContact aType = (TypeContact)getHashTypeContact().get(aContact.getCodTypeContact());
-			String ligne [] = { aPneu.getCodepneu(),aPneu.getDimension()};
-			aFormat.ajouteLigne(ligne);
-			
-		}
-		setLB_LIST_DIMENSION(aFormat.getListeFormatee());
-	} else {
-		setLB_LIST_DIMENSION(null);
-	}
-	
-	addZone(getNOM_ST_TITRE_ACTION(),"");
-	addZone(getNOM_LB_LIST_DIMENSION_SELECT(),"0");
-	addZone(getNOM_EF_LIBELLE_DIMENSION(),"");*/
-}
-
-
-/**
  * - Traite et affecte les zones saisies dans la JSP.
  * - Implémente les règles de gestion du process
  * - Positionne un statut en fonction de ces règles :
@@ -360,7 +327,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 
 		//Création
 		getPneuCourant().creerPneu(getTransaction(),newDimension);
-		String info = getTransaction().getMessageErreur();
 		if (getTransaction().isErreur())
 			return false;		
 	}
@@ -471,13 +437,13 @@ public java.lang.String getVAL_LB_LIST_DIMENSION_SELECT() {
 	/**
 	 * @return Renvoie listePneu.
 	 */
-	private ArrayList getListePneu() {
+	private ArrayList<Pneu> getListePneu() {
 		return listePneu;
 	}
 	/**
 	 * @param listePneu listePneu à définir.
 	 */
-	private void setListePneu(ArrayList listePneu) {
+	private void setListePneu(ArrayList<Pneu> listePneu) {
 		this.listePneu = listePneu;
 	}
 /**

@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+
+import java.util.ArrayList;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier AffectationInfos
  */
-public class AffectationInfos extends nc.mairie.technique.BasicMetier {
+public class AffectationInfos extends BasicMetier {
 	public String numeroinventaire;
 	public String numeroimmatriculation;
 	public String datemiseencirculation;
@@ -35,7 +40,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : AffectationInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerAffectationInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<AffectationInfos> listerAffectationInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	AffectationInfos unAffectationInfos = new AffectationInfos();
 	return unAffectationInfos.getMyAffectationInfosBroker().listerAffectationInfos(aTransaction);
 }
@@ -43,7 +48,7 @@ public static java.util.ArrayList listerAffectationInfos(nc.mairie.technique.Tra
  * Retourne un AffectationInfos.
  * @return AffectationInfos
  */
-public static java.util.ArrayList chercherAffectationInfosAgent(nc.mairie.technique.Transaction aTransaction, String matr) throws Exception{
+public static ArrayList<AffectationInfos> chercherAffectationInfosAgent(nc.mairie.technique.Transaction aTransaction, String matr) throws Exception{
 	AffectationInfos unAffectationInfos = new AffectationInfos();
 	return unAffectationInfos.getMyAffectationInfosBroker().chercherAffectationInfosAgent(aTransaction, matr);
 }
@@ -52,7 +57,7 @@ public static java.util.ArrayList chercherAffectationInfosAgent(nc.mairie.techni
  * Retourne un AffectationInfos.
  * @return AffectationInfos
  */
-public static java.util.ArrayList chercherAffectationInfosAgentEquip(nc.mairie.technique.Transaction aTransaction, String matr,String inv) throws Exception{
+public static ArrayList<AffectationInfos> chercherAffectationInfosAgentEquip(nc.mairie.technique.Transaction aTransaction, String matr,String inv) throws Exception{
 	AffectationInfos unAffectationInfos = new AffectationInfos();
 	return unAffectationInfos.getMyAffectationInfosBroker().chercherAffectationInfosAgentEquip(aTransaction, matr,inv);
 }
@@ -61,7 +66,7 @@ public static java.util.ArrayList chercherAffectationInfosAgentEquip(nc.mairie.t
  * Retourne un AffectationInfos.
  * @return AffectationInfos
  */
-public static java.util.ArrayList chercherAffectationInfosEquip(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception{
+public static ArrayList<AffectationInfos> chercherAffectationInfosEquip(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception{
 	AffectationInfos unAffectationInfos = new AffectationInfos();
 	return unAffectationInfos.getMyAffectationInfosBroker().chercherAffectationInfosEquip(aTransaction, inv);
 }
@@ -70,7 +75,7 @@ public static java.util.ArrayList chercherAffectationInfosEquip(nc.mairie.techni
  * Retourne un AffectationInfos.
  * @return AffectationInfos
  */
-public static java.util.ArrayList chercherListAffectationInfosSce(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
+public static ArrayList<AffectationInfos> chercherListAffectationInfosSce(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	AffectationInfos unAffectationInfos = new AffectationInfos();
 	return unAffectationInfos.getMyAffectationInfosBroker().chercherListAffectationInfosSce(aTransaction, code);
 }
@@ -79,7 +84,7 @@ public static java.util.ArrayList chercherListAffectationInfosSce(nc.mairie.tech
  * Retourne un AffectationInfos.
  * @return AffectationInfos
  */
-public static java.util.ArrayList chercherListAffectationInfosEquip(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
+public static ArrayList<AffectationInfos> chercherListAffectationInfosEquip(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	AffectationInfos unAffectationInfos = new AffectationInfos();
 	return unAffectationInfos.getMyAffectationInfosBroker().chercherListAffectationInfosEquip(aTransaction, code);
 }
@@ -88,7 +93,7 @@ public static java.util.ArrayList chercherListAffectationInfosEquip(nc.mairie.te
  * Retourne un AffectationInfos.
  * @return AffectationInfos
  */
-public static java.util.ArrayList chercherListAgentEquipSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception{
+public static ArrayList<AffectationInfos> chercherListAgentEquipSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception{
 	AffectationInfos unAffectationInfos = new AffectationInfos();
 	return unAffectationInfos.getMyAffectationInfosBroker().chercherListAgentEquipSce(aTransaction, servi);
 }
@@ -319,7 +324,7 @@ public void setDatfin(String newDatfin) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new AffectationInfosBroker(this); 
 }
 /**

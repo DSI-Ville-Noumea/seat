@@ -28,7 +28,7 @@ if (document.formu.elements[nom] != null)
 <TITLE>OeOT_Lancement.jsp</TITLE>
 </HEAD>
 <jsp:useBean class="nc.mairie.seat.process.OeOT_Lancement" id="process" scope="session"></jsp:useBean>
-<BODY BGPROPERTIES="FIXED" background="images/fond.jpg" class="sigp2-BODY" onload="return setfocus('<%=process.getFocus() %>')">
+<BODY background="images/fond.jpg" class="sigp2-BODY" onload="return setfocus('<%=process.getFocus() %>')">
 
 <TABLE border="0" width="580" style="text-align : center;" class="sigp2">
 <%@ include file="BanniereErreur.jsp" %>
@@ -56,7 +56,7 @@ if (document.formu.elements[nom] != null)
 				</TR>
 				<TR>
 					<TD align="left">
-						<SELECT size="8" name="<%= process.getNOM_LB_ENTRETIENS() %>"
+						<SELECT size="8" name="<%= process.getNOM_LB_OT() %>"
 					class="sigp2-liste" style="text-transform: uppercase; width: 100%"
 					ondblclick='executeBouton("<%= process.getNOM_PB_VALIDER()%>")'>
 					<%= process.forComboHTML(process.getVAL_LB_OT(),process.getVAL_LB_OT_SELECT()) %>

@@ -1,15 +1,18 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PeBaseInfos
  */
-public class PeBaseInfosBroker extends nc.mairie.technique.BasicBroker {
+public class PeBaseInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : PeBaseInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPeBaseInfos(nc.mairie.technique.Transaction aTransaction,String modele) throws Exception {
+public ArrayList<PeBaseInfos> listerPeBaseInfos(nc.mairie.technique.Transaction aTransaction,String modele) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemodele="+modele+"");
 }
 /**
@@ -22,14 +25,14 @@ public PeBaseInfos chercherPeBaseInfos(nc.mairie.technique.Transaction aTransact
 /**
  * Constructeur PeBaseInfosBroker.
  */
-public PeBaseInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PeBaseInfosBroker(PeBaseInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PeBaseInfosMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PeBaseInfos definirMyMetier() {
 	return new PeBaseInfos() ;
 }
 /**

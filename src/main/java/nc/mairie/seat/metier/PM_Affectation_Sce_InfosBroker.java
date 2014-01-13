@@ -3,15 +3,17 @@ package nc.mairie.seat.metier;
 import java.util.ArrayList;
 
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PM_Affectation_Sce_Infos
  */
-public class PM_Affectation_Sce_InfosBroker extends nc.mairie.technique.BasicBroker {
+public class PM_Affectation_Sce_InfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : PM_Affectation_Sce_Infos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPM_Affectation_Sce_Infos(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<PM_Affectation_Sce_Infos> listerPM_Affectation_Sce_Infos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -21,7 +23,7 @@ public java.util.ArrayList listerPM_Affectation_Sce_Infos(nc.mairie.technique.Tr
 public PM_Affectation_Sce_Infos chercherPM_Affectation_Sce_Infos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (PM_Affectation_Sce_Infos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+"");
 }
-public java.util.ArrayList chercherListPM_Affectation_Sce_InfosPm(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<PM_Affectation_Sce_Infos> chercherListPM_Affectation_Sce_InfosPm(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv = '"+param+"'");
 }
 public PM_Affectation_Sce_Infos chercherPM_Affectation_Sce_InfosCourantPm(nc.mairie.technique.Transaction aTransaction, String inv,String date) throws Exception {
@@ -32,7 +34,7 @@ public PM_Affectation_Sce_Infos chercherPM_Affectation_Sce_InfosCourantPmEnCours
 	return  (PM_Affectation_Sce_Infos)executeSelect(aTransaction, "select * from "+getTable()+" where pminv = '"+inv+"' and dfin='0001-01-01'");
 }
 
-public java.util.ArrayList listerPmAffectationSceInfosAgent(nc.mairie.technique.Transaction aTransaction,String nomatr) throws Exception {
+public ArrayList<PM_Affectation_Sce_Infos> listerPmAffectationSceInfosAgent(nc.mairie.technique.Transaction aTransaction,String nomatr) throws Exception {
 	if (nomatr.equals("")){
 		aTransaction.declarerErreur("Le numéro d'agent n'a pas été renseigné");
 		ArrayList<PM_Affectation_Sce_Infos> listVide = new ArrayList<PM_Affectation_Sce_Infos>();
@@ -41,21 +43,21 @@ public java.util.ArrayList listerPmAffectationSceInfosAgent(nc.mairie.technique.
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where dfin='0001-01-01' and nomatr="+nomatr);
 }
 
-public java.util.ArrayList chercherPmAffectationSceInfosService(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
+public ArrayList<PM_Affectation_Sce_Infos> chercherPmAffectationSceInfosService(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return  executeSelectListe(aTransaction,"select * from "+getTable()+" where siserv like '"+cle+"%' and dfin = '0001-01-01'");
 }
 
 /**
  * Constructeur PM_Affectation_Sce_InfosBroker.
  */
-public PM_Affectation_Sce_InfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PM_Affectation_Sce_InfosBroker(PM_Affectation_Sce_Infos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PM_Affectation_Sce_InfosMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PM_Affectation_Sce_Infos definirMyMetier() {
 	return new PM_Affectation_Sce_Infos() ;
 }
 /**

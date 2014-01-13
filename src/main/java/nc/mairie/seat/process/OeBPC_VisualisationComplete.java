@@ -19,7 +19,6 @@ import nc.mairie.seat.metier.PM_Affectation_Sce_Infos;
 import nc.mairie.seat.metier.PMatInfos;
 import nc.mairie.seat.metier.PMateriel;
 import nc.mairie.seat.metier.Service;
-import nc.mairie.seat.servlet.ServletSeat;
 import nc.mairie.servlets.Frontale;
 import nc.mairie.technique.FormateListe;
 import nc.mairie.technique.Services;
@@ -32,11 +31,16 @@ import nc.mairie.technique.VariableGlobale;
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
 */
+@SuppressWarnings("deprecation")
 public class OeBPC_VisualisationComplete extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2589115119577902715L;
 	public static final int STATUT_SERVICE = 2;
 	public static final int STATUT_EQUIP = 1;
 	private java.lang.String[] LB_BPCINFOS;
-	private ArrayList listBPCInfos;
+	private ArrayList<BPC> listBPCInfos;
 	private Service serviceCourant = new Service();
 	private EquipementInfos equipementInfosCourant = new EquipementInfos();
 	private Equipement equipementCourant = new Equipement();
@@ -415,9 +419,9 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 	}
 	System.out.println("HELLO VISU 2");
 	//OFONTENEAU:  AFAIRE regarder les temps de réponse ICI
-	ArrayList inter = BPC.listerBPCParams(getTransaction(),inv,ddeb,dfin);
+	ArrayList<BPC> inter = BPC.listerBPCParams(getTransaction(),inv,ddeb,dfin);
 	System.out.println("HELLO VISU 3");
-	ArrayList resultat = new ArrayList();
+	ArrayList<BPC> resultat = new ArrayList<BPC>();
 	if(servi.equals("")){
 		resultat = inter;
 	}else{
@@ -652,13 +656,13 @@ public PMatInfos getPMatInfosCourant() {
 public void setPMatInfosInfosCourant(PMatInfos pMatInfosCourant) {
 	this.pMatInfosCourant = pMatInfosCourant;
 }
-public ArrayList getListBPCInfos() {
+public ArrayList<BPC> getListBPCInfos() {
 	if(listBPCInfos==null){
-		listBPCInfos = new ArrayList();
+		listBPCInfos = new ArrayList<BPC>();
 	}
 	return listBPCInfos;
 }
-public void setListBPCInfos(ArrayList listBPCInfos) {
+public void setListBPCInfos(ArrayList<BPC> listBPCInfos) {
 	this.listBPCInfos = listBPCInfos;
 }
 	public Service getServiceCourant() {
@@ -715,7 +719,7 @@ public boolean performPB_DETAILS(javax.servlet.http.HttpServletRequest request) 
 		getTransaction().declarerErreur("Vous devez sélectionner un élement");
 		return false;
 	}
-	BPC unBPC = (BPC)getListBPCInfos().get(indice);
+//	BPC unBPC = (BPC)getListBPCInfos().get(indice);
 //	if(!isMateriel){
 //		BPCInfosCompletes unBPCIC = (BPCInfosCompletes)getListBPCInfos().get(indice);
 //		addZone(getNOM_ST_SERVICE(),unBPCIC.getLiserv());
@@ -823,7 +827,7 @@ public java.lang.String getNOM_PB_IMPRIMER() {
  * @author : Générateur de process
  */
 public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request) throws Exception {
-	ArrayList listeBPCEquip = new ArrayList();
+	ArrayList<BPC> listeBPCEquip = new ArrayList<BPC>();
 	String numinv = "";
 	String numinvder ="";
 	String agentResponsable;
@@ -904,7 +908,7 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 //	resultat = Services.trier(resultat,nomChamps,ordres);
 //	setListBPCInfos(resultat);
 	//initialiseListBPCInfos(request);
-	ArrayList resultat = getListBPCInfos();
+	ArrayList<BPC> resultat = getListBPCInfos();
 	String[] nomChamps = {"numeroinventaire","date","valeurcompteur"};
 	boolean[] ordres = {true,false,false};
 	resultat = Services.trier(resultat,nomChamps,ordres);
@@ -1057,7 +1061,7 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 					pw.println();
 					setLB_TOTALEQUIP(null);
 					kmParcourus = 0;
-					listeBPCEquip = new ArrayList();
+					listeBPCEquip = new ArrayList<BPC>();
 				}
 				//Entete
 				pw.print("1");
@@ -1098,7 +1102,6 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 				pw.print(Services.lpad(unBPCComplet.getQuantite(),6," "));
 				if ((null != bpcAvant)&&(numinv.equals(bpcAvant.getNumeroinventaire()))){
 					kmParcourus =  Integer.parseInt(unBPCComplet.getValeurcompteur())-Integer.parseInt(bpcAvant.getValeurcompteur());
-					int qteAvant = Integer.parseInt(bpcAvant.getQuantite());
 					int qte = Integer.parseInt(unBPCComplet.getQuantite());
 					//moyennecalcul = (double)qteAvant/(double)kmParcourus*100;
 					//moyennecalcul = (double)qte/(double)kmParcourus*100;
@@ -1134,6 +1137,9 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 			pw.close();
 			fw.close();
 			throw e;
+		} finally {
+			pw.close();
+			fw.close();
 		}
 		
 		setScript(g.getScriptOuverture());
@@ -1144,7 +1150,7 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 	return true;
 }
 
-public void initialiseListeTotalEquip(javax.servlet.http.HttpServletRequest request,ArrayList listBPC) throws Exception{
+public void initialiseListeTotalEquip(javax.servlet.http.HttpServletRequest request,ArrayList<BPC> listBPC) throws Exception{
 	NumberFormat moyenneTotalFormat = new DecimalFormat("0.00");
 	int kmParcouru = 0;
 	int total = 0;

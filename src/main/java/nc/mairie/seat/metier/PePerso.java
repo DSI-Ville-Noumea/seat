@@ -5,10 +5,13 @@ import java.util.Calendar;
 
 import nc.mairie.seat.process.Outils;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier PePerso
  */
-public class PePerso extends nc.mairie.technique.BasicMetier {
+public class PePerso extends BasicMetier {
 	public String codeequip;
 	public String codeentretien;
 	public String sinistre;
@@ -35,12 +38,12 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : PePerso.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPePerso(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<PePerso> listerPePerso(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PePerso unPePerso = new PePerso();
 	return unPePerso.getMyPePersoBroker().listerPePerso(aTransaction);
 }
 
-public static java.util.ArrayList listerPePersoEquipMoinsUnAn(nc.mairie.technique.Transaction aTransaction,String pdate) throws Exception{
+public static ArrayList<PePerso> listerPePersoEquipMoinsUnAn(nc.mairie.technique.Transaction aTransaction,String pdate) throws Exception{
 	PePerso unPePerso = new PePerso();
 	return unPePerso.getMyPePersoBroker().listerPePersoEquipMoinsUnAn(aTransaction,pdate);
 }
@@ -49,7 +52,7 @@ public static java.util.ArrayList listerPePersoEquipMoinsUnAn(nc.mairie.techniqu
  * Retourne un ArrayList d'objet métier : PePerso.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPePersoDecl(nc.mairie.technique.Transaction aTransaction,String decl) throws Exception{
+public static ArrayList<PePerso> listerPePersoDecl(nc.mairie.technique.Transaction aTransaction,String decl) throws Exception{
 	PePerso unPePerso = new PePerso();
 	return unPePerso.getMyPePersoBroker().listerPePersoDecl(aTransaction,decl);
 }
@@ -58,7 +61,7 @@ public static java.util.ArrayList listerPePersoDecl(nc.mairie.technique.Transact
  * Retourne un ArrayList d'objet métier : PePerso.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPePersoRecond(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
+public static ArrayList<PePerso> listerPePersoRecond(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
 	PePerso unPePerso = new PePerso();
 	return unPePerso.getMyPePersoBroker().listerPePersoRecond(aTransaction,inv);
 }
@@ -67,7 +70,7 @@ public static java.util.ArrayList listerPePersoRecond(nc.mairie.technique.Transa
  * Retourne un ArrayList d'objet métier : PePerso.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPePersoKm(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
+public static ArrayList<PePerso> listerPePersoKm(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
 	PePerso unPePerso = new PePerso();
 	return unPePerso.getMyPePersoBroker().listerPePersoKm(aTransaction,inv);
 }
@@ -77,7 +80,7 @@ public static java.util.ArrayList listerPePersoKm(nc.mairie.technique.Transactio
  * @return java.util.ArrayList
  */
 //UNUSED: comment by OFONTENEAU 20090313
-//public static java.util.ArrayList listerPePersoAFaireKm(nc.mairie.technique.Transaction aTransaction,String mod,String inv) throws Exception{
+//public static ArrayList<PePerso> listerPePersoAFaireKm(nc.mairie.technique.Transaction aTransaction,String mod,String inv) throws Exception{
 //	PePerso unPePerso = new PePerso();
 //	return unPePerso.getMyPePersoBroker().listerPePersoAFaireKm(aTransaction,mod,inv);
 //}
@@ -86,7 +89,7 @@ public static java.util.ArrayList listerPePersoKm(nc.mairie.technique.Transactio
  * Retourne un ArrayList d'objet métier : PePerso.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPePersoHr(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
+public static ArrayList<PePerso> listerPePersoHr(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
 	PePerso unPePerso = new PePerso();
 	return unPePerso.getMyPePersoBroker().listerPePersoHr(aTransaction,inv);
 }
@@ -96,12 +99,12 @@ public static java.util.ArrayList listerPePersoHr(nc.mairie.technique.Transactio
  * Retourne un ArrayList d'objet métier : PePerso.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList chercherPePersoEquipEnt(nc.mairie.technique.Transaction aTransaction,String inv,String ent) throws Exception{
+public static ArrayList<PePerso> chercherPePersoEquipEnt(nc.mairie.technique.Transaction aTransaction,String inv,String ent) throws Exception{
 	PePerso unPePerso = new PePerso();
 	return unPePerso.getMyPePersoBroker().chercherPePersoEquipEnt(aTransaction,inv,ent);
 }
 
-public static java.util.ArrayList listerPePersoEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
+public static ArrayList<PePerso> listerPePersoEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
 	PePerso unPePerso = new PePerso();
 	return unPePerso.getMyPePersoBroker().listerPePersoEquip(aTransaction,inv);
 }
@@ -111,7 +114,7 @@ public static java.util.ArrayList listerPePersoEquip(nc.mairie.technique.Transac
  * Retourne un ArrayList d'objet métier : PePerso.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList chercherPePersoOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
+public static ArrayList<PePerso> chercherPePersoOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	PePerso unPePerso = new PePerso();
 	return unPePerso.getMyPePersoBroker().chercherPePersoOT(aTransaction,numot);
 }
@@ -120,7 +123,7 @@ public static java.util.ArrayList chercherPePersoOT(nc.mairie.technique.Transact
 * Retourne un ArrayList d'objet métier : PePerso.
 * @return java.util.ArrayList
 */
-public static java.util.ArrayList chercherPePersoPasFaitOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
+public static ArrayList<PePerso> chercherPePersoPasFaitOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	PePerso unPePerso = new PePerso();
 	return unPePerso.getMyPePersoBroker().chercherPePersoPasFaitOT(aTransaction,numot);
 }
@@ -388,7 +391,7 @@ public boolean creerPePerso(nc.mairie.technique.Transaction aTransaction,Equipem
 				nbjours = 365;
 			}
 	//		on regarde si l'entretien est une reconduction
-			ArrayList aList = chercherPePersoEquipEnt(aTransaction,unEquipement.getNumeroinventaire(),unEntretien.getCodeentretien());
+			ArrayList<PePerso> aList = chercherPePersoEquipEnt(aTransaction,unEquipement.getNumeroinventaire(),unEntretien.getCodeentretien());
 			if (aList.size()==0){
 				aTransaction.traiterErreur();
 				setDateprev(Services.ajouteJours(unEquipement.getDatemiseencirculation(),nbjours));
@@ -662,7 +665,7 @@ public boolean modifierPePersoInfos(nc.mairie.technique.Transaction aTransaction
 			if (aTransaction.isErreur()){
 				return false;
 			}
-			ArrayList aList = chercherPePersoEquipEnt(aTransaction,unEquipement.getNumeroinventaire(),unEntretien.getCodeentretien());
+			ArrayList<PePerso> aList = chercherPePersoEquipEnt(aTransaction,unEquipement.getNumeroinventaire(),unEntretien.getCodeentretien());
 			if (aTransaction.isErreur()){
 				return false;
 			}
@@ -901,7 +904,7 @@ public void setDateprev(String newDateprev) {
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PePersoBroker(this); 
 }
 /**

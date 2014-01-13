@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier FPMComplete
  */
-public class FPMComplete extends nc.mairie.technique.BasicMetier {
+public class FPMComplete extends BasicMetier {
 	public String numfiche;
 	public String pminv;
 	public String dentree;
@@ -24,7 +29,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : FPMComplete.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerFPMComplete(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<FPMComplete> listerFPMComplete(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	FPMComplete unFPMComplete = new FPMComplete();
 	return unFPMComplete.getMyFPMCompleteBroker().listerFPMComplete(aTransaction);
 }
@@ -38,13 +43,13 @@ public static FPMComplete chercherFPMComplete(nc.mairie.technique.Transaction aT
 }
 
 // liste des encours
-public static java.util.ArrayList listerFPMCompleteEnCours(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<FPMComplete> listerFPMCompleteEnCours(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	FPMComplete unFPMComplete = new FPMComplete();
 	return unFPMComplete.getMyFPMCompleteBroker().listerFPMCompleteEnCours(aTransaction);
 }
 
 //liste des encours
-public static java.util.ArrayList listerFPMCompleteValide(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<FPMComplete> listerFPMCompleteValide(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	FPMComplete unFPMComplete = new FPMComplete();
 	return unFPMComplete.getMyFPMCompleteBroker().listerFPMCompleteValide(aTransaction);
 }
@@ -156,7 +161,7 @@ public void setCommentaire(String newCommentaire) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new FPMCompleteBroker(this); 
 }
 /**

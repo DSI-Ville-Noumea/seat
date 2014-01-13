@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import nc.mairie.seat.metier.AffectationServiceInfos;
 import nc.mairie.seat.metier.AgentCCAS;
 import nc.mairie.seat.metier.AgentCDE;
+import nc.mairie.seat.metier.AgentInterface;
 import nc.mairie.seat.metier.Agents;
 import nc.mairie.seat.metier.EquipementInfos;
 import nc.mairie.seat.metier.PMatInfos;
@@ -15,9 +16,13 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeEquipement_Recherche extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -345090781855550852L;
 	public static final int STATUT_AGENT = 1;
 	private java.lang.String[] LB_EQUIPEMENTINFOS;
-	private ArrayList listeEquipementInfos;
+	private ArrayList<EquipementInfos> listeEquipementInfos;
 	private EquipementInfos equipementInfosCourant;
 	private String focus = null;
 	private boolean first = true;
@@ -128,7 +133,7 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
 		recherche_SERVICE(request);
 	}else{
 		String param = getZone(getNOM_EF_RECHERCHE());
-		ArrayList resultatEquipementInfos = EquipementInfos.chercherListEquipementInfos(getTransaction(),param);
+		ArrayList<EquipementInfos> resultatEquipementInfos = EquipementInfos.chercherListEquipementInfos(getTransaction(),param);
 		if(getTransaction().isErreur()){
 			return false;
 		}
@@ -268,13 +273,13 @@ public java.lang.String getVAL_LB_EQUIPEMENTINFOS_SELECT() {
 	/**
 	 * @return Renvoie listeEquipementInfos.
 	 */
-	private ArrayList getListeEquipementInfos() {
+	private ArrayList<EquipementInfos> getListeEquipementInfos() {
 		return listeEquipementInfos;
 	}
 	/**
 	 * @param listeEquipementInfos listeEquipementInfos à définir.
 	 */
-	private void setListeEquipementInfos(ArrayList listeEquipementInfos) {
+	private void setListeEquipementInfos(ArrayList<EquipementInfos> listeEquipementInfos) {
 		this.listeEquipementInfos = listeEquipementInfos;
 	}
 	/**
@@ -320,20 +325,18 @@ public java.lang.String getVAL_LB_EQUIPEMENTINFOS_SELECT() {
 	}
 public boolean recherche_AGENT(javax.servlet.http.HttpServletRequest request) throws Exception {
 	// recherche de la liste des équipements dont l'agent est responsable
-	ArrayList listAgent = new ArrayList();
-	ArrayList listInter = new ArrayList();
-	boolean trouve = false;
+	ArrayList<AgentInterface> listAgent = new ArrayList<AgentInterface>();
 	String nom = "";
 	boolean[] ordres = {true};//,true};
 	String[] colonnes = {tri};
-	ArrayList listEquip = new ArrayList();
+	ArrayList<EquipementInfos> listEquip = new ArrayList<EquipementInfos>();
 	String param = getZone(getNOM_EF_AGENT());
 //	if (!Services.estNumerique(param)){
 //		getTransaction().declarerErreur("Le code de l'agent est numérique.");
 //		return false;
 //	}
 	if(Services.estNumerique(getZone(getNOM_EF_AGENT()))){
-		ArrayList listeASI = AffectationServiceInfos.listerAffectationServiceInfosAgent(getTransaction(),param);
+		ArrayList<AffectationServiceInfos> listeASI = AffectationServiceInfos.listerAffectationServiceInfosAgent(getTransaction(),param);
 		if(getTransaction().isErreur()){
 			getTransaction().declarerErreur("L'agent n'est responsable d'aucun équipement.");
 			return false;
@@ -366,47 +369,14 @@ public boolean recherche_AGENT(javax.servlet.http.HttpServletRequest request) th
 				getTransaction().declarerErreur("Vous devez saisir le nom de l'agent ");
 				return false;
 			}
-				listInter = AgentCDE.chercherAgentCDENom(getTransaction(),nom);
-				if(getTransaction().isErreur()){
-					getTransaction().traiterErreur();
-					trouve = false;
-				}else{
-					trouve = true;
-				}
-				if (listInter.size()>0){
-					for (int i=0;i<listInter.size();i++){
-						listAgent.add(listInter.get(i));
-					}
-				}
-				listInter = AgentCCAS.chercherAgentCCASNom(getTransaction(),nom);
-				if(getTransaction().isErreur()){
-					getTransaction().traiterErreur();
-					trouve = false;
-				}else{
-					trouve = true;
-				}
-				if (listInter.size()>0){
-					for (int i=0;i<listInter.size();i++){
-						listAgent.add(listInter.get(i));
-					}
-				}
-				listInter = Agents.chercherAgentsNom(getTransaction(),nom);
-				if(getTransaction().isErreur()){
-					getTransaction().traiterErreur();
-					trouve = false;
-				}else{
-					trouve = true;
-				}
-				if (listInter.size()>0){
-					for (int i=0;i<listInter.size();i++){
-						listAgent.add(listInter.get(i));
-					}
-				}
-			if (trouve){
+				listAgent.addAll(AgentCDE.listerAgentCDENom(getTransaction(),nom));
+				listAgent.addAll(AgentCCAS.listerAgentCCASNom(getTransaction(),nom));
+				listAgent.addAll( Agents.listerAgentsNom(getTransaction(),nom));
+			
 				if (listAgent.size()==1){
 					Agents unAgent = (Agents)listAgent.get(0);
 					// s'il n'a qu'un équipement on débranche directement sur la fenêtre visu sinon on les affiche
-					ArrayList a = AffectationServiceInfos.listerAffectationServiceInfosAgent(getTransaction(),unAgent.getNomatr());
+					ArrayList<AffectationServiceInfos> a = AffectationServiceInfos.listerAffectationServiceInfosAgent(getTransaction(),unAgent.getNomatr());
 					if(getTransaction().isErreur()){
 						return false;
 					}
@@ -425,7 +395,6 @@ public boolean recherche_AGENT(javax.servlet.http.HttpServletRequest request) th
 					VariableActivite.ajouter(this,"TYPE","Equipement");
 					setStatut(STATUT_AGENT,true);
 				}
-			}
 		}
 	}
 	
@@ -437,7 +406,7 @@ public boolean recherche_SERVICE(javax.servlet.http.HttpServletRequest request) 
 	boolean[] ordres = {true};//,true};
 	String[] colonnes = {tri};
 //	 recherche de la liste des équipements dont le service est responsable
-	ArrayList listEquip = new ArrayList();
+	ArrayList<EquipementInfos> listEquip = new ArrayList<EquipementInfos>();
 	String param = getZone(getNOM_EF_SERVICE().toUpperCase());
 	/* Modif par luc le 08/01/10
 	if (!Services.estNumerique(param)){
@@ -445,7 +414,7 @@ public boolean recherche_SERVICE(javax.servlet.http.HttpServletRequest request) 
 		return false;
 	}
 	*/
-	ArrayList listeASI = AffectationServiceInfos.chercherAffectationServiceInfosService(getTransaction(),param);
+	ArrayList<AffectationServiceInfos> listeASI = AffectationServiceInfos.chercherAffectationServiceInfosService(getTransaction(),param);
 	if(getTransaction().isErreur()){
 		getTransaction().declarerErreur("Le service n'a aucun équipement.");
 		return false;

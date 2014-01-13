@@ -10,11 +10,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeModePrise extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8813542891670382337L;
 	private java.lang.String[] LB_MODEPRISE;
 	private String ACTION_SUPPRESSION = "Suppression d'un mode de prise de carburant.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification d'un mode de prise de carburant.";
 	private String ACTION_CREATION = "Création d'un mode de prise de carburant.";
-	private ArrayList listeModePrise = null;
+	private ArrayList<ModePrise> listeModePrise = null;
 	private ModePrise modepriseCourant;
 	private String focus = null;
 	public int isVide = 0;
@@ -32,7 +36,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	//	Si liste des mode de prise de carburant est vide
 	if (getLB_MODEPRISE() == LBVide) {
 		
-		java.util.ArrayList a = ModePrise.listerModePrise(getTransaction());
+		ArrayList<ModePrise> a = ModePrise.listerModePrise(getTransaction());
 		setListeModePrise(a);
 		
 		if (a.size()>0){
@@ -45,8 +49,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
 			String [] padding = {"G"};
 			
-			FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-			String [] l = f.getListeFormatee();
 			setLB_MODEPRISE(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 		}else{
 			setLB_MODEPRISE(null);
@@ -56,7 +58,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	 on sélectionne l'élément en cours
 	if(getModepriseCourant()!=null){
 		if(getModepriseCourant().getCodemodeprise()!=null){
-			int position = -1;
 			addZone(getNOM_LB_MODEPRISE_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListeModePrise().size(); i++) {
 				ModePrise unMp = (ModePrise)getListeModePrise().get(i);
@@ -67,36 +68,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			}	
 		}
 	}
-}
-
-/**
- * Initialisation de la liste des marques
- * @author : Coralie NICOLAS
- */
-private void initialiseListeModePrise(javax.servlet.http.HttpServletRequest request) throws Exception{
-	//Recherche des marques
-	/*java.util.ArrayList a = ModePrise.listerModePrise(getTransaction());
-	setListeModePrise(a);
-	
-	//Si au moins une marque
-	if (a.size() !=0 ) {
-		int tailles [] = {20};
-		FormateListe aFormat = new FormateListe(tailles);
-		for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
-			ModePrise aModePrise = (ModePrise)list.next();
-			//TypeContact aType = (TypeContact)getHashTypeContact().get(aContact.getCodTypeContact());
-			String ligne [] = { aModePrise.getDesignationmodeprise()};
-			aFormat.ajouteLigne(ligne);
-			
-		}
-		setLB_MODEPRISE(aFormat.getListeFormatee());
-	} else {
-		setLB_MODEPRISE(null);
-	}
-	
-	addZone(getNOM_ST_TITRE_ACTION(),"");
-	addZone(getNOM_LB_MODEPRISE_SELECT(),"0");
-	addZone(getNOM_EF_DESIGNATION(),"");*/
 }
 
 /**
@@ -470,13 +441,13 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
 	/**
 	 * @return Renvoie listeModePrise.
 	 */
-	private ArrayList getListeModePrise() {
+	private ArrayList<ModePrise> getListeModePrise() {
 		return listeModePrise;
 	}
 	/**
 	 * @param listeModePrise listeModePrise à définir.
 	 */
-	private void setListeModePrise(ArrayList listeModePrise) {
+	private void setListeModePrise(ArrayList<ModePrise> listeModePrise) {
 		this.listeModePrise = listeModePrise;
 	}
 	/**

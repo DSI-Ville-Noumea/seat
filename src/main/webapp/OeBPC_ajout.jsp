@@ -31,17 +31,19 @@ if (document.formu.elements[nom] != null)
 					
 <TITLE>OeBPC_ajout.jsp</TITLE>
 </HEAD>
-<BODY BGPROPERTIES="FIXED" background="images/fond.jpg" class="sigp2-BODY" onload="return setfocus('<%=process.getFocus() %>')">
+<BODY background="images/fond.jpg" class="sigp2-BODY" onload="return setfocus('<%=process.getFocus() %>')">
 
 <TABLE border="0" width="580" style="text-align : center;" class="sigp2">
 <%@ include file="BanniereErreur.jsp" %>
     <TR>
       <TD style="text-align : center;">
-			<FORM name="formu" method="POST"><SPAN class="sigp2-titre"><INPUT type="submit" value="OK immat"
-			name="<%=process.getNOM_PB_OK_IMMAT() %>"
-			style="visibility : hidden;"><INPUT type="submit" value="OK invent"
-			name="<%=process.getNOM_PB_OK_INVENT() %>"
-			style="visibility : hidden;"></SPAN>
+			<FORM name="formu" method="POST"><SPAN class="sigp2-titre">
+<!-- 			<INPUT type="submit" value="OK immat" -->
+<%-- 			name="<%=process.getNOM_PB_OK_IMMAT() %>" --%>
+<!-- 			><INPUT type="submit" value="OK invent" -->
+<%-- 			name="<%=process.getNOM_PB_OK_INVENT() %>" --%>
+<!-- 			style="visibility : hidden;"> -->
+			</SPAN>
 		<TABLE border="0" class="sigp2">
 			<TR>
 				<TD class="sigp2-titre">Equipement</TD>
@@ -254,24 +256,8 @@ setInterval("chcolor()",1000);
 												<TD>Carburant</TD>
 								<TD colspan="2"><%=process.getVAL_ST_CARBU() %></TD></TR>
 											<TR>
-			<!-- 									<TD>Mode de prise</TD>
-												<TD class="sigp2-saisie" style="text-transform: uppercase"><TABLE border="0" class="sigp2">
-									<TR>
-										<TD><SELECT size="1"
-											name="<%//=process.getNOM_LB_MODEPRISE() %>"
-											class="sigp2-liste">
-											<%//= process.forComboHTML(process.getVAL_LB_MODEPRISE(),process.getVAL_LB_MODEPRISE_SELECT()) %>
-										</SELECT></TD>
-									</TR>
-								</TABLE>
-								</TD>
-												<TD><INPUT type="submit" value="OK"
-									name="<%//=process.getNOM_PB_OK_MODEPRISE() %>"
-									style="visibility : hidden;"></TD>
-												<TD></TD>
-								<TD></TD>
+	
 							</TR>
- -->
 										</TABLE>
 								</FIELDSET><br>
 									</TD>

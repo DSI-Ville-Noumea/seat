@@ -1,22 +1,25 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PM_Planning
  */
-public class PM_PlanningBroker extends nc.mairie.technique.BasicBroker {
+public class PM_PlanningBroker extends BasicBroker {
 /**
  * Constructeur PM_PlanningBroker.
  */
-public PM_PlanningBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PM_PlanningBroker(PM_Planning aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PM_PlanningMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PM_Planning definirMyMetier() {
 	return new PM_Planning() ;
 }
 /**
@@ -55,7 +58,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * Retourne un ArrayList d'objet métier : PM_Planning.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPM_Planning(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<PM_Planning> listerPM_Planning(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -67,21 +70,21 @@ public PM_Planning chercherPM_Planning(nc.mairie.technique.Transaction aTransact
 }
 
 // lister tous les entretiens  d'un petit matériel
-public java.util.ArrayList listerPM_EntretiensPm(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
+public ArrayList<PM_Planning> listerPM_EntretiensPm(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv='"+inv+"' order by "+tri+"");
 }
 
 // lister les entretiens d'un petit matériel à faire
-public java.util.ArrayList listerPM_EntretiensPmAFaire(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
+public ArrayList<PM_Planning> listerPM_EntretiensPmAFaire(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where dreal = '0001-01-01' and pminv='"+inv+"' order by "+tri+"");
 }
 
-public java.util.ArrayList listerPM_EntretiensPmFait(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
+public ArrayList<PM_Planning> listerPM_EntretiensPmFait(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where dreal <> '0001-01-01' and pminv='"+inv+"' order by "+tri+"");
 }
 
 // liste des encours
-public java.util.ArrayList listerPlanningEnCours(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception {
+public ArrayList<PM_Planning> listerPlanningEnCours(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception {
 	int codefiche = 0;
 	if(numfiche.equals("")){
 		codefiche = 0;
@@ -92,7 +95,7 @@ public java.util.ArrayList listerPlanningEnCours(nc.mairie.technique.Transaction
 }
 
 //liste des encours avec PFM VALIDE à T
-public java.util.ArrayList listerPlanningEnCoursAvecFPMValideDiffetentT(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception {
+public ArrayList<PM_Planning> listerPlanningEnCoursAvecFPMValideDiffetentT(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception {
 	int codefiche = 0;
 	if(numfiche.equals("")){
 		codefiche = 0;
@@ -103,7 +106,7 @@ public java.util.ArrayList listerPlanningEnCoursAvecFPMValideDiffetentT(nc.mairi
 }
 
 // liste des afaire
-public java.util.ArrayList listerPlanningAFaire(nc.mairie.technique.Transaction aTransaction,String dateFinPrev) throws Exception {
+public ArrayList<PM_Planning> listerPlanningAFaire(nc.mairie.technique.Transaction aTransaction,String dateFinPrev) throws Exception {
 	if((dateFinPrev==null)||(dateFinPrev.equals("01/01/0001"))){
 		dateFinPrev = Services.ajouteJours(Services.dateDuJour(),7);
 	}
@@ -111,14 +114,14 @@ public java.util.ArrayList listerPlanningAFaire(nc.mairie.technique.Transaction 
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where dreal = '0001-01-01' and dprev<='"+dateFinPrev+"' and dprev<>'0001-01-01' order by pmserie");
 }
 
-public java.util.ArrayList listerPlanningEnRetard(nc.mairie.technique.Transaction aTransaction,String date) throws Exception {
+public ArrayList<PM_Planning> listerPlanningEnRetard(nc.mairie.technique.Transaction aTransaction,String date) throws Exception {
 	if(Services.estUneDate(date)){
 		date = Services.formateDateInternationale(date);
 	}
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where  dreal = '0001-01-01' and dprev <> '0001-01-01' and dprev <'"+date+"'and numfiche is null order by pmserie");
 }
 
-public java.util.ArrayList chercherPM_Planning_FPM(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
+public ArrayList<PM_Planning> chercherPM_Planning_FPM(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numfiche = "+cle+"");
 }
 

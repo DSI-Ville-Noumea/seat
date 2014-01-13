@@ -1,10 +1,14 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Declarations
  */
-public class Declarations extends nc.mairie.technique.BasicMetier {
+public class Declarations extends BasicMetier {
 	public String codedec;
 	public String date;
 	public String matricule;
@@ -22,7 +26,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Declarations.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerDeclarations(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Declarations> listerDeclarations(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Declarations unDeclarations = new Declarations();
 	return unDeclarations.getMyDeclarationsBroker().listerDeclarations(aTransaction);
 }
@@ -31,7 +35,7 @@ public static java.util.ArrayList listerDeclarations(nc.mairie.technique.Transac
  * Retourne un ArrayList d'objet métier : Declarations.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerDeclarationsOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
+public static ArrayList<Declarations> listerDeclarationsOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	Declarations unDeclarations = new Declarations();
 	return unDeclarations.getMyDeclarationsBroker().listerDeclarationsOT(aTransaction,numot);
 }
@@ -40,7 +44,7 @@ public static java.util.ArrayList listerDeclarationsOT(nc.mairie.technique.Trans
  * Retourne un ArrayList d'objet métier : Declarations.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerDeclarationsEquip(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception{
+public static ArrayList<Declarations> listerDeclarationsEquip(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception{
 	Declarations unDeclarations = new Declarations();
 	return unDeclarations.getMyDeclarationsBroker().listerDeclarationsEquip(aTransaction,inv);
 }
@@ -615,7 +619,7 @@ public void setCodeservice(String newCodeservice) {
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new DeclarationsBroker(this); 
 }
 /**

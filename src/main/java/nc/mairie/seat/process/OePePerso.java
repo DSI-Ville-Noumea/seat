@@ -13,13 +13,17 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OePePerso extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1777140988602313827L;
 	public static final int STATUT_ACCES_OT = 5;
 	public static final int STATUT_RETOUROT = 4;
 	public static final int STATUT_RECHERCHEEQUIP = 3;
 	public static final int STATUT_MODIFIER = 2;
 	public static final int STATUT_AJOUTER = 1;
 	private String ACTION_SUPPRESSION = "Suppression d'un entretien pour un modèle.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
-	private ArrayList listePePerso = null;
+	private ArrayList<PePersoInfos> listePePerso = null;
 	private java.lang.String[] LB_PE;
 	private EquipementInfos equipementInfosCourant;
 	private PePersoInfos pePersoInfosCourant;
@@ -82,7 +86,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
  */
 private void initialiseListePe(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	 Si param = "" on liste tous les entretiens
-	java.util.ArrayList a = PePersoInfos.listerPePersoInfosEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),tri);
+	ArrayList<PePersoInfos> a = PePersoInfos.listerPePersoInfosEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),tri);
 	// Si param = afaire on liste les entretiens à faire
 	if ("afaire".equals(param)){
 		a = PePersoInfos.listerPePersoInfosAFaire(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),tri);
@@ -511,10 +515,10 @@ public java.lang.String getVAL_ST_TITRE_ACTION() {
 	public void setEquipementInfosCourant(EquipementInfos equipementInfosCourant) {
 		this.equipementInfosCourant = equipementInfosCourant;
 	}
-	public ArrayList getListePePerso() {
+	public ArrayList<PePersoInfos> getListePePerso() {
 		return listePePerso;
 	}
-	public void setListePePerso(ArrayList listePePerso) {
+	public void setListePePerso(ArrayList<PePersoInfos> listePePerso) {
 		this.listePePerso = listePePerso;
 	}
 	/**
@@ -719,7 +723,7 @@ public boolean performPB_TRI(javax.servlet.http.HttpServletRequest request) thro
 		param = "Tous";
 	}
 	if(getEquipementInfosCourant()!=null){
-		java.util.ArrayList a = PePersoInfos.listerPePersoInfosEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),tri);
+		ArrayList<PePersoInfos> a = PePersoInfos.listerPePersoInfosEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),tri);
 		// Si param = actifs on liste les équipements actifs
 		if ("afaire".equals(param)){
 			a = PePersoInfos.listerPePersoInfosAFaire(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),tri);
@@ -781,7 +785,7 @@ public java.lang.String getNOM_RB_AFFICHAGE_FAIT() {
 public java.lang.String getNOM_RB_AFFICHAGE_TOUS() {
 	return "NOM_RB_AFFICHAGE_TOUS";
 }
-public void trier(ArrayList a,String colonne) throws Exception{
+public void trier(ArrayList<PePersoInfos> a,String colonne) throws Exception{
 	String[] colonnes = {colonne};
 	String intervalle;
 	//ordre croissant

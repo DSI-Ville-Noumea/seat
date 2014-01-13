@@ -13,15 +13,18 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OePM_BE extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5813459386484995326L;
 	private java.lang.String[] LB_BE;
 	private String ACTION_SUPPRESSION = "Suppression";
-	private String ACTION_MODIFICATION = "Modification";
 	private String ACTION_CREATION = "Création";
 	private String focus = null;
 	private String codeBE;
 	private PMatInfos pMatInfosCourant;
 	private PM_BE pMBeCourant;
-	private ArrayList listeBE;
+	private ArrayList<ENGJU> listeBE;
 	public boolean isListeVide;
 	private FPM pMatFicheCourant;
 	public boolean isAction;
@@ -70,7 +73,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		setSuppression(true);
 		setAction(true);
 		if(getPM_BECourant().getExerci()!=null){
-			String code = getPM_BECourant().getCodcol().trim()+getPM_BECourant().getExerci().trim()+getPM_BECourant().getCodbud().trim()+getPM_BECourant().getCodbud().trim()+getPM_BECourant().getNoengj().trim();
+			//String code = getPM_BECourant().getCodcol().trim()+getPM_BECourant().getExerci().trim()+getPM_BECourant().getCodbud().trim()+getPM_BECourant().getCodbud().trim()+getPM_BECourant().getNoengj().trim();
 			addZone(getNOM_ST_CODEBE(),getPM_BECourant().getNoengj());
 			// on récupère l'enju
 			ENGJU unEnju = ENGJU.chercherpremierENGJU(getTransaction(),getPM_BECourant().getExerci(),getPM_BECourant().getNoengj());
@@ -566,13 +569,13 @@ public String getDefaultFocus() {
 		this.fournisseurCourant = fournisseurCourant;
 	}
 	*/
-	public ArrayList getListeBE() {
+	public ArrayList<ENGJU> getListeBE() {
 		if(listeBE==null){
-			listeBE = new ArrayList();
+			listeBE = new ArrayList<ENGJU>();
 		}
 		return listeBE;
 	}
-	public void setListeBE(ArrayList listeBE) {
+	public void setListeBE(ArrayList<ENGJU> listeBE) {
 		this.listeBE = listeBE;
 	}
 	public boolean isListeVide() {

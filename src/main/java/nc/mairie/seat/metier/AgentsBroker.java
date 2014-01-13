@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Agents
  */
-public class AgentsBroker extends nc.mairie.technique.BasicBroker {
+public class AgentsBroker extends BasicBroker {
 /**
  * Constructeur AgentsBroker.
  */
-public AgentsBroker(nc.mairie.technique.BasicMetier aMetier) {
+public AgentsBroker(Agents aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.AgentsMetier
  */
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Agents definirMyMetier() {
 	return new Agents() ;
 }
 /**
@@ -74,7 +77,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * Retourne un ArrayList d'objet métier : Agents.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAgents(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Agents> listerAgents(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**
@@ -88,7 +91,7 @@ public Agents chercherAgents(nc.mairie.technique.Transaction aTransaction, Strin
  * Retourne un Agents.
  * @return Agents
  */
-public java.util.ArrayList chercherAgentsNom(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
+public ArrayList<Agents> listerAgentsNom(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	String dateDuJour = Services.formateDateInternationale(Services.dateDuJour());
 	dateDuJour = Services.convertitDate(dateDuJour,"yyyy-mm-dd","yyyymmdd");
 	return executeSelectListe(aTransaction,"select * from "+getTable()+",mairie.spmtsr where mairie.spmtsr.nomatr="+getTable()+".nomatr and upper(nom) like '"+param+"%' and mairie.spmtsr.datdeb<="+dateDuJour+" and (mairie.spmtsr.datfin=0 or mairie.spmtsr.datfin>="+dateDuJour+") order by nom with ur");

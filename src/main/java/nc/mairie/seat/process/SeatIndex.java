@@ -10,8 +10,8 @@ import nc.mairie.technique.*;
  * Date de création : (24/08/07 07:53:07)
  * @author : Générateur de process
 */
+@SuppressWarnings("serial")
 public class SeatIndex extends nc.mairie.technique.BasicProcess {
-	private String focus = null;
 	public String dpt = "toto";
 /**
  * Initialisation des zones à afficher dans la JSP
@@ -24,10 +24,10 @@ public class SeatIndex extends nc.mairie.technique.BasicProcess {
 @Override
 public void initialiseZones(javax.servlet.http.HttpServletRequest request) throws Exception{
 	UserAppli aUser = (UserAppli)nc.mairie.technique.VariableGlobale.recuperer(request,ListeVariableGlobale.GLOBAL_USER_APPLI);
-	java.util.Hashtable h = nc.mairie.technique.MairieLDAP.chercherUserLDAPAttributs(aUser.getUserName());
+	java.util.Hashtable<Object, Object> h = nc.mairie.technique.MairieLDAP.chercherUserLDAPAttributs(aUser.getUserName());
 	dpt = (String)h.get("department");
 	
-	ArrayList listService = Service.chercherListServiceAccro(getTransaction(),dpt);
+	ArrayList<Service> listService = Service.chercherListServiceAccro(getTransaction(),dpt);
 	if(getTransaction().isErreur()){
 		return;
 	}

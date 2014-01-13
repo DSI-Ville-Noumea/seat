@@ -23,6 +23,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeFPM_Modification extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3189721232717479317L;
 	public static final int STATUT_DECLARATIONS = 7;
 	public static final int STATUT_CREATIONFPM = 6;
 	public static final int STATUT_FRE = 5;
@@ -39,10 +43,10 @@ public class OeFPM_Modification extends nc.mairie.technique.BasicProcess {
 	private PMatInfos pMatInfosCourant;
 	private FPM fpmCourant;
 	private FPMComplete fpmCompleteCourant;
-	private ArrayList listInterventions;
-	private ArrayList listIntervenants;
-	private ArrayList listBe;
-	private ArrayList listPieces;
+	private ArrayList<PM_PePerso> listInterventions;
+	private ArrayList<PM_ATM> listIntervenants;
+	private ArrayList<PM_BE> listBe;
+	private ArrayList<PiecesFpmInfos> listPieces;
 	private String newDSortie;
 	private String newDEntree;
 	private String newCommentaire;
@@ -95,7 +99,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		setFpmCourant(unFPM);
 		if(getFpmCourant()!=null){
 			if(getFpmCourant().getNumfiche()!=null){
-				FPM aFPM = FPM.chercherFPM(getTransaction(),getFpmCourant().getNumfiche());
+				FPM.chercherFPM(getTransaction(),getFpmCourant().getNumfiche());
 				if (getTransaction().isErreur()){
 					getTransaction().traiterErreur();
 					addZone(getNOM_ST_TITRE_ACTION(),ACTION_CREATION);
@@ -147,7 +151,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	// controle pour initialisation des champs
 	if (getFpmCourant()!=null){
 		if(getFpmCourant().getNumfiche()!=null){
-			FPM unFPM = FPM.chercherFPM(getTransaction(),getFpmCourant().getNumfiche());
+			FPM.chercherFPM(getTransaction(),getFpmCourant().getNumfiche());
 			if (getTransaction().isErreur()){
 				getTransaction().traiterErreur();
 			}else{
@@ -247,7 +251,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 public boolean initialiseListPieces(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	 on initialise la liste des pièces sorties du stock pour l'OT
 	if(getFpmCourant()!=null){
-		ArrayList listPiecesInfos = PiecesFpmInfos.chercherFpmPiecesInfosFpm(getTransaction(),getFpmCourant().getNumfiche());
+		ArrayList<PiecesFpmInfos> listPiecesInfos = PiecesFpmInfos.chercherFpmPiecesInfosFpm(getTransaction(),getFpmCourant().getNumfiche());
 		if(getTransaction().isErreur()){
 			return false;
 		}
@@ -289,7 +293,7 @@ public boolean initialiseListInterventions(javax.servlet.http.HttpServletRequest
 	// on initialise la liste des interventions réalisées pendant FPM
 	if(getFpmCourant()!=null){
 		//ArrayList listInterventions= Pm_PePersoInfos.chercherPmPePersoInfosFPM(getTransaction(),getFpmCourant().getNumfiche());
-		ArrayList listInterventions= PM_PePerso.chercherPmPePersoFiche(getTransaction(),getFpmCourant().getNumfiche());
+		ArrayList<PM_PePerso> listInterventions= PM_PePerso.chercherPmPePersoFiche(getTransaction(),getFpmCourant().getNumfiche());
 		if(getTransaction().isErreur()){
 			return false;
 		}
@@ -325,7 +329,7 @@ return true;
 }
 
 public boolean initialiseListBe(javax.servlet.http.HttpServletRequest request) throws Exception{
-	ArrayList listBe = PM_BE.listerPM_BE_FPM(getTransaction(),getFpmCourant().getNumfiche());
+	ArrayList<PM_BE> listBe = PM_BE.listerPM_BE_FPM(getTransaction(),getFpmCourant().getNumfiche());
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -385,7 +389,7 @@ public int montantBE(javax.servlet.http.HttpServletRequest request,ENGJU unEnju)
 }
 */
 public boolean initialiseListIntervenants(javax.servlet.http.HttpServletRequest request) throws Exception{
-	ArrayList listMeca = PM_ATM.listerPM_ATM_FPM(getTransaction(),getFpmCourant().getNumfiche());
+	ArrayList<PM_ATM> listMeca = PM_ATM.listerPM_ATM_FPM(getTransaction(),getFpmCourant().getNumfiche());
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -1100,31 +1104,31 @@ public java.lang.String getVAL_LB_PIECES_SELECT() {
 	public void setFpmCourant(FPM fpmCourant) {
 		this.fpmCourant = fpmCourant;
 	}
-	public ArrayList getListIntervenants() {
+	public ArrayList<PM_ATM> getListIntervenants() {
 		if(listIntervenants==null){
-			listIntervenants = new ArrayList();
+			listIntervenants = new ArrayList<PM_ATM>();
 		}
 		return listIntervenants;
 	}
-	public void setListIntervenants(ArrayList listIntervenants) {
+	public void setListIntervenants(ArrayList<PM_ATM> listIntervenants) {
 		this.listIntervenants = listIntervenants;
 	}
-	public ArrayList getListInterventions() {
+	public ArrayList<PM_PePerso> getListInterventions() {
 		if(listInterventions==null){
-			listInterventions = new ArrayList();
+			listInterventions = new ArrayList<PM_PePerso>();
 		}
 		return listInterventions;
 	}
-	public void setListInterventions(ArrayList listInterventions) {
+	public void setListInterventions(ArrayList<PM_PePerso> listInterventions) {
 		this.listInterventions = listInterventions;
 	}
-	public ArrayList getListPieces() {
+	public ArrayList<PiecesFpmInfos> getListPieces() {
 		if(listPieces==null){
-			listPieces = new ArrayList();
+			listPieces = new ArrayList<PiecesFpmInfos>();
 		}
 		return listPieces;
 	}
-	public void setListPieces(ArrayList listPieces) {
+	public void setListPieces(ArrayList<PiecesFpmInfos> listPieces) {
 		this.listPieces = listPieces;
 	}
 	public FPMComplete getFpmCompleteCourant() {
@@ -1309,10 +1313,10 @@ public java.lang.String [] getVAL_LB_FRE() {
 public java.lang.String getVAL_LB_FRE_SELECT() {
 	return getZone(getNOM_LB_FRE_SELECT());
 }
-	public ArrayList getListBe() {
+	public ArrayList<PM_BE> getListBe() {
 		return listBe;
 	}
-	public void setListBe(ArrayList listBe) {
+	public void setListBe(ArrayList<PM_BE> listBe) {
 		this.listBe = listBe;
 	}
 /**

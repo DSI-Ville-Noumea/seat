@@ -1,6 +1,7 @@
 package nc.mairie.seat.process;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import nc.mairie.seat.metier.FPM;
 import nc.mairie.seat.metier.PMatInfos;
@@ -11,11 +12,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeFPM_Recherche extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7269358086797437253L;
 	private java.lang.String[] LB_FPM;
 	private java.lang.String[] LB_PMATERIEL;
-	private ArrayList listePMatInfos;
+	private ArrayList<PMatInfos> listePMatInfos;
 	private FPM fpmCourant;
-	private ArrayList listeFPM;
+	private ArrayList<FPM> listeFPM;
 	private PMatInfos pMatInfosCourant;
 	private String focus = null;
 	private boolean first = true;
@@ -40,12 +45,12 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	String param = getZone(getNOM_EF_DESIGNATION());
 	//initialisation des listes
 	if (null!=(getPMatInfosCourant())){
-		java.util.ArrayList listPM = PMatInfos.chercherListPMatInfosTous(getTransaction(),param);
+		ArrayList<PMatInfos> listPM = PMatInfos.chercherListPMatInfosTous(getTransaction(),param);
 		if (null == listPM){
 			System.out.println("Aucun petit matériel enregistré dans la base.");
 		}
 		setListePMatInfos(listPM);
-		java.util.ArrayList listFPM = FPM.listerFpmPmat(getTransaction(),getPMatInfosCourant().getPminv());
+		ArrayList<FPM> listFPM = FPM.listerFpmPmat(getTransaction(),getPMatInfosCourant().getPminv());
 		if (null == listFPM){
 			System.out.println("Aucune fiche de petit matériel enregistrée dans la base.");
 		}
@@ -55,13 +60,13 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	first = false;
 }
 
-public void initialiseFPM(javax.servlet.http.HttpServletRequest request,ArrayList a) throws Exception{
+public void initialiseFPM(javax.servlet.http.HttpServletRequest request,ArrayList<FPM> a) throws Exception{
 	setListeFPM(a);
 //	Si au moins un FPM
 	if (a.size() !=0 ) {
 		int tailles [] = {12};
 		FormateListe aFormat = new FormateListe(tailles);
-		for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
+		for (ListIterator<FPM> list = a.listIterator(); list.hasNext(); ) {
 			FPM unFPM = (FPM)list.next();
 			String ligne [] = { unFPM.getNumfiche()};
 			aFormat.ajouteLigne(ligne);
@@ -170,7 +175,7 @@ public java.lang.String getNOM_PB_OK() {
  */
 public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String param = getZone(getNOM_EF_DESIGNATION());
-	ArrayList resultatPMatInfos = PMatInfos.chercherListPMatInfosTous(getTransaction(),param);
+	ArrayList<PMatInfos> resultatPMatInfos = PMatInfos.chercherListPMatInfosTous(getTransaction(),param);
 	// on remplit la liste des petits matériels
 	setListePMatInfos(resultatPMatInfos);
 	if(resultatPMatInfos.size()>0){
@@ -216,7 +221,7 @@ public boolean performPB_OK_EQUIPEMENT(javax.servlet.http.HttpServletRequest req
 	}
 	setPMatInfosCourant(monPMatInfos);
 	//ArrayList resultat = Planning.chercherPlanningEquip(getTransaction(),equipementInfosCourant.getNumeroinventaire());
-	ArrayList resultat = FPM.listerFpmPmat(getTransaction(),monPMatInfos.getPminv());
+	ArrayList<FPM> resultat = FPM.listerFpmPmat(getTransaction(),monPMatInfos.getPminv());
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -444,25 +449,25 @@ public String getDefaultFocus() {
 	/**
 	 * @return Renvoie listeEquipementInfos.
 	 */
-	public ArrayList getListePMatInfos() {
+	public ArrayList<PMatInfos> getListePMatInfos() {
 		return listePMatInfos;
 	}
 	/**
 	 * @param listeEquipementInfos listeEquipementInfos à définir.
 	 */
-	public void setListePMatInfos(ArrayList listePMatInfos) {
+	public void setListePMatInfos(ArrayList<PMatInfos> listePMatInfos) {
 		this.listePMatInfos = listePMatInfos;
 	}
 	/**
 	 * @return Renvoie listeBPC.
 	 */
-	public ArrayList getListeFPM() {
+	public ArrayList<FPM> getListeFPM() {
 		return listeFPM;
 	}
 	/**
 	 * @param listeBPC listeBPC à définir.
 	 */
-	public void setListeFPM(ArrayList listeFPM) {
+	public void setListeFPM(ArrayList<FPM> listeFPM) {
 		this.listeFPM = listeFPM;
 	}
 }

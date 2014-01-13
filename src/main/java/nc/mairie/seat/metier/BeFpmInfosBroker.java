@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier BeFpmInfos
  */
-public class BeFpmInfosBroker extends nc.mairie.technique.BasicBroker {
+public class BeFpmInfosBroker extends BasicBroker {
 /**
  * Constructeur BeFpmInfosBroker.
  */
-public BeFpmInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public BeFpmInfosBroker(BeFpmInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.BeFpmInfosMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected BeFpmInfos definirMyMetier() {
 	return new BeFpmInfos() ;
 }
 /**
@@ -53,7 +56,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * Retourne un ArrayList d'objet métier : BeFpmInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerBeFpmInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<BeFpmInfos> listerBeFpmInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -65,7 +68,7 @@ public BeFpmInfos chercherBeFpmInfos(nc.mairie.technique.Transaction aTransactio
 }
 
 // liste pour la numfiche passée en param
-public java.util.ArrayList listerBeFpmInfosFpm(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception {
+public ArrayList<BeFpmInfos> listerBeFpmInfosFpm(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numfiche="+numfiche);
 }
 

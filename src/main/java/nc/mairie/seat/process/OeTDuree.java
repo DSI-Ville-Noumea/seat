@@ -10,14 +10,17 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeTDuree extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7231005473917904517L;
 	private java.lang.String[] LB_TDUREE;
 	private String ACTION_SUPPRESSION = "Suppression d'un type de durée.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification d'un type de durée.";
 	private String ACTION_CREATION = "Création d'un type de durée.";
-	private ArrayList listeDuree = null;
+	private ArrayList<TDuree> listeDuree = null;
 	private TDuree tdureeCourant;
 	private String focus = null;
-	private String isAction = "";
 	public int isVide = 0;
 /**
  * Initialisation des zones à afficher dans la JSP
@@ -33,7 +36,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	//	Si liste des marques est vide
 	if (getLB_TDUREE() == LBVide) {
 		
-		java.util.ArrayList a = TDuree.listerTDuree(getTransaction());
+		ArrayList<TDuree> a = TDuree.listerTDuree(getTransaction());
 		setListeDuree(a);
 		
 		if (a.size()>0){
@@ -43,8 +46,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
 			String [] padding = {"G"};
 			
-			FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-			String [] l = f.getListeFormatee();
 			setLB_TDUREE(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 		}else{
 			setLB_TDUREE(null);
@@ -54,7 +55,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	 on sélectionne l'élément en cours
 	if(getTdureeCourant()!=null){
 		if(getTdureeCourant().getCodetd()!=null){
-			int position = -1;
 			addZone(getNOM_LB_TDUREE_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListeDuree().size(); i++) {
 				TDuree unTduree = (TDuree)getListeDuree().get(i);
@@ -66,7 +66,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		}
 	}
 	//Si on appuie sur entrée 
-	String test = getZone(getVAL_ST_TITRE_ACTION());
+	//String test = getZone(getVAL_ST_TITRE_ACTION());
 
 }
 /**
@@ -89,7 +89,6 @@ public boolean performPB_AJOUTER(javax.servlet.http.HttpServletRequest request) 
 
 	//On nomme l'action
 	addZone(getNOM_ST_TITRE_ACTION(),ACTION_CREATION);
-	isAction = "creation";
 	//On vide la zone de saisie
 	addZone(getNOM_EF_LIB_TDUREE(),"");
 
@@ -138,7 +137,6 @@ public boolean performPB_MODIFIER(javax.servlet.http.HttpServletRequest request)
 	
 	//On nomme l'action
 	addZone(getNOM_ST_TITRE_ACTION(),ACTION_MODIFICATION);
-	isAction = "modification";
 	//Récup du la marque courante
 	TDuree tDuree = (TDuree)getListeDuree().get(numligne);
 	setTdureeCourant(tDuree);
@@ -200,7 +198,6 @@ public boolean performPB_SUPPRIMER(javax.servlet.http.HttpServletRequest request
 	
 	//On nomme l'action
 	addZone(getNOM_ST_TITRE_ACTION(),ACTION_SUPPRESSION);
-	isAction = "suppression";
 	//Récup du tduree courante
 	TDuree monTduree = (TDuree)getListeDuree().get(numligne);
 	setTdureeCourant(monTduree);
@@ -451,13 +448,13 @@ public java.lang.String getVAL_LB_TDUREE_SELECT() {
 	/**
 	 * @return Renvoie listeMarque.
 	 */
-	private ArrayList getListeDuree() {
+	private ArrayList<TDuree> getListeDuree() {
 		return listeDuree;
 	}
 	/**
 	 * @param listeMarque listeMarque à définir.
 	 */
-	private void setListeDuree(ArrayList listeDuree) {
+	private void setListeDuree(ArrayList<TDuree> listeDuree) {
 		this.listeDuree = listeDuree;
 	}
 	/**

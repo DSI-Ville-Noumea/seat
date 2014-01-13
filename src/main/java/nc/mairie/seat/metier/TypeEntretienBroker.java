@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier TypeEntretien
  */
-public class TypeEntretienBroker extends nc.mairie.technique.BasicBroker {
+public class TypeEntretienBroker extends BasicBroker {
 /**
  * Constructeur TypeEntretienBroker.
  */
-public TypeEntretienBroker(nc.mairie.technique.BasicMetier aMetier) {
+public TypeEntretienBroker(TypeEntretien aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.TypeEntretienMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected TypeEntretien definirMyMetier() {
 	return new TypeEntretien() ;
 }
 /**
@@ -66,7 +69,7 @@ public boolean supprimerTypeEntretien(nc.mairie.technique.Transaction aTransacti
  * Retourne un ArrayList d'objet métier : TypeEntretien.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerTypeEntretien(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<TypeEntretien> listerTypeEntretien(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**

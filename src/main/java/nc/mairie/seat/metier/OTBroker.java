@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier OT
  */
-public class OTBroker extends nc.mairie.technique.BasicBroker {
+public class OTBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -30,7 +33,7 @@ public boolean supprimerOT(nc.mairie.technique.Transaction aTransaction) throws 
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerOT(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<OT> listerOT(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" ot, SEAT.f_equipement equipement where equipement.NUMEROINVENTAIRE = ot.NUMINV");
 }
 
@@ -38,7 +41,7 @@ public java.util.ArrayList listerOT(nc.mairie.technique.Transaction aTransaction
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerOTEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
+public ArrayList<OT> listerOTEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numinv='"+inv+"'");
 }
 
@@ -47,21 +50,21 @@ public java.util.ArrayList listerOTEquip(nc.mairie.technique.Transaction aTransa
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerOTValide(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<OT> listerOTValide(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" ot, SEAT.f_equipement equipement where equipement.NUMEROINVENTAIRE = ot.NUMINV and valide='T'");
 }
 /**
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerOTAValider(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<OT> listerOTAValider(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='F'");
 }
 /**
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerOTEncours(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<OT> listerOTEncours(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" ot, SEAT.f_equipement equipement where equipement.NUMEROINVENTAIRE = ot.NUMINV and valide='F' ");//and numeroot in(select codeot from SEAT.f_pe_perso)");                                      
 }
 
@@ -69,14 +72,14 @@ public java.util.ArrayList listerOTEncours(nc.mairie.technique.Transaction aTran
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerOTDeclarationsEncours(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<OT> listerOTDeclarationsEncours(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='F' and numeroot in(select codeot from SEAT.f_declarations)");                                      
 }
 /**
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerOTDeclarationsValide(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<OT> listerOTDeclarationsValide(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='T' and numeroot in(select codeot from SEAT.f_declarations)");                                      
 }
 
@@ -84,7 +87,7 @@ public java.util.ArrayList listerOTDeclarationsValide(nc.mairie.technique.Transa
  * Retourne un ArrayList d'objet métier : OT.
  * @return java.util.ArrayList
  *//*
-public java.util.ArrayList listerOTEquip(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<OT> listerOTEquip(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select distinct(numeroot),numeroinventaire,numeroimmatriculation,dateentree,datesortie,compteur,valide,commentaire from "+getTable()+", f_equipement, f_pe_perso where f_equipement.numeroinventaire = f_pe_perso.codeequip and f_pe_perso.codeot = f_ot.numeroot");
 }*/
 
@@ -117,14 +120,14 @@ public boolean existeCarburant(nc.mairie.technique.Transaction aTransaction, Str
 /**
  * Constructeur OTBroker.
  */
-public OTBroker(nc.mairie.technique.BasicMetier aMetier) {
+public OTBroker(OT aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.OTMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected OT definirMyMetier() {
 	return new OT() ;
 }
 /**

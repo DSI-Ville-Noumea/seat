@@ -3,21 +3,23 @@ package nc.mairie.seat.metier;
 import java.util.ArrayList;
 
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Pieces
  */
-public class PiecesBroker extends nc.mairie.technique.BasicBroker {
+public class PiecesBroker extends BasicBroker {
 /**
  * Constructeur PiecesBroker.
  */
-public PiecesBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PiecesBroker(Pieces aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PiecesMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Pieces definirMyMetier() {
 	return new Pieces() ;
 }
 /**
@@ -81,7 +83,7 @@ public boolean supprimerPieces(nc.mairie.technique.Transaction aTransaction) thr
  * Retourne un ArrayList d'objet métier : Pieces.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPieces(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Pieces> listerPieces(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by designationpiece");
 }
 /**
@@ -96,7 +98,7 @@ public Pieces chercherPieces(nc.mairie.technique.Transaction aTransaction, Strin
  * Retourne un Pieces.
  * @return Pieces
  */
-public ArrayList chercherPiecesLib(nc.mairie.technique.Transaction aTransaction, String lib) throws Exception {
+public ArrayList<Pieces> chercherPiecesLib(nc.mairie.technique.Transaction aTransaction, String lib) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where upper(designationpiece) like '"+lib.toUpperCase()+"%' order by designationpiece");
 }
 

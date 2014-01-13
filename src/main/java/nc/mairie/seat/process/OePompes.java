@@ -10,11 +10,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OePompes extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6873261473509401526L;
 	private java.lang.String[] LB_POMPES;
 	private String ACTION_SUPPRESSION = "Suppression d'une pompe.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification d'une pompe.";
 	private String ACTION_CREATION = "Création d'une pompe.";
-	private ArrayList listePompes = null;
+	private ArrayList<Pompes> listePompes = null;
 	private Pompes pompeCourante;
 	private boolean first;
 	public int vide;
@@ -33,7 +37,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	Si liste des pneus est vide
 	if (getLB_POMPES() == LBVide) {
 		
-		java.util.ArrayList a = Pompes.listerPompes(getTransaction());
+		ArrayList<Pompes> a = Pompes.listerPompes(getTransaction());
 		setListePompes(a);
 		if (a.size()!=0){
 			//les élèments de la liste seront le libelle de la pompe et le commentaire pour pouvoir récupérer le dernier élément et les dimensions des pneus.
@@ -42,8 +46,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
 			String [] padding = {"G","G"};
 			
-			FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-			String [] l = f.getListeFormatee();
 			setLB_POMPES(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 			
 		}else{
@@ -54,7 +56,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	 on sélectionne l'élément en cours
 	if(getPompeCourante()!=null){
 		if(getPompeCourante().getNum_pompe()!=null){
-			int position = -1;
 			addZone(getNOM_LB_POMPES_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListePompes().size(); i++) {
 				Pompes unePompe = (Pompes)getListePompes().get(i);
@@ -300,7 +301,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 
 		//Création
 		getPompeCourante().creerPompes(getTransaction(),getPompeCourante().getLibelle_pompe());
-		String info = getTransaction().getMessageErreur();
 		if (getTransaction().isErreur())
 			return false;		
 	}
@@ -521,10 +521,10 @@ public boolean isFirst() {
 public void setFirst(boolean first) {
 	this.first = first;
 }
-public ArrayList getListePompes() {
+public ArrayList<Pompes> getListePompes() {
 	return listePompes;
 }
-public void setListePompes(ArrayList listePompes) {
+public void setListePompes(ArrayList<Pompes> listePompes) {
 	this.listePompes = listePompes;
 }
 public Pompes getPompeCourante() {

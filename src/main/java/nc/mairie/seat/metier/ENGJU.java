@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
 import java.util.ArrayList;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier ENGJU
  */
-public class ENGJU extends nc.mairie.technique.BasicMetier {
+public class ENGJU extends BasicMetier {
 	public String exerci;
 	public String idetbs;
 	public String enscom;
@@ -105,7 +108,7 @@ public class ENGJU extends nc.mairie.technique.BasicMetier {
 	/**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 	 */
-	protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+	protected BasicBroker definirMyBroker() { 
 		return new ENGJUBroker(this); 
 	}
 	/**
@@ -127,7 +130,7 @@ public class ENGJU extends nc.mairie.technique.BasicMetier {
 	 * Retourne un ArrayList d'objet métier : ENGJU.
 	 * @return java.util.ArrayList
 	 */
-	public static java.util.ArrayList listerENGJUGroupByCdepNoengjIdetbs(nc.mairie.technique.Transaction aTransaction, String numOt, String cddep) throws Exception{
+	public static ArrayList<ENGJU> listerENGJUGroupByCdepNoengjIdetbs(nc.mairie.technique.Transaction aTransaction, String numOt, String cddep) throws Exception{
 		ENGJU unENGJU = new ENGJU();
 		return unENGJU.getMyENGJUBroker().listerENGJUGroupByCdepNoengjIdetbs(aTransaction,numOt,cddep);
 	}
@@ -135,7 +138,7 @@ public class ENGJU extends nc.mairie.technique.BasicMetier {
 	 * Retourne un ArrayList d'objet métier : ENGJU.
 	 * @return java.util.ArrayList
 	 */
-	public static java.util.ArrayList listerENGJU(nc.mairie.technique.Transaction aTransaction,String exerci, String noengj) throws Exception{
+	public static ArrayList<ENGJU> listerENGJU(nc.mairie.technique.Transaction aTransaction,String exerci, String noengj) throws Exception{
 		ENGJU unENGJU = new ENGJU();
 		return unENGJU.getMyENGJUBroker().listerENGJU(aTransaction,exerci,noengj);
 	}
@@ -169,7 +172,7 @@ public class ENGJU extends nc.mairie.technique.BasicMetier {
 	 * @return java.util.ArrayList
 	 */
 	//NOT USED 20100121
-	public static java.util.ArrayList listerFournisseursNom(nc.mairie.technique.Transaction aTransaction,String param) throws Exception{
+	public static ArrayList<ENGJU> listerFournisseursNom(nc.mairie.technique.Transaction aTransaction,String param) throws Exception{
 		ENGJU unENGJU = new ENGJU();
 		return unENGJU.getMyENGJUBroker().listerFournisseursNom(aTransaction,param);
 	}
@@ -354,7 +357,7 @@ public class ENGJU extends nc.mairie.technique.BasicMetier {
 		//	 recherche des lignes du bon d'engagement
 		//System.out.println("EXERCI="+unENGJU.getExerci());
 		//System.out.println("Noengj="+unENGJU.getNoengj());
-		ArrayList listLeju = ENGJU.listerENGJU(aTransaction,unENGJU.getExerci(),unENGJU.getNoengj());
+		ArrayList<ENGJU> listLeju = ENGJU.listerENGJU(aTransaction,unENGJU.getExerci(),unENGJU.getNoengj());
 		if(aTransaction.isErreur()){
 			// traite l'erreur et retourne 0
 			aTransaction.traiterErreur();
@@ -385,7 +388,7 @@ public class ENGJU extends nc.mairie.technique.BasicMetier {
 		
 		int total = 0;
 		//	 recherche des lignes du bon d'engagement
-		ArrayList listLeju = ENGJU.listerENGJU(aTransaction,unENGJU.getExerci(),unENGJU.getNoengj());
+		ArrayList<ENGJU> listLeju = ENGJU.listerENGJU(aTransaction,unENGJU.getExerci(),unENGJU.getNoengj());
 		if(aTransaction.isErreur()){
 			// traite l'erreur et retourne 0
 			aTransaction.traiterErreur();
@@ -413,7 +416,7 @@ public class ENGJU extends nc.mairie.technique.BasicMetier {
 		
 		int total = 0;
 		//	 recherche des lignes du bon d'engagement
-		ArrayList listLeju = ENGJU.listerENGJU(aTransaction,unENGJU.getExerci(),unENGJU.getNoengj());
+		ArrayList<ENGJU> listLeju = ENGJU.listerENGJU(aTransaction,unENGJU.getExerci(),unENGJU.getNoengj());
 		if(aTransaction.isErreur()){
 			// traite l'erreur et retourne 0
 			aTransaction.traiterErreur();

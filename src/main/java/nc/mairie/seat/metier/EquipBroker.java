@@ -1,21 +1,23 @@
 package nc.mairie.seat.metier;
 
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Equip
  */
-public class EquipBroker extends nc.mairie.technique.BasicBroker {
+public class EquipBroker extends BasicBroker {
 /**
  * Constructeur EquipBroker.
  */
-public EquipBroker(nc.mairie.technique.BasicMetier aMetier) {
+public EquipBroker(Equip aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.EquipMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Equip definirMyMetier() {
 	return new Equip() ;
 }
 /**

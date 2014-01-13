@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier PeBaseInfos
  */
-public class PeBaseInfos extends nc.mairie.technique.BasicMetier {
+public class PeBaseInfos extends BasicMetier {
 	public String codeentretien;
 	public String libelleentretien;
 	public String intervalle;
@@ -29,7 +34,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : PeBaseInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPeBaseInfos(nc.mairie.technique.Transaction aTransaction,String modele) throws Exception{
+public static ArrayList<PeBaseInfos> listerPeBaseInfos(nc.mairie.technique.Transaction aTransaction,String modele) throws Exception{
 	PeBaseInfos unPeBaseInfos = new PeBaseInfos();
 	return unPeBaseInfos.getMyPeBaseInfosBroker().listerPeBaseInfos(aTransaction,modele);
 }
@@ -234,7 +239,7 @@ public void setDatedesactivation(String newDatedesactivation) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PeBaseInfosBroker(this); 
 }
 /**

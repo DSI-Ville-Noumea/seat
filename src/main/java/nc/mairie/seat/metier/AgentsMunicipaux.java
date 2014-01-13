@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+
+import java.util.ArrayList;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier AgentsMunicipaux
  */
-public class AgentsMunicipaux extends nc.mairie.technique.BasicMetier {
+public class AgentsMunicipaux extends BasicMetier implements AgentInterface {
 	public String nomatr;
 	public String nom;
 	public String prenom;
@@ -91,7 +96,7 @@ public void setDatfin(String newDatfin) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new AgentsMunicipauxBroker(this); 
 }
 /**
@@ -114,7 +119,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : AgentsMunicipaux.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerAgentsMunicipaux(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<AgentsMunicipaux> listerAgentsMunicipaux(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	AgentsMunicipaux unAgentsMunicipaux = new AgentsMunicipaux();
 	return unAgentsMunicipaux.getMyAgentsMunicipauxBroker().listerAgentsMunicipaux(aTransaction);
 }
@@ -132,12 +137,12 @@ public static AgentsMunicipaux chercherAgentsMunicipauxService(nc.mairie.techniq
 	return unAgentsMunicipaux.getMyAgentsMunicipauxBroker().chercherAgentsMunicipauxService(aTransaction, code,servi);
 }
 
-public static java.util.ArrayList listerAgentsMunicipauxNom(nc.mairie.technique.Transaction aTransaction,String nom) throws Exception{
+public static ArrayList<AgentsMunicipaux> listerAgentsMunicipauxNom(nc.mairie.technique.Transaction aTransaction,String nom) throws Exception{
 	AgentsMunicipaux unAgentsMunicipaux = new AgentsMunicipaux();
 	return unAgentsMunicipaux.getMyAgentsMunicipauxBroker().listerAgentsMunicipauxNom(aTransaction,nom);
 }
 
-public static java.util.ArrayList listerAgentsMunicipauxNomServi(nc.mairie.technique.Transaction aTransaction,String nom,String servi) throws Exception{
+public static ArrayList<AgentsMunicipaux> listerAgentsMunicipauxNomServi(nc.mairie.technique.Transaction aTransaction,String nom,String servi) throws Exception{
 	if(servi.length()>3){
 		servi = servi.substring(0,3);
 	}
@@ -145,7 +150,7 @@ public static java.util.ArrayList listerAgentsMunicipauxNomServi(nc.mairie.techn
 	return unAgentsMunicipaux.getMyAgentsMunicipauxBroker().listerAgentsMunicipauxNomServi(aTransaction,nom,servi);
 }
 
-public static java.util.ArrayList listerAgentsMunicipauxServi(nc.mairie.technique.Transaction aTransaction,String servi) throws Exception{
+public static ArrayList<AgentsMunicipaux> listerAgentsMunicipauxServi(nc.mairie.technique.Transaction aTransaction,String servi) throws Exception{
 	if(servi.length()>3){
 		servi = servi.substring(0,3);
 	}

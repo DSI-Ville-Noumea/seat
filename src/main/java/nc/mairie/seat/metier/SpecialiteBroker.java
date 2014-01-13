@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Specialite
  */
-public class SpecialiteBroker extends nc.mairie.technique.BasicBroker {
+public class SpecialiteBroker extends BasicBroker {
 /**
  * Constructeur SpecialiteBroker.
  */
-public SpecialiteBroker(nc.mairie.technique.BasicMetier aMetier) {
+public SpecialiteBroker(Specialite aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.SpecialiteMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Specialite definirMyMetier() {
 	return new Specialite() ;
 }
 /**
@@ -66,7 +69,7 @@ public boolean supprimerSpecialite(nc.mairie.technique.Transaction aTransaction)
  * Retourne un ArrayList d'objet métier : Specialite.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerSpecialite(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Specialite> listerSpecialite(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**

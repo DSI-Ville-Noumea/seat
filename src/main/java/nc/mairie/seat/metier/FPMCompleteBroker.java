@@ -1,15 +1,18 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier FPMComplete
  */
-public class FPMCompleteBroker extends nc.mairie.technique.BasicBroker {
+public class FPMCompleteBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : FPMComplete.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerFPMComplete(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<FPMComplete> listerFPMComplete(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -21,12 +24,12 @@ public FPMComplete chercherFPMComplete(nc.mairie.technique.Transaction aTransact
 }
 
 // liste des encours
-public java.util.ArrayList listerFPMCompleteEnCours(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<FPMComplete> listerFPMCompleteEnCours(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='F'");
 }
 
 //liste des valide
-public java.util.ArrayList listerFPMCompleteValide(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<FPMComplete> listerFPMCompleteValide(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='T'");
 }
 
@@ -34,14 +37,14 @@ public java.util.ArrayList listerFPMCompleteValide(nc.mairie.technique.Transacti
 /**
  * Constructeur FPMCompleteBroker.
  */
-public FPMCompleteBroker(nc.mairie.technique.BasicMetier aMetier) {
+public FPMCompleteBroker(FPMComplete aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.FPMCompleteMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected FPMComplete definirMyMetier() {
 	return new FPMComplete() ;
 }
 /**

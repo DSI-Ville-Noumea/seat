@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier AgentCCAS
  */
-public class AgentCCASBroker extends nc.mairie.technique.BasicBroker {
+public class AgentCCASBroker extends BasicBroker {
 /**
  * Constructeur AgentCCASBroker.
  */
-public AgentCCASBroker(nc.mairie.technique.BasicMetier aMetier) {
+public AgentCCASBroker(AgentCCAS aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.AgentCCASMetier
  */
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected AgentCCAS definirMyMetier() {
 	return new AgentCCAS() ;
 }
 /**
@@ -74,7 +77,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * Retourne un ArrayList d'objet métier : AgentCCAS.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAgentCCAS(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<AgentCCAS> listerAgentCCAS(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" inner join MAIRCCAS.SPPOST on nomatr = pomatr and codact <> 'I'  order by nom with ur");
 }
 /**
@@ -88,9 +91,9 @@ public AgentCCAS chercherAgentCCAS(nc.mairie.technique.Transaction aTransaction,
  * Retourne un AgentCCAS.
  * @return AgentCCAS
  */
-public java.util.ArrayList chercherAgentCCASNom(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
+public ArrayList<AgentCCAS> listerAgentCCASNom(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	String dateDuJour = Services.formateDateInternationale(Services.dateDuJour());
 	dateDuJour = Services.convertitDate(dateDuJour,"yyyy-mm-dd","yyyymmdd");
-	return executeSelectListe(aTransaction,"select * from "+getTable()+",mairie.spmtsr where upper(nom) like '"+param+"%'and mairie.spmtsr.nomatr="+getTable()+".nomatr and mairie.spmtsr.datdeb<="+dateDuJour+" and (mairie.spmtsr.datfin=0 or mairie.spmtsr.datfin>="+dateDuJour+") and servi='5000' with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+",MAIRCCAS.spmtsr where upper(nom) like '"+param+"%'and MAIRCCAS.spmtsr.nomatr="+getTable()+".nomatr and MAIRCCAS.spmtsr.datdeb<="+dateDuJour+" and (MAIRCCAS.spmtsr.datfin=0 or MAIRCCAS.spmtsr.datfin>="+dateDuJour+") and servi='5000' with ur");
 }
 }

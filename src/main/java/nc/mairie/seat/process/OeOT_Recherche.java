@@ -1,6 +1,7 @@
 package nc.mairie.seat.process;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import nc.mairie.seat.metier.EquipementInfos;
 import nc.mairie.seat.metier.OT;
@@ -11,11 +12,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeOT_Recherche extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4961843334523719466L;
 	private java.lang.String[] LB_OT;
 	private java.lang.String[] LB_EQUIPEMENT;
-	private ArrayList listeEquipementInfos;
+	private ArrayList<EquipementInfos> listeEquipementInfos;
 	private OT OtCourant;
-	private ArrayList listeOT;
+	private ArrayList<OT> listeOT;
 	private EquipementInfos equipementInfosCourant;
 	private String focus = null;
 /**
@@ -31,7 +36,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	String param = getZone(getNOM_EF_DESIGNATION());
 	//initialisation des listes
 	if (null!=(equipementInfosCourant)){
-		java.util.ArrayList equipement = EquipementInfos.chercherListEquipementInfosTous(getTransaction(),param);
+		ArrayList<EquipementInfos> equipement = EquipementInfos.chercherListEquipementInfosTous(getTransaction(),param);
 		if(getTransaction().isErreur()){
 			getTransaction().declarerErreur(getTransaction().traiterErreur());
 			return ;
@@ -41,7 +46,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		}
 		setListeEquipementInfos(equipement);
 		//java.util.ArrayList ot = Planning.chercherPlanningEquip(getTransaction(),equipementInfosCourant.getNumeroinventaire());
-		java.util.ArrayList listOt = OT.listerOTEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
+		ArrayList<OT> listOt = OT.listerOTEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
 		if (null == listOt){
 			System.out.println("Aucun OT enregistré dans la base.");
 		}
@@ -51,13 +56,13 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 
 }
 
-public void initialiseOT(javax.servlet.http.HttpServletRequest request,ArrayList a) throws Exception{
+public void initialiseOT(javax.servlet.http.HttpServletRequest request,ArrayList<OT> a) throws Exception{
 	setListeOT(a);
 //	Si au moins un OT
 	if (a.size() !=0 ) {
 		int tailles [] = {12};
 		FormateListe aFormat = new FormateListe(tailles);
-		for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
+		for (ListIterator<OT> list = a.listIterator(); list.hasNext(); ) {
 			OT unOT = (OT)list.next();
 			String ligne [] = { unOT.getNumeroot()};
 			aFormat.ajouteLigne(ligne);
@@ -166,7 +171,7 @@ public java.lang.String getNOM_PB_OK() {
  */
 public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String param = getZone(getNOM_EF_DESIGNATION());
-	ArrayList resultatEquipementInfos = EquipementInfos.chercherListEquipementInfosTous(getTransaction(),param);
+	ArrayList<EquipementInfos> resultatEquipementInfos = EquipementInfos.chercherListEquipementInfosTous(getTransaction(),param);
 	// on remplit la liste des équipements
 	setListeEquipementInfos(resultatEquipementInfos);
 	if(resultatEquipementInfos.size()>0){
@@ -212,7 +217,7 @@ public boolean performPB_OK_EQUIPEMENT(javax.servlet.http.HttpServletRequest req
 //	}
 	setEquipementInfosCourant(monEquipementInfos);
 	//ArrayList resultat = Planning.chercherPlanningEquip(getTransaction(),equipementInfosCourant.getNumeroinventaire());
-	ArrayList resultat = OT.listerOTEquip(getTransaction(),monEquipementInfos.getNumeroinventaire());
+	ArrayList<OT> resultat = OT.listerOTEquip(getTransaction(),monEquipementInfos.getNumeroinventaire());
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -450,25 +455,25 @@ public String getDefaultFocus() {
 	/**
 	 * @return Renvoie listeEquipementInfos.
 	 */
-	public ArrayList getListeEquipementInfos() {
+	public ArrayList<EquipementInfos> getListeEquipementInfos() {
 		return listeEquipementInfos;
 	}
 	/**
 	 * @param listeEquipementInfos listeEquipementInfos à définir.
 	 */
-	public void setListeEquipementInfos(ArrayList listeEquipementInfos) {
+	public void setListeEquipementInfos(ArrayList<EquipementInfos> listeEquipementInfos) {
 		this.listeEquipementInfos = listeEquipementInfos;
 	}
 	/**
 	 * @return Renvoie listeBPC.
 	 */
-	public ArrayList getListeOT() {
+	public ArrayList<OT> getListeOT() {
 		return listeOT;
 	}
 	/**
 	 * @param listeBPC listeBPC à définir.
 	 */
-	public void setListeOT(ArrayList listeBPC) {
+	public void setListeOT(ArrayList<OT> listeBPC) {
 		this.listeOT = listeBPC;
 	}
 }

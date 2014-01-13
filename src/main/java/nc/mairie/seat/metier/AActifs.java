@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
 /**
  * Objet métier AActifs
  */
-public class AActifs extends nc.mairie.technique.BasicMetier {
+public class AActifs extends BasicMetier implements AgentInterface{
 	public String nomatr;
 	public String nom;
 	public String prenom;
@@ -22,7 +27,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : AActifs.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerAActifs(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<AActifs> listerAActifs(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	AActifs unAActifs = new AActifs();
 	return unAActifs.getMyAActifsBroker().listerAActifs(aTransaction);
 }
@@ -39,7 +44,7 @@ public static AActifs chercherAActifs(nc.mairie.technique.Transaction aTransacti
  * Retourne un ArrayList d'objet métier : AActifs.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerAActifsService(nc.mairie.technique.Transaction aTransaction,String servi) throws Exception{
+public static ArrayList<AActifs> listerAActifsService(nc.mairie.technique.Transaction aTransaction,String servi) throws Exception{
 	AActifs unAActifs = new AActifs();
 	return unAActifs.getMyAActifsBroker().listerAActifsService(aTransaction,servi);
 }
@@ -48,7 +53,7 @@ public static java.util.ArrayList listerAActifsService(nc.mairie.technique.Trans
  * Retourne un AActifs.
  * @return AActifs
  */
-public static java.util.ArrayList chercherListAgentServiceInfosSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception{
+public static ArrayList<AActifs> chercherListAgentServiceInfosSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception{
 	// on récupère les 3 premiers caractères pour rechercher les agents de tout le service
 	
 	AActifs unAActifs = new AActifs();
@@ -125,7 +130,7 @@ public void setServi(String newServi) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new AActifsBroker(this); 
 }
 /**

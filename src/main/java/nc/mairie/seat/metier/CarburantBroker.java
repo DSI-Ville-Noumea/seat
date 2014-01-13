@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Carburant
  */
-public class CarburantBroker extends nc.mairie.technique.BasicBroker {
+public class CarburantBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -30,7 +33,7 @@ public boolean supprimerCarburant(nc.mairie.technique.Transaction aTransaction) 
  * Retourne un ArrayList d'objet métier : Carburant.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerCarburant(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Carburant> listerCarburant(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by designationcarbu");
 }
 /**
@@ -77,14 +80,14 @@ public boolean existeCarburantTout(nc.mairie.technique.Transaction aTransaction,
 /**
  * Constructeur CarburantBroker.
  */
-public CarburantBroker(nc.mairie.technique.BasicMetier aMetier) {
+public CarburantBroker(Carburant aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.CarburantMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Carburant definirMyMetier() {
 	return new Carburant() ;
 }
 /**

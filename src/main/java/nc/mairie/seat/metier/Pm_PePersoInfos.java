@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Pm_PePersoInfos
  */
-public class Pm_PePersoInfos extends nc.mairie.technique.BasicMetier {
+public class Pm_PePersoInfos extends BasicMetier {
 	public String pminv;
 	public String pmserie;
 	public String dmes;
@@ -195,7 +200,7 @@ public void setCommentaire(String newCommentaire) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new Pm_PePersoInfosBroker(this); 
 }
 /**
@@ -218,7 +223,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Pm_PePersoInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPm_PePersoInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Pm_PePersoInfos> listerPm_PePersoInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Pm_PePersoInfos unPm_PePersoInfos = new Pm_PePersoInfos();
 	return unPm_PePersoInfos.getMyPm_PePersoInfosBroker().listerPm_PePersoInfos(aTransaction);
 }
@@ -232,7 +237,7 @@ public static Pm_PePersoInfos chercherPm_PePersoInfos(nc.mairie.technique.Transa
 }
 
 // liste des peperso d'une fiche
-public static java.util.ArrayList chercherPmPePersoInfosFPM(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
+public static ArrayList<Pm_PePersoInfos> chercherPmPePersoInfosFPM(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
 	Pm_PePersoInfos unPm_PePersoInfos = new Pm_PePersoInfos();
 	return unPm_PePersoInfos.getMyPm_PePersoInfosBroker().chercherPmPePersoInfosFPM(aTransaction,numfiche);
 }
@@ -242,7 +247,7 @@ public static java.util.ArrayList chercherPmPePersoInfosFPM(nc.mairie.technique.
  * true ou false
  */
 
-public static java.util.ArrayList listerPmPePersoInfosFait(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
+public static ArrayList<Pm_PePersoInfos> listerPmPePersoInfosFait(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
 	Pm_PePersoInfos unPm_PePersoInfos = new Pm_PePersoInfos();
 	return unPm_PePersoInfos.getMyPm_PePersoInfosBroker().listerPmPePersoInfosFait(aTransaction,inv,tri);
 }

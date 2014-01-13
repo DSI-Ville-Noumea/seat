@@ -8,6 +8,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OePMateriel_Visualisation extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -644551992732480320L;
 	public static final int STATUT_RECHERCHE = 1;
 	private PMatInfos pMatInfosCourant;
 	private String focus = null;

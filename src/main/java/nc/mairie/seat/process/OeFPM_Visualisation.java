@@ -17,7 +17,6 @@ import nc.mairie.seat.metier.PMatInfos;
 import nc.mairie.seat.metier.PiecesFpmInfos;
 import nc.mairie.seat.metier.Pm_PePersoInfos;
 import nc.mairie.seat.metier.Service;
-import nc.mairie.seat.servlet.ServletSeat;
 import nc.mairie.servlets.Frontale;
 import nc.mairie.technique.*;
 /**
@@ -26,6 +25,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeFPM_Visualisation extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7426088695381366033L;
 	public static final int STATUT_RECHERCHER = 1;
 	private java.lang.String[] LB_INTERVENANTS;
 	private java.lang.String[] LB_INTERVENTIONS;
@@ -33,10 +36,10 @@ public class OeFPM_Visualisation extends nc.mairie.technique.BasicProcess {
 	private FPMComplete fpmCompleteCourant;
 	private PMatInfos pMatInfosCourant;
 	private FPM fpmCourant;
-	private ArrayList listePmBe;
-	private ArrayList listeInterventions;
-	private ArrayList listeIntervenants;
-	private ArrayList listPieces;
+	private ArrayList<PM_BE> listePmBe;
+	private ArrayList<PM_PePerso> listeInterventions;
+	private ArrayList<PM_ATM> listeIntervenants;
+	private ArrayList<PiecesFpmInfos> listPieces;
 	public boolean isDebranche = false;
 	public String messErreur;
 	private String focus = null;
@@ -149,7 +152,7 @@ public boolean initialiseListInterventions(javax.servlet.http.HttpServletRequest
 	// on initialise la liste des interventions réalisées pendant FPM
 	if(getFpmCourant().getNumfiche()!=null){
 		//ArrayList listInterventions = Pm_PePersoInfos.chercherPmPePersoInfosFPM(getTransaction(),getFpmCourant().getNumfiche());
-		ArrayList listInterventions = PM_PePerso.chercherPmPePersoFiche(getTransaction(),getFpmCourant().getNumfiche());
+		ArrayList<PM_PePerso> listInterventions = PM_PePerso.chercherPmPePersoFiche(getTransaction(),getFpmCourant().getNumfiche());
 		if(getTransaction().isErreur()){
 			return false;
 		}
@@ -187,7 +190,7 @@ public boolean initialiseListInterventions(javax.servlet.http.HttpServletRequest
 public boolean initialiseListPieces(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	 on initialise la liste des pièces sorties du stock pour l'OT
 	if(getFpmCourant()!=null){
-		ArrayList listPiecesInfos = PiecesFpmInfos.chercherFpmPiecesInfosFpm(getTransaction(),getFpmCourant().getNumfiche());
+		ArrayList<PiecesFpmInfos> listPiecesInfos = PiecesFpmInfos.chercherFpmPiecesInfosFpm(getTransaction(),getFpmCourant().getNumfiche());
 		if(getTransaction().isErreur()){
 			return false;
 		}
@@ -221,7 +224,7 @@ public boolean initialiseListPieces(javax.servlet.http.HttpServletRequest reques
 public void initialiseListFre(javax.servlet.http.HttpServletRequest request) throws Exception{
 	//on initialise la liste des fournisseurs intervenus sur FPM
 	if(getFpmCourant().getNumfiche()!=null){
-		ArrayList listPmBe = PM_BE.listerPM_BE_FPM(getTransaction(),getFpmCourant().getNumfiche());
+		ArrayList<PM_BE> listPmBe = PM_BE.listerPM_BE_FPM(getTransaction(),getFpmCourant().getNumfiche());
 		if(getTransaction().isErreur()){
 			return;
 		}
@@ -292,7 +295,7 @@ public int montantBE(javax.servlet.http.HttpServletRequest request,ENGJU unEnju)
 public void initialiseListIntervenants(javax.servlet.http.HttpServletRequest request) throws Exception{
 	//on initialise la liste des intervenants de l'ATM
 	if(getFpmCourant().getNumfiche()!=null){
-		ArrayList listAgents = PM_ATM.listerPM_ATM_FPM(getTransaction(),getFpmCourant().getNumfiche());
+		ArrayList<PM_ATM> listAgents = PM_ATM.listerPM_ATM_FPM(getTransaction(),getFpmCourant().getNumfiche());
 		if(getTransaction().isErreur()){
 			return;
 		}
@@ -703,31 +706,31 @@ public FPMComplete getFpmCompleteCourant() {
 public void setFpmCompleteCourant(FPMComplete fpmCompleteCourant) {
 	this.fpmCompleteCourant = fpmCompleteCourant;
 }
-public ArrayList getListeIntervenants() {
+public ArrayList<PM_ATM> getListeIntervenants() {
 	if(listeIntervenants==null){
-		listeIntervenants=new ArrayList();
+		listeIntervenants=new ArrayList<PM_ATM>();
 	}
 	return listeIntervenants;
 }
-	public void setListeIntervenants(ArrayList listeIntervenants) {
+	public void setListeIntervenants(ArrayList<PM_ATM> listeIntervenants) {
 		this.listeIntervenants = listeIntervenants;
 	}
-	public ArrayList getListeInterventions() {
+	public ArrayList<PM_PePerso> getListeInterventions() {
 		if(listeInterventions==null){
-			listeInterventions=new ArrayList();
+			listeInterventions=new ArrayList<PM_PePerso>();
 		}
 		return listeInterventions;
 	}
-	public void setListeInterventions(ArrayList listeInterventions) {
+	public void setListeInterventions(ArrayList<PM_PePerso> listeInterventions) {
 		this.listeInterventions = listeInterventions;
 	}
-	public ArrayList getListePieces() {
+	public ArrayList<PiecesFpmInfos> getListePieces() {
 		if(listPieces==null){
-			listPieces=new ArrayList();
+			listPieces=new ArrayList<PiecesFpmInfos>();
 		}
 		return listPieces;
 	}
-	public void setListePieces(ArrayList listPieces) {
+	public void setListePieces(ArrayList<PiecesFpmInfos> listPieces) {
 		this.listPieces = listPieces;
 	}
 /**
@@ -807,13 +810,13 @@ public java.lang.String [] getVAL_LB_FRE() {
 public java.lang.String getVAL_LB_FRE_SELECT() {
 	return getZone(getNOM_LB_FRE_SELECT());
 }
-	public ArrayList getListePmBe() {
+	public ArrayList<PM_BE> getListePmBe() {
 		if(listePmBe==null){
-			listePmBe=new ArrayList();
+			listePmBe=new ArrayList<PM_BE>();
 		}
 		return listePmBe;
 	}
-	public void setListePmBe(ArrayList listeBe) {
+	public void setListePmBe(ArrayList<PM_BE> listeBe) {
 		this.listePmBe = listeBe;
 	}
 /**
@@ -1050,6 +1053,7 @@ public java.lang.String getNOM_PB_IMPRIMER() {
  * Date de création : (08/08/07 14:29:01)
  * @author : Générateur de process
  */
+@SuppressWarnings("deprecation")
 public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	int montantPieces = 0;
 	String infosBe = "";
@@ -1060,7 +1064,6 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 	// impression de l'OT
 	if(getFpmCourant()!=null){
 		String commentaireOt = "";
-		String inter = "";
 		String numinv = getZone(getNOM_ST_NOINVENT());
 		String numimmat = getZone(getNOM_ST_NOIMMAT());
 		String nomequip = getZone(getNOM_ST_MARQUE())+" "+getZone(getNOM_ST_MODELE());
@@ -1193,6 +1196,9 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 			pw.close();
 			fw.close();
 			throw e;
+		} finally {
+			pw.close();
+			fw.close();
 		}
 			setScript(g.getScriptOuverture());		
 	}

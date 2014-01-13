@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier BPCPMInfos
  */
-public class BPCPMInfosBroker extends nc.mairie.technique.BasicBroker {
+public class BPCPMInfosBroker extends BasicBroker {
 /**
  * Constructeur BPCPMInfosBroker.
  */
-public BPCPMInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public BPCPMInfosBroker(BPCPMInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.BPCPMInfosMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected BPCPMInfos definirMyMetier() {
 	return new BPCPMInfos() ;
 }
 /**
@@ -58,7 +61,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * Retourne un ArrayList d'objet métier : BPCPMInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerBPCPMInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<BPCPMInfos> listerBPCPMInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**
@@ -72,7 +75,7 @@ public BPCPMInfos chercherBPCPMInfos(nc.mairie.technique.Transaction aTransactio
  * Retourne un ArrayList d'objet métier : BPCInfosCompletes.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerBPCPMInfosParams(nc.mairie.technique.Transaction aTransaction,String inv,String servi,String periode) throws Exception {
+public ArrayList<BPCPMInfos> listerBPCPMInfosParams(nc.mairie.technique.Transaction aTransaction,String inv,String servi,String periode) throws Exception {
 	if(!inv.equals("")){
 		if(!periode.equals("")){
 			periode = "and "+periode;

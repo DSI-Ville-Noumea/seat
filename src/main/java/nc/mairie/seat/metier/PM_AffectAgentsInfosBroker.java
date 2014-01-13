@@ -4,18 +4,20 @@ import java.util.ArrayList;
 
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PM_AffectAgentsInfos
  */
-public class PM_AffectAgentsInfosBroker extends nc.mairie.technique.BasicBroker {
+public class PM_AffectAgentsInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : PM_AffectAgentsInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPM_AffectAgentsInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<PM_AffectAgentsInfos> listerPM_AffectAgentsInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
-public ArrayList listerPM_AffectAgentInfosScePMatDate(nc.mairie.technique.Transaction aTransaction,String servi,String inv, String date)throws Exception {
+public ArrayList<PM_AffectAgentsInfos> listerPM_AffectAgentInfosScePMatDate(nc.mairie.technique.Transaction aTransaction,String servi,String inv, String date)throws Exception {
 //	 on prend le code du service et pas le code du sous service
 	servi = servi.substring(0,3);
 	if(Services.estUneDate(date)){
@@ -33,25 +35,25 @@ public PM_AffectAgentsInfos chercherPM_AffectAgentsInfos(nc.mairie.technique.Tra
 	return (PM_AffectAgentsInfos)executeSelect(aTransaction,"select * from "+getTable()+" where codesce = "+servi+"");
 }
 
-public ArrayList chercherPM_AffectAgentsInfosSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception {
+public ArrayList<PM_AffectAgentsInfos> chercherPM_AffectAgentsInfosSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codesce = "+servi+"");
 }
 
-public ArrayList chercherPM_AffectAgentsInfosScePM(nc.mairie.technique.Transaction aTransaction,String inv, String servi) throws Exception {
+public ArrayList<PM_AffectAgentsInfos> chercherPM_AffectAgentsInfosScePM(nc.mairie.technique.Transaction aTransaction,String inv, String servi) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv='"+inv+"' and matricule in(select nomatr from mairie.spmtsr where servi like '"+servi+"%') order by ddeb desc, dfin");
 }
 
 /**
  * Constructeur PM_AffectAgentsInfosBroker.
  */
-public PM_AffectAgentsInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PM_AffectAgentsInfosBroker(PM_AffectAgentsInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PM_AffectAgentsInfosMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PM_AffectAgentsInfos definirMyMetier() {
 	return new PM_AffectAgentsInfos() ;
 }
 /**

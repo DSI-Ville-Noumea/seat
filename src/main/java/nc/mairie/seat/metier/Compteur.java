@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Compteur
  */
-public class Compteur extends nc.mairie.technique.BasicMetier {
+public class Compteur extends BasicMetier {
 	public String codecompteur;
 	public String designationcompteur;
 /**
@@ -19,7 +24,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Compteur.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerCompteur(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Compteur> listerCompteur(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Compteur unCompteur = new Compteur();
 	return unCompteur.getMyCompteurBroker().listerCompteur(aTransaction);
 }
@@ -138,7 +143,7 @@ public void setDesignationcompteur(String newDesignationcompteur) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new CompteurBroker(this); 
 }
 /**

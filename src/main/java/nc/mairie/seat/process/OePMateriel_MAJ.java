@@ -15,17 +15,20 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OePMateriel_MAJ extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1247364801499953894L;
 	private java.lang.String[] LB_FOURNISSEUR;
 	private java.lang.String[] LB_MARQUE;
 	private java.lang.String[] LB_MODELE;
-	private java.lang.String[] LB_TYPE;
 	private boolean first = true;
 	private String focus = null;
 	public boolean isModif = false;
 	private String ACTION_MARQUE = "Sélection d'une marque";
-	private ArrayList listeMarque = null;
-	private ArrayList listeModele = null;
-	private ArrayList listeFre = null;
+	private ArrayList<Marques> listeMarque = null;
+	private ArrayList<Modeles> listeModele = null;
+	private ArrayList<Fre_PM> listeFre = null;
 	private Marques marqueCourant;
 	private Modeles modeleCourant;
 	private Fre_PM freCourant;
@@ -159,7 +162,7 @@ public void initialiseListeMarques(javax.servlet.http.HttpServletRequest request
 	if(first){
 	//	 Si liste des marques est vide
 		if (getLB_MARQUE() == LBVide) {
-			java.util.ArrayList a = Marques.listerMarquesModeleMT(getTransaction());
+			ArrayList<Marques> a = Marques.listerMarquesModeleMT(getTransaction());
 			if (getTransaction().isErreur()){
 				return;
 			}
@@ -185,7 +188,7 @@ public void initialiseListeMarques(javax.servlet.http.HttpServletRequest request
 
 public void initialiseListeFre(javax.servlet.http.HttpServletRequest request) throws Exception{
 	if(getLB_FOURNISSEUR()==LBVide){
-		ArrayList a = Fre_PM.listerFre_PM(getTransaction());
+		ArrayList<Fre_PM> a = Fre_PM.listerFre_PM(getTransaction());
 		if(getTransaction().isErreur()){
 			return;
 		}
@@ -638,26 +641,7 @@ public java.lang.String [] getVAL_LB_MODELE() {
 public java.lang.String getVAL_LB_MODELE_SELECT() {
 	return getZone(getNOM_LB_MODELE_SELECT());
 }
-/**
- * Getter de la liste avec un lazy initialize :
- * LB_TYPE
- * Date de création : (25/04/07 13:30:11)
- * @author : Générateur de process
- */
-private String [] getLB_TYPE() {
-	if (LB_TYPE == null)
-		LB_TYPE = initialiseLazyLB();
-	return LB_TYPE;
-}
-/**
- * Setter de la liste:
- * LB_TYPE
- * Date de création : (25/04/07 13:30:11)
- * @author : Générateur de process
- */
-private void setLB_TYPE(java.lang.String[] newLB_TYPE) {
-	LB_TYPE = newLB_TYPE;
-}
+
 /**
  * Retourne le nom de la zone pour la JSP :
  * NOM_LB_TYPE
@@ -675,16 +659,6 @@ public java.lang.String getNOM_LB_TYPE() {
  */
 public java.lang.String getNOM_LB_TYPE_SELECT() {
 	return "NOM_LB_TYPE_SELECT";
-}
-/**
- * Méthode à personnaliser
- * Retourne la valeur à afficher pour la zone de la JSP :
- * LB_TYPE
- * Date de création : (25/04/07 13:30:11)
- * @author : Générateur de process
- */
-public java.lang.String [] getVAL_LB_TYPE() {
-	return getLB_TYPE();
 }
 /**
  * Méthode à personnaliser
@@ -808,7 +782,7 @@ public boolean performPB_MARQUE(javax.servlet.http.HttpServletRequest request) t
 	
 //	 on remplit la liste déroulante avec la table f_modeles
 	//	 Si liste des modeles pour une marque est vide
-	java.util.ArrayList a = Modeles.listerModelesMarque(getTransaction(),maMarque.getCodemarque());
+	ArrayList<Modeles> a = Modeles.listerModelesMarque(getTransaction(),maMarque.getCodemarque());
 	setListeModele(a);
 	//les élèments de la liste 
 	int [] tailles = {15};
@@ -876,7 +850,7 @@ public boolean performPB_MODELE(javax.servlet.http.HttpServletRequest request) t
 //		}
 		
 		
-		Marques maMarque = Marques.chercherMarques(getTransaction(),monModele.getCodemarque());
+		Marques.chercherMarques(getTransaction(),monModele.getCodemarque());
 		if (getTransaction().isErreur()){
 			return false;
 		}
@@ -977,37 +951,37 @@ public java.lang.String getVAL_ST_TYPE_EQUIP() {
 /**
  * @return Renvoie listeMarque.
  */
-private ArrayList getListeMarque() {
+private ArrayList<Marques> getListeMarque() {
 	return listeMarque;
 }
 /**
  * @param listeMarque listeMarque à définir.
  */
-private void setListeMarque(ArrayList listeMarque) {
+private void setListeMarque(ArrayList<Marques> listeMarque) {
 	this.listeMarque = listeMarque;
 }
 /**
  * @return Renvoie listeModele.
  */
-private ArrayList getListeModele() {
+private ArrayList<Modeles> getListeModele() {
 	return listeModele;
 }
 /**
  * @param listeModele listeModele à définir.
  */
-private void setListeModele(ArrayList listeModele) {
+private void setListeModele(ArrayList<Modeles> listeModele) {
 	this.listeModele = listeModele;
 }
 /**
  * @return Renvoie listeFre.
  */
-private ArrayList getListeFre() {
+private ArrayList<Fre_PM> getListeFre() {
 	return listeFre;
 }
 /**
  * @param listeModele listeFre à définir.
  */
-private void setListeFre(ArrayList listeFre) {
+private void setListeFre(ArrayList<Fre_PM> listeFre) {
 	this.listeFre = listeFre;
 }
 /**

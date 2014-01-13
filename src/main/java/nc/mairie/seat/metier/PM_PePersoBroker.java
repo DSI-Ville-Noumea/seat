@@ -1,22 +1,25 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PM_PePerso
  */
-public class PM_PePersoBroker extends nc.mairie.technique.BasicBroker {
+public class PM_PePersoBroker extends BasicBroker {
 /**
  * Constructeur PM_PePersoBroker.
  */
-public PM_PePersoBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PM_PePersoBroker(PM_PePerso aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PM_PePersoMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PM_PePerso definirMyMetier() {
 	return new PM_PePerso() ;
 }
 /**
@@ -74,7 +77,7 @@ public boolean supprimerPM_PePerso(nc.mairie.technique.Transaction aTransaction)
  * Retourne un ArrayList d'objet métier : PM_PePerso.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPM_PePerso(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<PM_PePerso> listerPM_PePerso(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -92,7 +95,7 @@ public int nouvPmPePerso(nc.mairie.technique.Transaction aTransaction) throws Ex
 }
 
 // on cherche les entretiens de la fiche d'entretiens
-public java.util.ArrayList chercherPmPePersoFiche(nc.mairie.technique.Transaction aTransaction, String numfiche) throws Exception {
+public ArrayList<PM_PePerso> chercherPmPePersoFiche(nc.mairie.technique.Transaction aTransaction, String numfiche) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numfiche = "+numfiche);
 }
 
@@ -100,20 +103,20 @@ public PM_PePerso chercherPePersoEquipEntPrevu(nc.mairie.technique.Transaction a
 	return (PM_PePerso)executeSelect(aTransaction,"select * from "+getTable()+" where  codepmpep in (select max(codepmpep) from "+getTable()+" where pminv = '"+inv+"' and codeentretien="+ent+" and dreal='0001-01-01')");
 }
 
-public java.util.ArrayList chercherPmPePersoPasFaitFPM(nc.mairie.technique.Transaction aTransaction, String numfiche) throws Exception {
+public ArrayList<PM_PePerso> chercherPmPePersoPasFaitFPM(nc.mairie.technique.Transaction aTransaction, String numfiche) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numfiche = "+numfiche+" and dreal='0001-01-01'");
 }
 
 // tous les entretiens pour un petit matériel
-public java.util.ArrayList listerPM_PePersoPm(nc.mairie.technique.Transaction aTransaction,String pminv,String ddeb) throws Exception {
+public ArrayList<PM_PePerso> listerPM_PePersoPm(nc.mairie.technique.Transaction aTransaction,String pminv,String ddeb) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv='"+pminv+"' and dprev between '"+Services.formateDateInternationale(ddeb)+"' and '"+Services.formateDateInternationale(Services.ajouteJours(Services.dateDuJour(),1))+"'");
 }
 
-public java.util.ArrayList listerPM_PePersoPmFait(nc.mairie.technique.Transaction aTransaction,String pminv,String tri) throws Exception {
+public ArrayList<PM_PePerso> listerPM_PePersoPmFait(nc.mairie.technique.Transaction aTransaction,String pminv,String tri) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where dreal <> '0001-01-01' and pminv='"+pminv+"' order by "+tri+"");
 }
 
-public java.util.ArrayList listerPM_PePersoPMateriel(nc.mairie.technique.Transaction aTransaction,String pminv) throws Exception {
+public ArrayList<PM_PePerso> listerPM_PePersoPMateriel(nc.mairie.technique.Transaction aTransaction,String pminv) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv='"+pminv+"'");
 }
 

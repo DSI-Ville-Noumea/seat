@@ -1,13 +1,17 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import nc.mairie.seat.process.Outils;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Pieces_FPM
  */
-public class Pieces_FPM extends nc.mairie.technique.BasicMetier {
+public class Pieces_FPM extends BasicMetier {
 	public String numfiche;
 	public String numpiece;
 	public String dsortie;
@@ -27,12 +31,12 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Pieces_FPM.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPieces_FPM(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Pieces_FPM> listerPieces_FPM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Pieces_FPM unPieces_FPM = new Pieces_FPM();
 	return unPieces_FPM.getMyPieces_FPMBroker().listerPieces_FPM(aTransaction);
 }
 
-public static java.util.ArrayList listerPieces_FPMFPM(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
+public static ArrayList<Pieces_FPM> listerPieces_FPMFPM(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
 	Pieces_FPM unPieces_FPM = new Pieces_FPM();
 	return unPieces_FPM.getMyPieces_FPMBroker().listerPieces_FPMFPM(aTransaction,numfiche);
 }
@@ -274,7 +278,7 @@ public void setPrix(String newPrix) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new Pieces_FPMBroker(this); 
 }
 /**

@@ -1,7 +1,6 @@
 package nc.mairie.seat.process;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 
 import nc.mairie.seat.metier.AffectationServiceInfos;
 import nc.mairie.seat.metier.BPC;
@@ -25,6 +24,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeBPC_ajout extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1580943570751576140L;
 	public static final int STATUT_PMATERIEL = 2;
 	public static final int STATUT_RECH_EQUIP = 1;
 	private java.lang.String[] LB_BPC;
@@ -32,11 +35,9 @@ public class OeBPC_ajout extends nc.mairie.technique.BasicProcess {
 	private java.lang.String[] LB_INVENTAIRE;
 	private java.lang.String[] LB_MODEPRISE;
 	private java.lang.String[] LB_POMPE;
-	private ArrayList listeBPC;
-	private ArrayList listePompe;
-	private ArrayList listeEquipement;
-	private ArrayList listeEquipementInfos;
-	private ArrayList listeModePrise;
+//	private ArrayList listeEquipement;
+	@SuppressWarnings("unused")
+	private ArrayList<ModePrise> listeModePrise;
 	private BPC bpcCourant;
 	private BPC bpcAvant;
 	private Equipement equipementCourant;
@@ -45,9 +46,7 @@ public class OeBPC_ajout extends nc.mairie.technique.BasicProcess {
 	private PMatInfos pMatInfosCourant;
 	private Modeles modeleCourant;
 	private int newNumeroBpc;
-	private int codeModePrise;
-	private Hashtable hashInventaire;
-	private Hashtable hashImmat;
+//	private int codeModePrise;
 	private String focus = null;
 	private boolean manqueParam = false;
 	private boolean first = true;
@@ -59,7 +58,7 @@ public class OeBPC_ajout extends nc.mairie.technique.BasicProcess {
 	String newPompe = "";
 	String newmodeprise ="1";
 	private Pompes pompeCourante;
-	private ArrayList listePompes = null;
+	private ArrayList<Pompes> listePompes = null;
 	public boolean afficheMesage = false;
 	public boolean isMateriel = false;
 	//private String date;
@@ -74,7 +73,7 @@ public class OeBPC_ajout extends nc.mairie.technique.BasicProcess {
  */
 public void initialiseZones(javax.servlet.http.HttpServletRequest request) throws Exception{
 	Carburant unCarbu = new Carburant();
-	boolean trouveEquip;
+//	boolean trouveEquip;
 	setAfficheMesage(false);
 	if(first){
 		
@@ -113,7 +112,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			// On récupère l'objet Equipement pour avoir les infos pour les modèles et marques
 			if (null!=getEquipementInfosCourant()){
 				if(null!=getEquipementInfosCourant().getNumeroinventaire()){
-					trouveEquip = true;
+//					trouveEquip = true;
 					isMateriel = false;
 					Equipement unEquipement = Equipement.chercherEquipement(getTransaction(),unEquipementInfos.getNumeroinventaire());
 					if(getTransaction().isErreur()){
@@ -127,10 +126,10 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 					}
 					setModeleCourant(unModele);
 				}else{
-					trouveEquip = false;
+//					trouveEquip = false;
 				}
 			}else{
-				trouveEquip = false;
+//				trouveEquip = false;
 			}
 		}else{
 			//if(!trouveEquip){
@@ -144,7 +143,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 							return;
 						}
 						setPMaterielCourant(unPMateriel);
-						Modeles unModele = Modeles.chercherModeles(getTransaction(),getPMaterielCourant().getCodemodele());
+						Modeles.chercherModeles(getTransaction(),getPMaterielCourant().getCodemodele());
 						if(getTransaction().isErreur()){
 							return;
 						}
@@ -286,7 +285,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	initialiseListePompes(request);
 //		 Si liste des modes de prise de carburant est vide
 	if (getLB_MODEPRISE() == LBVide) {
-		java.util.ArrayList a = ModePrise.listerModePrise(getTransaction());
+		ArrayList<ModePrise> a = ModePrise.listerModePrise(getTransaction());
 		setListeModePrise(a);
 		//les élèments de la liste 
 		int [] tailles = {10};
@@ -294,8 +293,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
 		String [] padding = {"G"};
 		
-		FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-		String [] l = f.getListeFormatee();
 		setLB_MODEPRISE(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 	}
 	if(getLB_MODEPRISE()==null){
@@ -397,7 +394,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
  * initialisation de la liste des pompes
  */
 public void initialiseListePompes(javax.servlet.http.HttpServletRequest request) throws Exception{
-	ArrayList a = Pompes.listerPompes(getTransaction());
+	ArrayList<Pompes> a = Pompes.listerPompes(getTransaction());
 	if (getTransaction().isErreur()){
 		return;
 	}
@@ -411,8 +408,6 @@ public void initialiseListePompes(javax.servlet.http.HttpServletRequest request)
 		boolean[] colonnes = {true};
 		a = Services.trier(a,champs,colonnes);
 		setListePompes(a);
-		FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-		String [] l = f.getListeFormatee();
 		setLB_POMPE(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 	}else{
 		setLB_POMPE(null);
@@ -420,7 +415,6 @@ public void initialiseListePompes(javax.servlet.http.HttpServletRequest request)
 //	 on sélectionne la pompe en cours
 	if(getPompeCourante()!=null){
 		if(getPompeCourante().getNum_pompe()!=null){
-			int position = -1;
 			addZone(getNOM_LB_POMPE_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListePompes().size(); i++) {
 				Pompes unePompe = (Pompes)getListePompes().get(i);
@@ -587,7 +581,7 @@ public void verifEntretiens (javax.servlet.http.HttpServletRequest request) thro
 	String dateDerReal=null;
 	String dateBPC=null;
 	int compteur = 0;
-	ArrayList listEntretien = new ArrayList();
+	ArrayList<PePerso> listEntretien = new ArrayList<PePerso>();
 	boolean isVidangeCompleteAFaire=false;
 
 	if(getEquipementInfosCourant()!=null){
@@ -1075,15 +1069,15 @@ private String [] getLB_BPC() {
 		LB_BPC = initialiseLazyLB();
 	return LB_BPC;
 }
-/**
- * Setter de la liste:
- * LB_BPC
- * Date de création : (30/05/05 10:15:12)
- * @author : Générateur de process
- */
-private void setLB_BPC(java.lang.String[] newLB_BPC) {
-	LB_BPC = newLB_BPC;
-}
+///**
+// * Setter de la liste:
+// * LB_BPC
+// * Date de création : (30/05/05 10:15:12)
+// * @author : Générateur de process
+// */
+//private void setLB_BPC(java.lang.String[] newLB_BPC) {
+//	LB_BPC = newLB_BPC;
+//}
 /**
  * Retourne le nom de la zone pour la JSP :
  * NOM_LB_BPC
@@ -1136,15 +1130,15 @@ private String [] getLB_IMMAT() {
 		LB_IMMAT = initialiseLazyLB();
 	return LB_IMMAT;
 }
-/**
- * Setter de la liste:
- * LB_IMMAT
- * Date de création : (30/05/05 10:15:12)
- * @author : Générateur de process
- */
-private void setLB_IMMAT(java.lang.String[] newLB_IMMAT) {
-	LB_IMMAT = newLB_IMMAT;
-}
+///**
+// * Setter de la liste:
+// * LB_IMMAT
+// * Date de création : (30/05/05 10:15:12)
+// * @author : Générateur de process
+// */
+//private void setLB_IMMAT(java.lang.String[] newLB_IMMAT) {
+//	LB_IMMAT = newLB_IMMAT;
+//}
 /**
  * Retourne le nom de la zone pour la JSP :
  * NOM_LB_IMMAT
@@ -1194,15 +1188,15 @@ private String [] getLB_INVENTAIRE() {
 		LB_INVENTAIRE = initialiseLazyLB();
 	return LB_INVENTAIRE;
 }
-/**
- * Setter de la liste:
- * LB_INVENTAIRE
- * Date de création : (30/05/05 10:15:12)
- * @author : Générateur de process
- */
-private void setLB_INVENTAIRE(java.lang.String[] newLB_INVENTAIRE) {
-	LB_INVENTAIRE = newLB_INVENTAIRE;
-}
+///**
+// * Setter de la liste:
+// * LB_INVENTAIRE
+// * Date de création : (30/05/05 10:15:12)
+// * @author : Générateur de process
+// */
+//private void setLB_INVENTAIRE(java.lang.String[] newLB_INVENTAIRE) {
+//	LB_INVENTAIRE = newLB_INVENTAIRE;
+//}
 /**
  * Retourne le nom de la zone pour la JSP :
  * NOM_LB_INVENTAIRE
@@ -1366,27 +1360,27 @@ public java.lang.String getVAL_LB_POMPE_SELECT() {
 public java.lang.String getNOM_PB_OK_IMMAT() {
 	return "NOM_PB_OK_IMMAT";
 }
-/**
- * - Traite et affecte les zones saisies dans la JSP.
- * - Implémente les règles de gestion du process
- * - Positionne un statut en fonction de ces règles :
- *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
- * Date de création : (30/05/05 15:19:09)
- * @author : Générateur de process
- */
-public boolean performPB_OK_IMMAT(javax.servlet.http.HttpServletRequest request) throws Exception {
-//	Récup de l'indice sélectionné
-	int indice = (Services.estNumerique(getVAL_LB_IMMAT_SELECT()) ? Integer.parseInt(getVAL_LB_IMMAT_SELECT()): -1);  
-	
-	addZone(getNOM_LB_INVENTAIRE_SELECT(),String.valueOf(indice));
-	Equipement monEquipement = (Equipement)getListeEquipement().get(indice);
-	setEquipementCourant(monEquipement);
-	
-	addZone(getNOM_ST_TYPE(),equipementInfosCourant.getDesignationtypeequip());
-	addZone(getNOM_ST_NOMEQUIP(),equipementInfosCourant.getDesignationmarque()+" "+equipementInfosCourant.getDesignationmodele());
-	addZone(getNOM_ST_CARBU(),equipementInfosCourant.getDesignationcarbu());
-	return true;
-}
+///**
+// * - Traite et affecte les zones saisies dans la JSP.
+// * - Implémente les règles de gestion du process
+// * - Positionne un statut en fonction de ces règles :
+// *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
+// * Date de création : (30/05/05 15:19:09)
+// * @author : Générateur de process
+// */
+//public boolean performPB_OK_IMMAT(javax.servlet.http.HttpServletRequest request) throws Exception {
+////	Récup de l'indice sélectionné
+//	int indice = (Services.estNumerique(getVAL_LB_IMMAT_SELECT()) ? Integer.parseInt(getVAL_LB_IMMAT_SELECT()): -1);  
+//	
+//	addZone(getNOM_LB_INVENTAIRE_SELECT(),String.valueOf(indice));
+//	Equipement monEquipement = (Equipement)getListeEquipement().get(indice);
+//	setEquipementCourant(monEquipement);
+//	
+//	addZone(getNOM_ST_TYPE(),equipementInfosCourant.getDesignationtypeequip());
+//	addZone(getNOM_ST_NOMEQUIP(),equipementInfosCourant.getDesignationmarque()+" "+equipementInfosCourant.getDesignationmodele());
+//	addZone(getNOM_ST_CARBU(),equipementInfosCourant.getDesignationcarbu());
+//	return true;
+//}
 /**
  * Retourne le nom d'un bouton pour la JSP :
  * PB_OK_INVENT
@@ -1396,31 +1390,31 @@ public boolean performPB_OK_IMMAT(javax.servlet.http.HttpServletRequest request)
 public java.lang.String getNOM_PB_OK_INVENT() {
 	return "NOM_PB_OK_INVENT";
 }
-/**
- * - Traite et affecte les zones saisies dans la JSP.
- * - Implémente les règles de gestion du process
- * - Positionne un statut en fonction de ces règles :
- *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
- * Date de création : (30/05/05 15:19:09)
- * @author : Générateur de process
- */
-public boolean performPB_OK_INVENT(javax.servlet.http.HttpServletRequest request) throws Exception {
-//	Récup de l'indice sélectionné
-	int indice = (Services.estNumerique(getVAL_LB_INVENTAIRE_SELECT()) ? Integer.parseInt(getVAL_LB_INVENTAIRE_SELECT()): -1); 
-	
-	addZone(getNOM_LB_IMMAT_SELECT(),String.valueOf(indice));
-	Equipement monEquipement = (Equipement)getListeEquipement().get(indice);
-	setEquipementCourant(monEquipement);
-	
-	EquipementInfos unEquipementInfos = EquipementInfos.chercherEquipementInfos(getTransaction(),equipementCourant.getNumeroinventaire());
-	setEquipementInfosCourant(unEquipementInfos);
-	
-	addZone(getNOM_ST_TYPE(),equipementInfosCourant.getDesignationtypeequip());
-	addZone(getNOM_ST_NOMEQUIP(),equipementInfosCourant.getDesignationmarque()+" "+equipementInfosCourant.getDesignationmodele());
-	addZone(getNOM_ST_CARBU(),equipementInfosCourant.getDesignationcarbu());
-	
-	return true;
-}
+///**
+// * - Traite et affecte les zones saisies dans la JSP.
+// * - Implémente les règles de gestion du process
+// * - Positionne un statut en fonction de ces règles :
+// *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
+// * Date de création : (30/05/05 15:19:09)
+// * @author : Générateur de process
+// */
+//public boolean performPB_OK_INVENT(javax.servlet.http.HttpServletRequest request) throws Exception {
+////	Récup de l'indice sélectionné
+//	int indice = (Services.estNumerique(getVAL_LB_INVENTAIRE_SELECT()) ? Integer.parseInt(getVAL_LB_INVENTAIRE_SELECT()): -1); 
+//	
+//	addZone(getNOM_LB_IMMAT_SELECT(),String.valueOf(indice));
+//	Equipement monEquipement = (Equipement)getListeEquipement().get(indice);
+//	setEquipementCourant(monEquipement);
+//	
+//	EquipementInfos unEquipementInfos = EquipementInfos.chercherEquipementInfos(getTransaction(),equipementCourant.getNumeroinventaire());
+//	setEquipementInfosCourant(unEquipementInfos);
+//	
+//	addZone(getNOM_ST_TYPE(),equipementInfosCourant.getDesignationtypeequip());
+//	addZone(getNOM_ST_NOMEQUIP(),equipementInfosCourant.getDesignationmarque()+" "+equipementInfosCourant.getDesignationmodele());
+//	addZone(getNOM_ST_CARBU(),equipementInfosCourant.getDesignationcarbu());
+//	
+//	return true;
+//}
 	/**
 	 * @return Renvoie bpcCourant.
 	 */
@@ -1457,54 +1451,30 @@ public boolean performPB_OK_INVENT(javax.servlet.http.HttpServletRequest request
 	private void setPMaterielCourant(PMateriel pMaterielCourant) {
 		this.pMaterielCourant = pMaterielCourant;
 	}
-	/**
-	 * @return Renvoie listeModePrise.
-	 */
-	private ArrayList getListeModePrise() {
-		return listeModePrise;
-	}
+//	/**
+//	 * @return Renvoie listeModePrise.
+//	 */
+//	private ArrayList<ModePrise> getListeModePrise() {
+//		return listeModePrise;
+//	}
 	/**
 	 * @param listeModePrise listeModePrise à définir.
 	 */
-	private void setListeModePrise(ArrayList listeModePrise) {
+	private void setListeModePrise(ArrayList<ModePrise> listeModePrise) {
 		this.listeModePrise = listeModePrise;
 	}
-	/**
-	 * @return Renvoie listePompe.
-	 */
-	private ArrayList getListePompe() {
-		return listePompe;
-	}
-	/**
-	 * @param listePompe listePompe à définir.
-	 */
-	private void setListePompe(ArrayList listePompe) {
-		this.listePompe = listePompe;
-	}
-	/**
-	 * @return Renvoie listeBPC.
-	 */
-	private ArrayList getListeBPC() {
-		return listeBPC;
-	}
-	/**
-	 * @param listeBPC listeBPC à définir.
-	 */
-	private void setListeBPC(ArrayList listeBPC) {
-		this.listeBPC = listeBPC;
-	}
-	/**
-	 * @return Renvoie listeEquipement.
-	 */
-	private ArrayList getListeEquipement() {
-		return listeEquipement;
-	}
-	/**
-	 * @param listeEquipement listeEquipement à définir.
-	 */
-	private void setListeEquipement(ArrayList listeEquipement) {
-		this.listeEquipement = listeEquipement;
-	}
+//	/**
+//	 * @return Renvoie listeEquipement.
+//	 */
+//	private ArrayList getListeEquipement() {
+//		return listeEquipement;
+//	}
+//	/**
+//	 * @param listeEquipement listeEquipement à définir.
+//	 */
+//	private void setListeEquipement(ArrayList listeEquipement) {
+//		this.listeEquipement = listeEquipement;
+//	}
 
 /**
  * Retourne le nom d'un bouton pour la JSP :
@@ -1515,30 +1485,30 @@ public boolean performPB_OK_INVENT(javax.servlet.http.HttpServletRequest request
 public java.lang.String getNOM_PB_OK_MODEPRISE() {
 	return "NOM_PB_OK_MODEPRISE";
 }
-/**
- * - Traite et affecte les zones saisies dans la JSP.
- * - Implémente les règles de gestion du process
- * - Positionne un statut en fonction de ces règles :
- *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
- * Date de création : (01/06/05 08:08:30)
- * @author : Générateur de process
- */
-public boolean performPB_OK_MODEPRISE(javax.servlet.http.HttpServletRequest request) throws Exception {
-//	Récup de l'indice sélectionné
-	int indice = (Services.estNumerique(getVAL_LB_MODEPRISE_SELECT()) ? Integer.parseInt(getVAL_LB_MODEPRISE_SELECT()): -1); 
-		
-	if (indice == -1) {
-		getTransaction().declarerErreur("Vous devez sélectionner un élement");
-		return false;
-	}
-	
-	BPC monBpc = (BPC)getListeModePrise().get(indice);
-	setBpcCourant(monBpc);
-
-	codeModePrise= indice +1;
-	
-	return true;
-}
+///**
+// * - Traite et affecte les zones saisies dans la JSP.
+// * - Implémente les règles de gestion du process
+// * - Positionne un statut en fonction de ces règles :
+// *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
+// * Date de création : (01/06/05 08:08:30)
+// * @author : Générateur de process
+// */
+//public boolean performPB_OK_MODEPRISE(javax.servlet.http.HttpServletRequest request) throws Exception {
+////	Récup de l'indice sélectionné
+//	int indice = (Services.estNumerique(getVAL_LB_MODEPRISE_SELECT()) ? Integer.parseInt(getVAL_LB_MODEPRISE_SELECT()): -1); 
+//		
+//	if (indice == -1) {
+//		getTransaction().declarerErreur("Vous devez sélectionner un élement");
+//		return false;
+//	}
+//	
+//	BPC monBpc = (BPC)getListeModePrise().get(indice);
+//	setBpcCourant(monBpc);
+//
+////	codeModePrise= indice +1;
+//	
+//	return true;
+//}
 	/**
 	 * @return Renvoie equipementInfosCourant.
 	 */
@@ -1565,30 +1535,18 @@ public boolean performPB_OK_MODEPRISE(javax.servlet.http.HttpServletRequest requ
 			PMatInfos pMatInfosCourant) {
 		this.pMatInfosCourant = pMatInfosCourant;
 	}
-	/**
-	 * @return Renvoie newNumeroBpc.
-	 */
-	private int getNewNumeroBpc() {
-		return newNumeroBpc;
-	}
-	/**
-	 * @param newNumeroBpc newNumeroBpc à définir.
-	 */
-	private void setNewNumeroBpc(int newNumeroBpc) {
-		this.newNumeroBpc = newNumeroBpc;
-	}
-	/**
-	 * @return Renvoie listeEquipementInfos.
-	 */
-	private ArrayList getListeEquipementInfos() {
-		return listeEquipementInfos;
-	}
-	/**
-	 * @param listeEquipementInfos listeEquipementInfos à définir.
-	 */
-	private void setListeEquipementInfos(ArrayList listeEquipementInfos) {
-		this.listeEquipementInfos = listeEquipementInfos;
-	}
+//	/**
+//	 * @return Renvoie newNumeroBpc.
+//	 */
+//	private int getNewNumeroBpc() {
+//		return newNumeroBpc;
+//	}
+//	/**
+//	 * @param newNumeroBpc newNumeroBpc à définir.
+//	 */
+//	private void setNewNumeroBpc(int newNumeroBpc) {
+//		this.newNumeroBpc = newNumeroBpc;
+//	}
 /**
  * Retourne pour la JSP le nom de la zone statique :
  * ST_CARBU
@@ -1774,7 +1732,7 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
 	}
 	
 	// on cherche le dernier BPC 
-	ArrayList listBPC = BPC.chercherBPCEquip(getTransaction(),inventaire);
+	ArrayList<BPC> listBPC = BPC.listerBPCInventaire(getTransaction(),inventaire);
 	//si premier BPC, aucun BPC ne sera trouvé
 	if(getTransaction().isErreur()){
 		getTransaction().traiterErreur();
@@ -1887,7 +1845,6 @@ public java.lang.String getNOM_PB_AFFICHE_COMPTEUR() {
 public boolean performPB_AFFICHE_COMPTEUR(javax.servlet.http.HttpServletRequest request) throws Exception {
 	int valeurCompteur = 1;
 	newNumBpc = getZone(getNOM_EF_BPC());
-	String nomFocus = getFocus();
 	if(!getZone(getNOM_EF_DATE()).equals("")){
 		if(!Services.estUneDate(getZone(getNOM_EF_DATE()))){
 			getTransaction().declarerErreur("La date n'est pas correcte.");
@@ -1930,7 +1887,7 @@ public boolean performPB_AFFICHE_COMPTEUR(javax.servlet.http.HttpServletRequest 
 			//aucun BPC n'a été enregistré avant
 			getTransaction().traiterErreur();
 			if(isMateriel){
-				ArrayList unBPC = BPC.chercherBPCEquip(getTransaction(),getPMatInfosCourant().getPminv());
+				ArrayList<BPC> unBPC = BPC.listerBPCInventaire(getTransaction(),getPMatInfosCourant().getPminv());
 				if(getTransaction().isErreur()){
 					getTransaction().traiterErreur();
 					valeurCompteur = 1;
@@ -1956,10 +1913,10 @@ public boolean performPB_AFFICHE_COMPTEUR(javax.servlet.http.HttpServletRequest 
 	}
 	return true;
 }
-public ArrayList getListePompes() {
+public ArrayList<Pompes> getListePompes() {
 	return listePompes;
 }
-public void setListePompes(ArrayList listePompes) {
+public void setListePompes(ArrayList<Pompes> listePompes) {
 	this.listePompes = listePompes;
 }
 public Pompes getPompeCourante() {
@@ -2044,20 +2001,20 @@ public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) th
 		if (testerParametre(request, getNOM_PB_RECHERCHE())) {
 			return performPB_RECHERCHE(request);
 		}
-		//Si clic sur le bouton PB_OK_MODEPRISE
-		if (testerParametre(request, getNOM_PB_OK_MODEPRISE())) {
-			return performPB_OK_MODEPRISE(request);
-		}
+//		//Si clic sur le bouton PB_OK_MODEPRISE
+//		if (testerParametre(request, getNOM_PB_OK_MODEPRISE())) {
+//			return performPB_OK_MODEPRISE(request);
+//		}
 		
-	//Si clic sur le bouton PB_OK_IMMAT
-		if (testerParametre(request, getNOM_PB_OK_IMMAT())) {
-			return performPB_OK_IMMAT(request);
-		}
-
-		//Si clic sur le bouton PB_OK_INVENT
-		if (testerParametre(request, getNOM_PB_OK_INVENT())) {
-			return performPB_OK_INVENT(request);
-		}
+//	//Si clic sur le bouton PB_OK_IMMAT
+//		if (testerParametre(request, getNOM_PB_OK_IMMAT())) {
+//			return performPB_OK_IMMAT(request);
+//		}
+//
+//		//Si clic sur le bouton PB_OK_INVENT
+//		if (testerParametre(request, getNOM_PB_OK_INVENT())) {
+//			return performPB_OK_INVENT(request);
+//		}
 		//Si clic sur le bouton PB_ANNULER
 		if (testerParametre(request, getNOM_PB_ANNULER())) {
 			return performPB_ANNULER(request);

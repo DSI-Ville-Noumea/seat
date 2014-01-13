@@ -14,18 +14,21 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeMecaniciens_FPM extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -899960815343454709L;
 	public static final int STATUT_TITRE_ACTION = 1;
 	private String ACTION_SUPPRESSION = "Suppression";
-	private String ACTION_MODIFICATION = "Modification";
+//	private String ACTION_MODIFICATION = "Modification";
 	private String ACTION_CREATION = "Création";
 	private java.lang.String[] LB_MECANICIENS;
 	private java.lang.String[] LB_MECA_FPM;
 	private PM_ATM pmAtmCourant;
 	private FPM fpmCourant;
 	private PMatInfos pMatInfosCourant;
-	private ArrayList listeMecaniciens;
-	private ArrayList listeMecaFPM;
-	private ArrayList listeFre;
+	private ArrayList<AgentsATM> listeMecaniciens;
+	private ArrayList<AgentsATM> listeMecaFPM;
 	private String focus = null;
 	public boolean isSuppression = false;
 	public boolean tailleListeMecaFPM;
@@ -95,7 +98,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 public void initialiseListeMecaniciens(javax.servlet.http.HttpServletRequest request) throws Exception{
 	//initialisation avec les mécaniciens de l'ATM
 	if(getListeMecaniciens()==null){
-		ArrayList listATM = AgentsATM.listerAgentsATM(getTransaction());
+		ArrayList<AgentsATM> listATM = AgentsATM.listerAgentsATM(getTransaction());
 		if(getTransaction().isErreur()){
 			return ;
 		}
@@ -578,86 +581,21 @@ public boolean isSuppression() {
 public void setSuppression(boolean isSuppression) {
 	this.isSuppression = isSuppression;
 }
-	public ArrayList getListeFre() {
-		return listeFre;
-	}
-	public void setListeFre(ArrayList listeFre) {
-		this.listeFre = listeFre;
-	}
-	public ArrayList getListeMecaniciens() {
+	public ArrayList<AgentsATM> getListeMecaniciens() {
 		return listeMecaniciens;
 	}
-	public void setListeMecaniciens(ArrayList listeMecaniciens) {
+	public void setListeMecaniciens(ArrayList<AgentsATM> listeMecaniciens) {
 		this.listeMecaniciens = listeMecaniciens;
 	}
-	public ArrayList getListeMecaFPM() {
+	public ArrayList<AgentsATM> getListeMecaFPM() {
 		if(listeMecaFPM==null){
-			listeMecaFPM = new ArrayList();
+			listeMecaFPM = new ArrayList<AgentsATM>();
 		}
 		return listeMecaFPM;
 	}
-	public void setListeMecaFPM(ArrayList listeMecaFPM) {
+	public void setListeMecaFPM(ArrayList<AgentsATM> listeMecaFPM) {
 		this.listeMecaFPM = listeMecaFPM;
 	}
-	private java.lang.String[] LB_MECA_COULEURS;
-/**
- * Getter de la liste avec un lazy initialize :
- * LB_MECA_COULEURS
- * Date de création : (08/08/05 13:04:59)
- * @author : Générateur de process
- */
-private String [] getLB_MECA_COULEURS() {
-	if (LB_MECA_COULEURS == null)
-		LB_MECA_COULEURS = initialiseLazyLB();
-	return LB_MECA_COULEURS;
-}
-/**
- * Setter de la liste:
- * LB_MECA_COULEURS
- * Date de création : (08/08/05 13:04:59)
- * @author : Générateur de process
- */
-private void setLB_MECA_COULEURS(java.lang.String[] newLB_MECA_COULEURS) {
-	LB_MECA_COULEURS = newLB_MECA_COULEURS;
-}
-/**
- * Retourne le nom de la zone pour la JSP :
- * NOM_LB_MECA_COULEURS
- * Date de création : (08/08/05 13:04:59)
- * @author : Générateur de process
- */
-public java.lang.String getNOM_LB_MECA_COULEURS() {
-	return "NOM_LB_MECA_COULEURS";
-}
-/**
- * Retourne le nom de la zone de la ligne sélectionnée pour la JSP :
- * NOM_LB_MECA_COULEURS_SELECT
- * Date de création : (08/08/05 13:04:59)
- * @author : Générateur de process
- */
-public java.lang.String getNOM_LB_MECA_COULEURS_SELECT() {
-	return "NOM_LB_MECA_COULEURS_SELECT";
-}
-/**
- * Méthode à personnaliser
- * Retourne la valeur à afficher pour la zone de la JSP :
- * LB_MECA_COULEURS
- * Date de création : (08/08/05 13:04:59)
- * @author : Générateur de process
- */
-public java.lang.String [] getVAL_LB_MECA_COULEURS() {
-	return getLB_MECA_COULEURS();
-}
-/**
- * Méthode à personnaliser
- * Retourne l'indice à sélectionner pour la zone de la JSP :
- * LB_MECA_COULEURS
- * Date de création : (08/08/05 13:04:59)
- * @author : Générateur de process
- */
-public java.lang.String getVAL_LB_MECA_COULEURS_SELECT() {
-	return getZone(getNOM_LB_MECA_COULEURS_SELECT());
-}
 /**
  * Méthode appelée par la servlet qui aiguille le traitement : 
  * en fonction du bouton de la JSP 

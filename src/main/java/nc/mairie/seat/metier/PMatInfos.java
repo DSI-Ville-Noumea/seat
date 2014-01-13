@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier PMatInfos
  */
-public class PMatInfos extends nc.mairie.technique.BasicMetier {
+public class PMatInfos extends BasicMetier {
 	public String pminv;
 	public String pmserie;
 	public String codemodele;
@@ -32,7 +37,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : PMatInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPMatInfos(nc.mairie.technique.Transaction aTransaction,String param) throws Exception{
+public static ArrayList<PMatInfos> listerPMatInfos(nc.mairie.technique.Transaction aTransaction,String param) throws Exception{
 	if(("").equals(param)){
 		param = "pminv";
 	}
@@ -43,7 +48,7 @@ public static java.util.ArrayList listerPMatInfos(nc.mairie.technique.Transactio
  * Retourne un ArrayList d'objet métier : PMatInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPMatInfosSansEntretienPlanifie(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<PMatInfos> listerPMatInfosSansEntretienPlanifie(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PMatInfos unPMatInfos = new PMatInfos();
 	return unPMatInfos.getMyPMatInfosBroker().listerPMatInfosSansEntretienPlanifie(aTransaction);
 }
@@ -51,7 +56,7 @@ public static java.util.ArrayList listerPMatInfosSansEntretienPlanifie(nc.mairie
  * Retourne un ArrayList d'objet métier : PMatInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPMatInfosRecherche(nc.mairie.technique.Transaction aTransaction,String pminv,String param) throws Exception{
+public static ArrayList<PMatInfos> listerPMatInfosRecherche(nc.mairie.technique.Transaction aTransaction,String pminv,String param) throws Exception{
 	if(("").equals(param)){
 		param = "pminv";
 	}
@@ -62,7 +67,7 @@ public static java.util.ArrayList listerPMatInfosRecherche(nc.mairie.technique.T
  * Retourne un ArrayList d'objet métier : EquipementInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPMatInfosActifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception{
+public static ArrayList<PMatInfos> listerPMatInfosActifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception{
 	PMatInfos unPMatInfos = new PMatInfos();
 	return unPMatInfos.getMyPMatInfosBroker().listerPMatInfosActifs(aTransaction,tri);
 }
@@ -71,7 +76,7 @@ public static java.util.ArrayList listerPMatInfosActifs(nc.mairie.technique.Tran
  * Retourne un ArrayList d'objet métier : EquipementInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPMatInfosInactifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception{
+public static ArrayList<PMatInfos> listerPMatInfosInactifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception{
 	PMatInfos unPMatInfos = new PMatInfos();
 	return unPMatInfos.getMyPMatInfosBroker().listerPMatInfosInactifs(aTransaction,tri);
 }
@@ -392,7 +397,7 @@ public void setVersion(String newVersion) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PMatInfosBroker(this); 
 }
 /**
@@ -406,7 +411,7 @@ protected PMatInfosBroker getMyPMatInfosBroker() {
  * Retourne un EquipementInfos.
  * @return EquipementInfos
  */
-public static java.util.ArrayList chercherListPMatInfosTous(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
+public static ArrayList<PMatInfos> chercherListPMatInfosTous(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	PMatInfos unPMatInfos = new PMatInfos();
 	return unPMatInfos.getMyPMatInfosBroker().chercherListPMatInfosTous(aTransaction, code);
 }

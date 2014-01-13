@@ -1,20 +1,23 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier ENGJU
  */
-public class ENGJUBroker extends nc.mairie.technique.BasicBroker {
+public class ENGJUBroker extends BasicBroker {
 /**
  * Constructeur ENGJUBroker.
  */
-public ENGJUBroker(nc.mairie.technique.BasicMetier aMetier) {
+public ENGJUBroker(ENGJU aMetier) {
 	super(aMetier);
 }
 /**
  * @return src/nc.mairie.seat.metier.ENGJUMetier
  */
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected ENGJU definirMyMetier() {
 	return new ENGJU() ;
 }
 /**
@@ -69,14 +72,14 @@ public boolean supprimerENGJU(nc.mairie.technique.Transaction aTransaction) thro
  * Retourne un ArrayList d'objet métier : ENGJU.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerENGJU(nc.mairie.technique.Transaction aTransaction,String exerci, String noengj) throws Exception {
+public ArrayList<ENGJU> listerENGJU(nc.mairie.technique.Transaction aTransaction,String exerci, String noengj) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where exerci="+exerci+" and upper(noengj)='"+noengj.toUpperCase()+"'");
 }
 /**
  * Retourne un ArrayList d'objet métier : ENGJU.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerENGJUGroupByCdepNoengjIdetbs(nc.mairie.technique.Transaction aTransaction, String numOt, String cddep) throws Exception{
+public ArrayList<ENGJU> listerENGJUGroupByCdepNoengjIdetbs(nc.mairie.technique.Transaction aTransaction, String numOt, String cddep) throws Exception{
 	return executeSelectListe(aTransaction,
 		"  select min(be.exerci) as exerci, idetbs, enscom, be.noengj, max(nlengju) as nlengju,cddep,    sum(mtlenju) as mtlenju from SEAT.F_BENGAGEMENT  be"+
 		"  inner join "+getTable()+" enju on enju.noengj = be.noengj  "+
@@ -143,7 +146,7 @@ public ENGJU chercherdernierENGJU(nc.mairie.technique.Transaction aTransaction,S
  * Retourne un ArrayList d'objet métier : Fournisseurs.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerFournisseursNom(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<ENGJU> listerFournisseursNom(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where upper(enscom) like '"+param.toUpperCase()+"%'");
 }
 }

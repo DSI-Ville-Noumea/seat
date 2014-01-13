@@ -1,21 +1,23 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
 /**
  * Broker de l'Objet métier FPM
  */
-public class FPMBroker extends nc.mairie.technique.BasicBroker {
+public class FPMBroker extends BasicBroker {
 /**
  * Constructeur FPMBroker.
  */
-public FPMBroker(nc.mairie.technique.BasicMetier aMetier) {
+public FPMBroker(FPM aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.FPMMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected FPM definirMyMetier() {
 	return new FPM() ;
 }
 /**
@@ -47,7 +49,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 }
 
 // liste
-public java.util.ArrayList listerFPM(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<FPM> listerFPM(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable());
 }
 
@@ -57,7 +59,7 @@ public FPM chercherFPM(nc.mairie.technique.Transaction aTransaction, String cle)
 }
 
 // liste des à valider
-public java.util.ArrayList listerFPMAValider(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<FPM> listerFPMAValider(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='F'");
 }
 
@@ -94,7 +96,7 @@ public int nouvCodeFpm(nc.mairie.technique.Transaction aTransaction) throws Exce
 	
 }
 
-public java.util.ArrayList listerFpmPmat(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
+public ArrayList<FPM> listerFpmPmat(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv='"+inv+"'");
 }
 

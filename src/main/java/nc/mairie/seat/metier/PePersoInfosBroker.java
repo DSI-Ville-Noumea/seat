@@ -1,15 +1,18 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PePersoInfos
  */
-public class PePersoInfosBroker extends nc.mairie.technique.BasicBroker {
+public class PePersoInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : PePersoInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPePersoInfosEquip(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
+public ArrayList<PePersoInfos> listerPePersoInfosEquip(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeequip='"+inv+"' order by "+tri+"");
 }
 /**
@@ -24,7 +27,7 @@ public PePersoInfos chercherPePersoInfos(nc.mairie.technique.Transaction aTransa
  * @return java.util.ArrayList
  * On fait un Tri selon le paramètre
  */
-public java.util.ArrayList listerPePersoInfosFait(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
+public ArrayList<PePersoInfos> listerPePersoInfosFait(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where datereal <> '0001-01-01' and codeequip='"+inv+"' order by "+tri+"");
 }
 
@@ -33,7 +36,7 @@ public java.util.ArrayList listerPePersoInfosFait(nc.mairie.technique.Transactio
  * @return java.util.ArrayList
  * On fait un Tri selon le paramètre
  */
-public java.util.ArrayList listerPePersoInfosAFaire(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
+public ArrayList<PePersoInfos> listerPePersoInfosAFaire(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where datereal = '0001-01-01' and codeequip='"+inv+"' order by "+tri+"");
 }
 
@@ -41,7 +44,7 @@ public java.util.ArrayList listerPePersoInfosAFaire(nc.mairie.technique.Transact
  * Retourne un PePerso.
  * @return PePerso
  */
-public java.util.ArrayList chercherPePersoInfosOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception {
+public ArrayList<PePersoInfos> chercherPePersoInfosOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeot = "+numot);
 }
 
@@ -50,7 +53,7 @@ public java.util.ArrayList chercherPePersoInfosOT(nc.mairie.technique.Transactio
  * @return java.util.ArrayList
  * Liste les OT d'un équipement
  
-public java.util.ArrayList listerPePersoInfosOTEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
+public ArrayList<PePersoInfos> listerPePersoInfosOTEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select distinct(codeot) from "+getTable()+" where codeequip='"+inv+"'");
 }*/
 
@@ -59,21 +62,21 @@ public java.util.ArrayList listerPePersoInfosOTEquip(nc.mairie.technique.Transac
  * @return java.util.ArrayList
  * Liste les OT d'un équipement
  */
-public java.util.ArrayList listerPePersoInfosOTEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
+public ArrayList<PePersoInfos> listerPePersoInfosOTEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select distinct(codeot) from "+getTable());
 }
 
 /**
  * Constructeur PePersoInfosBroker.
  */
-public PePersoInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PePersoInfosBroker(PePersoInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PePersoInfosMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PePersoInfos definirMyMetier() {
 	return new PePersoInfos() ;
 }
 /**

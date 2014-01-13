@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Pneu
  */
-public class Pneu extends nc.mairie.technique.BasicMetier {
+public class Pneu extends BasicMetier {
 	public String codepneu;
 	public String dimension;
 /**
@@ -19,7 +24,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Pneu.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPneu(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Pneu> listerPneu(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Pneu unPneu = new Pneu();
 	return unPneu.getMyPneuBroker().listerPneu(aTransaction);
 }
@@ -139,7 +144,7 @@ public void setDimension(String newDimension) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PneuBroker(this); 
 }
 /**

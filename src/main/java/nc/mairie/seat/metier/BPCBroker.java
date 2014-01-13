@@ -1,11 +1,14 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier BPC
  */
-public class BPCBroker extends nc.mairie.technique.BasicBroker {
+public class BPCBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
@@ -31,7 +34,7 @@ public boolean supprimerBPC(nc.mairie.technique.Transaction aTransaction) throws
  * Retourne un ArrayList d'objet métier : BPC.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerBPC(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<BPC> listerBPC(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -101,11 +104,11 @@ public boolean existeBPC(nc.mairie.technique.Transaction aTransaction, String pa
  * Retourne un BPC.
  * @return BPC
  */
-public java.util.ArrayList chercherListBPC(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
+public ArrayList<BPC> listerBPCInventaire(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where NUMEROINVENTAIRE = '"+cle+"'");
 }
 
-public java.util.ArrayList listeBPCEquipAnnee(nc.mairie.technique.Transaction aTransaction, String cle,String date) throws Exception {
+public ArrayList<BPC> listeBPCEquipAnnee(nc.mairie.technique.Transaction aTransaction, String cle,String date) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where NUMEROINVENTAIRE = '"+cle+"' and date>'"+date+"'");
 }
 
@@ -118,32 +121,24 @@ public int nouvBPC(nc.mairie.technique.Transaction aTransaction) throws Exceptio
 	return executeCompter(aTransaction, "select max(numerobpc) from "+ getTable());
 	
 }
-
-/**
- * Retourne un BPC.
- * @return BPC
- */
-public java.util.ArrayList chercherBPCEquip(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return executeSelectListe(aTransaction,"select numerobpc,max(date),valeurcompteur from "+getTable()+" where NUMEROINVENTAIRE = '"+cle+"'");
-}
 /**
  * Retourne un ArrayList d'objet métier : BPC.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerBPCEquipement(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
+public ArrayList<BPC> listerBPCEquipement(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+cle+"'");
 }
 
 /**
  * Constructeur BPCBroker.
  */
-public BPCBroker(nc.mairie.technique.BasicMetier aMetier) {
+public BPCBroker(BPC aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.BPCMetier
  */
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected BPC definirMyMetier() {
 	return new BPC() ;
 }
 /**
@@ -193,7 +188,7 @@ public boolean existeBPCPompe(nc.mairie.technique.Transaction aTransaction, Stri
  * Retourne un ArrayList d'objet métier : BPCInfosCompletes.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerBPCParams(nc.mairie.technique.Transaction aTransaction,String inv,String periode) throws Exception {
+public ArrayList<BPC> listerBPCParams(nc.mairie.technique.Transaction aTransaction,String inv,String periode) throws Exception {
 	if(!inv.equals("")){
 		inv = "where "+inv;
 		if(!periode.equals("")){

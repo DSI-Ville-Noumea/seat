@@ -12,17 +12,18 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeOT_Lancement extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6772777584078293756L;
 	public static final int STATUT_MODIFIER_OT = 5;
 	public static final int STATUT_DETAILS_OT = 4;
 	public static final int STATUT_RETOUROT = 3;
 	public static final int STATUT_DETAILS_PEPERSO = 2;
 	public static final int STATUT_IMPRIMER = 1;
-	private java.lang.String[] LB_ENTRETIENS;
 	private java.lang.String[] LB_OT;
 	private String focus = null;
-	private ArrayList listAValider;
-	private ArrayList listOTProp;
-	private ArrayList listOTASupprimer;
+	private ArrayList<Planning> listOTProp;
 	String firstNoOT;
 	String lastNoOT;
 /**
@@ -156,7 +157,6 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
 			}
 		}
 	}*/
-	String test ="";
 	//tout s'est bien passé
 	commitTransaction();
 	// on retourne au planning
@@ -181,7 +181,7 @@ public java.lang.String getNOM_PB_OK_OT() {
  * @author : Générateur de process
  */
 public boolean performPB_OK_OT(javax.servlet.http.HttpServletRequest request) throws Exception {
-	int numligne = (Services.estNumerique(getZone(getNOM_LB_ENTRETIENS_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_ENTRETIENS_SELECT())) : -1);
+	int numligne = (Services.estNumerique(getZone(getNOM_LB_OT_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_OT_SELECT())) : -1);
 	if (numligne == -1 || getListOTProp().size() == 0 || numligne > getListOTProp().size() -1 ) {
 		getTransaction().declarerErreur(MairieMessages.getMessage("ERR997","OT"));
 		return false;
@@ -217,7 +217,7 @@ public java.lang.String getNOM_PB_VALIDER() {
  * @author : Générateur de process
  */
 public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) throws Exception {
-	int numligne = (Services.estNumerique(getZone(getNOM_LB_ENTRETIENS_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_ENTRETIENS_SELECT())) : -1);
+	int numligne = (Services.estNumerique(getZone(getNOM_LB_OT_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_OT_SELECT())) : -1);
 	if (numligne == -1 || getListOTProp().size() == 0 || numligne > getListOTProp().size() -1 ) {
 		getTransaction().declarerErreur(MairieMessages.getMessage("ERR997","OT"));
 		return false;
@@ -246,64 +246,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 	//Window.
 	setStatut(STATUT_IMPRIMER,true);
 	return true;
-}
-/**
- * Getter de la liste avec un lazy initialize :
- * LB_ENTRETIENS
- * Date de création : (19/07/05 14:46:20)
- * @author : Générateur de process
- */
-private String [] getLB_ENTRETIENS() {
-	if (LB_ENTRETIENS == null)
-		LB_ENTRETIENS = initialiseLazyLB();
-	return LB_ENTRETIENS;
-}
-/**
- * Setter de la liste:
- * LB_ENTRETIENS
- * Date de création : (19/07/05 14:46:20)
- * @author : Générateur de process
- */
-private void setLB_ENTRETIENS(java.lang.String[] newLB_ENTRETIENS) {
-	LB_ENTRETIENS = newLB_ENTRETIENS;
-}
-/**
- * Retourne le nom de la zone pour la JSP :
- * NOM_LB_ENTRETIENS
- * Date de création : (19/07/05 14:46:20)
- * @author : Générateur de process
- */
-public java.lang.String getNOM_LB_ENTRETIENS() {
-	return "NOM_LB_ENTRETIENS";
-}
-/**
- * Retourne le nom de la zone de la ligne sélectionnée pour la JSP :
- * NOM_LB_ENTRETIENS_SELECT
- * Date de création : (19/07/05 14:46:20)
- * @author : Générateur de process
- */
-public java.lang.String getNOM_LB_ENTRETIENS_SELECT() {
-	return "NOM_LB_ENTRETIENS_SELECT";
-}
-/**
- * Méthode à personnaliser
- * Retourne la valeur à afficher pour la zone de la JSP :
- * LB_ENTRETIENS
- * Date de création : (19/07/05 14:46:20)
- * @author : Générateur de process
- */
-public java.lang.String [] getVAL_LB_ENTRETIENS() {
-	return getLB_ENTRETIENS();
-}
-/**
- * Méthode à personnaliser
- * Retourne l'indice à sélectionner pour la zone de la JSP :
- * LB_ENTRETIENS
- * Date de création : (19/07/05 14:46:20)
- * @author : Générateur de process
- */
-public java.lang.String getVAL_LB_ENTRETIENS_SELECT() {
-	return getZone(getNOM_LB_ENTRETIENS_SELECT());
 }
 /**
  * Getter de la liste avec un lazy initialize :
@@ -386,16 +328,10 @@ public void setFocus(String focus) {
 	this.focus = focus;
 }
 
-	public ArrayList getListAValider() {
-		return listAValider;
-	}
-	public void setListAValider(ArrayList listAValider) {
-		this.listAValider = listAValider;
-	}
-	public ArrayList getListOTProp() {
+	public ArrayList<Planning> getListOTProp() {
 		return listOTProp;
 	}
-	public void setListOTProp(ArrayList listOTProp) {
+	public void setListOTProp(ArrayList<Planning> listOTProp) {
 		this.listOTProp = listOTProp;
 	}
 /**
@@ -425,7 +361,7 @@ public java.lang.String getNOM_PB_DETAILS_OT() {
  * @author : Générateur de process
  */
 public boolean performPB_DETAILS_OT(javax.servlet.http.HttpServletRequest request) throws Exception {
-	int numligne = (Services.estNumerique(getZone(getNOM_LB_ENTRETIENS_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_ENTRETIENS_SELECT())) : -1);
+	int numligne = (Services.estNumerique(getZone(getNOM_LB_OT_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_OT_SELECT())) : -1);
 	if (numligne == -1 || getListOTProp().size() == 0 || numligne > getListOTProp().size() -1 ) {
 		getTransaction().declarerErreur(MairieMessages.getMessage("ERR997","OT"));
 		return false;
@@ -452,12 +388,6 @@ public boolean performPB_DETAILS_OT(javax.servlet.http.HttpServletRequest reques
 	setStatut(STATUT_DETAILS_OT,true);
 	return true;
 }
-	public ArrayList getListOTASupprimer() {
-		return listOTASupprimer;
-	}
-	public void setListOTASupprimer(ArrayList listOTASupprimer) {
-		this.listOTASupprimer = listOTASupprimer;
-	}
 /**
  * Retourne le nom d'un bouton pour la JSP :
  * PB_RETOUR
@@ -555,7 +485,7 @@ public java.lang.String getNOM_PB_MODIFIER_OT() {
  * @author : Générateur de process
  */
 public boolean performPB_MODIFIER_OT(javax.servlet.http.HttpServletRequest request) throws Exception {
-	int numligne = (Services.estNumerique(getZone(getNOM_LB_ENTRETIENS_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_ENTRETIENS_SELECT())) : -1);
+	int numligne = (Services.estNumerique(getZone(getNOM_LB_OT_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_OT_SELECT())) : -1);
 	if (numligne == -1 || getListOTProp().size() == 0 || numligne > getListOTProp().size() -1 ) {
 		getTransaction().declarerErreur(MairieMessages.getMessage("ERR997","OT"));
 		return false;

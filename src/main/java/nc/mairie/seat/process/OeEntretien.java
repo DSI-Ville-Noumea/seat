@@ -9,16 +9,16 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeEntretien extends nc.mairie.technique.BasicProcess {
-	private java.lang.String[] LB_TYPE_INTERVALLE;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8201743940390410896L;
 	private String ACTION_SUPPRESSION = "Suppression d'un entretien.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification d'un entretien.";
 	private String ACTION_CREATION = "Création d'un entretien.";
-	private ArrayList listeEntretien = null;
-	private ArrayList listeTIntervalle = null;
+	private ArrayList<Entretien> listeEntretien = null;
 	private Entretien entretienCourant;
-	private java.util.Hashtable hashTypeIntervalle;
 	private java.lang.String[] LB_ENTRETIEN;
-	private int codeTi =0;
 	public int isVide = 0;
 	private String focus = null;
 /**
@@ -35,7 +35,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	Si liste des entretiens est vide
 	if (getLB_ENTRETIEN() == LBVide) {
 		
-		java.util.ArrayList a = Entretien.listerEntretien(getTransaction());
+		ArrayList<Entretien> a = Entretien.listerEntretien(getTransaction());
 		setListeEntretien(a);
 		
 		if (a.size()>0){
@@ -48,8 +48,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
 			String [] padding = {"G"};
 			
-			FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-			String [] l = f.getListeFormatee();
 			setLB_ENTRETIEN(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 		}else{
 			setLB_ENTRETIEN(null);
@@ -59,10 +57,9 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	 on sélectionne l'élément en cours
 	if(getEntretienCourant()!=null){
 		if(getEntretienCourant().getCodeentretien()!=null){
-			int position = -1;
 			addZone(getNOM_LB_ENTRETIEN_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListeEntretien().size(); i++) {
-				Entretien unEntretien = (Entretien)getListeEntretien().get(i);
+				Entretien unEntretien = getListeEntretien().get(i);
 				if (unEntretien.getCodeentretien().equals(getEntretienCourant().getCodeentretien())) {
 					addZone(getNOM_LB_ENTRETIEN_SELECT(),String.valueOf(i));
 					break;
@@ -174,7 +171,7 @@ public boolean performPB_MODIFIER(javax.servlet.http.HttpServletRequest request)
 	addZone(getNOM_ST_TITRE_ACTION(),ACTION_MODIFICATION);
 
 	//Récup de l'entretien courant
-	Entretien entretien = (Entretien)getListeEntretien().get(numligne);
+	Entretien entretien = getListeEntretien().get(numligne);
 	setEntretienCourant(entretien);
 
 	//Alim zones
@@ -210,7 +207,7 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
 		return false;
 	}
 	
-	Entretien monEntretien = (Entretien)getListeEntretien().get(indice);
+	Entretien monEntretien = getListeEntretien().get(indice);
 	setEntretienCourant(monEntretien);
 	
 	addZone(getNOM_EF_DESIGNATION(), monEntretien.getLibelleentretien());
@@ -245,11 +242,10 @@ public boolean performPB_SUPPRIMER(javax.servlet.http.HttpServletRequest request
 	addZone(getNOM_ST_TITRE_ACTION(),ACTION_SUPPRESSION);
 
 	//Récup de l'entretien courant
-	Entretien entretien = (Entretien)getListeEntretien().get(numligne);
+	Entretien entretien = getListeEntretien().get(numligne);
 	setEntretienCourant(entretien);
 
 	//Alim zones
-	String test = entretien.getLibelleentretien();
 	addZone(getNOM_ST_DESIGNATION(), entretien.getLibelleentretien());
 	
 	setStatut(STATUT_MEME_PROCESS);	
@@ -443,43 +439,16 @@ public java.lang.String getVAL_LB_ENTRETIEN_SELECT() {
 	/**
 	 * @return Renvoie listeEntretien.
 	 */
-	private ArrayList getListeEntretien() {
+	private ArrayList<Entretien> getListeEntretien() {
 		return listeEntretien;
 	}
 	/**
 	 * @param listeEntretien listeEntretien à définir.
 	 */
-	private void setListeEntretien(ArrayList listeEntretien) {
+	private void setListeEntretien(ArrayList<Entretien> listeEntretien) {
 		this.listeEntretien = listeEntretien;
 	}
 
-	/**
-	 * @return Renvoie listeTIntervalle.
-	 */
-	private ArrayList getListeTIntervalle() {
-		return listeTIntervalle;
-	}
-	/**
-	 * @param listeTIntervalle listeTIntervalle à définir.
-	 */
-	private void setListeTIntervalle(ArrayList listeTIntervalle) {
-		this.listeTIntervalle = listeTIntervalle;
-	}
-	/**
-	 * @return Renvoie hashTypeIntervalle.
-	 */
-	private java.util.Hashtable getHashTypeIntervalle() {
-		if (hashTypeIntervalle == null) {
-			hashTypeIntervalle = new java.util.Hashtable();
-		}
-		return hashTypeIntervalle;
-	}
-	/**
-	 * @param hashTypeIntervalle hashTypeIntervalle à définir.
-	 */
-	private void setHashTypeIntervalle(java.util.Hashtable hashTypeIntervalle) {
-		this.hashTypeIntervalle = hashTypeIntervalle;
-	}
 	public int getIsVide() {
 		return isVide;
 	}

@@ -1,11 +1,15 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.seat.process.Outils;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Modeles
  */
-public class Modeles extends nc.mairie.technique.BasicMetier {
+public class Modeles extends BasicMetier {
 	public String codemodele;
 	public String nbpneuavant;
 	public String nbpneuarriere;
@@ -33,7 +37,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Modeles.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerModeles(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Modeles> listerModeles(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Modeles unModeles = new Modeles();
 	return unModeles.getMyModelesBroker().listerModeles(aTransaction);
 }
@@ -41,7 +45,7 @@ public static java.util.ArrayList listerModeles(nc.mairie.technique.Transaction 
  * Retourne un ArrayList d'objet métier : Modeles.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerModelesMT(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Modeles> listerModelesMT(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Modeles unModeles = new Modeles();
 	return unModeles.getMyModelesBroker().listerModelesMT(aTransaction);
 }
@@ -181,18 +185,18 @@ public int nouvModeles(nc.mairie.technique.Transaction aTransaction) throws Exce
  * Retourne un ArrayList d'objet métier : Modeles.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerModelesMarque(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception{
+public static ArrayList<Modeles> listerModelesMarque(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception{
 	Modeles unModeles = new Modeles();
 	return unModeles.getMyModelesBroker().listerModelesMarque(aTransaction, cle);
 }
 
-public static java.util.ArrayList listerModelesMarqueMT(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception{
+public static ArrayList<Modeles> listerModelesMarqueMT(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception{
 	Modeles unModeles = new Modeles();
 	return unModeles.getMyModelesBroker().listerModelesMarque(aTransaction, cle);
 }
 
 
-public static java.util.ArrayList listerModelesLib(nc.mairie.technique.Transaction aTransaction, String modele) throws Exception{
+public static ArrayList<Modeles> listerModelesLib(nc.mairie.technique.Transaction aTransaction, String modele) throws Exception{
 	Modeles unModeles = new Modeles();
 	return unModeles.getMyModelesBroker().listerModelesLib(aTransaction, modele);
 }
@@ -374,7 +378,7 @@ public void setCodecompteur(String newCodecompteur) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new ModelesBroker(this); 
 }
 /**

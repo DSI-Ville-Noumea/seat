@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier TYPEEQUIP
  */
-public class TYPEEQUIPBroker extends nc.mairie.technique.BasicBroker {
+public class TYPEEQUIPBroker extends BasicBroker {
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
  * @author : Coralie NICOLAS
  */
@@ -40,7 +43,7 @@ public boolean supprimerTYPEEQUIP(nc.mairie.technique.Transaction aTransaction) 
  * Retourne un ArrayList d'objet métier : TYPEEQUIP.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerTYPEEQUIP(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<TYPEEQUIP> listerTYPEEQUIP(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by designationtypeequip");
 }
 /**
@@ -63,14 +66,14 @@ public boolean existeTEquip(nc.mairie.technique.Transaction aTransaction, String
 /**
  * Constructeur TYPEEQUIPBroker.
  */
-public TYPEEQUIPBroker(nc.mairie.technique.BasicMetier aMetier) {
+public TYPEEQUIPBroker(TYPEEQUIP aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.TYPEEQUIPMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected TYPEEQUIP definirMyMetier() {
 	return new TYPEEQUIP() ;
 }
 /**

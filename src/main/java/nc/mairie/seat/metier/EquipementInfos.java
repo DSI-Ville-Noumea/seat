@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier EquipementInfos
  */
-public class EquipementInfos extends nc.mairie.technique.BasicMetier {
+public class EquipementInfos extends BasicMetier {
 	public String numeroinventaire;
 	public String numeroimmatriculation;
 	public String datemiseencirculation;
@@ -28,7 +33,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : EquipementInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerEquipementInfos(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception{
+public static ArrayList<EquipementInfos> listerEquipementInfos(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception{
 	EquipementInfos unEquipementInfos = new EquipementInfos();
 	return unEquipementInfos.getMyEquipementInfosBroker().listerEquipementInfos(aTransaction,tri);
 }
@@ -37,7 +42,7 @@ public static java.util.ArrayList listerEquipementInfos(nc.mairie.technique.Tran
  * Retourne un ArrayList d'objet métier : EquipementInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerEquipementInfosActifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception{
+public static ArrayList<EquipementInfos> listerEquipementInfosActifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception{
 	EquipementInfos unEquipementInfos = new EquipementInfos();
 	return unEquipementInfos.getMyEquipementInfosBroker().listerEquipementInfosActifs(aTransaction,tri);
 }
@@ -46,7 +51,7 @@ public static java.util.ArrayList listerEquipementInfosActifs(nc.mairie.techniqu
  * Retourne un ArrayList d'objet métier : EquipementInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerEquipementInfosInactifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception{
+public static ArrayList<EquipementInfos> listerEquipementInfosInactifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception{
 	EquipementInfos unEquipementInfos = new EquipementInfos();
 	return unEquipementInfos.getMyEquipementInfosBroker().listerEquipementInfosInactifs(aTransaction,tri);
 }
@@ -54,7 +59,7 @@ public static java.util.ArrayList listerEquipementInfosInactifs(nc.mairie.techni
  * Retourne un EquipementInfos.
  * @return EquipementInfos
  */
-public static java.util.ArrayList chercherListEquipementInfos(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
+public static ArrayList<EquipementInfos> chercherListEquipementInfos(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	EquipementInfos unEquipementInfos = new EquipementInfos();
 	return unEquipementInfos.getMyEquipementInfosBroker().chercherListEquipementInfos(aTransaction, code);
 }
@@ -62,7 +67,7 @@ public static java.util.ArrayList chercherListEquipementInfos(nc.mairie.techniqu
  * Retourne un EquipementInfos.
  * @return EquipementInfos
  */
-public static java.util.ArrayList chercherListEquipementInfosTous(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
+public static ArrayList<EquipementInfos> chercherListEquipementInfosTous(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	EquipementInfos unEquipementInfos = new EquipementInfos();
 	return unEquipementInfos.getMyEquipementInfosBroker().chercherListEquipementInfosTous(aTransaction, code);
 }
@@ -328,7 +333,7 @@ public void setTypete(String newTypete) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new EquipementInfosBroker(this); 
 }
 /**

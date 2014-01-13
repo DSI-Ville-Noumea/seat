@@ -1,16 +1,19 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier Planning
  */
-public class PlanningBroker extends nc.mairie.technique.BasicBroker {
+public class PlanningBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : Planning.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPlanning(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Planning> listerPlanning(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 
@@ -18,7 +21,7 @@ public java.util.ArrayList listerPlanning(nc.mairie.technique.Transaction aTrans
  * Retourne un ArrayList d'objet métier : Planning.
  * @return java.util.ArrayList
  *//*
-public java.util.ArrayList listerPlanningProp(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Planning> listerPlanningProp(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeot like 'T%'");
 }
 /
@@ -34,7 +37,7 @@ public Planning chercherPlanning(nc.mairie.technique.Transaction aTransaction, S
  * Retourne un Planning.
  * @return Planning
  */
-public java.util.ArrayList chercherPlanningAFaire(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<Planning> chercherPlanningAFaire(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select distinct(numeroinventaire) from "+getTable()+" where codeot=0");
 }
 
@@ -42,7 +45,7 @@ public java.util.ArrayList chercherPlanningAFaire(nc.mairie.technique.Transactio
  * Retourne un Planning.
  * @return Planning
  */
-public java.util.ArrayList chercherPlanningOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
+public ArrayList<Planning> chercherPlanningOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeot="+numot);
 }
 
@@ -50,7 +53,7 @@ public java.util.ArrayList chercherPlanningOT(nc.mairie.technique.Transaction aT
  * Retourne un Planning.
  * @return Planning
  */
-public java.util.ArrayList chercherPlanningEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
+public ArrayList<Planning> chercherPlanningEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select distinct(codeot) from "+getTable()+" where numeroinventaire='"+inv+"'");
 }
 
@@ -58,7 +61,7 @@ public java.util.ArrayList chercherPlanningEquip(nc.mairie.technique.Transaction
  * Retourne un ArrayList d'objet métier : Planning.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPlanningAFaire(nc.mairie.technique.Transaction aTransaction,String dateFinPrev) throws Exception {
+public ArrayList<Planning> listerPlanningAFaire(nc.mairie.technique.Transaction aTransaction,String dateFinPrev) throws Exception {
 	if((dateFinPrev==null)||(dateFinPrev.equals("01/01/0001"))){
 		dateFinPrev = Services.ajouteJours(Services.dateDuJour(),7);
 	}
@@ -70,7 +73,7 @@ public java.util.ArrayList listerPlanningAFaire(nc.mairie.technique.Transaction 
  * Retourne un ArrayList d'objet métier : Planning.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPlanningEnCours(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
+public ArrayList<Planning> listerPlanningEnCours(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	int codeot = 0;
 	if(numot.equals("")){
 		codeot = 0;
@@ -84,7 +87,7 @@ public java.util.ArrayList listerPlanningEnCours(nc.mairie.technique.Transaction
  * Retourne un ArrayList d'objet métier : Planning.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPlanningEnCoursAvecOTValideDifferentT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
+public ArrayList<Planning> listerPlanningEnCoursAvecOTValideDifferentT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	int codeot = 0;
 	if(numot.equals("")){
 		codeot = 0;
@@ -98,7 +101,7 @@ public java.util.ArrayList listerPlanningEnCoursAvecOTValideDifferentT(nc.mairie
  * Retourne un ArrayList d'objet métier : Planning.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPlanningEnRetard(nc.mairie.technique.Transaction aTransaction,String date) throws Exception {
+public ArrayList<Planning> listerPlanningEnRetard(nc.mairie.technique.Transaction aTransaction,String date) throws Exception {
 	if(Services.estUneDate(date)){
 		date = Services.formateDateInternationale(date);
 	}
@@ -109,14 +112,14 @@ public java.util.ArrayList listerPlanningEnRetard(nc.mairie.technique.Transactio
 /**
  * Constructeur PlanningBroker.
  */
-public PlanningBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PlanningBroker(Planning aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PlanningMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected Planning definirMyMetier() {
 	return new Planning() ;
 }
 /**

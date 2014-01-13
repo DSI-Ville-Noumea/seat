@@ -1,21 +1,25 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
+
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier AgentsMunicipaux
  */
-public class AgentsMunicipauxBroker extends nc.mairie.technique.BasicBroker {
+public class AgentsMunicipauxBroker extends BasicBroker {
 /**
  * Constructeur AgentsMunicipauxBroker.
  */
-public AgentsMunicipauxBroker(nc.mairie.technique.BasicMetier aMetier) {
+public AgentsMunicipauxBroker(AgentsMunicipaux aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.AgentsMunicipauxMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected AgentsMunicipaux definirMyMetier() {
 	return new AgentsMunicipaux() ;
 }
 /**
@@ -49,7 +53,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * Retourne un ArrayList d'objet métier : AgentsMunicipaux.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAgentsMunicipaux(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<AgentsMunicipaux> listerAgentsMunicipaux(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**
@@ -80,15 +84,15 @@ public AgentsMunicipaux chercherAgentsMunicipauxService(nc.mairie.technique.Tran
 	*/
 }
 
-public java.util.ArrayList listerAgentsMunicipauxNom(nc.mairie.technique.Transaction aTransaction,String nom) throws Exception {
+public ArrayList<AgentsMunicipaux> listerAgentsMunicipauxNom(nc.mairie.technique.Transaction aTransaction,String nom) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where upper(nom) like '"+nom+"%' order by nom, prenom with ur");
 }
 
-public java.util.ArrayList listerAgentsMunicipauxNomServi(nc.mairie.technique.Transaction aTransaction,String nom,String servi) throws Exception {
+public ArrayList<AgentsMunicipaux> listerAgentsMunicipauxNomServi(nc.mairie.technique.Transaction aTransaction,String nom,String servi) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where upper(nom) like '"+nom+"%' and servi like '"+servi+"%' order by nom, prenom with ur");
 }
 
-public java.util.ArrayList listerAgentsMunicipauxServi(nc.mairie.technique.Transaction aTransaction,String servi) throws Exception {
+public ArrayList<AgentsMunicipaux> listerAgentsMunicipauxServi(nc.mairie.technique.Transaction aTransaction,String servi) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where servi like '"+servi+"%' order by nom, prenom with ur");
 }
 

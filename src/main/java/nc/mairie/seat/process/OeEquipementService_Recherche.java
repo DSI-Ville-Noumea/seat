@@ -1,6 +1,7 @@
 package nc.mairie.seat.process;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import nc.mairie.seat.metier.AffectationServiceInfos;
 import nc.mairie.seat.metier.EquipementInfos;
@@ -12,12 +13,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeEquipementService_Recherche extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5234513357374436635L;
 	private java.lang.String[] LB_EQUIPEMENT;
 	private java.lang.String[] LB_SERVICE;
-	private ArrayList listeService;
-	private ArrayList listeServiceEpuree;
-	private ArrayList listeAffectationService;
-	private ArrayList listeEquipementInfos;
+	private ArrayList<Service> listeService;
+	private ArrayList<Service> listeServiceEpuree;
+	private ArrayList<AffectationServiceInfos> listeAffectationService;
 	private String focus = null;
 	private Service serviceCourant;
 	private EquipementInfos equipementInfosCourant;
@@ -199,7 +203,7 @@ public boolean performPB_OK_SCE(javax.servlet.http.HttpServletRequest request) t
 	
 	setServiceCourant(monService);
 	//on recherche les équipements qui sont affectés actuellement au service sélectionner
-	ArrayList resultatAI = AffectationServiceInfos.chercherAffectationServiceInfosService(getTransaction(),serviceCourant.getServi());
+	ArrayList<AffectationServiceInfos> resultatAI = AffectationServiceInfos.chercherAffectationServiceInfosService(getTransaction(),serviceCourant.getServi());
 	setListeAffectationService(resultatAI);
 	// on recherche les objets de type equipementInfos correspondants
 	if (resultatAI.size()>0){
@@ -209,7 +213,7 @@ public boolean performPB_OK_SCE(javax.servlet.http.HttpServletRequest request) t
 			String [] padding = {"D","D","G","G","G","C"};
 			FormateListe aFormat = new FormateListe(tailles,padding, true);
 					
-			for (java.util.ListIterator list = resultatAI.listIterator(); list.hasNext(); ) {
+			for (ListIterator<AffectationServiceInfos> list = resultatAI.listIterator(); list.hasNext(); ) {
 				AffectationServiceInfos monAI = (AffectationServiceInfos)list.next();
 				EquipementInfos aEquipementInfos = EquipementInfos.chercherEquipementInfos(getTransaction(),monAI.getNumeroinventaire());
 				if (getTransaction().isErreur()){
@@ -245,10 +249,10 @@ public java.lang.String getNOM_PB_RECHERCHER() {
  */
 public boolean performPB_RECHERCHER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String param = getZone(getNOM_EF_RECHERCHER());
-	ArrayList resultat = Service.chercherListServiceEquip(getTransaction(),param);
+	ArrayList<Service> resultat = Service.chercherListServiceEquip(getTransaction(),param);
 	// on remplit la liste des équipements
 	setListeService(resultat);
-	ArrayList resultatEpure = new ArrayList();
+	ArrayList<Service> resultatEpure = new ArrayList<Service>();
 	int i = 0;
 	if(resultat.size()>0){
 		//les élèments de la liste 
@@ -256,11 +260,9 @@ public boolean performPB_RECHERCHER(javax.servlet.http.HttpServletRequest reques
 		//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
 		String [] padding = {"G","G"};
 		FormateListe aFormat = new FormateListe(tailles,padding, true);
-		for (java.util.ListIterator list = resultat.listIterator(); list.hasNext(); ) {
+		for (ListIterator<Service> list = resultat.listIterator(); list.hasNext(); ) {
 			Service aService = (Service)list.next();
 			// on teste si le code service a 4 caractères si oui on regarde s'il se termine par un 0
-			int codeservice = aService.getServi().trim().length();
-			String servi =aService.getServi().trim();
 			String ligne[] = {aService.getServi(), aService.getLiserv()};
 			/*if (codeservice==4){
 				servi =aService.getServi().trim().substring(3,4);
@@ -420,13 +422,13 @@ public java.lang.String getVAL_LB_SERVICE_SELECT() {
 	/**
 	 * @return Renvoie listeService.
 	 */
-	public ArrayList getListeService() {
+	public ArrayList<Service> getListeService() {
 		return listeService;
 	}
 	/**
 	 * @param listeService listeService à définir.
 	 */
-	public void setListeService(ArrayList listeService) {
+	public void setListeService(ArrayList<Service> listeService) {
 		this.listeService = listeService;
 	}
 	/**
@@ -475,28 +477,16 @@ public java.lang.String getVAL_LB_SERVICE_SELECT() {
 	public void setEquipementInfosCourant(EquipementInfos equipementInfosCourant) {
 		this.equipementInfosCourant = equipementInfosCourant;
 	}
-	/**
-	 * @return Renvoie listeEquipementInfos.
-	 */
-	public ArrayList getListeEquipementInfos() {
-		return listeEquipementInfos;
-	}
-	/**
-	 * @param listeEquipementInfos listeEquipementInfos à définir.
-	 */
-	public void setListeEquipementInfos(ArrayList listeEquipementInfos) {
-		this.listeEquipementInfos = listeEquipementInfos;
-	}
-	public ArrayList getListeAffectationService() {
+	public ArrayList<AffectationServiceInfos> getListeAffectationService() {
 		return listeAffectationService;
 	}
-	public void setListeAffectationService(ArrayList listeAffectationService) {
+	public void setListeAffectationService(ArrayList<AffectationServiceInfos> listeAffectationService) {
 		this.listeAffectationService = listeAffectationService;
 	}
-	public ArrayList getListeServiceEpuree() {
+	public ArrayList<Service> getListeServiceEpuree() {
 		return listeServiceEpuree;
 	}
-	public void setListeServiceEpuree(ArrayList listeServiceEpuree) {
+	public void setListeServiceEpuree(ArrayList<Service> listeServiceEpuree) {
 		this.listeServiceEpuree = listeServiceEpuree;
 	}
 }

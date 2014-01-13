@@ -3,7 +3,6 @@ package nc.mairie.seat.process;
 import java.util.ArrayList;
 
 import nc.mairie.seat.metier.Entretien;
-import nc.mairie.seat.metier.ModeleInfos;
 import nc.mairie.seat.metier.Modeles;
 import nc.mairie.seat.metier.PM_PePerso;
 import nc.mairie.seat.metier.PM_Planning;
@@ -16,13 +15,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OePMPePerso_ajout extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8711195314151187222L;
 	private java.lang.String[] LB_ENTRETIEN;
-	private java.lang.String[] LB_TINTER;
 	private String ACTION_MODIFICATION = "Modification";
 	private String ACTION_CREATION = "Création";
 	private String focus = null;
-	private ArrayList listeEntretien;
-	private ModeleInfos modeleInfosCourant;
+	private ArrayList<Entretien> listeEntretien;
 	private PM_Planning pmPlanningCourant;
 	private Entretien entretienCourant;
 	private PMateriel pMaterielCourant;
@@ -117,7 +118,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	 on remplit les listes déroulante
 //	 Si liste des entretien est vide
 	//if (getLB_ENTRETIEN() == LBVide) {
-	java.util.ArrayList aEnt = Entretien.listerEntretien(getTransaction());
+	ArrayList<Entretien> aEnt = Entretien.listerEntretien(getTransaction());
 	setListeEntretien(aEnt);
 	//les élèments de la liste 
 	int [] taillesEnt = {20};
@@ -127,7 +128,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	
 	if(getEntretienCourant()!=null){
 		//	recherche de l'entretien courant
-		int position = -1;
 		addZone(getNOM_LB_ENTRETIEN_SELECT(),String.valueOf(-1));
 		for (int i = 0; i < getListeEntretien().size(); i++) {
 			Entretien unEntretien = (Entretien)getListeEntretien().get(i);
@@ -448,10 +448,10 @@ public String getDefaultFocus() {
 	public void setPmPlanningCourant(PM_Planning pmPlanningCourant) {
 		this.pmPlanningCourant = pmPlanningCourant;
 	}
-	public ArrayList getListeEntretien() {
+	public ArrayList<Entretien> getListeEntretien() {
 		return listeEntretien;
 	}
-	public void setListeEntretien(ArrayList listeEntretien) {
+	public void setListeEntretien(ArrayList<Entretien> listeEntretien) {
 		this.listeEntretien = listeEntretien;
 	}
 	
@@ -602,15 +602,6 @@ private String [] getLB_TENT() {
 	if (LB_TENT == null)
 		LB_TENT = initialiseLazyLB();
 	return LB_TENT;
-}
-/**
- * Setter de la liste:
- * LB_TENT
- * Date de création : (05/07/05 13:45:10)
- * @author : Générateur de process
- */
-private void setLB_TENT(java.lang.String[] newLB_TENT) {
-	LB_TENT = newLB_TENT;
 }
 /**
  * Retourne le nom de la zone pour la JSP :

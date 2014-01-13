@@ -1,15 +1,18 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier PiecesOtInfos
  */
-public class PiecesOtInfosBroker extends nc.mairie.technique.BasicBroker {
+public class PiecesOtInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : PiecesOtInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPiecesOtInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<PiecesOtInfos> listerPiecesOtInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
@@ -24,7 +27,7 @@ public PiecesOtInfos chercherPiecesOtInfos(nc.mairie.technique.Transaction aTran
  * Retourne un ArrayList d'objet métier : PiecesOtInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerPiecesOtInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
+public ArrayList<PiecesOtInfos> listerPiecesOtInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numot="+numot);
 }
 
@@ -39,14 +42,14 @@ public int cumuleMontantPiecesOtInfosOT(nc.mairie.technique.Transaction aTransac
 /**
  * Constructeur PiecesOtInfosBroker.
  */
-public PiecesOtInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public PiecesOtInfosBroker(PiecesOtInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.PiecesOtInfosMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected PiecesOtInfos definirMyMetier() {
 	return new PiecesOtInfos() ;
 }
 /**

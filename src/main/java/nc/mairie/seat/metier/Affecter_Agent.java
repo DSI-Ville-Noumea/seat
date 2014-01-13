@@ -1,10 +1,15 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
+
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Affecter_Agent
  */
-public class Affecter_Agent extends nc.mairie.technique.BasicMetier {
+public class Affecter_Agent extends BasicMetier {
 	public String matricule;
 	public String numeroinventaire;
 	public String datedebut;
@@ -30,7 +35,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Affecter_Agent.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerAffecter_Agent(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Affecter_Agent> listerAffecter_Agent(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Affecter_Agent unAffecter_Agent = new Affecter_Agent();
 	return unAffecter_Agent.getMyAffecter_AgentBroker().listerAffecter_Agent(aTransaction);
 }
@@ -47,7 +52,7 @@ public static Affecter_Agent chercherAffecter_Agent(nc.mairie.technique.Transact
  * Retourne un Affecter_Agent.
  * @return Affecter_Agent
  */
-public static java.util.ArrayList chercherListAffecter_AgentEquip(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
+public static ArrayList<Affecter_Agent> chercherListAffecter_AgentEquip(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Affecter_Agent unAffecter_Agent = new Affecter_Agent();
 	return unAffecter_Agent.getMyAffecter_AgentBroker().chercherListerAffecter_AgentEquip(aTransaction, code);
 }
@@ -56,7 +61,7 @@ public static java.util.ArrayList chercherListAffecter_AgentEquip(nc.mairie.tech
  * Retourne un Affecter_Agent.
  * @return Affecter_Agent
  */
-public static java.util.ArrayList chercherListAffecter_AgentSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception{
+public static ArrayList<Affecter_Agent> chercherListAffecter_AgentSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception{
 	Affecter_Agent unAffecter_Agent = new Affecter_Agent();
 	String param = servi;
 	if (param.trim().length()==4){
@@ -67,12 +72,12 @@ public static java.util.ArrayList chercherListAffecter_AgentSce(nc.mairie.techni
 	return unAffecter_Agent.getMyAffecter_AgentBroker().chercherListerAffecter_AgentEquip(aTransaction, param);
 }
 
-public static java.util.ArrayList chercherListAffecter_AgentEquipSce(nc.mairie.technique.Transaction aTransaction,String inv, String servi,String date) throws Exception{
+public static ArrayList<Affecter_Agent> chercherListAffecter_AgentEquipSce(nc.mairie.technique.Transaction aTransaction,String inv, String servi,String date) throws Exception{
 	Affecter_Agent unAffecter_Agent = new Affecter_Agent();
 	return unAffecter_Agent.getMyAffecter_AgentBroker().chercherListerAffecter_AgentEquipSce(aTransaction, inv, servi, date);
 }
 
-public static java.util.ArrayList chercherListAffecter_AgentEquipSceEnCours(nc.mairie.technique.Transaction aTransaction,String inv, String servi,String date) throws Exception{
+public static ArrayList<Affecter_Agent> chercherListAffecter_AgentEquipSceEnCours(nc.mairie.technique.Transaction aTransaction,String inv, String servi,String date) throws Exception{
 	Affecter_Agent unAffecter_Agent = new Affecter_Agent();
 	return unAffecter_Agent.getMyAffecter_AgentBroker().chercherListerAffecter_AgentEquipSceEnCours(aTransaction, inv, servi, date);
 }
@@ -1371,7 +1376,7 @@ public void setCodeservice(String newCodeservice) {
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new Affecter_AgentBroker(this); 
 }
 /**

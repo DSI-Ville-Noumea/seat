@@ -12,6 +12,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeFPM_Lancement extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5719446004008137870L;
 	public static final int STATUT_MODIFIER_FPM = 5;
 	public static final int STATUT_DETAILS_FPM = 4;
 	public static final int STATUT_RETOURFPM = 3;
@@ -20,9 +24,7 @@ public class OeFPM_Lancement extends nc.mairie.technique.BasicProcess {
 	private java.lang.String[] LB_ENTRETIENS;
 	private java.lang.String[] LB_Fiche;
 	private String focus = null;
-	private ArrayList listAValider;
-	private ArrayList listFicheProp;
-	private ArrayList listFicheASupprimer;
+	private ArrayList<PM_Planning> listFicheProp;
 	String firstNoFiche;
 	String lastNoFiche;
 /**
@@ -120,7 +122,6 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
 		}
 	}
 
-	String test ="";
 	//tout s'est bien passé
 	commitTransaction();
 	// on retourne au planning
@@ -225,6 +226,7 @@ private String [] getLB_ENTRETIENS() {
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
  */
+@SuppressWarnings("unused")
 private void setLB_ENTRETIENS(java.lang.String[] newLB_ENTRETIENS) {
 	LB_ENTRETIENS = newLB_ENTRETIENS;
 }
@@ -347,16 +349,10 @@ public void setFocus(String focus) {
 	this.focus = focus;
 }
 
-	public ArrayList getListAValider() {
-		return listAValider;
-	}
-	public void setListAValider(ArrayList listAValider) {
-		this.listAValider = listAValider;
-	}
-	public ArrayList getListFicheProp() {
+	public ArrayList<PM_Planning> getListFicheProp() {
 		return listFicheProp;
 	}
-	public void setListFicheProp(ArrayList listOTProp) {
+	public void setListFicheProp(ArrayList<PM_Planning> listOTProp) {
 		this.listFicheProp = listOTProp;
 	}
 /**
@@ -413,12 +409,6 @@ public boolean performPB_DETAILS_FPM(javax.servlet.http.HttpServletRequest reque
 	setStatut(STATUT_DETAILS_FPM,true);
 	return true;
 }
-	public ArrayList getListOTASupprimer() {
-		return listFicheASupprimer;
-	}
-	public void setListOTASupprimer(ArrayList listOTASupprimer) {
-		this.listFicheASupprimer = listOTASupprimer;
-	}
 /**
  * Retourne le nom d'un bouton pour la JSP :
  * PB_RETOUR

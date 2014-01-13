@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier TYPEEQUIP
  */
-public class TYPEEQUIP extends nc.mairie.technique.BasicMetier {
+public class TYPEEQUIP extends BasicMetier {
 	public String codete;
 	public String designationte;
 /**
@@ -19,7 +24,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : TYPEEQUIP.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerTYPEEQUIP(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<TYPEEQUIP> listerTYPEEQUIP(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	TYPEEQUIP unTYPEEQUIP = new TYPEEQUIP();
 	return unTYPEEQUIP.getMyTYPEEQUIPBroker().listerTYPEEQUIP(aTransaction);
 }
@@ -153,7 +158,7 @@ public void setTypete(String newTypete) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new TYPEEQUIPBroker(this); 
 }
 /**

@@ -28,18 +28,19 @@ if (document.formu.elements[nom] != null)
 <TITLE>OeBPC_modifier.jsp</TITLE>
 </HEAD>
 <jsp:useBean class="nc.mairie.seat.process.OeBPC_modifier" id="process" scope="session"></jsp:useBean>
-<BODY BGPROPERTIES="FIXED" background="images/fond.jpg" class="sigp2-BODY" onload="return setfocus('<%=process.getFocus() %>')">
+<BODY background="images/fond.jpg" class="sigp2-BODY" onload="return setfocus('<%=process.getFocus() %>')">
 
 <TABLE border="0" width="580" style="text-align : center;" class="sigp2">
 <%@ include file="BanniereErreur.jsp" %>
     <TR>
       <TD style="text-align : center;">
-			<FORM name="formu" method="POST"><SPAN class="sigp2-titre">Modification<BR></SPAN><INPUT
-			type="submit" value="OK invent"
-			name="<%=process.getNOM_PB_INVENTAIRE() %>"
-			style="visibility : hidden;">
-		<INPUT type="submit" value="OK immat"
-			name="<%=process.getNOM_PB_IMMAT() %>" style="visibility : hidden;">
+			<FORM name="formu" method="POST"><SPAN class="sigp2-titre">Modification<BR></SPAN>
+<!-- 		<INPUT -->
+<!-- 			type="submit" value="OK invent" -->
+<%-- 			name="<%=process.getNOM_PB_INVENTAIRE() %>" --%>
+<!-- 			style="visibility : hidden;"> -->
+<!-- 		<INPUT type="submit" value="OK immat" -->
+<%-- 			name="<%=process.getNOM_PB_IMMAT() %>" style="visibility : hidden;"> --%>
 		
 		
 

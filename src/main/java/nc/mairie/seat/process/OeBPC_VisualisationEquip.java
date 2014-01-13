@@ -19,7 +19,6 @@ import nc.mairie.seat.metier.PM_Affectation_Sce_Infos;
 import nc.mairie.seat.metier.PMatInfos;
 import nc.mairie.seat.metier.Service;
 import nc.mairie.technique.*;
-import nc.mairie.seat.servlet.ServletSeat;
 import nc.mairie.servlets.Frontale;
 
 /**
@@ -28,17 +27,21 @@ import nc.mairie.servlets.Frontale;
  * @author : Générateur de process
 */ 
 public class OeBPC_VisualisationEquip extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -9208213267844932261L;
 	public static final int STATUT_PMATERIEL = 3;
 	public static final int STATUT_DETAILS = 2;
 	public static final int STATUT_RECHERCHER = 1;
 	private java.lang.String[] LB_BPC;
-	private ArrayList listeBPC;
+	private ArrayList<BPC> listeBPC;
 	private EquipementInfos equipementInfosCourant;
 	private PMatInfos pMatInfosCourant;
 	private String totalQte ;
 	private String nbBPC;
 	private String kmParcouru;
-	private String moyenne;
+//	private String moyenne;
 	private boolean first=true;
 	public boolean listeVide=true;
 	public int quantiteTotal = 0;
@@ -176,7 +179,7 @@ public boolean initialiseListeBPC(javax.servlet.http.HttpServletRequest request)
 		inventaire = getPMatInfosCourant().getPminv();
 	}
 	
-	java.util.ArrayList a = new ArrayList();
+	java.util.ArrayList<BPC> a = new ArrayList<BPC>();
 	if(!isMateriel){
 		a = BPC.listerBPCEquipement(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
 	}else{
@@ -224,7 +227,7 @@ public void initialiseListeTotal(javax.servlet.http.HttpServletRequest request) 
 	MoyenneTotal = 0;
 }
 
-public void trier(ArrayList a) throws Exception{
+public void trier(ArrayList<BPC> a) throws Exception{
 	String[] colonnes = {"date","valeurcompteur"};
 	//ordre croissant
 	boolean[] ordres = {false,false};
@@ -233,7 +236,7 @@ public void trier(ArrayList a) throws Exception{
 	
 //	Si au moins un bpc
 	if (a.size() !=0 ) {
-		ArrayList aTrier = Services.trier(a,colonnes,ordres);
+		ArrayList<BPC> aTrier = Services.trier(a,colonnes,ordres);
 		setListeBPC(aTrier);
 		int tailles [] = {10,10,10,6,10,10};
 		String[] padding = {"D","C","D","D","D","D"};
@@ -242,7 +245,6 @@ public void trier(ArrayList a) throws Exception{
 		/*if (a.size()>12){
 			indice = a.size()-11;
 		}*/
-		int recup = 1;
 				
 		for (int i = 0; i < indice ; i++) {
 			BPC aBPC = (BPC)aTrier.get(i);
@@ -264,7 +266,6 @@ public void trier(ArrayList a) throws Exception{
 			
 			if (null != bpcAvant){
 				kmParcourus =  Integer.parseInt(aBPC.getValeurcompteur())-Integer.parseInt(bpcAvant.getValeurcompteur());
-				int qteAvant = Integer.parseInt(bpcAvant.getQuantite());
 				int qte = Integer.parseInt(aBPC.getQuantite());
 				//moyennecalcul = (double)qteAvant/(double)kmParcourus*100;
 				//moyennecalcul = (double)qte/(double)kmParcourus*100;
@@ -281,14 +282,14 @@ public void trier(ArrayList a) throws Exception{
 			kmParcourusTotal = kmParcourusTotal + kmParcourus;//Integer.parseInt(aBPC.getValeurcompteur());
 		}
 		// calcul pour les totaux
-		NumberFormat moyenneTotalFormat = new DecimalFormat("0.00");
-		BPC theBPC = (BPC)aTrier.get(aTrier.size()-1);
+//		NumberFormat moyenneTotalFormat = new DecimalFormat("0.00");
+//		BPC theBPC = (BPC)aTrier.get(aTrier.size()-1);
 		//quantiteTotal = quantiteTotal - Integer.parseInt(theBPC.getQuantite()); 
-		double moyenneTotal = (double)quantiteTotal/(double)kmParcourusTotal*100;
+//		double moyenneTotal = (double)quantiteTotal/(double)kmParcourusTotal*100;
 		nbBPC = String.valueOf(getListeBPC().size());
 		kmParcouru = String.valueOf(kmParcourusTotal);
 		totalQte = String.valueOf(quantiteTotal);
-		moyenne = moyenneTotalFormat.format(moyenneTotal);
+//		moyenne = moyenneTotalFormat.format(moyenneTotal);
 		
 		setLB_BPC(aFormat.getListeFormatee());
 	} else {
@@ -494,10 +495,10 @@ public java.lang.String getVAL_LB_BPC_SELECT() {
 	public ModeleInfos getModeleInfosCourant() {
 		return modeleInfosCourant;
 	}
-	public ArrayList getListeBPC() {
+	public ArrayList<BPC> getListeBPC() {
 		return listeBPC;
 	}
-	public void setListeBPC(ArrayList listeBPC) {
+	public void setListeBPC(ArrayList<BPC> listeBPC) {
 		this.listeBPC = listeBPC;
 	}
 	private java.lang.String[] LB_TOTAL;
@@ -586,7 +587,7 @@ public boolean performPB_RECHERCHE_EQUIP(javax.servlet.http.HttpServletRequest r
 	addZone(getNOM_ST_MARQUE(),"");
 	setLB_BPC(LBVide);
 	setLB_TOTAL(LBVide);
-	setListeBPC(new ArrayList());
+	setListeBPC(new ArrayList<BPC>());
 	setEquipementInfosCourant(new EquipementInfos());
 		
 	//	recherche de l'équipement voulu
@@ -753,6 +754,7 @@ public java.lang.String getNOM_PB_IMPRIMER() {
  * pour le total
  * 
  */
+@SuppressWarnings("deprecation")
 public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String numinv = getZone(getNOM_ST_NOINVENT());
 	String numimmat = getZone(getNOM_ST_NOIMMAT());

@@ -11,15 +11,19 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeCarburant extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4089094001825637101L;
 	private java.lang.String[] LB_CARBURANT;
 	private String ACTION_SUPPRESSION = "Suppression d'un carburant<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification d'un carburant.";
 	private String ACTION_CREATION = "Création d'un carburant.";
-	private ArrayList listeCarburant = null;
+	private ArrayList<Carburant> listeCarburant = null;
 	private Carburant carburantCourant;
 	private String focus = null;
 	public int isVide = 0;
-	private ArrayList listePompes = null;
+	private ArrayList<Pompes> listePompes = null;
 	private Pompes pompeCourante;
 	
 /**
@@ -35,7 +39,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 
 	//	Si liste des carburants est vide
 	if (getLB_CARBURANT() == LBVide) {
-		java.util.ArrayList a = Carburant.listerCarburant(getTransaction());
+		ArrayList<Carburant> a = Carburant.listerCarburant(getTransaction());
 		setListeCarburant(a);
 		
 //		if (a.size()>0){
@@ -78,7 +82,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	 on sélectionne l'élément en cours
 	if(getCarburantCourant()!=null){
 		if(getCarburantCourant().getCodecarbu()!=null){
-			int position = -1;
 			addZone(getNOM_LB_CARBURANT_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListeCarburant().size(); i++) {
 				Carburant unCarburant = (Carburant)getListeCarburant().get(i);
@@ -97,7 +100,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
  * initialisation de la liste des pompes
  */
 public void initialiseListePompes(javax.servlet.http.HttpServletRequest request) throws Exception{
-	ArrayList a = Pompes.listerPompes(getTransaction());
+	ArrayList<Pompes> a = Pompes.listerPompes(getTransaction());
 	if (getTransaction().isErreur()){
 		return;
 	}
@@ -111,8 +114,6 @@ public void initialiseListePompes(javax.servlet.http.HttpServletRequest request)
 		a = Services.trier(a,champs,colonnes);
 		setListePompes(a);
 		
-		FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-		String [] l = f.getListeFormatee();
 		setLB_POMPES(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 	}else{
 		setLB_POMPES(null);
@@ -120,7 +121,6 @@ public void initialiseListePompes(javax.servlet.http.HttpServletRequest request)
 //	 on sélectionne la pompe en cours
 	if(getPompeCourante()!=null){
 		if(getPompeCourante().getNum_pompe()!=null){
-			int position = -1;
 			addZone(getNOM_LB_POMPES_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListePompes().size(); i++) {
 				Pompes unePompe = (Pompes)getListePompes().get(i);
@@ -132,36 +132,6 @@ public void initialiseListePompes(javax.servlet.http.HttpServletRequest request)
 		}
 	}
 }
-
-/**
- * Initialisation de la liste des carburant
- * @author : Coralie NICOLAS
- */
-private void initialiseListeCarburant(javax.servlet.http.HttpServletRequest request) throws Exception{
-	//Recherche des carburants
-/*	java.util.ArrayList a = Carburant.listerCarburant(getTransaction());
-	setListeCarburant(a);
-	
-	//Si au moins un carburant
-	if (a.size() !=0 ) {
-		int tailles [] = {20};
-		FormateListe aFormat = new FormateListe(tailles);
-		for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
-			Carburant aCarburant = (Carburant)list.next();
-			String ligne [] = { aCarburant.getDesignationcarbu()};
-			aFormat.ajouteLigne(ligne);
-			
-		}
-		setLB_CARBURANT(aFormat.getListeFormatee());
-	} else {
-		setLB_CARBURANT(null);
-	}
-	
-	addZone(getNOM_ST_TITRE_ACTION(),"");
-	addZone(getNOM_LB_CARBURANT_SELECT(),"0");
-	addZone(getNOM_EF_DESIGNATION(),"");*/
-}
-
 
 /**
  * Constructeur du process OeCarburant.
@@ -464,13 +434,13 @@ public java.lang.String getVAL_LB_CARBURANT_SELECT() {
 	/**
 	 * @return Renvoie listeCarburant.
 	 */
-	private ArrayList getListeCarburant() {
+	private ArrayList<Carburant> getListeCarburant() {
 		return listeCarburant;
 	}
 	/**
 	 * @param listeCarburant listeCarburant à définir.
 	 */
-	private void setListeCarburant(ArrayList listeCarburant) {
+	private void setListeCarburant(ArrayList<Carburant> listeCarburant) {
 		this.listeCarburant = listeCarburant;
 	}
 /**
@@ -782,10 +752,10 @@ public java.lang.String [] getVAL_LB_POMPES() {
 public java.lang.String getVAL_LB_POMPES_SELECT() {
 	return getZone(getNOM_LB_POMPES_SELECT());
 }
-	public ArrayList getListePompes() {
+	public ArrayList<Pompes> getListePompes() {
 		return listePompes;
 	}
-	public void setListePompes(ArrayList listePompes) {
+	public void setListePompes(ArrayList<Pompes> listePompes) {
 		this.listePompes = listePompes;
 	}
 	public Pompes getPompeCourante() {

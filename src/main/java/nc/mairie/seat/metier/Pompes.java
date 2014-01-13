@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Pompes
  */
-public class Pompes extends nc.mairie.technique.BasicMetier {
+public class Pompes extends BasicMetier {
 	public String num_pompe;
 	public String libelle_pompe;
 	public String commentaire_pompe;
@@ -52,7 +57,7 @@ public void setCommentaire_pompe(String newCommentaire_pompe) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PompesBroker(this); 
 }
 /**
@@ -75,7 +80,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Pompes.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPompes(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Pompes> listerPompes(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Pompes unPompes = new Pompes();
 	return unPompes.getMyPompesBroker().listerPompes(aTransaction);
 }
@@ -159,7 +164,6 @@ public int nouvCodePompe(nc.mairie.technique.Transaction aTransaction) throws Ex
  * vérifie que la pompe n'existe pas
  * @author nicco81
  *
- * TODO Pour changer le modèle de ce commentaire de type généré, allez à :
  */
 public boolean existePompes(nc.mairie.technique.Transaction aTransaction,String libelle) throws Exception{
 	Pompes unePompe = new Pompes();

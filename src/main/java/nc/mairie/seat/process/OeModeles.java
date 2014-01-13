@@ -1,6 +1,7 @@
 package nc.mairie.seat.process;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import nc.mairie.seat.metier.Modeles;
 import nc.mairie.seat.metier.Marques;
@@ -16,13 +17,17 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeModeles extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5901901224771705159L;
 	public static final int STATUT_AJOUTER = 6;
 	public static final int STATUT_MODIFIER = 7;
 	private java.lang.String[] LB_MARQUE;
 	private java.lang.String[] LB_MODELE;
 	private String ACTION_SUPPRESSION = "Suppression d'un modèle.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
-	private ArrayList listeModele = null;
-	private ArrayList listeMarque = null;
+	private ArrayList<Modeles> listeModele = null;
+	private ArrayList<Marques> listeMarque = null;
 	private Modeles modeleCourant;
 	private Marques marquesCourant;
 	boolean first = true;
@@ -41,7 +46,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	if (first){
 		//	Si liste des marques est vide
 		if (getLB_MARQUE() == LBVide) {
-			java.util.ArrayList a = Marques.listerMarques(getTransaction());
+			ArrayList<Marques> a = Marques.listerMarques(getTransaction());
 			if (getTransaction().isErreur()){
 				return;
 			}
@@ -84,7 +89,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
  */
 private void initialiseListeModelesMarque(javax.servlet.http.HttpServletRequest request, String cle) throws Exception{
 	//Recherche des modèles
-	java.util.ArrayList a = Modeles.listerModelesMarque(getTransaction(),cle);
+	ArrayList<Modeles> a = Modeles.listerModelesMarque(getTransaction(),cle);
 	setListeModele(a);
 	
 	//Si au moins un modèle
@@ -97,7 +102,7 @@ private void initialiseListeModelesMarque(javax.servlet.http.HttpServletRequest 
 		setListeModele(a);
 		FormateListe aFormat = new FormateListe(tailles,padding, true);
 				
-		for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
+		for (ListIterator<Modeles> list = a.listIterator(); list.hasNext(); ) {
 			Modeles aModele = (Modeles)list.next();
 			TYPEEQUIP aTEquip = TYPEEQUIP.chercherTYPEEQUIP(getTransaction(),aModele.getCodete());
 			if (getTransaction().isErreur()){
@@ -512,25 +517,25 @@ public java.lang.String getVAL_LB_MODELE_SELECT() {
 	/**
 	 * @return Renvoie listeMarque.
 	 */
-	private ArrayList getListeMarque() {
+	private ArrayList<Marques> getListeMarque() {
 		return listeMarque;
 	}
 	/**
 	 * @param listeMarque listeMarque à définir.
 	 */
-	private void setListeMarque(ArrayList listeMarque) {
+	private void setListeMarque(ArrayList<Marques> listeMarque) {
 		this.listeMarque = listeMarque;
 	}
 	/**
 	 * @return Renvoie listeModele.
 	 */
-	private ArrayList getListeModele() {
+	private ArrayList<Modeles> getListeModele() {
 		return listeModele;
 	}
 	/**
 	 * @param listeModele listeModele à définir.
 	 */
-	private void setListeModele(ArrayList listeModele) {
+	private void setListeModele(ArrayList<Modeles> listeModele) {
 		this.listeModele = listeModele;
 	}
 	/**

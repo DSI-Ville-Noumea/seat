@@ -1,15 +1,18 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier BPCInfosCompletes
  */
-public class BPCInfosCompletesBroker extends nc.mairie.technique.BasicBroker {
+public class BPCInfosCompletesBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : BPCInfosCompletes.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerBPCInfosCompletes(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<BPCInfosCompletes> listerBPCInfosCompletes(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 
@@ -17,7 +20,7 @@ public java.util.ArrayList listerBPCInfosCompletes(nc.mairie.technique.Transacti
  * Retourne un ArrayList d'objet métier : BPCInfosCompletes.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerBPCInfosCompletesParams(nc.mairie.technique.Transaction aTransaction,String inv,String servi,String periode) throws Exception {
+public ArrayList<BPCInfosCompletes> listerBPCInfosCompletesParams(nc.mairie.technique.Transaction aTransaction,String inv,String servi,String periode) throws Exception {
 	if(!inv.equals("")){
 		if(!periode.equals("")){
 			periode = "and "+periode;
@@ -50,14 +53,14 @@ public BPCInfosCompletes chercherBPCInfosCompletes(nc.mairie.technique.Transacti
 /**
  * Constructeur BPCInfosCompletesBroker.
  */
-public BPCInfosCompletesBroker(nc.mairie.technique.BasicMetier aMetier) {
+public BPCInfosCompletesBroker(BPCInfosCompletes aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.BPCInfosCompletesMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected BPCInfosCompletes definirMyMetier() {
 	return new BPCInfosCompletes() ;
 }
 /**

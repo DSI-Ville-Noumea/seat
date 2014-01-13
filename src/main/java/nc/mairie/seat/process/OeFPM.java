@@ -13,13 +13,17 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeFPM extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3967951321774861495L;
 	public static final int STATUT_MODIFIER = 2;
 	public static final int STATUT_RECHERCHE_PMAT = 1;
 	private java.lang.String[] LB_FPM;
 	private String ACTION_MODIFICATION = "Modification";
 	private String ACTION_CREATION = "Création";
 	private String ACTION_SUPPRESSION = "Suppression d'une FPM.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
-	private ArrayList listeFPM;
+	private ArrayList<FPMComplete> listeFPM;
 	private FPM fpmCourant;
 	private FPMComplete fpmCompleteCourant;
 	private PMatInfos pMatInfosCourant;
@@ -63,7 +67,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 
 public void initialiseListeFPM(javax.servlet.http.HttpServletRequest request) throws Exception{
 	
-	ArrayList listFPM;
+	ArrayList<FPMComplete> listFPM;
 	if(getTransaction().isErreur()){
 		return ;
 	}
@@ -83,7 +87,7 @@ public void initialiseListeFPM(javax.servlet.http.HttpServletRequest request) th
  *  (non-Javadoc)
  * @see nc.mairie.technique.BasicProcess#recupererStatut(javax.servlet.http.HttpServletRequest)
  */
-public void trier(ArrayList a) throws Exception{
+public void trier(ArrayList<FPMComplete> a) throws Exception{
 	String[] colonnes = {tri};
 	//ordre decroissant
 	boolean[] ordres = {tOrdre};//false,false};
@@ -92,7 +96,7 @@ public void trier(ArrayList a) throws Exception{
 	
 //	Si au moins un FPM pour PePerso
 	if (a.size() !=0 ) {
-		ArrayList aTrier = Services.trier(a,colonnes,ordres);
+		ArrayList<FPMComplete> aTrier = Services.trier(a,colonnes,ordres);
 		setListeFPM(aTrier);
 		int tailles [] = {10,5,20,10,10};
 		String[] padding = {"D","G","G","C","C"};
@@ -412,10 +416,10 @@ public int getIsVide() {
 public void setIsVide(int isVide) {
 	this.isVide = isVide;
 }
-public ArrayList getListeFPM() {
+public ArrayList<FPMComplete> getListeFPM() {
 	return listeFPM;
 }
-public void setListeFPM(ArrayList listeFPM) {
+public void setListeFPM(ArrayList<FPMComplete> listeFPM) {
 	this.listeFPM = listeFPM;
 }
 public FPM getFpmCourant() {

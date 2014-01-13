@@ -1,10 +1,13 @@
 package nc.mairie.seat.metier;
 
 import java.util.ArrayList;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier PM_AffectAgentsInfos
  */
-public class PM_AffectAgentsInfos extends nc.mairie.technique.BasicMetier {
+public class PM_AffectAgentsInfos extends BasicMetier {
 	public String matricule;
 	public String pminv;
 	public String ddeb;
@@ -29,7 +32,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : PM_AffectAgentsInfos.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPM_AffectAgentsInfosScePMatDate(nc.mairie.technique.Transaction aTransaction,String servi,String inv, String date) throws Exception {
+public static ArrayList<PM_AffectAgentsInfos> listerPM_AffectAgentsInfosScePMatDate(nc.mairie.technique.Transaction aTransaction,String servi,String inv, String date) throws Exception {
 	PM_AffectAgentsInfos unPM_AffectAgentsInfos = new PM_AffectAgentsInfos();
 	String param = servi;
 	if (param.trim().length()==4){
@@ -39,7 +42,7 @@ public static java.util.ArrayList listerPM_AffectAgentsInfosScePMatDate(nc.mairi
 	}
 	return unPM_AffectAgentsInfos.getMyPM_AffectAgentsInfosBroker().listerPM_AffectAgentInfosScePMatDate(aTransaction,servi,inv,date);
 }
-public static java.util.ArrayList listerPM_AffectAgentsInfos(nc.mairie.technique.Transaction aTransaction,String servi,String inv, String date) throws Exception {
+public static ArrayList<PM_AffectAgentsInfos> listerPM_AffectAgentsInfos(nc.mairie.technique.Transaction aTransaction,String servi,String inv, String date) throws Exception {
 	PM_AffectAgentsInfos unPM_AffectAgentsInfos = new PM_AffectAgentsInfos();
 	return unPM_AffectAgentsInfos.getMyPM_AffectAgentsInfosBroker().listerPM_AffectAgentsInfos(aTransaction);
 }
@@ -47,7 +50,7 @@ public static java.util.ArrayList listerPM_AffectAgentsInfos(nc.mairie.technique
  * Retourne un PM_AffectAgentsInfos.
  * @return PM_AffectAgentsInfos
  */
-public static ArrayList chercherPM_AffectAgentsInfosSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception{
+public static ArrayList<PM_AffectAgentsInfos> chercherPM_AffectAgentsInfosSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception{
 	PM_AffectAgentsInfos unPM_AffectAgentsInfos = new PM_AffectAgentsInfos();
 	String param = servi;
 	if (param.trim().length()==4){
@@ -58,7 +61,7 @@ public static ArrayList chercherPM_AffectAgentsInfosSce(nc.mairie.technique.Tran
 	return unPM_AffectAgentsInfos.getMyPM_AffectAgentsInfosBroker().chercherPM_AffectAgentsInfosSce(aTransaction, servi);
 }
 
-public static ArrayList chercherPM_AffectAgentsInfosScePM(nc.mairie.technique.Transaction aTransaction, String inv, String servi) throws Exception{
+public static ArrayList<PM_AffectAgentsInfos> chercherPM_AffectAgentsInfosScePM(nc.mairie.technique.Transaction aTransaction, String inv, String servi) throws Exception{
 	PM_AffectAgentsInfos unPM_AffectAgentsInfos = new PM_AffectAgentsInfos();
 	String param = servi;
 	if (param.trim().length()==4){
@@ -199,7 +202,7 @@ public void setCodesce(String newCodesce) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PM_AffectAgentsInfosBroker(this); 
 }
 /**

@@ -1,6 +1,7 @@
 package nc.mairie.seat.process;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 import nc.mairie.seat.metier.AffectationServiceInfos;
 import nc.mairie.seat.metier.AgentsMunicipaux;
@@ -13,6 +14,10 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeAgent_Equipements extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7553218215904023445L;
 	public static final int STATUT_AFF_AGENT = 10;
 	public static final int STATUT_AFF_SCE = 9;
 	public static final int STATUT_PEPERSO = 8;
@@ -24,7 +29,7 @@ public class OeAgent_Equipements extends nc.mairie.technique.BasicProcess {
 	public static final int STATUT_AGENTS = 2;
 	public static final int STATUT_VISUALISER = 1;
 	private java.lang.String[] LB_EQUIP;
-	private ArrayList listEquip;
+	private ArrayList<AffectationServiceInfos> listEquip;
 	String matricule = "";
 	public String origine = "";
 	public boolean isVide = false;
@@ -58,7 +63,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			menuService = true;
 //			 récupération du Service
 			String accro = (String)VariableGlobale.recuperer(request,"ACCRONYME");
-			ArrayList listService = Service.chercherListServiceAccro(getTransaction(),accro);
+			ArrayList<Service> listService = Service.chercherListServiceAccro(getTransaction(),accro);
 			if(getTransaction().isErreur()){
 				return ;
 			}
@@ -201,7 +206,7 @@ public boolean initialiseInfos(javax.servlet.http.HttpServletRequest request) th
 
 public boolean initialiseListeEquip(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	 recherche des équipements affectés
-	ArrayList a = AffectationServiceInfos.listerAffectationServiceInfosAgent(getTransaction(),matricule);
+	ArrayList<AffectationServiceInfos> a = AffectationServiceInfos.listerAffectationServiceInfosAgent(getTransaction(),matricule);
 	if(getTransaction().isErreur()){
 		return false;
 	}
@@ -219,19 +224,19 @@ public boolean initialiseListeEquip(javax.servlet.http.HttpServletRequest reques
 	}
 	return true;
 }
-public void trier(ArrayList a) throws Exception{
+public void trier(ArrayList<AffectationServiceInfos> a) throws Exception{
 	String[] colonnes = {"numeroinventaire","numeroimmatriculation"};
 	//ordre croissant
 	boolean[] ordres = {true,true};
 	
 //	Si au moins une affectation
 	if (a.size() !=0 ) {
-		ArrayList aTrier = Services.trier(a,colonnes,ordres);
+		ArrayList<AffectationServiceInfos> aTrier = Services.trier(a,colonnes,ordres);
 		setListEquip(aTrier);
 		int tailles [] = {5,10,25,15,10};
 		String[] padding = {"G","G","G","G","C"};
 		FormateListe aFormat = new FormateListe(tailles,padding,false);
-		for (java.util.ListIterator list = aTrier.listIterator(); list.hasNext(); ) {
+		for (ListIterator<AffectationServiceInfos> list = aTrier.listIterator(); list.hasNext(); ) {
 			AffectationServiceInfos monASI = (AffectationServiceInfos)list.next();
 			EquipementInfos unEI = EquipementInfos.chercherEquipementInfos(getTransaction(),monASI.getNumeroinventaire());
 			if(getTransaction().isErreur()){
@@ -282,7 +287,7 @@ public boolean performPB_AGENT(javax.servlet.http.HttpServletRequest request) th
 	
 	String nom = getZone(getNOM_EF_AGENT()).toUpperCase();
 	addZone(getNOM_EF_AGENT(),"");
-	ArrayList listAgent = new ArrayList();
+	ArrayList<AgentsMunicipaux> listAgent = new ArrayList<AgentsMunicipaux>();
 	boolean trouve = false;
 	if(nom.equals("")){//||getZone(getNOM_EF_SERVICE()).equals("")){
 		getTransaction().declarerErreur("Vous devez saisir le nom de l'agent ");
@@ -302,7 +307,7 @@ public boolean performPB_AGENT(javax.servlet.http.HttpServletRequest request) th
 	}
 	
 	trouve = true;
-//		listInter = AgentCDE.chercherAgentCDENom(getTransaction(),nom);
+//		listInter = AgentCDE.listerAgentCDENom(getTransaction(),nom);
 //		if(getTransaction().isErreur()){
 //			getTransaction().traiterErreur();
 //			trouve = false;
@@ -316,7 +321,7 @@ public boolean performPB_AGENT(javax.servlet.http.HttpServletRequest request) th
 //				listAgent.add(agentTrouve);
 //			}
 //		}
-//		listInter = AgentCCAS.chercherAgentCCASNom(getTransaction(),nom);
+//		listInter = AgentCCAS.listerAgentCCASNom(getTransaction(),nom);
 //		if(getTransaction().isErreur()){
 //			getTransaction().traiterErreur();
 //			trouve = false;
@@ -331,7 +336,7 @@ public boolean performPB_AGENT(javax.servlet.http.HttpServletRequest request) th
 //				listAgent.add(agentTrouve);
 //			}
 //		}
-//		listInter = Agents.chercherAgentsNom(getTransaction(),nom);
+//		listInter = Agents.listerAgentsNom(getTransaction(),nom);
 //		if(getTransaction().isErreur()){
 //			getTransaction().traiterErreur();
 //			trouve = false;
@@ -380,16 +385,16 @@ public boolean performPB_AGENT(javax.servlet.http.HttpServletRequest request) th
 //			matricule = agentChaine.substring(0,4);
 			AgentsMunicipaux unAgent = (AgentsMunicipaux)listAgent.get(0);
 			// s'il n'a qu'un équipement on débranche directement sur la fenêtre visu sinon on les affiche
-			ArrayList a = AffectationServiceInfos.listerAffectationServiceInfosAgent(getTransaction(),unAgent.getNomatr());
+			ArrayList<AffectationServiceInfos> a = AffectationServiceInfos.listerAffectationServiceInfosAgent(getTransaction(),unAgent.getNomatr());
 			if(getTransaction().isErreur()){
 				return false;
 			}
 			if(menuService){
 				if(a.size()>0){
-					AffectationServiceInfos monASI = (AffectationServiceInfos)a.get(0);
-					if(getTransaction().isErreur()){
-						return false;
-					}
+//					AffectationServiceInfos monASI = (AffectationServiceInfos)a.get(0);
+//					if(getTransaction().isErreur()){
+//						return false;
+//					}
 					matricule = unAgent.getNomatr();
 					initialiseInfos(request);
 				}else{
@@ -631,13 +636,13 @@ public java.lang.String getVAL_LB_EQUIP_SELECT() {
 /**
  * @return Renvoie listeAffectation.
  */
-public ArrayList getListEquip() {
+public ArrayList<AffectationServiceInfos> getListEquip() {
 	return listEquip;
 }
 /**
  * @param listeAffectation listeAffectation à définir.
  */
-public void setListEquip(ArrayList listEquip) {
+public void setListEquip(ArrayList<AffectationServiceInfos> listEquip) {
 	this.listEquip = listEquip;
 }
 /**

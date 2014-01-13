@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier Planning
  */
-public class Planning extends nc.mairie.technique.BasicMetier {
+public class Planning extends BasicMetier {
 	public String numeroinventaire;
 	public String numeroimmatriculation;
 	public String codetypeent;
@@ -28,7 +33,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : Planning.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPlanning(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Planning> listerPlanning(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Planning unPlanning = new Planning();
 	return unPlanning.getMyPlanningBroker().listerPlanning(aTransaction);
 }
@@ -37,7 +42,7 @@ public static java.util.ArrayList listerPlanning(nc.mairie.technique.Transaction
  * Retourne un ArrayList d'objet métier : Planning.
  * @return java.util.ArrayList
  *//*
-public static java.util.ArrayList listerPlanningProp(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Planning> listerPlanningProp(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Planning unPlanning = new Planning();
 	return unPlanning.getMyPlanningBroker().listerPlanningProp(aTransaction);
 }
@@ -55,7 +60,7 @@ public static Planning chercherPlanning(nc.mairie.technique.Transaction aTransac
  * Retourne un ArrayList d'objet métier : Planning.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPlanningAFaire(nc.mairie.technique.Transaction aTransaction,String dateFinPrev) throws Exception{
+public static ArrayList<Planning> listerPlanningAFaire(nc.mairie.technique.Transaction aTransaction,String dateFinPrev) throws Exception{
 	Planning unPlanning = new Planning();
 	return unPlanning.getMyPlanningBroker().listerPlanningAFaire(aTransaction,dateFinPrev);
 }
@@ -64,7 +69,7 @@ public static java.util.ArrayList listerPlanningAFaire(nc.mairie.technique.Trans
  * Retourne un ArrayList d'objet métier : Planning.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList chercherPlanningOt(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
+public static ArrayList<Planning> chercherPlanningOt(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	Planning unPlanning = new Planning();
 	return unPlanning.getMyPlanningBroker().chercherPlanningOT(aTransaction,numot);
 }
@@ -73,7 +78,7 @@ public static java.util.ArrayList chercherPlanningOt(nc.mairie.technique.Transac
  * Retourne un ArrayList d'objet métier : Planning.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList chercherPlanningEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
+public static ArrayList<Planning> chercherPlanningEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
 	Planning unPlanning = new Planning();
 	return unPlanning.getMyPlanningBroker().chercherPlanningEquip(aTransaction,inv);
 }
@@ -83,7 +88,7 @@ public static java.util.ArrayList chercherPlanningEquip(nc.mairie.technique.Tran
  * @return java.util.ArrayList
  * on cherche les numéro équiepements
  */
-public static java.util.ArrayList chercherPlanningAFaire(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<Planning> chercherPlanningAFaire(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Planning unPlanning = new Planning();
 	return unPlanning.getMyPlanningBroker().chercherPlanningAFaire(aTransaction);
 }
@@ -92,7 +97,7 @@ public static java.util.ArrayList chercherPlanningAFaire(nc.mairie.technique.Tra
  * Retourne un ArrayList d'objet métier : Planning.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPlanningEnCours(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
+public static ArrayList<Planning> listerPlanningEnCours(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	Planning unPlanning = new Planning();
 	return unPlanning.getMyPlanningBroker().listerPlanningEnCours(aTransaction,numot);
 }
@@ -101,7 +106,7 @@ public static java.util.ArrayList listerPlanningEnCours(nc.mairie.technique.Tran
  * Retourne un ArrayList d'objet métier : Planning.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPlanningEnCoursAvecOTValideDifferentT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
+public static ArrayList<Planning> listerPlanningEnCoursAvecOTValideDifferentT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	Planning unPlanning = new Planning();
 	return unPlanning.getMyPlanningBroker().listerPlanningEnCoursAvecOTValideDifferentT(aTransaction,numot);
 }
@@ -109,7 +114,7 @@ public static java.util.ArrayList listerPlanningEnCoursAvecOTValideDifferentT(nc
  * Retourne un ArrayList d'objet métier : Planning.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPlanningEnRetard(nc.mairie.technique.Transaction aTransaction,String date) throws Exception{
+public static ArrayList<Planning> listerPlanningEnRetard(nc.mairie.technique.Transaction aTransaction,String date) throws Exception{
 	Planning unPlanning = new Planning();
 	return unPlanning.getMyPlanningBroker().listerPlanningEnRetard(aTransaction,date);
 }
@@ -269,7 +274,7 @@ public void setDateprev(String newDateprev) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PlanningBroker(this); 
 }
 /**

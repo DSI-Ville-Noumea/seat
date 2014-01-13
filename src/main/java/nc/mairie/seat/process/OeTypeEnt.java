@@ -10,11 +10,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeTypeEnt extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1448515958246911414L;
 	private java.lang.String[] LB_LISTE_TE;
 	private String ACTION_SUPPRESSION = "Suppression d'un type d'entretien.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
 	private String ACTION_MODIFICATION = "Modification du nom d'un type d'entretien.";
 	private String ACTION_CREATION = "Création d'un type d'entretien.";
-	private ArrayList listeTe = null;
+	private ArrayList<TypeEntretien> listeTe = null;
 	private TypeEntretien teCourant;
 	private String focus = null;
 	public int isVide = 0;
@@ -31,7 +35,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 
 	//	Si liste des te est vide
 	if (getLB_LISTE_TE() == LBVide) {
-			java.util.ArrayList a = TypeEntretien.listerTypeEntretien(getTransaction());
+			ArrayList<TypeEntretien> a = TypeEntretien.listerTypeEntretien(getTransaction());
 			setListeTe(a);
 			
 		if (a.size()>0){
@@ -44,8 +48,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
 			String [] padding = {"G"};
 			
-			FormateListe f = new FormateListe(tailles,a,champs,padding,false);
-			String [] l = f.getListeFormatee();
 			setLB_LISTE_TE(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 		}else{
 			setLB_LISTE_TE(null);
@@ -55,7 +57,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	 on sélectionne l'élément en cours
 	if(getTeCourant()!=null){
 		if(getTeCourant().getCodetypeent()!=null){
-			int position = -1;
 			addZone(getNOM_LB_LISTE_TE_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListeTe().size(); i++) {
 				TypeEntretien unTe= (TypeEntretien)getListeTe().get(i);
@@ -66,36 +67,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			}	
 		}
 	}
-}
-
-/**
- * Initialisation de la liste des marques
- * @author : Coralie NICOLAS
- */
-private void initialiseListeTe(javax.servlet.http.HttpServletRequest request) throws Exception{
-	/*//Recherche des te
-	java.util.ArrayList a = TYPEEQUIP.listerTYPEEQUIP(getTransaction());
-	setListeTe(a);
-	
-	//Si au moins une type d'équipement
-	if (a.size() !=0 ) {
-		int tailles [] = {20};
-		FormateListe aFormat = new FormateListe(tailles);
-		for (java.util.ListIterator list = a.listIterator(); list.hasNext(); ) {
-			TYPEEQUIP aTe = (TYPEEQUIP)list.next();
-			//TypeContact aType = (TypeContact)getHashTypeContact().get(aContact.getCodTypeContact());
-			String ligne [] = { aTe.getDesignationte()};
-			aFormat.ajouteLigne(ligne);
-			
-		}
-		setLB_LISTE_TE(aFormat.getListeFormatee());
-	} else {
-		setLB_LISTE_TE(null);
-	}
-	
-	addZone(getNOM_ST_TITRE_ACTION(),"");
-	addZone(getNOM_LB_LISTE_TE_SELECT(),"0");
-	addZone(getNOM_EF_LIB_TYPEEQUIP(),"");*/
 }
 
 /**
@@ -474,13 +445,13 @@ public java.lang.String getVAL_LB_LISTE_TE_SELECT() {
 	/**
 	 * @return Renvoie listeTe.
 	 */
-	private ArrayList getListeTe() {
+	private ArrayList<TypeEntretien> getListeTe() {
 		return listeTe;
 	}
 	/**
 	 * @param listeTe listeTe à définir.
 	 */
-	private void setListeTe(ArrayList listeTe) {
+	private void setListeTe(ArrayList<TypeEntretien> listeTe) {
 		this.listeTe = listeTe;
 	}
 	/**

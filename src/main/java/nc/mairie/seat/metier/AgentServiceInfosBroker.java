@@ -1,15 +1,18 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier AgentServiceInfos
  */
-public class AgentServiceInfosBroker extends nc.mairie.technique.BasicBroker {
+public class AgentServiceInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : AgentServiceInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAgentServiceInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<AgentServiceInfos> listerAgentServiceInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**
@@ -23,7 +26,7 @@ public AgentServiceInfos chercherAgentServiceInfos(nc.mairie.technique.Transacti
  * Retourne un ArrayList d'objet métier : AgentServiceInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList chercherListAgentServiceInfosSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
+public ArrayList<AgentServiceInfos> chercherListAgentServiceInfosSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	String servi = param.substring(0,3); 
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where servi like '"+servi+"%' and datfin=0 order by nom with ur");
 		//	"SELECT MAIRIE.SPPERS.NOMATR "+
@@ -34,21 +37,21 @@ public java.util.ArrayList chercherListAgentServiceInfosSce(nc.mairie.technique.
  * Retourne un ArrayList d'objet métier : AgentServiceInfos.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerAgentService(nc.mairie.technique.Transaction aTransaction,String serv) throws Exception {
+public ArrayList<AgentServiceInfos> listerAgentService(nc.mairie.technique.Transaction aTransaction,String serv) throws Exception {
 	serv = serv.substring(0,3); 
 	return executeSelectListe(aTransaction,"select * from mairie.sppers sppers, mairie.spmtsr spmtsr, mairie.sppost sppost where sppers.nomatr=spmtsr.nomatr and sppers.nomatr=sppost.pomatr and spmtsr.servi like '"+serv+"%' and codact='A' and podsup=0 and datfin=0 order by nom with ur");
 }
 /**
  * Constructeur AgentServiceInfosBroker.
  */
-public AgentServiceInfosBroker(nc.mairie.technique.BasicMetier aMetier) {
+public AgentServiceInfosBroker(AgentServiceInfos aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.AgentServiceInfosMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected AgentServiceInfos definirMyMetier() {
 	return new AgentServiceInfos() ;
 }
 /**

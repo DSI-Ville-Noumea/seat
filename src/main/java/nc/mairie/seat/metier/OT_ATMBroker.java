@@ -1,21 +1,24 @@
 package nc.mairie.seat.metier;
 
+import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
+import nc.mairie.technique.BasicBroker;
+
 /**
  * Broker de l'Objet métier OT_ATM
  */
-public class OT_ATMBroker extends nc.mairie.technique.BasicBroker {
+public class OT_ATMBroker extends BasicBroker {
 /**
  * Constructeur OT_ATMBroker.
  */
-public OT_ATMBroker(nc.mairie.technique.BasicMetier aMetier) {
+public OT_ATMBroker(OT_ATM aMetier) {
 	super(aMetier);
 }
 /**
  * @return JavaSource/nc.mairie.seat.metier.OT_ATMMetier
  */
 @Override
-protected nc.mairie.technique.BasicMetier definirMyMetier() {
+protected OT_ATM definirMyMetier() {
 	return new OT_ATM() ;
 }
 /**
@@ -66,14 +69,14 @@ public boolean supprimerOT_ATM(nc.mairie.technique.Transaction aTransaction) thr
  * Retourne un ArrayList d'objet métier : OT_ATM.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerOT_ATM(nc.mairie.technique.Transaction aTransaction) throws Exception {
+public ArrayList<OT_ATM> listerOT_ATM(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un ArrayList d'objet métier : OT_ATM.
  * @return java.util.ArrayList
  */
-public java.util.ArrayList listerOT_ATMOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
+public ArrayList<OT_ATM> listerOT_ATMOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numot="+numot);
 }
 

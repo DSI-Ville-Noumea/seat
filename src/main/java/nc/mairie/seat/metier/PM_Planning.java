@@ -1,8 +1,13 @@
 package nc.mairie.seat.metier;
+import java.util.ArrayList;
+
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier PM_Planning
  */
-public class PM_Planning extends nc.mairie.technique.BasicMetier {
+public class PM_Planning extends BasicMetier {
 	public String pminv;
 	public String pmserie;
 	public String codepmpep;
@@ -156,7 +161,7 @@ public void setLibelleentretien(String newLibelleentretien) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PM_PlanningBroker(this); 
 }
 /**
@@ -179,7 +184,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : PM_Planning.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPM_Planning(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<PM_Planning> listerPM_Planning(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PM_Planning unPM_Planning = new PM_Planning();
 	return unPM_Planning.getMyPM_PlanningBroker().listerPM_Planning(aTransaction);
 }
@@ -193,7 +198,7 @@ public static PM_Planning chercherPM_Planning(nc.mairie.technique.Transaction aT
 }
 
 // lister tous les entretiens d'un petit matériel
-public static java.util.ArrayList listerPM_EntretiensPm(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
+public static ArrayList<PM_Planning> listerPM_EntretiensPm(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
 	if (tri.equals("")){
 		tri = "codepmpep";
 	}
@@ -202,41 +207,41 @@ public static java.util.ArrayList listerPM_EntretiensPm(nc.mairie.technique.Tran
 }
 
 // lister les entretiens d'un petit matériel à faire
-public static java.util.ArrayList listerPePersoInfosAFaire(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
+public static ArrayList<PM_Planning> listerPePersoInfosAFaire(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
 	PM_Planning unPM_Planning = new PM_Planning();
 	return unPM_Planning.getMyPM_PlanningBroker().listerPM_EntretiensPmAFaire(aTransaction,inv,tri);
 }
 
 // lister les entretiens d'un petit matériel fait
-public static java.util.ArrayList listerPM_EntretiensPmFait(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
+public static ArrayList<PM_Planning> listerPM_EntretiensPmFait(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
 	PM_Planning unPM_Planning = new PM_Planning();
 	return unPM_Planning.getMyPM_PlanningBroker().listerPM_EntretiensPmFait(aTransaction,inv,tri);
 }
 
 // liste des encours
-public static java.util.ArrayList listerPlanningEnCours(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
+public static ArrayList<PM_Planning> listerPlanningEnCours(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
 	PM_Planning unPM_Planning = new PM_Planning();
 	return unPM_Planning.getMyPM_PlanningBroker().listerPlanningEnCours(aTransaction,numfiche);
 }
 
 //liste des encours avec PFM VALIDE à T
-public static java.util.ArrayList listerPlanningEnCoursAvecFPMValideDiffetentT(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
+public static ArrayList<PM_Planning> listerPlanningEnCoursAvecFPMValideDiffetentT(nc.mairie.technique.Transaction aTransaction,String numfiche) throws Exception{
 	PM_Planning unPM_Planning = new PM_Planning();
 	return unPM_Planning.getMyPM_PlanningBroker().listerPlanningEnCoursAvecFPMValideDiffetentT(aTransaction,numfiche);
 }
 // liste des afaire
-public static java.util.ArrayList listerPlanningAFaire(nc.mairie.technique.Transaction aTransaction,String dateFinPrev) throws Exception{
+public static ArrayList<PM_Planning> listerPlanningAFaire(nc.mairie.technique.Transaction aTransaction,String dateFinPrev) throws Exception{
 	PM_Planning unPM_Planning = new PM_Planning();
 	return unPM_Planning.getMyPM_PlanningBroker().listerPlanningAFaire(aTransaction,dateFinPrev);
 }
 
 //liste des enretard
-public static java.util.ArrayList listerPlanningEnRetard(nc.mairie.technique.Transaction aTransaction,String date) throws Exception{
+public static ArrayList<PM_Planning> listerPlanningEnRetard(nc.mairie.technique.Transaction aTransaction,String date) throws Exception{
 	PM_Planning unPM_Planning = new PM_Planning();
 	return unPM_Planning.getMyPM_PlanningBroker().listerPlanningEnRetard(aTransaction,date);
 }
 
-public static java.util.ArrayList chercherPM_Planning_FPM(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
+public static ArrayList<PM_Planning> chercherPM_Planning_FPM(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	PM_Planning unPM_Planning = new PM_Planning();
 	return unPM_Planning.getMyPM_PlanningBroker().chercherPM_Planning_FPM(aTransaction, code);
 }

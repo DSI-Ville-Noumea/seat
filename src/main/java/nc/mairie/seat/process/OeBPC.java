@@ -5,13 +5,11 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import nc.mairie.seat.metier.AffectationServiceInfos;
 import nc.mairie.seat.metier.BPC;
-import nc.mairie.seat.metier.Equipement;
 import nc.mairie.seat.metier.EquipementInfos;
 import nc.mairie.seat.metier.ModePrise; 
 import nc.mairie.seat.metier.ModeleInfos;
 import nc.mairie.seat.metier.PM_Affectation_Sce_Infos;
 import nc.mairie.seat.metier.PMatInfos;
-import nc.mairie.seat.metier.PMateriel;
 import nc.mairie.seat.metier.Service;
 import nc.mairie.technique.*;
 /**
@@ -20,19 +18,22 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OeBPC extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6530377524666025884L;
 	public static final int STATUT_PMATERIEL = 4;
 	public static final int STATUT_AJOUTER = 1;
 	public static final int STATUT_MODIFIER = 2;
 	public static final int STATUT_RECHERCHE = 9;
 	private java.lang.String[] LB_BPC;
 	private String ACTION_SUPPRESSION = "Suppression d'un BPC.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
-	private ArrayList listeBPC;
+	private ArrayList<BPC> listeBPC;
 	private BPC bpcCourant;
-	private BPC bpcAvant;
 	private EquipementInfos equipementInfosCourant;
 	private PMatInfos pMatInfosCourant;
-	private Equipement equipementCourant;
-	private PMateriel pMaterielCourant;
+//	private Equipement equipementCourant;
+//	private PMateriel pMaterielCourant;
 	public int isVide = 0;
 	private boolean isMateriel = false;
 	private boolean first = true;
@@ -101,11 +102,11 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		if (null!=(getEquipementInfosCourant())){
 			if(null!=getEquipementInfosCourant().getNumeroinventaire()){
 				
-				Equipement unEquipement = Equipement.chercherEquipement(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
-				if(getTransaction().isErreur()){
-					return;
-				}
-				setEquipementCourant(unEquipement);
+//				Equipement unEquipement = Equipement.chercherEquipement(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
+//				if(getTransaction().isErreur()){
+//					return;
+//				}
+//				setEquipementCourant(unEquipement);
 				String date = Services.dateDuJour();
 				AffectationServiceInfos unAffectationServiceInfos = AffectationServiceInfos.chercherAffectationServiceInfosCourantEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),date);
 				if(getTransaction().isErreur()){
@@ -163,11 +164,11 @@ private boolean initialisePMateriel(javax.servlet.http.HttpServletRequest reques
 	if (null!=(getPMatInfosCourant())){
 		if(null!=getPMatInfosCourant().getPminv()){
 			
-			PMateriel unPMateriel = PMateriel.chercherPMateriel(getTransaction(),getPMatInfosCourant().getPminv());
-			if(getTransaction().isErreur()){
-				return false;
-			}
-			setPMaterielCourant(unPMateriel);
+//			PMateriel unPMateriel = PMateriel.chercherPMateriel(getTransaction(),getPMatInfosCourant().getPminv());
+//			if(getTransaction().isErreur()){
+//				return false;
+//			}
+//			setPMaterielCourant(unPMateriel);
 			String date = Services.dateDuJour();
 			PM_Affectation_Sce_Infos unPmASI = PM_Affectation_Sce_Infos.chercherPM_Affectation_Sce_InfosCourantPm(getTransaction(),getPMatInfosCourant().getPminv(),date);
 			if(getTransaction().isErreur()){
@@ -207,7 +208,7 @@ private boolean initialisePMateriel(javax.servlet.http.HttpServletRequest reques
  */
 private boolean initialiseListeBPC(javax.servlet.http.HttpServletRequest request) throws Exception{
 //	Recherche des bpc
-	java.util.ArrayList a = new ArrayList();
+	java.util.ArrayList<BPC> a = new ArrayList<BPC>();
 	if(!isMateriel){
 		a = BPC.listerBPCEquipement(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
 	}else{
@@ -251,7 +252,7 @@ public java.lang.String getNOM_PB_AJOUTER() {
  * @author : Générateur de process
  */
 public boolean performPB_AJOUTER(javax.servlet.http.HttpServletRequest request) throws Exception {
-	String type = "";
+//	String type = "";
 	//on récupère le dernier BPC pour les contrôles avec le prochain BPC
 	if (getLB_BPC()!=LBVide){
 		//int numdernier = listeBPC.size()-1;
@@ -262,13 +263,13 @@ public boolean performPB_AJOUTER(javax.servlet.http.HttpServletRequest request) 
 	//	On met les variables activités
 	// modif du 13/08/08 : si c'est un petit matériel je n'envoie que PMATINFOS et je précise dans une variable activité la nature de l'équipement
 	if (isMateriel){
-		type = "PMATINFOS";
+//		type = "PMATINFOS";
 		if(null==getPMatInfosCourant()){
 			setPMatInfosCourant(new PMatInfos());
 		}
 		VariableActivite.ajouter(this, "PMATINFOS", getPMatInfosCourant());
 	}else{
-		type = "EQUIPEMENTINFOS";
+//		type = "EQUIPEMENTINFOS";
 		if(null==getEquipementInfosCourant()){
 			setEquipementInfosCourant(new EquipementInfos());
 		}
@@ -711,13 +712,13 @@ public java.lang.String getVAL_ST_TITRE_ACTION() {
 	/**
 	 * @return Renvoie listeBPC.
 	 */
-	private ArrayList getListeBPC() {
+	private ArrayList<BPC> getListeBPC() {
 		return listeBPC;
 	}
 	/**
 	 * @param listeBPC listeBPC à définir.
 	 */
-	private void setListeBPC(ArrayList listeBPC) {
+	private void setListeBPC(ArrayList<BPC> listeBPC) {
 		this.listeBPC = listeBPC;
 	}
 /**
@@ -823,31 +824,31 @@ public java.lang.String getVAL_ST_TYPE() {
 			EquipementInfos equipementInfosCourant) {
 		this.equipementInfosCourant = equipementInfosCourant;
 	}
-	/**
-	 * @return Renvoie equipementCourant.
-	 */
-	private Equipement getEquipementCourant() {
-		return equipementCourant;
-	}
-	/**
-	 * @param equipementCourant equipementCourant à définir.
-	 */
-private void setEquipementCourant(Equipement equipementCourant) {
-	this.equipementCourant = equipementCourant;
-}
+//	/**
+//	 * @return Renvoie equipementCourant.
+//	 */
+//	private Equipement getEquipementCourant() {
+//		return equipementCourant;
+//	}
+//	/**
+//	 * @param equipementCourant equipementCourant à définir.
+//	 */
+//private void setEquipementCourant(Equipement equipementCourant) {
+//	this.equipementCourant = equipementCourant;
+//}
 
-/**
- * @return Renvoie pMaterielCourant.
- */
-private PMateriel getPMaterielCourant() {
-	return pMaterielCourant;
-}
-/**
- * @param pMaterielCourant pMaterielCourant à définir.
- */
-private void setPMaterielCourant(PMateriel pMaterielCourant) {
-	this.pMaterielCourant = pMaterielCourant;
-}
+///**
+// * @return Renvoie pMaterielCourant.
+// */
+//private PMateriel getPMaterielCourant() {
+//	return pMaterielCourant;
+//}
+///**
+// * @param pMaterielCourant pMaterielCourant à définir.
+// */
+//private void setPMaterielCourant(PMateriel pMaterielCourant) {
+//	this.pMaterielCourant = pMaterielCourant;
+//}
 /**
  * @return Renvoie pMatInfosCourant.
  */
@@ -861,7 +862,7 @@ private void setPMatInfosCourant( PMatInfos pMatInfosCourant) {
 	this.pMatInfosCourant = pMatInfosCourant;
 }
 
-public void trier(ArrayList a) throws Exception{
+public void trier(ArrayList<BPC> a) throws Exception{
 		String[] colonnes = {"date","valeurcompteur"};
 		//ordre croissant
 		boolean[] ordres = {false,false};
@@ -870,17 +871,15 @@ public void trier(ArrayList a) throws Exception{
 		
 //		Si au moins un bpc
 		if (a.size() !=0 ) {
-			ArrayList aTrier = Services.trier(a,colonnes,ordres);
+			ArrayList<BPC> aTrier = Services.trier(a,colonnes,ordres);
 			setListeBPC(aTrier);
 			int tailles [] = {10,10,10,6,10,10};
 			String[] padding = {"D","C","D","D","D","D"};
 			FormateListe aFormat = new FormateListe(tailles,padding,false);
-			int indice = a.size();
 			// on affiche les 12 derniers BPC
 			/*if (a.size()>12){
 				indice = a.size()-11;
 			}*/
-			int recup = 1;
 			if (a.size()<12){
 				max = a.size();
 			}
@@ -902,7 +901,7 @@ public void trier(ArrayList a) throws Exception{
 				if (null != bpcAvant){
 					
 					kmParcourus =  Integer.parseInt(aBPC.getValeurcompteur())-Integer.parseInt(bpcAvant.getValeurcompteur());
-					int qteAvant = Integer.parseInt(bpcAvant.getQuantite());
+//					int qteAvant = Integer.parseInt(bpcAvant.getQuantite());
 					int qte = Integer.parseInt(aBPC.getQuantite());
 					//moyennecalcul = (double)qteAvant/(double)kmParcourus*100;
 					//moyennecalcul = (double)qte/(double)kmParcourus*100;

@@ -4,10 +4,13 @@ import java.util.ArrayList;
 
 import nc.mairie.seat.process.Outils;
 import nc.mairie.technique.Services;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicMetier;
+
 /**
  * Objet métier PeBase
  */
-public class PeBase extends nc.mairie.technique.BasicMetier {
+public class PeBase extends BasicMetier {
 	public String codemodele;
 	public String codeentretien;
 	public String codeti;
@@ -30,7 +33,7 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : PeBase.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPeBase(nc.mairie.technique.Transaction aTransaction) throws Exception{
+public static ArrayList<PeBase> listerPeBase(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PeBase unPeBase = new PeBase();
 	return unPeBase.getMyPeBaseBroker().listerPeBase(aTransaction);
 }
@@ -130,7 +133,7 @@ public boolean creerPeBase(nc.mairie.technique.Transaction aTransaction,Modeles 
 		//Creation du PeBase
 		if (getMyPeBaseBroker().creerPeBase(aTransaction)){
 			//on cherche les équipements rattachés à ce modèle pour mettre à jour leur peperso
-			ArrayList aListEquip = Equipement.listerEquipementModele(aTransaction,getCodemodele());
+			ArrayList<Equipement> aListEquip = Equipement.listerEquipementModele(aTransaction,getCodemodele());
 			if (aTransaction.isErreur()){
 				return false;
 			}
@@ -138,7 +141,7 @@ public boolean creerPeBase(nc.mairie.technique.Transaction aTransaction,Modeles 
 				for (int i = 0; i < aListEquip.size() ; i++) {
 					Equipement aEquipement = (Equipement)aListEquip.get(i);	
 					// contrôle l'enregistrement de l'entretien ds le PePerso
-					ArrayList aListPePerso = PePerso.chercherPePersoEquipEnt(aTransaction,aEquipement.getNumeroinventaire(),getCodeentretien());
+					ArrayList<PePerso> aListPePerso = PePerso.chercherPePersoEquipEnt(aTransaction,aEquipement.getNumeroinventaire(),getCodeentretien());
 					if(aTransaction.isErreur()){
 						return false;
 					}
@@ -256,7 +259,7 @@ public boolean existePeBaseTint(nc.mairie.technique.Transaction aTransaction, St
  * Retourne un ArrayList d'objet métier : PeBase.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPeBaseModele(nc.mairie.technique.Transaction aTransaction,String mod) throws Exception{
+public static ArrayList<PeBase> listerPeBaseModele(nc.mairie.technique.Transaction aTransaction,String mod) throws Exception{
 	PeBase unPeBase = new PeBase();
 	return unPeBase.getMyPeBaseBroker().listerPeBaseModele(aTransaction,mod);
 }
@@ -265,7 +268,7 @@ public static java.util.ArrayList listerPeBaseModele(nc.mairie.technique.Transac
  * Retourne un ArrayList d'objet métier : PeBase.
  * @return java.util.ArrayList
  */
-public static java.util.ArrayList listerPeBaseModeleActif(nc.mairie.technique.Transaction aTransaction,String mod) throws Exception{
+public static ArrayList<PeBase> listerPeBaseModeleActif(nc.mairie.technique.Transaction aTransaction,String mod) throws Exception{
 	PeBase unPeBase = new PeBase();
 	return unPeBase.getMyPeBaseBroker().listerPeBaseModeleActif(aTransaction,mod);
 }
@@ -376,7 +379,7 @@ public void setDatedesactivation(String newDatedesactivation) {
  Methode à définir dans chaque objet Métier pour instancier un Broker 
 */
 @Override
-protected nc.mairie.technique.BasicBroker definirMyBroker() { 
+protected BasicBroker definirMyBroker() { 
 	return new PeBaseBroker(this); 
 }
 /**

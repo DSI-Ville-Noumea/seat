@@ -15,13 +15,17 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OePeBase_ajout extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4040891347165208753L;
 	private java.lang.String[] LB_ENTRETIEN;
 	private java.lang.String[] LB_TINTER;
 	private String ACTION_MODIFICATION = "Modification";
 	private String ACTION_CREATION = "Création";
 	private String focus = null;
-	private ArrayList listeTintervalle;
-	private ArrayList listeEntretien;
+	private ArrayList<TIntervalle> listeTintervalle;
+	private ArrayList<Entretien> listeEntretien;
 	private ModeleInfos modeleInfosCourant;
 	private PeBaseInfos peBaseInfosCourant;
 	private TIntervalle tIntervalleCourant;
@@ -104,7 +108,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //	 on remplit les listes déroulante
 //	 Si liste des tintervalle est vide
 	if (getLB_TINTER() == LBVide) {
-		java.util.ArrayList a = TIntervalle.listerTIntervalle(getTransaction());
+		ArrayList<TIntervalle> a = TIntervalle.listerTIntervalle(getTransaction());
 		setListeTintervalle(a);
 		//les élèments de la liste 
 		int [] tailles = {10};
@@ -114,7 +118,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		
 		if(getTIntervalleCourant()!=null){
 			//	recherche du type d'intervalle courant
-			int position = -1;
 			addZone(getNOM_LB_TINTER_SELECT(),String.valueOf(-1));
 			for (int i = 0; i < getListeTintervalle().size(); i++) {
 				TIntervalle unTIntervalle = (TIntervalle)getListeTintervalle().get(i);
@@ -127,7 +130,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	}
 	// Si liste des entretiens est vide
 		if (getLB_ENTRETIEN() == LBVide) {
-			java.util.ArrayList a = Entretien.listerEntretien(getTransaction());
+			ArrayList<Entretien> a = Entretien.listerEntretien(getTransaction());
 			setListeEntretien(a);
 			//les élèments de la liste 
 			int [] tailles = {20};
@@ -574,17 +577,17 @@ public String getDefaultFocus() {
 	public void setPeBaseInfosCourant(PeBaseInfos peBaseInfosCourant) {
 		this.peBaseInfosCourant = peBaseInfosCourant;
 	}
-	public ArrayList getListeEntretien() {
+	public ArrayList<Entretien> getListeEntretien() {
 		return listeEntretien;
 	}
-	public void setListeEntretien(ArrayList listeEntretien) {
+	public void setListeEntretien(ArrayList<Entretien> listeEntretien) {
 		this.listeEntretien = listeEntretien;
 	}
 	
-	public ArrayList getListeTintervalle() {
+	public ArrayList<TIntervalle> getListeTintervalle() {
 		return listeTintervalle;
 	}
-	public void setListeTintervalle(ArrayList listeTintervalle) {
+	public void setListeTintervalle(ArrayList<TIntervalle> listeTintervalle) {
 		this.listeTintervalle = listeTintervalle;
 	}
 	public Entretien getEntretienCourant() {

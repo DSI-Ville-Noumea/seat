@@ -17,11 +17,15 @@ import nc.mairie.technique.*;
  * @author : Générateur de process
 */
 public class OePeBase extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6909826406145237878L;
 	public static final int STATUT_RECHERCHERMODELE = 3;
 	public static final int STATUT_MODIFIER = 2;
 	public static final int STATUT_AJOUTER = 1;
 	private String ACTION_SUPPRESSION = "Suppression d'un entretien pour un modèle.<br><FONT color='red'> Veuillez valider votre choix.</FONT>";
-	private ArrayList listePeBase = null;
+	private ArrayList<PeBaseInfos> listePeBase = null;
 	private java.lang.String[] LB_PE;
 	private java.lang.String[] LB_PE_Couleurs;
 	private ModeleInfos modeleInfosCourant;
@@ -108,7 +112,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 private void initialiseListePe(javax.servlet.http.HttpServletRequest request) throws Exception{
 
 	//	Recherche des entretiens
-	java.util.ArrayList a = PeBaseInfos.listerPeBaseInfos(getTransaction(),modeleInfosCourant.getCodemodele());
+	ArrayList<PeBaseInfos> a = PeBaseInfos.listerPeBaseInfos(getTransaction(),modeleInfosCourant.getCodemodele());
 	if (null == a){
 		System.out.println("Aucun élément enregistré dans la base.");
 	}
@@ -613,10 +617,10 @@ public java.lang.String getVAL_ST_TITRE_ACTION() {
 	public void setModeleInfosCourant(ModeleInfos modeleInfosCourant) {
 		this.modeleInfosCourant = modeleInfosCourant;
 	}
-	public ArrayList getListePeBase() {
+	public ArrayList<PeBaseInfos> getListePeBase() {
 		return listePeBase;
 	}
-	public void setListePeBase(ArrayList listePeBase) {
+	public void setListePeBase(ArrayList<PeBaseInfos> listePeBase) {
 		this.listePeBase = listePeBase;
 	}
 	/**
@@ -841,7 +845,7 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
 	addZone(getNOM_ST_TEQUIP(),"");
 	addZone(getNOM_ST_TINT(),"");
 	if(!getZone(getNOM_EF_RECHERCHE()).equals("")){
-		ArrayList listM = Modeles.listerModelesLib(getTransaction(),getZone(getNOM_EF_RECHERCHE()));
+		ArrayList<?> listM = Modeles.listerModelesLib(getTransaction(),getZone(getNOM_EF_RECHERCHE()));
 		if(getTransaction().isErreur()){
 			return false;
 		}
