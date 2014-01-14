@@ -212,6 +212,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	// sinon dernier numéro saisi +1
 	if(first){
 		BPC monBpc = new BPC();
+		addZone(getNOM_CK_CHG_COMPTEUR(), getCHECKED_OFF());
 		newNumeroBpc = monBpc.nouvBPC(getTransaction());
 		if (newNumeroBpc>-1){
 			addZone(getNOM_EF_BPC(),String.valueOf(newNumeroBpc));
@@ -875,7 +876,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 			getTransaction().traiterErreur();
 		}
 		if(!isMateriel){
-			getBpcCourant().creerBPC(getTransaction(),getEquipementCourant(),getModeleCourant());
+			getBpcCourant().creerBPC(getTransaction(),getEquipementCourant(),getModeleCourant(), getVAL_CK_CHG_COMPTEUR().equals(getCHECKED_ON()));
 		}else{
 			getBpcCourant().creerBPC(getTransaction(),getPMaterielCourant(),getModeleCourant());
 		}
@@ -2034,6 +2035,25 @@ public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) th
 	//Si TAG INPUT non géré par le process
 	setStatut(STATUT_MEME_PROCESS);
 	return true;
+}
+
+/**
+ * Retourne le nom de la case à cocher sélectionnée pour la JSP :
+ * CK_RESERVE
+ * Date de création : (26/05/05 10:19:04)
+ * @author : Générateur de process
+ */
+public java.lang.String getNOM_CK_CHG_COMPTEUR() {
+	return "NOM_CK_CHG_COMPTEUR";
+}
+/**
+ * Retourne la valeur de la case à cocher à afficher par la JSP pour la case à cocher  :
+ * CK_RESERVE
+ * Date de création : (26/05/05 10:19:04)
+ * @author : Générateur de process
+ */
+public java.lang.String getVAL_CK_CHG_COMPTEUR() {
+	return getZone(getNOM_CK_CHG_COMPTEUR());
 }
 /**
  * Retourne le nom de la JSP du process

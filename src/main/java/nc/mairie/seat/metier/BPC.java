@@ -124,7 +124,7 @@ public boolean controleChamps(nc.mairie.technique.Transaction aTransaction )  th
  * Methode creerObjetMetier qui retourne
  * true ou false
  */
-public boolean creerBPC(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement,Modeles unModeles)  throws Exception {
+public boolean creerBPC(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement,Modeles unModeles, boolean razCompteur)  throws Exception {
 	// on controle si null
 	if (null == unEquipement.getNumeroinventaire()){
 		aTransaction.declarerErreur(nc.mairie.technique.MairieMessages.getMessage("ERR999","Equipement"));
@@ -170,32 +170,35 @@ public boolean creerBPC(nc.mairie.technique.Transaction aTransaction,Equipement 
 		return false;
 	}
 	
-	// on cherche le bpc précédent pour controler la valeur du compteur
-	BPC bpcAvant = chercherBPCPrecEquipDate(aTransaction,getDate(),unEquipement.getNumeroinventaire());
-	if(aTransaction.isErreur()){
-		aTransaction.traiterErreur();
-	}else{
-//		 RG : si on a un bpc précédent
-		if(bpcAvant!=null){
-			//	on contrôle que la valeur du compteur est bien supérieur à la valeur précédente
-			if (Integer.parseInt(getValeurcompteur())<Integer.parseInt(bpcAvant.getValeurcompteur())){
-				aTransaction.declarerErreur("Attention. La valeur du compteur est inférieur à la valeur précédente ("+bpcAvant.getValeurcompteur()+").");
-				return false;
+	// si pas de RAZ compteur
+		if (! razCompteur) {
+		// on cherche le bpc précédent pour controler la valeur du compteur
+		BPC bpcAvant = chercherBPCPrecEquipDate(aTransaction,getDate(),unEquipement.getNumeroinventaire());
+		if(aTransaction.isErreur()){
+			aTransaction.traiterErreur();
+		}else{
+	//		 RG : si on a un bpc précédent
+			if(bpcAvant!=null){
+				//	on contrôle que la valeur du compteur est bien supérieur à la valeur précédente
+				if (Integer.parseInt(getValeurcompteur())<Integer.parseInt(bpcAvant.getValeurcompteur())){
+					aTransaction.declarerErreur("Attention. La valeur du compteur est inférieur à la valeur précédente ("+bpcAvant.getValeurcompteur()+").");
+					return false;
+				}
 			}
 		}
-	}
 	
-	//	 on vérifie qu'on a un bpc suivant pour controler la valeur du compteur
-	BPC bpcSuiv = chercherBPCSuivEquipDate(aTransaction,getDate(),unEquipement.getNumeroinventaire());
-	if(aTransaction.isErreur()){
-		aTransaction.traiterErreur();
-	}else{
-		// RG : si on a un bpc suivant
-		if(bpcSuiv!=null){
-			//	on contrôle que la valeur du compteur est bien inférieur à la valeur suivante
-			if (Integer.parseInt(getValeurcompteur())>Integer.parseInt(bpcSuiv.getValeurcompteur())){
-				aTransaction.declarerErreur("Attention. La valeur du compteur est supérieure à la valeur suivante ("+bpcSuiv.getValeurcompteur()+").");
-				return false;
+		//	 on vérifie qu'on a un bpc suivant pour controler la valeur du compteur
+		BPC bpcSuiv = chercherBPCSuivEquipDate(aTransaction,getDate(),unEquipement.getNumeroinventaire());
+		if(aTransaction.isErreur()){
+			aTransaction.traiterErreur();
+		}else{
+			// RG : si on a un bpc suivant
+			if(bpcSuiv!=null){
+				//	on contrôle que la valeur du compteur est bien inférieur à la valeur suivante
+				if (Integer.parseInt(getValeurcompteur())>Integer.parseInt(bpcSuiv.getValeurcompteur())){
+					aTransaction.declarerErreur("Attention. La valeur du compteur est supérieure à la valeur suivante ("+bpcSuiv.getValeurcompteur()+").");
+					return false;
+				}
 			}
 		}
 	}
@@ -283,7 +286,7 @@ public boolean creerBPC(nc.mairie.technique.Transaction aTransaction,PMateriel u
  * Methode modifierObjetMetier qui retourne
  * true ou false
  */
-public boolean modifierBPC(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement,BPC bpcAvant,Modeles unModeles)  throws Exception {
+public boolean modifierBPC(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement,BPC bpcAvant,Modeles unModeles, boolean raz)  throws Exception {
 //	 on controle si null
 	if (null == unEquipement.getNumeroinventaire()){
 		aTransaction.declarerErreur(nc.mairie.technique.MairieMessages.getMessage("ERR999","Equipement"));
@@ -324,7 +327,7 @@ public boolean modifierBPC(nc.mairie.technique.Transaction aTransaction,Equipeme
 		return false;
 	}
 	
-	if (null!=bpcAvant){
+	if (null!=bpcAvant && !raz){
 		// on contrôle que la valeur du compteur est bien supérieur à la valeur précédente
 		if (Integer.parseInt(getValeurcompteur())<Integer.parseInt(bpcAvant.getValeurcompteur())){
 			aTransaction.declarerErreur("Attention. La valeur du compteur est inférieur à la valeur précédente ("+bpcAvant.getValeurcompteur()+").");

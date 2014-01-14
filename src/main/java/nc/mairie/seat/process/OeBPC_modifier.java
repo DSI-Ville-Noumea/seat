@@ -64,6 +64,7 @@ public class OeBPC_modifier extends nc.mairie.technique.BasicProcess {
 public void initialiseZones(javax.servlet.http.HttpServletRequest request) throws Exception{
 	String codeModele = "";
 	if(isFirst()){
+		addZone(getNOM_CK_CHG_COMPTEUR(), getCHECKED_OFF());
 		EquipementInfos unEquipementInfos = (EquipementInfos)VariableGlobale.recuperer(request, "EQUIPEMENTINFOS");
 		setEquipementInfosCourant(unEquipementInfos);
 		if(getEquipementInfosCourant()!=null){
@@ -782,7 +783,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 			return false;
 		}
 		setModeleCourant(unModele);
-		getBpcCourant().modifierBPC(getTransaction(),getEquipementCourant(),getBpcAvant(),getModeleCourant());
+		getBpcCourant().modifierBPC(getTransaction(),getEquipementCourant(),getBpcAvant(),getModeleCourant(), getVAL_CK_CHG_COMPTEUR().equals(getCHECKED_ON()));
 		if(getTransaction().isErreur()){
 			return false;
 		}
@@ -1541,6 +1542,25 @@ public String getJSP() {
  */
 public java.lang.String getNOM_PB_SEL_PM() {
 	return "NOM_PB_SEL_PM";
+}
+
+/**
+ * Retourne le nom de la case à cocher sélectionnée pour la JSP :
+ * CK_RESERVE
+ * Date de création : (26/05/05 10:19:04)
+ * @author : Générateur de process
+ */
+public java.lang.String getNOM_CK_CHG_COMPTEUR() {
+	return "NOM_CK_CHG_COMPTEUR";
+}
+/**
+ * Retourne la valeur de la case à cocher à afficher par la JSP pour la case à cocher  :
+ * CK_RESERVE
+ * Date de création : (26/05/05 10:19:04)
+ * @author : Générateur de process
+ */
+public java.lang.String getVAL_CK_CHG_COMPTEUR() {
+	return getZone(getNOM_CK_CHG_COMPTEUR());
 }
 /**
  * - Traite et affecte les zones saisies dans la JSP.

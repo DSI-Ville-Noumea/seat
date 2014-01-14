@@ -115,7 +115,7 @@ if (document.formu.elements[nom] != null)
 					<TBODY>
 						<TR>
 							<TD class="sigp2-titre-liste">N°BPC         Date     Compteur  Quanti Km
-							parcouru  Moyenne   </TD>
+							parcouru  Moyenne   RAZ</TD>
 						</TR>
 					</TBODY>
 				</TABLE>

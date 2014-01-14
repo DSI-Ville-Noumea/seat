@@ -177,12 +177,13 @@ if (document.formu.elements[nom] != null)
 								<TD></TD>
 								<TD>Compteur (<%=process.getVAL_ST_COMPTEUR() %>)</TD>
 								<TD colspan="2">
-									<%if(process.isMateriel){ %>
+									<%if(process.isMateriel || process.getBpcAvant() == null){ %>
 										<%=process.getVAL_ST_VALEURCOMPTEUR() %>
 									<%}else{ %>
 									<INPUT type="text" size="10"
 									name="<%=process.getNOM_EF_COMPTEUR() %>"
 									value="<%=process.getVAL_EF_COMPTEUR() %>" class="sigp2-saisie">
+									RAZ : <INPUT type="checkbox" <%= process.forCheckBoxHTML(process.getNOM_CK_CHG_COMPTEUR() , process.getVAL_CK_CHG_COMPTEUR()) %> ></td>
 									<%} %>
 								</TD></TR>
 							<TR>

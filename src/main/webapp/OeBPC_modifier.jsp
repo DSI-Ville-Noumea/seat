@@ -147,7 +147,8 @@ if (document.formu.elements[nom] != null)
 												<TD>Compteur (<%=process.getVAL_ST_COMPTEUR() %>)</TD>
 								<TD><INPUT type="text" size="10"
 									name="<%=process.getNOM_EF_COMPTEUR() %>"
-									value="<%=process.getVAL_EF_COMPTEUR() %>" class="sigp2-saisie"></TD>
+									value="<%=process.getVAL_EF_COMPTEUR() %>" class="sigp2-saisie">
+									RAZ : <INPUT type="checkbox" <%= process.forCheckBoxHTML(process.getNOM_CK_CHG_COMPTEUR() , process.getVAL_CK_CHG_COMPTEUR()) %> ></TD>
 							</TR>
 							<TR>
 								<TD>Heure de prise</TD>

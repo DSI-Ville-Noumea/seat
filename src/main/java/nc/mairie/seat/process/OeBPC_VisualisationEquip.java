@@ -239,8 +239,8 @@ public void trier(ArrayList<BPC> a) throws Exception{
 	if (a.size() !=0 ) {
 		ArrayList<BPC> aTrier = Services.trier(a,colonnes,ordres);
 		setListeBPC(aTrier);
-		int tailles [] = {10,10,10,6,10,10};
-		String[] padding = {"D","C","D","D","D","D"};
+		int tailles [] = {10,10,10,6,10,10,1};
+		String[] padding = {"D","C","D","D","D","D","D"};
 		FormateListe aFormat = new FormateListe(tailles,padding,false);
 		int indice = a.size();
 		/*if (a.size()>12){
@@ -261,16 +261,27 @@ public void trier(ArrayList<BPC> a) throws Exception{
 			int kmParcourus =0 ;
 			double moyennecalcul = 0;
 			String moyenneL = "";
+			String raz="";
+			
 			// calcul des totaux
 			quantiteTotal = quantiteTotal + Integer.parseInt(aBPC.getQuantite()); 
 			//kmParcourusTotal = kmParcourusTotal + Integer.parseInt(aBPC.get)
 			
 			if (null != bpcAvant){
-				kmParcourus =  Integer.parseInt(aBPC.getValeurcompteur())-Integer.parseInt(bpcAvant.getValeurcompteur());
-				int qte = Integer.parseInt(aBPC.getQuantite());
-				//moyennecalcul = (double)qteAvant/(double)kmParcourus*100;
-				//moyennecalcul = (double)qte/(double)kmParcourus*100;
-				moyennecalcul = (double)qte/(double)kmParcourus;
+				
+				if (Integer.parseInt(aBPC.getValeurcompteur())>=Integer.parseInt(bpcAvant.getValeurcompteur())) {
+				
+					kmParcourus =  Integer.parseInt(aBPC.getValeurcompteur())-Integer.parseInt(bpcAvant.getValeurcompteur());
+					int qte = Integer.parseInt(aBPC.getQuantite());
+					//moyennecalcul = (double)qteAvant/(double)kmParcourus*100;
+					//moyennecalcul = (double)qte/(double)kmParcourus*100;
+					moyennecalcul = (double)qte/(double)kmParcourus;
+				
+				} else {
+					kmParcourus = 0;
+					moyennecalcul = 0;
+					raz="X";
+				}
 				
 				if (("KILOMETRIQUE").equals(getModeleInfosCourant().getDesignationcompteur())){
 					moyennecalcul = moyennecalcul*100;
@@ -278,7 +289,7 @@ public void trier(ArrayList<BPC> a) throws Exception{
 				NumberFormat moyenneFormat = new DecimalFormat("0.00");
 				moyenneL = moyenneFormat.format(moyennecalcul);
 			}
-			String ligne [] = { aBPC.getNumerobpc(),aBPC.getDate(),aBPC.getValeurcompteur(),aBPC.getQuantite(),String.valueOf(kmParcourus),moyenneL};
+			String ligne [] = { aBPC.getNumerobpc(),aBPC.getDate(),aBPC.getValeurcompteur(),aBPC.getQuantite(),String.valueOf(kmParcourus),moyenneL,raz};
 			aFormat.ajouteLigne(ligne);
 			kmParcourusTotal = kmParcourusTotal + kmParcourus;//Integer.parseInt(aBPC.getValeurcompteur());
 		}

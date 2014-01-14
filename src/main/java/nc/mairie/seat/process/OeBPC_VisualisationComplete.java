@@ -398,7 +398,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 	}else{
 		setServiceCourant(new Service());
 	}
-	System.out.println("HELLO VISU 1");
 	if(!getZone(getNOM_EF_RECHE_EQUIP()).equals("")){
 		performPB_RECHE_EQUIP(request);
 		if(!isMateriel){
@@ -418,10 +417,8 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 	if(getTransaction().isErreur()){
 		return false;
 	}
-	System.out.println("HELLO VISU 2");
 	//OFONTENEAU:  AFAIRE regarder les temps de réponse ICI
 	ArrayList<BPC> inter = BPC.listerBPCParams(getTransaction(),inv,ddeb,dfin);
-	System.out.println("HELLO VISU 3");
 	ArrayList<BPC> resultat = new ArrayList<BPC>();
 	if(servi.equals("")){
 		resultat = inter;
@@ -433,9 +430,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 		for (int i=0; i<inter.size();i++){
 			BPC unBPC = (BPC)inter.get(i);
 			// recherche de l'affectation à la date du BPC
-			System.out.println("HELLO VISU 4");
 			AffectationServiceInfos unASI = AffectationServiceInfos.chercherAffectationServiceInfosCourantEquip(getTransaction(),unBPC.getNumeroinventaire(),unBPC.getDate());
-			System.out.println("HELLO VISU 5");
 			if(getTransaction().isErreur()){
 				// soit PM soit pas affecté
 				getTransaction().traiterErreur();
@@ -448,7 +443,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 					}
 					
 					if(servi.equals(codeService)){
-						System.out.println("HELLO VISU 6");
 						compare = Services.compareDates(unBPC.getDate(),unASI.getDdebut());
 						if(compare>-1){
 							resultat.add(unBPC);
@@ -458,9 +452,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 						
 					}
 				}else{
-					System.out.println("HELLO VISU 7");
 					PM_Affectation_Sce_Infos unPMASI = PM_Affectation_Sce_Infos.chercherPM_Affectation_Sce_InfosCourantPm(getTransaction(),unBPC.getNumeroinventaire(),unBPC.getDate());
-					System.out.println("HELLO VISU 8");
 					if(getTransaction().isErreur()){
 						// pas affecté
 						getTransaction().traiterErreur();
@@ -492,15 +484,12 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 //	}else{
 //		resultat = BPCPMInfos.listerBPCPMInfosParams(getTransaction(),inv,servi,ddeb,dfin);
 //	}
-	System.out.println("HELLO VISU 9");
 	if(getTransaction().isErreur()){
 		return false;
 	}
 	setListBPCInfos(resultat);
-	System.out.println("HELLO VISU 10");
 	//si le service est un des paramètres de la recherche : on renseigne st_service
 	addZone(getNOM_ST_SERVICE(),getServiceCourant().getLiserv());
-	System.out.println("HELLO VISU 11");
 	return true;
 }
 /**

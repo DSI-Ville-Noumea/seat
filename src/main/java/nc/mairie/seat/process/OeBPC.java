@@ -91,71 +91,74 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			}
 		}
 		VariableActivite.enlever(this,"TYPE");
-	}
-	//}
-//	 quand appuie sur entrée
-	if(!("").equals(getZone(getNOM_EF_EQUIP()))){
-		performPB_EQUIP(request);
-		addZone(getNOM_EF_RECHERCHE(),"");
-	}
-	if(!isMateriel){
-		if (null!=(getEquipementInfosCourant())){
-			if(null!=getEquipementInfosCourant().getNumeroinventaire()){
-				
-//				Equipement unEquipement = Equipement.chercherEquipement(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
-//				if(getTransaction().isErreur()){
-//					return;
-//				}
-//				setEquipementCourant(unEquipement);
-				String date = Services.dateDuJour();
-				AffectationServiceInfos unAffectationServiceInfos = AffectationServiceInfos.chercherAffectationServiceInfosCourantEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),date);
-				if(getTransaction().isErreur()){
-					//si pas trouvé, c'est fonctionellement normal, on traite l'erreur
-					getTransaction().traiterErreur();
-					addZone(getNOM_ST_SERVICE(),"pas affecté");
+		
+		if(!isMateriel){
+			if (null!=(getEquipementInfosCourant())){
+				if(null!=getEquipementInfosCourant().getNumeroinventaire()){
+					
+	//				Equipement unEquipement = Equipement.chercherEquipement(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
+	//				if(getTransaction().isErreur()){
+	//					return;
+	//				}
+	//				setEquipementCourant(unEquipement);
+					String date = Services.dateDuJour();
+					AffectationServiceInfos unAffectationServiceInfos = AffectationServiceInfos.chercherAffectationServiceInfosCourantEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),date);
+					if(getTransaction().isErreur()){
+						//si pas trouvé, c'est fonctionellement normal, on traite l'erreur
+						getTransaction().traiterErreur();
+						addZone(getNOM_ST_SERVICE(),"pas affecté");
+					}else{
+						addZone(getNOM_ST_SERVICE(),unAffectationServiceInfos.getLiserv());
+					}
+					
+					
+				//	Si liste des BPC est vide
+					//if (getLB_BPC() == LBVide) {
+					initialiseListeBPC(request);
+					//}
+					addZone(getNOM_ST_TYPE(),getEquipementInfosCourant().getDesignationtypeequip());
+					addZone(getNOM_ST_INVENTAIRE(),getEquipementInfosCourant().getNumeroinventaire());
+					addZone(getNOM_ST_IMMAT(),getEquipementInfosCourant().getNumeroimmatriculation());
+					addZone(getNOM_ST_NOMEQUIP(),getEquipementInfosCourant().getDesignationmarque()+" "+getEquipementInfosCourant().getDesignationmodele());
+					addZone(getNOM_ST_CARBU(),getEquipementInfosCourant().getDesignationcarbu());
+				}//else{
+	//				if(getPMatInfosCourant()!=null){
+	//					initialisePMateriel(request);
+	//					addZone(getNOM_ST_TYPE(),getPMatInfosCourant().getDesignationtypeequip());
+	//					addZone(getNOM_ST_INVENTAIRE(),getPMatInfosCourant().getPminv());
+	//					addZone(getNOM_ST_IMMAT(),getPMatInfosCourant().getPmserie());
+	//					addZone(getNOM_ST_NOMEQUIP(),getPMatInfosCourant().getDesignationmarque()+" "+getEquipementInfosCourant().getDesignationmodele());
+	//					addZone(getNOM_ST_CARBU(),"");
+	//				}
+	//			}
+			}/*else{
+				if(getPMatInfosCourant()!=null){
+					initialisePMateriel(request);
 				}else{
-					addZone(getNOM_ST_SERVICE(),unAffectationServiceInfos.getLiserv());
+					setLB_BPC(LBVide);
+					addZone(getNOM_ST_TYPE(),"");
+					addZone(getNOM_ST_INVENTAIRE(),"");
+					addZone(getNOM_ST_IMMAT(),"");
+					addZone(getNOM_ST_NOMEQUIP(),"");
+					addZone(getNOM_ST_CARBU(),"");
 				}
-				
-				
-			//	Si liste des BPC est vide
-				//if (getLB_BPC() == LBVide) {
-				initialiseListeBPC(request);
-				//}
-				addZone(getNOM_ST_TYPE(),getEquipementInfosCourant().getDesignationtypeequip());
-				addZone(getNOM_ST_INVENTAIRE(),getEquipementInfosCourant().getNumeroinventaire());
-				addZone(getNOM_ST_IMMAT(),getEquipementInfosCourant().getNumeroimmatriculation());
-				addZone(getNOM_ST_NOMEQUIP(),getEquipementInfosCourant().getDesignationmarque()+" "+getEquipementInfosCourant().getDesignationmodele());
-				addZone(getNOM_ST_CARBU(),getEquipementInfosCourant().getDesignationcarbu());
-			}//else{
-//				if(getPMatInfosCourant()!=null){
-//					initialisePMateriel(request);
-//					addZone(getNOM_ST_TYPE(),getPMatInfosCourant().getDesignationtypeequip());
-//					addZone(getNOM_ST_INVENTAIRE(),getPMatInfosCourant().getPminv());
-//					addZone(getNOM_ST_IMMAT(),getPMatInfosCourant().getPmserie());
-//					addZone(getNOM_ST_NOMEQUIP(),getPMatInfosCourant().getDesignationmarque()+" "+getEquipementInfosCourant().getDesignationmodele());
-//					addZone(getNOM_ST_CARBU(),"");
-//				}
-//			}
-		}/*else{
-			if(getPMatInfosCourant()!=null){
-				initialisePMateriel(request);
-			}else{
-				setLB_BPC(LBVide);
-				addZone(getNOM_ST_TYPE(),"");
-				addZone(getNOM_ST_INVENTAIRE(),"");
-				addZone(getNOM_ST_IMMAT(),"");
-				addZone(getNOM_ST_NOMEQUIP(),"");
-				addZone(getNOM_ST_CARBU(),"");
-			}
-		}*/
-	}else{
-		initialisePMateriel(request);
-		addZone(getNOM_ST_TYPE(),getPMatInfosCourant().getDesignationtypeequip());
-		addZone(getNOM_ST_INVENTAIRE(),getPMatInfosCourant().getPminv());
-		addZone(getNOM_ST_IMMAT(),getPMatInfosCourant().getPmserie());
-		addZone(getNOM_ST_NOMEQUIP(),getPMatInfosCourant().getDesignationmarque()+" "+getPMatInfosCourant().getDesignationmodele());
-		addZone(getNOM_ST_CARBU(),"");
+			}*/
+		}else{
+			initialisePMateriel(request);
+			addZone(getNOM_ST_TYPE(),getPMatInfosCourant().getDesignationtypeequip());
+			addZone(getNOM_ST_INVENTAIRE(),getPMatInfosCourant().getPminv());
+			addZone(getNOM_ST_IMMAT(),getPMatInfosCourant().getPmserie());
+			addZone(getNOM_ST_NOMEQUIP(),getPMatInfosCourant().getDesignationmarque()+" "+getPMatInfosCourant().getDesignationmodele());
+			addZone(getNOM_ST_CARBU(),"");
+		}
+	} else {
+		//}
+	//	 quand appuie sur entrée
+		if(!("").equals(getZone(getNOM_EF_EQUIP()))){
+			performPB_EQUIP(request);
+			addZone(getNOM_EF_RECHERCHE(),"");
+		}
+		
 	}
 	first = false;
 }
@@ -870,8 +873,8 @@ public void trier(ArrayList<BPC> a) throws Exception{
 		if (a.size() !=0 ) {
 			ArrayList<BPC> aTrier = Services.trier(a,colonnes,ordres);
 			setListeBPC(aTrier);
-			int tailles [] = {10,10,10,6,10,10};
-			String[] padding = {"D","C","D","D","D","D"};
+			int tailles [] = {10,10,10,6,10,10,1};
+			String[] padding = {"D","C","D","D","D","D","D"};
 			FormateListe aFormat = new FormateListe(tailles,padding,false);
 			// on affiche les 12 derniers BPC
 			/*if (a.size()>12){
@@ -894,15 +897,24 @@ public void trier(ArrayList<BPC> a) throws Exception{
 				int kmParcourus =0 ;
 				double moyennecalcul = 0;
 				String moyenne = "";
+				String raz="";
 				 
 				if (null != bpcAvant){
 					
-					kmParcourus =  Integer.parseInt(aBPC.getValeurcompteur())-Integer.parseInt(bpcAvant.getValeurcompteur());
-//					int qteAvant = Integer.parseInt(bpcAvant.getQuantite());
-					int qte = Integer.parseInt(aBPC.getQuantite());
-					//moyennecalcul = (double)qteAvant/(double)kmParcourus*100;
-					//moyennecalcul = (double)qte/(double)kmParcourus*100;
-					moyennecalcul = (double)qte/(double)kmParcourus;
+					
+					
+					if (Integer.parseInt(aBPC.getValeurcompteur())>=Integer.parseInt(bpcAvant.getValeurcompteur())) {
+						kmParcourus =  Integer.parseInt(aBPC.getValeurcompteur())-Integer.parseInt(bpcAvant.getValeurcompteur());
+	//					int qteAvant = Integer.parseInt(bpcAvant.getQuantite());
+						int qte = Integer.parseInt(aBPC.getQuantite());
+						//moyennecalcul = (double)qteAvant/(double)kmParcourus*100;
+						//moyennecalcul = (double)qte/(double)kmParcourus*100;
+						moyennecalcul = (double)qte/(double)kmParcourus;
+					} else {
+						kmParcourus = 0;
+						moyennecalcul = 0;
+						raz="X";
+					}
 					if(!isMateriel){
 						if (("KILOMETRIQUE").equals(getEquipementInfosCourant().getDesignationcompteur())){
 							moyennecalcul = moyennecalcul*100;
@@ -911,7 +923,7 @@ public void trier(ArrayList<BPC> a) throws Exception{
 					NumberFormat moyenneFormat = new DecimalFormat("0.00");
 					moyenne = moyenneFormat.format(moyennecalcul);
 				}
-				String ligne [] = { aBPC.getNumerobpc(),aBPC.getDate(),aBPC.getValeurcompteur(),aBPC.getQuantite(),String.valueOf(kmParcourus),moyenne};
+				String ligne [] = { aBPC.getNumerobpc(),aBPC.getDate(),aBPC.getValeurcompteur(),aBPC.getQuantite(),String.valueOf(kmParcourus),moyenne,raz};
 				aFormat.ajouteLigne(ligne);
 			}
 			setLB_BPC(aFormat.getListeFormatee());
