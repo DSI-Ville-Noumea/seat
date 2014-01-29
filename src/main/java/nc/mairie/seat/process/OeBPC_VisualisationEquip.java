@@ -2,11 +2,14 @@ package nc.mairie.seat.process;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+
+import org.apache.commons.vfs.FileObject;
 
 import nc.mairie.seat.metier.AffectationServiceInfos;
 import nc.mairie.seat.metier.AgentCCAS;
@@ -766,7 +769,6 @@ public java.lang.String getNOM_PB_IMPRIMER() {
  * pour le total
  * 
  */
-@SuppressWarnings("deprecation")
 public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String numinv = getZone(getNOM_ST_NOINVENT());
 	String numimmat = getZone(getNOM_ST_NOIMMAT());
@@ -810,11 +812,12 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 	}
 	
 	if (getLB_BPC().length>0){
-		StarjetGeneration g = new StarjetGeneration(getTransaction(), "MAIRIE", starjetMode, "SEAT", "listeBPCEquip.sp", "listeBPCEquip");
-		File f = g.getFileData();
+		StarjetGenerationVFS g = new StarjetGenerationVFS(getTransaction(), "listeBPCEquip.sp", "listeBPCEquip");
+		FileObject f = g.getFileData();
 		
 		//FileWriter fw = new FileWriter(f);
-		OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(f),"iso-8859-1");
+		OutputStream output = f.getContent().getOutputStream();
+		OutputStreamWriter fw = new OutputStreamWriter(output,"iso-8859-1");
 		PrintWriter pw = new PrintWriter(fw);
 		try {	
 			for (int i=0;i<getLB_BPC().length;i++){

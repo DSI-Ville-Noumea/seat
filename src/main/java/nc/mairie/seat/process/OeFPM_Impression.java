@@ -2,10 +2,13 @@ package nc.mairie.seat.process;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.ListIterator;
+
+import org.apache.commons.vfs.FileObject;
 
 import nc.mairie.seat.metier.FPM;
 import nc.mairie.seat.metier.PM_Affectation_Sce_Infos;
@@ -34,7 +37,6 @@ public class OeFPM_Impression extends nc.mairie.technique.BasicProcess {
 	public boolean affiche;
 	public boolean afficheRetour = false;
 	private String focus = null;
-	private String starjetMode = (String)Frontale.getMesParametres().get("STARJET_MODE");
 	private String script;
 /**
  * Initialisation des zones à afficher dans la JSP
@@ -216,7 +218,6 @@ public java.lang.String getNOM_PB_IMPRIMER() {
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
  */
-@SuppressWarnings("deprecation")
 public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	PMateriel unPMateriel;
 	//on enregistre le commentaire s'il y en a un
@@ -284,10 +285,11 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 		commentaireOt = commentaireOt + commentaire.substring(indice,comlen);
 		commentaireOt = commentaireOt.replace('\n',' ');
 		commentaireOt = commentaireOt.replace('\r',' ');
-		StarjetGeneration g = new StarjetGeneration(getTransaction(), "MAIRIE", starjetMode, "SEAT", "ficheFPM_Vierge.sp", "ficheFPM_Vierge");
-		File f = g.getFileData();
+		StarjetGenerationVFS g = new StarjetGenerationVFS(getTransaction(), "ficheFPM_Vierge.sp", "ficheFPM_Vierge");
+		FileObject f = g.getFileData();
+		OutputStream output = f.getContent().getOutputStream();
 		//FileWriter fw = new FileWriter(f);
-		OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(f),"iso-8859-1");
+		OutputStreamWriter fw = new OutputStreamWriter(output,"iso-8859-1");
 		PrintWriter pw = new PrintWriter(fw);
 		try {	
 			//	Entete

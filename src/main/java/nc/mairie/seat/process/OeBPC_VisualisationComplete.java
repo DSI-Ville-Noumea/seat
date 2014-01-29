@@ -2,11 +2,14 @@ package nc.mairie.seat.process;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+
+import org.apache.commons.vfs.FileObject;
 
 import nc.mairie.seat.metier.AffectationServiceInfos;
 import nc.mairie.seat.metier.AgentCCAS;
@@ -23,7 +26,7 @@ import nc.mairie.seat.metier.Service;
 import nc.mairie.servlets.Frontale;
 import nc.mairie.technique.FormateListe;
 import nc.mairie.technique.Services;
-import nc.mairie.technique.StarjetGeneration;
+import nc.mairie.technique.StarjetGenerationVFS;
 import nc.mairie.technique.VariableActivite;
 import nc.mairie.technique.VariableGlobale;
 
@@ -32,7 +35,6 @@ import nc.mairie.technique.VariableGlobale;
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
 */
-@SuppressWarnings("deprecation")
 public class OeBPC_VisualisationComplete extends nc.mairie.technique.BasicProcess {
 	/**
 	 * 
@@ -905,11 +907,12 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 	setListBPCInfos(resultat); 
 	
 	if(getListBPCInfos().size()>0){
-		StarjetGeneration g = new StarjetGeneration(getTransaction(), "MAIRIE", starjetMode, "SEAT", "listeBPCEquip.sp", "listeBPCEquip");
-		File f = g.getFileData();
+		StarjetGenerationVFS g = new StarjetGenerationVFS(getTransaction(), "listeBPCEquip.sp", "listeBPCEquip");
+		FileObject f = g.getFileData();
 		
 		//FileWriter fw = new FileWriter(f);
-		OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(f),"iso-8859-1");
+		OutputStream output = f.getContent().getOutputStream();
+		OutputStreamWriter fw = new OutputStreamWriter(output,"iso-8859-1");
 		PrintWriter pw = new PrintWriter(fw);
 		try {	
 			if(getListBPCInfos().size()>0){

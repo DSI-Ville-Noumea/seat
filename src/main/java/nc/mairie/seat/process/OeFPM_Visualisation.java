@@ -2,9 +2,12 @@ package nc.mairie.seat.process;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
+import org.apache.commons.vfs.FileObject;
 
 import nc.mairie.seat.metier.Agents;
 import nc.mairie.seat.metier.ENGJU;
@@ -1054,7 +1057,6 @@ public java.lang.String getNOM_PB_IMPRIMER() {
  * Date de création : (08/08/07 14:29:01)
  * @author : Générateur de process
  */
-@SuppressWarnings("deprecation")
 public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	int montantPieces = 0;
 	String infosBe = "";
@@ -1099,10 +1101,11 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 		commentaireOt = commentaireOt + commentaire.substring(indice,comlen);
 		commentaireOt = commentaireOt.replace('\n',' ');
 		commentaireOt = commentaireOt.replace('\r',' ');
-		StarjetGeneration g = new StarjetGeneration(getTransaction(), "MAIRIE", starjetMode, "SEAT", "ficheFpm.sp", "ficheFpm");
-		File f = g.getFileData();
+		StarjetGenerationVFS g = new StarjetGenerationVFS(getTransaction(), "ficheFpm.sp", "ficheFpm");
+		FileObject f = g.getFileData();
 		//FileWriter fw = new FileWriter(f);
-		OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(f),"iso-8859-1");
+		OutputStream output = f.getContent().getOutputStream();
+		OutputStreamWriter fw = new OutputStreamWriter(output,"iso-8859-1");
 		PrintWriter pw = new PrintWriter(fw);
 		try {	
 			//	Entete

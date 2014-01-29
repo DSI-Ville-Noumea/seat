@@ -25,6 +25,9 @@
 	<Parameter name="BASE_LDAP" value="dc=site-mairie,dc=noumea,dc=nc"	override="false" />
 	<Parameter name="APPLICATION" description="Nom de l'application déclarée SIDRAP pour connaitre les droits" override="false" value="Seat" />
 	<Parameter name="STARJET_MODE" description="Environnement starjet (DVLP, TEST ou PROD)" override="false" value="DVLP" />
-	<Parameter name="STARJET_SERVER" description="Serveur starjet (nom du serveur)" override="false" value="STARJET" />
+	<!-- Version 2.3-->
+	<Parameter name="STARJET_SERVER" description="Serveur starjet (nom du serveur)" override="false" value="//starjet/edition$/" />
+	<Parameter name="STARJET_PROJET" description="Répertoire du projet sur le serveur Starjet" override="false" value="SEAT" />
+	<Parameter name="STARJET_DISPLAYPDF_URL"  description="URL de l'ASP displayPDF.asp" value="http://starjet/DVLP/cgi/displayPDF.asp" override="false" />
 	
 </Context>
