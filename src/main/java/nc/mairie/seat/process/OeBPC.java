@@ -3,6 +3,7 @@ package nc.mairie.seat.process;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+
 import nc.mairie.seat.metier.AffectationServiceInfos;
 import nc.mairie.seat.metier.BPC;
 import nc.mairie.seat.metier.EquipementInfos;
@@ -91,74 +92,71 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			}
 		}
 		VariableActivite.enlever(this,"TYPE");
-		
-		if(!isMateriel){
-			if (null!=(getEquipementInfosCourant())){
-				if(null!=getEquipementInfosCourant().getNumeroinventaire()){
-					
-	//				Equipement unEquipement = Equipement.chercherEquipement(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
-	//				if(getTransaction().isErreur()){
-	//					return;
-	//				}
-	//				setEquipementCourant(unEquipement);
-					String date = Services.dateDuJour();
-					AffectationServiceInfos unAffectationServiceInfos = AffectationServiceInfos.chercherAffectationServiceInfosCourantEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),date);
-					if(getTransaction().isErreur()){
-						//si pas trouvé, c'est fonctionellement normal, on traite l'erreur
-						getTransaction().traiterErreur();
-						addZone(getNOM_ST_SERVICE(),"pas affecté");
-					}else{
-						addZone(getNOM_ST_SERVICE(),unAffectationServiceInfos.getLiserv());
-					}
-					
-					
-				//	Si liste des BPC est vide
-					//if (getLB_BPC() == LBVide) {
-					initialiseListeBPC(request);
-					//}
-					addZone(getNOM_ST_TYPE(),getEquipementInfosCourant().getDesignationtypeequip());
-					addZone(getNOM_ST_INVENTAIRE(),getEquipementInfosCourant().getNumeroinventaire());
-					addZone(getNOM_ST_IMMAT(),getEquipementInfosCourant().getNumeroimmatriculation());
-					addZone(getNOM_ST_NOMEQUIP(),getEquipementInfosCourant().getDesignationmarque()+" "+getEquipementInfosCourant().getDesignationmodele());
-					addZone(getNOM_ST_CARBU(),getEquipementInfosCourant().getDesignationcarbu());
-				}//else{
-	//				if(getPMatInfosCourant()!=null){
-	//					initialisePMateriel(request);
-	//					addZone(getNOM_ST_TYPE(),getPMatInfosCourant().getDesignationtypeequip());
-	//					addZone(getNOM_ST_INVENTAIRE(),getPMatInfosCourant().getPminv());
-	//					addZone(getNOM_ST_IMMAT(),getPMatInfosCourant().getPmserie());
-	//					addZone(getNOM_ST_NOMEQUIP(),getPMatInfosCourant().getDesignationmarque()+" "+getEquipementInfosCourant().getDesignationmodele());
-	//					addZone(getNOM_ST_CARBU(),"");
-	//				}
-	//			}
-			}/*else{
-				if(getPMatInfosCourant()!=null){
-					initialisePMateriel(request);
-				}else{
-					setLB_BPC(LBVide);
-					addZone(getNOM_ST_TYPE(),"");
-					addZone(getNOM_ST_INVENTAIRE(),"");
-					addZone(getNOM_ST_IMMAT(),"");
-					addZone(getNOM_ST_NOMEQUIP(),"");
-					addZone(getNOM_ST_CARBU(),"");
+	}
+	//}
+//	 quand appuie sur entrée
+	if(!("").equals(getZone(getNOM_EF_EQUIP()))){
+		performPB_EQUIP(request);
+		addZone(getNOM_EF_RECHERCHE(),"");
+	}
+	if(!isMateriel){
+		if (null!=(getEquipementInfosCourant())){
+			if(null!=getEquipementInfosCourant().getNumeroinventaire()){
+				
+				EquipementInfos unEquipement = EquipementInfos.chercherEquipementInfos(getTransaction(),getEquipementInfosCourant().getNumeroinventaire());
+				if(getTransaction().isErreur()){
+					return;
 				}
-			}*/
-		}else{
-			initialisePMateriel(request);
-			addZone(getNOM_ST_TYPE(),getPMatInfosCourant().getDesignationtypeequip());
-			addZone(getNOM_ST_INVENTAIRE(),getPMatInfosCourant().getPminv());
-			addZone(getNOM_ST_IMMAT(),getPMatInfosCourant().getPmserie());
-			addZone(getNOM_ST_NOMEQUIP(),getPMatInfosCourant().getDesignationmarque()+" "+getPMatInfosCourant().getDesignationmodele());
-			addZone(getNOM_ST_CARBU(),"");
-		}
-	} else {
-		//}
-	//	 quand appuie sur entrée
-		if(!("").equals(getZone(getNOM_EF_EQUIP()))){
-			performPB_EQUIP(request);
-			addZone(getNOM_EF_RECHERCHE(),"");
-		}
-		
+				setEquipementInfosCourant(unEquipement);
+				String date = Services.dateDuJour();
+				AffectationServiceInfos unAffectationServiceInfos = AffectationServiceInfos.chercherAffectationServiceInfosCourantEquip(getTransaction(),getEquipementInfosCourant().getNumeroinventaire(),date);
+				if(getTransaction().isErreur()){
+					//si pas trouvé, c'est fonctionellement normal, on traite l'erreur
+					getTransaction().traiterErreur();
+					addZone(getNOM_ST_SERVICE(),"pas affecté");
+				}else{
+					addZone(getNOM_ST_SERVICE(),unAffectationServiceInfos.getLiserv());
+				}
+				
+				
+			//	Si liste des BPC est vide
+				//if (getLB_BPC() == LBVide) {
+				initialiseListeBPC(request);
+				//}
+				addZone(getNOM_ST_TYPE(),getEquipementInfosCourant().getDesignationtypeequip());
+				addZone(getNOM_ST_INVENTAIRE(),getEquipementInfosCourant().getNumeroinventaire());
+				addZone(getNOM_ST_IMMAT(),getEquipementInfosCourant().getNumeroimmatriculation());
+				addZone(getNOM_ST_NOMEQUIP(),getEquipementInfosCourant().getDesignationmarque()+" "+getEquipementInfosCourant().getDesignationmodele());
+				addZone(getNOM_ST_CARBU(),getEquipementInfosCourant().getDesignationcarbu());
+			}//else{
+//				if(getPMatInfosCourant()!=null){
+//					initialisePMateriel(request);
+//					addZone(getNOM_ST_TYPE(),getPMatInfosCourant().getDesignationtypeequip());
+//					addZone(getNOM_ST_INVENTAIRE(),getPMatInfosCourant().getPminv());
+//					addZone(getNOM_ST_IMMAT(),getPMatInfosCourant().getPmserie());
+//					addZone(getNOM_ST_NOMEQUIP(),getPMatInfosCourant().getDesignationmarque()+" "+getEquipementInfosCourant().getDesignationmodele());
+//					addZone(getNOM_ST_CARBU(),"");
+//				}
+//			}
+		}/*else{
+			if(getPMatInfosCourant()!=null){
+				initialisePMateriel(request);
+			}else{
+				setLB_BPC(LBVide);
+				addZone(getNOM_ST_TYPE(),"");
+				addZone(getNOM_ST_INVENTAIRE(),"");
+				addZone(getNOM_ST_IMMAT(),"");
+				addZone(getNOM_ST_NOMEQUIP(),"");
+				addZone(getNOM_ST_CARBU(),"");
+			}
+		}*/
+	}else{
+		initialisePMateriel(request);
+		addZone(getNOM_ST_TYPE(),getPMatInfosCourant().getDesignationtypeequip());
+		addZone(getNOM_ST_INVENTAIRE(),getPMatInfosCourant().getPminv());
+		addZone(getNOM_ST_IMMAT(),getPMatInfosCourant().getPmserie());
+		addZone(getNOM_ST_NOMEQUIP(),getPMatInfosCourant().getDesignationmarque()+" "+getPMatInfosCourant().getDesignationmodele());
+		addZone(getNOM_ST_CARBU(),"");
 	}
 	first = false;
 }
