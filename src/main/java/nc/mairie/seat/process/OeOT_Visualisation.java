@@ -1,7 +1,5 @@
 package nc.mairie.seat.process;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -17,7 +15,6 @@ import nc.mairie.seat.metier.OT;
 import nc.mairie.seat.metier.OT_ATM;
 import nc.mairie.seat.metier.PePersoInfos;
 import nc.mairie.seat.metier.PiecesInfos;
-import nc.mairie.servlets.Frontale;
 import nc.mairie.technique.*;
 /**
  * Process OeOT_Visualisation
@@ -42,7 +39,6 @@ public class OeOT_Visualisation extends nc.mairie.technique.BasicProcess {
 	public int	montantTotalPieces;
 	public boolean isDebranche = false;
 	public String messErreur;
-	private String starjetMode = (String)Frontale.getMesParametres().get("STARJET_MODE");
 	private String script;
 	public boolean isTrouve = false;
 	public boolean isErreur = false;

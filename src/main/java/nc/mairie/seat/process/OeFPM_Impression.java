@@ -1,7 +1,5 @@
 package nc.mairie.seat.process;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -15,7 +13,6 @@ import nc.mairie.seat.metier.PM_Affectation_Sce_Infos;
 import nc.mairie.seat.metier.PM_Planning;
 import nc.mairie.seat.metier.PMatInfos;
 import nc.mairie.seat.metier.PMateriel;
-import nc.mairie.servlets.Frontale;
 import nc.mairie.technique.*;
 /**
  * Process OeFPM_Impression

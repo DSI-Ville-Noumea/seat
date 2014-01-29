@@ -1,7 +1,5 @@
 package nc.mairie.seat.process;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -23,7 +21,6 @@ import nc.mairie.seat.metier.PM_Affectation_Sce_Infos;
 import nc.mairie.seat.metier.PMatInfos;
 import nc.mairie.seat.metier.Service;
 import nc.mairie.technique.*;
-import nc.mairie.servlets.Frontale;
 
 /**
  * Process OeBPC_VisualisationEquip
@@ -50,7 +47,6 @@ public class OeBPC_VisualisationEquip extends nc.mairie.technique.BasicProcess {
 	public boolean listeVide=true;
 	public int quantiteTotal = 0;
 	public int kmParcourusTotal = 0;
-	private String starjetMode = (String)Frontale.getMesParametres().get("STARJET_MODE");
 	private String script;
 	public boolean isVide = true;
 	public String codeService ;

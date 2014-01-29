@@ -1,7 +1,5 @@
 package nc.mairie.seat.process;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -21,7 +19,6 @@ import nc.mairie.seat.metier.PMatInfos;
 import nc.mairie.seat.metier.PiecesFpmInfos;
 import nc.mairie.seat.metier.Pm_PePersoInfos;
 import nc.mairie.seat.metier.Service;
-import nc.mairie.servlets.Frontale;
 import nc.mairie.technique.*;
 /**
  * Process OeFPM_Visualisation
@@ -47,7 +44,6 @@ public class OeFPM_Visualisation extends nc.mairie.technique.BasicProcess {
 	public boolean isDebranche = false;
 	public String messErreur;
 	private String focus = null;
-	private String starjetMode = (String)Frontale.getMesParametres().get("STARJET_MODE");
 	private String script;
 	public int	montantTotalPieces;
 /**

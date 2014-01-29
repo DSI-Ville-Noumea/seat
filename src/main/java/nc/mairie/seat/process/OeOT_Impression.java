@@ -1,7 +1,5 @@
 package nc.mairie.seat.process;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -15,7 +13,6 @@ import nc.mairie.seat.metier.Equipement;
 import nc.mairie.seat.metier.EquipementInfos;
 import nc.mairie.seat.metier.OT;
 import nc.mairie.seat.metier.Planning;
-import nc.mairie.servlets.Frontale;
 import nc.mairie.technique.FormateListe;
 import nc.mairie.technique.Services;
 import nc.mairie.technique.StarjetGenerationVFS;
@@ -39,7 +36,6 @@ public class OeOT_Impression extends nc.mairie.technique.BasicProcess {
 	public int tailleList_suite = 0;
 	public boolean affiche;
 	private String focus =  null;
-	private String starjetMode = (String)Frontale.getMesParametres().get("STARJET_MODE");
 	private String script;
 
 /**
