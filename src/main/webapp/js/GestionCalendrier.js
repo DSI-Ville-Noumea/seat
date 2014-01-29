@@ -603,7 +603,6 @@ Calendar.prototype.create = function (_par) {
 			cell.appendChild(document.createTextNode(text));
 		}
 		else {
-//			 FIXME: dirty hack for entities
 			cell.innerHTML = text;
 		}
 		return cell;
@@ -1216,7 +1215,7 @@ function closeHandler(cal) {
 function checkCalendar(ev) {
   var el = Calendar.is_ie ? Calendar.getElement(ev) : Calendar.getTargetElement(ev);
   for (; el != null; el = el.parentNode)
-//     FIXME: allow end-user to click some link without closing the
+//    allow end-user to click some link without closing the
 //     calendar.  Good to see real-time stylesheet change :)
     if (el == calendar.element || el.tagName == "A") break;
   if (el == null) {
