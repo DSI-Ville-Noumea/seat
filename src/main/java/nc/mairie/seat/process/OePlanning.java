@@ -592,13 +592,13 @@ public void setTri(String tri) {
 	this.tri = tri;
 }
 	public java.lang.String[] getLB_PLANNING_Couleurs() {
-		return LB_PLANNING_Couleurs == null ? null : LB_PLANNING_Couleurs.clone();
+		return LB_PLANNING_Couleurs;
 	}
 	private void setLB_PLANNING_Couleurs(java.lang.String[] couleurs) {
 		LB_PLANNING_Couleurs = couleurs;
 	}
 	public java.lang.String[] getLB_PLANNING_FCouleurs() {
-		return LB_PLANNING_FCouleurs == null ? null : LB_PLANNING_FCouleurs.clone();
+		return LB_PLANNING_FCouleurs;
 	}
 	private void setLB_PLANNING_FCouleurs(java.lang.String[] fcouleurs) {
 		LB_PLANNING_FCouleurs = fcouleurs;
