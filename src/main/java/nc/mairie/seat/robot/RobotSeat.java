@@ -229,10 +229,9 @@ public class RobotSeat extends Robot {
 	/* (non-Javadoc)
 	 * @see nc.mairie.robot.Robot#initialiseNavigation()
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	protected Hashtable initialiseNavigation() {
-		Hashtable nav = new Hashtable();
+	protected Hashtable<String, String> initialiseNavigation() {
+		Hashtable<String, String> nav = new Hashtable<String, String>();
 		
 		//OEAccueil
 		//nav.put(OeAccueil.class.getName()+OeAccueil.STATUT_PNEU, OePneu.class.getName());

@@ -221,16 +221,6 @@ private String [] getLB_ENTRETIENS() {
 	return LB_ENTRETIENS;
 }
 /**
- * Setter de la liste:
- * LB_ENTRETIENS
- * Date de création : (19/07/05 14:46:20)
- * @author : Générateur de process
- */
-@SuppressWarnings("unused")
-private void setLB_ENTRETIENS(java.lang.String[] newLB_ENTRETIENS) {
-	LB_ENTRETIENS = newLB_ENTRETIENS;
-}
-/**
  * Retourne le nom de la zone pour la JSP :
  * NOM_LB_ENTRETIENS
  * Date de création : (19/07/05 14:46:20)

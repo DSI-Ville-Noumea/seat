@@ -10,8 +10,11 @@ import nc.mairie.technique.*;
  * Date de création : (24/08/07 07:53:07)
  * @author : Générateur de process
 */
-@SuppressWarnings("serial")
 public class SeatIndex extends nc.mairie.technique.BasicProcess {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3971907125336836951L;
 	public String dpt = "toto";
 /**
  * Initialisation des zones à afficher dans la JSP

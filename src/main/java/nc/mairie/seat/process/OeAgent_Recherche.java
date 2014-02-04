@@ -315,16 +315,6 @@ private String [] getLB_SERVICE() {
 	return LB_SERVICE;
 }
 /**
- * Setter de la liste:
- * LB_SERVICE
- * Date de création : (05/04/07 12:06:27)
- * @author : Générateur de process
- */
-@SuppressWarnings("unused")
-private void setLB_SERVICE(java.lang.String[] newLB_SERVICE) {
-	LB_SERVICE = newLB_SERVICE;
-}
-/**
  * Retourne le nom de la zone pour la JSP :
  * NOM_LB_SERVICE
  * Date de création : (05/04/07 12:06:27)

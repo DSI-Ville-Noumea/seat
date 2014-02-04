@@ -152,13 +152,6 @@ public boolean performPB_MARQUES(javax.servlet.http.HttpServletRequest request) 
 	setStatut(STATUT_MARQUES,true);
 	return true;
 }
-	/**
-	 * @return Renvoie sTATUT_MARQUES.
-	 */
-	@SuppressWarnings("unused")
-	private static int getSTATUT_MARQUES() {
-		return STATUT_MARQUES;
-	}
 	
 /**
  * Retourne le nom d'un bouton pour la JSP :

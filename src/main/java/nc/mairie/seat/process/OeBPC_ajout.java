@@ -36,8 +36,6 @@ public class OeBPC_ajout extends nc.mairie.technique.BasicProcess {
 	private java.lang.String[] LB_MODEPRISE;
 	private java.lang.String[] LB_POMPE;
 //	private ArrayList listeEquipement;
-	@SuppressWarnings("unused")
-	private ArrayList<ModePrise> listeModePrise;
 	private BPC bpcCourant;
 	private BPC bpcAvant;
 	private Equipement equipementCourant;
@@ -287,7 +285,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //		 Si liste des modes de prise de carburant est vide
 	if (getLB_MODEPRISE() == LBVide) {
 		ArrayList<ModePrise> a = ModePrise.listerModePrise(getTransaction());
-		setListeModePrise(a);
 		//les élèments de la liste 
 		int [] tailles = {10};
 		String [] champs = {"designationmodeprise"};
@@ -1458,15 +1455,6 @@ public java.lang.String getNOM_PB_OK_INVENT() {
 //	private ArrayList<ModePrise> getListeModePrise() {
 //		return listeModePrise;
 //	}
-	/**
-	 * @param listeModePrise listeModePrise à définir.
-	 */
-	private void setListeModePrise(ArrayList<ModePrise> listeModePrise) {
-		this.listeModePrise = listeModePrise;
-	}
-//	/**
-//	 * @return Renvoie listeEquipement.
-//	 */
 //	private ArrayList getListeEquipement() {
 //		return listeEquipement;
 //	}
