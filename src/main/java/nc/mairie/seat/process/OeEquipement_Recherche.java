@@ -392,7 +392,7 @@ public boolean recherche_AGENT(javax.servlet.http.HttpServletRequest request) th
 					// si plusieurs on affiche la liste du résultat des agents
 					VariableActivite.ajouter(this,"NOM",nom);
 					VariableActivite.ajouter(this,"MODE",mode);
-					VariableActivite.ajouter(this,"TYPE","Equipement");
+					VariableActivite.ajouter(this,"TYPE","equipement");
 					setStatut(STATUT_AGENT,true);
 				}
 		}
