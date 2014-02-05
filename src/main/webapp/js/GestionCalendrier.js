@@ -76,7 +76,8 @@ Calendar._MN3 = null;
 //        library, at some point.
 
 Calendar.getAbsolutePos = function(el) {
-	var r = { x: el.offsetLeft, y: el.offsetTop };
+	var r;
+	r =  { x: el.offsetLeft, y: el.offsetTop };
 	if (el.offsetParent) {
 		var tmp = Calendar.getAbsolutePos(el.offsetParent);
 		r.x += tmp.x;
