@@ -331,7 +331,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 		addZone(getNOM_LB_MODELE_SELECT(),"0");
 		addZone(getNOM_CK_RESERVE(),getCHECKED_OFF());
 	//	 on retourne à la liste des équipements
-		getTransaction().declarerErreur("La création de l'équipement "+getEquipementCourant().getNumeroinventaire()+" a bien été faite");
 		EquipementInfos unEquipInfos = EquipementInfos.chercherEquipementInfos(getTransaction(),getEquipementCourant().getNumeroinventaire());
 		if(getTransaction().isErreur()){
 			return false;
@@ -339,6 +338,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 		if(null==unEquipInfos){
 			unEquipInfos = new EquipementInfos();
 		}
+		getTransaction().declarerErreur("La création de l'équipement "+getEquipementCourant().getNumeroinventaire()+" a bien été faite");
 		VariableGlobale.ajouter(request,"EQUIPEMENTINFOS",unEquipInfos);
 		setStatut(STATUT_PROCESS_APPELANT);
 	}
