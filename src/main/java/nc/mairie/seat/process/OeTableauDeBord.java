@@ -1481,9 +1481,10 @@ public boolean performPB_RECHERCHE_EQUIP(javax.servlet.http.HttpServletRequest r
 				if(unEquipementInfos.getNumeroinventaire()==null){
 					getTransaction().declarerErreur("L'équipement recherché n'a pas été trouvé.");
 					return false;
-				}else{
-					unEquipementInfos = new EquipementInfos();
 				}
+//				else{
+//					unEquipementInfos = new EquipementInfos();
+//				}
 			}
 			setEquipementInfosCourant(unEquipementInfos);
 	}else{
