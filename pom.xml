@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nc.mairie</groupId>
 	<artifactId>seat</artifactId>
-	<version>2.5</version>
+	<version>2.6-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<organization>
 		<name>Mairie de Nouméa</name>
@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>servlet-api</artifactId>
-			<version>6.0.39</version>
+			<version>6.0.41</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -124,13 +124,13 @@
 						<phase>package</phase>
 						<configuration>
 							<tasks>
-								<copy file="${project.build.directory}/${project.build.finalName}.${project.packaging}" tofile="src/site/resources/war/${project.version}/${project.artifactId}##${project.version}.${project.packaging}">
+								<copy file="${project.build.directory}/${project.build.finalName}.${project.packaging}" tofile="src/site/resources/${project.packaging}/${project.version}/${project.artifactId}##${project.version}.${project.packaging}">
 								</copy>
 								<copy file="${project.build.directory}/${project.build.finalName}.${project.packaging}" tofile="${project.build.directory}/${project.artifactId}##${project.version}.${project.packaging}">
 								</copy>
 								<delete file="${project.build.directory}/${project.build.finalName}.${project.packaging}"/>
 								<checksum algorithm="md5">
-									<fileset dir="src/site/resources/war/${project.version}">
+									<fileset dir="src/site/resources/${project.packaging}/${project.version}">
 										<include name="*.war"/>
 										<include name="*.jar"/>
 									</fileset>
@@ -287,6 +287,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<svnurl>https://svn.ville-noumea.nc/sed/seat</svnurl>
 		<java.version>1.7</java.version>
-		<framework_version>2.0</framework_version>
+		<framework_version>2.1</framework_version>
 	</properties>
 </project>
