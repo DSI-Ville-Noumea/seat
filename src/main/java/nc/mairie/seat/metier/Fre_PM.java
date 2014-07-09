@@ -21,11 +21,17 @@ public Fre_PM() {
 /**
  * Getter de l'attribut codefre.
  */
+/**
+ * @return String
+ */
 public String getCodefre() {
 	return codefre;
 }
 /**
  * Setter de l'attribut codefre.
+ */
+/**
+ * @param newCodefre newCodefre
  */
 public void setCodefre(String newCodefre) { 
 	codefre = newCodefre;
@@ -33,11 +39,17 @@ public void setCodefre(String newCodefre) {
 /**
  * Getter de l'attribut libellefre.
  */
+/**
+ * @return String
+ */
 public String getLibellefre() {
 	return libellefre;
 }
 /**
  * Setter de l'attribut libellefre.
+ */
+/**
+ * @param newLibellefre newLibellefre
  */
 public void setLibellefre(String newLibellefre) { 
 	libellefre = newLibellefre;
@@ -45,11 +57,17 @@ public void setLibellefre(String newLibellefre) {
 /**
  * Getter de l'attribut observationsfre.
  */
+/**
+ * @return String
+ */
 public String getObservationsfre() {
 	return observationsfre;
 }
 /**
  * Setter de l'attribut observationsfre.
+ */
+/**
+ * @param newObservationsfre newObservationsfre
  */
 public void setObservationsfre(String newObservationsfre) { 
 	observationsfre = newObservationsfre;
@@ -57,11 +75,17 @@ public void setObservationsfre(String newObservationsfre) {
 /**
  * Getter de l'attribut contact.
  */
+/**
+ * @return String
+ */
 public String getContact() {
 	return contact;
 }
 /**
  * Setter de l'attribut contact.
+ */
+/**
+ * @param newContact newContact
  */
 public void setContact(String newContact) { 
 	contact = newContact;
@@ -75,6 +99,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected Fre_PMBroker getMyFre_PMBroker() {
 	return (Fre_PMBroker)getMyBasicBroker();
@@ -91,7 +116,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Fre_PM.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Fre_PM> listerFre_PM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Fre_PM unFre_PM = new Fre_PM();
@@ -99,7 +126,10 @@ public static ArrayList<Fre_PM> listerFre_PM(nc.mairie.technique.Transaction aTr
 }
 /**
  * Retourne un Fre_PM.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return Fre_PM
+ * @throws Exception Exception
  */
 public static Fre_PM chercherFre_PM(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Fre_PM unFre_PM = new Fre_PM();
@@ -124,6 +154,12 @@ public int nouvFre_PM(nc.mairie.technique.Transaction aTransaction) throws Excep
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @param observation observation
+ * @param contact contact
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerFre_PM(nc.mairie.technique.Transaction aTransaction, String param,String observation,String contact)  throws Exception {
 	if (!existeFre_PM(aTransaction,param,observation,contact)){
@@ -140,6 +176,12 @@ public boolean creerFre_PM(nc.mairie.technique.Transaction aTransaction, String 
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @param observation observation
+ * @param contact contact
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean modifierFre_PM(nc.mairie.technique.Transaction aTransaction,String param,String observation,String contact) throws Exception {
 	if (!existeFre_PM(aTransaction,param,observation,contact)){
@@ -153,6 +195,9 @@ public boolean modifierFre_PM(nc.mairie.technique.Transaction aTransaction,Strin
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean supprimerFre_PM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 //	 si déjà utilisé on ne peut pas supprimer
@@ -169,7 +214,12 @@ public boolean supprimerFre_PM(nc.mairie.technique.Transaction aTransaction) thr
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction aTransaction
+ * @param param param
+ * @param observation observation
+ * @param contact contact
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeFre_PM(nc.mairie.technique.Transaction aTransaction, String param,String observation,String contact) throws Exception{
 	Fre_PM unFre_PM = new Fre_PM();

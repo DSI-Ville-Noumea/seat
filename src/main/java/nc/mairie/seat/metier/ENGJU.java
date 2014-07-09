@@ -24,11 +24,17 @@ public class ENGJU extends BasicMetier {
 	/**
 	 * Getter de l'attribut exerci.
 	 */
+	/**
+	 * @return String
+	 */
 	public String getExerci() {
 		return exerci;
 	}
 	/**
 	 * Setter de l'attribut exerci.
+	 */
+	/**
+	 * @param newExerci newExerci
 	 */
 	public void setExerci(String newExerci) { 
 		exerci = newExerci;
@@ -36,11 +42,17 @@ public class ENGJU extends BasicMetier {
 	/**
 	 * Getter de l'attribut idetbs.
 	 */
+	/**
+	 * @return String
+	 */
 	public String getIdetbs() {
 		return idetbs;
 	}
 	/**
 	 * Setter de l'attribut idetbs.
+	 */
+	/**
+	 * @param newIdetbs newIdetbs
 	 */
 	public void setIdetbs(String newIdetbs) { 
 		idetbs = newIdetbs;
@@ -48,11 +60,17 @@ public class ENGJU extends BasicMetier {
 	/**
 	 * Getter de l'attribut enscom.
 	 */
+	/**
+	 * @return String
+	 */
 	public String getEnscom() {
 		return enscom;
 	}
 	/**
 	 * Setter de l'attribut enscom.
+	 */
+	/**
+	 * @param newEnscom newEnscom
 	 */
 	public void setEnscom(String newEnscom) { 
 		enscom = newEnscom;
@@ -60,11 +78,17 @@ public class ENGJU extends BasicMetier {
 	/**
 	 * Getter de l'attribut noengj.
 	 */
+	/**
+	 * @return String
+	 */
 	public String getNoengj() {
 		return noengj;
 	}
 	/**
 	 * Setter de l'attribut noengj.
+	 */
+	/**
+	 * @param newNoengj newNoengj
 	 */
 	public void setNoengj(String newNoengj) { 
 		noengj = newNoengj;
@@ -72,11 +96,17 @@ public class ENGJU extends BasicMetier {
 	/**
 	 * Getter de l'attribut nlengju.
 	 */
+	/**
+	 * @return String
+	 */
 	public String getNlengju() {
 		return nlengju;
 	}
 	/**
 	 * Setter de l'attribut nlengju.
+	 */
+	/**
+	 * @param newNlengju newNlengju
 	 */
 	public void setNlengju(String newNlengju) { 
 		nlengju = newNlengju;
@@ -84,11 +114,17 @@ public class ENGJU extends BasicMetier {
 	/**
 	 * Getter de l'attribut cddep.
 	 */
+	/**
+	 * @return String
+	 */
 	public String getCddep() {
 		return cddep;
 	}
 	/**
 	 * Setter de l'attribut cddep.
+	 */
+	/**
+	 * @param newCddep newCddep
 	 */
 	public void setCddep(String newCddep) { 
 		cddep = newCddep;
@@ -96,25 +132,33 @@ public class ENGJU extends BasicMetier {
 	/**
 	 * Getter de l'attribut mtlenju.
 	 */
+	/**
+	 * @return String
+	 */
 	public String getMtlenju() {
 		return mtlenju;
 	}
 	/**
 	 * Setter de l'attribut mtlenju.
 	 */
+	/**
+	 * @param newMtlenju newMtlenju
+	 */
 	public void setMtlenju(String newMtlenju) { 
 		mtlenju = newMtlenju;
 	}
 	/**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
-	 */
-	protected BasicBroker definirMyBroker() { 
+* @return BasicBroker
+*/
+protected BasicBroker definirMyBroker() { 
 		return new ENGJUBroker(this); 
 	}
 	/**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
-	 */
-	protected ENGJUBroker getMyENGJUBroker() {
+* @return BasicBroker
+*/
+protected ENGJUBroker getMyENGJUBroker() {
 		return (ENGJUBroker)getMyBasicBroker();
 	}
 	/**
@@ -128,7 +172,11 @@ public class ENGJU extends BasicMetier {
 	}
 	/**
 	 * Retourne un ArrayList d'objet métier : ENGJU.
+	 * @param aTransaction Transaction
+	 * @param numOt numOt
+	 * @param cddep cddep
 	 * @return java.util.ArrayList
+	 * @throws Exception Exception
 	 */
 	public static ArrayList<ENGJU> listerENGJUGroupByCdepNoengjIdetbs(nc.mairie.technique.Transaction aTransaction, String numOt, String cddep) throws Exception{
 		ENGJU unENGJU = new ENGJU();
@@ -136,7 +184,11 @@ public class ENGJU extends BasicMetier {
 	}
 	/**
 	 * Retourne un ArrayList d'objet métier : ENGJU.
+	 * @param aTransaction Transaction
+	 * @param exerci exerci
+	 * @param noengj noengj
 	 * @return java.util.ArrayList
+	 * @throws Exception Exception
 	 */
 	public static ArrayList<ENGJU> listerENGJU(nc.mairie.technique.Transaction aTransaction,String exerci, String noengj) throws Exception{
 		ENGJU unENGJU = new ENGJU();
@@ -144,7 +196,12 @@ public class ENGJU extends BasicMetier {
 	}
 	/**
 	 * Retourne un ENGJU.
+	 * @param aTransaction Transaction
+	 * @param exerci exerci
+	 * @param noengj noengj
+	 * @param nlengju nlengju
 	 * @return ENGJU
+	 * @throws Exception Exception
 	 */
 	public static ENGJU chercherENGJU(nc.mairie.technique.Transaction aTransaction,String exerci, String noengj, String nlengju) throws Exception{
 		ENGJU unENGJU = new ENGJU();
@@ -152,7 +209,11 @@ public class ENGJU extends BasicMetier {
 	}
 	/**
 	 * Retourne un ENGJU.
+	 * @param aTransaction Transaction
+	 * @param exerci exerci
+	 * @param noengj noengj
 	 * @return ENGJU
+	 * @throws Exception Exception
 	 */
 	public static ENGJU chercherpremierENGJU(nc.mairie.technique.Transaction aTransaction,String exerci, String noengj) throws Exception{
 		ENGJU unENGJU = new ENGJU();
@@ -160,7 +221,10 @@ public class ENGJU extends BasicMetier {
 	}
 	/**
 	 * Retourne un ENGJU.
+	 * @param aTransaction Transaction
+	 * @param noengj noengj
 	 * @return ENGJU
+	 * @throws Exception Exception
 	 */
 	public static ENGJU chercherdernierENGJU(nc.mairie.technique.Transaction aTransaction, String noengj) throws Exception{
 		ENGJU unENGJU = new ENGJU();
@@ -169,7 +233,10 @@ public class ENGJU extends BasicMetier {
 	
 	/**
 	 * Retourne un ArrayList d'objet métier : Fournisseurs.
+	 * @param aTransaction Transaction
+	 * @param param param
 	 * @return java.util.ArrayList
+	 * @throws Exception Exception
 	 */
 	//NOT USED 20100121
 	public static ArrayList<ENGJU> listerFournisseursNom(nc.mairie.technique.Transaction aTransaction,String param) throws Exception{
@@ -179,6 +246,9 @@ public class ENGJU extends BasicMetier {
 	/**
 	 * Methode creerObjetMetier qui retourne
 	 * true ou false
+	 * @param aTransaction Transaction
+	 * @return boolean
+	 * @throws Exception Exception
 	 */
 	public boolean creerENGJU(nc.mairie.technique.Transaction aTransaction )  throws Exception {
 		//Creation du ENGJU
@@ -187,6 +257,9 @@ public class ENGJU extends BasicMetier {
 	/**
 	 * Methode modifierObjetMetier qui retourne
 	 * true ou false
+	 * @param aTransaction Transaction
+	 * @return boolean 
+	 * @throws Exception Exception
 	 */
 	public boolean modifierENGJU(nc.mairie.technique.Transaction aTransaction) throws Exception {
 		//Modification du ENGJU
@@ -195,6 +268,9 @@ public class ENGJU extends BasicMetier {
 	/**
 	 * Methode supprimerObjetMetier qui retourne
 	 * true ou false
+	 * @param aTransaction Transaction
+	 * @return boolean 
+	 * @throws Exception Exception
 	 */
 	public boolean supprimerENGJU(nc.mairie.technique.Transaction aTransaction) throws Exception{
 		//Suppression de l'ENGJU

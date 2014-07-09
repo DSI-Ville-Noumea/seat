@@ -11,6 +11,9 @@ public class PeBaseBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPeBase(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -18,6 +21,9 @@ public boolean creerPeBase(nc.mairie.technique.Transaction aTransaction)  throws
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierPeBase(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -25,20 +31,29 @@ public boolean modifierPeBase(nc.mairie.technique.Transaction aTransaction) thro
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerPeBase(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : PeBase.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PeBase> listerPeBase(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un PeBase.
+ * @param aTransaction Transaction
+ * @param mod mod
+ * @param ent ent
  * @return PeBase
+ * @throws Exception Exception
  */
 public PeBase chercherPeBase(nc.mairie.technique.Transaction aTransaction, String mod,String ent) throws Exception {
 	return (PeBase)executeSelect(aTransaction,"select * from "+getTable()+" where codemodele = "+mod+" and codeentretien = "+ent);
@@ -46,7 +61,11 @@ public PeBase chercherPeBase(nc.mairie.technique.Transaction aTransaction, Strin
 /**
  * Retourne un booléen.
  * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param mod mod
+ * @param ent ent
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existePeBase(nc.mairie.technique.Transaction aTransaction, String mod,String ent) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where codemodele = "+mod+" and codeentretien = "+ent);
@@ -55,7 +74,10 @@ public boolean existePeBase(nc.mairie.technique.Transaction aTransaction, String
 /**
  * Retourne un booléen.
  * Vérifie si le modèleinfos existe déjà
+ * @param aTransaction Transaction
+ * @param param param
  * @return PeBase
+ * @throws Exception Exception
  */
 public boolean existePeBaseModele(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where codemodele = "+param+"");
@@ -66,7 +88,10 @@ public boolean existePeBaseTint(nc.mairie.technique.Transaction aTransaction, St
 
 /**
  * Retourne un ArrayList d'objet métier : PeBase.
+ * @param aTransaction Transaction
+ * @param mod mod
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PeBase> listerPeBaseModele(nc.mairie.technique.Transaction aTransaction,String mod) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemodele="+mod);
@@ -74,7 +99,10 @@ public ArrayList<PeBase> listerPeBaseModele(nc.mairie.technique.Transaction aTra
 
 /**
  * Retourne un ArrayList d'objet métier : PeBase.
+ * @param aTransaction Transaction
+ * @param mod mod
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PeBase> listerPeBaseModeleActif(nc.mairie.technique.Transaction aTransaction,String mod) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemodele="+mod+" and datedesactivation = '0001-01-01'");
@@ -82,6 +110,7 @@ public ArrayList<PeBase> listerPeBaseModeleActif(nc.mairie.technique.Transaction
 
 /**
  * Constructeur PeBaseBroker.
+ * @param aMetier BasicMetier
  */
 public PeBaseBroker(PeBase aMetier) {
 	super(aMetier);

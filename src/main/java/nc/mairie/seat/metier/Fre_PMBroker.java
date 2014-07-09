@@ -10,6 +10,7 @@ import nc.mairie.technique.BasicRecord;
 public class Fre_PMBroker extends BasicBroker {
 /**
  * Constructeur Fre_PMBroker.
+ * @param aMetier BasicMetier
  */
 public Fre_PMBroker(Fre_PM aMetier) {
 	super(aMetier);
@@ -49,6 +50,9 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerFre_PM(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -56,6 +60,9 @@ public boolean creerFre_PM(nc.mairie.technique.Transaction aTransaction)  throws
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierFre_PM(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -63,20 +70,28 @@ public boolean modifierFre_PM(nc.mairie.technique.Transaction aTransaction) thro
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerFre_PM(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : Fre_PM.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Fre_PM> listerFre_PM(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un Fre_PM.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return Fre_PM
+ * @throws Exception Exception
  */
 public Fre_PM chercherFre_PM(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (Fre_PM)executeSelect(aTransaction,"select * from "+getTable()+" where CODEFRE = "+cle+"");
@@ -84,7 +99,12 @@ public Fre_PM chercherFre_PM(nc.mairie.technique.Transaction aTransaction, Strin
 /**
  * Retourne un booléen.
  * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param param param
+ * @param observation observation
+ * @param contact contact
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeFre_PM(nc.mairie.technique.Transaction aTransaction, String param,String observation,String contact) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where upper(libellefre) = '"+param.toUpperCase()+"'and upper(observationsfre)='"+observation.toUpperCase()+"' and upper(contact)='"+contact.toUpperCase()+"'");

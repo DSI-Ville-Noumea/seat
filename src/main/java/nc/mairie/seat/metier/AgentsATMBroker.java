@@ -11,6 +11,9 @@ public class AgentsATMBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerAgentsATM(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -18,6 +21,9 @@ public boolean creerAgentsATM(nc.mairie.technique.Transaction aTransaction)  thr
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierAgentsATM(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -25,33 +31,45 @@ public boolean modifierAgentsATM(nc.mairie.technique.Transaction aTransaction) t
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerAgentsATM(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : AgentsATM.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AgentsATM> listerAgentsATM(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+", MAIRIE.SPPERS where "+getTable()+".matricule=MAIRIE.SPPERS.nomatr order by nom with ur");
 }
 /**
  * Retourne un AgentsATM.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return AgentsATM
+ * @throws Exception Exception
  */
 public AgentsATM chercherAgentsATM(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (AgentsATM)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+"");
 }
 /**
  * Retourne un AgentsATM.
+ * @param aTransaction Transaction
+ * @param nomatr nomatr
  * @return AgentsATM
+ * @throws Exception Exception
  */
 public AgentsATM chercherAgentsATMMatr(nc.mairie.technique.Transaction aTransaction, String nomatr) throws Exception {
 	return (AgentsATM)executeSelect(aTransaction,"select * from "+getTable()+" where matricule = "+nomatr+"");
 }
 /**
  * Constructeur AgentsATMBroker.
+ * @param aMetier BasicMetier
  */
 public AgentsATMBroker(AgentsATM aMetier) {
 	super(aMetier);
@@ -90,7 +108,10 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 /**
  * Retourne un booléen.
  * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeAgentsATM(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where matricule = "+param);
@@ -99,7 +120,10 @@ public boolean existeAgentsATM(nc.mairie.technique.Transaction aTransaction, Str
 /**
  * Retourne un booléen.
  * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param spe spe
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeAgentsATMSpe(nc.mairie.technique.Transaction aTransaction, String spe) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where codespe="+spe);

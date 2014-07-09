@@ -18,6 +18,7 @@ public TDuree() {
 }
 /**
  * Getter de l'attribut codetd.
+ * @return String
  */
 public String getCodetd() {
 	return codetd;
@@ -25,17 +26,24 @@ public String getCodetd() {
 /**
  * Setter de l'attribut codetd.
  */
+/**
+ * @param newCodetd newCodetd
+ */
 public void setCodetd(String newCodetd) { 
 	codetd = newCodetd;
 }
 /**
  * Getter de l'attribut designationduree.
+ * @return String
  */
 public String getDesignationduree() {
 	return designationduree;
 }
 /**
  * Setter de l'attribut designationduree.
+ */
+/**
+ * @param newDesignationduree newDesignationduree
  */
 public void setDesignationduree(String newDesignationduree) { 
 	designationduree = newDesignationduree;
@@ -49,6 +57,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected TDureeBroker getMyTDureeBroker() {
 	return (TDureeBroker)getMyBasicBroker();
@@ -65,7 +74,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : TDuree.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<TDuree> listerTDuree(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	TDuree unTDuree = new TDuree();
@@ -73,7 +84,10 @@ public static ArrayList<TDuree> listerTDuree(nc.mairie.technique.Transaction aTr
 }
 /**
  * Retourne un TDuree.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return TDuree
+ * @throws Exception Exception
  */
 public static TDuree chercherTDuree(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	TDuree unTDuree = new TDuree();
@@ -82,6 +96,10 @@ public static TDuree chercherTDuree(nc.mairie.technique.Transaction aTransaction
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerTDuree(nc.mairie.technique.Transaction aTransaction,String param)  throws Exception {
 	if(!existeTDuree(aTransaction,param)){
@@ -98,6 +116,10 @@ public boolean creerTDuree(nc.mairie.technique.Transaction aTransaction,String p
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierTDuree(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	if(!existeTDuree(aTransaction,param)){
@@ -111,6 +133,9 @@ public boolean modifierTDuree(nc.mairie.technique.Transaction aTransaction,Strin
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerTDuree(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'TDuree
@@ -139,7 +164,10 @@ public int nouvCodeTDuree(nc.mairie.technique.Transaction aTransaction) throws E
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction aTransaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeTDuree(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	TDuree unTDuree = new TDuree();

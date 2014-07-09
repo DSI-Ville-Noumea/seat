@@ -11,14 +11,19 @@ import nc.mairie.technique.BasicRecord;
 public class PM_Affectation_Sce_InfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : PM_Affectation_Sce_Infos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PM_Affectation_Sce_Infos> listerPM_Affectation_Sce_Infos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un PM_Affectation_Sce_Infos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return PM_Affectation_Sce_Infos
+ * @throws Exception Exception
  */
 public PM_Affectation_Sce_Infos chercherPM_Affectation_Sce_Infos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (PM_Affectation_Sce_Infos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+"");
@@ -49,6 +54,7 @@ public ArrayList<PM_Affectation_Sce_Infos> chercherPmAffectationSceInfosService(
 
 /**
  * Constructeur PM_Affectation_Sce_InfosBroker.
+ * @param aMetier BasicMetier
  */
 public PM_Affectation_Sce_InfosBroker(PM_Affectation_Sce_Infos aMetier) {
 	super(aMetier);

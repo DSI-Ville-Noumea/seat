@@ -9,6 +9,7 @@ import nc.mairie.technique.BasicRecord;
 public class FPMBroker extends BasicBroker {
 /**
  * Constructeur FPMBroker.
+ * @param aMetier BasicMetier
  */
 public FPMBroker(FPM aMetier) {
 	super(aMetier);
@@ -66,6 +67,9 @@ public ArrayList<FPM> listerFPMAValider(nc.mairie.technique.Transaction aTransac
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerFPM(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -74,6 +78,9 @@ public boolean creerFPM(nc.mairie.technique.Transaction aTransaction)  throws Ex
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierFPM(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -82,6 +89,9 @@ public boolean modifierFPM(nc.mairie.technique.Transaction aTransaction) throws 
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerFPM(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);

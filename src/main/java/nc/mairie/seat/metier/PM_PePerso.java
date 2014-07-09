@@ -28,6 +28,7 @@ public PM_PePerso() {
 }
 /**
  * Getter de l'attribut codepmpep.
+ * @return String
  */
 public String getCodepmpep() {
 	return codepmpep;
@@ -35,11 +36,15 @@ public String getCodepmpep() {
 /**
  * Setter de l'attribut codepmpep.
  */
+/**
+ * @param newCodepmpep newCodepmpep
+ */
 public void setCodepmpep(String newCodepmpep) { 
 	codepmpep = newCodepmpep;
 }
 /**
  * Getter de l'attribut pminv.
+ * @return String
  */
 public String getPminv() {
 	return pminv;
@@ -47,11 +52,15 @@ public String getPminv() {
 /**
  * Setter de l'attribut pminv.
  */
+/**
+ * @param newPminv newPminv
+ */
 public void setPminv(String newPminv) { 
 	pminv = newPminv;
 }
 /**
  * Getter de l'attribut numfiche.
+ * @return String
  */
 public String getNumfiche() {
 	return numfiche;
@@ -59,23 +68,29 @@ public String getNumfiche() {
 /**
  * Setter de l'attribut numfiche.
  */
+/**
+ * @param newNumfiche newNumfiche
+ */
 public void setNumfiche(String newNumfiche) { 
 	numfiche = newNumfiche;
 }
 /**
  * Getter de l'attribut codeentretien.
+ * @return String
  */
 public String getCodeentretien() {
 	return codeentretien;
 }
 /**
  * Setter de l'attribut codeentretien.
+ * @param newCodeentretien newCodeentretien
  */
 public void setCodeentretien(String newCodeentretien) { 
 	codeentretien = newCodeentretien;
 }
 /**
  * Getter de l'attribut dprev.
+ * @return String
  */
 public String getDprev() {
 	return dprev;
@@ -83,11 +98,15 @@ public String getDprev() {
 /**
  * Setter de l'attribut dprev.
  */
+/**
+ * @param newDprev newDprev
+ */
 public void setDprev(String newDprev) { 
 	dprev = newDprev;
 }
 /**
  * Getter de l'attribut dreal.
+ * @return String
  */
 public String getDreal() {
 	return dreal;
@@ -95,11 +114,15 @@ public String getDreal() {
 /**
  * Setter de l'attribut dreal.
  */
+/**
+ * @param newDreal newDreal
+ */
 public void setDreal(String newDreal) { 
 	dreal = newDreal;
 }
 /**
  * Getter de l'attribut duree.
+ * @return String
  */
 public String getDuree() {
 	return duree;
@@ -107,11 +130,15 @@ public String getDuree() {
 /**
  * Setter de l'attribut duree.
  */
+/**
+ * @param newDuree newDuree
+ */
 public void setDuree(String newDuree) { 
 	duree = newDuree;
 }
 /**
  * Getter de l'attribut sinistre.
+ * @return String
  */
 public String getSinistre() {
 	return sinistre;
@@ -119,17 +146,24 @@ public String getSinistre() {
 /**
  * Setter de l'attribut sinistre.
  */
+/**
+ * @param newSinistre newSinistre
+ */
 public void setSinistre(String newSinistre) { 
 	sinistre = newSinistre;
 }
 /**
  * Getter de l'attribut commentaire.
+ * @return String
  */
 public String getCommentaire() {
 	return commentaire;
 }
 /**
  * Setter de l'attribut commentaire.
+ */
+/**
+ * @param newCommentaire newCommentaire
  */
 public void setCommentaire(String newCommentaire) { 
 	commentaire = newCommentaire;
@@ -143,6 +177,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PM_PePersoBroker getMyPM_PePersoBroker() {
 	return (PM_PePersoBroker)getMyBasicBroker();
@@ -159,7 +194,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : PM_PePerso.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PM_PePerso> listerPM_PePerso(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PM_PePerso unPM_PePerso = new PM_PePerso();
@@ -167,7 +204,10 @@ public static ArrayList<PM_PePerso> listerPM_PePerso(nc.mairie.technique.Transac
 }
 /**
  * Retourne un PM_PePerso.
+ * @param aTransaction Transaction
+ * @param code code
  * @return PM_PePerso
+ * @throws Exception Exception
  */
 public static PM_PePerso chercherPM_PePerso(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	PM_PePerso unPM_PePerso = new PM_PePerso();
@@ -176,6 +216,11 @@ public static PM_PePerso chercherPM_PePerso(nc.mairie.technique.Transaction aTra
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unPMateriel unPMateriel
+ * @param unEntretien unEntretien
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPM_PePerso(nc.mairie.technique.Transaction aTransaction,PMateriel unPMateriel,Entretien unEntretien)  throws Exception {
 //	 on vérifie que les objets ne sont pas null
@@ -309,6 +354,11 @@ public int nouvPmPePerso(nc.mairie.technique.Transaction aTransaction) throws Ex
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unPMateriel unPMateriel
+ * @param unEntretien unEntretien
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierPM_PePerso(nc.mairie.technique.Transaction aTransaction,PMateriel unPMateriel,Entretien unEntretien)  throws Exception {
 //		 on vérifie que les objets ne sont pas null
@@ -428,6 +478,9 @@ public boolean modifierPM_PePerso(nc.mairie.technique.Transaction aTransaction,P
  * Methode modifierObjetMetier qui retourne
  * true ou false
  * Méthode modifier quand on a changé les infos et pas les objets étranger
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierPmPePersoInfos(nc.mairie.technique.Transaction aTransaction)  throws Exception {
 //	 si sinistre pas renseigné alors non
@@ -458,6 +511,9 @@ public boolean modifierPmPePersoInfos(nc.mairie.technique.Transaction aTransacti
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerPM_PePerso(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	// si le numéro de fiche d'entretiens est renseigné pas de suppression

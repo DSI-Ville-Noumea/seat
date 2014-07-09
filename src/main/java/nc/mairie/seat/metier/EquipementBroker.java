@@ -12,6 +12,9 @@ public class EquipementBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerEquipement(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -19,6 +22,9 @@ public boolean creerEquipement(nc.mairie.technique.Transaction aTransaction)  th
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierEquipement(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -26,20 +32,28 @@ public boolean modifierEquipement(nc.mairie.technique.Transaction aTransaction) 
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerEquipement(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : Equipement.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Equipement> listerEquipement(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un Equipement.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return Equipement
+ * @throws Exception Exception
  */
 public Equipement chercherEquipement(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (Equipement)executeSelect(aTransaction,"select * from "+getTable()+" where NUMEROINVENTAIRE = '"+cle+"' or numeroimmatriculation='"+cle+"'");
@@ -47,7 +61,10 @@ public Equipement chercherEquipement(nc.mairie.technique.Transaction aTransactio
 
 /**
  * Retourne un Equipement.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return Equipement
+ * @throws Exception Exception
  */
 public Equipement chercherEquipementInv(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (Equipement)executeSelect(aTransaction,"select * from "+getTable()+" where NUMEROINVENTAIRE = '"+cle+"'");
@@ -55,7 +72,11 @@ public Equipement chercherEquipementInv(nc.mairie.technique.Transaction aTransac
 
 /**
  * Retourne un Equipement.
+ * @param aTransaction Transaction
+ * @param cle cle
+ * @param inv inv
  * @return Equipement
+ * @throws Exception Exception
  */
 public int chercherEquipementImmat(nc.mairie.technique.Transaction aTransaction, String cle,String inv) throws Exception {
 	return executeCompter(aTransaction,"select count(numeroimmatriculation) from "+getTable()+" where numeroimmatriculation = '"+cle+"' and numeroinventaire<>'"+inv+"'");
@@ -63,8 +84,11 @@ public int chercherEquipementImmat(nc.mairie.technique.Transaction aTransaction,
 
 /**
  * Retourne un ArrayList d'objet métier : Equipement.
+ * @param aTransaction Transaction
+ * @param tri tri
  * @return java.util.ArrayList
  * On fait un Tri selon le paramètre
+ * @throws Exception Exception
  */
 public ArrayList<Equipement> listerEquipementTri(nc.mairie.technique.Transaction aTransaction, String tri) throws Exception {
 	//return executeSelectListe(aTransaction,"select * from "+getTable()+", SEAT.F_MODELES, SEAT.F_MARQUES, SEAT.F_TYPEEQUIP where F_MARQUES.CODEMARQUE=F_MODELES.CODEMARQUE and F_MODELES.CODETE=F_TYPEEQUIP.CODETYPEEQUIP and F_MODELES.CODEMODELE=F_EQUIPEMENT.CODEMODELE order by "+tri+"");
@@ -73,8 +97,12 @@ public ArrayList<Equipement> listerEquipementTri(nc.mairie.technique.Transaction
 
 /**
  * Retourne un ArrayList d'objet métier : Equipement.
+ * @param aTransaction Transaction
+ * @param param param
+ * @param tri tri
  * @return java.util.ArrayList
  * On fait un Tri selon le paramètre
+ * @throws Exception Exception
  */
 public ArrayList<Equipement> listerEquipementParam(nc.mairie.technique.Transaction aTransaction, String param,String tri) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+", SEAT/f_modeles, SEAT/f_marques, SEAT/f_typeequip where f_marques.codemarque=f_modeles.codemarque and f_modeles.codete=f_typeequip.codetypeequip and f_modeles.codemodel=f_equipement.codemodele and f_equipement.datehorscircuit "+param+" '0001-01-01' order by "+tri+"");
@@ -82,8 +110,11 @@ public ArrayList<Equipement> listerEquipementParam(nc.mairie.technique.Transacti
 
 /**
  * Retourne un ArrayList d'objet métier : Equipement.
+ * @param aTransaction Transaction
+ * @param mod mod
  * @return java.util.ArrayList
  * On cherche les équipements qui font parti d'un modèle
+ * @throws Exception Exception
  */
 public ArrayList<Equipement> listerEquipementModele(nc.mairie.technique.Transaction aTransaction, String mod) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemodele="+mod);
@@ -91,6 +122,7 @@ public ArrayList<Equipement> listerEquipementModele(nc.mairie.technique.Transact
 
 /**
  * Constructeur EquipementBroker.
+ * @param aMetier BasicMetier
  */
 public EquipementBroker(Equipement aMetier) {
 	super(aMetier);
@@ -136,7 +168,10 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 /**
  * Retourne un booléen.
  * Vérifie si l'équipement existe déjà
+ * @param aTransaction Transaction
+ * @param param param
  * @return BPC
+ * @throws Exception Exception
  */
 public boolean existeEquipement(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+param+"'");
@@ -145,7 +180,10 @@ public boolean existeEquipement(nc.mairie.technique.Transaction aTransaction, St
 /**
  * Retourne un booléen.
  * Vérifie si le modèleinfos existe déjà
+ * @param aTransaction Transaction
+ * @param param param
  * @return Equipement
+ * @throws Exception Exception
  */
 public boolean existeEquipementModele(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where codemodele = "+param+"");

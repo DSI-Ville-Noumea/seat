@@ -35,7 +35,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : OT.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<OT> listerOTValide(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OT unOT = new OT();
@@ -44,7 +46,9 @@ public static ArrayList<OT> listerOTValide(nc.mairie.technique.Transaction aTran
 
 /**
  * Retourne un ArrayList d'objet métier : OT.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<OT> listerOTAValider(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OT unOT = new OT();
@@ -53,7 +57,9 @@ public static ArrayList<OT> listerOTAValider(nc.mairie.technique.Transaction aTr
 
 /**
  * Retourne un ArrayList d'objet métier : OT.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<OT> listerOTDeclarationsValide(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OT unOT = new OT();
@@ -62,7 +68,9 @@ public static ArrayList<OT> listerOTDeclarationsValide(nc.mairie.technique.Trans
 
 /**
  * Retourne un ArrayList d'objet métier : OT.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<OT> listerOTDeclarationsEncours(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OT unOT = new OT();
@@ -71,7 +79,9 @@ public static ArrayList<OT> listerOTDeclarationsEncours(nc.mairie.technique.Tran
 
 /**
  * Retourne un ArrayList d'objet métier : OT.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<OT> listerOTEncours(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OT unOT = new OT();
@@ -80,7 +90,9 @@ public static ArrayList<OT> listerOTEncours(nc.mairie.technique.Transaction aTra
 
 /**
  * Retourne un ArrayList d'objet métier : OT.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<OT> listerOT(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OT unOT = new OT();
@@ -89,7 +101,10 @@ public static ArrayList<OT> listerOT(nc.mairie.technique.Transaction aTransactio
 
 /**
  * Retourne un ArrayList d'objet métier : OT.
+ * @param aTransaction Transaction
+ * @param numinv numinv
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<OT> listerOTEquip(nc.mairie.technique.Transaction aTransaction,String numinv) throws Exception{
 	OT unOT = new OT();
@@ -108,7 +123,10 @@ public static ArrayList<OT> listerOTEquip(nc.mairie.technique.Transaction aTrans
 
 /**
  * Retourne un OT.
+ * @param aTransaction Transaction
+ * @param code code
  * @return OT
+ * @throws Exception Exception
  */
 public static OT chercherOT(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	OT unOT = new OT();
@@ -150,6 +168,10 @@ public String creationOTDeclaration(nc.mairie.technique.Transaction aTransaction
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unEquipement unEquipement
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerOT(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement)  throws Exception {
 	// controle si null
@@ -506,6 +528,10 @@ public String validationOT(nc.mairie.technique.Transaction aTransaction )  throw
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unEquipement unEquipement
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean modifierOT(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement) throws Exception {
 //	 controle si null
@@ -702,6 +728,9 @@ public boolean modifierOT(nc.mairie.technique.Transaction aTransaction,Equipemen
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean supprimerOT(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'OT
@@ -900,11 +929,17 @@ public OT() {
 /**
  * Getter de l'attribut numeroot.
  */
+/**
+ * @return String
+ */
 public String getNumeroot() {
 	return numeroot;
 }
 /**
  * Setter de l'attribut numeroot.
+ */
+/**
+ * @param newNumeroot newNumeroot
  */
 public void setNumeroot(String newNumeroot) { 
 	numeroot = newNumeroot;
@@ -912,11 +947,17 @@ public void setNumeroot(String newNumeroot) {
 /**
  * Getter de l'attribut dateentree.
  */
+/**
+ * @return String
+ */
 public String getDateentree() {
 	return dateentree;
 }
 /**
  * Setter de l'attribut dateentree.
+ */
+/**
+ * @param newDateentree newDateentree
  */
 public void setDateentree(String newDateentree) { 
 	dateentree = newDateentree;
@@ -924,11 +965,17 @@ public void setDateentree(String newDateentree) {
 /**
  * Getter de l'attribut datesortie.
  */
+/**
+ * @return String
+ */
 public String getDatesortie() {
 	return datesortie;
 }
 /**
  * Setter de l'attribut datesortie.
+ */
+/**
+ * @param newDatesortie newDatesortie
  */
 public void setDatesortie(String newDatesortie) { 
 	datesortie = newDatesortie;
@@ -936,11 +983,17 @@ public void setDatesortie(String newDatesortie) {
 /**
  * Getter de l'attribut compteur.
  */
+/**
+ * @return String
+ */
 public String getCompteur() {
 	return compteur;
 }
 /**
  * Setter de l'attribut compteur.
+ */
+/**
+ * @param newCompteur newCompteur
  */
 public void setCompteur(String newCompteur) { 
 	compteur = newCompteur;
@@ -948,11 +1001,17 @@ public void setCompteur(String newCompteur) {
 /**
  * Getter de l'attribut valide.
  */
+/**
+ * @return String
+ */
 public String getValide() {
 	return valide;
 }
 /**
  * Setter de l'attribut valide.
+ */
+/**
+ * @param newValide newValide
  */
 public void setValide(String newValide) { 
 	valide = newValide;
@@ -960,11 +1019,17 @@ public void setValide(String newValide) {
 /**
  * Getter de l'attribut numerobc.
  */
+/**
+ * @return String
+ */
 public String getNumerobc() {
 	return numerobc;
 }
 /**
  * Setter de l'attribut numerobc.
+ */
+/**
+ * @param newNumerobc newNumerobc
  */
 public void setNumerobc(String newNumerobc) { 
 	numerobc = newNumerobc;
@@ -972,11 +1037,17 @@ public void setNumerobc(String newNumerobc) {
 /**
  * Getter de l'attribut commentaire.
  */
+/**
+ * @return String
+ */
 public String getCommentaire() {
 	return commentaire;
 }
 /**
  * Setter de l'attribut commentaire.
+ */
+/**
+ * @param newCommentaire newCommentaire
  */
 public void setCommentaire(String newCommentaire) { 
 	commentaire = newCommentaire;
@@ -984,11 +1055,17 @@ public void setCommentaire(String newCommentaire) {
 /**
  * Getter de l'attribut numinv.
  */
+/**
+ * @return String
+ */
 public String getNuminv() {
 	return numinv;
 }
 /**
  * Setter de l'attribut numinv.
+ */
+/**
+ * @param newNuminv newNuminv
  */
 public void setNuminv(String newNuminv) { 
 	numinv = newNuminv;
@@ -996,12 +1073,14 @@ public void setNuminv(String newNuminv) {
 
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected BasicBroker definirMyBroker() { 
 	return new OTBroker(this); 
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected OTBroker getMyOTBroker() {
 	return (OTBroker)getMyBasicBroker();

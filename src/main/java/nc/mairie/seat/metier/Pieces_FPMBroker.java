@@ -12,6 +12,9 @@ public class Pieces_FPMBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPieces_FPM(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -19,6 +22,9 @@ public boolean creerPieces_FPM(nc.mairie.technique.Transaction aTransaction)  th
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierPieces_FPM(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -26,20 +32,30 @@ public boolean modifierPieces_FPM(nc.mairie.technique.Transaction aTransaction) 
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerPieces_FPM(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : Pieces_FPM.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Pieces_FPM> listerPieces_FPM(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un Pieces_FPM.
+ * @param aTransaction Transaction
+ * @param numpiece numpiece
+ * @param numfiche numfiche
+ * @param date date
  * @return Pieces_FPM
+ * @throws Exception Exception
  */
 public Pieces_FPM chercherPieces_FPM(nc.mairie.technique.Transaction aTransaction, String numpiece,String numfiche,String date) throws Exception {
 	String dSortie = Services.formateDateInternationale(date);
@@ -48,7 +64,12 @@ public Pieces_FPM chercherPieces_FPM(nc.mairie.technique.Transaction aTransactio
 /**
  * Retourne un booléen.
  * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param numfiche numfiche
+ * @param numpiece numpiece
+ * @param date date
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existePiecesFPM(nc.mairie.technique.Transaction aTransaction, String numfiche,String numpiece,String date) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numfiche = "+numfiche+" and numpiece = "+numpiece+" and dsortie='"+date+"'");
@@ -58,6 +79,7 @@ public ArrayList<Pieces_FPM> listerPieces_FPMFPM(nc.mairie.technique.Transaction
 }
 /**
  * Constructeur Pieces_FPMBroker.
+ * @param aMetier BasicMetier
  */
 public Pieces_FPMBroker(Pieces_FPM aMetier) {
 	super(aMetier);

@@ -10,20 +10,27 @@ import nc.mairie.technique.BasicRecord;
 public class PeBaseInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : PeBaseInfos.
+ * @param aTransaction Transaction
+ * @param modele modele
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PeBaseInfos> listerPeBaseInfos(nc.mairie.technique.Transaction aTransaction,String modele) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemodele="+modele+"");
 }
 /**
  * Retourne un PeBaseInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return PeBaseInfos
+ * @throws Exception Exception
  */
 public PeBaseInfos chercherPeBaseInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (PeBaseInfos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+"");
 }
 /**
  * Constructeur PeBaseInfosBroker.
+ * @param aMetier BasicMetier
  */
 public PeBaseInfosBroker(PeBaseInfos aMetier) {
 	super(aMetier);

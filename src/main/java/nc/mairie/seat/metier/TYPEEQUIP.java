@@ -22,7 +22,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : TYPEEQUIP.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<TYPEEQUIP> listerTYPEEQUIP(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	TYPEEQUIP unTYPEEQUIP = new TYPEEQUIP();
@@ -30,7 +32,10 @@ public static ArrayList<TYPEEQUIP> listerTYPEEQUIP(nc.mairie.technique.Transacti
 }
 /**
  * Retourne un TYPEEQUIP.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return TYPEEQUIP
+ * @throws Exception Exception
  */
 public static TYPEEQUIP chercherTYPEEQUIP(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	TYPEEQUIP unTYPEEQUIP = new TYPEEQUIP();
@@ -39,6 +44,11 @@ public static TYPEEQUIP chercherTYPEEQUIP(nc.mairie.technique.Transaction aTrans
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @param type type
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerTYPEEQUIP(nc.mairie.technique.Transaction aTransaction,String param,String type)  throws Exception {
 	if(!existeTEquip(aTransaction,param,type)){
@@ -55,6 +65,11 @@ public boolean creerTYPEEQUIP(nc.mairie.technique.Transaction aTransaction,Strin
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @param type type
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierTYPEEQUIP(nc.mairie.technique.Transaction aTransaction,String param,String type) throws Exception {
 	if(!existeTEquip(aTransaction,param,type)){
@@ -68,6 +83,9 @@ public boolean modifierTYPEEQUIP(nc.mairie.technique.Transaction aTransaction,St
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerTYPEEQUIP(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	// si le type d'équipement est déjà utilisé on ne peut pas supprimer
@@ -105,7 +123,11 @@ public int nouvTE(nc.mairie.technique.Transaction aTransaction) throws Exception
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction aTransaction
+ * @param param param
+ * @param type type
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeTEquip(nc.mairie.technique.Transaction aTransaction, String param,String type) throws Exception{
 	TYPEEQUIP unTe = new TYPEEQUIP();
@@ -120,6 +142,7 @@ public TYPEEQUIP() {
 }
 /**
  * Getter de l'attribut codete.
+ * @return String
  */
 public String getCodete() {
 	return codete;
@@ -127,11 +150,15 @@ public String getCodete() {
 /**
  * Setter de l'attribut codete.
  */
+/**
+ * @param newCodete newCodete
+ */
 public void setCodete(String newCodete) { 
 	codete = newCodete;
 }
 /**
  * Getter de l'attribut designationte.
+ * @return String
  */
 public String getDesignationte() {
 	return designationte;
@@ -139,17 +166,24 @@ public String getDesignationte() {
 /**
  * Setter de l'attribut designationte.
  */
+/**
+ * @param newDesignationte newDesignationte
+ */
 public void setDesignationte(String newDesignationte) { 
 	designationte = newDesignationte;
 }
 /**
  * Getter de l'attribut typete.
+ * @return String
  */
 public String getTypete() {
 	return typete;
 }
 /**
  * Setter de l'attribut typete.
+ */
+/**
+ * @param newTypete newTypete
  */
 public void setTypete(String newTypete) { 
 	typete = newTypete;
@@ -163,6 +197,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected TYPEEQUIPBroker getMyTYPEEQUIPBroker() {
 	return (TYPEEQUIPBroker)getMyBasicBroker();

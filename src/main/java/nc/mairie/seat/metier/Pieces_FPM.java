@@ -29,7 +29,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Pieces_FPM.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Pieces_FPM> listerPieces_FPM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Pieces_FPM unPieces_FPM = new Pieces_FPM();
@@ -43,7 +45,12 @@ public static ArrayList<Pieces_FPM> listerPieces_FPMFPM(nc.mairie.technique.Tran
 
 /**
  * Retourne un Pieces_FPM.
+ * @param aTransaction Transaction
+ * @param numpiece numpiece
+ * @param numfiche numfiche
+ * @param date date
  * @return Pieces_FPM
+ * @throws Exception Exception
  */
 public static Pieces_FPM chercherPieces_FPM(nc.mairie.technique.Transaction aTransaction, String numpiece,String numfiche,String date) throws Exception{
 	Pieces_FPM unPieces_FPM = new Pieces_FPM();
@@ -52,6 +59,9 @@ public static Pieces_FPM chercherPieces_FPM(nc.mairie.technique.Transaction aTra
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPieces_FPM(nc.mairie.technique.Transaction aTransaction )  throws Exception {
 	//Creation du Pieces_FPM
@@ -60,6 +70,9 @@ public boolean creerPieces_FPM(nc.mairie.technique.Transaction aTransaction )  t
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierPieces_FPM(nc.mairie.technique.Transaction aTransaction) throws Exception {
 //	RG : controle des champs
@@ -109,6 +122,9 @@ public boolean modifierPieces_FPM(nc.mairie.technique.Transaction aTransaction) 
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerPieces_FPM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'Pieces_FPM
@@ -133,6 +149,11 @@ public boolean controleChamps(nc.mairie.technique.Transaction aTransaction )  th
  * true ou false
  * on utilise la méthode créer pour ajouter un PieceOt
  * passage en paramètre de Pièce et de OT
+ * @param aTransaction Transaction
+ * @param unFPM unFPM
+ * @param unePiece unePiece
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creationPiecesOT(nc.mairie.technique.Transaction aTransaction,FPM unFPM,Pieces unePiece )  throws Exception {
 	// on vérifie que les objets ne sont pas null
@@ -202,7 +223,12 @@ public boolean creationPiecesOT(nc.mairie.technique.Transaction aTransaction,FPM
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction Transaction
+ * @param numot numot
+ * @param numpiece numpiece
+ * @param date date
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existePiecesFPM(nc.mairie.technique.Transaction aTransaction, String numot,String numpiece,String date) throws Exception{
 	Pieces_FPM unPieces_FPM = new Pieces_FPM();
@@ -216,6 +242,7 @@ public Pieces_FPM() {
 }
 /**
  * Getter de l'attribut numfiche.
+ * @return String
  */
 public String getNumfiche() {
 	return numfiche;
@@ -223,11 +250,15 @@ public String getNumfiche() {
 /**
  * Setter de l'attribut numfiche.
  */
+/**
+ * @param newNumfiche newNumfiche
+ */
 public void setNumfiche(String newNumfiche) { 
 	numfiche = newNumfiche;
 }
 /**
  * Getter de l'attribut numpiece.
+ * @return String
  */
 public String getNumpiece() {
 	return numpiece;
@@ -235,11 +266,15 @@ public String getNumpiece() {
 /**
  * Setter de l'attribut numpiece.
  */
+/**
+ * @param newNumpiece newNumpiece
+ */
 public void setNumpiece(String newNumpiece) { 
 	numpiece = newNumpiece;
 }
 /**
  * Getter de l'attribut dsortie.
+ * @return String
  */
 public String getDsortie() {
 	return dsortie;
@@ -247,11 +282,15 @@ public String getDsortie() {
 /**
  * Setter de l'attribut dsortie.
  */
+/**
+ * @param newDsortie newDsortie
+ */
 public void setDsortie(String newDsortie) { 
 	dsortie = newDsortie;
 }
 /**
  * Getter de l'attribut quantite.
+ * @return String
  */
 public String getQuantite() {
 	return quantite;
@@ -259,17 +298,24 @@ public String getQuantite() {
 /**
  * Setter de l'attribut quantite.
  */
+/**
+ * @param newQuantite newQuantite
+ */
 public void setQuantite(String newQuantite) { 
 	quantite = newQuantite;
 }
 /**
  * Getter de l'attribut prix.
+ * @return String
  */
 public String getPrix() {
 	return prix;
 }
 /**
  * Setter de l'attribut prix.
+ */
+/**
+ * @param newPrix newPrix
  */
 public void setPrix(String newPrix) { 
 	prix = newPrix;
@@ -283,6 +329,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected Pieces_FPMBroker getMyPieces_FPMBroker() {
 	return (Pieces_FPMBroker)getMyBasicBroker();

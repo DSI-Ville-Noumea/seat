@@ -30,6 +30,7 @@ public Pm_PePersoInfos() {
 }
 /**
  * Getter de l'attribut pminv.
+ * @return String
  */
 public String getPminv() {
 	return pminv;
@@ -37,11 +38,15 @@ public String getPminv() {
 /**
  * Setter de l'attribut pminv.
  */
+/**
+ * @param newPminv newPminv
+ */
 public void setPminv(String newPminv) { 
 	pminv = newPminv;
 }
 /**
  * Getter de l'attribut pmserie.
+ * @return String
  */
 public String getPmserie() {
 	return pmserie;
@@ -49,11 +54,15 @@ public String getPmserie() {
 /**
  * Setter de l'attribut pmserie.
  */
+/**
+ * @param newPmserie newPmserie
+ */
 public void setPmserie(String newPmserie) { 
 	pmserie = newPmserie;
 }
 /**
  * Getter de l'attribut dmes.
+ * @return String
  */
 public String getDmes() {
 	return dmes;
@@ -61,11 +70,15 @@ public String getDmes() {
 /**
  * Setter de l'attribut dmes.
  */
+/**
+ * @param newDmes newDmes
+ */
 public void setDmes(String newDmes) { 
 	dmes = newDmes;
 }
 /**
  * Getter de l'attribut numfiche.
+ * @return String
  */
 public String getNumfiche() {
 	return numfiche;
@@ -73,11 +86,15 @@ public String getNumfiche() {
 /**
  * Setter de l'attribut numfiche.
  */
+/**
+ * @param newNumfiche newNumfiche
+ */
 public void setNumfiche(String newNumfiche) { 
 	numfiche = newNumfiche;
 }
 /**
  * Getter de l'attribut dentree.
+ * @return String
  */
 public String getDentree() {
 	return dentree;
@@ -85,11 +102,15 @@ public String getDentree() {
 /**
  * Setter de l'attribut dentree.
  */
+/**
+ * @param newDentree newDentree
+ */
 public void setDentree(String newDentree) { 
 	dentree = newDentree;
 }
 /**
  * Getter de l'attribut dsortie.
+ * @return String
  */
 public String getDsortie() {
 	return dsortie;
@@ -97,11 +118,15 @@ public String getDsortie() {
 /**
  * Setter de l'attribut dsortie.
  */
+/**
+ * @param newDsortie newDsortie
+ */
 public void setDsortie(String newDsortie) { 
 	dsortie = newDsortie;
 }
 /**
  * Getter de l'attribut valide.
+ * @return String
  */
 public String getValide() {
 	return valide;
@@ -109,11 +134,15 @@ public String getValide() {
 /**
  * Setter de l'attribut valide.
  */
+/**
+ * @param newValide newValide
+ */
 public void setValide(String newValide) { 
 	valide = newValide;
 }
 /**
  * Getter de l'attribut codepmpep.
+ * @return String
  */
 public String getCodepmpep() {
 	return codepmpep;
@@ -121,11 +150,15 @@ public String getCodepmpep() {
 /**
  * Setter de l'attribut codepmpep.
  */
+/**
+ * @param newCodepmpep newCodepmpep
+ */
 public void setCodepmpep(String newCodepmpep) { 
 	codepmpep = newCodepmpep;
 }
 /**
  * Getter de l'attribut libelleentretien.
+ * @return String
  */
 public String getLibelleentretien() {
 	return libelleentretien;
@@ -133,11 +166,15 @@ public String getLibelleentretien() {
 /**
  * Setter de l'attribut libelleentretien.
  */
+/**
+ * @param newLibelleentretien newLibelleentretien
+ */
 public void setLibelleentretien(String newLibelleentretien) { 
 	libelleentretien = newLibelleentretien;
 }
 /**
  * Getter de l'attribut dprev.
+ * @return String
  */
 public String getDprev() {
 	return dprev;
@@ -145,11 +182,15 @@ public String getDprev() {
 /**
  * Setter de l'attribut dprev.
  */
+/**
+ * @param newDprev newDprev
+ */
 public void setDprev(String newDprev) { 
 	dprev = newDprev;
 }
 /**
  * Getter de l'attribut dreal.
+ * @return String
  */
 public String getDreal() {
 	return dreal;
@@ -157,11 +198,15 @@ public String getDreal() {
 /**
  * Setter de l'attribut dreal.
  */
+/**
+ * @param newDreal newDreal
+ */
 public void setDreal(String newDreal) { 
 	dreal = newDreal;
 }
 /**
  * Getter de l'attribut duree.
+ * @return String
  */
 public String getDuree() {
 	return duree;
@@ -169,11 +214,15 @@ public String getDuree() {
 /**
  * Setter de l'attribut duree.
  */
+/**
+ * @param newDuree newDuree
+ */
 public void setDuree(String newDuree) { 
 	duree = newDuree;
 }
 /**
  * Getter de l'attribut sinistre.
+ * @return String
  */
 public String getSinistre() {
 	return sinistre;
@@ -181,17 +230,24 @@ public String getSinistre() {
 /**
  * Setter de l'attribut sinistre.
  */
+/**
+ * @param newSinistre newSinistre
+ */
 public void setSinistre(String newSinistre) { 
 	sinistre = newSinistre;
 }
 /**
  * Getter de l'attribut commentaire.
+ * @return String
  */
 public String getCommentaire() {
 	return commentaire;
 }
 /**
  * Setter de l'attribut commentaire.
+ */
+/**
+ * @param newCommentaire newCommentaire
  */
 public void setCommentaire(String newCommentaire) { 
 	commentaire = newCommentaire;
@@ -205,6 +261,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected Pm_PePersoInfosBroker getMyPm_PePersoInfosBroker() {
 	return (Pm_PePersoInfosBroker)getMyBasicBroker();
@@ -221,7 +278,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Pm_PePersoInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Pm_PePersoInfos> listerPm_PePersoInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Pm_PePersoInfos unPm_PePersoInfos = new Pm_PePersoInfos();
@@ -229,7 +288,10 @@ public static ArrayList<Pm_PePersoInfos> listerPm_PePersoInfos(nc.mairie.techniq
 }
 /**
  * Retourne un Pm_PePersoInfos.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return Pm_PePersoInfos
+ * @throws Exception Exception
  */
 public static Pm_PePersoInfos chercherPm_PePersoInfos(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Pm_PePersoInfos unPm_PePersoInfos = new Pm_PePersoInfos();
@@ -245,6 +307,11 @@ public static ArrayList<Pm_PePersoInfos> chercherPmPePersoInfosFPM(nc.mairie.tec
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param inv inv
+ * @param tri tri
+ * @return boolean
+ * @throws Exception Exception
  */
 
 public static ArrayList<Pm_PePersoInfos> listerPmPePersoInfosFait(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{

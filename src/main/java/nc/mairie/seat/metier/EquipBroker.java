@@ -9,6 +9,7 @@ import nc.mairie.technique.BasicBroker;
 public class EquipBroker extends BasicBroker {
 /**
  * Constructeur EquipBroker.
+ * @param aMetier BasicMetier
  */
 public EquipBroker(Equip aMetier) {
 	super(aMetier);

@@ -18,6 +18,7 @@ public Specialite() {
 }
 /**
  * Getter de l'attribut codespecialite.
+ * @return String
  */
 public String getCodespecialite() {
 	return codespecialite;
@@ -25,17 +26,24 @@ public String getCodespecialite() {
 /**
  * Setter de l'attribut codespecialite.
  */
+/**
+ * @param newCodespecialite newCodespecialite
+ */
 public void setCodespecialite(String newCodespecialite) { 
 	codespecialite = newCodespecialite;
 }
 /**
  * Getter de l'attribut libellespe.
+ * @return String
  */
 public String getLibellespe() {
 	return libellespe;
 }
 /**
  * Setter de l'attribut libellespe.
+ */
+/**
+ * @param newLibellespe newLibellespe
  */
 public void setLibellespe(String newLibellespe) { 
 	libellespe = newLibellespe;
@@ -49,6 +57,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected SpecialiteBroker getMySpecialiteBroker() {
 	return (SpecialiteBroker)getMyBasicBroker();
@@ -65,7 +74,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Specialite.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Specialite> listerSpecialite(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Specialite unSpecialite = new Specialite();
@@ -73,7 +84,10 @@ public static ArrayList<Specialite> listerSpecialite(nc.mairie.technique.Transac
 }
 /**
  * Retourne un Specialite.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return Specialite
+ * @throws Exception Exception
  */
 public static Specialite chercherSpecialite(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Specialite unSpecialite = new Specialite();
@@ -82,6 +96,10 @@ public static Specialite chercherSpecialite(nc.mairie.technique.Transaction aTra
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerSpecialite(nc.mairie.technique.Transaction aTransaction,String param )  throws Exception {
 	if(!existeSpecialite(aTransaction,param)){
@@ -100,6 +118,10 @@ public boolean creerSpecialite(nc.mairie.technique.Transaction aTransaction,Stri
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierSpecialite(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	if(!existeSpecialite(aTransaction,param)){
@@ -115,6 +137,9 @@ public boolean modifierSpecialite(nc.mairie.technique.Transaction aTransaction,S
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerSpecialite(nc.mairie.technique.Transaction aTransaction) throws Exception{
 //	 si  utilisé pas de suppression
@@ -133,7 +158,10 @@ public boolean supprimerSpecialite(nc.mairie.technique.Transaction aTransaction)
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction aTransaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeSpecialite(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	Specialite unSpecialite = new Specialite();

@@ -204,6 +204,9 @@ public OeFPM_Impression() {
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_IMPRIMER() {
 	return "NOM_PB_IMPRIMER";
 }
@@ -214,6 +217,9 @@ public java.lang.String getNOM_PB_IMPRIMER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	PMateriel unPMateriel;
@@ -350,6 +356,9 @@ public String getServiceForPmateriel(PMateriel petitmat, String DateEntree){
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_ST_DENTREE() {
 	return "NOM_ST_DENTREE";
 }
@@ -358,6 +367,9 @@ public java.lang.String getNOM_ST_DENTREE() {
  * ST_DENTREE
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_ST_DENTREE() {
 	return getZone(getNOM_ST_DENTREE());
@@ -368,6 +380,9 @@ public java.lang.String getVAL_ST_DENTREE() {
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_ST_DSORTIE() {
 	return "NOM_ST_DSORTIE";
 }
@@ -376,6 +391,9 @@ public java.lang.String getNOM_ST_DSORTIE() {
  * ST_DSORTIE
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_ST_DSORTIE() {
 	return getZone(getNOM_ST_DSORTIE());
@@ -386,6 +404,9 @@ public java.lang.String getVAL_ST_DSORTIE() {
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_ST_MARQUE() {
 	return "NOM_ST_MARQUE";
 }
@@ -394,6 +415,9 @@ public java.lang.String getNOM_ST_MARQUE() {
  * ST_MARQUE
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_ST_MARQUE() {
 	return getZone(getNOM_ST_MARQUE());
@@ -404,6 +428,9 @@ public java.lang.String getVAL_ST_MARQUE() {
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_ST_MODELE() {
 	return "NOM_ST_MODELE";
 }
@@ -412,6 +439,9 @@ public java.lang.String getNOM_ST_MODELE() {
  * ST_MODELE
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_ST_MODELE() {
 	return getZone(getNOM_ST_MODELE());
@@ -422,6 +452,9 @@ public java.lang.String getVAL_ST_MODELE() {
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_ST_NOSERIE() {
 	return "NOM_ST_NOSERIE";
 }
@@ -430,6 +463,9 @@ public java.lang.String getNOM_ST_NOSERIE() {
  * ST_NOIMMAT
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_ST_NOSERIE() {
 	return getZone(getNOM_ST_NOSERIE());
@@ -440,6 +476,9 @@ public java.lang.String getVAL_ST_NOSERIE() {
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_ST_NOINVENT() {
 	return "NOM_ST_NOINVENT";
 }
@@ -448,6 +487,9 @@ public java.lang.String getNOM_ST_NOINVENT() {
  * ST_NOINVENT
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_ST_NOINVENT() {
 	return getZone(getNOM_ST_NOINVENT());
@@ -458,6 +500,9 @@ public java.lang.String getVAL_ST_NOINVENT() {
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_ST_NUMFICHE() {
 	return "NOM_ST_NUMFICHE";
 }
@@ -466,6 +511,9 @@ public java.lang.String getNOM_ST_NUMFICHE() {
  * ST_NUMFICHE
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_ST_NUMFICHE() {
 	return getZone(getNOM_ST_NUMFICHE());
@@ -476,6 +524,9 @@ public java.lang.String getVAL_ST_NUMFICHE() {
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_ST_TYPE() {
 	return "NOM_ST_TYPE";
 }
@@ -484,6 +535,9 @@ public java.lang.String getNOM_ST_TYPE() {
  * ST_TYPE
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_ST_TYPE() {
 	return getZone(getNOM_ST_TYPE());
@@ -494,6 +548,9 @@ public java.lang.String getVAL_ST_TYPE() {
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_EF_COMMENTAIRE() {
 	return "NOM_EF_COMMENTAIRE";
 }
@@ -502,6 +559,9 @@ public java.lang.String getNOM_EF_COMMENTAIRE() {
  * EF_COMMENTAIRE
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_EF_COMMENTAIRE() {
 	return getZone(getNOM_EF_COMMENTAIRE());
@@ -532,6 +592,9 @@ private void setLB_ENTRETIENS(java.lang.String[] newLB_ENTRETIENS) {
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_LB_ENTRETIENS() {
 	return "NOM_LB_ENTRETIENS";
 }
@@ -540,6 +603,9 @@ public java.lang.String getNOM_LB_ENTRETIENS() {
  * NOM_LB_ENTRETIENS_SELECT
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_LB_ENTRETIENS_SELECT() {
 	return "NOM_LB_ENTRETIENS_SELECT";
@@ -551,6 +617,9 @@ public java.lang.String getNOM_LB_ENTRETIENS_SELECT() {
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String [] getVAL_LB_ENTRETIENS() {
 	return getLB_ENTRETIENS();
 }
@@ -561,6 +630,9 @@ public java.lang.String [] getVAL_LB_ENTRETIENS() {
  * Date de création : (25/07/05 08:30:59)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getVAL_LB_ENTRETIENS_SELECT() {
 	return getZone(getNOM_LB_ENTRETIENS_SELECT());
 }
@@ -569,6 +641,9 @@ public java.lang.String getVAL_LB_ENTRETIENS_SELECT() {
  * PB_RECHERCHE
  * Date de création : (25/07/05 09:15:57)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_PB_RECHERCHE() {
 	return "NOM_PB_RECHERCHE";
@@ -580,6 +655,9 @@ public java.lang.String getNOM_PB_RECHERCHE() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (25/07/05 09:15:57)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request) throws Exception {
 
@@ -641,6 +719,9 @@ private void setLB_ENTRETIENS_SUITE(java.lang.String[] newLB_ENTRETIENS_SUITE) {
  * Date de création : (26/07/05 13:19:52)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_LB_ENTRETIENS_SUITE() {
 	return "NOM_LB_ENTRETIENS_SUITE";
 }
@@ -649,6 +730,9 @@ public java.lang.String getNOM_LB_ENTRETIENS_SUITE() {
  * NOM_LB_ENTRETIENS_SUITE_SELECT
  * Date de création : (26/07/05 13:19:52)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_LB_ENTRETIENS_SUITE_SELECT() {
 	return "NOM_LB_ENTRETIENS_SUITE_SELECT";
@@ -660,6 +744,9 @@ public java.lang.String getNOM_LB_ENTRETIENS_SUITE_SELECT() {
  * Date de création : (26/07/05 13:19:52)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String [] getVAL_LB_ENTRETIENS_SUITE() {
 	return getLB_ENTRETIENS_SUITE();
 }
@@ -669,6 +756,9 @@ public java.lang.String [] getVAL_LB_ENTRETIENS_SUITE() {
  * LB_ENTRETIENS_SUITE
  * Date de création : (26/07/05 13:19:52)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_LB_ENTRETIENS_SUITE_SELECT() {
 	return getZone(getNOM_LB_ENTRETIENS_SUITE_SELECT());
@@ -691,6 +781,9 @@ public void setAffiche(boolean affiche) {
  * Date de création : (23/08/05 08:56:33)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_ST_COMPTEUR() {
 	return "NOM_ST_COMPTEUR";
 }
@@ -699,6 +792,9 @@ public java.lang.String getNOM_ST_COMPTEUR() {
  * ST_COMPTEUR
  * Date de création : (23/08/05 08:56:33)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_ST_COMPTEUR() {
 	return getZone(getNOM_ST_COMPTEUR());
@@ -709,6 +805,9 @@ public java.lang.String getVAL_ST_COMPTEUR() {
  * Date de création : (23/08/05 09:03:32)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_ST_TCOMPTEUR() {
 	return "NOM_ST_TCOMPTEUR";
 }
@@ -718,6 +817,9 @@ public java.lang.String getNOM_ST_TCOMPTEUR() {
  * Date de création : (23/08/05 09:03:32)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getVAL_ST_TCOMPTEUR() {
 	return getZone(getNOM_ST_TCOMPTEUR());
 }
@@ -726,6 +828,9 @@ public java.lang.String getVAL_ST_TCOMPTEUR() {
  * PB_ANNULER
  * Date de création : (24/08/05 09:34:57)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
 	return "NOM_PB_ANNULER";
@@ -737,6 +842,9 @@ public java.lang.String getNOM_PB_ANNULER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (24/08/05 09:34:57)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	//retour à l'écran précédent
@@ -749,6 +857,9 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * Date de création : (02/04/07 08:46:24)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_EQUIP() {
 	return "NOM_PB_EQUIP";
 }
@@ -759,6 +870,9 @@ public java.lang.String getNOM_PB_EQUIP() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (02/04/07 08:46:24)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_EQUIP(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String numfiche = getZone(getNOM_EF_NUMFICHE().toUpperCase());
@@ -820,6 +934,9 @@ public boolean performPB_EQUIP(javax.servlet.http.HttpServletRequest request) th
  * Date de création : (02/04/07 08:46:24)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_EF_EQUIP() {
 	return "NOM_EF_EQUIP";
 }
@@ -828,6 +945,9 @@ public java.lang.String getNOM_EF_EQUIP() {
  * EF_EQUIP
  * Date de création : (02/04/07 08:46:24)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_EF_EQUIP() {
 	return getZone(getNOM_EF_EQUIP());
@@ -838,6 +958,9 @@ public java.lang.String getVAL_EF_EQUIP() {
  * Date de création : (05/07/07 10:59:23)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_EF_NUMFICHE() {
 	return "NOM_EF_NUMFICHE";
 }
@@ -846,6 +969,9 @@ public java.lang.String getNOM_EF_NUMFICHE() {
  * EF_NUMFICHE
  * Date de création : (05/07/07 10:59:23)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_EF_NUMFICHE() {
 	return getZone(getNOM_EF_NUMFICHE());
@@ -867,7 +993,8 @@ public void setFocus(String focus) {
 	this.focus = focus;
 }
 /**
- * @param focus focus à définir.
+ * focus focus à définir.
+ * @return focus
  */
 public String getDefaultFocus() {
 	return getNOM_EF_NUMFICHE();
@@ -931,6 +1058,9 @@ public String getJSP() {
  * Date de création : (08/08/07 15:08:11)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_COMMENTAIRE() {
 	return "NOM_PB_COMMENTAIRE";
 }
@@ -941,6 +1071,9 @@ public java.lang.String getNOM_PB_COMMENTAIRE() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (08/08/07 15:08:11)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_COMMENTAIRE(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String commentaire = getZone(getNOM_EF_COMMENTAIRE());

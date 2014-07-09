@@ -12,7 +12,9 @@ import nc.mairie.technique.Services;
 public class PM_AffectAgentsInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : PM_AffectAgentsInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PM_AffectAgentsInfos> listerPM_AffectAgentsInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
@@ -29,7 +31,10 @@ public ArrayList<PM_AffectAgentsInfos> listerPM_AffectAgentInfosScePMatDate(nc.m
 }
 /**
  * Retourne un PM_AffectAgentsInfos.
+ * @param aTransaction Transaction
+ * @param servi servi
  * @return PM_AffectAgentsInfos
+ * @throws Exception Exception
  */
 public PM_AffectAgentsInfos chercherPM_AffectAgentsInfos(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception {
 	return (PM_AffectAgentsInfos)executeSelect(aTransaction,"select * from "+getTable()+" where codesce = "+servi+"");
@@ -45,6 +50,7 @@ public ArrayList<PM_AffectAgentsInfos> chercherPM_AffectAgentsInfosScePM(nc.mair
 
 /**
  * Constructeur PM_AffectAgentsInfosBroker.
+ * @param aMetier BasicMetier
  */
 public PM_AffectAgentsInfosBroker(PM_AffectAgentsInfos aMetier) {
 	super(aMetier);

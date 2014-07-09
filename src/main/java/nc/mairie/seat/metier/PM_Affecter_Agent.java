@@ -29,7 +29,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : PM_Affecter_Agent.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PM_Affecter_Agent> listerPM_Affecter_Agent(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PM_Affecter_Agent unPM_Affecter_Agent = new PM_Affecter_Agent();
@@ -37,7 +39,10 @@ public static ArrayList<PM_Affecter_Agent> listerPM_Affecter_Agent(nc.mairie.tec
 }
 /**
  * Retourne un PM_Affecter_Agent.
+ * @param aTransaction Transaction
+ * @param code code
  * @return PM_Affecter_Agent
+ * @throws Exception Exception
  */
 public static PM_Affecter_Agent chercherPM_Affecter_Agent(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	PM_Affecter_Agent unPM_Affecter_Agent = new PM_Affecter_Agent();
@@ -46,6 +51,12 @@ public static PM_Affecter_Agent chercherPM_Affecter_Agent(nc.mairie.technique.Tr
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unPMateriel unPMateriel
+ * @param unAgent unAgent
+ * @param newDate newDate
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPm_Affecter_Agent(nc.mairie.technique.Transaction aTransaction, PMateriel unPMateriel,Agents unAgent,String newDate )  throws Exception {
 //	on vérifie ques les paramètres ne sont pas null
@@ -152,6 +163,9 @@ public boolean existePmAffecter_Agent(nc.mairie.technique.Transaction aTransacti
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierPM_Affecter_Agent(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	//Modification du PM_Affecter_Agent
@@ -160,6 +174,9 @@ public boolean modifierPM_Affecter_Agent(nc.mairie.technique.Transaction aTransa
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerPM_Affecter_Agent(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'PM_Affecter_Agent
@@ -1142,6 +1159,7 @@ public PM_Affecter_Agent() {
 }
 /**
  * Getter de l'attribut matricule.
+ * @return String
  */
 public String getMatricule() {
 	return matricule;
@@ -1149,11 +1167,15 @@ public String getMatricule() {
 /**
  * Setter de l'attribut matricule.
  */
+/**
+ * @param newMatricule newMatricule
+ */
 public void setMatricule(String newMatricule) { 
 	matricule = newMatricule;
 }
 /**
  * Getter de l'attribut pminv.
+ * @return String
  */
 public String getPminv() {
 	return pminv;
@@ -1161,11 +1183,15 @@ public String getPminv() {
 /**
  * Setter de l'attribut pminv.
  */
+/**
+ * @param newPminv newPminv
+ */
 public void setPminv(String newPminv) { 
 	pminv = newPminv;
 }
 /**
  * Getter de l'attribut ddeb.
+ * @return String
  */
 public String getDdeb() {
 	return ddeb;
@@ -1173,11 +1199,15 @@ public String getDdeb() {
 /**
  * Setter de l'attribut ddeb.
  */
+/**
+ * @param newDdeb newDdeb
+ */
 public void setDdeb(String newDdeb) { 
 	ddeb = newDdeb;
 }
 /**
  * Getter de l'attribut dfin.
+ * @return String
  */
 public String getDfin() {
 	return dfin;
@@ -1185,11 +1215,15 @@ public String getDfin() {
 /**
  * Setter de l'attribut dfin.
  */
+/**
+ * @param newDfin newDfin
+ */
 public void setDfin(String newDfin) { 
 	dfin = newDfin;
 }
 /**
  * Getter de l'attribut hdeb.
+ * @return String
  */
 public String getHdeb() {
 	return hdeb;
@@ -1197,11 +1231,15 @@ public String getHdeb() {
 /**
  * Setter de l'attribut hdeb.
  */
+/**
+ * @param newHdeb newHdeb
+ */
 public void setHdeb(String newHdeb) { 
 	hdeb = newHdeb;
 }
 /**
  * Getter de l'attribut hfin.
+ * @return String
  */
 public String getHfin() {
 	return hfin;
@@ -1209,11 +1247,15 @@ public String getHfin() {
 /**
  * Setter de l'attribut hfin.
  */
+/**
+ * @param newHfin newHfin
+ */
 public void setHfin(String newHfin) { 
 	hfin = newHfin;
 }
 /**
  * Getter de l'attribut hdebmn.
+ * @return String
  */
 public String getHdebmn() {
 	return hdebmn;
@@ -1221,11 +1263,15 @@ public String getHdebmn() {
 /**
  * Setter de l'attribut hdebmn.
  */
+/**
+ * @param newHdebmn newHdebmn
+ */
 public void setHdebmn(String newHdebmn) { 
 	hdebmn = newHdebmn;
 }
 /**
  * Getter de l'attribut hfinmn.
+ * @return String
  */
 public String getHfinmn() {
 	return hfinmn;
@@ -1233,11 +1279,15 @@ public String getHfinmn() {
 /**
  * Setter de l'attribut hfinmn.
  */
+/**
+ * @param newHfinmn newHfinmn
+ */
 public void setHfinmn(String newHfinmn) { 
 	hfinmn = newHfinmn;
 }
 /**
  * Getter de l'attribut codesce.
+ * @return String
  */
 public String getCodesce() {
 	return codesce;
@@ -1245,17 +1295,22 @@ public String getCodesce() {
 /**
  * Setter de l'attribut codesce.
  */
+/**
+ * @param newCodesce newCodesce
+ */
 public void setCodesce(String newCodesce) { 
 	codesce = newCodesce;
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected BasicBroker definirMyBroker() { 
 	return new PM_Affecter_AgentBroker(this); 
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PM_Affecter_AgentBroker getMyPM_Affecter_AgentBroker() {
 	return (PM_Affecter_AgentBroker)getMyBasicBroker();

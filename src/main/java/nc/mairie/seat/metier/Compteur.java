@@ -22,7 +22,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Compteur.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Compteur> listerCompteur(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Compteur unCompteur = new Compteur();
@@ -30,7 +32,10 @@ public static ArrayList<Compteur> listerCompteur(nc.mairie.technique.Transaction
 }
 /**
  * Retourne un Compteur.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return Compteur
+ * @throws Exception Exception
  */
 public static Compteur chercherCompteur(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Compteur unCompteur = new Compteur();
@@ -39,6 +44,10 @@ public static Compteur chercherCompteur(nc.mairie.technique.Transaction aTransac
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerCompteur(nc.mairie.technique.Transaction aTransaction,String param)  throws Exception {
 	if (!existeCompteur(aTransaction,param)){
@@ -55,6 +64,10 @@ public boolean creerCompteur(nc.mairie.technique.Transaction aTransaction,String
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean modifierCompteur(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	if (!existeCompteur(aTransaction,param)){
@@ -68,6 +81,9 @@ public boolean modifierCompteur(nc.mairie.technique.Transaction aTransaction,Str
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean supprimerCompteur(nc.mairie.technique.Transaction aTransaction) throws Exception{
 //	 si déjà utilisé on ne peut pas supprimer
@@ -103,7 +119,10 @@ public int nouvCompteur(nc.mairie.technique.Transaction aTransaction) throws Exc
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction aTransaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeCompteur(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	Compteur unCompteur = new Compteur();
@@ -118,11 +137,17 @@ public Compteur() {
 /**
  * Getter de l'attribut codecompteur.
  */
+/**
+ * @return String
+ */
 public String getCodecompteur() {
 	return codecompteur;
 }
 /**
  * Setter de l'attribut codecompteur.
+ */
+/**
+ * @param newCodecompteur newCodecompteur
  */
 public void setCodecompteur(String newCodecompteur) { 
 	codecompteur = newCodecompteur;
@@ -130,11 +155,17 @@ public void setCodecompteur(String newCodecompteur) {
 /**
  * Getter de l'attribut designationcompteur.
  */
+/**
+ * @return String
+ */
 public String getDesignationcompteur() {
 	return designationcompteur;
 }
 /**
  * Setter de l'attribut designationcompteur.
+ */
+/**
+ * @param newDesignationcompteur newDesignationcompteur
  */
 public void setDesignationcompteur(String newDesignationcompteur) { 
 	designationcompteur = newDesignationcompteur;
@@ -148,6 +179,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected CompteurBroker getMyCompteurBroker() {
 	return (CompteurBroker)getMyBasicBroker();

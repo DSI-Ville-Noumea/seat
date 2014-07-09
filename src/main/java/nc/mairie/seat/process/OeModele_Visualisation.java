@@ -116,6 +116,7 @@ public String getJSP() {
  * PB_RECHERCHE
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_RECHERCHE() {
 	return "NOM_PB_RECHERCHE";
@@ -127,6 +128,9 @@ public java.lang.String getNOM_PB_RECHERCHE() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request) throws Exception {
 	setStatut(STATUT_RECHERCHE,true);
@@ -137,6 +141,7 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
  * ST_CAPACITE
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_CAPACITE() {
 	return "NOM_ST_CAPACITE";
@@ -146,6 +151,7 @@ public java.lang.String getNOM_ST_CAPACITE() {
  * ST_CAPACITE
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_CAPACITE() {
 	return getZone(getNOM_ST_CAPACITE());
@@ -155,6 +161,7 @@ public java.lang.String getVAL_ST_CAPACITE() {
  * ST_CARBU
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_CARBU() {
 	return "NOM_ST_CARBU";
@@ -164,6 +171,7 @@ public java.lang.String getNOM_ST_CARBU() {
  * ST_CARBU
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_CARBU() {
 	return getZone(getNOM_ST_CARBU());
@@ -173,6 +181,7 @@ public java.lang.String getVAL_ST_CARBU() {
  * ST_CODE
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_CODE() {
 	return "NOM_ST_CODE";
@@ -182,6 +191,7 @@ public java.lang.String getNOM_ST_CODE() {
  * ST_CODE
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_CODE() {
 	return getZone(getNOM_ST_CODE());
@@ -191,6 +201,7 @@ public java.lang.String getVAL_ST_CODE() {
  * ST_COMPTEUR
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_COMPTEUR() {
 	return "NOM_ST_COMPTEUR";
@@ -200,6 +211,7 @@ public java.lang.String getNOM_ST_COMPTEUR() {
  * ST_COMPTEUR
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_COMPTEUR() {
 	return getZone(getNOM_ST_COMPTEUR());
@@ -209,6 +221,7 @@ public java.lang.String getVAL_ST_COMPTEUR() {
  * ST_DESIGNATION
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_DESIGNATION() {
 	return "NOM_ST_DESIGNATION";
@@ -218,6 +231,7 @@ public java.lang.String getNOM_ST_DESIGNATION() {
  * ST_DESIGNATION
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_DESIGNATION() {
 	return getZone(getNOM_ST_DESIGNATION());
@@ -227,6 +241,7 @@ public java.lang.String getVAL_ST_DESIGNATION() {
  * ST_MARQUE
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_MARQUE() {
 	return "NOM_ST_MARQUE";
@@ -236,6 +251,7 @@ public java.lang.String getNOM_ST_MARQUE() {
  * ST_MARQUE
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_MARQUE() {
 	return getZone(getNOM_ST_MARQUE());
@@ -245,6 +261,7 @@ public java.lang.String getVAL_ST_MARQUE() {
  * ST_NBESSIEUX
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_NBESSIEUX() {
 	return "NOM_ST_NBESSIEUX";
@@ -254,6 +271,7 @@ public java.lang.String getNOM_ST_NBESSIEUX() {
  * ST_NBESSIEUX
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_NBESSIEUX() {
 	return getZone(getNOM_ST_NBESSIEUX());
@@ -263,6 +281,7 @@ public java.lang.String getVAL_ST_NBESSIEUX() {
  * ST_NBPNEUAR
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_NBPNEUAR() {
 	return "NOM_ST_NBPNEUAR";
@@ -272,6 +291,7 @@ public java.lang.String getNOM_ST_NBPNEUAR() {
  * ST_NBPNEUAR
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_NBPNEUAR() {
 	return getZone(getNOM_ST_NBPNEUAR());
@@ -281,6 +301,7 @@ public java.lang.String getVAL_ST_NBPNEUAR() {
  * ST_NBPNEUAV
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_NBPNEUAV() {
 	return "NOM_ST_NBPNEUAV";
@@ -290,6 +311,7 @@ public java.lang.String getNOM_ST_NBPNEUAV() {
  * ST_NBPNEUAV
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_NBPNEUAV() {
 	return getZone(getNOM_ST_NBPNEUAV());
@@ -299,6 +321,7 @@ public java.lang.String getVAL_ST_NBPNEUAV() {
  * ST_PNEU
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_PNEU() {
 	return "NOM_ST_PNEU";
@@ -308,6 +331,7 @@ public java.lang.String getNOM_ST_PNEU() {
  * ST_PNEU
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_PNEU() {
 	return getZone(getNOM_ST_PNEU());
@@ -317,6 +341,7 @@ public java.lang.String getVAL_ST_PNEU() {
  * ST_PUISSANCE
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_PUISSANCE() {
 	return "NOM_ST_PUISSANCE";
@@ -326,6 +351,7 @@ public java.lang.String getNOM_ST_PUISSANCE() {
  * ST_PUISSANCE
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_PUISSANCE() {
 	return getZone(getNOM_ST_PUISSANCE());
@@ -335,6 +361,7 @@ public java.lang.String getVAL_ST_PUISSANCE() {
  * ST_TEQUIP
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_TEQUIP() {
 	return "NOM_ST_TEQUIP";
@@ -344,6 +371,7 @@ public java.lang.String getNOM_ST_TEQUIP() {
  * ST_TEQUIP
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_TEQUIP() {
 	return getZone(getNOM_ST_TEQUIP());
@@ -353,6 +381,7 @@ public java.lang.String getVAL_ST_TEQUIP() {
  * ST_VERSION
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_VERSION() {
 	return "NOM_ST_VERSION";
@@ -362,6 +391,7 @@ public java.lang.String getNOM_ST_VERSION() {
  * ST_VERSION
  * Date de création : (10/06/05 10:56:08)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_VERSION() {
 	return getZone(getNOM_ST_VERSION());

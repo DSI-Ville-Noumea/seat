@@ -10,27 +10,36 @@ import nc.mairie.technique.BasicRecord;
 public class PiecesInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : PiecesInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PiecesInfos> listerPiecesInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by designationpiece");
 }
 /**
  * Retourne un PiecesInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return PiecesInfos
+ * @throws Exception Exception
  */
 public PiecesInfos chercherPiecesInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (PiecesInfos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+" order by designationpiece");
 }
 /**
  * Retourne un PiecesInfos.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return PiecesInfos
+ * @throws Exception Exception
  */
 public ArrayList<PiecesInfos> chercherPiecesInfosOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numot = "+numot);
 }
 /**
  * Constructeur PiecesInfosBroker.
+ * @param aMetier BasicMetier
  */
 public PiecesInfosBroker(PiecesInfos aMetier) {
 	super(aMetier);

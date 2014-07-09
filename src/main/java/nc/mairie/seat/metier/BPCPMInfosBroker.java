@@ -10,6 +10,7 @@ import nc.mairie.technique.BasicRecord;
 public class BPCPMInfosBroker extends BasicBroker {
 /**
  * Constructeur BPCPMInfosBroker.
+ * @param aMetier BasicMetier
  */
 public BPCPMInfosBroker(BPCPMInfos aMetier) {
 	super(aMetier);
@@ -59,21 +60,31 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 }
 /**
  * Retourne un ArrayList d'objet métier : BPCPMInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<BPCPMInfos> listerBPCPMInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**
  * Retourne un BPCPMInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return BPCPMInfos
+ * @throws Exception Exception
  */
 public BPCPMInfos chercherBPCPMInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (BPCPMInfos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+" with ur");
 }
 /**
  * Retourne un ArrayList d'objet métier : BPCInfosCompletes.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param servi servi
+ * @param periode periode
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<BPCPMInfos> listerBPCPMInfosParams(nc.mairie.technique.Transaction aTransaction,String inv,String servi,String periode) throws Exception {
 	if(!inv.equals("")){

@@ -26,7 +26,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : PiecesInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PiecesInfos> listerPiecesInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PiecesInfos unPiecesInfos = new PiecesInfos();
@@ -35,7 +37,10 @@ public static ArrayList<PiecesInfos> listerPiecesInfos(nc.mairie.technique.Trans
 
 /**
  * Retourne un ArrayList d'objet métier : PiecesInfos.
+ * @param aTransaction aTransaction
+ * @param numot numot
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PiecesInfos> chercherPiecesInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	PiecesInfos unPiecesInfos = new PiecesInfos();
@@ -44,7 +49,10 @@ public static ArrayList<PiecesInfos> chercherPiecesInfosOT(nc.mairie.technique.T
 
 /**
  * Retourne un PiecesInfos.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return PiecesInfos
+ * @throws Exception Exception
  */
 public static PiecesInfos chercherPiecesInfos(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	PiecesInfos unPiecesInfos = new PiecesInfos();
@@ -59,6 +67,7 @@ public PiecesInfos() {
 }
 /**
  * Getter de l'attribut codepiece.
+ * @return String
  */
 public String getCodepiece() {
 	return codepiece;
@@ -66,11 +75,15 @@ public String getCodepiece() {
 /**
  * Setter de l'attribut codepiece.
  */
+/**
+ * @param newCodepiece newCodepiece
+ */
 public void setCodepiece(String newCodepiece) { 
 	codepiece = newCodepiece;
 }
 /**
  * Getter de l'attribut designationpiece.
+ * @return String
  */
 public String getDesignationpiece() {
 	return designationpiece;
@@ -78,11 +91,15 @@ public String getDesignationpiece() {
 /**
  * Setter de l'attribut designationpiece.
  */
+/**
+ * @param newDesignationpiece newDesignationpiece
+ */
 public void setDesignationpiece(String newDesignationpiece) { 
 	designationpiece = newDesignationpiece;
 }
 /**
  * Getter de l'attribut pu.
+ * @return String
  */
 public String getPu() {
 	return pu;
@@ -90,11 +107,15 @@ public String getPu() {
 /**
  * Setter de l'attribut pu.
  */
+/**
+ * @param newPu newPu
+ */
 public void setPu(String newPu) { 
 	pu = newPu;
 }
 /**
  * Getter de l'attribut datesortie.
+ * @return String
  */
 public String getDatesortie() {
 	return datesortie;
@@ -102,11 +123,15 @@ public String getDatesortie() {
 /**
  * Setter de l'attribut datesortie.
  */
+/**
+ * @param newDatesortie newDatesortie
+ */
 public void setDatesortie(String newDatesortie) { 
 	datesortie = newDatesortie;
 }
 /**
  * Getter de l'attribut quantite.
+ * @return String
  */
 public String getQuantite() {
 	return quantite;
@@ -114,11 +139,15 @@ public String getQuantite() {
 /**
  * Setter de l'attribut quantite.
  */
+/**
+ * @param newQuantite newQuantite
+ */
 public void setQuantite(String newQuantite) { 
 	quantite = newQuantite;
 }
 /**
  * Getter de l'attribut numot.
+ * @return String
  */
 public String getNumot() {
 	return numot;
@@ -126,17 +155,24 @@ public String getNumot() {
 /**
  * Setter de l'attribut numot.
  */
+/**
+ * @param newNumot newNumot
+ */
 public void setNumot(String newNumot) { 
 	numot = newNumot;
 }
 /**
  * Getter de l'attribut prix.
+ * @return String
  */
 public String getPrix() {
 	return prix;
 }
 /**
  * Setter de l'attribut prix.
+ */
+/**
+ * @param newPrix newPrix
  */
 public void setPrix(String newPrix) { 
 	prix = newPrix;
@@ -150,6 +186,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PiecesInfosBroker getMyPiecesInfosBroker() {
 	return (PiecesInfosBroker)getMyBasicBroker();

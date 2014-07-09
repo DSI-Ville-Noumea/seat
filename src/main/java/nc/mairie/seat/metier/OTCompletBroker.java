@@ -10,6 +10,7 @@ import nc.mairie.technique.BasicRecord;
 public class OTCompletBroker extends BasicBroker {
 /**
  * Constructeur OTCompletBroker.
+ * @param aMetier BasicMetier
  */
 public OTCompletBroker(OTComplet aMetier) {
 	super(aMetier);
@@ -59,21 +60,30 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 }
 /**
  * Retourne un ArrayList d'objet métier : OTComplet.
+ * @param aTransaction Transaction
+ * @param and and
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<OTComplet> listerOTComplet(nc.mairie.technique.Transaction aTransaction, String and) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+ (and.length() > 0 ? " where "+and : ""));
 }
 /**
  * Retourne un OTComplet.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return OTComplet
+ * @throws Exception Exception
  */
 public OTComplet chercherOTComplet(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (OTComplet)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+"");
 }
 /**
  * Retourne un ArrayList d'objet métier : OT.
+ * @param aTransaction Transaction
+ * @param inv inv
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<OTComplet> listerOTCompletEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numinv='"+inv+"'");
@@ -81,7 +91,10 @@ public ArrayList<OTComplet> listerOTCompletEquip(nc.mairie.technique.Transaction
 
 /**
  * Retourne un ArrayList d'objet métier : OT.
+ * @param aTransaction Transaction
+ * @param and and
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<OTComplet> listerOTCompletValide(nc.mairie.technique.Transaction aTransaction, String and) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='T'" + (and != null && and.length() > 0 ? " and "+and : ""));
@@ -89,7 +102,9 @@ public ArrayList<OTComplet> listerOTCompletValide(nc.mairie.technique.Transactio
 
 /**
  * Retourne un ArrayList d'objet métier : OT.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<OTComplet> listerOTCompletAValider(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='F'");
@@ -97,7 +112,10 @@ public ArrayList<OTComplet> listerOTCompletAValider(nc.mairie.technique.Transact
 
 /**
  * Retourne un ArrayList d'objet métier : OT.
+ * @param aTransaction Transaction
+ * @param and and
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<OTComplet> listerOTCompletEncours(nc.mairie.technique.Transaction aTransaction, String and) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='F' "+ (and!= null && and.length() > 0 ? " and "+and : ""));                                      
@@ -105,14 +123,18 @@ public ArrayList<OTComplet> listerOTCompletEncours(nc.mairie.technique.Transacti
 
 /**
  * Retourne un ArrayList d'objet métier : OT.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<OTComplet> listerOTCompletDeclarationsEncours(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='F' and numeroot in(select codeot from SEAT.f_declarations)");                                      
 }
 /**
  * Retourne un ArrayList d'objet métier : OT.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<OTComplet> listerOTCompletDeclarationsValide(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='T' and numeroot in(select codeot from SEAT.f_declarations)");                                      

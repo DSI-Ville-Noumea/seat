@@ -11,6 +11,7 @@ import nc.mairie.technique.Services;
 public class AgentCDEBroker extends BasicBroker {
 /**
  * Constructeur AgentCDEBroker.
+ * @param aMetier BasicMetier
  */
 public AgentCDEBroker(AgentCDE aMetier) {
 	super(aMetier);
@@ -75,21 +76,29 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 }
 /**
  * Retourne un ArrayList d'objet métier : AgentCDE.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AgentCDE> listerAgentCDE(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" inner join MAIRCDE.SPPOST on nomatr = pomatr and codact <> 'I' order by nom with ur");
 }
 /**
  * Retourne un AgentCDE.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return AgentCDE
+ * @throws Exception Exception
  */
 public AgentCDE chercherAgentCDE(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (AgentCDE)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+cle+" with ur");
 }
 /**
  * Retourne un AgentCDE.
+ * @param aTransaction Transaction
+ * @param param param
  * @return AgentCDE
+ * @throws Exception Exception
  */
 public ArrayList<AgentCDE> listerAgentCDENom(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	String dateDuJour = Services.formateDateInternationale(Services.dateDuJour());

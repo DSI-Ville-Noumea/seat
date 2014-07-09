@@ -23,17 +23,24 @@ public AgentsMunicipaux() {
 /**
  * Getter de l'attribut nomatr.
  */
+/**
+ * @return String
+ */
 public String getNomatr() {
 	return nomatr;
 }
 /**
  * Setter de l'attribut nomatr.
  */
+/**
+ * @param newNomatr newNomatr
+ */
 public void setNomatr(String newNomatr) { 
 	nomatr = newNomatr;
 }
 /**
  * Getter de l'attribut nom.
+ * @return String
  */
 public String getNom() {
 	return nom;
@@ -41,11 +48,15 @@ public String getNom() {
 /**
  * Setter de l'attribut nom.
  */
+/**
+ * @param newNom newNom
+ */
 public void setNom(String newNom) { 
 	nom = newNom;
 }
 /**
  * Getter de l'attribut prenom.
+ * @return String
  */
 public String getPrenom() {
 	return prenom;
@@ -53,11 +64,17 @@ public String getPrenom() {
 /**
  * Setter de l'attribut prenom.
  */
+/**
+ * @param newPrenom newPrenom
+ */
 public void setPrenom(String newPrenom) { 
 	prenom = newPrenom;
 }
 /**
  * Getter de l'attribut codact.
+ */
+/**
+ * @return String
  */
 public String getCodact() {
 	return codact;
@@ -65,11 +82,17 @@ public String getCodact() {
 /**
  * Setter de l'attribut codact.
  */
+/**
+ * @param newCodact newCodact
+ */
 public void setCodact(String newCodact) { 
 	codact = newCodact;
 }
 /**
  * Getter de l'attribut servi.
+ */
+/**
+ * @return String
  */
 public String getServi() {
 	return servi;
@@ -77,17 +100,26 @@ public String getServi() {
 /**
  * Setter de l'attribut servi.
  */
+/**
+ * @param newServi newServi
+ */
 public void setServi(String newServi) { 
 	servi = newServi;
 }
 /**
  * Getter de l'attribut datfin.
  */
+/**
+ * @return String
+ */
 public String getDatfin() {
 	return datfin;
 }
 /**
  * Setter de l'attribut datfin.
+ */
+/**
+ * @param newDatfin newDatfin
  */
 public void setDatfin(String newDatfin) { 
 	datfin = newDatfin;
@@ -101,6 +133,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected AgentsMunicipauxBroker getMyAgentsMunicipauxBroker() {
 	return (AgentsMunicipauxBroker)getMyBasicBroker();
@@ -117,7 +150,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : AgentsMunicipaux.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<AgentsMunicipaux> listerAgentsMunicipaux(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	AgentsMunicipaux unAgentsMunicipaux = new AgentsMunicipaux();
@@ -125,7 +160,10 @@ public static ArrayList<AgentsMunicipaux> listerAgentsMunicipaux(nc.mairie.techn
 }
 /**
  * Retourne un AgentsMunicipaux.
+ * @param aTransaction Transaction
+ * @param code code
  * @return AgentsMunicipaux
+ * @throws Exception Exception
  */
 public static AgentsMunicipaux chercherAgentsMunicipaux(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	AgentsMunicipaux unAgentsMunicipaux = new AgentsMunicipaux();

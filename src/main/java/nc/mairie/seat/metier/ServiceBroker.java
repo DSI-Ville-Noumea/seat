@@ -11,6 +11,7 @@ import nc.mairie.technique.BasicRecord;
 public class ServiceBroker extends BasicBroker {
 /**
  * Constructeur ServiceBroker.
+ * @param aMetier BasicMetier
  */
 public ServiceBroker(Service aMetier) {
 	super(aMetier);
@@ -49,14 +50,19 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 }
 /**
  * Retourne un ArrayList d'objet métier : Service.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Service> listerService(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where liserv<>'' and codact<>'I' order by liserv with ur");
 }
 /**
  * Retourne un Service.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return Service
+ * @throws Exception Exception
  */
 public Service chercherService(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	//MODIF OF ICI 5 mars 2010
@@ -65,7 +71,10 @@ public Service chercherService(nc.mairie.technique.Transaction aTransaction, Str
 }
 /**
  * Retourne un Service.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return Service
+ * @throws Exception Exception
  */
 public Service chercherServiceActifAvecAcronyme(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (Service)executeSelect(aTransaction,"select * from "+getTable()+" where SIGLE = '"+cle+"' and codact <> 'I' with ur");
@@ -73,7 +82,10 @@ public Service chercherServiceActifAvecAcronyme(nc.mairie.technique.Transaction 
 
 /**
  * Retourne un arrayList Service.
+ * @param aTransaction Transaction
+ * @param param param
  * @return Service
+ * @throws Exception Exception
  */
 public ArrayList<Service> chercherListServiceTous(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	//return executeSelectListe(aTransaction,"select * from "+getTable()+",MAIRIE.SPMTSR where mairie.siserv.servi=mairie.spmtsr.servi and CODACT<>'I' and upper(liserv) like '"+param.toUpperCase()+"%' or mairie.siserv.servi like'"+param+"%' order by liserv");
@@ -81,7 +93,10 @@ public ArrayList<Service> chercherListServiceTous(nc.mairie.technique.Transactio
 }
 /**
  * Retourne un arrayList Service.
+ * @param aTransaction Transaction
+ * @param param param
  * @return Service
+ * @throws Exception Exception
  */
 public ArrayList<Service> chercherListServiceEquip(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	//return executeSelectListe(aTransaction,"select distinct(liserv),servi from "+getTable()+", SEAT.f_affecter_sce where servi = codeservice and upper(liserv) like '"+param.toUpperCase()+"%' and dfin ='0001-01-01' order by liserv");

@@ -11,14 +11,19 @@ import nc.mairie.technique.BasicBroker;
 public class AgentAtmRenseignementsBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : AgentAtmRenseignements.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AgentAtmRenseignements> listerAgentAtmRenseignements(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by nom  with ur");
 }
 /**
  * Retourne un AgentAtmRenseignements.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return AgentAtmRenseignements
+ * @throws Exception Exception
  */
 public AgentAtmRenseignements chercherAgentAtmRenseignements(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (AgentAtmRenseignements)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+" with ur");
@@ -27,7 +32,10 @@ public AgentAtmRenseignements chercherAgentAtmRenseignements(nc.mairie.technique
 /**
  * Retourne un booléen.
  * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param nomatr nomatr
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeMecanicien(nc.mairie.technique.Transaction aTransaction, String nomatr) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where nomatr = "+nomatr+" with ur");
@@ -35,6 +43,7 @@ public boolean existeMecanicien(nc.mairie.technique.Transaction aTransaction, St
 
 /**
  * Constructeur AgentAtmRenseignementsBroker.
+ * @param aMetier BasicMetier
  */
 public AgentAtmRenseignementsBroker(AgentAtmRenseignements aMetier) {
 	super(aMetier);

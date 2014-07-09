@@ -18,24 +18,28 @@ public PM_ATM() {
 }
 /**
  * Getter de l'attribut numfiche.
+ * @return String
  */
 public String getNumfiche() {
 	return numfiche;
 }
 /**
  * Setter de l'attribut numfiche.
+ * @param newNumfiche newNumfiche
  */
 public void setNumfiche(String newNumfiche) { 
 	numfiche = newNumfiche;
 }
 /**
  * Getter de l'attribut matricule.
+ * @return String
  */
 public String getMatricule() {
 	return matricule;
 }
 /**
  * Setter de l'attribut matricule.
+ * @param newMatricule newMatricule
  */
 public void setMatricule(String newMatricule) { 
 	matricule = newMatricule;
@@ -49,6 +53,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PM_ATMBroker getMyPM_ATMBroker() {
 	return (PM_ATMBroker)getMyBasicBroker();
@@ -65,7 +70,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : PM_ATM.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PM_ATM> listerPM_ATM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PM_ATM unPM_ATM = new PM_ATM();
@@ -73,7 +80,10 @@ public static ArrayList<PM_ATM> listerPM_ATM(nc.mairie.technique.Transaction aTr
 }
 /**
  * Retourne un PM_ATM.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return PM_ATM
+ * @throws Exception Exception
  */
 public static PM_ATM chercherPM_ATM(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	PM_ATM unPM_ATM = new PM_ATM();
@@ -82,6 +92,11 @@ public static PM_ATM chercherPM_ATM(nc.mairie.technique.Transaction aTransaction
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param unPMatFiche unPMatFiche
+ * @param unAgentATM unAgentATM
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPM_ATM(nc.mairie.technique.Transaction aTransaction, FPM unPMatFiche,AgentsATM unAgentATM)  throws Exception {
 	//controle si objet vide
@@ -111,6 +126,9 @@ public boolean existePM_ATM(nc.mairie.technique.Transaction aTransaction,String 
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierPM_ATM(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	//Modification du PM_ATM
@@ -119,6 +137,9 @@ public boolean modifierPM_ATM(nc.mairie.technique.Transaction aTransaction) thro
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerPM_ATM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'PM_ATM

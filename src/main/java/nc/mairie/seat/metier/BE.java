@@ -26,7 +26,11 @@ public String toString() {
 
 /**
  * Retourne un ArrayList d'objet métier : BE.
+ * @param aTransaction aTransaction
+ * @param numot numot
+ * @param numInv numInv
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<BE> listerBEOTNumInv(nc.mairie.technique.Transaction aTransaction,String numot, String numInv) throws Exception{
 	BE unBE = new BE();
@@ -34,7 +38,12 @@ public static ArrayList<BE> listerBEOTNumInv(nc.mairie.technique.Transaction aTr
 }
 /**
  * Retourne un BE.
+ * @param aTransaction aTransaction
+ * @param noot noot
+ * @param exerci exerci
+ * @param noengj noengj
  * @return BE
+ * @throws Exception Exception
  */
 public boolean existeBE(nc.mairie.technique.Transaction aTransaction, String noot,String exerci,String noengj) throws Exception{
 	//BE unBE = new BE();
@@ -42,7 +51,10 @@ public boolean existeBE(nc.mairie.technique.Transaction aTransaction, String noo
 }
 /**
  * Retourne si un BE existe
+ * @param aTransaction aTransaction
+ * @param noot noot
  * @return boolean
+ * @throws Exception Exception
  */
 public static boolean existeBEOT(nc.mairie.technique.Transaction aTransaction, String noot) throws Exception{
 	BE unBE = new BE();
@@ -51,7 +63,11 @@ public static boolean existeBEOT(nc.mairie.technique.Transaction aTransaction, S
 
 /**
  * Retourne un BE.
+ * @param aTransaction aTransaction
+ * @param noot noot
+ * @param noengj noengj
  * @return BE
+ * @throws Exception Exception
  */
 public static BE chercheBE(nc.mairie.technique.Transaction aTransaction, String noot,String noengj) throws Exception{
 	BE unBE = new BE();
@@ -61,6 +77,11 @@ public static BE chercheBE(nc.mairie.technique.Transaction aTransaction, String 
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param unOT unOT
+ * @param unEnju unEnju
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerBE(nc.mairie.technique.Transaction aTransaction,OT unOT, ENGJU unEnju )  throws Exception {
 	// controle si null
@@ -90,6 +111,9 @@ public boolean creerBE(nc.mairie.technique.Transaction aTransaction,OT unOT, ENG
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean modifierBE(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	//Modification du BE
@@ -98,6 +122,9 @@ public boolean modifierBE(nc.mairie.technique.Transaction aTransaction) throws E
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean supprimerBE(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'BE
@@ -113,11 +140,17 @@ public BE() {
 /**
  * Getter de l'attribut numot.
  */
+/**
+ * @return String
+ */
 public String getNumot() {
 	return numot;
 }
 /**
  * Setter de l'attribut numot.
+ */
+/**
+ * @param newNumot newNumot
  */
 public void setNumot(String newNumot) { 
 	numot = newNumot;
@@ -125,11 +158,17 @@ public void setNumot(String newNumot) {
 /**
  * Getter de l'attribut exerci.
  */
+/**
+ * @return String
+ */
 public String getExerci() {
 	return exerci;
 }
 /**
  * Setter de l'attribut exerci.
+ */
+/**
+ * @param newExerci newExerci
  */
 public void setExerci(String newExerci) { 
 	exerci = newExerci;
@@ -137,11 +176,17 @@ public void setExerci(String newExerci) {
 /**
  * Getter de l'attribut noengj.
  */
+/**
+ * @return String
+ */
 public String getNoengj() {
 	return noengj;
 }
 /**
  * Setter de l'attribut noengj.
+ */
+/**
+ * @param newNoengj newNoengj
  */
 public void setNoengj(String newNoengj) { 
 	noengj = newNoengj;
@@ -155,6 +200,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected BEBroker getMyBEBroker() {
 	return (BEBroker)getMyBasicBroker();

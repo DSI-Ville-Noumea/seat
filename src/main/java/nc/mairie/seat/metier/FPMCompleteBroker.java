@@ -10,14 +10,19 @@ import nc.mairie.technique.BasicRecord;
 public class FPMCompleteBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : FPMComplete.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<FPMComplete> listerFPMComplete(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un FPMComplete.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return FPMComplete
+ * @throws Exception Exception
  */
 public FPMComplete chercherFPMComplete(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (FPMComplete)executeSelect(aTransaction,"select * from "+getTable()+" where numfiche = "+cle+"");
@@ -36,6 +41,7 @@ public ArrayList<FPMComplete> listerFPMCompleteValide(nc.mairie.technique.Transa
 
 /**
  * Constructeur FPMCompleteBroker.
+ * @param aMetier BasicMetier
  */
 public FPMCompleteBroker(FPMComplete aMetier) {
 	super(aMetier);

@@ -10,14 +10,19 @@ import nc.mairie.technique.BasicRecord;
 public class ModeleInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : ModeleInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<ModeleInfos> listerModeleInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by designationmodele");
 }
 /**
  * Retourne un ModeleInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return ModeleInfos
+ * @throws Exception Exception
  */
 public ModeleInfos chercherModeleInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (ModeleInfos)executeSelect(aTransaction,"select * from "+getTable()+" where CODEMODELE = "+cle+"");
@@ -25,7 +30,10 @@ public ModeleInfos chercherModeleInfos(nc.mairie.technique.Transaction aTransact
 
 /**
  * Retourne un arrayList ModeleInfos.
+ * @param aTransaction Transaction
+ * @param param param
  * @return ModeleInfos
+ * @throws Exception Exception
  */
 public ArrayList<ModeleInfos> chercherListModeleInfosTous(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where upper(designationmodele) like '"+param.toUpperCase()+"%' order by designationmodele");
@@ -33,6 +41,7 @@ public ArrayList<ModeleInfos> chercherListModeleInfosTous(nc.mairie.technique.Tr
 
 /**
  * Constructeur ModeleInfosBroker.
+ * @param aMetier BasicMetier
  */
 public ModeleInfosBroker(ModeleInfos aMetier) {
 	super(aMetier);
@@ -82,7 +91,10 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 /**
  * Retourne un booléen.
  * Vérifie si le modèleinfos existe déjà
+ * @param aTransaction Transaction
+ * @param param param
  * @return BPC
+ * @throws Exception Exception
  */
 public boolean existeModeleInfos(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where codemodele = "+param+"");

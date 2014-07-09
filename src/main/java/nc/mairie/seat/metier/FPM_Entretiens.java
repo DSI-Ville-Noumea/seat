@@ -21,11 +21,17 @@ public FPM_Entretiens() {
 /**
  * Getter de l'attribut numfiche.
  */
+/**
+ * @return String
+ */
 public String getNumfiche() {
 	return numfiche;
 }
 /**
  * Setter de l'attribut numfiche.
+ */
+/**
+ * @param newNumfiche newNumfiche
  */
 public void setNumfiche(String newNumfiche) { 
 	numfiche = newNumfiche;
@@ -33,11 +39,17 @@ public void setNumfiche(String newNumfiche) {
 /**
  * Getter de l'attribut codeentretien.
  */
+/**
+ * @return String
+ */
 public String getCodeentretien() {
 	return codeentretien;
 }
 /**
  * Setter de l'attribut codeentretien.
+ */
+/**
+ * @param newCodeentretien newCodeentretien
  */
 public void setCodeentretien(String newCodeentretien) { 
 	codeentretien = newCodeentretien;
@@ -45,11 +57,17 @@ public void setCodeentretien(String newCodeentretien) {
 /**
  * Getter de l'attribut date.
  */
+/**
+ * @return String
+ */
 public String getDate() {
 	return date;
 }
 /**
  * Setter de l'attribut date.
+ */
+/**
+ * @param newDate newDate
  */
 public void setDate(String newDate) { 
 	date = newDate;
@@ -57,11 +75,17 @@ public void setDate(String newDate) {
 /**
  * Getter de l'attribut commentaire.
  */
+/**
+ * @return String
+ */
 public String getCommentaire() {
 	return commentaire;
 }
 /**
  * Setter de l'attribut commentaire.
+ */
+/**
+ * @param newCommentaire newCommentaire
  */
 public void setCommentaire(String newCommentaire) { 
 	commentaire = newCommentaire;
@@ -75,6 +99,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected FPM_EntretiensBroker getMyFPM_EntretiensBroker() {
 	return (FPM_EntretiensBroker)getMyBasicBroker();
@@ -91,7 +116,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : FPM_Entretiens.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<FPM_Entretiens> listerFPM_Entretiens(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	FPM_Entretiens unFPM_Entretiens = new FPM_Entretiens();
@@ -99,7 +126,10 @@ public static ArrayList<FPM_Entretiens> listerFPM_Entretiens(nc.mairie.technique
 }
 /**
  * Retourne un FPM_Entretiens.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return FPM_Entretiens
+ * @throws Exception Exception
  */
 public static FPM_Entretiens chercherFPM_Entretiens(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	FPM_Entretiens unFPM_Entretiens = new FPM_Entretiens();
@@ -108,6 +138,9 @@ public static FPM_Entretiens chercherFPM_Entretiens(nc.mairie.technique.Transact
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerFPM_Entretiens(nc.mairie.technique.Transaction aTransaction )  throws Exception {
 	//Creation du FPM_Entretiens
@@ -116,6 +149,9 @@ public boolean creerFPM_Entretiens(nc.mairie.technique.Transaction aTransaction 
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean modifierFPM_Entretiens(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	//Modification du FPM_Entretiens
@@ -124,6 +160,9 @@ public boolean modifierFPM_Entretiens(nc.mairie.technique.Transaction aTransacti
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean supprimerFPM_Entretiens(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'FPM_Entretiens

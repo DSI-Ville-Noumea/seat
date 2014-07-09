@@ -19,11 +19,17 @@ public OT_ATM() {
 /**
  * Getter de l'attribut matricule.
  */
+/**
+ * @return String
+ */
 public String getMatricule() {
 	return matricule;
 }
 /**
  * Setter de l'attribut matricule.
+ */
+/**
+ * @param newMatricule newMatricule
  */
 public void setMatricule(String newMatricule) { 
 	matricule = newMatricule;
@@ -31,11 +37,17 @@ public void setMatricule(String newMatricule) {
 /**
  * Getter de l'attribut numot.
  */
+/**
+ * @return String
+ */
 public String getNumot() {
 	return numot;
 }
 /**
  * Setter de l'attribut numot.
+ */
+/**
+ * @param newNumot newNumot
  */
 public void setNumot(String newNumot) { 
 	numot = newNumot;
@@ -49,6 +61,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected OT_ATMBroker getMyOT_ATMBroker() {
 	return (OT_ATMBroker)getMyBasicBroker();
@@ -65,7 +78,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : OT_ATM.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<OT_ATM> listerOT_ATM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OT_ATM unOT_ATM = new OT_ATM();
@@ -74,7 +89,10 @@ public static ArrayList<OT_ATM> listerOT_ATM(nc.mairie.technique.Transaction aTr
 
 /**
  * Retourne un ArrayList d'objet métier : OT_ATM.
+ * @param aTransaction aTransaction
+ * @param numot numot
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<OT_ATM> listerOT_ATMOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	OT_ATM unOT_ATM = new OT_ATM();
@@ -83,7 +101,10 @@ public static ArrayList<OT_ATM> listerOT_ATMOT(nc.mairie.technique.Transaction a
 
 /**
  * Retourne un OT_ATM.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return OT_ATM
+ * @throws Exception Exception
  */
 public static OT_ATM chercherOT_ATM(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	OT_ATM unOT_ATM = new OT_ATM();
@@ -92,6 +113,11 @@ public static OT_ATM chercherOT_ATM(nc.mairie.technique.Transaction aTransaction
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param unOT unOT
+ * @param unAgentATM unAgentATM
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerOT_ATM(nc.mairie.technique.Transaction aTransaction,OT unOT,AgentsATM unAgentATM)  throws Exception {
 	//controle si objet vide
@@ -117,6 +143,9 @@ public boolean creerOT_ATM(nc.mairie.technique.Transaction aTransaction,OT unOT,
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean modifierOT_ATM(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	//Modification du OT_ATM
@@ -125,6 +154,9 @@ public boolean modifierOT_ATM(nc.mairie.technique.Transaction aTransaction) thro
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean supprimerOT_ATM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'OT_ATM
@@ -134,6 +166,11 @@ public boolean supprimerOT_ATM(nc.mairie.technique.Transaction aTransaction) thr
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param numot numot
+ * @param nomatr nomatr
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean existeOT_ATM(nc.mairie.technique.Transaction aTransaction,String numot,String nomatr) throws Exception{
 	//Suppression de l'OT_ATM

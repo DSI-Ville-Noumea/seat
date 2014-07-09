@@ -27,6 +27,11 @@ public String toString() {
  * Retourne un ArrayList d'objet métier : AActifs.
  * @return java.util.ArrayList
  */
+/**
+ * @param aTransaction Transaction
+ * @throws Exception Exception
+ * @return ArrayList
+ */
 public static ArrayList<AActifs> listerAActifs(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	AActifs unAActifs = new AActifs();
 	return unAActifs.getMyAActifsBroker().listerAActifs(aTransaction);
@@ -34,6 +39,12 @@ public static ArrayList<AActifs> listerAActifs(nc.mairie.technique.Transaction a
 /**
  * Retourne un AActifs.
  * @return AActifs
+ */
+/**
+ * @param aTransaction Transaction
+ * @param code code
+ * @return AActifs AActifs
+ * @throws Exception Exception
  */
 public static AActifs chercherAActifs(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	AActifs unAActifs = new AActifs();
@@ -44,6 +55,12 @@ public static AActifs chercherAActifs(nc.mairie.technique.Transaction aTransacti
  * Retourne un ArrayList d'objet métier : AActifs.
  * @return java.util.ArrayList
  */
+/**
+ * @param aTransaction Transaction
+ * @param servi servi
+ * @return ArrayList ArrayList
+ * @throws Exception Exception
+ */
 public static ArrayList<AActifs> listerAActifsService(nc.mairie.technique.Transaction aTransaction,String servi) throws Exception{
 	AActifs unAActifs = new AActifs();
 	return unAActifs.getMyAActifsBroker().listerAActifsService(aTransaction,servi);
@@ -52,6 +69,12 @@ public static ArrayList<AActifs> listerAActifsService(nc.mairie.technique.Transa
 /**
  * Retourne un AActifs.
  * @return AActifs
+ */
+/**
+ * @param aTransaction Transaction
+ * @param servi servi
+ * @return ArrayList ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<AActifs> chercherListAgentServiceInfosSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception{
 	// on récupère les 3 premiers caractères pour rechercher les agents de tout le service
@@ -63,11 +86,17 @@ public static ArrayList<AActifs> chercherListAgentServiceInfosSce(nc.mairie.tech
 /**
  * Constructeur AActifs.
  */
+/**
+ * 
+ */
 public AActifs() {
 	super();
 }
 /**
  * Getter de l'attribut nomatr.
+ */
+/**
+ * @return nomatr
  */
 public String getNomatr() {
 	return nomatr;
@@ -75,53 +104,64 @@ public String getNomatr() {
 /**
  * Setter de l'attribut nomatr.
  */
+/** 
+ * @param newNomatr newNomatr
+ */
 public void setNomatr(String newNomatr) { 
 	nomatr = newNomatr;
 }
 /**
  * Getter de l'attribut nom.
+ * @return String
  */
 public String getNom() {
 	return nom;
 }
 /**
  * Setter de l'attribut nom.
+ * @param newNom newNom
  */
 public void setNom(String newNom) { 
 	nom = newNom;
 }
 /**
  * Getter de l'attribut prenom.
+ * @return String
  */
 public String getPrenom() {
 	return prenom;
 }
 /**
  * Setter de l'attribut prenom.
+ * @param newPrenom newPrenom
  */
 public void setPrenom(String newPrenom) { 
 	prenom = newPrenom;
 }
 /**
  * Getter de l'attribut codact.
+ * @return codact
  */
 public String getCodact() {
 	return codact;
 }
 /**
  * Setter de l'attribut codact.
+ * @param newCodact newCodact
  */
 public void setCodact(String newCodact) { 
 	codact = newCodact;
 }
 /**
  * Getter de l'attribut servi.
+ * @return servi
  */
 public String getServi() {
 	return servi;
 }
 /**
  * Setter de l'attribut servi.
+ * @param newServi newServi
  */
 public void setServi(String newServi) { 
 	servi = newServi;
@@ -135,7 +175,8 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
-*/
+ * @return AActifsBroker
+ */
 protected AActifsBroker getMyAActifsBroker() {
 	return (AActifsBroker)getMyBasicBroker();
 }

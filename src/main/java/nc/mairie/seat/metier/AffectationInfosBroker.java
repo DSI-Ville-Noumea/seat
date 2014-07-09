@@ -11,14 +11,20 @@ import nc.mairie.technique.BasicBroker;
 public class AffectationInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : AffectationInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AffectationInfos> listerAffectationInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**
  * Retourne un AffectationInfos.
+ * @param aTransaction Transaction
+ * @param matr matr
+ * @param inv inv
  * @return AffectationInfos
+ * @throws Exception Exception
  */
 public ArrayList<AffectationInfos> chercherAffectationInfosAgentEquip(nc.mairie.technique.Transaction aTransaction, String matr,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where matricule = "+matr+" and numeroinventaire='"+inv+"' with ur");
@@ -26,14 +32,20 @@ public ArrayList<AffectationInfos> chercherAffectationInfosAgentEquip(nc.mairie.
 
 /**
  * Retourne un AffectationInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return AffectationInfos
+ * @throws Exception Exception
  */
 public ArrayList<AffectationInfos> chercherAffectationInfosAgent(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where matricule = "+cle+" with ur");
 }
 /**
  * Retourne un AffectationInfos.
+ * @param aTransaction Transaction
+ * @param inv inv
  * @return AffectationInfos
+ * @throws Exception Exception
  */
 public ArrayList<AffectationInfos> chercherAffectationInfosEquip(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+inv+"' with ur");
@@ -41,14 +53,20 @@ public ArrayList<AffectationInfos> chercherAffectationInfosEquip(nc.mairie.techn
 
 /**
  * Retourne un ArrayList d'objet métier : AffectationInfos.
+ * @param aTransaction Transaction
+ * @param param param
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AffectationInfos> chercherListAffectationInfosEquip(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+param+"' with ur");
 }
 /**
  * Retourne un ArrayList d'objet métier : AffectationInfos.
+ * @param aTransaction Transaction
+ * @param param param
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AffectationInfos> chercherListAffectationInfosSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	String codeservice = param.substring(0,3);
@@ -57,7 +75,10 @@ public ArrayList<AffectationInfos> chercherListAffectationInfosSce(nc.mairie.tec
 
 /**
  * Retourne un AffectationInfos.
+ * @param aTransaction Transaction
+ * @param servi servi
  * @return AffectationInfos
+ * @throws Exception Exception
  */
 public ArrayList<AffectationInfos> chercherListAgentEquipSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception {
 	String param = servi.substring(0,3);	
@@ -66,6 +87,7 @@ public ArrayList<AffectationInfos> chercherListAgentEquipSce(nc.mairie.technique
 
 /**
  * Constructeur AffectationInfosBroker.
+ * @param aMetier BasicMetier
  */
 public AffectationInfosBroker(AffectationInfos aMetier) {
 	super(aMetier);

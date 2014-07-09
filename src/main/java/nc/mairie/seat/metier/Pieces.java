@@ -21,6 +21,7 @@ public Pieces() {
 }
 /**
  * Getter de l'attribut codepiece.
+ * @return String
  */
 public String getCodepiece() {
 	return codepiece;
@@ -28,11 +29,15 @@ public String getCodepiece() {
 /**
  * Setter de l'attribut codepiece.
  */
+/**
+ * @param newCodepiece newCodepiece
+ */
 public void setCodepiece(String newCodepiece) { 
 	codepiece = newCodepiece;
 }
 /**
  * Getter de l'attribut designationpiece.
+ * @return String
  */
 public String getDesignationpiece() {
 	return designationpiece;
@@ -40,17 +45,24 @@ public String getDesignationpiece() {
 /**
  * Setter de l'attribut designationpiece.
  */
+/**
+ * @param newDesignationpiece newDesignationpiece
+ */
 public void setDesignationpiece(String newDesignationpiece) { 
 	designationpiece = newDesignationpiece;
 }
 /**
  * Getter de l'attribut pu.
+ * @return String
  */
 public String getPu() {
 	return pu;
 }
 /**
  * Setter de l'attribut pu.
+ */
+/**
+ * @param newPu newPu
  */
 public void setPu(String newPu) { 
 	pu = newPu;
@@ -64,6 +76,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PiecesBroker getMyPiecesBroker() {
 	return (PiecesBroker)getMyBasicBroker();
@@ -80,7 +93,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Pieces.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Pieces> listerPieces(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Pieces unPieces = new Pieces();
@@ -88,7 +103,10 @@ public static ArrayList<Pieces> listerPieces(nc.mairie.technique.Transaction aTr
 }
 /**
  * Retourne un Pieces.
+ * @param aTransaction Transaction
+ * @param code code
  * @return Pieces
+ * @throws Exception Exception
  */
 public static Pieces chercherPieces(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Pieces unPieces = new Pieces();
@@ -97,8 +115,11 @@ public static Pieces chercherPieces(nc.mairie.technique.Transaction aTransaction
 
 /**
  * Retourne un ArrayList d'objet métier : Pieces.
+ * @param aTransaction Transaction
+ * @param lib lib
  * @return java.util.ArrayList
  * on cherche les pièces qui comment par lib...
+ * @throws Exception Exception
  */
 public static ArrayList<Pieces> chercherPiecesLib(nc.mairie.technique.Transaction aTransaction,String lib) throws Exception{
 	Pieces unPieces = new Pieces();
@@ -123,6 +144,9 @@ public boolean controleChamps(nc.mairie.technique.Transaction aTransaction )  th
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPieces(nc.mairie.technique.Transaction aTransaction )  throws Exception {
 	//RG : controle des champs
@@ -139,6 +163,9 @@ public boolean creerPieces(nc.mairie.technique.Transaction aTransaction )  throw
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierPieces(nc.mairie.technique.Transaction aTransaction) throws Exception {
 //	RG : controle des champs
@@ -152,6 +179,9 @@ public boolean modifierPieces(nc.mairie.technique.Transaction aTransaction) thro
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerPieces(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//RG : contrôle si la pièce est utilisée par un OT

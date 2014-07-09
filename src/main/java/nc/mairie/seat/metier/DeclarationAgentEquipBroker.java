@@ -10,6 +10,7 @@ import nc.mairie.technique.BasicRecord;
 public class DeclarationAgentEquipBroker extends BasicBroker {
 /**
  * Constructeur DeclarationAgentEquipBroker.
+ * @param aMetier BasicMetier
  */
 public DeclarationAgentEquipBroker(DeclarationAgentEquip aMetier) {
 	super(aMetier);
@@ -47,7 +48,9 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 }
 /**
  * Retourne un ArrayList d'objet métier : DeclarationAgentEquip.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<DeclarationAgentEquip> listerDeclarationAgentEquip(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by \"DATE\" desc, codedec desc with ur");

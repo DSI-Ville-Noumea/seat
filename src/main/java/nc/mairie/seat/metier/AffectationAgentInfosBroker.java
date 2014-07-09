@@ -13,13 +13,18 @@ public class AffectationAgentInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : AffectationAgentInfos.
  * @return java.util.ArrayList
+ * @param aTransaction Transaction
+ * @throws Exception Exception
  */
 public ArrayList<AffectationAgentInfos> listerAffectationAgentInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**
  * Retourne un AffectationAgentInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return AffectationAgentInfos
+ * @throws Exception Exception
  */
 public AffectationAgentInfos chercherAffectationAgentInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (AffectationAgentInfos)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+cle+" with ur");
@@ -28,6 +33,9 @@ public AffectationAgentInfos chercherAffectationAgentInfos(nc.mairie.technique.T
 /**
  * Retourne un ArrayList d'objet métier : AffectationAgentInfos.
  * @return java.util.ArrayList
+ * @param aTransaction Transaction
+ * @param param param
+ * @throws Exception Exception
  */
 public ArrayList<AffectationAgentInfos> chercherListAffectationsSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	// on prend le code du service et pas le code du sous service
@@ -47,6 +55,11 @@ public ArrayList<AffectationAgentInfos> chercherListAffectationsSceEquip(nc.mair
  * Retourne un ArrayList d'objet métier : AffectationAgentInfos.
  * @return java.util.ArrayList
  * on recherche les affectations des agents pour un équipement
+ * @param aTransaction Transaction
+ * @param servi servi
+ * @param inv inv
+ * @param date date
+ * @throws Exception Exception
  */
 public ArrayList<AffectationAgentInfos> listAffectationsSceEquipDate(nc.mairie.technique.Transaction aTransaction,String servi,String inv, String date) throws Exception {
 	// on prend le code du service et pas le code du sous service
@@ -61,6 +74,7 @@ public ArrayList<AffectationAgentInfos> listAffectationsSceEquipDate(nc.mairie.t
 
 /**
  * Constructeur AffectationAgentInfosBroker.
+ * @param aMetier BAsicMetier
  */
 public AffectationAgentInfosBroker(AffectationAgentInfos aMetier) {
 	super(aMetier);

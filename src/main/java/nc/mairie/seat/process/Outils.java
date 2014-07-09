@@ -13,6 +13,9 @@ public class Outils {
  * Utilisation de la méthode addZone(getNOMxxx, String);
  * Date de création : (28/04/05 13:36:04)
  * @author : Générateur de process
+ * @param uneChaine uneChaine
+ * @return boolean
+ * @throws Exception Exception
  */
 public static String enleveEspace(String uneChaine) throws Exception{
 

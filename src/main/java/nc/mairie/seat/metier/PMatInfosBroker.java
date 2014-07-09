@@ -12,6 +12,9 @@ public class PMatInfosBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPMatInfos(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -19,6 +22,9 @@ public boolean creerPMatInfos(nc.mairie.technique.Transaction aTransaction)  thr
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierPMatInfos(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -26,20 +32,28 @@ public boolean modifierPMatInfos(nc.mairie.technique.Transaction aTransaction) t
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerPMatInfos(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : PMatInfos.
+ * @param aTransaction Transaction
+ * @param param param
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PMatInfos> listerPMatInfos(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by "+param);
 }
 /**
  * Retourne un ArrayList d'objet métier : PMatInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PMatInfos> listerPMatInfosSansEntretienPlanifie(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"" +
@@ -49,14 +63,21 @@ public ArrayList<PMatInfos> listerPMatInfosSansEntretienPlanifie(nc.mairie.techn
 }
 /**
  * Retourne un ArrayList d'objet métier : PMatInfos.
+ * @param aTransaction Transaction
+ * @param pminv pminv
+ * @param param param
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PMatInfos> listerPMatInfosRecherche(nc.mairie.technique.Transaction aTransaction,String pminv,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv like '"+pminv+"%' order by "+param);
 }
 /**
  * Retourne un PMatInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return PMatInfos
+ * @throws Exception Exception
  */
 public PMatInfos chercherPMatInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (PMatInfos)executeSelect(aTransaction,"select * from "+getTable()+" where char(pminv) = '"+cle+"'");
@@ -64,7 +85,10 @@ public PMatInfos chercherPMatInfos(nc.mairie.technique.Transaction aTransaction,
 
 /**
  * Retourne un ArrayList d'objet métier : EquipementInfosActifs.
+ * @param aTransaction Transaction
+ * @param tri tri
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PMatInfos> listerPMatInfosActifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception {
 	if(tri.equals("")){
@@ -76,7 +100,10 @@ public ArrayList<PMatInfos> listerPMatInfosActifs(nc.mairie.technique.Transactio
 }
 /**
  * Retourne un ArrayList d'objet métier : EquipementInfos.
+ * @param aTransaction Transaction
+ * @param tri tri
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PMatInfos> listerPMatInfosInactifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception {
 	if(tri.equals("")){
@@ -92,6 +119,7 @@ public boolean existePMatInfosPm(nc.mairie.technique.Transaction aTransaction, S
 }
 /**
  * Constructeur PMatInfosBroker.
+ * @param aMetier BasicMetier
  */
 public PMatInfosBroker(PMatInfos aMetier) {
 	super(aMetier);

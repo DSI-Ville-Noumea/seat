@@ -10,6 +10,7 @@ import nc.mairie.technique.BasicRecord;
 public class OT_ATMBroker extends BasicBroker {
 /**
  * Constructeur OT_ATMBroker.
+ * @param aMetier BasicMetier
  */
 public OT_ATMBroker(OT_ATM aMetier) {
 	super(aMetier);
@@ -47,6 +48,9 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerOT_ATM(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -54,6 +58,9 @@ public boolean creerOT_ATM(nc.mairie.technique.Transaction aTransaction)  throws
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierOT_ATM(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -61,20 +68,28 @@ public boolean modifierOT_ATM(nc.mairie.technique.Transaction aTransaction) thro
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerOT_ATM(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : OT_ATM.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<OT_ATM> listerOT_ATM(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un ArrayList d'objet métier : OT_ATM.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<OT_ATM> listerOT_ATMOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numot="+numot);
@@ -82,7 +97,10 @@ public ArrayList<OT_ATM> listerOT_ATMOT(nc.mairie.technique.Transaction aTransac
 
 /**
  * Retourne un OT_ATM.
+ * @param aTransaction Transaction
+ * @param matr matr
  * @return OT_ATM
+ * @throws Exception Exception
  */
 public OT_ATM chercherOT_ATM(nc.mairie.technique.Transaction aTransaction, String matr) throws Exception {
 	return (OT_ATM)executeSelect(aTransaction,"select * from "+getTable()+" where matricule = "+matr+"");
@@ -91,7 +109,11 @@ public OT_ATM chercherOT_ATM(nc.mairie.technique.Transaction aTransaction, Strin
 /**
  * Retourne un booléen.
  * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param numot numot
+ * @param nomatr nomatr
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeOT_ATM(nc.mairie.technique.Transaction aTransaction, String numot,String nomatr) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numot="+numot+" and matricule="+nomatr);

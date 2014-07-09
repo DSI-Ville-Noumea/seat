@@ -90,6 +90,9 @@ public OeFPM_Lancement() {
  * Date de création : (19/07/05 14:46:20)
  * on supprime tous les FPM créés (dans la liste) et on retourne à la fenêtre de lancement
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	// on supprime les fpm créer
@@ -134,6 +137,9 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_OK_FPM() {
 	return "NOM_PB_OK_FPM";
 }
@@ -144,6 +150,9 @@ public java.lang.String getNOM_PB_OK_FPM() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_OK_FPM(javax.servlet.http.HttpServletRequest request) throws Exception {
 	int numligne = (Services.estNumerique(getZone(getNOM_LB_ENTRETIENS_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_ENTRETIENS_SELECT())) : -1);
@@ -170,6 +179,9 @@ public boolean performPB_OK_FPM(javax.servlet.http.HttpServletRequest request) t
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_VALIDER() {
 	return "NOM_PB_VALIDER";
 }
@@ -180,6 +192,9 @@ public java.lang.String getNOM_PB_VALIDER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	int numligne = (Services.estNumerique(getZone(getNOM_LB_ENTRETIENS_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_ENTRETIENS_SELECT())) : -1);
@@ -226,6 +241,9 @@ private String [] getLB_ENTRETIENS() {
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_LB_ENTRETIENS() {
 	return "NOM_LB_ENTRETIENS";
 }
@@ -234,6 +252,9 @@ public java.lang.String getNOM_LB_ENTRETIENS() {
  * NOM_LB_ENTRETIENS_SELECT
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_LB_ENTRETIENS_SELECT() {
 	return "NOM_LB_ENTRETIENS_SELECT";
@@ -245,6 +266,9 @@ public java.lang.String getNOM_LB_ENTRETIENS_SELECT() {
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String [] getVAL_LB_ENTRETIENS() {
 	return getLB_ENTRETIENS();
 }
@@ -254,6 +278,9 @@ public java.lang.String [] getVAL_LB_ENTRETIENS() {
  * LB_ENTRETIENS
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_LB_ENTRETIENS_SELECT() {
 	return getZone(getNOM_LB_ENTRETIENS_SELECT());
@@ -284,6 +311,9 @@ private void setLB_Fiche(java.lang.String[] newLB_Fiche) {
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_LB_Fiche() {
 	return "NOM_LB_Fiche";
 }
@@ -292,6 +322,9 @@ public java.lang.String getNOM_LB_Fiche() {
  * NOM_LB_OT_SELECT
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_LB_Fiche_SELECT() {
 	return "NOM_LB_Fiche_SELECT";
@@ -303,6 +336,9 @@ public java.lang.String getNOM_LB_Fiche_SELECT() {
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String [] getVAL_LB_Fiche() {
 	return getLB_Fiche();
 }
@@ -313,12 +349,16 @@ public java.lang.String [] getVAL_LB_Fiche() {
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getVAL_LB_Fiche_SELECT() {
 	return getZone(getNOM_LB_Fiche_SELECT());
 }
 
 /**
- * @param focus focus à définir.
+ * focus focus à définir.
+ * @return focus
  */
 public String getDefaultFocus() {
 	return getNOM_PB_VALIDER();
@@ -351,6 +391,9 @@ public void setFocus(String focus) {
  * Date de création : (24/08/05 08:57:47)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_ANNULER() {
 	return "NOM_PB_ANNULER";
 }
@@ -359,6 +402,9 @@ public java.lang.String getNOM_PB_ANNULER() {
  * PB_DETAILS_FPM
  * Date de création : (24/08/05 08:59:45)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_PB_DETAILS_FPM() {
 	return "NOM_PB_DETAILS_FPM";
@@ -370,6 +416,9 @@ public java.lang.String getNOM_PB_DETAILS_FPM() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (24/08/05 08:59:45)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_DETAILS_FPM(javax.servlet.http.HttpServletRequest request) throws Exception {
 	int numligne = (Services.estNumerique(getZone(getNOM_LB_ENTRETIENS_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_ENTRETIENS_SELECT())) : -1);
@@ -405,6 +454,9 @@ public boolean performPB_DETAILS_FPM(javax.servlet.http.HttpServletRequest reque
  * Date de création : (24/08/05 09:55:42)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_RETOUR() {
 	return "NOM_PB_RETOUR";
 }
@@ -415,6 +467,9 @@ public java.lang.String getNOM_PB_RETOUR() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (24/08/05 09:55:42)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_RETOUR(javax.servlet.http.HttpServletRequest request) throws Exception {
 	VariableActivite.ajouter(this,"RETOUR","TRUE");
@@ -484,6 +539,9 @@ public String getJSP() {
  * Date de création : (26/10/05 14:08:36)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_MODIFIER_FPM() {
 	return "NOM_PB_MODIFIER_FPM";
 }
@@ -494,6 +552,9 @@ public java.lang.String getNOM_PB_MODIFIER_FPM() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (26/10/05 14:08:36)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_MODIFIER_FPM(javax.servlet.http.HttpServletRequest request) throws Exception {
 	int numligne = (Services.estNumerique(getZone(getNOM_LB_ENTRETIENS_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_ENTRETIENS_SELECT())) : -1);

@@ -27,11 +27,17 @@ public class Equipement extends BasicMetier {
 /**
  * Getter de l'attribut version.
  */
+/**
+ * @return String
+ */
 public String getVersion() {
 	return version;
 }
 /**
  * Setter de l'attribut version.
+ */
+/**
+ * @param newVersion newVersion
  */
 public void setVersion(String newVersion) { 
 	version = newVersion;
@@ -48,7 +54,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Equipement.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Equipement> listerEquipement(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Equipement unEquipement = new Equipement();
@@ -56,7 +64,10 @@ public static ArrayList<Equipement> listerEquipement(nc.mairie.technique.Transac
 }
 /**
  * Retourne un Equipement.
+ * @param aTransaction Transaction
+ * @param code code
  * @return Equipement
+ * @throws Exception Exception
  */
 public static Equipement chercherEquipement(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Equipement unEquipement = new Equipement();
@@ -64,7 +75,10 @@ public static Equipement chercherEquipement(nc.mairie.technique.Transaction aTra
 }
 /**
  * Retourne un Equipement.
+ * @param aTransaction Transaction
+ * @param code code
  * @return Equipement
+ * @throws Exception Exception
  */
 public static Equipement chercherEquipementInv(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Equipement unEquipement = new Equipement();
@@ -101,6 +115,10 @@ public boolean controleChamps(nc.mairie.technique.Transaction aTransaction )  th
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unEquipement unEquipement
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerEquipement(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement)  throws Exception {
 	//on controle si null
@@ -158,6 +176,10 @@ public boolean creerEquipement(nc.mairie.technique.Transaction aTransaction,Equi
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param ancienNuminv ancienNuminv
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean modifierEquipement(nc.mairie.technique.Transaction aTransaction,String ancienNuminv) throws Exception {
 	//RG : controle des champs
@@ -305,6 +327,9 @@ public boolean modifierEquipement(nc.mairie.technique.Transaction aTransaction,S
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean supprimerEquipement(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	// si utilisé pas de suppression
@@ -321,6 +346,10 @@ public boolean supprimerEquipement(nc.mairie.technique.Transaction aTransaction)
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param tri tri
+ * @return Arraylist 
+ * @throws Exception Exception
  */
 
 public static ArrayList<Equipement> listerEquipementTri(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception{
@@ -330,8 +359,12 @@ public static ArrayList<Equipement> listerEquipementTri(nc.mairie.technique.Tran
 
 /**
  * Retourne un ArrayList d'objet métier : Equipement.
+ * @param aTransaction Transaction
+ * @param param param
+ * @param tri tri
  * @return java.util.ArrayList
  * Selon le paramètre on liste les équipements
+ * @throws Exception Exception
  */
 public static ArrayList<Equipement> listerEquipementParam(nc.mairie.technique.Transaction aTransaction,String param,String tri) throws Exception{
 	Equipement unEquipement = new Equipement();
@@ -341,11 +374,17 @@ public static ArrayList<Equipement> listerEquipementParam(nc.mairie.technique.Tr
 /**
  * Getter de l'attribut datereceptionmateriel.
  */
+/**
+ * @return String
+ */
 public String getDatereceptionmateriel() {
 	return datereceptionmateriel;
 }
 /**
  * Setter de l'attribut datereceptionmateriel.
+ */
+/**
+ * @param newDatereceptionmateriel newDatereceptionmateriel
  */
 public void setDatereceptionmateriel(String newDatereceptionmateriel) { 
 	datereceptionmateriel = newDatereceptionmateriel;
@@ -359,11 +398,17 @@ public Equipement() {
 /**
  * Getter de l'attribut numeroinventaire.
  */
+/**
+ * @return String
+ */
 public String getNumeroinventaire() {
 	return numeroinventaire;
 }
 /**
  * Setter de l'attribut numeroinventaire.
+ */
+/**
+ * @param newNumeroinventaire newNumeroinventaire
  */
 public void setNumeroinventaire(String newNumeroinventaire) { 
 	numeroinventaire = newNumeroinventaire;
@@ -371,11 +416,17 @@ public void setNumeroinventaire(String newNumeroinventaire) {
 /**
  * Getter de l'attribut numeroimmatriculation.
  */
+/**
+ * @return String
+ */
 public String getNumeroimmatriculation() {
 	return numeroimmatriculation;
 }
 /**
  * Setter de l'attribut numeroimmatriculation.
+ */
+/**
+ * @param newNumeroimmatriculation newNumeroimmatriculation
  */
 public void setNumeroimmatriculation(String newNumeroimmatriculation) { 
 	numeroimmatriculation = newNumeroimmatriculation;
@@ -383,11 +434,17 @@ public void setNumeroimmatriculation(String newNumeroimmatriculation) {
 /**
  * Getter de l'attribut datemiseencirculation.
  */
+/**
+ * @return String
+ */
 public String getDatemiseencirculation() {
 	return datemiseencirculation;
 }
 /**
  * Setter de l'attribut datemiseencirculation.
+ */
+/**
+ * @param newDatemiseencirculation newDatemiseencirculation
  */
 public void setDatemiseencirculation(String newDatemiseencirculation) { 
 	datemiseencirculation = newDatemiseencirculation;
@@ -395,11 +452,17 @@ public void setDatemiseencirculation(String newDatemiseencirculation) {
 /**
  * Getter de l'attribut dateventeoureforme.
  */
+/**
+ * @return String
+ */
 public String getDateventeoureforme() {
 	return dateventeoureforme;
 }
 /**
  * Setter de l'attribut dateventeoureforme.
+ */
+/**
+ * @param newDateventeoureforme newDateventeoureforme
  */
 public void setDateventeoureforme(String newDateventeoureforme) { 
 	dateventeoureforme = newDateventeoureforme;
@@ -407,11 +470,17 @@ public void setDateventeoureforme(String newDateventeoureforme) {
 /**
  * Getter de l'attribut datehorscircuit.
  */
+/**
+ * @return String
+ */
 public String getDatehorscircuit() {
 	return datehorscircuit;
 }
 /**
  * Setter de l'attribut datehorscircuit.
+ */
+/**
+ * @param newDatehorscircuit newDatehorscircuit
  */
 public void setDatehorscircuit(String newDatehorscircuit) { 
 	datehorscircuit = newDatehorscircuit;
@@ -419,11 +488,17 @@ public void setDatehorscircuit(String newDatehorscircuit) {
 /**
  * Getter de l'attribut prixachat.
  */
+/**
+ * @return String
+ */
 public String getPrixachat() {
 	return prixachat;
 }
 /**
  * Setter de l'attribut prixachat.
+ */
+/**
+ * @param newPrixachat newPrixachat
  */
 public void setPrixachat(String newPrixachat) { 
 	prixachat = newPrixachat;
@@ -431,11 +506,17 @@ public void setPrixachat(String newPrixachat) {
 /**
  * Getter de l'attribut reserve.
  */
+/**
+ * @return String
+ */
 public String getReserve() {
 	return reserve;
 }
 /**
  * Setter de l'attribut reserve.
+ */
+/**
+ * @param newReserve newReserve
  */
 public void setReserve(String newReserve) { 
 	reserve = newReserve;
@@ -443,11 +524,17 @@ public void setReserve(String newReserve) {
 /**
  * Getter de l'attribut codemodele.
  */
+/**
+ * @return String
+ */
 public String getCodemodele() {
 	return codemodele;
 }
 /**
  * Setter de l'attribut codemodele.
+ */
+/**
+ * @param newCodemodele newCodemodele
  */
 public void setCodemodele(String newCodemodele) { 
 	codemodele = newCodemodele;
@@ -455,11 +542,17 @@ public void setCodemodele(String newCodemodele) {
 /**
  * Getter de l'attribut dureegarantie.
  */
+/**
+ * @return String
+ */
 public String getDureegarantie() {
 	return dureegarantie;
 }
 /**
  * Setter de l'attribut dureegarantie.
+ */
+/**
+ * @param newDureegarantie newDureegarantie
  */
 public void setDureegarantie(String newDureegarantie) { 
 	dureegarantie = newDureegarantie;
@@ -473,6 +566,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected EquipementBroker getMyEquipementBroker() {
 	return (EquipementBroker)getMyBasicBroker();
@@ -480,7 +574,11 @@ protected EquipementBroker getMyEquipementBroker() {
 
 /**
  * Retourne un Equipement.
+ * @param aTransaction Transaction
+ * @param immat immat
+ * @param inv inv
  * @return Equipement
+ * @throws Exception Exception
  */
 public static int chercherEquipementImmat(nc.mairie.technique.Transaction aTransaction, String immat,String inv) throws Exception{
 	Equipement unEquipement = new Equipement();
@@ -490,7 +588,10 @@ public static int chercherEquipementImmat(nc.mairie.technique.Transaction aTrans
 /**
  * Retourne un booléen.
  * Vérifie que le bpc existe
+ * @param aTransaction Transaction
+ * @param param param
  * @return BPC
+ * @throws Exception Exception
  */
 public boolean existeEquipement(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	Equipement unEquipement = new Equipement();
@@ -500,7 +601,10 @@ public boolean existeEquipement(nc.mairie.technique.Transaction aTransaction, St
 /**
  * Retourne un booléen.
  * Vérifie que le modèle existe avec des paramètres de clé étrangères
+ * @param aTransaction Transaction
+ * @param param param
  * @return BPC
+ * @throws Exception Exception
  */
 public boolean existeEquipementModele(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	Equipement unEquipement = new Equipement();
@@ -510,6 +614,10 @@ public boolean existeEquipementModele(nc.mairie.technique.Transaction aTransacti
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param mod mod
+ * @return Arraylist
+ * @throws Exception Exception
  */
 
 public static ArrayList<Equipement> listerEquipementModele(nc.mairie.technique.Transaction aTransaction,String mod) throws Exception{

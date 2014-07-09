@@ -11,6 +11,7 @@ import nc.mairie.technique.Services;
 public class PM_PePersoBroker extends BasicBroker {
 /**
  * Constructeur PM_PePersoBroker.
+ * @param aMetier BasicMetier
  */
 public PM_PePersoBroker(PM_PePerso aMetier) {
 	super(aMetier);
@@ -55,6 +56,9 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPM_PePerso(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -62,6 +66,9 @@ public boolean creerPM_PePerso(nc.mairie.technique.Transaction aTransaction)  th
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierPM_PePerso(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -69,20 +76,28 @@ public boolean modifierPM_PePerso(nc.mairie.technique.Transaction aTransaction) 
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerPM_PePerso(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : PM_PePerso.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PM_PePerso> listerPM_PePerso(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un PM_PePerso.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return PM_PePerso
+ * @throws Exception Exception
  */
 public PM_PePerso chercherPM_PePerso(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (PM_PePerso)executeSelect(aTransaction,"select * from "+getTable()+" where codepmpep = "+cle+"");

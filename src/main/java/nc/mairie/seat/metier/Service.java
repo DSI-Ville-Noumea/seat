@@ -21,11 +21,17 @@ public Service() {
 /**
  * Getter de l'attribut servi.
  */
+/**
+ * @return String
+ */
 public String getServi() {
 	return servi;
 }
 /**
  * Setter de l'attribut servi.
+ */
+/**
+ * @param newServi newServi
  */
 public void setServi(String newServi) { 
 	servi = newServi;
@@ -33,11 +39,17 @@ public void setServi(String newServi) {
 /**
  * Getter de l'attribut liserv.
  */
+/**
+ * @return String
+ */
 public String getLiserv() {
 	return liserv;
 }
 /**
  * Setter de l'attribut liserv.
+ */
+/**
+ * @param newLiserv newLiserv
  */
 public void setLiserv(String newLiserv) { 
 	liserv = newLiserv;
@@ -45,11 +57,17 @@ public void setLiserv(String newLiserv) {
 /**
  * Getter de l'attribut li22.
  */
+/**
+ * @return String
+ */
 public String getLi22() {
 	return li22;
 }
 /**
  * Setter de l'attribut li22.
+ */
+/**
+ * @param newLi22 newLi22
  */
 public void setLi22(String newLi22) { 
 	li22 = newLi22;
@@ -57,11 +75,17 @@ public void setLi22(String newLi22) {
 /**
  * Getter de l'attribut codact.
  */
+/**
+ * @return String
+ */
 public String getCodact() {
 	return codact;
 }
 /**
  * Setter de l'attribut codact.
+ */
+/**
+ * @param newCodact newCodact
  */
 public void setCodact(String newCodact) { 
 	codact = newCodact;
@@ -75,6 +99,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected ServiceBroker getMyServiceBroker() {
 	return (ServiceBroker)getMyBasicBroker();
@@ -91,7 +116,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Service.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Service> listerService(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Service unService = new Service();
@@ -99,7 +126,10 @@ public static ArrayList<Service> listerService(nc.mairie.technique.Transaction a
 }
 /**
  * Retourne un Service.
+ * @param aTransaction Transaction
+ * @param code code
  * @return Service
+ * @throws Exception Exception
  */
 public static Service chercherService(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Service unService = new Service();
@@ -109,7 +139,10 @@ public static Service chercherService(nc.mairie.technique.Transaction aTransacti
 
 /**
  * Retourne un Service.
+ * @param aTransaction Transaction
+ * @param code code
  * @return Service
+ * @throws Exception Exception
  */
 public static Service chercherServiceActifAvecAcronyme(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Service unService = new Service();
@@ -119,7 +152,10 @@ public static Service chercherServiceActifAvecAcronyme(nc.mairie.technique.Trans
 
 /**
  * Retourne un Service.
+ * @param aTransaction Transaction
+ * @param param param
  * @return Service
+ * @throws Exception Exception
  */
 public static ArrayList<Service> chercherListServiceTous(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	Service unService = new Service();
@@ -128,7 +164,10 @@ public static ArrayList<Service> chercherListServiceTous(nc.mairie.technique.Tra
 
 /**
  * Retourne un Service.
+ * @param aTransaction Transaction
+ * @param param param
  * @return Service
+ * @throws Exception Exception
  */
 public static ArrayList<Service> chercherListServiceEquip(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	Service unService = new Service();

@@ -18,6 +18,7 @@ public TypeEntretien() {
 }
 /**
  * Getter de l'attribut codetypeent.
+ * @return String
  */
 public String getCodetypeent() {
 	return codetypeent;
@@ -25,17 +26,24 @@ public String getCodetypeent() {
 /**
  * Setter de l'attribut codetypeent.
  */
+/**
+ * @param newCodetypeent newCodetypeent
+ */
 public void setCodetypeent(String newCodetypeent) { 
 	codetypeent = newCodetypeent;
 }
 /**
  * Getter de l'attribut designationtypeent.
+ * @return String
  */
 public String getDesignationtypeent() {
 	return designationtypeent;
 }
 /**
  * Setter de l'attribut designationtypeent.
+ */
+/**
+ * @param newDesignationtypeent newDesignationtypeent
  */
 public void setDesignationtypeent(String newDesignationtypeent) { 
 	designationtypeent = newDesignationtypeent;
@@ -49,6 +57,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected TypeEntretienBroker getMyTypeEntretienBroker() {
 	return (TypeEntretienBroker)getMyBasicBroker();
@@ -65,7 +74,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : TypeEntretien.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<TypeEntretien> listerTypeEntretien(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	TypeEntretien unTypeEntretien = new TypeEntretien();
@@ -73,7 +84,10 @@ public static ArrayList<TypeEntretien> listerTypeEntretien(nc.mairie.technique.T
 }
 /**
  * Retourne un TypeEntretien.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return TypeEntretien
+ * @throws Exception Exception
  */
 public static TypeEntretien chercherTypeEntretien(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	TypeEntretien unTypeEntretien = new TypeEntretien();
@@ -82,6 +96,10 @@ public static TypeEntretien chercherTypeEntretien(nc.mairie.technique.Transactio
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerTypeEntretien(nc.mairie.technique.Transaction aTransaction,String param)  throws Exception {
 	if(!existeTEntretien(aTransaction,param)){
@@ -99,6 +117,10 @@ public boolean creerTypeEntretien(nc.mairie.technique.Transaction aTransaction,S
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierTypeEntretien(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	if(!existeTEntretien(aTransaction,param)){
@@ -112,6 +134,9 @@ public boolean modifierTypeEntretien(nc.mairie.technique.Transaction aTransactio
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerTypeEntretien(nc.mairie.technique.Transaction aTransaction) throws Exception{
 //	 si  utilisé pas de suppression
@@ -128,7 +153,10 @@ public boolean supprimerTypeEntretien(nc.mairie.technique.Transaction aTransacti
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction aTransaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeTEntretien(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	TypeEntretien unTypeEntretien = new TypeEntretien();

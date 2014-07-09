@@ -22,7 +22,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Fre_OT.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Fre_OT> listerFre_OT(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Fre_OT unFre_OT = new Fre_OT();
@@ -31,7 +33,10 @@ public static ArrayList<Fre_OT> listerFre_OT(nc.mairie.technique.Transaction aTr
 
 /**
  * Retourne un ArrayList d'objet métier : Fre_OT.
+ * @param aTransaction aTransaction
+ * @param numot numot
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Fre_OT> listerFre_OTOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	Fre_OT unFre_OT = new Fre_OT();
@@ -40,7 +45,11 @@ public static ArrayList<Fre_OT> listerFre_OTOT(nc.mairie.technique.Transaction a
 
 /**
  * Retourne un Fre_OT.
+ * @param aTransaction aTransaction
+ * @param numot numot
+ * @param codeF codeF
  * @return Fre_OT
+ * @throws Exception Exception
  */
 public static Fre_OT chercherFre_OT(nc.mairie.technique.Transaction aTransaction, String numot,String codeF) throws Exception{
 	Fre_OT unFre_OT = new Fre_OT();
@@ -49,6 +58,11 @@ public static Fre_OT chercherFre_OT(nc.mairie.technique.Transaction aTransaction
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param unOT unOT
+ * @param unFre unFre
+ * @return boolean 
+ * @throws Exception Exception
  */
 
 public boolean creerFre_OT(nc.mairie.technique.Transaction aTransaction,OT unOT,Fournisseurs unFre )  throws Exception {
@@ -78,6 +92,9 @@ public boolean creerFre_OT(nc.mairie.technique.Transaction aTransaction,OT unOT,
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean modifierFre_OT(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	//Modification du Fre_OT
@@ -86,6 +103,9 @@ public boolean modifierFre_OT(nc.mairie.technique.Transaction aTransaction) thro
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean supprimerFre_OT(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'Fre_OT
@@ -106,11 +126,17 @@ public Fre_OT() {
 /**
  * Getter de l'attribut codefournisseur.
  */
+/**
+ * @return String
+ */
 public String getCodefournisseur() {
 	return codefournisseur;
 }
 /**
  * Setter de l'attribut codefournisseur.
+ */
+/**
+ * @param newCodefournisseur newCodefournisseur
  */
 public void setCodefournisseur(String newCodefournisseur) { 
 	codefournisseur = newCodefournisseur;
@@ -118,11 +144,17 @@ public void setCodefournisseur(String newCodefournisseur) {
 /**
  * Getter de l'attribut numeroot.
  */
+/**
+ * @return String
+ */
 public String getNumeroot() {
 	return numeroot;
 }
 /**
  * Setter de l'attribut numeroot.
+ */
+/**
+ * @param newNumeroot newNumeroot
  */
 public void setNumeroot(String newNumeroot) { 
 	numeroot = newNumeroot;
@@ -136,6 +168,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected Fre_OTBroker getMyFre_OTBroker() {
 	return (Fre_OTBroker)getMyBasicBroker();

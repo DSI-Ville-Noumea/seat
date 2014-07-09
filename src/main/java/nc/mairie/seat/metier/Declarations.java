@@ -24,7 +24,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Declarations.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Declarations> listerDeclarations(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Declarations unDeclarations = new Declarations();
@@ -33,7 +35,10 @@ public static ArrayList<Declarations> listerDeclarations(nc.mairie.technique.Tra
 
 /**
  * Retourne un ArrayList d'objet métier : Declarations.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Declarations> listerDeclarationsOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	Declarations unDeclarations = new Declarations();
@@ -42,7 +47,10 @@ public static ArrayList<Declarations> listerDeclarationsOT(nc.mairie.technique.T
 
 /**
  * Retourne un ArrayList d'objet métier : Declarations.
+ * @param aTransaction Transaction
+ * @param inv inv
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Declarations> listerDeclarationsEquip(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception{
 	Declarations unDeclarations = new Declarations();
@@ -51,7 +59,10 @@ public static ArrayList<Declarations> listerDeclarationsEquip(nc.mairie.techniqu
 
 /**
  * Retourne un Declarations.
+ * @param aTransaction Transaction
+ * @param code code
  * @return Declarations
+ * @throws Exception Exception
  */
 public static Declarations chercherDeclarations(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Declarations unDeclarations = new Declarations();
@@ -191,6 +202,12 @@ public String creationDeclarationsFPM(nc.mairie.technique.Transaction aTransacti
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unEquipement unEquipement
+ * @param unAgent unAgent
+ * @param unService unService
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerDeclarations(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement,Agents unAgent,Service unService)  throws Exception {
 //	 controle si null
@@ -257,6 +274,12 @@ public boolean creerDeclarationsPM(nc.mairie.technique.Transaction aTransaction,
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unEquipement unEquipement
+ * @param unAgent unAgent
+ * @param unService unService
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerDeclarationsAgentCDE(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement,AgentCDE unAgent,Service unService)  throws Exception {
 //	 controle si null
@@ -323,6 +346,12 @@ public boolean creerDeclarationsAgentCCAS(nc.mairie.technique.Transaction aTrans
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unEquipement unEquipement
+ * @param unAgent unAgent
+ * @param unService unService
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean modifierDeclarations(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement,Agents unAgent,Service unService) throws Exception {
 //	 controle si null
@@ -397,6 +426,12 @@ public boolean modifierDeclarationsPM(nc.mairie.technique.Transaction aTransacti
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unEquipement unEquipement
+ * @param unAgent unAgent
+ * @param unService unService
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean modifierDeclarationsAgentCDE(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement,AgentCDE unAgent,Service unService) throws Exception {
 //	 controle si null
@@ -473,6 +508,9 @@ public boolean modifierDeclarationsAgentCCAS(nc.mairie.technique.Transaction aTr
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean supprimerDeclarations(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	// RG : si unOT a été généré : pas de suppression
@@ -509,7 +547,10 @@ public int nouvCodeDecl(nc.mairie.technique.Transaction aTransaction) throws Exc
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeOTDeclarations(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception{
 	Declarations unDeclarations = new Declarations();
@@ -518,7 +559,10 @@ public boolean existeOTDeclarations(nc.mairie.technique.Transaction aTransaction
 
 /**
  * Retourne un Declarations.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return Declarations
+ * @throws Exception Exception
  */
 public static Declarations chercherDeclarationsOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception{
 	Declarations unDeclarations = new Declarations();
@@ -535,11 +579,17 @@ public Declarations() {
 /**
  * Getter de l'attribut codedec.
  */
+/**
+ * @return String
+ */
 public String getCodedec() {
 	return codedec;
 }
 /**
  * Setter de l'attribut codedec.
+ */
+/**
+ * @param newCodedec newCodedec
  */
 public void setCodedec(String newCodedec) { 
 	codedec = newCodedec;
@@ -547,11 +597,17 @@ public void setCodedec(String newCodedec) {
 /**
  * Getter de l'attribut date.
  */
+/**
+ * @return String
+ */
 public String getDate() {
 	return date;
 }
 /**
  * Setter de l'attribut date.
+ */
+/**
+ * @param newDate newDate
  */
 public void setDate(String newDate) { 
 	date = newDate;
@@ -559,11 +615,17 @@ public void setDate(String newDate) {
 /**
  * Getter de l'attribut anomalies.
  */
+/**
+ * @return String
+ */
 public String getAnomalies() {
 	return anomalies;
 }
 /**
  * Setter de l'attribut anomalies.
+ */
+/**
+ * @param newAnomalies newAnomalies
  */
 public void setAnomalies(String newAnomalies) { 
 	anomalies = newAnomalies;
@@ -571,11 +633,17 @@ public void setAnomalies(String newAnomalies) {
 /**
  * Getter de l'attribut matricule.
  */
+/**
+ * @return String
+ */
 public String getMatricule() {
 	return matricule;
 }
 /**
  * Setter de l'attribut matricule.
+ */
+/**
+ * @param newMatricule newMatricule
  */
 public void setMatricule(String newMatricule) { 
 	matricule = newMatricule;
@@ -583,11 +651,17 @@ public void setMatricule(String newMatricule) {
 /**
  * Getter de l'attribut codeot.
  */
+/**
+ * @return String
+ */
 public String getCodeot() {
 	return codeot;
 }
 /**
  * Setter de l'attribut codeot.
+ */
+/**
+ * @param newCodeot newCodeot
  */
 public void setCodeot(String newCodeot) { 
 	codeot = newCodeot;
@@ -595,11 +669,17 @@ public void setCodeot(String newCodeot) {
 /**
  * Getter de l'attribut numinv.
  */
+/**
+ * @return String
+ */
 public String getNuminv() {
 	return numinv;
 }
 /**
  * Setter de l'attribut numinv.
+ */
+/**
+ * @param newNuminv newNuminv
  */
 public void setNuminv(String newNuminv) { 
 	numinv = newNuminv;
@@ -607,23 +687,31 @@ public void setNuminv(String newNuminv) {
 /**
  * Getter de l'attribut codeservice.
  */
+/**
+ * @return String
+ */
 public String getCodeservice() {
 	return codeservice;
 }
 /**
  * Setter de l'attribut codeservice.
  */
+/**
+ * @param newCodeservice newCodeservice
+ */
 public void setCodeservice(String newCodeservice) { 
 	codeservice = newCodeservice;
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected BasicBroker definirMyBroker() { 
 	return new DeclarationsBroker(this); 
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected DeclarationsBroker getMyDeclarationsBroker() {
 	return (DeclarationsBroker)getMyBasicBroker();

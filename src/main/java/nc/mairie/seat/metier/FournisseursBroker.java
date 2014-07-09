@@ -10,6 +10,7 @@ import nc.mairie.technique.BasicRecord;
 public class FournisseursBroker extends BasicBroker {
 /**
  * Constructeur FournisseursBroker.
+ * @param aMetier BasicMetier
  */
 public FournisseursBroker(Fournisseurs aMetier) {
 	super(aMetier);
@@ -55,7 +56,9 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 }
 /**
  * Retourne un ArrayList d'objet métier : Fournisseurs.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Fournisseurs> listerFournisseurs(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
@@ -63,7 +66,10 @@ public ArrayList<Fournisseurs> listerFournisseurs(nc.mairie.technique.Transactio
 
 /**
  * Retourne un ArrayList d'objet métier : Fournisseurs.
+ * @param aTransaction Transaction
+ * @param param param
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Fournisseurs> listerFournisseursNom(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where upper(enscom) like '"+param.toUpperCase()+"%' with ur");
@@ -71,7 +77,10 @@ public ArrayList<Fournisseurs> listerFournisseursNom(nc.mairie.technique.Transac
 
 /**
  * Retourne un Fournisseurs.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return Fournisseurs
+ * @throws Exception Exception
  */
 public Fournisseurs chercherFournisseurs(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (Fournisseurs)executeSelect(aTransaction,"select * from "+getTable()+" where IDETBS = "+cle+" with ur");

@@ -11,6 +11,7 @@ import nc.mairie.technique.Services;
 public class AgentCCASBroker extends BasicBroker {
 /**
  * Constructeur AgentCCASBroker.
+ * @param aMetier BasicMetier
  */
 public AgentCCASBroker(AgentCCAS aMetier) {
 	super(aMetier);
@@ -75,21 +76,29 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 }
 /**
  * Retourne un ArrayList d'objet métier : AgentCCAS.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AgentCCAS> listerAgentCCAS(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" inner join MAIRCCAS.SPPOST on nomatr = pomatr and codact <> 'I'  order by nom with ur");
 }
 /**
  * Retourne un AgentCCAS.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return AgentCCAS
+ * @throws Exception Exception
  */
 public AgentCCAS chercherAgentCCAS(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (AgentCCAS)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+cle+"  with ur");
 }
 /**
  * Retourne un AgentCCAS.
+ * @param aTransaction Transaction
+ * @param param param
  * @return AgentCCAS
+ * @throws Exception Exception
  */
 public ArrayList<AgentCCAS> listerAgentCCASNom(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	String dateDuJour = Services.formateDateInternationale(Services.dateDuJour());

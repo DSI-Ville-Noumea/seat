@@ -22,7 +22,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Carburant.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Carburant> listerCarburant(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Carburant unCarburant = new Carburant();
@@ -30,7 +32,10 @@ public static ArrayList<Carburant> listerCarburant(nc.mairie.technique.Transacti
 }
 /**
  * Retourne un Carburant.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return Carburant
+ * @throws Exception Exception
  */
 public static Carburant chercherCarburant(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Carburant unCarburant = new Carburant();
@@ -39,6 +44,10 @@ public static Carburant chercherCarburant(nc.mairie.technique.Transaction aTrans
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerCarburant(nc.mairie.technique.Transaction aTransaction,String param)  throws Exception {
 	if (!existeCarburant(aTransaction,param)){
@@ -55,6 +64,11 @@ public boolean creerCarburant(nc.mairie.technique.Transaction aTransaction,Strin
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @param num_pompe num_pompe
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean modifierCarburant(nc.mairie.technique.Transaction aTransaction,String param,String num_pompe) throws Exception {
 	if (!existeCarburantTout(aTransaction,param,num_pompe)){
@@ -68,6 +82,9 @@ public boolean modifierCarburant(nc.mairie.technique.Transaction aTransaction,St
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean supprimerCarburant(nc.mairie.technique.Transaction aTransaction) throws Exception{
 //	 si déjà utilisé on ne peut pas supprimer
@@ -101,7 +118,10 @@ public int nouvCarburant(nc.mairie.technique.Transaction aTransaction) throws Ex
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction aTransaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeCarburant(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	Carburant unCarburant = new Carburant();
@@ -125,11 +145,17 @@ public Carburant() {
 /**
  * Getter de l'attribut codecarbu.
  */
+/**
+ * @return String
+ */
 public String getCodecarbu() {
 	return codecarbu;
 }
 /**
  * Setter de l'attribut codecarbu.
+ */
+/**
+ * @param newCodecarbu newCodecarbu
  */
 public void setCodecarbu(String newCodecarbu) { 
 	codecarbu = newCodecarbu;
@@ -137,11 +163,17 @@ public void setCodecarbu(String newCodecarbu) {
 /**
  * Getter de l'attribut designationcarbu.
  */
+/**
+ * @return String
+ */
 public String getDesignationcarbu() {
 	return designationcarbu;
 }
 /**
  * Setter de l'attribut designationcarbu.
+ */
+/**
+ * @param newDesignationcarbu newDesignationcarbu
  */
 public void setDesignationcarbu(String newDesignationcarbu) { 
 	designationcarbu = newDesignationcarbu;
@@ -149,11 +181,17 @@ public void setDesignationcarbu(String newDesignationcarbu) {
 /**
  * Getter de l'attribut num_pompe_atm.
  */
+/**
+ * @return String
+ */
 public String getNum_pompe_atm() {
 	return num_pompe_atm;
 }
 /**
  * Setter de l'attribut num_pompe_atm.
+ */
+/**
+ * @param newNum_pompe_atm newNum_pompe_atm
  */
 public void setNum_pompe_atm(String newNum_pompe_atm) { 
 	num_pompe_atm = newNum_pompe_atm;
@@ -167,6 +205,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected CarburantBroker getMyCarburantBroker() {
 	return (CarburantBroker)getMyBasicBroker();

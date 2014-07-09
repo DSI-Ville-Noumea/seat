@@ -27,11 +27,17 @@ public BeOtInfos() {
 /**
  * Getter de l'attribut numeroot.
  */
+/**
+ * @return String
+ */
 public String getNumeroot() {
 	return numeroot;
 }
 /**
  * Setter de l'attribut numeroot.
+ */
+/**
+ * @param newNumeroot newNumeroot
  */
 public void setNumeroot(String newNumeroot) { 
 	numeroot = newNumeroot;
@@ -39,11 +45,17 @@ public void setNumeroot(String newNumeroot) {
 /**
  * Getter de l'attribut dateentree.
  */
+/**
+ * @return String
+ */
 public String getDateentree() {
 	return dateentree;
 }
 /**
  * Setter de l'attribut dateentree.
+ */
+/**
+ * @param newDateentree newDateentree
  */
 public void setDateentree(String newDateentree) { 
 	dateentree = newDateentree;
@@ -51,11 +63,17 @@ public void setDateentree(String newDateentree) {
 /**
  * Getter de l'attribut datesortie.
  */
+/**
+ * @return String
+ */
 public String getDatesortie() {
 	return datesortie;
 }
 /**
  * Setter de l'attribut datesortie.
+ */
+/**
+ * @param newDatesortie newDatesortie
  */
 public void setDatesortie(String newDatesortie) { 
 	datesortie = newDatesortie;
@@ -63,11 +81,17 @@ public void setDatesortie(String newDatesortie) {
 /**
  * Getter de l'attribut compteur.
  */
+/**
+ * @return String
+ */
 public String getCompteur() {
 	return compteur;
 }
 /**
  * Setter de l'attribut compteur.
+ */
+/**
+ * @param newCompteur newCompteur
  */
 public void setCompteur(String newCompteur) { 
 	compteur = newCompteur;
@@ -75,11 +99,17 @@ public void setCompteur(String newCompteur) {
 /**
  * Getter de l'attribut valide.
  */
+/**
+ * @return String
+ */
 public String getValide() {
 	return valide;
 }
 /**
  * Setter de l'attribut valide.
+ */
+/**
+ * @param newValide newValide
  */
 public void setValide(String newValide) { 
 	valide = newValide;
@@ -87,11 +117,17 @@ public void setValide(String newValide) {
 /**
  * Getter de l'attribut commentaire.
  */
+/**
+ * @return String
+ */
 public String getCommentaire() {
 	return commentaire;
 }
 /**
  * Setter de l'attribut commentaire.
+ */
+/**
+ * @param newCommentaire newCommentaire
  */
 public void setCommentaire(String newCommentaire) { 
 	commentaire = newCommentaire;
@@ -99,11 +135,17 @@ public void setCommentaire(String newCommentaire) {
 /**
  * Getter de l'attribut codcol.
  */
+/**
+ * @return String
+ */
 public String getCodcol() {
 	return codcol;
 }
 /**
  * Setter de l'attribut codcol.
+ */
+/**
+ * @param newCodcol newCodcol
  */
 public void setCodcol(String newCodcol) { 
 	codcol = newCodcol;
@@ -111,11 +153,17 @@ public void setCodcol(String newCodcol) {
 /**
  * Getter de l'attribut exerci.
  */
+/**
+ * @return String
+ */
 public String getExerci() {
 	return exerci;
 }
 /**
  * Setter de l'attribut exerci.
+ */
+/**
+ * @param newExerci newExerci
  */
 public void setExerci(String newExerci) { 
 	exerci = newExerci;
@@ -123,11 +171,17 @@ public void setExerci(String newExerci) {
 /**
  * Getter de l'attribut codbud.
  */
+/**
+ * @return String
+ */
 public String getCodbud() {
 	return codbud;
 }
 /**
  * Setter de l'attribut codbud.
+ */
+/**
+ * @param newCodbud newCodbud
  */
 public void setCodbud(String newCodbud) { 
 	codbud = newCodbud;
@@ -135,11 +189,17 @@ public void setCodbud(String newCodbud) {
 /**
  * Getter de l'attribut noengj.
  */
+/**
+ * @return String
+ */
 public String getNoengj() {
 	return noengj;
 }
 /**
  * Setter de l'attribut noengj.
+ */
+/**
+ * @param newNoengj newNoengj
  */
 public void setNoengj(String newNoengj) { 
 	noengj = newNoengj;
@@ -153,6 +213,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected BeOtInfosBroker getMyBeOtInfosBroker() {
 	return (BeOtInfosBroker)getMyBasicBroker();
@@ -169,7 +230,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : BeOtInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<BeOtInfos> listerBeOtInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	BeOtInfos unBeOtInfos = new BeOtInfos();
@@ -177,7 +240,10 @@ public static ArrayList<BeOtInfos> listerBeOtInfos(nc.mairie.technique.Transacti
 }
 /**
  * Retourne un BeOtInfos.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return BeOtInfos
+ * @throws Exception Exception
  */
 public static BeOtInfos chercherBeOtInfos(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	BeOtInfos unBeOtInfos = new BeOtInfos();
@@ -186,7 +252,10 @@ public static BeOtInfos chercherBeOtInfos(nc.mairie.technique.Transaction aTrans
 
 /**
  * Retourne un ArrayList d'objet métier : BeOtInfos.
+ * @param aTransaction aTransaction
+ * @param numot numot
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<BeOtInfos> listerBeOtInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	BeOtInfos unBeOtInfos = new BeOtInfos();
@@ -195,7 +264,11 @@ public static ArrayList<BeOtInfos> listerBeOtInfosOT(nc.mairie.technique.Transac
 
 /**
  * Retourne un ArrayList d'objet métier : PiecesOtInfos.
+ * @param aTransaction aTransaction
+ * @param numot numot
+ * @param numinv numinv
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static int cumuleMontantPiecesOtInfosBE(nc.mairie.technique.Transaction aTransaction,String numot, String numinv) throws Exception{
 	BeOtInfos unBeOtInfos = new BeOtInfos();

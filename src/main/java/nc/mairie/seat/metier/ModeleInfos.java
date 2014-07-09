@@ -33,7 +33,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : ModeleInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<ModeleInfos> listerModeleInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	ModeleInfos unModeleInfos = new ModeleInfos();
@@ -41,7 +43,10 @@ public static ArrayList<ModeleInfos> listerModeleInfos(nc.mairie.technique.Trans
 }
 /**
  * Retourne un ModeleInfos.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return ModeleInfos
+ * @throws Exception Exception
  */
 public static ModeleInfos chercherModeleInfos(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	ModeleInfos unModeleInfos = new ModeleInfos();
@@ -50,7 +55,10 @@ public static ModeleInfos chercherModeleInfos(nc.mairie.technique.Transaction aT
 
 /**
  * Retourne un ModelesInfos.
+ * @param aTransaction aTransaction
+ * @param param param
  * @return ModelesInfos
+ * @throws Exception Exception
  */
 public static ArrayList<ModeleInfos> chercherListModeleInfosTous(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	ModeleInfos unModeleInfos = new ModeleInfos();
@@ -65,11 +73,17 @@ public static ArrayList<ModeleInfos> chercherListModeleInfosTous(nc.mairie.techn
 /**
  * Getter de l'attribut codemarque.
  */
+/**
+ * @return String
+ */
 public String getCodemarque() {
 	return codemarque;
 }
 /**
  * Setter de l'attribut codemarque.
+ */
+/**
+ * @param newCodemarque newCodemarque
  */
 public void setCodemarque(String newCodemarque) { 
 	codemarque = newCodemarque;
@@ -77,11 +91,17 @@ public void setCodemarque(String newCodemarque) {
 /**
  * Getter de l'attribut codepneu.
  */
+/**
+ * @return String
+ */
 public String getCodepneu() {
 	return codepneu;
 }
 /**
  * Setter de l'attribut codepneu.
+ */
+/**
+ * @param newCodepneu newCodepneu
  */
 public void setCodepneu(String newCodepneu) { 
 	codepneu = newCodepneu;
@@ -89,11 +109,17 @@ public void setCodepneu(String newCodepneu) {
 /**
  * Getter de l'attribut codete.
  */
+/**
+ * @return String
+ */
 public String getCodete() {
 	return codete;
 }
 /**
  * Setter de l'attribut codete.
+ */
+/**
+ * @param newCodete newCodete
  */
 public void setCodete(String newCodete) { 
 	codete = newCodete;
@@ -101,11 +127,17 @@ public void setCodete(String newCodete) {
 /**
  * Getter de l'attribut codecarburant.
  */
+/**
+ * @return String
+ */
 public String getCodecarburant() {
 	return codecarburant;
 }
 /**
  * Setter de l'attribut codecarburant.
+ */
+/**
+ * @param newCodecarburant newCodecarburant
  */
 public void setCodecarburant(String newCodecarburant) { 
 	codecarburant = newCodecarburant;
@@ -113,11 +145,17 @@ public void setCodecarburant(String newCodecarburant) {
 /**
  * Getter de l'attribut codecompteur.
  */
+/**
+ * @return String
+ */
 public String getCodecompteur() {
 	return codecompteur;
 }
 /**
  * Setter de l'attribut codecompteur.
+ */
+/**
+ * @param newCodecompteur newCodecompteur
  */
 public void setCodecompteur(String newCodecompteur) { 
 	codecompteur = newCodecompteur;
@@ -131,11 +169,17 @@ public ModeleInfos() {
 /**
  * Getter de l'attribut codemodele.
  */
+/**
+ * @return String
+ */
 public String getCodemodele() {
 	return codemodele;
 }
 /**
  * Setter de l'attribut codemodele.
+ */
+/**
+ * @param newCodemodele newCodemodele
  */
 public void setCodemodele(String newCodemodele) { 
 	codemodele = newCodemodele;
@@ -143,11 +187,17 @@ public void setCodemodele(String newCodemodele) {
 /**
  * Getter de l'attribut designationmodele.
  */
+/**
+ * @return String
+ */
 public String getDesignationmodele() {
 	return designationmodele;
 }
 /**
  * Setter de l'attribut designationmodele.
+ */
+/**
+ * @param newDesignationmodele newDesignationmodele
  */
 public void setDesignationmodele(String newDesignationmodele) { 
 	designationmodele = newDesignationmodele;
@@ -155,11 +205,17 @@ public void setDesignationmodele(String newDesignationmodele) {
 /**
  * Getter de l'attribut designationmarque.
  */
+/**
+ * @return String
+ */
 public String getDesignationmarque() {
 	return designationmarque;
 }
 /**
  * Setter de l'attribut designationmarque.
+ */
+/**
+ * @param newDesignationmarque newDesignationmarque
  */
 public void setDesignationmarque(String newDesignationmarque) { 
 	designationmarque = newDesignationmarque;
@@ -167,11 +223,17 @@ public void setDesignationmarque(String newDesignationmarque) {
 /**
  * Getter de l'attribut designationcarbu.
  */
+/**
+ * @return String
+ */
 public String getDesignationcarbu() {
 	return designationcarbu;
 }
 /**
  * Setter de l'attribut designationcarbu.
+ */
+/**
+ * @param newDesignationcarbu newDesignationcarbu
  */
 public void setDesignationcarbu(String newDesignationcarbu) { 
 	designationcarbu = newDesignationcarbu;
@@ -179,11 +241,17 @@ public void setDesignationcarbu(String newDesignationcarbu) {
 /**
  * Getter de l'attribut dimension.
  */
+/**
+ * @return String
+ */
 public String getDimension() {
 	return dimension;
 }
 /**
  * Setter de l'attribut dimension.
+ */
+/**
+ * @param newDimension newDimension
  */
 public void setDimension(String newDimension) { 
 	dimension = newDimension;
@@ -191,11 +259,17 @@ public void setDimension(String newDimension) {
 /**
  * Getter de l'attribut designationtypeequip.
  */
+/**
+ * @return String
+ */
 public String getDesignationtypeequip() {
 	return designationtypeequip;
 }
 /**
  * Setter de l'attribut designationtypeequip.
+ */
+/**
+ * @param newDesignationtypeequip newDesignationtypeequip
  */
 public void setDesignationtypeequip(String newDesignationtypeequip) { 
 	designationtypeequip = newDesignationtypeequip;
@@ -203,11 +277,17 @@ public void setDesignationtypeequip(String newDesignationtypeequip) {
 /**
  * Getter de l'attribut designationcompteur.
  */
+/**
+ * @return String
+ */
 public String getDesignationcompteur() {
 	return designationcompteur;
 }
 /**
  * Setter de l'attribut designationcompteur.
+ */
+/**
+ * @param newDesignationcompteur newDesignationcompteur
  */
 public void setDesignationcompteur(String newDesignationcompteur) { 
 	designationcompteur = newDesignationcompteur;
@@ -215,11 +295,17 @@ public void setDesignationcompteur(String newDesignationcompteur) {
 /**
  * Getter de l'attribut nbpneuarriere.
  */
+/**
+ * @return String
+ */
 public String getNbpneuarriere() {
 	return nbpneuarriere;
 }
 /**
  * Setter de l'attribut nbpneuarriere.
+ */
+/**
+ * @param newNbpneuarriere newNbpneuarriere
  */
 public void setNbpneuarriere(String newNbpneuarriere) { 
 	nbpneuarriere = newNbpneuarriere;
@@ -227,11 +313,17 @@ public void setNbpneuarriere(String newNbpneuarriere) {
 /**
  * Getter de l'attribut nbessieux.
  */
+/**
+ * @return String
+ */
 public String getNbessieux() {
 	return nbessieux;
 }
 /**
  * Setter de l'attribut nbessieux.
+ */
+/**
+ * @param newNbessieux newNbessieux
  */
 public void setNbessieux(String newNbessieux) { 
 	nbessieux = newNbessieux;
@@ -239,11 +331,15 @@ public void setNbessieux(String newNbessieux) {
 /**
  * Getter de l'attribut capacitereservoir.
  */
+/**
+ * @return String
+ */
 public String getCapacitereservoir() {
 	return capacitereservoir;
 }
 /**
  * Setter de l'attribut capacitereservoir.
+ * @param newCapacitereservoir newCapacitereservoir
  */
 public void setCapacitereservoir(String newCapacitereservoir) { 
 	capacitereservoir = newCapacitereservoir;
@@ -251,11 +347,17 @@ public void setCapacitereservoir(String newCapacitereservoir) {
 /**
  * Getter de l'attribut nbpneuavant.
  */
+/**
+ * @return String
+ */
 public String getNbpneuavant() {
 	return nbpneuavant;
 }
 /**
  * Setter de l'attribut nbpneuavant.
+ */
+/**
+ * @param newNbpneuavant newNbpneuavant
  */
 public void setNbpneuavant(String newNbpneuavant) { 
 	nbpneuavant = newNbpneuavant;
@@ -263,11 +365,17 @@ public void setNbpneuavant(String newNbpneuavant) {
 /**
  * Getter de l'attribut puissance.
  */
+/**
+ * @return String
+ */
 public String getPuissance() {
 	return puissance;
 }
 /**
  * Setter de l'attribut puissance.
+ */
+/**
+ * @param newPuissance newPuissance
  */
 public void setPuissance(String newPuissance) { 
 	puissance = newPuissance;
@@ -275,11 +383,17 @@ public void setPuissance(String newPuissance) {
 /**
  * Getter de l'attribut version.
  */
+/**
+ * @return String
+ */
 public String getVersion() {
 	return version;
 }
 /**
  * Setter de l'attribut version.
+ */
+/**
+ * @param newVersion newVersion
  */
 public void setVersion(String newVersion) { 
 	version = newVersion;
@@ -293,6 +407,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected ModeleInfosBroker getMyModeleInfosBroker() {
 	return (ModeleInfosBroker)getMyBasicBroker();
@@ -301,7 +416,10 @@ protected ModeleInfosBroker getMyModeleInfosBroker() {
 /**
  * Retourne un booléen.
  * Vérifie que le bpc existe
+ * @param aTransaction aTransaction
+ * @param param param
  * @return BPC
+ * @throws Exception Exception
  */
 public boolean existeModeleInfos(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	ModeleInfos unModeleInfos = new ModeleInfos();

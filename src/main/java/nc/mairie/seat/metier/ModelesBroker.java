@@ -11,6 +11,9 @@ public class ModelesBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerModeles(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -18,6 +21,9 @@ public boolean creerModeles(nc.mairie.technique.Transaction aTransaction)  throw
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierModeles(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -25,28 +31,38 @@ public boolean modifierModeles(nc.mairie.technique.Transaction aTransaction) thr
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerModeles(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : Modeles.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Modeles> listerModeles(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by designationmodele");
 }
 /**
  * Retourne un ArrayList d'objet métier : Modeles.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
  * liste de modèle de petits matériels
+ * @throws Exception Exception
  */
 public ArrayList<Modeles> listerModelesMT(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+",f_typeequip where f_typeequip.codetypeequip="+getTable()+".codete and f_typeequip.typete='MT' order by designationmodele");
 }
 /**
  * Retourne un Modeles.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return Modeles
+ * @throws Exception Exception
  */
 public Modeles chercherModeles(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (Modeles)executeSelect(aTransaction,"select * from "+getTable()+" where CODEMODELE = "+cle+"");
@@ -64,7 +80,10 @@ public int nouvModeles(nc.mairie.technique.Transaction aTransaction) throws Exce
 
 /**
  * Retourne un ArrayList d'objet métier : Modeles.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Modeles> listerModelesMarque(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemarque = "+cle+" order by designationmodele");
@@ -81,7 +100,13 @@ public ArrayList<Modeles> listerModelesLib(nc.mairie.technique.Transaction aTran
 /**
  * Retourne un booléen.
  * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param code code
+ * @param param param
+ * @param version version
+ * @param codecarbu codecarbu
  * @return true ou false
+ * @throws Exception Exception
  */
 public int existeModeles(nc.mairie.technique.Transaction aTransaction, String code, String param, String version,String codecarbu) throws Exception {
 	return executeCompter(aTransaction,"select count(designationmodele) from "+getTable()+" where upper(designationmodele) = '"+param.toUpperCase()+"' and upper(version) = '"+version.toUpperCase()+"' and codemodele<>"+code+" and codecarburant="+codecarbu);
@@ -89,6 +114,7 @@ public int existeModeles(nc.mairie.technique.Transaction aTransaction, String co
 
 /**
  * Constructeur ModelesBroker.
+ * @param aMetier BasicMetier
  */
 public ModelesBroker(Modeles aMetier) {
 	super(aMetier);
@@ -135,7 +161,10 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 /**
  * Retourne un booléen.
  * Vérifie si le modèleinfos existe déjà
+ * @param aTransaction Transaction
+ * @param param param
  * @return Modeles
+ * @throws Exception Exception
  */
 public boolean existeModeleTEquip(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where codete = "+param+"");

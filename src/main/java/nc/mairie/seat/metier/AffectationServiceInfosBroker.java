@@ -11,14 +11,19 @@ import nc.mairie.technique.BasicRecord;
 public class AffectationServiceInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : AffectationServiceInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AffectationServiceInfos> listerAffectationServiceInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**
  * Retourne un ArrayList d'objet métier : AffectationServiceInfos.
+ * @param aTransaction Transaction
+ * @param nomatr nomatr
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AffectationServiceInfos> listerAffectationServiceInfosAgent(nc.mairie.technique.Transaction aTransaction,String nomatr) throws Exception {
 	if (nomatr.equals("")){
@@ -30,7 +35,10 @@ public ArrayList<AffectationServiceInfos> listerAffectationServiceInfosAgent(nc.
 }
 /**
  * Retourne un AffectationServiceInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return AffectationServiceInfos
+ * @throws Exception Exception
  */
 public ArrayList<AffectationServiceInfos> chercherAffectationServiceInfosService(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return  executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice like '"+cle+"%' and dfin = '0001-01-01' with ur");
@@ -38,7 +46,11 @@ public ArrayList<AffectationServiceInfos> chercherAffectationServiceInfosService
 
 /**
  * Retourne un AffectationServiceInfos.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param date date
  * @return AffectationServiceInfos
+ * @throws Exception Exception
  */
 public AffectationServiceInfos chercherAffectationServiceInfosCourantEquip(nc.mairie.technique.Transaction aTransaction, String inv,String date) throws Exception {
 	//return  (AffectationServiceInfos)executeSelect(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+inv+"' and dfin = '0001-01-01' and ddebut <= '"+date+"'");
@@ -48,14 +60,20 @@ public AffectationServiceInfos chercherAffectationServiceInfosCourantEquip(nc.ma
 
 /**
  * Retourne un AffectationServiceInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return AffectationServiceInfos
+ * @throws Exception Exception
  */
 public ArrayList<AffectationServiceInfos> chercherAffectationServiceInfosEquip(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return  executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+cle+"' with ur");
 }
 /**
  * Retourne un ArrayList d'objet métier : AffectationServiceInfos.
+ * @param aTransaction Transaction
+ * @param param param
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AffectationServiceInfos> chercherListAffectationServiceInfosEquip(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+param+"' order by ddebut desc,dfin with ur");
@@ -63,6 +81,7 @@ public ArrayList<AffectationServiceInfos> chercherListAffectationServiceInfosEqu
 
 /**
  * Constructeur AffectationServiceInfosBroker.
+ * @param aMetier BasicMetier
  */
 public AffectationServiceInfosBroker(AffectationServiceInfos aMetier) {
 	super(aMetier);

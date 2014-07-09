@@ -11,6 +11,9 @@ public class PM_Affecter_SceBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPM_Affecter_Sce(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -18,6 +21,9 @@ public boolean creerPM_Affecter_Sce(nc.mairie.technique.Transaction aTransaction
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierPM_Affecter_Sce(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -25,20 +31,31 @@ public boolean modifierPM_Affecter_Sce(nc.mairie.technique.Transaction aTransact
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerPM_Affecter_Sce(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : PM_Affecter_Sce.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PM_Affecter_Sce> listerPM_Affecter_Sce(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un PM_Affecter_Sce.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param servi servi
+ * @param date date
+ * @param dfin dfin
  * @return PM_Affecter_Sce
+ * @throws Exception Exception
  */
 
 public PM_Affecter_Sce chercherPM_Affecter_Sce(nc.mairie.technique.Transaction aTransaction, String inv, String servi,String date,String dfin) throws Exception {
@@ -55,6 +72,7 @@ public ArrayList<PM_Affecter_Sce> chercherListerPmAffecter_ServicePm(nc.mairie.t
 
 /**
  * Constructeur PM_Affecter_SceBroker.
+ * @param aMetier BasicMetier
  */
 public PM_Affecter_SceBroker(PM_Affecter_Sce aMetier) {
 	super(aMetier);

@@ -10,22 +10,33 @@ import nc.mairie.technique.BasicRecord;
 public class PePersoInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : PePersoInfos.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param tri tri
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PePersoInfos> listerPePersoInfosEquip(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeequip='"+inv+"' order by "+tri+"");
 }
 /**
  * Retourne un PePersoInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return PePersoInfos
+ * @throws Exception Exception
  */
 public PePersoInfos chercherPePersoInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (PePersoInfos)executeSelect(aTransaction,"select * from "+getTable()+" where codepep = "+cle+"");
 }
 /**
  * Retourne un ArrayList d'objet métier : PePersoInfos.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param tri tri
  * @return java.util.ArrayList
  * On fait un Tri selon le paramètre
+ * @throws Exception Exception
  */
 public ArrayList<PePersoInfos> listerPePersoInfosFait(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where datereal <> '0001-01-01' and codeequip='"+inv+"' order by "+tri+"");
@@ -33,8 +44,12 @@ public ArrayList<PePersoInfos> listerPePersoInfosFait(nc.mairie.technique.Transa
 
 /**
  * Retourne un ArrayList d'objet métier : PePersoInfos.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param tri tri
  * @return java.util.ArrayList
  * On fait un Tri selon le paramètre
+ * @throws Exception Exception
  */
 public ArrayList<PePersoInfos> listerPePersoInfosAFaire(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where datereal = '0001-01-01' and codeequip='"+inv+"' order by "+tri+"");
@@ -42,7 +57,10 @@ public ArrayList<PePersoInfos> listerPePersoInfosAFaire(nc.mairie.technique.Tran
 
 /**
  * Retourne un PePerso.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return PePerso
+ * @throws Exception Exception
  */
 public ArrayList<PePersoInfos> chercherPePersoInfosOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeot = "+numot);
@@ -59,8 +77,11 @@ public ArrayList<PePersoInfos> listerPePersoInfosOTEquip(nc.mairie.technique.Tra
 
 /**
  * Retourne un ArrayList d'objet métier : PePersoInfos.
+ * @param aTransaction Transaction
+ * @param inv inv
  * @return java.util.ArrayList
  * Liste les OT d'un équipement
+ * @throws Exception Exception
  */
 public ArrayList<PePersoInfos> listerPePersoInfosOTEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select distinct(codeot) from "+getTable());
@@ -68,6 +89,7 @@ public ArrayList<PePersoInfos> listerPePersoInfosOTEquip(nc.mairie.technique.Tra
 
 /**
  * Constructeur PePersoInfosBroker.
+ * @param aMetier BasicMetier
  */
 public PePersoInfosBroker(PePersoInfos aMetier) {
 	super(aMetier);

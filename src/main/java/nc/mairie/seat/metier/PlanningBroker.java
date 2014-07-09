@@ -11,7 +11,9 @@ import nc.mairie.technique.Services;
 public class PlanningBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : Planning.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Planning> listerPlanning(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
@@ -19,7 +21,10 @@ public ArrayList<Planning> listerPlanning(nc.mairie.technique.Transaction aTrans
 
 /**
  * Retourne un ArrayList d'objet métier : Planning.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return java.util.ArrayList
+ * @throws Exception Exception
  *//*
 public ArrayList<Planning> listerPlanningProp(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeot like 'T%'");
@@ -35,7 +40,9 @@ public Planning chercherPlanning(nc.mairie.technique.Transaction aTransaction, S
 
 /**
  * Retourne un Planning.
+ * @param aTransaction Transaction
  * @return Planning
+ * @throws Exception Exception
  */
 public ArrayList<Planning> chercherPlanningAFaire(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select distinct(numeroinventaire) from "+getTable()+" where codeot=0");
@@ -43,7 +50,10 @@ public ArrayList<Planning> chercherPlanningAFaire(nc.mairie.technique.Transactio
 
 /**
  * Retourne un Planning.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return Planning
+ * @throws Exception Exception
  */
 public ArrayList<Planning> chercherPlanningOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeot="+numot);
@@ -51,7 +61,10 @@ public ArrayList<Planning> chercherPlanningOT(nc.mairie.technique.Transaction aT
 
 /**
  * Retourne un Planning.
+ * @param aTransaction Transaction
+ * @param inv inv
  * @return Planning
+ * @throws Exception Exception
  */
 public ArrayList<Planning> chercherPlanningEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select distinct(codeot) from "+getTable()+" where numeroinventaire='"+inv+"'");
@@ -59,7 +72,10 @@ public ArrayList<Planning> chercherPlanningEquip(nc.mairie.technique.Transaction
 
 /**
  * Retourne un ArrayList d'objet métier : Planning.
+ * @param aTransaction Transaction
+ * @param dateFinPrev dateFinPrev
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Planning> listerPlanningAFaire(nc.mairie.technique.Transaction aTransaction,String dateFinPrev) throws Exception {
 	if((dateFinPrev==null)||(dateFinPrev.equals("01/01/0001"))){
@@ -71,7 +87,10 @@ public ArrayList<Planning> listerPlanningAFaire(nc.mairie.technique.Transaction 
 
 /**
  * Retourne un ArrayList d'objet métier : Planning.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Planning> listerPlanningEnCours(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	int codeot = 0;
@@ -85,7 +104,10 @@ public ArrayList<Planning> listerPlanningEnCours(nc.mairie.technique.Transaction
 
 /**
  * Retourne un ArrayList d'objet métier : Planning.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Planning> listerPlanningEnCoursAvecOTValideDifferentT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	int codeot = 0;
@@ -99,7 +121,10 @@ public ArrayList<Planning> listerPlanningEnCoursAvecOTValideDifferentT(nc.mairie
 
 /**
  * Retourne un ArrayList d'objet métier : Planning.
+ * @param aTransaction Transaction
+ * @param date date
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Planning> listerPlanningEnRetard(nc.mairie.technique.Transaction aTransaction,String date) throws Exception {
 	if(Services.estUneDate(date)){
@@ -111,6 +136,7 @@ public ArrayList<Planning> listerPlanningEnRetard(nc.mairie.technique.Transactio
 
 /**
  * Constructeur PlanningBroker.
+ * @param aMetier BasicMetier
  */
 public PlanningBroker(Planning aMetier) {
 	super(aMetier);

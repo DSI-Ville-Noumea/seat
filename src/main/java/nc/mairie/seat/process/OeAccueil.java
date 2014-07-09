@@ -56,6 +56,9 @@ public OeAccueil() {
  * Date de création : (28/04/05 13:36:04)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_GO() {
 	return "NOM_PB_GO";
 }
@@ -66,6 +69,9 @@ public java.lang.String getNOM_PB_GO() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (28/04/05 13:36:04)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_GO(javax.servlet.http.HttpServletRequest request) throws Exception {
 	
@@ -78,6 +84,9 @@ public boolean performPB_GO(javax.servlet.http.HttpServletRequest request) throw
  * Date de création : (28/04/05 13:37:04)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_ST_TEXTE_COUCOU() {
 	return "NOM_ST_TEXTE_COUCOU";
 }
@@ -86,6 +95,9 @@ public java.lang.String getNOM_ST_TEXTE_COUCOU() {
  * ST_TEXTE_COUCOU
  * Date de création : (28/04/05 13:37:04)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_ST_TEXTE_COUCOU() {
 	return getZone(getNOM_ST_TEXTE_COUCOU());
@@ -97,6 +109,9 @@ public java.lang.String getVAL_ST_TEXTE_COUCOU() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (02/05/05 08:49:48)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_PNEU(javax.servlet.http.HttpServletRequest request) throws Exception {
 	
@@ -110,6 +125,9 @@ public boolean performPB_PNEU(javax.servlet.http.HttpServletRequest request) thr
  * Date de création : (02/05/05 09:31:50)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_PNEU() {
 	return "NOM_PB_PNEU";
 }
@@ -121,6 +139,9 @@ public java.lang.String getNOM_PB_PNEU() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (02/05/05 09:33:22)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_BPC(javax.servlet.http.HttpServletRequest request) throws Exception {
 //	On met la variable activité
@@ -136,6 +157,9 @@ public boolean performPB_BPC(javax.servlet.http.HttpServletRequest request) thro
  * Date de création : (04/05/05 13:36:15)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_MARQUES() {
 	return "NOM_PB_MARQUES";
 }
@@ -146,6 +170,9 @@ public java.lang.String getNOM_PB_MARQUES() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (04/05/05 13:36:15)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_MARQUES(javax.servlet.http.HttpServletRequest request) throws Exception {
 	
@@ -159,6 +186,9 @@ public boolean performPB_MARQUES(javax.servlet.http.HttpServletRequest request) 
  * Date de création : (04/05/05 15:23:24)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_TYPEEQUIP() {
 	return "NOM_PB_TYPEEQUIP";
 }
@@ -169,6 +199,9 @@ public java.lang.String getNOM_PB_TYPEEQUIP() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (04/05/05 15:23:24)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_TYPEEQUIP(javax.servlet.http.HttpServletRequest request) throws Exception {
 	setStatut(STATUT_TYPEEQUIP,true);
@@ -186,6 +219,9 @@ public boolean performPB_MODELES(javax.servlet.http.HttpServletRequest request) 
  * PB_MODELES
  * Date de création : (09/05/05 13:35:10)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_PB_MODELES() {
 	return "NOM_PB_MODELES";
@@ -206,6 +242,9 @@ public java.lang.String getNOM_PB_MODELES() {
  * Date de création : (11/05/05 09:12:49)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_ENTRETIEN() {
 	return "NOM_PB_ENTRETIEN";
 }
@@ -216,6 +255,9 @@ public java.lang.String getNOM_PB_ENTRETIEN() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (11/05/05 09:12:49)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_ENTRETIEN(javax.servlet.http.HttpServletRequest request) throws Exception {
 	setStatut(STATUT_ENTRETIEN,true);
@@ -228,6 +270,9 @@ public boolean performPB_ENTRETIEN(javax.servlet.http.HttpServletRequest request
  * Date de création : (13/05/05 13:46:41)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_PIECES() {
 	return "NOM_PB_PIECES";
 }
@@ -238,6 +283,9 @@ public java.lang.String getNOM_PB_PIECES() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (13/05/05 13:46:41)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_PIECES(javax.servlet.http.HttpServletRequest request) throws Exception {
 	setStatut(STATUT_PIECES,true);
@@ -250,6 +298,9 @@ public boolean performPB_PIECES(javax.servlet.http.HttpServletRequest request) t
  * Date de création : (20/05/05 07:49:09)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_TINTERVALLE() {
 	return "NOM_PB_TINTERVALLE";
 }
@@ -258,6 +309,9 @@ public java.lang.String getNOM_PB_TINTERVALLE() {
  * PB_COMPTEUR
  * Date de création : (23/05/05 12:26:35)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_PB_COMPTEUR() {
 	return "NOM_PB_COMPTEUR";
@@ -269,6 +323,9 @@ public java.lang.String getNOM_PB_COMPTEUR() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (20/05/05 07:49:09)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_TINTERVALLE(javax.servlet.http.HttpServletRequest request) throws Exception {
 	setStatut(STATUT_TINTERVALLE,true);
@@ -281,6 +338,9 @@ public boolean performPB_TINTERVALLE(javax.servlet.http.HttpServletRequest reque
  * Date de création : (23/05/05 12:26:35)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_CARBURANT() {
 	return "NOM_PB_CARBURANT";
 }
@@ -291,6 +351,9 @@ public java.lang.String getNOM_PB_CARBURANT() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (23/05/05 12:26:35)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_CARBURANT(javax.servlet.http.HttpServletRequest request) throws Exception {
 	setStatut(STATUT_CARBURANT,true);
@@ -304,6 +367,9 @@ public boolean performPB_CARBURANT(javax.servlet.http.HttpServletRequest request
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (23/05/05 12:26:35)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_COMPTEUR(javax.servlet.http.HttpServletRequest request) throws Exception {
 	setStatut(STATUT_COMPTEUR,true);
@@ -316,6 +382,9 @@ public boolean performPB_COMPTEUR(javax.servlet.http.HttpServletRequest request)
  * Date de création : (25/05/05 07:21:18)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_EQUIPEMENT() {
 	return "NOM_PB_EQUIPEMENT";
 }
@@ -326,6 +395,9 @@ public java.lang.String getNOM_PB_EQUIPEMENT() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (25/05/05 07:21:18)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_EQUIPEMENT(javax.servlet.http.HttpServletRequest request) throws Exception {
 	setStatut(STATUT_EQUIPEMENT,true);
@@ -336,6 +408,9 @@ public boolean performPB_EQUIPEMENT(javax.servlet.http.HttpServletRequest reques
  * PB_BPC
  * Date de création : (30/05/05 09:25:09)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_PB_BPC() {
 	return "NOM_PB_BPC";
@@ -441,6 +516,7 @@ public String getJSP() {
  * PB_MODEPRISE
  * Date de création : (01/06/05 07:40:31)
  * @author : Générateur de process
+ * @return toto
  */
 public java.lang.String getNOM_PB_MODEPRISE() {
 	return "NOM_PB_MODEPRISE";
@@ -452,6 +528,9 @@ public java.lang.String getNOM_PB_MODEPRISE() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (01/06/05 07:40:31)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_MODEPRISE(javax.servlet.http.HttpServletRequest request) throws Exception {
 	setStatut(STATUT_MODEPRISE,true);

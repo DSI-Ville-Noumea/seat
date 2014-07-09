@@ -10,20 +10,26 @@ import nc.mairie.technique.BasicRecord;
 public class AgentsATMInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : AgentsATMInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AgentsATMInfos> listerAgentsATMInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by nom with ur");
 }
 /**
  * Retourne un AgentsATMInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return AgentsATMInfos
+ * @throws Exception Exception
  */
 public AgentsATMInfos chercherAgentsATMInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (AgentsATMInfos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+" with ur");
 }
 /**
  * Constructeur AgentsATMInfosBroker.
+ * @param aMetier BasicMetier
  */
 public AgentsATMInfosBroker(AgentsATMInfos aMetier) {
 	super(aMetier);

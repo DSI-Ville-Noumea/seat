@@ -10,14 +10,19 @@ import nc.mairie.technique.BasicRecord;
 public class PiecesOtInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : PiecesOtInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PiecesOtInfos> listerPiecesOtInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un PiecesOtInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return PiecesOtInfos
+ * @throws Exception Exception
  */
 public PiecesOtInfos chercherPiecesOtInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (PiecesOtInfos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+"");
@@ -25,7 +30,10 @@ public PiecesOtInfos chercherPiecesOtInfos(nc.mairie.technique.Transaction aTran
 
 /**
  * Retourne un ArrayList d'objet métier : PiecesOtInfos.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PiecesOtInfos> listerPiecesOtInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numot="+numot);
@@ -34,13 +42,17 @@ public ArrayList<PiecesOtInfos> listerPiecesOtInfosOT(nc.mairie.technique.Transa
 
 /**
  * Retourne un ArrayList d'objet métier : PiecesOtInfos.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public int cumuleMontantPiecesOtInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	return executeCompter(aTransaction,"select sum(quantite * prix) from "+getTable()+" where numot="+numot+" group by numot");
 }
 /**
  * Constructeur PiecesOtInfosBroker.
+ * @param aMetier BasicMetier
  */
 public PiecesOtInfosBroker(PiecesOtInfos aMetier) {
 	super(aMetier);

@@ -31,7 +31,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : PeBase.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PeBase> listerPeBase(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PeBase unPeBase = new PeBase();
@@ -39,7 +41,11 @@ public static ArrayList<PeBase> listerPeBase(nc.mairie.technique.Transaction aTr
 }
 /**
  * Retourne un PeBase.
+ * @param aTransaction Transaction
+ * @param mod mod
+ * @param ent ent
  * @return PeBase
+ * @throws Exception Exception
  */
 public static PeBase chercherPeBase(nc.mairie.technique.Transaction aTransaction, String mod,String ent) throws Exception{
 	PeBase unPeBase = new PeBase();
@@ -100,6 +106,12 @@ return true;
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unModele unModele
+ * @param unEntretien unEntretien
+ * @param unTIntervalle unTIntervalle
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPeBase(nc.mairie.technique.Transaction aTransaction,Modeles unModele,Entretien unEntretien,TIntervalle unTIntervalle)  throws Exception {
 	// on vérifie que les objets ne sont pas null
@@ -176,6 +188,12 @@ public boolean creerPeBase(nc.mairie.technique.Transaction aTransaction,Modeles 
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unModele unModele
+ * @param unEntretien unEntretien
+ * @param unTIntervalle unTIntervalle
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierPeBase(nc.mairie.technique.Transaction aTransaction,Modeles unModele,Entretien unEntretien,TIntervalle unTIntervalle) throws Exception {
 //	 on vérifie que les objets ne sont pas null
@@ -213,6 +231,9 @@ public boolean modifierPeBase(nc.mairie.technique.Transaction aTransaction,Model
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerPeBase(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'PeBase
@@ -222,7 +243,11 @@ public boolean supprimerPeBase(nc.mairie.technique.Transaction aTransaction) thr
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction Transaction
+ * @param mod mod
+ * @param ent ent
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existePeBase(nc.mairie.technique.Transaction aTransaction, String mod,String ent) throws Exception{
 	PeBase unPeBase = new PeBase();
@@ -232,11 +257,17 @@ public boolean existePeBase(nc.mairie.technique.Transaction aTransaction, String
 /**
  * Getter de l'attribut codetd.
  */
+/**
+ * @return String
+ */
 public String getCodetd() {
 	return codetd;
 }
 /**
  * Setter de l'attribut codetd.
+ */
+/**
+ * @param newCodetd newCodetd
  */
 public void setCodetd(String newCodetd) { 
 	codetd = newCodetd;
@@ -244,7 +275,10 @@ public void setCodetd(String newCodetd) {
 /**
  * Retourne un booléen.
  * Vérifie que le modèle existe avec des paramètres de clé étrangères
+ * @param aTransaction Transaction
+ * @param param param
  * @return PeBase
+ * @throws Exception Exception
  */
 public boolean existePeBaseModele(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	PeBase unPeBase = new PeBase();
@@ -257,7 +291,10 @@ public boolean existePeBaseTint(nc.mairie.technique.Transaction aTransaction, St
 
 /**
  * Retourne un ArrayList d'objet métier : PeBase.
+ * @param aTransaction Transaction
+ * @param mod mod
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PeBase> listerPeBaseModele(nc.mairie.technique.Transaction aTransaction,String mod) throws Exception{
 	PeBase unPeBase = new PeBase();
@@ -266,7 +303,10 @@ public static ArrayList<PeBase> listerPeBaseModele(nc.mairie.technique.Transacti
 
 /**
  * Retourne un ArrayList d'objet métier : PeBase.
+ * @param aTransaction Transaction
+ * @param mod mod
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PeBase> listerPeBaseModeleActif(nc.mairie.technique.Transaction aTransaction,String mod) throws Exception{
 	PeBase unPeBase = new PeBase();
@@ -282,11 +322,17 @@ public PeBase() {
 /**
  * Getter de l'attribut codemodele.
  */
+/**
+ * @return String
+ */
 public String getCodemodele() {
 	return codemodele;
 }
 /**
  * Setter de l'attribut codemodele.
+ */
+/**
+ * @param newCodemodele newCodemodele
  */
 public void setCodemodele(String newCodemodele) { 
 	codemodele = newCodemodele;
@@ -294,11 +340,17 @@ public void setCodemodele(String newCodemodele) {
 /**
  * Getter de l'attribut codeentretien.
  */
+/**
+ * @return String
+ */
 public String getCodeentretien() {
 	return codeentretien;
 }
 /**
  * Setter de l'attribut codeentretien.
+ */
+/**
+ * @param newCodeentretien newCodeentretien
  */
 public void setCodeentretien(String newCodeentretien) { 
 	codeentretien = newCodeentretien;
@@ -306,11 +358,17 @@ public void setCodeentretien(String newCodeentretien) {
 /**
  * Getter de l'attribut codeti.
  */
+/**
+ * @return String
+ */
 public String getCodeti() {
 	return codeti;
 }
 /**
  * Setter de l'attribut codeti.
+ */
+/**
+ * @param newCodeti newCodeti
  */
 public void setCodeti(String newCodeti) { 
 	codeti = newCodeti;
@@ -318,11 +376,17 @@ public void setCodeti(String newCodeti) {
 /**
  * Getter de l'attribut intervalle.
  */
+/**
+ * @return String
+ */
 public String getIntervalle() {
 	return intervalle;
 }
 /**
  * Setter de l'attribut intervalle.
+ */
+/**
+ * @param newIntervalle newIntervalle
  */
 public void setIntervalle(String newIntervalle) { 
 	intervalle = newIntervalle;
@@ -330,11 +394,17 @@ public void setIntervalle(String newIntervalle) {
 /**
  * Getter de l'attribut duree.
  */
+/**
+ * @return String
+ */
 public String getDuree() {
 	return duree;
 }
 /**
  * Setter de l'attribut duree.
+ */
+/**
+ * @param newDuree newDuree
  */
 public void setDuree(String newDuree) { 
 	duree = newDuree;
@@ -342,11 +412,17 @@ public void setDuree(String newDuree) {
 /**
  * Getter de l'attribut commentaire.
  */
+/**
+ * @return String
+ */
 public String getCommentaire() {
 	return commentaire;
 }
 /**
  * Setter de l'attribut commentaire.
+ */
+/**
+ * @param newCommentaire newCommentaire
  */
 public void setCommentaire(String newCommentaire) { 
 	commentaire = newCommentaire;
@@ -354,11 +430,17 @@ public void setCommentaire(String newCommentaire) {
 /**
  * Getter de l'attribut desactive.
  */
+/**
+ * @return String
+ */
 public String getDesactive() {
 	return desactive;
 }
 /**
  * Setter de l'attribut desactive.
+ */
+/**
+ * @param newDesactive newDesactive
  */
 public void setDesactive(String newDesactive) { 
 	desactive = newDesactive;
@@ -366,11 +448,17 @@ public void setDesactive(String newDesactive) {
 /**
  * Getter de l'attribut datedesactivation.
  */
+/**
+ * @return String
+ */
 public String getDatedesactivation() {
 	return datedesactivation;
 }
 /**
  * Setter de l'attribut datedesactivation.
+ */
+/**
+ * @param newDatedesactivation newDatedesactivation
  */
 public void setDatedesactivation(String newDatedesactivation) { 
 	datedesactivation = newDatedesactivation;
@@ -384,6 +472,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PeBaseBroker getMyPeBaseBroker() {
 	return (PeBaseBroker)getMyBasicBroker();

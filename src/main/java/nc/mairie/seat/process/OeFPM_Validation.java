@@ -73,6 +73,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 
 /**
  * Init de la liste des équipements 
+ * @throws Exception Exception
  * 
  */
 public void initialiseListeEquipements() throws Exception{
@@ -199,6 +200,9 @@ public OeFPM_Validation() {
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_AJOUTER() {
 	return "NOM_PB_AJOUTER";
 }
@@ -209,6 +213,9 @@ public java.lang.String getNOM_PB_AJOUTER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_AJOUTER(javax.servlet.http.HttpServletRequest request) throws Exception {
 //	 on ajoute FPM dans la liste à valider
@@ -232,6 +239,9 @@ public boolean performPB_AJOUTER(javax.servlet.http.HttpServletRequest request) 
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_ANNULER() {
 	return "NOM_PB_ANNULER";
 }
@@ -242,6 +252,9 @@ public java.lang.String getNOM_PB_ANNULER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	setStatut(STATUT_PROCESS_APPELANT);
@@ -253,6 +266,9 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_ENLEVER() {
 	return "NOM_PB_ENLEVER";
 }
@@ -263,6 +279,9 @@ public java.lang.String getNOM_PB_ENLEVER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_ENLEVER(javax.servlet.http.HttpServletRequest request) throws Exception {
 //	 on ajoute l'entretien à faire dans la liste des FPM en cours 
@@ -286,6 +305,9 @@ public boolean performPB_ENLEVER(javax.servlet.http.HttpServletRequest request) 
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_VALIDER() {
 	return "NOM_PB_VALIDER";
 }
@@ -296,6 +318,9 @@ public java.lang.String getNOM_PB_VALIDER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	// on valide toutes les fiches d'entretiens qui ont été sélectionnées
@@ -349,6 +374,9 @@ private void setLB_FPMAVALIDER(java.lang.String[] newLB_FPMAVALIDER) {
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_LB_FPMAVALIDER() {
 	return "NOM_LB_FPMAVALIDER";
 	
@@ -358,6 +386,9 @@ public java.lang.String getNOM_LB_FPMAVALIDER() {
  * NOM_LB_FPMAVALIDER_SELECT
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_LB_FPMAVALIDER_SELECT() {
 	return "NOM_LB_FPMAVALIDER_SELECT";
@@ -369,6 +400,9 @@ public java.lang.String getNOM_LB_FPMAVALIDER_SELECT() {
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String [] getVAL_LB_FPMAVALIDER() {
 	return getLB_FPMAVALIDER();
 }
@@ -378,6 +412,9 @@ public java.lang.String [] getVAL_LB_FPMAVALIDER() {
  * LB_FPMAVALIDER
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_LB_FPMAVALIDER_SELECT() {
 	return getZone(getNOM_LB_FPMAVALIDER_SELECT());
@@ -408,6 +445,9 @@ private void setLB_FPMENCOURS(java.lang.String[] newLB_FPMENCOURS) {
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_LB_FPMENCOURS() {
 	return "NOM_LB_FPMENCOURS";
 }
@@ -416,6 +456,9 @@ public java.lang.String getNOM_LB_FPMENCOURS() {
  * NOM_LB_FPMENCOURS_SELECT
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_LB_FPMENCOURS_SELECT() {
 	return "NOM_LB_FPMENCOURS_SELECT";
@@ -427,6 +470,9 @@ public java.lang.String getNOM_LB_FPMENCOURS_SELECT() {
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String [] getVAL_LB_FPMENCOURS() {
 	return getLB_FPMENCOURS();
 }
@@ -436,6 +482,9 @@ public java.lang.String [] getVAL_LB_FPMENCOURS() {
  * LB_FPMENCOURS
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_LB_FPMENCOURS_SELECT() {
 	return getZone(getNOM_LB_FPMENCOURS_SELECT());
@@ -477,6 +526,9 @@ public void setestEnregistre(boolean estEnregistre) {
  * Date de création : (03/08/05 07:50:43)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_OK_VALIDATION() {
 	return "NOM_PB_OK_VALIDATION";
 }
@@ -487,6 +539,9 @@ public java.lang.String getNOM_PB_OK_VALIDATION() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (03/08/05 07:50:43)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 //retour à l'écran d'origine
 public boolean performPB_OK_VALIDATION(javax.servlet.http.HttpServletRequest request) throws Exception {
@@ -510,6 +565,9 @@ public boolean performPB_OK_VALIDATION(javax.servlet.http.HttpServletRequest req
  * Date de création : (23/08/05 08:57:12)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_ST_COMPTEUR() {
 	return "NOM_ST_COMPTEUR";
 }
@@ -519,6 +577,9 @@ public java.lang.String getNOM_ST_COMPTEUR() {
  * Date de création : (23/08/05 08:57:12)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getVAL_ST_COMPTEUR() {
 	return getZone(getNOM_ST_COMPTEUR());
 }
@@ -527,6 +588,9 @@ public java.lang.String getVAL_ST_COMPTEUR() {
  * PB_MODIFIER
  * Date de création : (03/04/07 08:57:36)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_PB_MODIFIER() {
 	return "NOM_PB_MODIFIER";
@@ -538,6 +602,9 @@ public java.lang.String getNOM_PB_MODIFIER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (03/04/07 08:57:36)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_MODIFIER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	int indice  = (Services.estNumerique(getVAL_LB_FPMENCOURS_SELECT()) ? Integer.parseInt(getVAL_LB_FPMENCOURS_SELECT()): -1);
@@ -570,6 +637,9 @@ public boolean performPB_MODIFIER(javax.servlet.http.HttpServletRequest request)
  * Date de création : (03/04/07 08:57:36)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_VISUALISER() {
 	return "NOM_PB_VISUALISER";
 }
@@ -580,6 +650,9 @@ public java.lang.String getNOM_PB_VISUALISER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (03/04/07 08:57:36)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_VISUALISER(javax.servlet.http.HttpServletRequest request) throws Exception {
 //	 on envoie FPM sélectionné

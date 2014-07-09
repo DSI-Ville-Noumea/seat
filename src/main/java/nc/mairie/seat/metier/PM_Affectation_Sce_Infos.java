@@ -30,6 +30,7 @@ public class PM_Affectation_Sce_Infos extends BasicMetier {
 	public String typete;
 /**
  * Getter de l'attribut codefre.
+ * @return String
  */
 public String getCodefre() {
 	return codefre;
@@ -37,11 +38,15 @@ public String getCodefre() {
 /**
  * Setter de l'attribut codefre.
  */
+/**
+ * @param newCodefre newCodefre
+ */
 public void setCodefre(String newCodefre) { 
 	codefre = newCodefre;
 }
 /**
  * Getter de l'attribut dgarantie.
+ * @return String
  */
 public String getDgarantie() {
 	return dgarantie;
@@ -49,11 +54,15 @@ public String getDgarantie() {
 /**
  * Setter de l'attribut dgarantie.
  */
+/**
+ * @param newDgarantie newDgarantie
+ */
 public void setDgarantie(String newDgarantie) { 
 	dgarantie = newDgarantie;
 }
 /**
  * Getter de l'attribut dachat.
+ * @return String
  */
 public String getDachat() {
 	return dachat;
@@ -61,11 +70,15 @@ public String getDachat() {
 /**
  * Setter de l'attribut dachat.
  */
+/**
+ * @param newDachat newDachat
+ */
 public void setDachat(String newDachat) { 
 	dachat = newDachat;
 }
 /**
  * Getter de l'attribut prix.
+ * @return String
  */
 public String getPrix() {
 	return prix;
@@ -73,11 +86,15 @@ public String getPrix() {
 /**
  * Setter de l'attribut prix.
  */
+/**
+ * @param newPrix newPrix
+ */
 public void setPrix(String newPrix) { 
 	prix = newPrix;
 }
 /**
  * Getter de l'attribut dmhs.
+ * @return String
  */
 public String getDmhs() {
 	return dmhs;
@@ -85,17 +102,24 @@ public String getDmhs() {
 /**
  * Setter de l'attribut dmhs.
  */
+/**
+ * @param newDmhs newDmhs
+ */
 public void setDmhs(String newDmhs) { 
 	dmhs = newDmhs;
 }
 /**
  * Getter de l'attribut reserve.
+ * @return String
  */
 public String getReserve() {
 	return reserve;
 }
 /**
  * Setter de l'attribut reserve.
+ */
+/**
+ * @param newReserve newReserve
  */
 public void setReserve(String newReserve) { 
 	reserve = newReserve;
@@ -112,7 +136,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : PM_Affectation_Sce_Infos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PM_Affectation_Sce_Infos> listerPM_Affectation_Sce_Infos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PM_Affectation_Sce_Infos unPM_Affectation_Sce_Infos = new PM_Affectation_Sce_Infos();
@@ -120,7 +146,10 @@ public static ArrayList<PM_Affectation_Sce_Infos> listerPM_Affectation_Sce_Infos
 }
 /**
  * Retourne un PM_Affectation_Sce_Infos.
+ * @param aTransaction Transaction
+ * @param code code
  * @return PM_Affectation_Sce_Infos
+ * @throws Exception Exception
  */
 public static PM_Affectation_Sce_Infos chercherPM_Affectation_Sce_Infos(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	PM_Affectation_Sce_Infos unPM_Affectation_Sce_Infos = new PM_Affectation_Sce_Infos();
@@ -175,6 +204,7 @@ public PM_Affectation_Sce_Infos() {
 }
 /**
  * Getter de l'attribut pminv.
+ * @return String
  */
 public String getPminv() {
 	return pminv;
@@ -182,11 +212,15 @@ public String getPminv() {
 /**
  * Setter de l'attribut pminv.
  */
+/**
+ * @param newPminv newPminv
+ */
 public void setPminv(String newPminv) { 
 	pminv = newPminv;
 }
 /**
  * Getter de l'attribut pmserie.
+ * @return String
  */
 public String getPmserie() {
 	return pmserie;
@@ -194,11 +228,15 @@ public String getPmserie() {
 /**
  * Setter de l'attribut pmserie.
  */
+/**
+ * @param newPmserie newPmserie
+ */
 public void setPmserie(String newPmserie) { 
 	pmserie = newPmserie;
 }
 /**
  * Getter de l'attribut dmes.
+ * @return String
  */
 public String getDmes() {
 	return dmes;
@@ -206,11 +244,15 @@ public String getDmes() {
 /**
  * Setter de l'attribut dmes.
  */
+/**
+ * @param newDmes newDmes
+ */
 public void setDmes(String newDmes) { 
 	dmes = newDmes;
 }
 /**
  * Getter de l'attribut codemodele.
+ * @return String
  */
 public String getCodemodele() {
 	return codemodele;
@@ -218,11 +260,15 @@ public String getCodemodele() {
 /**
  * Setter de l'attribut codemodele.
  */
+/**
+ * @param newCodemodele newCodemodele
+ */
 public void setCodemodele(String newCodemodele) { 
 	codemodele = newCodemodele;
 }
 /**
  * Getter de l'attribut designationmodele.
+ * @return String
  */
 public String getDesignationmodele() {
 	return designationmodele;
@@ -230,11 +276,15 @@ public String getDesignationmodele() {
 /**
  * Setter de l'attribut designationmodele.
  */
+/**
+ * @param newDesignationmodele newDesignationmodele
+ */
 public void setDesignationmodele(String newDesignationmodele) { 
 	designationmodele = newDesignationmodele;
 }
 /**
  * Getter de l'attribut designationmarque.
+ * @return String
  */
 public String getDesignationmarque() {
 	return designationmarque;
@@ -242,11 +292,15 @@ public String getDesignationmarque() {
 /**
  * Setter de l'attribut designationmarque.
  */
+/**
+ * @param newDesignationmarque newDesignationmarque
+ */
 public void setDesignationmarque(String newDesignationmarque) { 
 	designationmarque = newDesignationmarque;
 }
 /**
  * Getter de l'attribut codemarque.
+ * @return String
  */
 public String getCodemarque() {
 	return codemarque;
@@ -254,11 +308,15 @@ public String getCodemarque() {
 /**
  * Setter de l'attribut codemarque.
  */
+/**
+ * @param newCodemarque newCodemarque
+ */
 public void setCodemarque(String newCodemarque) { 
 	codemarque = newCodemarque;
 }
 /**
  * Getter de l'attribut codete.
+ * @return String
  */
 public String getCodete() {
 	return codete;
@@ -266,11 +324,15 @@ public String getCodete() {
 /**
  * Setter de l'attribut codete.
  */
+/**
+ * @param newCodete newCodete
+ */
 public void setCodete(String newCodete) { 
 	codete = newCodete;
 }
 /**
  * Getter de l'attribut designationtypeequip.
+ * @return String
  */
 public String getDesignationtypeequip() {
 	return designationtypeequip;
@@ -278,11 +340,15 @@ public String getDesignationtypeequip() {
 /**
  * Setter de l'attribut designationtypeequip.
  */
+/**
+ * @param newDesignationtypeequip newDesignationtypeequip
+ */
 public void setDesignationtypeequip(String newDesignationtypeequip) { 
 	designationtypeequip = newDesignationtypeequip;
 }
 /**
  * Getter de l'attribut typete.
+ * @return String
  */
 public String getTypete() {
 	return typete;
@@ -290,11 +356,15 @@ public String getTypete() {
 /**
  * Setter de l'attribut typete.
  */
+/**
+ * @param newTypete newTypete
+ */
 public void setTypete(String newTypete) { 
 	typete = newTypete;
 }
 /**
  * Getter de l'attribut siserv.
+ * @return String
  */
 public String getSiserv() {
 	return siserv;
@@ -302,11 +372,15 @@ public String getSiserv() {
 /**
  * Setter de l'attribut siserv.
  */
+/**
+ * @param newSiserv newSiserv
+ */
 public void setSiserv(String newSiserv) { 
 	siserv = newSiserv;
 }
 /**
  * Getter de l'attribut ddebut.
+ * @return String
  */
 public String getDdebut() {
 	return ddebut;
@@ -314,11 +388,15 @@ public String getDdebut() {
 /**
  * Setter de l'attribut ddebut.
  */
+/**
+ * @param newDdebut newDdebut
+ */
 public void setDdebut(String newDdebut) { 
 	ddebut = newDdebut;
 }
 /**
  * Getter de l'attribut dfin.
+ * @return String
  */
 public String getDfin() {
 	return dfin;
@@ -326,17 +404,24 @@ public String getDfin() {
 /**
  * Setter de l'attribut dfin.
  */
+/**
+ * @param newDfin newDfin
+ */
 public void setDfin(String newDfin) { 
 	dfin = newDfin;
 }
 /**
  * Getter de l'attribut nomatr.
+ * @return String
  */
 public String getNomatr() {
 	return nomatr;
 }
 /**
  * Setter de l'attribut nomatr.
+ */
+/**
+ * @param newNomatr newNomatr
  */
 public void setNomatr(String newNomatr) { 
 	nomatr = newNomatr;
@@ -350,6 +435,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PM_Affectation_Sce_InfosBroker getMyPM_Affectation_Sce_InfosBroker() {
 	return (PM_Affectation_Sce_InfosBroker)getMyBasicBroker();

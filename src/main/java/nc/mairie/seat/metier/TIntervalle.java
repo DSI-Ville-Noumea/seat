@@ -22,7 +22,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : TIntervalle.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<TIntervalle> listerTIntervalle(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	TIntervalle unTIntervalle = new TIntervalle();
@@ -30,7 +32,10 @@ public static ArrayList<TIntervalle> listerTIntervalle(nc.mairie.technique.Trans
 }
 /**
  * Retourne un TIntervalle.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return TIntervalle
+ * @throws Exception Exception
  */
 public static TIntervalle chercherTIntervalle(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	TIntervalle unTIntervalle = new TIntervalle();
@@ -39,6 +44,10 @@ public static TIntervalle chercherTIntervalle(nc.mairie.technique.Transaction aT
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerTIntervalle(nc.mairie.technique.Transaction aTransaction,String param)  throws Exception {
 	if(!existeTIntervalle(aTransaction,param)){
@@ -55,6 +64,10 @@ public boolean creerTIntervalle(nc.mairie.technique.Transaction aTransaction,Str
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierTIntervalle(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	if(!existeTIntervalle(aTransaction,param)){
@@ -68,6 +81,9 @@ public boolean modifierTIntervalle(nc.mairie.technique.Transaction aTransaction,
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerTIntervalle(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	// si déjà utilisé pas de suppression
@@ -108,6 +124,7 @@ public TIntervalle() {
 }
 /**
  * Getter de l'attribut codeti.
+ * @return String
  */
 public String getCodeti() {
 	return codeti;
@@ -115,17 +132,24 @@ public String getCodeti() {
 /**
  * Setter de l'attribut codeti.
  */
+/**
+ * @param newCodeti newCodeti
+ */
 public void setCodeti(String newCodeti) { 
 	codeti = newCodeti;
 }
 /**
  * Getter de l'attribut designation.
+ * @return String
  */
 public String getDesignation() {
 	return designation;
 }
 /**
  * Setter de l'attribut designation.
+ */
+/**
+ * @param newDesignation newDesignation
  */
 public void setDesignation(String newDesignation) { 
 	designation = newDesignation;
@@ -139,6 +163,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected TIntervalleBroker getMyTIntervalleBroker() {
 	return (TIntervalleBroker)getMyBasicBroker();
@@ -147,7 +172,10 @@ protected TIntervalleBroker getMyTIntervalleBroker() {
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction aTransaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeTIntervalle(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	TIntervalle unTIntervalle = new TIntervalle();

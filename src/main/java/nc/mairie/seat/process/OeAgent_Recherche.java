@@ -127,6 +127,9 @@ public OeAgent_Recherche() {
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_AGENT() {
 	return "NOM_PB_AGENT";
 }
@@ -137,6 +140,9 @@ public java.lang.String getNOM_PB_AGENT() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_AGENT(javax.servlet.http.HttpServletRequest request) throws Exception {
 	//setLB_AGENT(LBVide);
@@ -194,6 +200,9 @@ public boolean performPB_AGENT(javax.servlet.http.HttpServletRequest request) th
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_SERVICE() {
 	return "NOM_PB_SERVICE";
 }
@@ -204,6 +213,9 @@ public java.lang.String getNOM_PB_SERVICE() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_SERVICE(javax.servlet.http.HttpServletRequest request) throws Exception {
 	
@@ -215,6 +227,9 @@ public boolean performPB_SERVICE(javax.servlet.http.HttpServletRequest request) 
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_EF_AGENT() {
 	return "NOM_EF_AGENT";
 }
@@ -223,6 +238,9 @@ public java.lang.String getNOM_EF_AGENT() {
  * EF_AGENT
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_EF_AGENT() {
 	return getZone(getNOM_EF_AGENT());
@@ -233,6 +251,9 @@ public java.lang.String getVAL_EF_AGENT() {
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_EF_SERVICE() {
 	return "NOM_EF_SERVICE";
 }
@@ -241,6 +262,9 @@ public java.lang.String getNOM_EF_SERVICE() {
  * EF_SERVICE
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_EF_SERVICE() {
 	return getZone(getNOM_EF_SERVICE());
@@ -271,6 +295,9 @@ private void setLB_AGENT(java.lang.String[] newLB_AGENT) {
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_LB_AGENT() {
 	return "NOM_LB_AGENT";
 }
@@ -279,6 +306,9 @@ public java.lang.String getNOM_LB_AGENT() {
  * NOM_LB_AGENT_SELECT
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_LB_AGENT_SELECT() {
 	return "NOM_LB_AGENT_SELECT";
@@ -290,6 +320,9 @@ public java.lang.String getNOM_LB_AGENT_SELECT() {
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String [] getVAL_LB_AGENT() {
 	return getLB_AGENT();
 }
@@ -299,6 +332,9 @@ public java.lang.String [] getVAL_LB_AGENT() {
  * LB_AGENT
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_LB_AGENT_SELECT() {
 	return getZone(getNOM_LB_AGENT_SELECT());
@@ -320,6 +356,9 @@ private String [] getLB_SERVICE() {
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_LB_SERVICE() {
 	return "NOM_LB_SERVICE";
 }
@@ -328,6 +367,9 @@ public java.lang.String getNOM_LB_SERVICE() {
  * NOM_LB_SERVICE_SELECT
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_LB_SERVICE_SELECT() {
 	return "NOM_LB_SERVICE_SELECT";
@@ -339,6 +381,9 @@ public java.lang.String getNOM_LB_SERVICE_SELECT() {
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String [] getVAL_LB_SERVICE() {
 	return getLB_SERVICE();
 }
@@ -349,6 +394,9 @@ public java.lang.String [] getVAL_LB_SERVICE() {
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getVAL_LB_SERVICE_SELECT() {
 	return getZone(getNOM_LB_SERVICE_SELECT());
 }
@@ -357,6 +405,9 @@ public java.lang.String getVAL_LB_SERVICE_SELECT() {
  * PB_VALIDER
  * Date de création : (05/04/07 12:08:13)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
 	return "NOM_PB_VALIDER";
@@ -368,6 +419,9 @@ public java.lang.String getNOM_PB_VALIDER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (05/04/07 12:08:13)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	// on récupère l'agent
@@ -509,6 +563,9 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * Date de création : (05/04/07 12:10:38)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_ANNULER() {
 	return "NOM_PB_ANNULER";
 }
@@ -519,6 +576,9 @@ public java.lang.String getNOM_PB_ANNULER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (05/04/07 12:10:38)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	setStatut(STATUT_PROCESS_APPELANT);
@@ -530,6 +590,9 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * Date de création : (05/04/07 13:12:45)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_RECHERCHE() {
 	return "NOM_PB_RECHERCHE";
 }
@@ -540,6 +603,9 @@ public java.lang.String getNOM_PB_RECHERCHE() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (05/04/07 13:12:45)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request) throws Exception {
 	if(!getZone(getNOM_EF_SERVICE()).equals("")){
@@ -587,7 +653,7 @@ public ArrayList<AgentInterface> getListAgents() {
 	return listAgents;
 }
 /**
- * @param listeAffectation listeAffectation à définir.
+ * @param listAgents listAgents à définir.
  */
 public void setListAgents(ArrayList<AgentInterface> listAgents) {
 	this.listAgents = listAgents;

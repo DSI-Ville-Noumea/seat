@@ -11,6 +11,9 @@ public class EntretienBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerEntretien(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -18,6 +21,9 @@ public boolean creerEntretien(nc.mairie.technique.Transaction aTransaction)  thr
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierEntretien(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -25,20 +31,28 @@ public boolean modifierEntretien(nc.mairie.technique.Transaction aTransaction) t
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerEntretien(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : Entretien.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Entretien> listerEntretien(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by libelleentretien");
 }
 /**
  * Retourne un Entretien.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return Entretien
+ * @throws Exception Exception
  */
 public Entretien chercherEntretien(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (Entretien)executeSelect(aTransaction,"select * from "+getTable()+" where CODEENTRETIEN = "+cle+"");
@@ -56,6 +70,7 @@ public int nouvEntretien(nc.mairie.technique.Transaction aTransaction) throws Ex
 
 /**
  * Constructeur EntretienBroker.
+ * @param aMetier BasicMetier
  */
 public EntretienBroker(Entretien aMetier) {
 	super(aMetier);
@@ -94,7 +109,10 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 /**
  * Retourne un booléen.
  * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeEntretien(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where upper(libelleentretien) = '"+param.toUpperCase()+"'");

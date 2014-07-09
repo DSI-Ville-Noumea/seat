@@ -138,6 +138,9 @@ public String getJSP() {
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_ANNULER() {
 	return "NOM_PB_ANNULER";
 }
@@ -148,6 +151,9 @@ public java.lang.String getNOM_PB_ANNULER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	setPMatInfosCourant(null);
@@ -162,6 +168,9 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_OK() {
 	return "NOM_PB_OK";
 }
@@ -172,6 +181,9 @@ public java.lang.String getNOM_PB_OK() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String param = getZone(getNOM_EF_DESIGNATION());
@@ -197,6 +209,9 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_OK_EQUIPEMENT() {
 	return "NOM_PB_OK_EQUIPEMENT";
 }
@@ -207,6 +222,9 @@ public java.lang.String getNOM_PB_OK_EQUIPEMENT() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_OK_EQUIPEMENT(javax.servlet.http.HttpServletRequest request) throws Exception {
 //	Récup de l'indice sélectionné
@@ -235,6 +253,9 @@ public boolean performPB_OK_EQUIPEMENT(javax.servlet.http.HttpServletRequest req
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_VALIDER() {
 	return "NOM_PB_VALIDER";
 }
@@ -245,6 +266,9 @@ public java.lang.String getNOM_PB_VALIDER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) throws Exception {
 //	Récup de l'indice sélectionné
@@ -272,6 +296,9 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_EF_DESIGNATION() {
 	return "NOM_EF_DESIGNATION";
 }
@@ -280,6 +307,9 @@ public java.lang.String getNOM_EF_DESIGNATION() {
  * EF_DESIGNATION
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_EF_DESIGNATION() {
 	return getZone(getNOM_EF_DESIGNATION());
@@ -310,6 +340,9 @@ private void setLB_FPM(java.lang.String[] newLB_FPM) {
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_LB_FPM() {
 	return "NOM_LB_FPM";
 }
@@ -318,6 +351,9 @@ public java.lang.String getNOM_LB_FPM() {
  * NOM_LB_BPC_SELECT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_LB_FPM_SELECT() {
 	return "NOM_LB_FPM_SELECT";
@@ -329,6 +365,9 @@ public java.lang.String getNOM_LB_FPM_SELECT() {
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String [] getVAL_LB_FPM() {
 	return getLB_FPM();
 }
@@ -338,6 +377,9 @@ public java.lang.String [] getVAL_LB_FPM() {
  * LB_BPC
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_LB_FPM_SELECT() {
 	return getZone(getNOM_LB_FPM_SELECT());
@@ -368,6 +410,9 @@ private void setLB_PMATERIEL(java.lang.String[] newLB_PMATERIEL) {
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_LB_PMATERIEL() {
 	return "NOM_LB_PMATERIEL";
 }
@@ -376,6 +421,9 @@ public java.lang.String getNOM_LB_PMATERIEL() {
  * NOM_LB_EQUIPEMENT_SELECT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_LB_PMATERIEL_SELECT() {
 	return "NOM_LB_PMATERIEL_SELECT";
@@ -387,6 +435,9 @@ public java.lang.String getNOM_LB_PMATERIEL_SELECT() {
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String [] getVAL_LB_PMATERIEL() {
 	return getLB_PMATERIEL();
 }
@@ -396,6 +447,9 @@ public java.lang.String [] getVAL_LB_PMATERIEL() {
  * LB_EQUIPEMENT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_LB_PMATERIEL_SELECT() {
 	return getZone(getNOM_LB_PMATERIEL_SELECT());
@@ -416,7 +470,8 @@ public void setFocus(String focus) {
 	this.focus = focus;
 }
 /**
- * @param focus focus à définir.
+ * focus focus à définir.
+ * @return focus
  */
 public String getDefaultFocus() {
 	return getNOM_EF_DESIGNATION();
@@ -428,7 +483,7 @@ public String getDefaultFocus() {
 		return fpmCourant;
 	}
 	/**
-	 * @param bpcInfosCourant bpcInfosCourant à définir.
+	 * @param fpmCourant fpmCourant à définir.
 	 */
 	public void setFpmCourant(FPM fpmCourant) {
 		this.fpmCourant = fpmCourant;
@@ -440,7 +495,7 @@ public String getDefaultFocus() {
 		return pMatInfosCourant;
 	}
 	/**
-	 * @param equipementInfosCourant equipementInfosCourant à définir.
+	 * @param pMatInfosCourant pMatInfosCourant à définir.
 	 */
 	public void setPMatInfosCourant(PMatInfos pMatInfosCourant) {
 		this.pMatInfosCourant = pMatInfosCourant;
@@ -453,7 +508,7 @@ public String getDefaultFocus() {
 		return listePMatInfos;
 	}
 	/**
-	 * @param listeEquipementInfos listeEquipementInfos à définir.
+	 * @param listePMatInfos listePMatInfos à définir.
 	 */
 	public void setListePMatInfos(ArrayList<PMatInfos> listePMatInfos) {
 		this.listePMatInfos = listePMatInfos;
@@ -465,7 +520,7 @@ public String getDefaultFocus() {
 		return listeFPM;
 	}
 	/**
-	 * @param listeBPC listeBPC à définir.
+	 * @param listeFPM listeFPM à définir.
 	 */
 	public void setListeFPM(ArrayList<FPM> listeFPM) {
 		this.listeFPM = listeFPM;

@@ -10,6 +10,7 @@ import nc.mairie.technique.BasicRecord;
 public class TypeEntretienBroker extends BasicBroker {
 /**
  * Constructeur TypeEntretienBroker.
+ * @param aMetier BasicMetier
  */
 public TypeEntretienBroker(TypeEntretien aMetier) {
 	super(aMetier);
@@ -47,6 +48,9 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerTypeEntretien(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -54,6 +58,9 @@ public boolean creerTypeEntretien(nc.mairie.technique.Transaction aTransaction) 
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierTypeEntretien(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -61,20 +68,28 @@ public boolean modifierTypeEntretien(nc.mairie.technique.Transaction aTransactio
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerTypeEntretien(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : TypeEntretien.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<TypeEntretien> listerTypeEntretien(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un TypeEntretien.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return TypeEntretien
+ * @throws Exception Exception
  */
 public TypeEntretien chercherTypeEntretien(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (TypeEntretien)executeSelect(aTransaction,"select * from "+getTable()+" where codetypeent = "+cle+"");
@@ -82,7 +97,10 @@ public TypeEntretien chercherTypeEntretien(nc.mairie.technique.Transaction aTran
 /**
  * Retourne un booléen.
  * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeTEntretien(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where upper(designationtypeent) = '"+param.toUpperCase()+"'");

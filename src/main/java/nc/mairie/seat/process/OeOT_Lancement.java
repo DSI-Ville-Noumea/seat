@@ -90,6 +90,9 @@ public OeOT_Lancement() {
  * Date de création : (19/07/05 14:46:20)
  * on supprime tous les OT créés (dans la liste) et on retourne à la fenêtre de lancement
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	// on supprime les ot créer
@@ -168,6 +171,7 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * PB_OK_OT
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_OK_OT() {
 	return "NOM_PB_OK_OT";
@@ -179,6 +183,9 @@ public java.lang.String getNOM_PB_OK_OT() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_OK_OT(javax.servlet.http.HttpServletRequest request) throws Exception {
 	int numligne = (Services.estNumerique(getZone(getNOM_LB_OT_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_OT_SELECT())) : -1);
@@ -204,6 +211,7 @@ public boolean performPB_OK_OT(javax.servlet.http.HttpServletRequest request) th
  * PB_VALIDER
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
 	return "NOM_PB_VALIDER";
@@ -215,6 +223,9 @@ public java.lang.String getNOM_PB_VALIDER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	int numligne = (Services.estNumerique(getZone(getNOM_LB_OT_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_OT_SELECT())) : -1);
@@ -272,6 +283,7 @@ private void setLB_OT(java.lang.String[] newLB_OT) {
  * NOM_LB_OT
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_LB_OT() {
 	return "NOM_LB_OT";
@@ -281,6 +293,7 @@ public java.lang.String getNOM_LB_OT() {
  * NOM_LB_OT_SELECT
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_LB_OT_SELECT() {
 	return "NOM_LB_OT_SELECT";
@@ -291,6 +304,7 @@ public java.lang.String getNOM_LB_OT_SELECT() {
  * LB_OT
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String [] getVAL_LB_OT() {
 	return getLB_OT();
@@ -301,13 +315,15 @@ public java.lang.String [] getVAL_LB_OT() {
  * LB_OT
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_LB_OT_SELECT() {
 	return getZone(getNOM_LB_OT_SELECT());
 }
 
 /**
- * @param focus focus à définir.
+ * focus focus à définir.
+ * @return focus
  */
 public String getDefaultFocus() {
 	return getNOM_PB_VALIDER();
@@ -339,6 +355,7 @@ public void setFocus(String focus) {
  * PB_ANNULER
  * Date de création : (24/08/05 08:57:47)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
 	return "NOM_PB_ANNULER";
@@ -348,6 +365,7 @@ public java.lang.String getNOM_PB_ANNULER() {
  * PB_DETAILS_OT
  * Date de création : (24/08/05 08:59:45)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_DETAILS_OT() {
 	return "NOM_PB_DETAILS_OT";
@@ -359,6 +377,9 @@ public java.lang.String getNOM_PB_DETAILS_OT() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (24/08/05 08:59:45)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_DETAILS_OT(javax.servlet.http.HttpServletRequest request) throws Exception {
 	int numligne = (Services.estNumerique(getZone(getNOM_LB_OT_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_OT_SELECT())) : -1);
@@ -393,6 +414,7 @@ public boolean performPB_DETAILS_OT(javax.servlet.http.HttpServletRequest reques
  * PB_RETOUR
  * Date de création : (24/08/05 09:55:42)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_RETOUR() {
 	return "NOM_PB_RETOUR";
@@ -404,6 +426,9 @@ public java.lang.String getNOM_PB_RETOUR() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (24/08/05 09:55:42)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_RETOUR(javax.servlet.http.HttpServletRequest request) throws Exception {
 	VariableActivite.ajouter(this,"RETOUR","TRUE");
@@ -472,6 +497,7 @@ public String getJSP() {
  * PB_MODIFIER_OT
  * Date de création : (26/10/05 14:08:36)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_MODIFIER_OT() {
 	return "NOM_PB_MODIFIER_OT";
@@ -483,6 +509,9 @@ public java.lang.String getNOM_PB_MODIFIER_OT() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (26/10/05 14:08:36)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_MODIFIER_OT(javax.servlet.http.HttpServletRequest request) throws Exception {
 	int numligne = (Services.estNumerique(getZone(getNOM_LB_OT_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_OT_SELECT())) : -1);

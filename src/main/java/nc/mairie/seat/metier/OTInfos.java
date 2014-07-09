@@ -25,11 +25,17 @@ public OTInfos() {
 /**
  * Getter de l'attribut numeroot.
  */
+/**
+ * @return String
+ */
 public String getNumeroot() {
 	return numeroot;
 }
 /**
  * Setter de l'attribut numeroot.
+ */
+/**
+ * @param newNumeroot newNumeroot
  */
 public void setNumeroot(String newNumeroot) { 
 	numeroot = newNumeroot;
@@ -37,11 +43,17 @@ public void setNumeroot(String newNumeroot) {
 /**
  * Getter de l'attribut dateentree.
  */
+/**
+ * @return String
+ */
 public String getDateentree() {
 	return dateentree;
 }
 /**
  * Setter de l'attribut dateentree.
+ */
+/**
+ * @param newDateentree newDateentree
  */
 public void setDateentree(String newDateentree) { 
 	dateentree = newDateentree;
@@ -49,11 +61,17 @@ public void setDateentree(String newDateentree) {
 /**
  * Getter de l'attribut datesortie.
  */
+/**
+ * @return String
+ */
 public String getDatesortie() {
 	return datesortie;
 }
 /**
  * Setter de l'attribut datesortie.
+ */
+/**
+ * @param newDatesortie newDatesortie
  */
 public void setDatesortie(String newDatesortie) { 
 	datesortie = newDatesortie;
@@ -61,11 +79,17 @@ public void setDatesortie(String newDatesortie) {
 /**
  * Getter de l'attribut compteur.
  */
+/**
+ * @return String
+ */
 public String getCompteur() {
 	return compteur;
 }
 /**
  * Setter de l'attribut compteur.
+ */
+/**
+ * @param newCompteur newCompteur
  */
 public void setCompteur(String newCompteur) { 
 	compteur = newCompteur;
@@ -73,11 +97,17 @@ public void setCompteur(String newCompteur) {
 /**
  * Getter de l'attribut valide.
  */
+/**
+ * @return String
+ */
 public String getValide() {
 	return valide;
 }
 /**
  * Setter de l'attribut valide.
+ */
+/**
+ * @param newValide newValide
  */
 public void setValide(String newValide) { 
 	valide = newValide;
@@ -85,11 +115,17 @@ public void setValide(String newValide) {
 /**
  * Getter de l'attribut commentaire.
  */
+/**
+ * @return String
+ */
 public String getCommentaire() {
 	return commentaire;
 }
 /**
  * Setter de l'attribut commentaire.
+ */
+/**
+ * @param newCommentaire newCommentaire
  */
 public void setCommentaire(String newCommentaire) { 
 	commentaire = newCommentaire;
@@ -97,11 +133,17 @@ public void setCommentaire(String newCommentaire) {
 /**
  * Getter de l'attribut numeroinventaire.
  */
+/**
+ * @return String
+ */
 public String getNumeroinventaire() {
 	return numeroinventaire;
 }
 /**
  * Setter de l'attribut numeroinventaire.
+ */
+/**
+ * @param newNumeroinventaire newNumeroinventaire
  */
 public void setNumeroinventaire(String newNumeroinventaire) { 
 	numeroinventaire = newNumeroinventaire;
@@ -109,11 +151,17 @@ public void setNumeroinventaire(String newNumeroinventaire) {
 /**
  * Getter de l'attribut numeroimmatriculation.
  */
+/**
+ * @return String
+ */
 public String getNumeroimmatriculation() {
 	return numeroimmatriculation;
 }
 /**
  * Setter de l'attribut numeroimmatriculation.
+ */
+/**
+ * @param newNumeroimmatriculation newNumeroimmatriculation
  */
 public void setNumeroimmatriculation(String newNumeroimmatriculation) { 
 	numeroimmatriculation = newNumeroimmatriculation;
@@ -127,6 +175,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected OTInfosBroker getMyOTInfosBroker() {
 	return (OTInfosBroker)getMyBasicBroker();
@@ -143,7 +192,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : OTInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<OTInfos> listerOTInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OTInfos unOTInfos = new OTInfos();
@@ -152,7 +203,9 @@ public static ArrayList<OTInfos> listerOTInfos(nc.mairie.technique.Transaction a
 
 /**
  * Retourne un ArrayList d'objet métier : OTInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<OTInfos> listerOTInfosAValider(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OTInfos unOTInfos = new OTInfos();
@@ -160,7 +213,10 @@ public static ArrayList<OTInfos> listerOTInfosAValider(nc.mairie.technique.Trans
 }
 /**
  * Retourne un ArrayList d'objet métier : OTInfos.
+ * @param aTransaction aTransaction
+ * @param inv inv
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<OTInfos> listerOTInfosEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
 	OTInfos unOTInfos = new OTInfos();
@@ -168,7 +224,10 @@ public static ArrayList<OTInfos> listerOTInfosEquip(nc.mairie.technique.Transact
 }
 /**
  * Retourne un OTInfos.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return OTInfos
+ * @throws Exception Exception
  */
 public static OTInfos chercherOTInfos(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	OTInfos unOTInfos = new OTInfos();
@@ -177,7 +236,9 @@ public static OTInfos chercherOTInfos(nc.mairie.technique.Transaction aTransacti
 
 /**
  * Retourne un ArrayList d'objet métier : OT.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<OTInfos> listerOTInfosValide(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OTInfos unOTInfos = new OTInfos();
@@ -186,7 +247,9 @@ public static ArrayList<OTInfos> listerOTInfosValide(nc.mairie.technique.Transac
 
 /**
  * Retourne un ArrayList d'objet métier : OT.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<OTInfos> listerOTInfosEncours(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	OTInfos unOTInfos = new OTInfos();

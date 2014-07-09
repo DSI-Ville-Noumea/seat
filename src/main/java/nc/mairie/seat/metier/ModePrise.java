@@ -22,7 +22,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : ModePrise.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<ModePrise> listerModePrise(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	ModePrise unModePrise = new ModePrise();
@@ -30,7 +32,10 @@ public static ArrayList<ModePrise> listerModePrise(nc.mairie.technique.Transacti
 }
 /**
  * Retourne un ModePrise.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return ModePrise
+ * @throws Exception Exception
  */
 public static ModePrise chercherModePrise(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	ModePrise unModePrise = new ModePrise();
@@ -39,6 +44,10 @@ public static ModePrise chercherModePrise(nc.mairie.technique.Transaction aTrans
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerModePrise(nc.mairie.technique.Transaction aTransaction,String param)  throws Exception {
 	if(!existeModeprise(aTransaction,param)){
@@ -55,6 +64,10 @@ public boolean creerModePrise(nc.mairie.technique.Transaction aTransaction,Strin
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierModePrise(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	if(!existeModeprise(aTransaction,param)){
@@ -68,6 +81,9 @@ public boolean modifierModePrise(nc.mairie.technique.Transaction aTransaction,St
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerModePrise(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//si utilisé pas de suppression
@@ -103,7 +119,10 @@ public int nouvModePrise(nc.mairie.technique.Transaction aTransaction) throws Ex
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction aTransaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeModeprise(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	ModePrise unMp = new ModePrise();
@@ -119,11 +138,17 @@ public ModePrise() {
 /**
  * Getter de l'attribut codemodeprise.
  */
+/**
+ * @return String
+ */
 public String getCodemodeprise() {
 	return codemodeprise;
 }
 /**
  * Setter de l'attribut codemodeprise.
+ */
+/**
+ * @param newCodemodeprise newCodemodeprise
  */
 public void setCodemodeprise(String newCodemodeprise) { 
 	codemodeprise = newCodemodeprise;
@@ -131,11 +156,17 @@ public void setCodemodeprise(String newCodemodeprise) {
 /**
  * Getter de l'attribut designationmodeprise.
  */
+/**
+ * @return String
+ */
 public String getDesignationmodeprise() {
 	return designationmodeprise;
 }
 /**
  * Setter de l'attribut designationmodeprise.
+ */
+/**
+ * @param newDesignationmodeprise newDesignationmodeprise
  */
 public void setDesignationmodeprise(String newDesignationmodeprise) { 
 	designationmodeprise = newDesignationmodeprise;
@@ -149,6 +180,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected ModePriseBroker getMyModePriseBroker() {
 	return (ModePriseBroker)getMyBasicBroker();

@@ -12,14 +12,21 @@ import nc.mairie.technique.Services;
 public class Affecter_AgentBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : Affecter_Agent.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Affecter_Agent> listerAffecter_Agent(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un Affecter_Agent.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param matr matr
+ * @param date date
  * @return Affecter_Agent
+ * @throws Exception Exception
  */
 public Affecter_Agent chercherAffecter_Agent(nc.mairie.technique.Transaction aTransaction, String inv,String matr,String date) throws Exception {
 	String dateN = Services.formateDateInternationale(date);
@@ -27,7 +34,10 @@ public Affecter_Agent chercherAffecter_Agent(nc.mairie.technique.Transaction aTr
 }
 /**
  * Retourne un ArrayList d'objet métier : Affecter_Agent.
+ * @param aTransaction Transaction
+ * @param param param
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Affecter_Agent> chercherListerAffecter_AgentEquip(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire like '"+param+"%'");
@@ -43,7 +53,10 @@ public ArrayList<Affecter_Agent> chercherListerAffecter_AgentEquipSceEnCours(nc.
 
 /**
  * Retourne un ArrayList d'objet métier : Affecter_Agent.
+ * @param aTransaction Transaction
+ * @param param param
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Affecter_Agent> chercherListerAffecter_AgentService(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice = '"+param+"'");
@@ -52,6 +65,9 @@ public ArrayList<Affecter_Agent> chercherListerAffecter_AgentService(nc.mairie.t
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerAffecter_Agent(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -59,6 +75,9 @@ public boolean creerAffecter_Agent(nc.mairie.technique.Transaction aTransaction)
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierAffecter_Agent(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -66,12 +85,16 @@ public boolean modifierAffecter_Agent(nc.mairie.technique.Transaction aTransacti
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerAffecter_Agent(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Constructeur Affecter_AgentBroker.
+ * @param aMetier BasicMetier
  */
 public Affecter_AgentBroker(Affecter_Agent aMetier) {
 	super(aMetier);
@@ -117,7 +140,13 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 /**
  * Retourne un booléen.
  * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param nomatr nomatr
+ * @param datedeb datedeb
+ * @param Hdeb Hdeb
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeAffecter_Agent(nc.mairie.technique.Transaction aTransaction, String inv,String nomatr,String datedeb,String Hdeb) throws Exception {
 	datedeb = Services.formateDateInternationale(datedeb);

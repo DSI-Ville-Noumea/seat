@@ -10,6 +10,7 @@ import nc.mairie.technique.BasicRecord;
 public class AgentCCASSppostBroker extends BasicBroker {
 /**
  * Constructeur AgentCCASSppostBroker.
+ * @param aMetier BasicMetier
  */
 public AgentCCASSppostBroker(AgentCCASSppost aMetier) {
 	super(aMetier);
@@ -61,14 +62,19 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 }
 /**
  * Retourne un ArrayList d'objet métier : AgentCCASSppost.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AgentCCASSppost> listerAgentCCASSppost(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**
  * Retourne un AgentCCASSppost.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return AgentCCASSppost
+ * @throws Exception Exception
  */
 public AgentCCASSppost chercherAgentCCASSppost(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (AgentCCASSppost)executeSelect(aTransaction,"select * from "+getTable()+" where pomatr = "+cle+" with ur");

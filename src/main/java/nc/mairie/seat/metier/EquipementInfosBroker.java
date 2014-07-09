@@ -11,7 +11,10 @@ import nc.mairie.technique.Services;
 public class EquipementInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : EquipementInfos.
+ * @param aTransaction Transaction
+ * @param tri tri
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<EquipementInfos> listerEquipementInfos(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception {
 	if(tri.equals("")){
@@ -22,7 +25,10 @@ public ArrayList<EquipementInfos> listerEquipementInfos(nc.mairie.technique.Tran
 
 /**
  * Retourne un ArrayList d'objet métier : EquipementInfosActifs.
+ * @param aTransaction Transaction
+ * @param tri tri
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<EquipementInfos> listerEquipementInfosActifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception {
 	if(tri.equals("")){
@@ -34,7 +40,10 @@ public ArrayList<EquipementInfos> listerEquipementInfosActifs(nc.mairie.techniqu
 }
 /**
  * Retourne un ArrayList d'objet métier : EquipementInfos.
+ * @param aTransaction Transaction
+ * @param tri tri
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<EquipementInfos> listerEquipementInfosInactifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception {
 	if(tri.equals("")){
@@ -47,7 +56,10 @@ public ArrayList<EquipementInfos> listerEquipementInfosInactifs(nc.mairie.techni
 }
 /**
  * Retourne un EquipementInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return EquipementInfos
+ * @throws Exception Exception
  */
 public ArrayList<EquipementInfos> chercherListEquipementInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	//return executeSelectListe(aTransaction,"select * from "+getTable()+" where dateventeoureforme='0001-01-01' and char(NUMEROINVENTAIRE) like '"+cle+"%' OR char(NUMEROIMMATRICULATION)  like '"+cle+"%'");
@@ -55,14 +67,20 @@ public ArrayList<EquipementInfos> chercherListEquipementInfos(nc.mairie.techniqu
 }
 /**
  * Retourne un EquipementInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return EquipementInfos
+ * @throws Exception Exception
  */
 public EquipementInfos chercherEquipementInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (EquipementInfos)executeSelect(aTransaction,"select * from "+getTable()+" where NUMEROINVENTAIRE = '"+cle+"'");
 }
 /**
  * Retourne un EquipementInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return EquipementInfos
+ * @throws Exception Exception
  */
 public ArrayList<EquipementInfos> chercherListEquipementInfosTous(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where char(NUMEROINVENTAIRE) like '"+cle+"%' OR char(NUMEROIMMATRICULATION)  like '"+cle+"%'");
@@ -70,7 +88,10 @@ public ArrayList<EquipementInfos> chercherListEquipementInfosTous(nc.mairie.tech
 
 /**
  * Retourne un EquipementInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return EquipementInfos
+ * @throws Exception Exception
  */
 public EquipementInfos chercherEquipementInfosInvOuImmat(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (EquipementInfos)executeSelect(aTransaction,"select * from "+getTable()+" where char(NUMEROINVENTAIRE) = '"+cle+"' OR char(NUMEROIMMATRICULATION)  = '"+cle+"'");
@@ -79,7 +100,10 @@ public EquipementInfos chercherEquipementInfosInvOuImmat(nc.mairie.technique.Tra
 /**
  * Retourne un booléen.
  * Vérifie si l'équipement existe déjà
+ * @param aTransaction Transaction
+ * @param param param
  * @return BPC
+ * @throws Exception Exception
  */
 public boolean existeEquipementInfosEquip(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+param+"'");
@@ -87,6 +111,7 @@ public boolean existeEquipementInfosEquip(nc.mairie.technique.Transaction aTrans
 
 /**
  * Constructeur EquipementInfosBroker.
+ * @param aMetier BasicMetier
  */
 public EquipementInfosBroker(EquipementInfos aMetier) {
 	super(aMetier);

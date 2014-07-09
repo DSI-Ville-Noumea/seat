@@ -11,20 +11,28 @@ public class PMaterielBroker extends BasicBroker {
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerPMateriel(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : PMateriel.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PMateriel> listerPMateriel(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un PMateriel.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return PMateriel
+ * @throws Exception Exception
  */
 public PMateriel chercherPMateriel(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (PMateriel)executeSelect(aTransaction,"select * from "+getTable()+" where pminv = '"+cle+"'");
@@ -34,6 +42,7 @@ public boolean existePMaterielFre(nc.mairie.technique.Transaction aTransaction, 
 }
 /**
  * Constructeur PMaterielBroker.
+ * @param aMetier BasicMetier
  */
 public PMaterielBroker(PMateriel aMetier) {
 	super(aMetier);
@@ -79,6 +88,9 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPMateriel(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -86,6 +98,9 @@ public boolean creerPMateriel(nc.mairie.technique.Transaction aTransaction)  thr
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierPMateriel(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -93,7 +108,10 @@ public boolean modifierPMateriel(nc.mairie.technique.Transaction aTransaction) t
 /**
  * Retourne un booléen.
  * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existePMateriel(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where upper(pminv) = '"+param.toUpperCase()+"'");

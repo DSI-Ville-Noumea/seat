@@ -121,6 +121,9 @@ public String getJSP() {
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_ANNULER() {
 	return "NOM_PB_ANNULER";
 }
@@ -131,6 +134,9 @@ public java.lang.String getNOM_PB_ANNULER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	equipementInfosCourant = null;
@@ -145,6 +151,9 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_OK() {
 	return "NOM_PB_OK";
 }
@@ -155,6 +164,9 @@ public java.lang.String getNOM_PB_OK() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String param = getZone(getNOM_EF_DESIGNATION()).toUpperCase() ;
@@ -184,6 +196,9 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_OK_EQUIPEMENT() {
 	return "NOM_PB_OK_EQUIPEMENT";
 }
@@ -194,6 +209,9 @@ public java.lang.String getNOM_PB_OK_EQUIPEMENT() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_OK_EQUIPEMENT(javax.servlet.http.HttpServletRequest request) throws Exception {
 //	Récup de l'indice sélectionné
@@ -233,6 +251,9 @@ public boolean performPB_OK_EQUIPEMENT(javax.servlet.http.HttpServletRequest req
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_PB_VALIDER() {
 	return "NOM_PB_VALIDER";
 }
@@ -243,6 +264,9 @@ public java.lang.String getNOM_PB_VALIDER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) throws Exception {
 //	Récup de l'indice sélectionné
@@ -273,6 +297,9 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_EF_DESIGNATION() {
 	return "NOM_EF_DESIGNATION";
 }
@@ -281,6 +308,9 @@ public java.lang.String getNOM_EF_DESIGNATION() {
  * EF_DESIGNATION
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_EF_DESIGNATION() {
 	return getZone(getNOM_EF_DESIGNATION());
@@ -311,6 +341,9 @@ private void setLB_BPC(java.lang.String[] newLB_BPC) {
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_LB_BPC() {
 	return "NOM_LB_BPC";
 }
@@ -319,6 +352,9 @@ public java.lang.String getNOM_LB_BPC() {
  * NOM_LB_BPC_SELECT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_LB_BPC_SELECT() {
 	return "NOM_LB_BPC_SELECT";
@@ -330,6 +366,9 @@ public java.lang.String getNOM_LB_BPC_SELECT() {
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String [] getVAL_LB_BPC() {
 	return getLB_BPC();
 }
@@ -339,6 +378,9 @@ public java.lang.String [] getVAL_LB_BPC() {
  * LB_BPC
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_LB_BPC_SELECT() {
 	return getZone(getNOM_LB_BPC_SELECT());
@@ -369,6 +411,9 @@ private void setLB_EQUIPEMENT(java.lang.String[] newLB_EQUIPEMENT) {
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String getNOM_LB_EQUIPEMENT() {
 	return "NOM_LB_EQUIPEMENT";
 }
@@ -377,6 +422,9 @@ public java.lang.String getNOM_LB_EQUIPEMENT() {
  * NOM_LB_EQUIPEMENT_SELECT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getNOM_LB_EQUIPEMENT_SELECT() {
 	return "NOM_LB_EQUIPEMENT_SELECT";
@@ -388,6 +436,9 @@ public java.lang.String getNOM_LB_EQUIPEMENT_SELECT() {
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
  */
+/**
+ * @return String
+ */
 public java.lang.String [] getVAL_LB_EQUIPEMENT() {
 	return getLB_EQUIPEMENT();
 }
@@ -397,6 +448,9 @@ public java.lang.String [] getVAL_LB_EQUIPEMENT() {
  * LB_EQUIPEMENT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ */
+/**
+ * @return String
  */
 public java.lang.String getVAL_LB_EQUIPEMENT_SELECT() {
 	return getZone(getNOM_LB_EQUIPEMENT_SELECT());
@@ -417,7 +471,10 @@ public void setFocus(String focus) {
 	this.focus = focus;
 }
 /**
- * @param focus focus à définir.
+ * focus focus à définir.
+ */
+/**
+ * @return String
  */
 public String getDefaultFocus() {
 	return getNOM_EF_DESIGNATION();
@@ -429,7 +486,7 @@ public String getDefaultFocus() {
 		return bpcCourant;
 	}
 	/**
-	 * @param bpcInfosCourant bpcInfosCourant à définir.
+	 * @param bpcCourant bpcCourant à définir.
 	 */
 	public void setBpcCourant(BPC bpcCourant) {
 		this.bpcCourant = bpcCourant;

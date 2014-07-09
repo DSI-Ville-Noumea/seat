@@ -10,6 +10,7 @@ import nc.mairie.technique.BasicRecord;
 public class FPM_EntretiensBroker extends BasicBroker {
 /**
  * Constructeur FPM_EntretiensBroker.
+ * @param aMetier BasicMetier
  */
 public FPM_EntretiensBroker(FPM_Entretiens aMetier) {
 	super(aMetier);
@@ -49,6 +50,9 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerFPM_Entretiens(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -56,6 +60,9 @@ public boolean creerFPM_Entretiens(nc.mairie.technique.Transaction aTransaction)
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierFPM_Entretiens(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -63,20 +70,28 @@ public boolean modifierFPM_Entretiens(nc.mairie.technique.Transaction aTransacti
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerFPM_Entretiens(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : FPM_Entretiens.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<FPM_Entretiens> listerFPM_Entretiens(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un FPM_Entretiens.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return FPM_Entretiens
+ * @throws Exception Exception
  */
 public FPM_Entretiens chercherFPM_Entretiens(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (FPM_Entretiens)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+"");

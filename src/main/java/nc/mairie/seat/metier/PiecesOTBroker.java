@@ -12,6 +12,9 @@ public class PiecesOTBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPiecesOT(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -20,7 +23,12 @@ public boolean creerPiecesOT(nc.mairie.technique.Transaction aTransaction)  thro
 /**
  * Retourne un booléen.
  * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param numot numot
+ * @param numpiece numpiece
+ * @param date date
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existePiecesOT(nc.mairie.technique.Transaction aTransaction, String numot,String numpiece,String date) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numot = "+numot+" and numpiece = "+numpiece+" and datesortie='"+date+"'");
@@ -29,7 +37,10 @@ public boolean existePiecesOT(nc.mairie.technique.Transaction aTransaction, Stri
 /**
  * Retourne un booléen.
  * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param numpiece numpiece
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existePiecesOTPieces(nc.mairie.technique.Transaction aTransaction, String numpiece) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numpiece = "+numpiece);
@@ -38,6 +49,9 @@ public boolean existePiecesOTPieces(nc.mairie.technique.Transaction aTransaction
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierPiecesOT(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -45,20 +59,30 @@ public boolean modifierPiecesOT(nc.mairie.technique.Transaction aTransaction) th
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerPiecesOT(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : PiecesOT.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PiecesOT> listerPiecesOT(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un PiecesOT.
+ * @param aTransaction Transaction
+ * @param numpiece numpiece
+ * @param numot numot
+ * @param date date
  * @return PiecesOT
+ * @throws Exception Exception
  */
 public PiecesOT chercherPiecesOT(nc.mairie.technique.Transaction aTransaction, String numpiece,String numot,String date) throws Exception {
 	String dSortie = Services.formateDateInternationale(date);
@@ -67,7 +91,10 @@ public PiecesOT chercherPiecesOT(nc.mairie.technique.Transaction aTransaction, S
 
 /**
  * Retourne un arrayList.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return PiecesOT
+ * @throws Exception Exception
  */
 public ArrayList<PiecesOT> chercherPiecesOTOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numot="+numot);
@@ -75,6 +102,7 @@ public ArrayList<PiecesOT> chercherPiecesOTOT(nc.mairie.technique.Transaction aT
 
 /**
  * Constructeur PiecesOTBroker.
+ * @param aMetier BasicMetier
  */
 public PiecesOTBroker(PiecesOT aMetier) {
 	super(aMetier);

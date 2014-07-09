@@ -11,6 +11,9 @@ public class BEBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerBE(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -18,6 +21,9 @@ public boolean creerBE(nc.mairie.technique.Transaction aTransaction)  throws Exc
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierBE(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -25,6 +31,9 @@ public boolean modifierBE(nc.mairie.technique.Transaction aTransaction) throws j
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerBE(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
@@ -32,7 +41,11 @@ public boolean supprimerBE(nc.mairie.technique.Transaction aTransaction) throws 
 
 /**
  * Retourne un ArrayList d'objet métier : BE.
+ * @param aTransaction Transaction
+ * @param numot numot
+ * @param numInv numInv
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<BE> listerBEOTNumInv(nc.mairie.technique.Transaction aTransaction,String numot, String numInv) throws Exception {
 	return executeSelectListe(aTransaction,
@@ -43,7 +56,12 @@ public ArrayList<BE> listerBEOTNumInv(nc.mairie.technique.Transaction aTransacti
 }
 /**
  * Retourne un BE.
+ * @param aTransaction Transaction
+ * @param noot noot
+ * @param exerci exerci
+ * @param noengj noengj
  * @return BE
+ * @throws Exception Exception
  */
 public boolean existeBE(nc.mairie.technique.Transaction aTransaction, String noot,String exerci,String noengj) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numot = '"+noot+"' and noengj='"+noengj+"'");
@@ -51,20 +69,28 @@ public boolean existeBE(nc.mairie.technique.Transaction aTransaction, String noo
 
 /**
  * Retourne si un BE existe
+ * @param aTransaction Transaction
+ * @param noot noot
  * @return boolean
+ * @throws Exception Exception
  */
 public boolean existeBEOT(nc.mairie.technique.Transaction aTransaction, String noot) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numot = '"+noot+"'");
 }
 /**
  * Retourne un BE.
+ * @param aTransaction Transaction
+ * @param noot noot
+ * @param noengj noengj
  * @return BE
+ * @throws Exception Exception
  */
 public BE chercheBE(nc.mairie.technique.Transaction aTransaction, String noot,String noengj) throws Exception {
 	return (BE)executeSelect(aTransaction,"select * from "+getTable()+" where numot = '"+noot+"' and noengj='"+noengj+"'");
 }
 /**
  * Constructeur BEBroker.
+ * @param aMetier BasicMetier
  */
 public BEBroker(BE aMetier) {
 	super(aMetier);

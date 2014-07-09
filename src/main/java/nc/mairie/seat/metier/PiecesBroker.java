@@ -11,6 +11,7 @@ import nc.mairie.technique.BasicRecord;
 public class PiecesBroker extends BasicBroker {
 /**
  * Constructeur PiecesBroker.
+ * @param aMetier BasicMetier
  */
 public PiecesBroker(Pieces aMetier) {
 	super(aMetier);
@@ -61,6 +62,9 @@ public int nouvPieces(nc.mairie.technique.Transaction aTransaction) throws Excep
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPieces(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -68,6 +72,9 @@ public boolean creerPieces(nc.mairie.technique.Transaction aTransaction)  throws
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierPieces(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -75,20 +82,28 @@ public boolean modifierPieces(nc.mairie.technique.Transaction aTransaction) thro
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerPieces(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : Pieces.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Pieces> listerPieces(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by designationpiece");
 }
 /**
  * Retourne un Pieces.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return Pieces
+ * @throws Exception Exception
  */
 public Pieces chercherPieces(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (Pieces)executeSelect(aTransaction,"select * from "+getTable()+" where CODEPIECE = "+cle+" order by designationpiece");
@@ -96,7 +111,10 @@ public Pieces chercherPieces(nc.mairie.technique.Transaction aTransaction, Strin
 
 /**
  * Retourne un Pieces.
+ * @param aTransaction Transaction
+ * @param lib lib
  * @return Pieces
+ * @throws Exception Exception
  */
 public ArrayList<Pieces> chercherPiecesLib(nc.mairie.technique.Transaction aTransaction, String lib) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where upper(designationpiece) like '"+lib.toUpperCase()+"%' order by designationpiece");

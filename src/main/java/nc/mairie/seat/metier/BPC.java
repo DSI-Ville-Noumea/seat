@@ -33,7 +33,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : BPC.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<BPC> listerBPC(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	BPC unBPC = new BPC();
@@ -43,7 +45,10 @@ public static ArrayList<BPC> listerBPC(nc.mairie.technique.Transaction aTransact
 /**
  * Retourne un booléen.
  * Vérifie que le bpc existe
+ * @param aTransaction Transaction
+ * @param param param
  * @return BPC
+ * @throws Exception Exception
  */
 public boolean existeBPC(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	BPC unBPC = new BPC();
@@ -52,7 +57,11 @@ public boolean existeBPC(nc.mairie.technique.Transaction aTransaction, String pa
 
 /**
  * Retourne un BPC.
+ * @param aTransaction Transaction
+ * @param date date
+ * @param inv inv
  * @return BPC
+ * @throws Exception Exception
  */
 public static BPC chercherBPCPrecEquipDate(nc.mairie.technique.Transaction aTransaction,String date, String inv) throws Exception{
 	BPC unBPC = new BPC();
@@ -61,7 +70,11 @@ public static BPC chercherBPCPrecEquipDate(nc.mairie.technique.Transaction aTran
 
 /**
  * Retourne un BPC.
+ * @param aTransaction Transaction
+ * @param date date
+ * @param inv inv
  * @return BPC
+ * @throws Exception Exception
  */
 public static BPC chercherBPCDerOT(nc.mairie.technique.Transaction aTransaction, String date,String inv) throws Exception{
 	BPC unBPC = new BPC();
@@ -70,7 +83,10 @@ public static BPC chercherBPCDerOT(nc.mairie.technique.Transaction aTransaction,
 
 /**
  * Retourne un BPC.
+ * @param aTransaction Transaction
+ * @param inv inv
  * @return BPC
+ * @throws Exception Exception
  */
 public static ArrayList<BPC> listerBPCInventaire(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception{
 	BPC unBPC = new BPC();
@@ -79,7 +95,11 @@ public static ArrayList<BPC> listerBPCInventaire(nc.mairie.technique.Transaction
 
 /**
  * Retourne un BPC.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param annee annee
  * @return BPC
+ * @throws Exception Exception
  */
 public static ArrayList<BPC> listeBPCEquipAnnee(nc.mairie.technique.Transaction aTransaction, String inv,String annee) throws Exception{
 	if(annee.equals("")){
@@ -123,6 +143,12 @@ public boolean controleChamps(nc.mairie.technique.Transaction aTransaction )  th
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unEquipement unEquipement
+ * @param unModeles unModeles
+ * @param razCompteur razCompteur
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerBPC(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement,Modeles unModeles, boolean razCompteur)  throws Exception {
 	// on controle si null
@@ -285,6 +311,13 @@ public boolean creerBPC(nc.mairie.technique.Transaction aTransaction,PMateriel u
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unEquipement unEquipement
+ * @param bpcAvant bpcAvant
+ * @param unModeles unModeles
+ * @param raz raz
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean modifierBPC(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement,BPC bpcAvant,Modeles unModeles, boolean raz)  throws Exception {
 //	 on controle si null
@@ -399,6 +432,9 @@ public boolean modifierBPC(nc.mairie.technique.Transaction aTransaction,PMaterie
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean supprimerBPC(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'BPC
@@ -426,7 +462,10 @@ public int nouvBPC(nc.mairie.technique.Transaction aTransaction) throws Exceptio
 
 /**
  * Retourne un ArrayList d'objet métier : BPC.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<BPC> listerBPCEquipement(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception{
 	BPC unBPC = new BPC();
@@ -442,11 +481,17 @@ public BPC() {
 /**
  * Getter de l'attribut numerobpc.
  */
+/**
+ * @return String
+ */
 public String getNumerobpc() {
 	return numerobpc;
 }
 /**
  * Setter de l'attribut numerobpc.
+ */
+/**
+ * @param newNumerobpc newNumerobpc
  */
 public void setNumerobpc(String newNumerobpc) { 
 	numerobpc = newNumerobpc;
@@ -454,11 +499,17 @@ public void setNumerobpc(String newNumerobpc) {
 /**
  * Getter de l'attribut date.
  */
+/**
+ * @return String
+ */
 public String getDate() {
 	return date;
 }
 /**
  * Setter de l'attribut date.
+ */
+/**
+ * @param newDate newDate
  */
 public void setDate(String newDate) { 
 	date = newDate;
@@ -466,11 +517,17 @@ public void setDate(String newDate) {
 /**
  * Getter de l'attribut heure.
  */
+/**
+ * @return String
+ */
 public String getHeure() {
 	return heure;
 }
 /**
  * Setter de l'attribut heure.
+ */
+/**
+ * @param newHeure newHeure
  */
 public void setHeure(String newHeure) { 
 	heure = newHeure;
@@ -478,11 +535,17 @@ public void setHeure(String newHeure) {
 /**
  * Getter de l'attribut valeurcompteur.
  */
+/**
+ * @return String
+ */
 public String getValeurcompteur() {
 	return valeurcompteur;
 }
 /**
  * Setter de l'attribut valeurcompteur.
+ */
+/**
+ * @param newValeurcompteur newValeurcompteur
  */
 public void setValeurcompteur(String newValeurcompteur) { 
 	valeurcompteur = newValeurcompteur;
@@ -490,11 +553,17 @@ public void setValeurcompteur(String newValeurcompteur) {
 /**
  * Getter de l'attribut numeropompe.
  */
+/**
+ * @return String
+ */
 public String getNumeropompe() {
 	return numeropompe;
 }
 /**
  * Setter de l'attribut numeropompe.
+ */
+/**
+ * @param newNumeropompe newNumeropompe
  */
 public void setNumeropompe(String newNumeropompe) { 
 	numeropompe = newNumeropompe;
@@ -502,11 +571,17 @@ public void setNumeropompe(String newNumeropompe) {
 /**
  * Getter de l'attribut quantite.
  */
+/**
+ * @return String
+ */
 public String getQuantite() {
 	return quantite;
 }
 /**
  * Setter de l'attribut quantite.
+ */
+/**
+ * @param newQuantite newQuantite
  */
 public void setQuantite(String newQuantite) { 
 	quantite = newQuantite;
@@ -514,11 +589,17 @@ public void setQuantite(String newQuantite) {
 /**
  * Getter de l'attribut modedeprise.
  */
+/**
+ * @return String
+ */
 public String getModedeprise() {
 	return modedeprise;
 }
 /**
  * Setter de l'attribut modedeprise.
+ */
+/**
+ * @param newModedeprise newModedeprise
  */
 public void setModedeprise(String newModedeprise) { 
 	modedeprise = newModedeprise;
@@ -526,11 +607,17 @@ public void setModedeprise(String newModedeprise) {
 /**
  * Getter de l'attribut numeroinventaire.
  */
+/**
+ * @return String
+ */
 public String getNumeroinventaire() {
 	return numeroinventaire;
 }
 /**
  * Setter de l'attribut numeroinventaire.
+ */
+/**
+ * @param newNumeroinventaire newNumeroinventaire
  */
 public void setNumeroinventaire(String newNumeroinventaire) { 
 	numeroinventaire = newNumeroinventaire;
@@ -544,6 +631,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected BPCBroker getMyBPCBroker() {
 	return (BPCBroker)getMyBasicBroker();
@@ -552,7 +640,10 @@ protected BPCBroker getMyBPCBroker() {
 /**
  * Retourne un booléen.
  * Vérifie que le modèle existe avec des paramètres de clé étrangères
+ * @param aTransaction Transaction
+ * @param param param
  * @return BPC
+ * @throws Exception Exception
  */
 public boolean existeBPCEquip(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	BPC unBPC = new BPC();
@@ -564,7 +655,11 @@ public boolean existeBPCModePrise(nc.mairie.technique.Transaction aTransaction, 
 }
 /**
  * Retourne un BPC.
+ * @param aTransaction Transaction
+ * @param date date
+ * @param inv inv
  * @return BPC
+ * @throws Exception Exception
  */
 public static BPC chercherBPCSuivEquipDate(nc.mairie.technique.Transaction aTransaction, String date,String inv) throws Exception{
 	BPC unBPC = new BPC();
@@ -573,7 +668,10 @@ public static BPC chercherBPCSuivEquipDate(nc.mairie.technique.Transaction aTran
 
 /**
  * Retourne un BPC.
+ * @param aTransaction Transaction
+ * @param nobpc nobpc
  * @return BPC
+ * @throws Exception Exception
  */
 public static BPC chercherBPC(nc.mairie.technique.Transaction aTransaction, String nobpc) throws Exception{
 	BPC unBPC = new BPC();

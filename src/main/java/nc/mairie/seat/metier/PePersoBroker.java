@@ -11,6 +11,9 @@ public class PePersoBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPePerso(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -18,6 +21,9 @@ public boolean creerPePerso(nc.mairie.technique.Transaction aTransaction)  throw
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierPePerso(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -25,13 +31,18 @@ public boolean modifierPePerso(nc.mairie.technique.Transaction aTransaction) thr
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerPePerso(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : PePerso.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PePerso> listerPePerso(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
@@ -43,7 +54,10 @@ public ArrayList<PePerso> listerPePersoEquipMoinsUnAn(nc.mairie.technique.Transa
 
 /**
  * Retourne un ArrayList d'objet métier : PePerso.
+ * @param aTransaction Transaction
+ * @param decl decl
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PePerso> listerPePersoDecl(nc.mairie.technique.Transaction aTransaction,String decl) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codedec="+decl);
@@ -92,7 +106,10 @@ public ArrayList<PePerso> listerPePersoHr(nc.mairie.technique.Transaction aTrans
 
 /**
  * Retourne un PePerso.
+ * @param aTransaction Transaction
+ * @param code code
  * @return PePerso
+ * @throws Exception Exception
  */
 public PePerso chercherPePerso(nc.mairie.technique.Transaction aTransaction, String code) throws Exception {
 	return (PePerso)executeSelect(aTransaction,"select * from "+getTable()+" where codepep = "+code+"");
@@ -101,7 +118,11 @@ public PePerso chercherPePerso(nc.mairie.technique.Transaction aTransaction, Str
 
 /**
  * Retourne un PePerso.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param ent ent
  * @return PePerso
+ * @throws Exception Exception
  */
 public ArrayList<PePerso> chercherPePersoEquipEnt(nc.mairie.technique.Transaction aTransaction, String inv,String ent) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeequip = '"+inv+"' and codeentretien="+ent+" order by codepep");
@@ -109,7 +130,10 @@ public ArrayList<PePerso> chercherPePersoEquipEnt(nc.mairie.technique.Transactio
 
 /**
  * Retourne un PePerso.
+ * @param aTransaction Transaction
+ * @param inv inv
  * @return PePerso
+ * @throws Exception Exception
  */
 public ArrayList<PePerso> listerPePersoEquip(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeequip = '"+inv+"' order by codepep");
@@ -117,7 +141,10 @@ public ArrayList<PePerso> listerPePersoEquip(nc.mairie.technique.Transaction aTr
 
 /**
  * Retourne un PePerso.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return PePerso
+ * @throws Exception Exception
  */
 public ArrayList<PePerso> chercherPePersoOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeot = "+numot);
@@ -125,7 +152,10 @@ public ArrayList<PePerso> chercherPePersoOT(nc.mairie.technique.Transaction aTra
 
 /**
  * Retourne un PePerso.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return PePerso
+ * @throws Exception Exception
  */
 public ArrayList<PePerso> chercherPePersoPasFaitOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeot = "+numot+" and datereal='0001-01-01'");
@@ -133,7 +163,11 @@ public ArrayList<PePerso> chercherPePersoPasFaitOT(nc.mairie.technique.Transacti
 
 /**
  * Retourne un PePerso.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param ent ent
  * @return PePerso
+ * @throws Exception Exception
  */
 public PePerso chercherPePersoEquipEntRealise(nc.mairie.technique.Transaction aTransaction, String inv,String ent) throws Exception {
 	return (PePerso)executeSelect(aTransaction,"select * from "+getTable()+" where  codepep in (select max(codepep) from "+getTable()+" where codeequip = '"+inv+"' and codeentretien="+ent+" and datereal<>'0001-01-01')");
@@ -141,7 +175,11 @@ public PePerso chercherPePersoEquipEntRealise(nc.mairie.technique.Transaction aT
 
 /**
  * Retourne un PePerso.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param ent ent
  * @return PePerso
+ * @throws Exception Exception
  */
 public PePerso chercherPePersoEquipEntPrevu(nc.mairie.technique.Transaction aTransaction, String inv,String ent) throws Exception {
 	return (PePerso)executeSelect(aTransaction,"select * from "+getTable()+" where  codepep in (select max(codepep) from "+getTable()+" where codeequip = '"+inv+"' and codeentretien="+ent+" and datereal='0001-01-01')");
@@ -150,7 +188,13 @@ public PePerso chercherPePersoEquipEntPrevu(nc.mairie.technique.Transaction aTra
 /**
  * Retourne un booléen.
  * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param ent ent
+ * @param codete codete
+ * @param date date
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existePePerso(nc.mairie.technique.Transaction aTransaction, String inv,String ent,String codete,String date) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where codeequip = "+inv+" and codeentretien = "+ent+" and codetypeent="+codete+" and dateprev='"+date+"'");
@@ -178,7 +222,10 @@ public int maxPePersoEquipEnt(nc.mairie.technique.Transaction aTransaction,Strin
 /**
  * Retourne un booléen.
  * Vérifie si le modèleinfos existe déjà
+ * @param aTransaction Transaction
+ * @param param param
  * @return Modeles
+ * @throws Exception Exception
  */
 public boolean existePePersoTEnt(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where codetypeent = "+param+"");
@@ -186,6 +233,7 @@ public boolean existePePersoTEnt(nc.mairie.technique.Transaction aTransaction, S
 
 /**
  * Constructeur PePersoBroker.
+ * @param aMetier BasicMetier
  */
 public PePersoBroker(PePerso aMetier) {
 	super(aMetier);

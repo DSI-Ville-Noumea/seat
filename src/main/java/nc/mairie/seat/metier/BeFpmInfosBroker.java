@@ -10,6 +10,7 @@ import nc.mairie.technique.BasicRecord;
 public class BeFpmInfosBroker extends BasicBroker {
 /**
  * Constructeur BeFpmInfosBroker.
+ * @param aMetier BasicMetier
  */
 public BeFpmInfosBroker(BeFpmInfos aMetier) {
 	super(aMetier);
@@ -54,14 +55,19 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 }
 /**
  * Retourne un ArrayList d'objet métier : BeFpmInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<BeFpmInfos> listerBeFpmInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un BeFpmInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return BeFpmInfos
+ * @throws Exception Exception
  */
 public BeFpmInfos chercherBeFpmInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (BeFpmInfos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+"");
@@ -74,7 +80,11 @@ public ArrayList<BeFpmInfos> listerBeFpmInfosFpm(nc.mairie.technique.Transaction
 
 /**
  * Retourne un ArrayList d'objet métier : PiecesOtInfos.
+ * @param aTransaction Transaction
+ * @param numot numot
+ * @param numinv numinv
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public int cumuleMontantBeFpmInfosBE(nc.mairie.technique.Transaction aTransaction,String numot, String numinv) throws Exception {
 	return executeCompter(aTransaction," select sum(mtlenju)" +

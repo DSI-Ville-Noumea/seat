@@ -10,7 +10,9 @@ import nc.mairie.technique.BasicRecord;
 public class BPCInfosCompletesBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : BPCInfosCompletes.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception exception 
  */
 public ArrayList<BPCInfosCompletes> listerBPCInfosCompletes(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
@@ -18,7 +20,12 @@ public ArrayList<BPCInfosCompletes> listerBPCInfosCompletes(nc.mairie.technique.
 
 /**
  * Retourne un ArrayList d'objet métier : BPCInfosCompletes.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param servi servi
+ * @param periode periode
  * @return java.util.ArrayList
+ * @throws Exception exception 
  */
 public ArrayList<BPCInfosCompletes> listerBPCInfosCompletesParams(nc.mairie.technique.Transaction aTransaction,String inv,String servi,String periode) throws Exception {
 	if(!inv.equals("")){
@@ -45,13 +52,17 @@ public ArrayList<BPCInfosCompletes> listerBPCInfosCompletesParams(nc.mairie.tech
 
 /**
  * Retourne un BPCInfosCompletes.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return BPCInfosCompletes
+ * @throws Exception exception 
  */
 public BPCInfosCompletes chercherBPCInfosCompletes(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (BPCInfosCompletes)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+" with ur");
 }
 /**
  * Constructeur BPCInfosCompletesBroker.
+ * @param aMetier BasicMetier
  */
 public BPCInfosCompletesBroker(BPCInfosCompletes aMetier) {
 	super(aMetier);

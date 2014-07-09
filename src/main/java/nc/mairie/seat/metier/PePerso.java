@@ -36,7 +36,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : PePerso.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PePerso> listerPePerso(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PePerso unPePerso = new PePerso();
@@ -50,7 +52,10 @@ public static ArrayList<PePerso> listerPePersoEquipMoinsUnAn(nc.mairie.technique
 
 /**
  * Retourne un ArrayList d'objet métier : PePerso.
+ * @param aTransaction Transaction
+ * @param decl decl
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PePerso> listerPePersoDecl(nc.mairie.technique.Transaction aTransaction,String decl) throws Exception{
 	PePerso unPePerso = new PePerso();
@@ -59,7 +64,10 @@ public static ArrayList<PePerso> listerPePersoDecl(nc.mairie.technique.Transacti
 
 /**
  * Retourne un ArrayList d'objet métier : PePerso.
+ * @param aTransaction Transaction
+ * @param inv inv
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PePerso> listerPePersoRecond(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
 	PePerso unPePerso = new PePerso();
@@ -68,7 +76,10 @@ public static ArrayList<PePerso> listerPePersoRecond(nc.mairie.technique.Transac
 
 /**
  * Retourne un ArrayList d'objet métier : PePerso.
+ * @param aTransaction Transaction
+ * @param inv inv
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PePerso> listerPePersoKm(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
 	PePerso unPePerso = new PePerso();
@@ -87,7 +98,10 @@ public static ArrayList<PePerso> listerPePersoKm(nc.mairie.technique.Transaction
 
 /**
  * Retourne un ArrayList d'objet métier : PePerso.
+ * @param aTransaction Transaction
+ * @param inv inv
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PePerso> listerPePersoHr(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
 	PePerso unPePerso = new PePerso();
@@ -97,7 +111,11 @@ public static ArrayList<PePerso> listerPePersoHr(nc.mairie.technique.Transaction
 
 /**
  * Retourne un ArrayList d'objet métier : PePerso.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param ent ent
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PePerso> chercherPePersoEquipEnt(nc.mairie.technique.Transaction aTransaction,String inv,String ent) throws Exception{
 	PePerso unPePerso = new PePerso();
@@ -112,7 +130,10 @@ public static ArrayList<PePerso> listerPePersoEquip(nc.mairie.technique.Transact
 
 /**
  * Retourne un ArrayList d'objet métier : PePerso.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PePerso> chercherPePersoOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	PePerso unPePerso = new PePerso();
@@ -121,7 +142,10 @@ public static ArrayList<PePerso> chercherPePersoOT(nc.mairie.technique.Transacti
 
 /**
 * Retourne un ArrayList d'objet métier : PePerso.
+ * @param aTransaction Transaction
+ * @param numot numot
 * @return java.util.ArrayList
+ * @throws Exception Exception
 */
 public static ArrayList<PePerso> chercherPePersoPasFaitOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	PePerso unPePerso = new PePerso();
@@ -130,7 +154,11 @@ public static ArrayList<PePerso> chercherPePersoPasFaitOT(nc.mairie.technique.Tr
 
 /**
  * Retourne un ArrayList d'objet métier : PePerso.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param ent ent
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static PePerso chercherPePersoEquipEntRealise(nc.mairie.technique.Transaction aTransaction,String inv,String ent) throws Exception{
 	PePerso unPePerso = new PePerso();
@@ -139,7 +167,11 @@ public static PePerso chercherPePersoEquipEntRealise(nc.mairie.technique.Transac
 
 /**
  * Retourne un ArrayList d'objet métier : PePerso.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param ent ent
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static PePerso chercherPePersoEquipEntPrevu(nc.mairie.technique.Transaction aTransaction,String inv,String ent) throws Exception{
 	PePerso unPePerso = new PePerso();
@@ -148,7 +180,10 @@ public static PePerso chercherPePersoEquipEntPrevu(nc.mairie.technique.Transacti
 
 /**
  * Retourne un PePerso.
+ * @param aTransaction Transaction
+ * @param code code
  * @return PePerso
+ * @throws Exception Exception
  */
 public static PePerso chercherPePerso(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	PePerso unPePerso = new PePerso();
@@ -216,6 +251,13 @@ private boolean verifCompteur(nc.mairie.technique.Transaction aTransaction,Equip
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unEquipement unEquipement
+ * @param unEntretien unEntretien
+ * @param unTe unTe
+ * @param unTypeInt unTypeInt
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPePerso(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement,Entretien unEntretien,TypeEntretien unTe,TIntervalle unTypeInt)  throws Exception {
 //	 on vérifie que les objets ne sont pas null
@@ -423,6 +465,13 @@ public boolean creerPePerso(nc.mairie.technique.Transaction aTransaction,Equipem
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unEquipement unEquipement
+ * @param unEntretien unEntretien
+ * @param unTe unTe
+ * @param unTypeInt unTypeInt
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierPePerso(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement,Entretien unEntretien,TypeEntretien unTe,TIntervalle unTypeInt)  throws Exception {
 //	 on vérifie que les objets ne sont pas null
@@ -599,6 +648,9 @@ public boolean modifierPePerso(nc.mairie.technique.Transaction aTransaction,Equi
  * Methode modifierObjetMetier qui retourne
  * true ou false
  * Méthode modifier quand on a changé les infos et pas les objets étranger
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierPePersoInfos(nc.mairie.technique.Transaction aTransaction)  throws Exception {
 
@@ -689,6 +741,9 @@ public boolean modifierPePersoInfos(nc.mairie.technique.Transaction aTransaction
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerPePerso(nc.mairie.technique.Transaction aTransaction) throws Exception{
 //	 si utilisé on ne peut pas supprimer
@@ -710,7 +765,13 @@ public boolean supprimerPePerso(nc.mairie.technique.Transaction aTransaction) th
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param ent ent
+ * @param codete codete
+ * @param date date
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existePePerso(nc.mairie.technique.Transaction aTransaction, String inv,String ent,String codete,String date) throws Exception{
 	PePerso unPePerso = new PePerso();
@@ -744,7 +805,10 @@ public int maxPePersoEquipEnt(nc.mairie.technique.Transaction aTransaction,Strin
 /**
  * Retourne un booléen.
  * Vérifie que le modèle existe avec des paramètres de clé étrangères
+ * @param aTransaction Transaction
+ * @param param param
  * @return PePerso
+ * @throws Exception Exception
  */
 public boolean existePePersoTEnt(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	PePerso unPePerso = new PePerso();
@@ -759,30 +823,35 @@ public PePerso() {
 }
 /**
  * Getter de l'attribut codeequip.
+ * @return String
  */
 public String getCodeequip() {
 	return codeequip;
 }
 /**
  * Setter de l'attribut codeequip.
+ * @param newCodeequip newCodeequip
  */
 public void setCodeequip(String newCodeequip) { 
 	codeequip = newCodeequip;
 }
 /**
  * Getter de l'attribut codeentretien.
+ * @return String
  */
 public String getCodeentretien() {
 	return codeentretien;
 }
 /**
  * Setter de l'attribut codeentretien.
+ * @param newCodeentretien newCodeentretien
  */
 public void setCodeentretien(String newCodeentretien) { 
 	codeentretien = newCodeentretien;
 }
 /**
  * Getter de l'attribut sinistre.
+ * @return String
  */
 public String getSinistre() {
 	return sinistre;
@@ -790,11 +859,15 @@ public String getSinistre() {
 /**
  * Setter de l'attribut sinistre.
  */
+/**
+ * @param newSinistre newSinistre
+ */
 public void setSinistre(String newSinistre) { 
 	sinistre = newSinistre;
 }
 /**
  * Getter de l'attribut duree.
+ * @return String
  */
 public String getDuree() {
 	return duree;
@@ -802,11 +875,15 @@ public String getDuree() {
 /**
  * Setter de l'attribut duree.
  */
+/**
+ * @param newDuree newDuree
+ */
 public void setDuree(String newDuree) { 
 	duree = newDuree;
 }
 /**
  * Getter de l'attribut codeot.
+ * @return String
  */
 public String getCodeot() {
 	return codeot;
@@ -814,11 +891,15 @@ public String getCodeot() {
 /**
  * Setter de l'attribut codeot.
  */
+/**
+ * @param newCodeot newCodeot
+ */
 public void setCodeot(String newCodeot) { 
 	codeot = newCodeot;
 }
 /**
  * Getter de l'attribut codetypeent.
+ * @return String
  */
 public String getCodetypeent() {
 	return codetypeent;
@@ -826,11 +907,15 @@ public String getCodetypeent() {
 /**
  * Setter de l'attribut codetypeent.
  */
+/**
+ * @param newCodetypeent newCodetypeent
+ */
 public void setCodetypeent(String newCodetypeent) { 
 	codetypeent = newCodetypeent;
 }
 /**
  * Getter de l'attribut commentairete.
+ * @return String
  */
 public String getCommentairete() {
 	return commentairete;
@@ -838,11 +923,15 @@ public String getCommentairete() {
 /**
  * Setter de l'attribut commentairete.
  */
+/**
+ * @param newCommentairete newCommentairete
+ */
 public void setCommentairete(String newCommentairete) { 
 	commentairete = newCommentairete;
 }
 /**
  * Getter de l'attribut codepep.
+ * @return String
  */
 public String getCodepep() {
 	return codepep;
@@ -850,11 +939,15 @@ public String getCodepep() {
 /**
  * Setter de l'attribut codepep.
  */
+/**
+ * @param newCodepep newCodepep
+ */
 public void setCodepep(String newCodepep) { 
 	codepep = newCodepep;
 }
 /**
  * Getter de l'attribut codeti.
+ * @return String
  */
 public String getCodeti() {
 	return codeti;
@@ -862,11 +955,15 @@ public String getCodeti() {
 /**
  * Setter de l'attribut codeti.
  */
+/**
+ * @param newCodeti newCodeti
+ */
 public void setCodeti(String newCodeti) { 
 	codeti = newCodeti;
 }
 /**
  * Getter de l'attribut intervallepep.
+ * @return String
  */
 public String getIntervallepep() {
 	return intervallepep;
@@ -874,11 +971,15 @@ public String getIntervallepep() {
 /**
  * Setter de l'attribut intervallepep.
  */
+/**
+ * @param newIntervallepep newIntervallepep
+ */
 public void setIntervallepep(String newIntervallepep) { 
 	intervallepep = newIntervallepep;
 }
 /**
  * Getter de l'attribut datereal.
+ * @return String
  */
 public String getDatereal() {
 	return datereal;
@@ -886,11 +987,15 @@ public String getDatereal() {
 /**
  * Setter de l'attribut datereal.
  */
+/**
+ * @param newDatereal newDatereal
+ */
 public void setDatereal(String newDatereal) { 
 	datereal = newDatereal;
 }
 /**
  * Getter de l'attribut dateprev.
+ * @return String
  */
 public String getDateprev() {
 	return dateprev;
@@ -898,17 +1003,22 @@ public String getDateprev() {
 /**
  * Setter de l'attribut dateprev.
  */
+/**
+ * @param newDateprev newDateprev
+ */
 public void setDateprev(String newDateprev) { 
 	dateprev = newDateprev;
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected BasicBroker definirMyBroker() { 
 	return new PePersoBroker(this); 
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PePersoBroker getMyPePersoBroker() {
 	return (PePersoBroker)getMyBasicBroker();

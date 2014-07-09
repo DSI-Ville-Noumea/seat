@@ -35,7 +35,10 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : PMatInfos.
+ * @param aTransaction aTransaction
+ * @param param param
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PMatInfos> listerPMatInfos(nc.mairie.technique.Transaction aTransaction,String param) throws Exception{
 	if(("").equals(param)){
@@ -46,7 +49,9 @@ public static ArrayList<PMatInfos> listerPMatInfos(nc.mairie.technique.Transacti
 }
 /**
  * Retourne un ArrayList d'objet métier : PMatInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PMatInfos> listerPMatInfosSansEntretienPlanifie(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PMatInfos unPMatInfos = new PMatInfos();
@@ -54,7 +59,11 @@ public static ArrayList<PMatInfos> listerPMatInfosSansEntretienPlanifie(nc.mairi
 }
 /**
  * Retourne un ArrayList d'objet métier : PMatInfos.
+ * @param aTransaction aTransaction
+ * @param pminv pminv
+ * @param param param
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PMatInfos> listerPMatInfosRecherche(nc.mairie.technique.Transaction aTransaction,String pminv,String param) throws Exception{
 	if(("").equals(param)){
@@ -65,7 +74,10 @@ public static ArrayList<PMatInfos> listerPMatInfosRecherche(nc.mairie.technique.
 }
 /**
  * Retourne un ArrayList d'objet métier : EquipementInfos.
+ * @param aTransaction aTransaction
+ * @param tri tri
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PMatInfos> listerPMatInfosActifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception{
 	PMatInfos unPMatInfos = new PMatInfos();
@@ -74,7 +86,10 @@ public static ArrayList<PMatInfos> listerPMatInfosActifs(nc.mairie.technique.Tra
 
 /**
  * Retourne un ArrayList d'objet métier : EquipementInfos.
+ * @param aTransaction aTransaction
+ * @param tri tri
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PMatInfos> listerPMatInfosInactifs(nc.mairie.technique.Transaction aTransaction,String tri) throws Exception{
 	PMatInfos unPMatInfos = new PMatInfos();
@@ -82,7 +97,10 @@ public static ArrayList<PMatInfos> listerPMatInfosInactifs(nc.mairie.technique.T
 }
 /**
  * Retourne un PMatInfos.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return PMatInfos
+ * @throws Exception Exception
  */
 public static PMatInfos chercherPMatInfos(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	PMatInfos unPMatInfos = new PMatInfos();
@@ -91,6 +109,9 @@ public static PMatInfos chercherPMatInfos(nc.mairie.technique.Transaction aTrans
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPMatInfos(nc.mairie.technique.Transaction aTransaction )  throws Exception {
 	//Creation du PMatInfos
@@ -99,6 +120,9 @@ public boolean creerPMatInfos(nc.mairie.technique.Transaction aTransaction )  th
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierPMatInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	//Modification du PMatInfos
@@ -107,6 +131,9 @@ public boolean modifierPMatInfos(nc.mairie.technique.Transaction aTransaction) t
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerPMatInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'PMatInfos
@@ -131,6 +158,7 @@ public PMatInfos() {
 }
 /**
  * Getter de l'attribut libellefre.
+ * @return String
  */
 public String getLibellefre() {
 	return libellefre;
@@ -138,11 +166,15 @@ public String getLibellefre() {
 /**
  * Setter de l'attribut libellefre.
  */
+/**
+ * @param newLibellefre newLibellefre
+ */
 public void setLibellefre(String newLibellefre) { 
 	libellefre = newLibellefre;
 }
 /**
  * Getter de l'attribut observationsfre.
+ * @return String
  */
 public String getObservationsfre() {
 	return observationsfre;
@@ -150,11 +182,15 @@ public String getObservationsfre() {
 /**
  * Setter de l'attribut observationsfre.
  */
+/**
+ * @param newObservationsfre newObservationsfre
+ */
 public void setObservationsfre(String newObservationsfre) { 
 	observationsfre = newObservationsfre;
 }
 /**
  * Getter de l'attribut contact.
+ * @return String
  */
 public String getContact() {
 	return contact;
@@ -162,11 +198,15 @@ public String getContact() {
 /**
  * Setter de l'attribut contact.
  */
+/**
+ * @param newContact newContact
+ */
 public void setContact(String newContact) { 
 	contact = newContact;
 }
 /**
  * Getter de l'attribut codefre.
+ * @return String
  */
 public String getCodefre() {
 	return codefre;
@@ -174,11 +214,15 @@ public String getCodefre() {
 /**
  * Setter de l'attribut codefre.
  */
+/**
+ * @param newCodefre newCodefre
+ */
 public void setCodefre(String newCodefre) { 
 	codefre = newCodefre;
 }
 /**
  * Getter de l'attribut codemodele.
+ * @return String
  */
 public String getCodemodele() {
 	return codemodele;
@@ -186,11 +230,15 @@ public String getCodemodele() {
 /**
  * Setter de l'attribut codemodele.
  */
+/**
+ * @param newCodemodele newCodemodele
+ */
 public void setCodemodele(String newCodemodele) { 
 	codemodele = newCodemodele;
 }
 /**
  * Getter de l'attribut pmserie.
+ * @return String
  */
 public String getPmserie() {
 	return pmserie;
@@ -198,11 +246,15 @@ public String getPmserie() {
 /**
  * Setter de l'attribut pmserie.
  */
+/**
+ * @param newPmserie newPmserie
+ */
 public void setPmserie(String newPmserie) { 
 	pmserie = newPmserie;
 }
 /**
  * Getter de l'attribut dgarantie.
+ * @return String
  */
 public String getDgarantie() {
 	return dgarantie;
@@ -210,11 +262,15 @@ public String getDgarantie() {
 /**
  * Setter de l'attribut dgarantie.
  */
+/**
+ * @param newDgarantie newDgarantie
+ */
 public void setDgarantie(String newDgarantie) { 
 	dgarantie = newDgarantie;
 }
 /**
  * Getter de l'attribut reserve.
+ * @return String
  */
 public String getReserve() {
 	return reserve;
@@ -222,11 +278,15 @@ public String getReserve() {
 /**
  * Setter de l'attribut reserve.
  */
+/**
+ * @param newReserve newReserve
+ */
 public void setReserve(String newReserve) { 
 	reserve = newReserve;
 }
 /**
  * Getter de l'attribut dmes.
+ * @return String
  */
 public String getDmes() {
 	return dmes;
@@ -234,11 +294,15 @@ public String getDmes() {
 /**
  * Setter de l'attribut dmes.
  */
+/**
+ * @param newDmes newDmes
+ */
 public void setDmes(String newDmes) { 
 	dmes = newDmes;
 }
 /**
  * Getter de l'attribut dmhs.
+ * @return String
  */
 public String getDmhs() {
 	return dmhs;
@@ -246,11 +310,15 @@ public String getDmhs() {
 /**
  * Setter de l'attribut dmhs.
  */
+/**
+ * @param newDmhs newDmhs
+ */
 public void setDmhs(String newDmhs) { 
 	dmhs = newDmhs;
 }
 /**
  * Getter de l'attribut prix.
+ * @return String
  */
 public String getPrix() {
 	return prix;
@@ -258,11 +326,15 @@ public String getPrix() {
 /**
  * Setter de l'attribut prix.
  */
+/**
+ * @param newPrix newPrix
+ */
 public void setPrix(String newPrix) { 
 	prix = newPrix;
 }
 /**
  * Getter de l'attribut dachat.
+ * @return String
  */
 public String getDachat() {
 	return dachat;
@@ -270,11 +342,15 @@ public String getDachat() {
 /**
  * Setter de l'attribut dachat.
  */
+/**
+ * @param newDachat newDachat
+ */
 public void setDachat(String newDachat) { 
 	dachat = newDachat;
 }
 /**
  * Getter de l'attribut designationmodele.
+ * @return String
  */
 public String getDesignationmodele() {
 	return designationmodele;
@@ -282,11 +358,15 @@ public String getDesignationmodele() {
 /**
  * Setter de l'attribut designationmodele.
  */
+/**
+ * @param newDesignationmodele newDesignationmodele
+ */
 public void setDesignationmodele(String newDesignationmodele) { 
 	designationmodele = newDesignationmodele;
 }
 /**
  * Getter de l'attribut designationtypeequip.
+ * @return String
  */
 public String getDesignationtypeequip() {
 	return designationtypeequip;
@@ -294,11 +374,15 @@ public String getDesignationtypeequip() {
 /**
  * Setter de l'attribut designationtypeequip.
  */
+/**
+ * @param newDesignationtypeequip newDesignationtypeequip
+ */
 public void setDesignationtypeequip(String newDesignationtypeequip) { 
 	designationtypeequip = newDesignationtypeequip;
 }
 /**
  * Getter de l'attribut typete.
+ * @return String
  */
 public String getTypete() {
 	return typete;
@@ -306,11 +390,15 @@ public String getTypete() {
 /**
  * Setter de l'attribut typete.
  */
+/**
+ * @param newTypete newTypete
+ */
 public void setTypete(String newTypete) { 
 	typete = newTypete;
 }
 /**
  * Getter de l'attribut designationmarque.
+ * @return String
  */
 public String getDesignationcarbu() {
 	return designationcarbu;
@@ -318,11 +406,15 @@ public String getDesignationcarbu() {
 /**
  * Setter de l'attribut designationmarque.
  */
+/**
+ * @param newDesignationcarbu newDesignationcarbu
+ */
 public void setDesignationcarbu(String newDesignationcarbu) { 
 	designationcarbu = newDesignationcarbu;
 }
 /**
  * Getter de l'attribut designationmarque.
+ * @return String
  */
 public String getDesignationcompteur() {
 	return designationcompteur;
@@ -330,11 +422,15 @@ public String getDesignationcompteur() {
 /**
  * Setter de l'attribut designationmarque.
  */
+/**
+ * @param newDesignationcompteur newDesignationcompteur
+ */
 public void setDesignationcompteur(String newDesignationcompteur) { 
 	designationcompteur = newDesignationcompteur;
 }
 /**
  * Getter de l'attribut designationmarque.
+ * @return String
  */
 public String getDesignationmarque() {
 	return designationmarque;
@@ -342,11 +438,15 @@ public String getDesignationmarque() {
 /**
  * Setter de l'attribut designationmarque.
  */
+/**
+ * @param newDesignationmarque newDesignationmarque
+ */
 public void setDesignationmarque(String newDesignationmarque) { 
 	designationmarque = newDesignationmarque;
 }
 /**
  * Getter de l'attribut codemarque.
+ * @return String
  */
 public String getCodemarque() {
 	return codemarque;
@@ -354,11 +454,15 @@ public String getCodemarque() {
 /**
  * Setter de l'attribut codemarque.
  */
+/**
+ * @param newCodemarque newCodemarque
+ */
 public void setCodemarque(String newCodemarque) { 
 	codemarque = newCodemarque;
 }
 /**
  * Getter de l'attribut codetypeequip.
+ * @return String
  */
 public String getCodetypeequip() {
 	return codetypeequip;
@@ -366,11 +470,15 @@ public String getCodetypeequip() {
 /**
  * Setter de l'attribut codetypeequip.
  */
+/**
+ * @param newCodetypeequip newCodetypeequip
+ */
 public void setCodetypeequip(String newCodetypeequip) { 
 	codetypeequip = newCodetypeequip;
 }
 /**
  * Getter de l'attribut pminv.
+ * @return String
  */
 public String getPminv() {
 	return pminv;
@@ -378,17 +486,24 @@ public String getPminv() {
 /**
  * Setter de l'attribut pminv.
  */
+/**
+ * @param newPminv newPminv
+ */
 public void setPminv(String newPminv) { 
 	pminv = newPminv;
 }
 /**
  * Getter de l'attribut version.
+ * @return String
  */
 public String getVersion() {
 	return version;
 }
 /**
  * Setter de l'attribut version.
+ */
+/**
+ * @param newVersion newVersion
  */
 public void setVersion(String newVersion) { 
 	version = newVersion;
@@ -402,6 +517,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PMatInfosBroker getMyPMatInfosBroker() {
 	return (PMatInfosBroker)getMyBasicBroker();
@@ -409,7 +525,10 @@ protected PMatInfosBroker getMyPMatInfosBroker() {
 
 /**
  * Retourne un EquipementInfos.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return EquipementInfos
+ * @throws Exception Exception
  */
 public static ArrayList<PMatInfos> chercherListPMatInfosTous(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	PMatInfos unPMatInfos = new PMatInfos();

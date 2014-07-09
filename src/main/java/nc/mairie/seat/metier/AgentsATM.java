@@ -23,7 +23,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : AgentsATM.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<AgentsATM> listerAgentsATM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	AgentsATM unAgentsATM = new AgentsATM();
@@ -31,7 +33,10 @@ public static ArrayList<AgentsATM> listerAgentsATM(nc.mairie.technique.Transacti
 }
 /**
  * Retourne un AgentsATM.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return AgentsATM
+ * @throws Exception Exception
  */
 public static AgentsATM chercherAgentsATM(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	AgentsATM unAgentsATM = new AgentsATM();
@@ -39,7 +44,10 @@ public static AgentsATM chercherAgentsATM(nc.mairie.technique.Transaction aTrans
 }
 /**
  * Retourne un AgentsATM.
+ * @param aTransaction aTransaction
+ * @param nomatr nomatr
  * @return AgentsATM
+ * @throws Exception Exception
  */
 public static AgentsATM chercherAgentsATMMatr(nc.mairie.technique.Transaction aTransaction, String nomatr) throws Exception{
 	AgentsATM unAgentsATM = new AgentsATM();
@@ -48,6 +56,11 @@ public static AgentsATM chercherAgentsATMMatr(nc.mairie.technique.Transaction aT
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param unAgent unAgent
+ * @param uneSpecialite uneSpecialite
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerAgentsATM(nc.mairie.technique.Transaction aTransaction,Agents unAgent,Specialite uneSpecialite)  throws Exception {
 	// controle si objet vide
@@ -77,6 +90,9 @@ public boolean creerAgentsATM(nc.mairie.technique.Transaction aTransaction,Agent
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean modifierAgentsATM(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	//Modification du AgentsATM
@@ -85,6 +101,11 @@ public boolean modifierAgentsATM(nc.mairie.technique.Transaction aTransaction) t
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param unAgent unAgent
+ * @param uneSpecialite uneSpecialite
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean modificationAgentsATM(nc.mairie.technique.Transaction aTransaction,Agents unAgent,Specialite uneSpecialite) throws Exception {
 //	 controle si objet vide
@@ -108,6 +129,9 @@ public boolean modificationAgentsATM(nc.mairie.technique.Transaction aTransactio
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean supprimerAgentsATM(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//controle : si l'agent a déjà été affecté à un OT on ne peut pas le supprimer
@@ -132,11 +156,17 @@ public AgentsATM() {
 /**
  * Getter de l'attribut matricule.
  */
+/**
+ * @return String
+ */
 public String getMatricule() {
 	return matricule;
 }
 /**
  * Setter de l'attribut matricule.
+ */
+/**
+ * @param newMatricule newMatricule
  */
 public void setMatricule(String newMatricule) { 
 	matricule = newMatricule;
@@ -144,11 +174,17 @@ public void setMatricule(String newMatricule) {
 /**
  * Getter de l'attribut estmecanicien.
  */
+/**
+ * @return String
+ */
 public String getEstmecanicien() {
 	return estmecanicien;
 }
 /**
  * Setter de l'attribut estmecanicien.
+ */
+/**
+ * @param newEstmecanicien newEstmecanicien
  */
 public void setEstmecanicien(String newEstmecanicien) { 
 	estmecanicien = newEstmecanicien;
@@ -156,11 +192,17 @@ public void setEstmecanicien(String newEstmecanicien) {
 /**
  * Getter de l'attribut codespe.
  */
+/**
+ * @return String
+ */
 public String getCodespe() {
 	return codespe;
 }
 /**
  * Setter de l'attribut codespe.
+ */
+/**
+ * @param newCodespe newCodespe
  */
 public void setCodespe(String newCodespe) { 
 	codespe = newCodespe;
@@ -174,6 +216,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected AgentsATMBroker getMyAgentsATMBroker() {
 	return (AgentsATMBroker)getMyBasicBroker();
@@ -181,7 +224,10 @@ protected AgentsATMBroker getMyAgentsATMBroker() {
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction aTransaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeAgentsATMSpe(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	AgentsATM unAgentsATM = new AgentsATM();

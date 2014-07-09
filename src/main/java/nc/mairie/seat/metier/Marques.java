@@ -22,7 +22,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Marques.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Marques> listerMarques(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Marques unMarques = new Marques();
@@ -30,7 +32,10 @@ public static ArrayList<Marques> listerMarques(nc.mairie.technique.Transaction a
 }
 /**
  * Retourne un Marques.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return Marques
+ * @throws Exception Exception
  */
 public static Marques chercherMarques(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Marques unMarques = new Marques();
@@ -39,6 +44,10 @@ public static Marques chercherMarques(nc.mairie.technique.Transaction aTransacti
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerMarques(nc.mairie.technique.Transaction aTransaction,String param)  throws Exception {
 	if(!existeMarques(aTransaction,param)){
@@ -55,6 +64,10 @@ public boolean creerMarques(nc.mairie.technique.Transaction aTransaction,String 
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean modifierMarques(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	if (!existeMarques(aTransaction,param)){
@@ -68,6 +81,9 @@ public boolean modifierMarques(nc.mairie.technique.Transaction aTransaction,Stri
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean supprimerMarques(nc.mairie.technique.Transaction aTransaction) throws Exception{
 //	 si la marque est déjà utilisé on ne peut pas supprimer
@@ -103,7 +119,9 @@ public int nouvMarques(nc.mairie.technique.Transaction aTransaction) throws Exce
 
 /**
  * Retourne un ArrayList d'objet métier : Marques.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Marques> listerMarquesModele(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Marques unMarques = new Marques();
@@ -118,7 +136,10 @@ public static ArrayList<Marques> listerMarquesModeleMT(nc.mairie.technique.Trans
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction aTransaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeMarques(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	Marques unMarques = new Marques();
@@ -134,11 +155,17 @@ public Marques() {
 /**
  * Getter de l'attribut codemarque.
  */
+/**
+ * @return String
+ */
 public String getCodemarque() {
 	return codemarque;
 }
 /**
  * Setter de l'attribut codemarque.
+ */
+/**
+ * @param newCodemarque newCodemarque
  */
 public void setCodemarque(String newCodemarque) { 
 	codemarque = newCodemarque;
@@ -146,11 +173,17 @@ public void setCodemarque(String newCodemarque) {
 /**
  * Getter de l'attribut designationmarque.
  */
+/**
+ * @return String
+ */
 public String getDesignationmarque() {
 	return designationmarque;
 }
 /**
  * Setter de l'attribut designationmarque.
+ */
+/**
+ * @param newDesignationmarque newDesignationmarque
  */
 public void setDesignationmarque(String newDesignationmarque) { 
 	designationmarque = newDesignationmarque;
@@ -164,6 +197,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected MarquesBroker getMyMarquesBroker() {
 	return (MarquesBroker)getMyBasicBroker();

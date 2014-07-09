@@ -32,7 +32,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : PiecesOtInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PiecesOtInfos> listerPiecesOtInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PiecesOtInfos unPiecesOtInfos = new PiecesOtInfos();
@@ -40,7 +42,10 @@ public static ArrayList<PiecesOtInfos> listerPiecesOtInfos(nc.mairie.technique.T
 }
 /**
  * Retourne un PiecesOtInfos.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return PiecesOtInfos
+ * @throws Exception Exception
  */
 public static PiecesOtInfos chercherPiecesOtInfos(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	PiecesOtInfos unPiecesOtInfos = new PiecesOtInfos();
@@ -49,7 +54,10 @@ public static PiecesOtInfos chercherPiecesOtInfos(nc.mairie.technique.Transactio
 
 /**
  * Retourne un ArrayList d'objet métier : PiecesOtInfos.
+ * @param aTransaction aTransaction
+ * @param numot numot
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PiecesOtInfos> listerPiecesOtInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	PiecesOtInfos unPiecesOtInfos = new PiecesOtInfos();
@@ -58,7 +66,10 @@ public static ArrayList<PiecesOtInfos> listerPiecesOtInfosOT(nc.mairie.technique
 
 /**
  * Retourne un ArrayList d'objet métier : PiecesOtInfos.
+ * @param aTransaction aTransaction
+ * @param numot numot
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static int cumuleMontantPiecesOtInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	PiecesOtInfos unPiecesOtInfos = new PiecesOtInfos();
@@ -74,6 +85,7 @@ public PiecesOtInfos() {
 }
 /**
  * Getter de l'attribut numot.
+ * @return String
  */
 public String getNumot() {
 	return numot;
@@ -81,11 +93,15 @@ public String getNumot() {
 /**
  * Setter de l'attribut numot.
  */
+/**
+ * @param newNumot newNumot
+ */
 public void setNumot(String newNumot) { 
 	numot = newNumot;
 }
 /**
  * Getter de l'attribut numpiece.
+ * @return String
  */
 public String getNumpiece() {
 	return numpiece;
@@ -93,11 +109,15 @@ public String getNumpiece() {
 /**
  * Setter de l'attribut numpiece.
  */
+/**
+ * @param newNumpiece newNumpiece
+ */
 public void setNumpiece(String newNumpiece) { 
 	numpiece = newNumpiece;
 }
 /**
  * Getter de l'attribut datesortiepieces.
+ * @return String
  */
 public String getDatesortiepieces() {
 	return datesortiepieces;
@@ -105,11 +125,15 @@ public String getDatesortiepieces() {
 /**
  * Setter de l'attribut datesortiepieces.
  */
+/**
+ * @param newDatesortiepieces newDatesortiepieces
+ */
 public void setDatesortiepieces(String newDatesortiepieces) { 
 	datesortiepieces = newDatesortiepieces;
 }
 /**
  * Getter de l'attribut quantite.
+ * @return String
  */
 public String getQuantite() {
 	return quantite;
@@ -117,11 +141,15 @@ public String getQuantite() {
 /**
  * Setter de l'attribut quantite.
  */
+/**
+ * @param newQuantite newQuantite
+ */
 public void setQuantite(String newQuantite) { 
 	quantite = newQuantite;
 }
 /**
  * Getter de l'attribut designationpiece.
+ * @return String
  */
 public String getDesignationpiece() {
 	return designationpiece;
@@ -129,11 +157,15 @@ public String getDesignationpiece() {
 /**
  * Setter de l'attribut designationpiece.
  */
+/**
+ * @param newDesignationpiece newDesignationpiece
+ */
 public void setDesignationpiece(String newDesignationpiece) { 
 	designationpiece = newDesignationpiece;
 }
 /**
  * Getter de l'attribut pu.
+ * @return String
  */
 public String getPu() {
 	return pu;
@@ -141,11 +173,15 @@ public String getPu() {
 /**
  * Setter de l'attribut pu.
  */
+/**
+ * @param newPu newPu
+ */
 public void setPu(String newPu) { 
 	pu = newPu;
 }
 /**
  * Getter de l'attribut dateentree.
+ * @return String
  */
 public String getDateentree() {
 	return dateentree;
@@ -153,11 +189,15 @@ public String getDateentree() {
 /**
  * Setter de l'attribut dateentree.
  */
+/**
+ * @param newDateentree newDateentree
+ */
 public void setDateentree(String newDateentree) { 
 	dateentree = newDateentree;
 }
 /**
  * Getter de l'attribut datesortie.
+ * @return String
  */
 public String getDatesortie() {
 	return datesortie;
@@ -165,11 +205,15 @@ public String getDatesortie() {
 /**
  * Setter de l'attribut datesortie.
  */
+/**
+ * @param newDatesortie newDatesortie
+ */
 public void setDatesortie(String newDatesortie) { 
 	datesortie = newDatesortie;
 }
 /**
  * Getter de l'attribut compteur.
+ * @return String
  */
 public String getCompteur() {
 	return compteur;
@@ -177,11 +221,15 @@ public String getCompteur() {
 /**
  * Setter de l'attribut compteur.
  */
+/**
+ * @param newCompteur newCompteur
+ */
 public void setCompteur(String newCompteur) { 
 	compteur = newCompteur;
 }
 /**
  * Getter de l'attribut valide.
+ * @return String
  */
 public String getValide() {
 	return valide;
@@ -189,11 +237,15 @@ public String getValide() {
 /**
  * Setter de l'attribut valide.
  */
+/**
+ * @param newValide newValide
+ */
 public void setValide(String newValide) { 
 	valide = newValide;
 }
 /**
  * Getter de l'attribut numerobc.
+ * @return String
  */
 public String getNumerobc() {
 	return numerobc;
@@ -201,11 +253,15 @@ public String getNumerobc() {
 /**
  * Setter de l'attribut numerobc.
  */
+/**
+ * @param newNumerobc newNumerobc
+ */
 public void setNumerobc(String newNumerobc) { 
 	numerobc = newNumerobc;
 }
 /**
  * Getter de l'attribut commentaire.
+ * @return String
  */
 public String getCommentaire() {
 	return commentaire;
@@ -213,17 +269,24 @@ public String getCommentaire() {
 /**
  * Setter de l'attribut commentaire.
  */
+/**
+ * @param newCommentaire newCommentaire
+ */
 public void setCommentaire(String newCommentaire) { 
 	commentaire = newCommentaire;
 }
 /**
  * Getter de l'attribut prix.
+ * @return String
  */
 public String getPrix() {
 	return prix;
 }
 /**
  * Setter de l'attribut prix.
+ */
+/**
+ * @param newPrix newPrix
  */
 public void setPrix(String newPrix) { 
 	prix = newPrix;
@@ -237,6 +300,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PiecesOtInfosBroker getMyPiecesOtInfosBroker() {
 	return (PiecesOtInfosBroker)getMyBasicBroker();

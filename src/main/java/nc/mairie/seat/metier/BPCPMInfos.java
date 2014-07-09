@@ -33,11 +33,17 @@ public BPCPMInfos() {
 /**
  * Getter de l'attribut numerobpc.
  */
+/**
+ * @return String
+ */
 public String getNumerobpc() {
 	return numerobpc;
 }
 /**
  * Setter de l'attribut numerobpc.
+ */
+/**
+ * @param newNumerobpc newNumerobpc
  */
 public void setNumerobpc(String newNumerobpc) { 
 	numerobpc = newNumerobpc;
@@ -45,11 +51,17 @@ public void setNumerobpc(String newNumerobpc) {
 /**
  * Getter de l'attribut date.
  */
+/**
+ * @return String
+ */
 public String getDate() {
 	return date;
 }
 /**
  * Setter de l'attribut date.
+ */
+/**
+ * @param newDate newDate
  */
 public void setDate(String newDate) { 
 	date = newDate;
@@ -57,11 +69,17 @@ public void setDate(String newDate) {
 /**
  * Getter de l'attribut heure.
  */
+/**
+ * @return String
+ */
 public String getHeure() {
 	return heure;
 }
 /**
  * Setter de l'attribut heure.
+ */
+/**
+ * @param newHeure newHeure
  */
 public void setHeure(String newHeure) { 
 	heure = newHeure;
@@ -69,11 +87,17 @@ public void setHeure(String newHeure) {
 /**
  * Getter de l'attribut valeurcompteur.
  */
+/**
+ * @return String
+ */
 public String getValeurcompteur() {
 	return valeurcompteur;
 }
 /**
  * Setter de l'attribut valeurcompteur.
+ */
+/**
+ * @param newValeurcompteur newValeurcompteur
  */
 public void setValeurcompteur(String newValeurcompteur) { 
 	valeurcompteur = newValeurcompteur;
@@ -81,11 +105,17 @@ public void setValeurcompteur(String newValeurcompteur) {
 /**
  * Getter de l'attribut numeropompe.
  */
+/**
+ * @return String
+ */
 public String getNumeropompe() {
 	return numeropompe;
 }
 /**
  * Setter de l'attribut numeropompe.
+ */
+/**
+ * @param newNumeropompe newNumeropompe
  */
 public void setNumeropompe(String newNumeropompe) { 
 	numeropompe = newNumeropompe;
@@ -93,11 +123,17 @@ public void setNumeropompe(String newNumeropompe) {
 /**
  * Getter de l'attribut quantite.
  */
+/**
+ * @return String
+ */
 public String getQuantite() {
 	return quantite;
 }
 /**
  * Setter de l'attribut quantite.
+ */
+/**
+ * @param newQuantite newQuantite
  */
 public void setQuantite(String newQuantite) { 
 	quantite = newQuantite;
@@ -105,11 +141,17 @@ public void setQuantite(String newQuantite) {
 /**
  * Getter de l'attribut modedeprise.
  */
+/**
+ * @return String
+ */
 public String getModedeprise() {
 	return modedeprise;
 }
 /**
  * Setter de l'attribut modedeprise.
+ */
+/**
+ * @param newModedeprise newModedeprise
  */
 public void setModedeprise(String newModedeprise) { 
 	modedeprise = newModedeprise;
@@ -117,11 +159,17 @@ public void setModedeprise(String newModedeprise) {
 /**
  * Getter de l'attribut numeroinventaire.
  */
+/**
+ * @return String
+ */
 public String getNumeroinventaire() {
 	return numeroinventaire;
 }
 /**
  * Setter de l'attribut numeroinventaire.
+ */
+/**
+ * @param newNumeroinventaire newNumeroinventaire
  */
 public void setNumeroinventaire(String newNumeroinventaire) { 
 	numeroinventaire = newNumeroinventaire;
@@ -129,11 +177,17 @@ public void setNumeroinventaire(String newNumeroinventaire) {
 /**
  * Getter de l'attribut pmserie.
  */
+/**
+ * @return String
+ */
 public String getPmserie() {
 	return pmserie;
 }
 /**
  * Setter de l'attribut pmserie.
+ */
+/**
+ * @param newPmserie newPmserie
  */
 public void setPmserie(String newPmserie) { 
 	pmserie = newPmserie;
@@ -141,11 +195,17 @@ public void setPmserie(String newPmserie) {
 /**
  * Getter de l'attribut dmes.
  */
+/**
+ * @return String
+ */
 public String getDmes() {
 	return dmes;
 }
 /**
  * Setter de l'attribut dmes.
+ */
+/**
+ * @param newDmes newDmes
  */
 public void setDmes(String newDmes) { 
 	dmes = newDmes;
@@ -153,11 +213,17 @@ public void setDmes(String newDmes) {
 /**
  * Getter de l'attribut siserv.
  */
+/**
+ * @return String
+ */
 public String getSiserv() {
 	return siserv;
 }
 /**
  * Setter de l'attribut siserv.
+ */
+/**
+ * @param newSiserv newSiserv
  */
 public void setSiserv(String newSiserv) { 
 	siserv = newSiserv;
@@ -165,11 +231,17 @@ public void setSiserv(String newSiserv) {
 /**
  * Getter de l'attribut ddebut.
  */
+/**
+ * @return String
+ */
 public String getDdebut() {
 	return ddebut;
 }
 /**
  * Setter de l'attribut ddebut.
+ */
+/**
+ * @param newDdebut newDdebut
  */
 public void setDdebut(String newDdebut) { 
 	ddebut = newDdebut;
@@ -177,11 +249,17 @@ public void setDdebut(String newDdebut) {
 /**
  * Getter de l'attribut dfin.
  */
+/**
+ * @return String
+ */
 public String getDfin() {
 	return dfin;
 }
 /**
  * Setter de l'attribut dfin.
+ */
+/**
+ * @param newDfin newDfin
  */
 public void setDfin(String newDfin) { 
 	dfin = newDfin;
@@ -189,11 +267,17 @@ public void setDfin(String newDfin) {
 /**
  * Getter de l'attribut liserv.
  */
+/**
+ * @return String
+ */
 public String getLiserv() {
 	return liserv;
 }
 /**
  * Setter de l'attribut liserv.
+ */
+/**
+ * @param newLiserv newLiserv
  */
 public void setLiserv(String newLiserv) { 
 	liserv = newLiserv;
@@ -201,11 +285,17 @@ public void setLiserv(String newLiserv) {
 /**
  * Getter de l'attribut nomatr.
  */
+/**
+ * @return String
+ */
 public String getNomatr() {
 	return nomatr;
 }
 /**
  * Setter de l'attribut nomatr.
+ */
+/**
+ * @param newNomatr newNomatr
  */
 public void setNomatr(String newNomatr) { 
 	nomatr = newNomatr;
@@ -219,6 +309,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected BPCPMInfosBroker getMyBPCPMInfosBroker() {
 	return (BPCPMInfosBroker)getMyBasicBroker();
@@ -235,7 +326,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : BPCPMInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<BPCPMInfos> listerBPCPMInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	BPCPMInfos unBPCPMInfos = new BPCPMInfos();
@@ -243,7 +336,10 @@ public static ArrayList<BPCPMInfos> listerBPCPMInfos(nc.mairie.technique.Transac
 }
 /**
  * Retourne un BPCPMInfos.
+ * @param aTransaction Transaction
+ * @param code code
  * @return BPCPMInfos
+ * @throws Exception Exception
  */
 public static BPCPMInfos chercherBPCPMInfos(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	BPCPMInfos unBPCPMInfos = new BPCPMInfos();
@@ -251,7 +347,13 @@ public static BPCPMInfos chercherBPCPMInfos(nc.mairie.technique.Transaction aTra
 }
 /**
  * Retourne un ArrayList d'objet métier : BPCInfosCompletes.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param servi servi
+ * @param ddeb ddeb
+ * @param dfin dfin
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<BPCPMInfos> listerBPCPMInfosParams(nc.mairie.technique.Transaction aTransaction,String inv,String servi,String ddeb,String dfin) throws Exception{
 	String periode = "";

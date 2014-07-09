@@ -28,7 +28,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : PiecesOT.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PiecesOT> listerPiecesOT(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PiecesOT unPiecesOT = new PiecesOT();
@@ -36,7 +38,12 @@ public static ArrayList<PiecesOT> listerPiecesOT(nc.mairie.technique.Transaction
 }
 /**
  * Retourne un PiecesOT.
+ * @param aTransaction Transaction
+ * @param numpiece numpiece
+ * @param numot numot
+ * @param date date
  * @return PiecesOT
+ * @throws Exception Exception
  */
 public static PiecesOT chercherPiecesOT(nc.mairie.technique.Transaction aTransaction, String numpiece,String numot,String date) throws Exception{
 	PiecesOT unPiecesOT = new PiecesOT();
@@ -45,7 +52,10 @@ public static PiecesOT chercherPiecesOT(nc.mairie.technique.Transaction aTransac
 
 /**
  * Retourne un arrayList.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return PiecesOT
+ * @throws Exception Exception
  */
 public static ArrayList<PiecesOT> chercherPiecesOTOT(nc.mairie.technique.Transaction aTransaction, String numot) throws Exception{
 	PiecesOT unPiecesOT = new PiecesOT();
@@ -55,7 +65,12 @@ public static ArrayList<PiecesOT> chercherPiecesOTOT(nc.mairie.technique.Transac
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction Transaction
+ * @param numot numot
+ * @param numpiece numpiece
+ * @param date date
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existePiecesOT(nc.mairie.technique.Transaction aTransaction, String numot,String numpiece,String date) throws Exception{
 	PiecesOT unPiecesOT = new PiecesOT();
@@ -65,7 +80,10 @@ public boolean existePiecesOT(nc.mairie.technique.Transaction aTransaction, Stri
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction Transaction
+ * @param numpiece numpiece
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existePiecesOTPieces(nc.mairie.technique.Transaction aTransaction, String numpiece) throws Exception{
 	PiecesOT unPiecesOT = new PiecesOT();
@@ -75,6 +93,9 @@ public boolean existePiecesOTPieces(nc.mairie.technique.Transaction aTransaction
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPiecesOT(nc.mairie.technique.Transaction aTransaction )  throws Exception {
 	//Creation du PiecesOT
@@ -99,6 +120,11 @@ public boolean controleChamps(nc.mairie.technique.Transaction aTransaction )  th
  * true ou false
  * on utilise la méthode créer pour ajouter un PieceOt
  * passage en paramètre de Pièce et de OT
+ * @param aTransaction Transaction
+ * @param unOT unOT
+ * @param unePiece unePiece
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creationPiecesOT(nc.mairie.technique.Transaction aTransaction,OT unOT,Pieces unePiece )  throws Exception {
 	// on vérifie que les objets ne sont pas null
@@ -170,6 +196,9 @@ public boolean creationPiecesOT(nc.mairie.technique.Transaction aTransaction,OT 
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierPiecesOT(nc.mairie.technique.Transaction aTransaction) throws Exception {
 //	RG : controle des champs
@@ -219,6 +248,9 @@ public boolean modifierPiecesOT(nc.mairie.technique.Transaction aTransaction) th
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerPiecesOT(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'PiecesOT
@@ -233,6 +265,7 @@ public PiecesOT() {
 }
 /**
  * Getter de l'attribut numot.
+ * @return String
  */
 public String getNumot() {
 	return numot;
@@ -240,11 +273,15 @@ public String getNumot() {
 /**
  * Setter de l'attribut numot.
  */
+/**
+ * @param newNumot newNumot
+ */
 public void setNumot(String newNumot) { 
 	numot = newNumot;
 }
 /**
  * Getter de l'attribut numpiece.
+ * @return String
  */
 public String getNumpiece() {
 	return numpiece;
@@ -252,11 +289,15 @@ public String getNumpiece() {
 /**
  * Setter de l'attribut numpiece.
  */
+/**
+ * @param newNumpiece newNumpiece
+ */
 public void setNumpiece(String newNumpiece) { 
 	numpiece = newNumpiece;
 }
 /**
  * Getter de l'attribut datesortie.
+ * @return String
  */
 public String getDatesortie() {
 	return datesortie;
@@ -264,11 +305,15 @@ public String getDatesortie() {
 /**
  * Setter de l'attribut datesortie.
  */
+/**
+ * @param newDatesortie newDatesortie
+ */
 public void setDatesortie(String newDatesortie) { 
 	datesortie = newDatesortie;
 }
 /**
  * Getter de l'attribut quantite.
+ * @return String
  */
 public String getQuantite() {
 	return quantite;
@@ -276,17 +321,24 @@ public String getQuantite() {
 /**
  * Setter de l'attribut quantite.
  */
+/**
+ * @param newQuantite newQuantite
+ */
 public void setQuantite(String newQuantite) { 
 	quantite = newQuantite;
 }
 /**
  * Getter de l'attribut prix.
+ * @return String
  */
 public String getPrix() {
 	return prix;
 }
 /**
  * Setter de l'attribut prix.
+ */
+/**
+ * @param newPrix newPrix
  */
 public void setPrix(String newPrix) { 
 	prix = newPrix;
@@ -300,6 +352,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PiecesOTBroker getMyPiecesOTBroker() {
 	return (PiecesOTBroker)getMyBasicBroker();

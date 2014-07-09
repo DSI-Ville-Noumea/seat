@@ -22,7 +22,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Pneu.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Pneu> listerPneu(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Pneu unPneu = new Pneu();
@@ -30,7 +32,10 @@ public static ArrayList<Pneu> listerPneu(nc.mairie.technique.Transaction aTransa
 }
 /**
  * Retourne un Pneu.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return Pneu
+ * @throws Exception Exception
  */
 public static Pneu chercherPneu(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Pneu unPneu = new Pneu();
@@ -40,6 +45,10 @@ public static Pneu chercherPneu(nc.mairie.technique.Transaction aTransaction, St
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPneu(nc.mairie.technique.Transaction aTransaction,String param)  throws Exception {
 	if (!existePneu(aTransaction,param)){
@@ -56,6 +65,10 @@ public boolean creerPneu(nc.mairie.technique.Transaction aTransaction,String par
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierPneu(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	if(!existePneu(aTransaction,param)){
@@ -69,6 +82,9 @@ public boolean modifierPneu(nc.mairie.technique.Transaction aTransaction,String 
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerPneu(nc.mairie.technique.Transaction aTransaction) throws Exception{
 //	 si le type de pneu est déjà utilisé on ne peut pas supprimer
@@ -104,7 +120,10 @@ public int nouvCodePneu(nc.mairie.technique.Transaction aTransaction) throws Exc
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction aTransaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existePneu(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	Pneu unPneu = new Pneu();
@@ -118,6 +137,7 @@ public Pneu() {
 }
 /**
  * Getter de l'attribut codepneu.
+ * @return String
  */
 public String getCodepneu() {
 	return codepneu;
@@ -125,17 +145,24 @@ public String getCodepneu() {
 /**
  * Setter de l'attribut codepneu.
  */
+/**
+ * @param newCodepneu newCodepneu
+ */
 public void setCodepneu(String newCodepneu) { 
 	codepneu = newCodepneu;
 }
 /**
  * Getter de l'attribut dimension.
+ * @return String
  */
 public String getDimension() {
 	return dimension;
 }
 /**
  * Setter de l'attribut dimension.
+ */
+/**
+ * @param newDimension newDimension
  */
 public void setDimension(String newDimension) { 
 	dimension = newDimension;
@@ -149,6 +176,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PneuBroker getMyPneuBroker() {
 	return (PneuBroker)getMyBasicBroker();

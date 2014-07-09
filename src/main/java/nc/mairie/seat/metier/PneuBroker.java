@@ -21,6 +21,9 @@ public int nouvCodePneu(nc.mairie.technique.Transaction aTransaction) throws Exc
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPneu(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -28,6 +31,9 @@ public boolean creerPneu(nc.mairie.technique.Transaction aTransaction)  throws E
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierPneu(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -35,20 +41,28 @@ public boolean modifierPneu(nc.mairie.technique.Transaction aTransaction) throws
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerPneu(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : Pneu.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Pneu> listerPneu(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by dimension");
 }
 /**
  * Retourne un Pneu.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return Pneu
+ * @throws Exception Exception
  */
 public Pneu chercherPneu(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (Pneu)executeSelect(aTransaction,"select * from "+getTable()+" where CODEPNEU = "+cle+"");
@@ -57,7 +71,10 @@ public Pneu chercherPneu(nc.mairie.technique.Transaction aTransaction, String cl
 /**
  * Retourne un booléen.
  * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existePneu(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where upper(dimension) = '"+param.toUpperCase()+"'");
@@ -65,6 +82,7 @@ public boolean existePneu(nc.mairie.technique.Transaction aTransaction, String p
 
 /**
  * Constructeur PneuBroker.
+ * @param aMetier BasicMetier
  */
 public PneuBroker(Pneu aMetier) {
 	super(aMetier);

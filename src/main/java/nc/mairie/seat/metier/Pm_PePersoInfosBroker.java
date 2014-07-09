@@ -10,6 +10,7 @@ import nc.mairie.technique.BasicRecord;
 public class Pm_PePersoInfosBroker extends BasicBroker {
 /**
  * Constructeur Pm_PePersoInfosBroker.
+ * @param aMetier BasicMetier
  */
 public Pm_PePersoInfosBroker(Pm_PePersoInfos aMetier) {
 	super(aMetier);
@@ -58,14 +59,19 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 }
 /**
  * Retourne un ArrayList d'objet métier : Pm_PePersoInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Pm_PePersoInfos> listerPm_PePersoInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un Pm_PePersoInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return Pm_PePersoInfos
+ * @throws Exception Exception
  */
 public Pm_PePersoInfos chercherPm_PePersoInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (Pm_PePersoInfos)executeSelect(aTransaction,"select * from "+getTable()+" where codepmpep = "+cle+"");
@@ -78,6 +84,11 @@ public ArrayList<Pm_PePersoInfos> chercherPmPePersoInfosFPM(nc.mairie.technique.
 
 /**
  *liste des peperso fait
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param tri tri
+ * @return boolean
+ * @throws Exception Exception
  */
 public ArrayList<Pm_PePersoInfos> listerPmPePersoInfosFait(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where dreal <> '0001-01-01' and pminv='"+inv+"' order by "+tri+"");

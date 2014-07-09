@@ -27,7 +27,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : PM_Affecter_Sce.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PM_Affecter_Sce> listerPM_Affecter_Sce(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PM_Affecter_Sce unPM_Affecter_Sce = new PM_Affecter_Sce();
@@ -35,7 +37,13 @@ public static ArrayList<PM_Affecter_Sce> listerPM_Affecter_Sce(nc.mairie.techniq
 }
 /**
  * Retourne un PM_Affecter_Sce.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param servi servi
+ * @param date date
+ * @param dfin dfin
  * @return PM_Affecter_Sce
+ * @throws Exception Exception
  */
 public static PM_Affecter_Sce chercherPM_Affecter_Sce(nc.mairie.technique.Transaction aTransaction, String inv,String servi,String date,String dfin) throws Exception{
 	if(dfin.equals("")){
@@ -47,6 +55,11 @@ public static PM_Affecter_Sce chercherPM_Affecter_Sce(nc.mairie.technique.Transa
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unPMateriel unPMateriel
+ * @param unService unService
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPM_Affecter_Sce(nc.mairie.technique.Transaction aTransaction,PMateriel unPMateriel, Service unService )  throws Exception {
 //	on vérifie ques les paramètres ne sont pas null
@@ -77,6 +90,10 @@ public boolean creerPM_Affecter_Sce(nc.mairie.technique.Transaction aTransaction
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unPMateriel unPMateriel
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierPM_Affecter_Sce(nc.mairie.technique.Transaction aTransaction,PMateriel unPMateriel) throws Exception {
 	if (null==unPMateriel){
@@ -99,6 +116,9 @@ public boolean modifierPM_Affecter_Sce(nc.mairie.technique.Transaction aTransact
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerPM_Affecter_Sce(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'PM_Affecter_Sce
@@ -258,6 +278,7 @@ public PM_Affecter_Sce() {
 }
 /**
  * Getter de l'attribut siserv.
+ * @return String
  */
 public String getSiserv() {
 	return siserv;
@@ -265,11 +286,15 @@ public String getSiserv() {
 /**
  * Setter de l'attribut siserv.
  */
+/**
+ * @param newSiserv newSiserv
+ */
 public void setSiserv(String newSiserv) { 
 	siserv = newSiserv;
 }
 /**
  * Getter de l'attribut pminv.
+ * @return String
  */
 public String getPminv() {
 	return pminv;
@@ -277,11 +302,15 @@ public String getPminv() {
 /**
  * Setter de l'attribut pminv.
  */
+/**
+ * @param newPminv newPminv
+ */
 public void setPminv(String newPminv) { 
 	pminv = newPminv;
 }
 /**
  * Getter de l'attribut ddebut.
+ * @return String
  */
 public String getDdebut() {
 	return ddebut;
@@ -289,11 +318,15 @@ public String getDdebut() {
 /**
  * Setter de l'attribut ddebut.
  */
+/**
+ * @param newDdebut newDdebut
+ */
 public void setDdebut(String newDdebut) { 
 	ddebut = newDdebut;
 }
 /**
  * Getter de l'attribut dfin.
+ * @return String
  */
 public String getDfin() {
 	return dfin;
@@ -301,17 +334,24 @@ public String getDfin() {
 /**
  * Setter de l'attribut dfin.
  */
+/**
+ * @param newDfin newDfin
+ */
 public void setDfin(String newDfin) { 
 	dfin = newDfin;
 }
 /**
  * Getter de l'attribut nomatr.
+ * @return String
  */
 public String getNomatr() {
 	return nomatr;
 }
 /**
  * Setter de l'attribut nomatr.
+ */
+/**
+ * @param newNomatr newNomatr
  */
 public void setNomatr(String newNomatr) { 
 	nomatr = newNomatr;
@@ -325,6 +365,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PM_Affecter_SceBroker getMyPM_Affecter_SceBroker() {
 	return (PM_Affecter_SceBroker)getMyBasicBroker();

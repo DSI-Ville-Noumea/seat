@@ -34,6 +34,8 @@ public String toString() {
 /**
  * Retourne un ArrayList d'objet métier : Affecter_Agent.
  * @return java.util.ArrayList
+ * @param aTransaction Transaction
+ * @throws Exception Exception
  */
 public static ArrayList<Affecter_Agent> listerAffecter_Agent(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Affecter_Agent unAffecter_Agent = new Affecter_Agent();
@@ -42,6 +44,11 @@ public static ArrayList<Affecter_Agent> listerAffecter_Agent(nc.mairie.technique
 /**
  * Retourne un Affecter_Agent.
  * @return Affecter_Agent
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param matr matr
+ * @param date date
+ * @throws Exception Exception
  */
 public static Affecter_Agent chercherAffecter_Agent(nc.mairie.technique.Transaction aTransaction, String inv,String matr,String date) throws Exception{
 	Affecter_Agent unAffecter_Agent = new Affecter_Agent();
@@ -51,6 +58,9 @@ public static Affecter_Agent chercherAffecter_Agent(nc.mairie.technique.Transact
 /**
  * Retourne un Affecter_Agent.
  * @return Affecter_Agent
+ * @param aTransaction Transaction
+ * @param code code
+ * @throws Exception Exception
  */
 public static ArrayList<Affecter_Agent> chercherListAffecter_AgentEquip(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Affecter_Agent unAffecter_Agent = new Affecter_Agent();
@@ -60,6 +70,9 @@ public static ArrayList<Affecter_Agent> chercherListAffecter_AgentEquip(nc.mairi
 /**
  * Retourne un Affecter_Agent.
  * @return Affecter_Agent
+ * @param aTransaction Transaction
+ * @param servi servi
+ * @throws Exception Exception
  */
 public static ArrayList<Affecter_Agent> chercherListAffecter_AgentSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception{
 	Affecter_Agent unAffecter_Agent = new Affecter_Agent();
@@ -86,6 +99,12 @@ public static ArrayList<Affecter_Agent> chercherListAffecter_AgentEquipSceEnCour
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unEquipement unEquipement
+ * @param unAgent unAgent
+ * @param newDate newDate
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerAffecter_Agent(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement,Agents unAgent,String newDate)  throws Exception {
 	//on vérifie ques les paramètres ne sont pas null
@@ -778,6 +797,11 @@ public boolean affecter_agent(nc.mairie.technique.Transaction aTransaction,Equip
  * Methode modifierObjetMetier qui retourne
  * true ou false
  */
+/**
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
+ */
 public boolean modifierAffecter_Agent(nc.mairie.technique.Transaction aTransaction) throws Exception {
 //	contrôle
 	if ((Integer.parseInt(getHdeb())>24)||(Integer.parseInt(getHdebmn())>60)||(Integer.parseInt(getHdeb())<0)||(Integer.parseInt(getHdebmn())<0)){
@@ -1203,6 +1227,11 @@ public boolean affecter_agentModifCCAS(nc.mairie.technique.Transaction aTransact
  * Methode supprimerObjetMetier qui retourne
  * true ou false
  */
+/**
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
+ */
 public boolean supprimerAffecter_Agent(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'Affecter_Agent
 	return getMyAffecter_AgentBroker().supprimerAffecter_Agent(aTransaction);
@@ -1211,6 +1240,7 @@ public boolean supprimerAffecter_Agent(nc.mairie.technique.Transaction aTransact
 	
 /**
  * Getter de l'attribut numeroimmatriculation.
+ * @return numeroimmatriculation
  */
 public String getNumeroimmatriculation() {
 	return numeroimmatriculation;
@@ -1218,11 +1248,17 @@ public String getNumeroimmatriculation() {
 /**
  * Setter de l'attribut numeroimmatriculation.
  */
+/**
+ * @param newNumeroimmatriculation newNumeroimmatriculation
+ */
 public void setNumeroimmatriculation(String newNumeroimmatriculation) { 
 	numeroimmatriculation = newNumeroimmatriculation;
 }
 /**
  * Getter de l'attribut datemiseencirculation.
+ */
+/**
+ * @return datemiseencirculation
  */
 public String getDatemiseencirculation() {
 	return datemiseencirculation;
@@ -1230,11 +1266,17 @@ public String getDatemiseencirculation() {
 /**
  * Setter de l'attribut datemiseencirculation.
  */
+/**
+ * @param newDatemiseencirculation newDatemiseencirculation
+ */
 public void setDatemiseencirculation(String newDatemiseencirculation) { 
 	datemiseencirculation = newDatemiseencirculation;
 }
 /**
  * Getter de l'attribut nom.
+ */
+/**
+ * @return nom
  */
 public String getNom() {
 	return nom;
@@ -1242,11 +1284,15 @@ public String getNom() {
 /**
  * Setter de l'attribut nom.
  */
+/**
+ * @param newNom newNom
+ */
 public void setNom(String newNom) { 
 	nom = newNom;
 }
 /**
  * Getter de l'attribut prenom.
+ * @return prenom
  */
 public String getPrenom() {
 	return prenom;
@@ -1254,13 +1300,22 @@ public String getPrenom() {
 /**
  * Setter de l'attribut prenom.
  */
+/**
+ * @param newPrenom newPrenom
+ */
 public void setPrenom(String newPrenom) { 
 	prenom = newPrenom;
 }
+	/**
+	 * 
+	 */
 	public String codeservice;
 
 /**
  * Constructeur Affecter_Agent.
+ */
+/**
+ * 
  */
 public Affecter_Agent() {
 	super();
@@ -1268,11 +1323,17 @@ public Affecter_Agent() {
 /**
  * Getter de l'attribut matricule.
  */
+/**
+ * @return matricule
+ */
 public String getMatricule() {
 	return matricule;
 }
 /**
  * Setter de l'attribut matricule.
+ */
+/**
+ * @param newMatricule newMatricule
  */
 public void setMatricule(String newMatricule) { 
 	matricule = newMatricule;
@@ -1280,11 +1341,17 @@ public void setMatricule(String newMatricule) {
 /**
  * Getter de l'attribut numeroinventaire.
  */
+/**
+ * @return numeroinventaire
+ */
 public String getNumeroinventaire() {
 	return numeroinventaire;
 }
 /**
  * Setter de l'attribut numeroinventaire.
+ */
+/**
+ * @param newNumeroinventaire newNumeroinventaire
  */
 public void setNumeroinventaire(String newNumeroinventaire) { 
 	numeroinventaire = newNumeroinventaire;
@@ -1292,11 +1359,17 @@ public void setNumeroinventaire(String newNumeroinventaire) {
 /**
  * Getter de l'attribut datedebut.
  */
+/**
+ * @return datedebut
+ */
 public String getDatedebut() {
 	return datedebut;
 }
 /**
  * Setter de l'attribut datedebut.
+ */
+/**
+ * @param newDatedebut newDatedebut
  */
 public void setDatedebut(String newDatedebut) { 
 	datedebut = newDatedebut;
@@ -1304,11 +1377,17 @@ public void setDatedebut(String newDatedebut) {
 /**
  * Getter de l'attribut datefin.
  */
+/**
+ * @return datefin
+ */
 public String getDatefin() {
 	return datefin;
 }
 /**
  * Setter de l'attribut datefin.
+ */
+/**
+ * @param newDatefin newDatefin
  */
 public void setDatefin(String newDatefin) { 
 	datefin = newDatefin;
@@ -1316,11 +1395,17 @@ public void setDatefin(String newDatefin) {
 /**
  * Getter de l'attribut hdeb.
  */
+/**
+ * @return hdeb
+ */
 public String getHdeb() {
 	return hdeb;
 }
 /**
  * Setter de l'attribut hdeb.
+ */
+/**
+ * @param newHdeb newHdeb
  */
 public void setHdeb(String newHdeb) { 
 	hdeb = newHdeb;
@@ -1328,11 +1413,17 @@ public void setHdeb(String newHdeb) {
 /**
  * Getter de l'attribut hfin.
  */
+/**
+ * @return hfin
+ */
 public String getHfin() {
 	return hfin;
 }
 /**
  * Setter de l'attribut hfin.
+ */
+/**
+ * @param newHfin newHfin
  */
 public void setHfin(String newHfin) { 
 	hfin = newHfin;
@@ -1340,11 +1431,17 @@ public void setHfin(String newHfin) {
 /**
  * Getter de l'attribut hdebmn.
  */
+/**
+ * @return hdebmn
+ */
 public String getHdebmn() {
 	return hdebmn;
 }
 /**
  * Setter de l'attribut hdebmn.
+ */
+/**
+ * @param newHdebmn newHdebmn
  */
 public void setHdebmn(String newHdebmn) { 
 	hdebmn = newHdebmn;
@@ -1352,11 +1449,17 @@ public void setHdebmn(String newHdebmn) {
 /**
  * Getter de l'attribut hfinmn.
  */
+/**
+ * @return hfinmn
+ */
 public String getHfinmn() {
 	return hfinmn;
 }
 /**
  * Setter de l'attribut hfinmn.
+ */
+/**
+ * @param newHfinmn newHfinmn
  */
 public void setHfinmn(String newHfinmn) { 
 	hfinmn = newHfinmn;
@@ -1364,23 +1467,31 @@ public void setHfinmn(String newHfinmn) {
 /**
  * Getter de l'attribut codeservice.
  */
+/**
+ * @return codeservice
+ */
 public String getCodeservice() {
 	return codeservice;
 }
 /**
  * Setter de l'attribut codeservice.
  */
+/**
+ * @param newCodeservice newCodeservice
+ */
 public void setCodeservice(String newCodeservice) { 
 	codeservice = newCodeservice;
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected BasicBroker definirMyBroker() { 
 	return new Affecter_AgentBroker(this); 
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected Affecter_AgentBroker getMyAffecter_AgentBroker() {
 	return (Affecter_AgentBroker)getMyBasicBroker();
@@ -1389,6 +1500,15 @@ protected Affecter_AgentBroker getMyAffecter_AgentBroker() {
  * Retourne un booléen.
  * Vérifie si existe
  * @return true ou false
+ */
+/**
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param nomatr nomatr
+ * @param datedeb datedeb
+ * @param hdeb hdeb
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean existeAffecter_Agent(nc.mairie.technique.Transaction aTransaction, String inv, String nomatr, String datedeb,String hdeb) throws Exception{
 	Affecter_Agent unAffecter_Agent = new Affecter_Agent();

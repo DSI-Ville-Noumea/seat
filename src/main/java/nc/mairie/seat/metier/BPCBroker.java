@@ -12,6 +12,9 @@ public class BPCBroker extends BasicBroker {
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerBPC(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -19,6 +22,9 @@ public boolean creerBPC(nc.mairie.technique.Transaction aTransaction)  throws Ex
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierBPC(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -26,27 +32,39 @@ public boolean modifierBPC(nc.mairie.technique.Transaction aTransaction) throws 
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerBPC(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : BPC.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<BPC> listerBPC(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un BPC.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return BPC
+ * @throws Exception Exception
  */
 public BPC chercherBPC(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (BPC)executeSelect(aTransaction,"select * from "+getTable()+" where NUMEROBPC = "+cle+"");
 }
 /**
  * Retourne un BPC.
+ * @param aTransaction Transaction
+ * @param date date
+ * @param inv inv
  * @return BPC
+ * @throws Exception Exception
  */
 public BPC chercherBPCPrecEquipDate(nc.mairie.technique.Transaction aTransaction,String date, String inv) throws Exception {
 	//return (BPC)executeSelect(aTransaction,"select * from "+getTable()+" where numeroinventaire='"+inv+"' and date in (select max(date) from "+getTable()+" where numeroinventaire='"+inv+"'");
@@ -62,7 +80,11 @@ public BPC chercherBPCPrecEquipDate(nc.mairie.technique.Transaction aTransaction
 
 /**
  * Retourne un BPC.
+ * @param aTransaction Transaction
+ * @param param param
+ * @param inv inv
  * @return BPC
+ * @throws Exception Exception
  */
 public BPC chercherBPCDerOT(nc.mairie.technique.Transaction aTransaction, String param,String inv) throws Exception {
 	if (param==null){
@@ -79,7 +101,11 @@ public BPC chercherBPCDerOT(nc.mairie.technique.Transaction aTransaction, String
 
 /**
  * Retourne un BPC.
+ * @param aTransaction Transaction
+ * @param date date
+ * @param inv inv
  * @return BPC
+ * @throws Exception Exception
  */
 public BPC chercherBPCSuivEquipDate(nc.mairie.technique.Transaction aTransaction, String date,String inv) throws Exception {
 	if(date!=null){
@@ -94,7 +120,10 @@ public BPC chercherBPCSuivEquipDate(nc.mairie.technique.Transaction aTransaction
 /**
  * Retourne un booléen.
  * Vérifie si le BPC existe déjà
+ * @param aTransaction Transaction
+ * @param param param
  * @return BPC
+ * @throws Exception Exception
  */
 public boolean existeBPC(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where NUMEROBPC = "+param+"");
@@ -102,7 +131,10 @@ public boolean existeBPC(nc.mairie.technique.Transaction aTransaction, String pa
 
 /**
  * Retourne un BPC.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return BPC
+ * @throws Exception Exception
  */
 public ArrayList<BPC> listerBPCInventaire(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where NUMEROINVENTAIRE = '"+cle+"'");
@@ -123,7 +155,10 @@ public int nouvBPC(nc.mairie.technique.Transaction aTransaction) throws Exceptio
 }
 /**
  * Retourne un ArrayList d'objet métier : BPC.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<BPC> listerBPCEquipement(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+cle+"'");
@@ -131,6 +166,7 @@ public ArrayList<BPC> listerBPCEquipement(nc.mairie.technique.Transaction aTrans
 
 /**
  * Constructeur BPCBroker.
+ * @param aMetier BasicMetier
  */
 public BPCBroker(BPC aMetier) {
 	super(aMetier);
@@ -172,7 +208,10 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 /**
  * Retourne un booléen.
  * Vérifie si le modèleinfos existe déjà
+ * @param aTransaction Transaction
+ * @param param param
  * @return BPC
+ * @throws Exception Exception
  */
 public boolean existeBPCEquip(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+param+"'");
@@ -186,7 +225,11 @@ public boolean existeBPCPompe(nc.mairie.technique.Transaction aTransaction, Stri
 }
 /**
  * Retourne un ArrayList d'objet métier : BPCInfosCompletes.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param periode periode
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<BPC> listerBPCParams(nc.mairie.technique.Transaction aTransaction,String inv,String periode) throws Exception {
 	if(!inv.equals("")){

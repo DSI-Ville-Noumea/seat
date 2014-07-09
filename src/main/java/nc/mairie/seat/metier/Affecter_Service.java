@@ -29,7 +29,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Affecter_Service.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Affecter_Service> listerAffecter_Service(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Affecter_Service unAffecter_Service = new Affecter_Service();
@@ -37,7 +39,13 @@ public static ArrayList<Affecter_Service> listerAffecter_Service(nc.mairie.techn
 }
 /**
  * Retourne un Affecter_Service.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param servi servi
+ * @param date date
+ * @param dfin dfin
  * @return Affecter_Service
+ * @throws Exception Exception
  */
 public static Affecter_Service chercherAffecter_Service(nc.mairie.technique.Transaction aTransaction, String inv, String servi,String date,String dfin) throws Exception{
 	if(dfin.equals("")){
@@ -49,6 +57,11 @@ public static Affecter_Service chercherAffecter_Service(nc.mairie.technique.Tran
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unEquipement unEquipement
+ * @param unService unService
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerAffecter_Service(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement,Service unService)  throws Exception {
 	//on vérifie ques les paramètres ne sont pas null
@@ -129,6 +142,10 @@ public boolean affecter_service(nc.mairie.technique.Transaction aTransaction,Equ
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unEquipement unEquipement
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierAffecter_Service(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement) throws Exception {
 	if (null==unEquipement){
@@ -225,6 +242,9 @@ public boolean affecter_serviceModif(nc.mairie.technique.Transaction aTransactio
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean supprimerAffecter_Service(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'Affecter_Service
@@ -253,7 +273,10 @@ public boolean affecter_serviceSupp(nc.mairie.technique.Transaction aTransaction
 
 /**
  * Retourne un Affecter_Service.
+ * @param aTransaction Transaction
+ * @param code code
  * @return Affecter_Service
+ * @throws Exception Exception
  */
 public static ArrayList<Affecter_Service> chercherListAffecter_ServiceEquip(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Affecter_Service unAffecter_Service = new Affecter_Service();
@@ -262,7 +285,11 @@ public static ArrayList<Affecter_Service> chercherListAffecter_ServiceEquip(nc.m
 
 /**
  * Retourne un Affecter_Service.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param servi servi
  * @return Affecter_Service
+ * @throws Exception Exception
  */
 public static Affecter_Service chercherListAffecter_ServiceEquipSce(nc.mairie.technique.Transaction aTransaction, String inv,String servi) throws Exception{
 	Affecter_Service unAffecter_Service = new Affecter_Service();
@@ -279,60 +306,70 @@ public Affecter_Service() {
 }
 /**
  * Getter de l'attribut codeservice.
+ * @return codeservice
  */
 public String getCodeservice() {
 	return codeservice;
 }
 /**
  * Setter de l'attribut codeservice.
+ * @param newCodeservice newCodeservice
  */
 public void setCodeservice(String newCodeservice) { 
 	codeservice = newCodeservice;
 }
 /**
  * Getter de l'attribut numeroinventaire.
+ * @return codeservice
  */
 public String getNumeroinventaire() {
 	return numeroinventaire;
 }
 /**
  * Setter de l'attribut numeroinventaire.
+ * @param newNumeroinventaire newNumeroinventaire
  */
 public void setNumeroinventaire(String newNumeroinventaire) { 
 	numeroinventaire = newNumeroinventaire;
 }
 /**
  * Getter de l'attribut ddebut.
+ * @return ddebut
  */
 public String getDdebut() {
 	return ddebut;
 }
 /**
  * Setter de l'attribut ddebut.
+ * @param newDdebut newDdebut
  */
 public void setDdebut(String newDdebut) { 
 	ddebut = newDdebut;
 }
 /**
  * Getter de l'attribut dfin.
+ * @return dfin
  */
 public String getDfin() {
 	return dfin;
 }
 /**
  * Setter de l'attribut dfin.
+ * @param newDfin newDfin
  */
 public void setDfin(String newDfin) { 
 	dfin = newDfin;
 }
 /**
  * Getter de l'attribut nomatr.
+ * @return nomatr
  */
 public String getNomatr() {
 	return nomatr;
 }
 /**
  * Setter de l'attribut nomatr.
+ * @param newNomatr newNomatr
  */
 public void setNomatr(String newNomatr) { 
 	nomatr = newNomatr;
@@ -346,6 +383,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected Affecter_ServiceBroker getMyAffecter_ServiceBroker() {
 	return (Affecter_ServiceBroker)getMyBasicBroker();

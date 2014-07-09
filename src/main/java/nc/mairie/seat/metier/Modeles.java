@@ -35,7 +35,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Modeles.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Modeles> listerModeles(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Modeles unModeles = new Modeles();
@@ -43,7 +45,9 @@ public static ArrayList<Modeles> listerModeles(nc.mairie.technique.Transaction a
 }
 /**
  * Retourne un ArrayList d'objet métier : Modeles.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Modeles> listerModelesMT(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Modeles unModeles = new Modeles();
@@ -51,7 +55,10 @@ public static ArrayList<Modeles> listerModelesMT(nc.mairie.technique.Transaction
 }
 /**
  * Retourne un Modeles.
+ * @param aTransaction Transaction
+ * @param code code
  * @return Modeles
+ * @throws Exception Exception
  */
 public static Modeles chercherModeles(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Modeles unModeles = new Modeles();
@@ -60,6 +67,11 @@ public static Modeles chercherModeles(nc.mairie.technique.Transaction aTransacti
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param designation designation
+ * @param version version
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerModeles(nc.mairie.technique.Transaction aTransaction,String designation,String version)  throws Exception {
 	//RG : controle des champs
@@ -125,6 +137,11 @@ public boolean controleChamps(nc.mairie.technique.Transaction aTransaction )  th
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param param param
+ * @param version version
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierModeles(nc.mairie.technique.Transaction aTransaction,String param,String version) throws Exception {
 	//RG : controle des champs
@@ -144,6 +161,9 @@ public boolean modifierModeles(nc.mairie.technique.Transaction aTransaction,Stri
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean supprimerModeles(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	// si utilisé on ne peut pas supprimer
@@ -183,7 +203,10 @@ public int nouvModeles(nc.mairie.technique.Transaction aTransaction) throws Exce
 
 /**
  * Retourne un ArrayList d'objet métier : Modeles.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Modeles> listerModelesMarque(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception{
 	Modeles unModeles = new Modeles();
@@ -205,7 +228,13 @@ public static ArrayList<Modeles> listerModelesLib(nc.mairie.technique.Transactio
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction Transaction
+ * @param code code
+ * @param param param
+ * @param version version
+ * @param codecarbu codecarbu
  * @return true ou false
+ * @throws Exception Exception
  */
 public int existeModeles(nc.mairie.technique.Transaction aTransaction,String code, String param, String version,String codecarbu) throws Exception{
 	Modeles uneModeles = new Modeles();
@@ -221,11 +250,17 @@ public Modeles() {
 /**
  * Getter de l'attribut codemodele.
  */
+/**
+ * @return String
+ */
 public String getCodemodele() {
 	return codemodele;
 }
 /**
  * Setter de l'attribut codemodele.
+ */
+/**
+ * @param newCodemodele newCodemodele
  */
 public void setCodemodele(String newCodemodele) { 
 	codemodele = newCodemodele;
@@ -233,11 +268,17 @@ public void setCodemodele(String newCodemodele) {
 /**
  * Getter de l'attribut nbpneuavant.
  */
+/**
+ * @return String
+ */
 public String getNbpneuavant() {
 	return nbpneuavant;
 }
 /**
  * Setter de l'attribut nbpneuavant.
+ */
+/**
+ * @param newNbpneuavant newNbpneuavant
  */
 public void setNbpneuavant(String newNbpneuavant) { 
 	nbpneuavant = newNbpneuavant;
@@ -245,11 +286,17 @@ public void setNbpneuavant(String newNbpneuavant) {
 /**
  * Getter de l'attribut nbpneuarriere.
  */
+/**
+ * @return String
+ */
 public String getNbpneuarriere() {
 	return nbpneuarriere;
 }
 /**
  * Setter de l'attribut nbpneuarriere.
+ */
+/**
+ * @param newNbpneuarriere newNbpneuarriere
  */
 public void setNbpneuarriere(String newNbpneuarriere) { 
 	nbpneuarriere = newNbpneuarriere;
@@ -257,11 +304,17 @@ public void setNbpneuarriere(String newNbpneuarriere) {
 /**
  * Getter de l'attribut nbessieux.
  */
+/**
+ * @return String
+ */
 public String getNbessieux() {
 	return nbessieux;
 }
 /**
  * Setter de l'attribut nbessieux.
+ */
+/**
+ * @param newNbessieux newNbessieux
  */
 public void setNbessieux(String newNbessieux) { 
 	nbessieux = newNbessieux;
@@ -269,11 +322,17 @@ public void setNbessieux(String newNbessieux) {
 /**
  * Getter de l'attribut capacitereservoir.
  */
+/**
+ * @return String
+ */
 public String getCapacitereservoir() {
 	return capacitereservoir;
 }
 /**
  * Setter de l'attribut capacitereservoir.
+ */
+/**
+ * @param newCapacitereservoir newCapacitereservoir
  */
 public void setCapacitereservoir(String newCapacitereservoir) { 
 	capacitereservoir = newCapacitereservoir;
@@ -281,11 +340,17 @@ public void setCapacitereservoir(String newCapacitereservoir) {
 /**
  * Getter de l'attribut codemarque.
  */
+/**
+ * @return String
+ */
 public String getCodemarque() {
 	return codemarque;
 }
 /**
  * Setter de l'attribut codemarque.
+ */
+/**
+ * @param newCodemarque newCodemarque
  */
 public void setCodemarque(String newCodemarque) { 
 	codemarque = newCodemarque;
@@ -293,11 +358,17 @@ public void setCodemarque(String newCodemarque) {
 /**
  * Getter de l'attribut designationmodele.
  */
+/**
+ * @return String
+ */
 public String getDesignationmodele() {
 	return designationmodele;
 }
 /**
  * Setter de l'attribut designationmodele.
+ */
+/**
+ * @param newDesignationmodele newDesignationmodele
  */
 public void setDesignationmodele(String newDesignationmodele) { 
 	designationmodele = newDesignationmodele;
@@ -305,11 +376,17 @@ public void setDesignationmodele(String newDesignationmodele) {
 /**
  * Getter de l'attribut codepneu.
  */
+/**
+ * @return String
+ */
 public String getCodepneu() {
 	return codepneu;
 }
 /**
  * Setter de l'attribut codepneu.
+ */
+/**
+ * @param newCodepneu newCodepneu
  */
 public void setCodepneu(String newCodepneu) { 
 	codepneu = newCodepneu;
@@ -317,11 +394,17 @@ public void setCodepneu(String newCodepneu) {
 /**
  * Getter de l'attribut puissance.
  */
+/**
+ * @return String
+ */
 public String getPuissance() {
 	return puissance;
 }
 /**
  * Setter de l'attribut puissance.
+ */
+/**
+ * @param newPuissance newPuissance
  */
 public void setPuissance(String newPuissance) { 
 	puissance = newPuissance;
@@ -329,11 +412,17 @@ public void setPuissance(String newPuissance) {
 /**
  * Getter de l'attribut codete.
  */
+/**
+ * @return String
+ */
 public String getCodete() {
 	return codete;
 }
 /**
  * Setter de l'attribut codete.
+ */
+/**
+ * @param newCodete newCodete
  */
 public void setCodete(String newCodete) { 
 	codete = newCodete;
@@ -341,11 +430,17 @@ public void setCodete(String newCodete) {
 /**
  * Getter de l'attribut version.
  */
+/**
+ * @return String
+ */
 public String getVersion() {
 	return version;
 }
 /**
  * Setter de l'attribut version.
+ */
+/**
+ * @param newVersion newVersion
  */
 public void setVersion(String newVersion) { 
 	version = newVersion;
@@ -353,11 +448,17 @@ public void setVersion(String newVersion) {
 /**
  * Getter de l'attribut codecarburant.
  */
+/**
+ * @return String
+ */
 public String getCodecarburant() {
 	return codecarburant;
 }
 /**
  * Setter de l'attribut codecarburant.
+ */
+/**
+ * @param newCodecarburant newCodecarburant
  */
 public void setCodecarburant(String newCodecarburant) { 
 	codecarburant = newCodecarburant;
@@ -365,11 +466,17 @@ public void setCodecarburant(String newCodecarburant) {
 /**
  * Getter de l'attribut codecompteur.
  */
+/**
+ * @return String
+ */
 public String getCodecompteur() {
 	return codecompteur;
 }
 /**
  * Setter de l'attribut codecompteur.
+ */
+/**
+ * @param newCodecompteur newCodecompteur
  */
 public void setCodecompteur(String newCodecompteur) { 
 	codecompteur = newCodecompteur;
@@ -383,6 +490,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected ModelesBroker getMyModelesBroker() {
 	return (ModelesBroker)getMyBasicBroker();
@@ -391,7 +499,10 @@ protected ModelesBroker getMyModelesBroker() {
 /**
  * Retourne un booléen.
  * Vérifie que le modèle existe avec des paramètres de clé étrangères
+ * @param aTransaction Transaction
+ * @param param param
  * @return Modeles
+ * @throws Exception Exception
  */
 public boolean existeModeleTEquip(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	Modeles unModeles = new Modeles();

@@ -11,6 +11,7 @@ import nc.mairie.technique.BasicRecord;
 public class AgentsMunicipauxBroker extends BasicBroker {
 /**
  * Constructeur AgentsMunicipauxBroker.
+ * @param aMetier BasicMetier
  */
 public AgentsMunicipauxBroker(AgentsMunicipaux aMetier) {
 	super(aMetier);
@@ -51,14 +52,19 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 }
 /**
  * Retourne un ArrayList d'objet métier : AgentsMunicipaux.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AgentsMunicipaux> listerAgentsMunicipaux(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**
  * Retourne un AgentsMunicipaux.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return AgentsMunicipaux
+ * @throws Exception Exception
  */
 public AgentsMunicipaux chercherAgentsMunicipaux(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (AgentsMunicipaux)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+cle+" with ur");

@@ -27,7 +27,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : AgentsATMInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<AgentsATMInfos> listerAgentsATMInfos(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	AgentsATMInfos unAgentsATMInfos = new AgentsATMInfos();
@@ -35,7 +37,10 @@ public static ArrayList<AgentsATMInfos> listerAgentsATMInfos(nc.mairie.technique
 }
 /**
  * Retourne un AgentsATMInfos.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return AgentsATMInfos
+ * @throws Exception Exception
  */
 public static AgentsATMInfos chercherAgentsATMInfos(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	AgentsATMInfos unAgentsATMInfos = new AgentsATMInfos();
@@ -51,11 +56,17 @@ public AgentsATMInfos() {
 /**
  * Getter de l'attribut codespecialite.
  */
+/**
+ * @return String
+ */
 public String getCodespecialite() {
 	return codespecialite;
 }
 /**
  * Setter de l'attribut codespecialite.
+ */
+/**
+ * @param newCodespecialite newCodespecialite
  */
 public void setCodespecialite(String newCodespecialite) { 
 	codespecialite = newCodespecialite;
@@ -63,11 +74,17 @@ public void setCodespecialite(String newCodespecialite) {
 /**
  * Getter de l'attribut libellespe.
  */
+/**
+ * @return String
+ */
 public String getLibellespe() {
 	return libellespe;
 }
 /**
  * Setter de l'attribut libellespe.
+ */
+/**
+ * @param newLibellespe newLibellespe
  */
 public void setLibellespe(String newLibellespe) { 
 	libellespe = newLibellespe;
@@ -75,11 +92,17 @@ public void setLibellespe(String newLibellespe) {
 /**
  * Getter de l'attribut matricule.
  */
+/**
+ * @return String
+ */
 public String getMatricule() {
 	return matricule;
 }
 /**
  * Setter de l'attribut matricule.
+ */
+/**
+ * @param newMatricule newMatricule
  */
 public void setMatricule(String newMatricule) { 
 	matricule = newMatricule;
@@ -87,11 +110,17 @@ public void setMatricule(String newMatricule) {
 /**
  * Getter de l'attribut estmecanicien.
  */
+/**
+ * @return String
+ */
 public String getEstmecanicien() {
 	return estmecanicien;
 }
 /**
  * Setter de l'attribut estmecanicien.
+ */
+/**
+ * @param newEstmecanicien newEstmecanicien
  */
 public void setEstmecanicien(String newEstmecanicien) { 
 	estmecanicien = newEstmecanicien;
@@ -99,11 +128,17 @@ public void setEstmecanicien(String newEstmecanicien) {
 /**
  * Getter de l'attribut nom.
  */
+/**
+ * @return String
+ */
 public String getNom() {
 	return nom;
 }
 /**
  * Setter de l'attribut nom.
+ */
+/**
+ * @param newNom newNom
  */
 public void setNom(String newNom) { 
 	nom = newNom;
@@ -111,11 +146,17 @@ public void setNom(String newNom) {
 /**
  * Getter de l'attribut prenom.
  */
+/**
+ * @return String
+ */
 public String getPrenom() {
 	return prenom;
 }
 /**
  * Setter de l'attribut prenom.
+ */
+/**
+ * @param newPrenom newPrenom
  */
 public void setPrenom(String newPrenom) { 
 	prenom = newPrenom;
@@ -123,11 +164,17 @@ public void setPrenom(String newPrenom) {
 /**
  * Getter de l'attribut servi.
  */
+/**
+ * @return String
+ */
 public String getServi() {
 	return servi;
 }
 /**
  * Setter de l'attribut servi.
+ */
+/**
+ * @param newServi newServi
  */
 public void setServi(String newServi) { 
 	servi = newServi;
@@ -135,11 +182,17 @@ public void setServi(String newServi) {
 /**
  * Getter de l'attribut numot.
  */
+/**
+ * @return String
+ */
 public String getNumot() {
 	return numot;
 }
 /**
  * Setter de l'attribut numot.
+ */
+/**
+ * @param newNumot newNumot
  */
 public void setNumot(String newNumot) { 
 	numot = newNumot;
@@ -153,6 +206,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected AgentsATMInfosBroker getMyAgentsATMInfosBroker() {
 	return (AgentsATMInfosBroker)getMyBasicBroker();

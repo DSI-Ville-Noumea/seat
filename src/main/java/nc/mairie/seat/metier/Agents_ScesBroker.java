@@ -10,6 +10,7 @@ import nc.mairie.technique.BasicRecord;
 public class Agents_ScesBroker extends BasicBroker {
 /**
  * Constructeur Agents_ScesBroker.
+ * @param aMetier BasicMetier
  */
 public Agents_ScesBroker(Agents_Sces aMetier) {
 	super(aMetier);
@@ -50,14 +51,19 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 }
 /**
  * Retourne un ArrayList d'objet métier : Agents_Sces.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<Agents_Sces> listerAgents_Sces(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**
  * Retourne un Agents_Sces.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return Agents_Sces
+ * @throws Exception Exception
  */
 public Agents_Sces chercherAgents_Sces(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (Agents_Sces)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+" with ur");

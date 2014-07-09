@@ -27,6 +27,7 @@ public PM_Planning() {
 }
 /**
  * Getter de l'attribut pminv.
+ * @return String
  */
 public String getPminv() {
 	return pminv;
@@ -34,11 +35,15 @@ public String getPminv() {
 /**
  * Setter de l'attribut pminv.
  */
+/**
+ * @param newPminv newPminv
+ */
 public void setPminv(String newPminv) { 
 	pminv = newPminv;
 }
 /**
  * Getter de l'attribut pmserie.
+ * @return String
  */
 public String getPmserie() {
 	return pmserie;
@@ -46,11 +51,15 @@ public String getPmserie() {
 /**
  * Setter de l'attribut pmserie.
  */
+/**
+ * @param newPmserie newPmserie
+ */
 public void setPmserie(String newPmserie) { 
 	pmserie = newPmserie;
 }
 /**
  * Getter de l'attribut codepmpep.
+ * @return String
  */
 public String getCodepmpep() {
 	return codepmpep;
@@ -58,11 +67,15 @@ public String getCodepmpep() {
 /**
  * Setter de l'attribut codepmpep.
  */
+/**
+ * @param newCodepmpep newCodepmpep
+ */
 public void setCodepmpep(String newCodepmpep) { 
 	codepmpep = newCodepmpep;
 }
 /**
  * Getter de l'attribut numfiche.
+ * @return String
  */
 public String getNumfiche() {
 	return numfiche;
@@ -70,11 +83,15 @@ public String getNumfiche() {
 /**
  * Setter de l'attribut numfiche.
  */
+/**
+ * @param newNumfiche newNumfiche
+ */
 public void setNumfiche(String newNumfiche) { 
 	numfiche = newNumfiche;
 }
 /**
  * Getter de l'attribut dprev.
+ * @return String
  */
 public String getDprev() {
 	return dprev;
@@ -82,11 +99,15 @@ public String getDprev() {
 /**
  * Setter de l'attribut dprev.
  */
+/**
+ * @param newDprev newDprev
+ */
 public void setDprev(String newDprev) { 
 	dprev = newDprev;
 }
 /**
  * Getter de l'attribut dreal.
+ * @return String
  */
 public String getDreal() {
 	return dreal;
@@ -94,11 +115,15 @@ public String getDreal() {
 /**
  * Setter de l'attribut dreal.
  */
+/**
+ * @param newDreal newDreal
+ */
 public void setDreal(String newDreal) { 
 	dreal = newDreal;
 }
 /**
  * Getter de l'attribut duree.
+ * @return String
  */
 public String getDuree() {
 	return duree;
@@ -106,11 +131,15 @@ public String getDuree() {
 /**
  * Setter de l'attribut duree.
  */
+/**
+ * @param newDuree newDuree
+ */
 public void setDuree(String newDuree) { 
 	duree = newDuree;
 }
 /**
  * Getter de l'attribut sinistre.
+ * @return String
  */
 public String getSinistre() {
 	return sinistre;
@@ -118,11 +147,15 @@ public String getSinistre() {
 /**
  * Setter de l'attribut sinistre.
  */
+/**
+ * @param newSinistre newSinistre
+ */
 public void setSinistre(String newSinistre) { 
 	sinistre = newSinistre;
 }
 /**
  * Getter de l'attribut commentaire.
+ * @return String
  */
 public String getCommentaire() {
 	return commentaire;
@@ -130,29 +163,38 @@ public String getCommentaire() {
 /**
  * Setter de l'attribut commentaire.
  */
+/**
+ * @param newCommentaire newCommentaire
+ */
 public void setCommentaire(String newCommentaire) { 
 	commentaire = newCommentaire;
 }
 /**
  * Getter de l'attribut codeentretien.
+ * @return String
  */
 public String getCodeentretien() {
 	return codeentretien;
 }
 /**
  * Setter de l'attribut codeentretien.
+ * @param newCodeentretien newCodeentretien
  */
 public void setCodeentretien(String newCodeentretien) { 
 	codeentretien = newCodeentretien;
 }
 /**
  * Getter de l'attribut libelleentretien.
+ * @return String
  */
 public String getLibelleentretien() {
 	return libelleentretien;
 }
 /**
  * Setter de l'attribut libelleentretien.
+ */
+/**
+ * @param newLibelleentretien newLibelleentretien
  */
 public void setLibelleentretien(String newLibelleentretien) { 
 	libelleentretien = newLibelleentretien;
@@ -166,6 +208,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PM_PlanningBroker getMyPM_PlanningBroker() {
 	return (PM_PlanningBroker)getMyBasicBroker();
@@ -182,7 +225,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : PM_Planning.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PM_Planning> listerPM_Planning(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PM_Planning unPM_Planning = new PM_Planning();
@@ -190,7 +235,10 @@ public static ArrayList<PM_Planning> listerPM_Planning(nc.mairie.technique.Trans
 }
 /**
  * Retourne un PM_Planning.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return PM_Planning
+ * @throws Exception Exception
  */
 public static PM_Planning chercherPM_Planning(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	PM_Planning unPM_Planning = new PM_Planning();

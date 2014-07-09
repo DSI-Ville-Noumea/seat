@@ -137,6 +137,7 @@ public OeService_Equipements() {
  * PB_SERVICE
  * Date de création : (04/04/07 14:38:26)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_SERVICE() {
 	return "NOM_PB_SERVICE";
@@ -148,6 +149,9 @@ public java.lang.String getNOM_PB_SERVICE() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (04/04/07 14:38:26)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_SERVICE(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String recherche = getZone(getNOM_EF_SERVICE());
@@ -175,6 +179,7 @@ public boolean performPB_SERVICE(javax.servlet.http.HttpServletRequest request) 
  * PB_TDB
  * Date de création : (04/04/07 14:38:26)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_TDB() {
 	return "NOM_PB_TDB";
@@ -186,6 +191,9 @@ public java.lang.String getNOM_PB_TDB() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (04/04/07 14:38:26)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_TDB(javax.servlet.http.HttpServletRequest request) throws Exception {
 	// on débranche sur le tableau de bord
@@ -212,6 +220,7 @@ public boolean performPB_TDB(javax.servlet.http.HttpServletRequest request) thro
  * PB_VISUALISER
  * Date de création : (04/04/07 14:38:26)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_VISUALISER() {
 	return "NOM_PB_VISUALISER";
@@ -223,6 +232,9 @@ public java.lang.String getNOM_PB_VISUALISER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (04/04/07 14:38:26)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_VISUALISER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	// débranchement sur l'écran de visu d'un équipement
@@ -246,6 +258,7 @@ public boolean performPB_VISUALISER(javax.servlet.http.HttpServletRequest reques
  * EF_SERVICE
  * Date de création : (04/04/07 14:38:26)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_EF_SERVICE() {
 	return "NOM_EF_SERVICE";
@@ -255,6 +268,7 @@ public java.lang.String getNOM_EF_SERVICE() {
  * EF_SERVICE
  * Date de création : (04/04/07 14:38:26)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_EF_SERVICE() {
 	return getZone(getNOM_EF_SERVICE());
@@ -284,6 +298,7 @@ private void setLB_EQUIP(java.lang.String[] newLB_EQUIP) {
  * NOM_LB_EQUIP
  * Date de création : (04/04/07 14:38:26)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_LB_EQUIP() {
 	return "NOM_LB_EQUIP";
@@ -293,6 +308,7 @@ public java.lang.String getNOM_LB_EQUIP() {
  * NOM_LB_EQUIP_SELECT
  * Date de création : (04/04/07 14:38:26)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_LB_EQUIP_SELECT() {
 	return "NOM_LB_EQUIP_SELECT";
@@ -303,6 +319,7 @@ public java.lang.String getNOM_LB_EQUIP_SELECT() {
  * LB_EQUIP
  * Date de création : (04/04/07 14:38:26)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String [] getVAL_LB_EQUIP() {
 	return getLB_EQUIP();
@@ -313,6 +330,7 @@ public java.lang.String [] getVAL_LB_EQUIP() {
  * LB_EQUIP
  * Date de création : (04/04/07 14:38:26)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_LB_EQUIP_SELECT() {
 	return getZone(getNOM_LB_EQUIP_SELECT());
@@ -322,6 +340,7 @@ public java.lang.String getVAL_LB_EQUIP_SELECT() {
  * PB_RESPONSABLE
  * Date de création : (05/04/07 09:40:35)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_RESPONSABLE() {
 	return "NOM_PB_RESPONSABLE";
@@ -333,6 +352,9 @@ public java.lang.String getNOM_PB_RESPONSABLE() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (05/04/07 09:40:35)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_RESPONSABLE(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String responsable = "";
@@ -378,6 +400,7 @@ public boolean performPB_RESPONSABLE(javax.servlet.http.HttpServletRequest reque
  * ST_RESPONSABLE
  * Date de création : (05/04/07 09:40:35)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_RESPONSABLE() {
 	return "NOM_ST_RESPONSABLE";
@@ -387,6 +410,7 @@ public java.lang.String getNOM_ST_RESPONSABLE() {
  * ST_RESPONSABLE
  * Date de création : (05/04/07 09:40:35)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_RESPONSABLE() {
 	return getZone(getNOM_ST_RESPONSABLE());
@@ -396,6 +420,7 @@ public java.lang.String getVAL_ST_RESPONSABLE() {
  * PB_SCE_RECHERCHE
  * Date de création : (05/04/07 09:42:19)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_SCE_RECHERCHE() {
 	return "NOM_PB_SCE_RECHERCHE";
@@ -407,6 +432,9 @@ public java.lang.String getNOM_PB_SCE_RECHERCHE() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (05/04/07 09:42:19)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_SCE_RECHERCHE(javax.servlet.http.HttpServletRequest request) throws Exception {
 	setStatut(STATUT_SCE_RECHERCHE,true);
@@ -417,6 +445,7 @@ public boolean performPB_SCE_RECHERCHE(javax.servlet.http.HttpServletRequest req
  * ST_CODE_SCE
  * Date de création : (05/04/07 09:42:59)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_CODE_SCE() {
 	return "NOM_ST_CODE_SCE";
@@ -426,6 +455,7 @@ public java.lang.String getNOM_ST_CODE_SCE() {
  * ST_CODE_SCE
  * Date de création : (05/04/07 09:42:59)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_CODE_SCE() {
 	return getZone(getNOM_ST_CODE_SCE());
@@ -435,6 +465,7 @@ public java.lang.String getVAL_ST_CODE_SCE() {
  * ST_LIBELLE_SCE
  * Date de création : (05/04/07 09:42:59)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_LIBELLE_SCE() {
 	return "NOM_ST_LIBELLE_SCE";
@@ -444,6 +475,7 @@ public java.lang.String getNOM_ST_LIBELLE_SCE() {
  * ST_LIBELLE_SCE
  * Date de création : (05/04/07 09:42:59)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_LIBELLE_SCE() {
 	return getZone(getNOM_ST_LIBELLE_SCE());
@@ -468,7 +500,7 @@ public ArrayList<AffectationServiceInfos> getListEquip() {
 	return listEquip;
 }
 /**
- * @param listeAffectation listeAffectation à définir.
+ * @param listEquip listEquip à définir.
  */
 public void setListEquip(ArrayList<AffectationServiceInfos> listEquip) {
 	this.listEquip = listEquip;
@@ -489,7 +521,8 @@ public void setFocus(String focus) {
 	this.focus = focus;
 }
 /**
- * @param focus focus à définir.
+ * focus focus à définir.
+ * @return focus
  */
 public String getDefaultFocus() {
 	return getNOM_EF_SERVICE();
@@ -556,6 +589,7 @@ public String getJSP() {
  * PB_AFFECTATION
  * Date de création : (10/08/07 08:26:53)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_AFFECTATION() {
 	return "NOM_PB_AFFECTATION";
@@ -567,6 +601,9 @@ public java.lang.String getNOM_PB_AFFECTATION() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (10/08/07 08:26:53)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_AFFECTATION(javax.servlet.http.HttpServletRequest request) throws Exception {
 	int indice  = (Services.estNumerique(getVAL_LB_EQUIP_SELECT()) ? Integer.parseInt(getVAL_LB_EQUIP_SELECT()): -1);

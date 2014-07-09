@@ -10,7 +10,9 @@ import nc.mairie.technique.BasicRecord;
 public class AActifsBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : AActifs.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AActifs> listerAActifs(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
@@ -18,6 +20,9 @@ public ArrayList<AActifs> listerAActifs(nc.mairie.technique.Transaction aTransac
 /**
  * Retourne un AActifs.
  * @return AActifs
+ * @param aTransaction Transaction
+ * @param cle cle
+ * @throws Exception Exception
  */
 public AActifs chercherAActifs(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (AActifs)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+cle+"  with ur");
@@ -26,6 +31,9 @@ public AActifs chercherAActifs(nc.mairie.technique.Transaction aTransaction, Str
 /**
  * Retourne un ArrayList d'objet métier : AActifs.
  * @return java.util.ArrayList
+ * @param aTransaction Transaction
+ * @param servi servi
+ * @throws Exception Exception
  */
 public ArrayList<AActifs> listerAActifsService(nc.mairie.technique.Transaction aTransaction,String servi) throws Exception {
 	if (!servi.substring(0,1).equals("A")){
@@ -37,6 +45,9 @@ public ArrayList<AActifs> listerAActifsService(nc.mairie.technique.Transaction a
 /**
  * Retourne un ArrayList d'objet métier : AActifs.
  * @return java.util.ArrayList
+ * @param aTransaction Transaction
+ * @param param param
+ * @throws Exception Exception
  */
 public ArrayList<AActifs> chercherListAgentServiceInfosSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	String servi = param.substring(0,3); 
@@ -46,6 +57,7 @@ public ArrayList<AActifs> chercherListAgentServiceInfosSce(nc.mairie.technique.T
 
 /**
  * Constructeur AActifsBroker.
+ * @param aMetier BasicMetier
  */
 public AActifsBroker(AActifs aMetier) {
 	super(aMetier);

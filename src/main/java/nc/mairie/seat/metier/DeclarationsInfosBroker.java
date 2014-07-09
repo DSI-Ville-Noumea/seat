@@ -12,7 +12,9 @@ import nc.mairie.technique.Services;
 public class DeclarationsInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : DeclarationsInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<DeclarationsInfos> listerDeclarationsInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
@@ -20,7 +22,10 @@ public ArrayList<DeclarationsInfos> listerDeclarationsInfos(nc.mairie.technique.
 
 /**
  * Retourne un ArrayList d'objet métier : DeclarationsInfos.
+ * @param aTransaction Transaction
+ * @param inv inv
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<DeclarationsInfos> listerDeclarationsInfosEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numinv='"+inv+"' with ur");
@@ -28,7 +33,10 @@ public ArrayList<DeclarationsInfos> listerDeclarationsInfosEquip(nc.mairie.techn
 
 /**
  * Retourne un ArrayList d'objet métier : DeclarationsInfos.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<DeclarationsInfos> listerDeclarationsInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeot="+numot+" with ur");
@@ -36,7 +44,10 @@ public ArrayList<DeclarationsInfos> listerDeclarationsInfosOT(nc.mairie.techniqu
 
 /**
  * Retourne un DeclarationsInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return DeclarationsInfos
+ * @throws Exception Exception
  */
 public DeclarationsInfos chercherDeclarationsInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (DeclarationsInfos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+" with ur");
@@ -48,6 +59,7 @@ public ArrayList<DeclarationsInfos> listerDeclarationsInfosSce(nc.mairie.techniq
 
 /**
  * Constructeur DeclarationsInfosBroker.
+ * @param aMetier BasicMetier
  */
 public DeclarationsInfosBroker(DeclarationsInfos aMetier) {
 	super(aMetier);

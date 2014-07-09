@@ -18,11 +18,17 @@ public class Entretien extends BasicMetier {
 /**
  * Getter de l'attribut intervalle.
  */
+/**
+ * @return String
+ */
 public String getIntervalle() {
 	return intervalle;
 }
 /**
  * Setter de l'attribut intervalle.
+ */
+/**
+ * @param newIntervalle newIntervalle
  */
 public void setIntervalle(String newIntervalle) { 
 	intervalle = newIntervalle;
@@ -30,11 +36,17 @@ public void setIntervalle(String newIntervalle) {
 /**
  * Getter de l'attribut typeentretien.
  */
+/**
+ * @return String
+ */
 public String getTypeentretien() {
 	return typeentretien;
 }
 /**
  * Setter de l'attribut typeentretien.
+ */
+/**
+ * @param newTypeentretien newTypeentretien
  */
 public void setTypeentretien(String newTypeentretien) { 
 	typeentretien = newTypeentretien;
@@ -42,11 +54,17 @@ public void setTypeentretien(String newTypeentretien) {
 /**
  * Getter de l'attribut codeti.
  */
+/**
+ * @return String
+ */
 public String getCodeti() {
 	return codeti;
 }
 /**
  * Setter de l'attribut codeti.
+ */
+/**
+ * @param newCodeti newCodeti
  */
 public void setCodeti(String newCodeti) { 
 	codeti = newCodeti;
@@ -63,7 +81,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Entretien.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Entretien> listerEntretien(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Entretien unEntretien = new Entretien();
@@ -71,7 +91,10 @@ public static ArrayList<Entretien> listerEntretien(nc.mairie.technique.Transacti
 }
 /**
  * Retourne un Entretien.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return Entretien
+ * @throws Exception Exception
  */
 public static Entretien chercherEntretien(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Entretien unEntretien = new Entretien();
@@ -80,6 +103,10 @@ public static Entretien chercherEntretien(nc.mairie.technique.Transaction aTrans
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerEntretien(nc.mairie.technique.Transaction aTransaction,String param )  throws Exception {
 	if (!existeEntretien(aTransaction,param)){
@@ -97,6 +124,10 @@ public boolean creerEntretien(nc.mairie.technique.Transaction aTransaction,Strin
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param param param
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean modifierEntretien(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	if (!existeEntretien(aTransaction,param)){
@@ -110,6 +141,9 @@ public boolean modifierEntretien(nc.mairie.technique.Transaction aTransaction,St
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean supprimerEntretien(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'Entretien
@@ -139,11 +173,17 @@ public int nouvEntretien(nc.mairie.technique.Transaction aTransaction) throws Ex
 /**
  * Getter de l'attribut duree.
  */
+/**
+ * @return String
+ */
 public String getDuree() {
 	return duree;
 }
 /**
  * Setter de l'attribut duree.
+ */
+/**
+ * @param newDuree newDuree
  */
 public void setDuree(String newDuree) { 
 	duree = newDuree;
@@ -151,11 +191,17 @@ public void setDuree(String newDuree) {
 /**
  * Getter de l'attribut commentaire.
  */
+/**
+ * @return String
+ */
 public String getCommentaire() {
 	return commentaire;
 }
 /**
  * Setter de l'attribut commentaire.
+ */
+/**
+ * @param newCommentaire newCommentaire
  */
 public void setCommentaire(String newCommentaire) { 
 	commentaire = newCommentaire;
@@ -169,11 +215,17 @@ public Entretien() {
 /**
  * Getter de l'attribut codeentretien.
  */
+/**
+ * @return String
+ */
 public String getCodeentretien() {
 	return codeentretien;
 }
 /**
  * Setter de l'attribut codeentretien.
+ */
+/**
+ * @param newCodeentretien newCodeentretien
  */
 public void setCodeentretien(String newCodeentretien) { 
 	codeentretien = newCodeentretien;
@@ -181,11 +233,17 @@ public void setCodeentretien(String newCodeentretien) {
 /**
  * Getter de l'attribut libelleentretien.
  */
+/**
+ * @return String
+ */
 public String getLibelleentretien() {
 	return libelleentretien;
 }
 /**
  * Setter de l'attribut libelleentretien.
+ */
+/**
+ * @param newLibelleentretien newLibelleentretien
  */
 public void setLibelleentretien(String newLibelleentretien) { 
 	libelleentretien = newLibelleentretien;
@@ -199,6 +257,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected EntretienBroker getMyEntretienBroker() {
 	return (EntretienBroker)getMyBasicBroker();
@@ -207,7 +266,10 @@ protected EntretienBroker getMyEntretienBroker() {
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction aTransaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existeEntretien(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	Entretien unEntretien = new Entretien();

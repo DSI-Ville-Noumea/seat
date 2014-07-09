@@ -10,6 +10,7 @@ import nc.mairie.technique.BasicRecord;
 public class PM_BEBroker extends BasicBroker {
 /**
  * Constructeur PM_BEBroker.
+ * @param aMetier BasicMetier
  */
 public PM_BEBroker(PM_BE aMetier) {
 	super(aMetier);
@@ -50,6 +51,9 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPM_BE(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -57,6 +61,9 @@ public boolean creerPM_BE(nc.mairie.technique.Transaction aTransaction)  throws 
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierPM_BE(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -64,27 +71,40 @@ public boolean modifierPM_BE(nc.mairie.technique.Transaction aTransaction) throw
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerPM_BE(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
 }
 /**
  * Retourne un ArrayList d'objet métier : PM_BE.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PM_BE> listerPM_BE(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un PM_BE.
+ * @param aTransaction Transaction
+ * @param numfiche numfiche
+ * @param noengj noengj
  * @return PM_BE
+ * @throws Exception Exception
  */
 public PM_BE chercherPM_BE(nc.mairie.technique.Transaction aTransaction, String numfiche,String noengj) throws Exception {
 	return (PM_BE)executeSelect(aTransaction,"select * from "+getTable()+" where numfiche = '"+numfiche+"' and noengj='"+noengj+"'");
 }
 /**
  * Retourne un BE.
+ * @param aTransaction Transaction
+ * @param numfiche numfiche
+ * @param noengj noengj
  * @return BE
+ * @throws Exception Exception
  */
 public boolean existeBE(nc.mairie.technique.Transaction aTransaction, String numfiche,String noengj) throws Exception {
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numfiche = '"+numfiche+"' and noengj='"+noengj+"'");

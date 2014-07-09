@@ -10,6 +10,7 @@ import nc.mairie.technique.BasicRecord;
 public class ENGJUBroker extends BasicBroker {
 /**
  * Constructeur ENGJUBroker.
+ * @param aMetier BasicMetier
  */
 public ENGJUBroker(ENGJU aMetier) {
 	super(aMetier);
@@ -49,6 +50,9 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 /**
  * Methode creerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws Exception Exception
  */
 public boolean creerENGJU(nc.mairie.technique.Transaction aTransaction)  throws Exception{
 	return creer(aTransaction);
@@ -56,6 +60,9 @@ public boolean creerENGJU(nc.mairie.technique.Transaction aTransaction)  throws 
 /**
  * Methode modifierObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean modifierENGJU(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return modifier(aTransaction);
@@ -63,6 +70,9 @@ public boolean modifierENGJU(nc.mairie.technique.Transaction aTransaction) throw
 /**
  * Methode supprimerObjetMetierBroker qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean 
+ * @throws java.lang.Exception java.lang.Exception
  */
 public boolean supprimerENGJU(nc.mairie.technique.Transaction aTransaction) throws java.lang.Exception {
 	return supprimer(aTransaction);
@@ -70,14 +80,22 @@ public boolean supprimerENGJU(nc.mairie.technique.Transaction aTransaction) thro
 
 /**
  * Retourne un ArrayList d'objet métier : ENGJU.
+ * @param aTransaction Transaction
+ * @param exerci exerci
+ * @param noengj noengj
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<ENGJU> listerENGJU(nc.mairie.technique.Transaction aTransaction,String exerci, String noengj) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where exerci="+exerci+" and upper(noengj)='"+noengj.toUpperCase()+"'");
 }
 /**
  * Retourne un ArrayList d'objet métier : ENGJU.
+ * @param aTransaction Transaction
+ * @param numOt numOt
+ * @param cddep cddep
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<ENGJU> listerENGJUGroupByCdepNoengjIdetbs(nc.mairie.technique.Transaction aTransaction, String numOt, String cddep) throws Exception{
 	return executeSelectListe(aTransaction,
@@ -92,14 +110,22 @@ public ArrayList<ENGJU> listerENGJUGroupByCdepNoengjIdetbs(nc.mairie.technique.T
 
 /**
  * Retourne un ENGJU.
+ * @param aTransaction Transaction
+ * @param exerci exerci
+ * @param noengj noengj
+ * @param nlengju nlengju
  * @return ENGJU
+ * @throws Exception Exception
  */
 public ENGJU chercherENGJU(nc.mairie.technique.Transaction aTransaction,String exerci,String noengj,String nlengju) throws Exception {
 	return (ENGJU)executeSelect(aTransaction,"select * from "+getTable()+" where exerci="+exerci+" and upper(noengj)='"+noengj.toUpperCase()+"' and nlengju="+nlengju);
 }
 /**
  * Retourne un ENGJU.
+ * @param aTransaction Transaction
+ * @param noengj noengj
  * @return ENGJU
+ * @throws Exception Exception
  */
 public ENGJU chercherpremierENGJU(nc.mairie.technique.Transaction aTransaction,String noengj) throws Exception {
 	return (ENGJU) executeSelect(aTransaction,"select * from "+getTable()+" where upper(noengj)='"+noengj.toUpperCase()+"' fetch first row only");
@@ -114,7 +140,11 @@ public ENGJU chercherpremierENGJU(nc.mairie.technique.Transaction aTransaction,S
 
 /**
  * Retourne un ENGJU.
+ * @param aTransaction Transaction
+ * @param exerci exerci
+ * @param noengj noengj
  * @return ENGJU
+ * @throws Exception Exception
  */
 public ENGJU chercherpremierENGJU(nc.mairie.technique.Transaction aTransaction,String exerci,String noengj) throws Exception {
 	return (ENGJU)executeSelect(aTransaction, "select * from "+getTable()+" where exerci="+exerci+" and upper(noengj)='"+noengj.toUpperCase()+"' fetch first row only");
@@ -129,7 +159,10 @@ public ENGJU chercherpremierENGJU(nc.mairie.technique.Transaction aTransaction,S
 
 /**
  * Retourne un ENGJU.
+ * @param aTransaction Transaction
+ * @param noengj noengj
  * @return ENGJU
+ * @throws Exception Exception
  */
 public ENGJU chercherdernierENGJU(nc.mairie.technique.Transaction aTransaction,String noengj) throws Exception {
 	return (ENGJU)executeSelect(aTransaction,"select * from "+getTable()+" where upper(noengj)='"+noengj.toUpperCase()+"' order by exerci desc fetch first row only");
@@ -144,7 +177,10 @@ public ENGJU chercherdernierENGJU(nc.mairie.technique.Transaction aTransaction,S
 
 /**
  * Retourne un ArrayList d'objet métier : Fournisseurs.
+ * @param aTransaction Transaction
+ * @param param param
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<ENGJU> listerFournisseursNom(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where upper(enscom) like '"+param.toUpperCase()+"%'");

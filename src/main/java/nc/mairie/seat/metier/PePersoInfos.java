@@ -36,7 +36,11 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : PePersoInfos.
+ * @param aTransaction aTransaction
+ * @param inv inv
+ * @param tri tri
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PePersoInfos> listerPePersoInfosEquip(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
 	if (tri.equals("")){
@@ -47,7 +51,10 @@ public static ArrayList<PePersoInfos> listerPePersoInfosEquip(nc.mairie.techniqu
 }
 /**
  * Retourne un PePersoInfos.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return PePersoInfos
+ * @throws Exception Exception
  */
 public static PePersoInfos chercherPePersoInfos(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	PePersoInfos unPePersoInfos = new PePersoInfos();
@@ -57,6 +64,11 @@ public static PePersoInfos chercherPePersoInfos(nc.mairie.technique.Transaction 
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param inv inv
+ * @param tri tri
+ * @return boolean
+ * @throws Exception Exception
  */
 
 public static ArrayList<PePersoInfos> listerPePersoInfosFait(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
@@ -68,6 +80,10 @@ public static ArrayList<PePersoInfos> listerPePersoInfosFait(nc.mairie.technique
  * Methode creerObjetMetier qui retourne
  * true ou false
  * on retourne la liste des Ot d'un équipement
+ * @param aTransaction aTransaction
+ * @param inv inv
+ * @return boolean
+ * @throws Exception Exception
  */
 
 public static ArrayList<PePersoInfos> listerPePersoInfosOTEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception{
@@ -77,7 +93,10 @@ public static ArrayList<PePersoInfos> listerPePersoInfosOTEquip(nc.mairie.techni
 
 /**
  * Retourne un ArrayList d'objet métier : PePerso.
+ * @param aTransaction aTransaction
+ * @param numot numot
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PePersoInfos> chercherPePersoInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception{
 	PePersoInfos unPePersoInfos = new PePersoInfos();
@@ -87,6 +106,11 @@ public static ArrayList<PePersoInfos> chercherPePersoInfosOT(nc.mairie.technique
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param inv inv
+ * @param tri tri
+ * @return boolean
+ * @throws Exception Exception
  */
 
 public static ArrayList<PePersoInfos> listerPePersoInfosAFaire(nc.mairie.technique.Transaction aTransaction,String inv,String tri) throws Exception{
@@ -102,6 +126,7 @@ public PePersoInfos() {
 }
 /**
  * Getter de l'attribut sinistre.
+ * @return String
  */
 public String getSinistre() {
 	return sinistre;
@@ -109,11 +134,15 @@ public String getSinistre() {
 /**
  * Setter de l'attribut sinistre.
  */
+/**
+ * @param newSinistre newSinistre
+ */
 public void setSinistre(String newSinistre) { 
 	sinistre = newSinistre;
 }
 /**
  * Getter de l'attribut duree.
+ * @return String
  */
 public String getDuree() {
 	return duree;
@@ -121,11 +150,15 @@ public String getDuree() {
 /**
  * Setter de l'attribut duree.
  */
+/**
+ * @param newDuree newDuree
+ */
 public void setDuree(String newDuree) { 
 	duree = newDuree;
 }
 /**
  * Getter de l'attribut codeot.
+ * @return String
  */
 public String getCodeot() {
 	return codeot;
@@ -133,11 +166,15 @@ public String getCodeot() {
 /**
  * Setter de l'attribut codeot.
  */
+/**
+ * @param newCodeot newCodeot
+ */
 public void setCodeot(String newCodeot) { 
 	codeot = newCodeot;
 }
 /**
  * Getter de l'attribut commentairete.
+ * @return String
  */
 public String getCommentairete() {
 	return commentairete;
@@ -145,11 +182,15 @@ public String getCommentairete() {
 /**
  * Setter de l'attribut commentairete.
  */
+/**
+ * @param newCommentairete newCommentairete
+ */
 public void setCommentairete(String newCommentairete) { 
 	commentairete = newCommentairete;
 }
 /**
  * Getter de l'attribut codepep.
+ * @return String
  */
 public String getCodepep() {
 	return codepep;
@@ -157,11 +198,15 @@ public String getCodepep() {
 /**
  * Setter de l'attribut codepep.
  */
+/**
+ * @param newCodepep newCodepep
+ */
 public void setCodepep(String newCodepep) { 
 	codepep = newCodepep;
 }
 /**
  * Getter de l'attribut intervalle.
+ * @return String
  */
 public String getIntervalle() {
 	return intervalle;
@@ -169,11 +214,15 @@ public String getIntervalle() {
 /**
  * Setter de l'attribut intervalle.
  */
+/**
+ * @param newIntervalle newIntervalle
+ */
 public void setIntervalle(String newIntervalle) { 
 	intervalle = newIntervalle;
 }
 /**
  * Getter de l'attribut datereal.
+ * @return String
  */
 public String getDatereal() {
 	return datereal;
@@ -181,11 +230,15 @@ public String getDatereal() {
 /**
  * Setter de l'attribut datereal.
  */
+/**
+ * @param newDatereal newDatereal
+ */
 public void setDatereal(String newDatereal) { 
 	datereal = newDatereal;
 }
 /**
  * Getter de l'attribut codeequip.
+ * @return String
  */
 public String getCodeequip() {
 	return codeequip;
@@ -193,23 +246,29 @@ public String getCodeequip() {
 /**
  * Setter de l'attribut codeequip.
  */
+/**
+ * @param newCodeequip newCodeequip
+ */
 public void setCodeequip(String newCodeequip) { 
 	codeequip = newCodeequip;
 }
 /**
  * Getter de l'attribut codeentretien.
+ * @return String
  */
 public String getCodeentretien() {
 	return codeentretien;
 }
 /**
  * Setter de l'attribut codeentretien.
+ * @param newCodeentretien newCodeentretien
  */
 public void setCodeentretien(String newCodeentretien) { 
 	codeentretien = newCodeentretien;
 }
 /**
  * Getter de l'attribut libelleentretien.
+ * @return String
  */
 public String getLibelleentretien() {
 	return libelleentretien;
@@ -217,11 +276,15 @@ public String getLibelleentretien() {
 /**
  * Setter de l'attribut libelleentretien.
  */
+/**
+ * @param newLibelleentretien newLibelleentretien
+ */
 public void setLibelleentretien(String newLibelleentretien) { 
 	libelleentretien = newLibelleentretien;
 }
 /**
  * Getter de l'attribut codetypeent.
+ * @return String
  */
 public String getCodetypeent() {
 	return codetypeent;
@@ -229,11 +292,15 @@ public String getCodetypeent() {
 /**
  * Setter de l'attribut codetypeent.
  */
+/**
+ * @param newCodetypeent newCodetypeent
+ */
 public void setCodetypeent(String newCodetypeent) { 
 	codetypeent = newCodetypeent;
 }
 /**
  * Getter de l'attribut designationtypeent.
+ * @return String
  */
 public String getDesignationtypeent() {
 	return designationtypeent;
@@ -241,11 +308,15 @@ public String getDesignationtypeent() {
 /**
  * Setter de l'attribut designationtypeent.
  */
+/**
+ * @param newDesignationtypeent newDesignationtypeent
+ */
 public void setDesignationtypeent(String newDesignationtypeent) { 
 	designationtypeent = newDesignationtypeent;
 }
 /**
  * Getter de l'attribut codeti.
+ * @return String
  */
 public String getCodeti() {
 	return codeti;
@@ -253,11 +324,15 @@ public String getCodeti() {
 /**
  * Setter de l'attribut codeti.
  */
+/**
+ * @param newCodeti newCodeti
+ */
 public void setCodeti(String newCodeti) { 
 	codeti = newCodeti;
 }
 /**
  * Getter de l'attribut designationti.
+ * @return String
  */
 public String getDesignationti() {
 	return designationti;
@@ -265,17 +340,24 @@ public String getDesignationti() {
 /**
  * Setter de l'attribut designationti.
  */
+/**
+ * @param newDesignationti newDesignationti
+ */
 public void setDesignationti(String newDesignationti) { 
 	designationti = newDesignationti;
 }
 /**
  * Getter de l'attribut dateprev.
+ * @return String
  */
 public String getDateprev() {
 	return dateprev;
 }
 /**
  * Setter de l'attribut dateprev.
+ */
+/**
+ * @param newDateprev newDateprev
  */
 public void setDateprev(String newDateprev) { 
 	dateprev = newDateprev;
@@ -289,6 +371,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PePersoInfosBroker getMyPePersoInfosBroker() {
 	return (PePersoInfosBroker)getMyBasicBroker();

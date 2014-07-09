@@ -21,6 +21,7 @@ public PM_BE() {
 }
 /**
  * Getter de l'attribut numfiche.
+ * @return String
  */
 public String getNumfiche() {
 	return numfiche;
@@ -28,23 +29,29 @@ public String getNumfiche() {
 /**
  * Setter de l'attribut numfiche.
  */
+/**
+ * @param newNumfiche newNumfiche
+ */
 public void setNumfiche(String newNumfiche) { 
 	numfiche = newNumfiche;
 }
 /**
  * Getter de l'attribut codcol.
+ * @return String
  */
 public String getCodcol() {
 	return codcol;
 }
 /**
  * Setter de l'attribut codcol.
+ * @param newCodcol newCodcol
  */
 public void setCodcol(String newCodcol) { 
 	codcol = newCodcol;
 }
 /**
  * Getter de l'attribut exerci.
+ * @return String
  */
 public String getExerci() {
 	return exerci;
@@ -52,29 +59,38 @@ public String getExerci() {
 /**
  * Setter de l'attribut exerci.
  */
+/**
+ * @param newExerci newExerci
+ */
 public void setExerci(String newExerci) { 
 	exerci = newExerci;
 }
 /**
  * Getter de l'attribut codbud.
+ * @return String
  */
 public String getCodbud() {
 	return codbud;
 }
 /**
  * Setter de l'attribut codbud.
+ * @param newCodbud newCodbud
  */
 public void setCodbud(String newCodbud) { 
 	codbud = newCodbud;
 }
 /**
  * Getter de l'attribut noengj.
+ * @return String
  */
 public String getNoengj() {
 	return noengj;
 }
 /**
  * Setter de l'attribut noengj.
+ */
+/**
+ * @param newNoengj newNoengj
  */
 public void setNoengj(String newNoengj) { 
 	noengj = newNoengj;
@@ -88,6 +104,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PM_BEBroker getMyPM_BEBroker() {
 	return (PM_BEBroker)getMyBasicBroker();
@@ -104,7 +121,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : PM_BE.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PM_BE> listerPM_BE(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PM_BE unPM_BE = new PM_BE();
@@ -112,7 +131,11 @@ public static ArrayList<PM_BE> listerPM_BE(nc.mairie.technique.Transaction aTran
 }
 /**
  * Retourne un PM_BE.
+ * @param aTransaction aTransaction
+ * @param numfiche numfiche
+ * @param noengj noengj
  * @return PM_BE
+ * @throws Exception Exception
  */
 public static PM_BE chercherPM_BE(nc.mairie.technique.Transaction aTransaction, String numfiche, String noengj) throws Exception{
 	PM_BE unPM_BE = new PM_BE();
@@ -121,6 +144,11 @@ public static PM_BE chercherPM_BE(nc.mairie.technique.Transaction aTransaction, 
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @param unPMatFiche unPMatFiche
+ * @param unEnju unEnju
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPM_BE(nc.mairie.technique.Transaction aTransaction,FPM unPMatFiche,ENGJU unEnju )  throws Exception {
 		// controle si null
@@ -154,6 +182,9 @@ public boolean existeBE(nc.mairie.technique.Transaction aTransaction, String noo
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierPM_BE(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	//Modification du PM_BE
@@ -162,6 +193,9 @@ public boolean modifierPM_BE(nc.mairie.technique.Transaction aTransaction) throw
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction aTransaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerPM_BE(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'PM_BE

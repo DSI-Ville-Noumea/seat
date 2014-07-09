@@ -61,6 +61,7 @@ public OeModele_Recherche() {
  * PB_ANNULER
  * Date de création : (10/06/05 10:56:49)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
 	return "NOM_PB_ANNULER";
@@ -72,6 +73,9 @@ public java.lang.String getNOM_PB_ANNULER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (10/06/05 10:56:49)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	setStatut(STATUT_PROCESS_APPELANT);
@@ -82,6 +86,7 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * PB_RECHERCHE
  * Date de création : (10/06/05 10:56:49)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_RECHERCHE() {
 	return "NOM_PB_RECHERCHE";
@@ -93,6 +98,9 @@ public java.lang.String getNOM_PB_RECHERCHE() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (10/06/05 10:56:49)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String param = getZone(getNOM_EF_RECHERCHE());
@@ -117,6 +125,7 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
  * PB_VALIDER
  * Date de création : (10/06/05 10:56:49)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
 	return "NOM_PB_VALIDER";
@@ -128,6 +137,9 @@ public java.lang.String getNOM_PB_VALIDER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (10/06/05 10:56:49)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) throws Exception {
 //	Récup de l'indice sélectionné
@@ -158,6 +170,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * EF_RECHERCHE
  * Date de création : (10/06/05 10:56:49)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_EF_RECHERCHE() {
 	return "NOM_EF_RECHERCHE";
@@ -167,6 +180,7 @@ public java.lang.String getNOM_EF_RECHERCHE() {
  * EF_RECHERCHE
  * Date de création : (10/06/05 10:56:49)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_EF_RECHERCHE() {
 	return getZone(getNOM_EF_RECHERCHE());
@@ -196,6 +210,7 @@ private void setLB_MODELE(java.lang.String[] newLB_MODELE) {
  * NOM_LB_MODELE
  * Date de création : (10/06/05 10:56:49)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_LB_MODELE() {
 	return "NOM_LB_MODELE";
@@ -205,6 +220,7 @@ public java.lang.String getNOM_LB_MODELE() {
  * NOM_LB_MODELE_SELECT
  * Date de création : (10/06/05 10:56:49)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_LB_MODELE_SELECT() {
 	return "NOM_LB_MODELE_SELECT";
@@ -215,6 +231,7 @@ public java.lang.String getNOM_LB_MODELE_SELECT() {
  * LB_MODELE
  * Date de création : (10/06/05 10:56:49)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String [] getVAL_LB_MODELE() {
 	return getLB_MODELE();
@@ -225,6 +242,7 @@ public java.lang.String [] getVAL_LB_MODELE() {
  * LB_MODELE
  * Date de création : (10/06/05 10:56:49)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_LB_MODELE_SELECT() {
 	return getZone(getNOM_LB_MODELE_SELECT());
@@ -245,7 +263,8 @@ public String getFocus() {
 		this.focus = focus;
 	}
 	/**
-	 * @param focus focus à définir.
+	 * focus focus à définir.
+	 * @return focus
 	 */
 	public String getDefaultFocus() {
 		return getNOM_EF_RECHERCHE();
@@ -269,7 +288,7 @@ public String getFocus() {
 		return modelesInfosCourant;
 	}
 	/**
-	 * @param modelesCourant modelesCourant à définir.
+	 * @param modelesInfosCourant modelesInfosCourant à définir.
 	 */
 	public void setModelesInfosCourant(ModeleInfos modelesInfosCourant) {
 		this.modelesInfosCourant = modelesInfosCourant;
@@ -333,6 +352,7 @@ public String getJSP() {
  * ST_ENTREE
  * Date de création : (17/06/05 15:28:55)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_ST_ENTREE() {
 	return "NOM_ST_ENTREE";
@@ -342,6 +362,7 @@ public java.lang.String getNOM_ST_ENTREE() {
  * ST_ENTREE
  * Date de création : (17/06/05 15:28:55)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_ST_ENTREE() {
 	return getZone(getNOM_ST_ENTREE());

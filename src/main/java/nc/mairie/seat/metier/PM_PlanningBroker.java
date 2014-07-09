@@ -11,6 +11,7 @@ import nc.mairie.technique.Services;
 public class PM_PlanningBroker extends BasicBroker {
 /**
  * Constructeur PM_PlanningBroker.
+ * @param aMetier BasicMetier
  */
 public PM_PlanningBroker(PM_Planning aMetier) {
 	super(aMetier);
@@ -56,14 +57,19 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 }
 /**
  * Retourne un ArrayList d'objet métier : PM_Planning.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<PM_Planning> listerPM_Planning(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un PM_Planning.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return PM_Planning
+ * @throws Exception Exception
  */
 public PM_Planning chercherPM_Planning(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (PM_Planning)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+"");

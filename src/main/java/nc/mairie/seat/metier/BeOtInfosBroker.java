@@ -10,6 +10,7 @@ import nc.mairie.technique.BasicRecord;
 public class BeOtInfosBroker extends BasicBroker {
 /**
  * Constructeur BeOtInfosBroker.
+ * @param aMetier BasicMetier
  */
 public BeOtInfosBroker(BeOtInfos aMetier) {
 	super(aMetier);
@@ -54,21 +55,29 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 }
 /**
  * Retourne un ArrayList d'objet métier : BeOtInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<BeOtInfos> listerBeOtInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"");
 }
 /**
  * Retourne un BeOtInfos.
+ * @param aTransaction Transaction
+ * @param cle cle
  * @return BeOtInfos
+ * @throws Exception Exception
  */
 public BeOtInfos chercherBeOtInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
 	return (BeOtInfos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+"");
 }
 /**
  * Retourne un ArrayList d'objet métier : BeOtInfos.
+ * @param aTransaction Transaction
+ * @param numot numot
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<BeOtInfos> listerBeOtInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroot="+numot);
@@ -76,7 +85,11 @@ public ArrayList<BeOtInfos> listerBeOtInfosOT(nc.mairie.technique.Transaction aT
 
 /**
  * Retourne un ArrayList d'objet métier : PiecesOtInfos.
+ * @param aTransaction Transaction
+ * @param numot numot
+ * @param numinv numinv
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public int cumuleMontantPiecesOtInfosBE(nc.mairie.technique.Transaction aTransaction,String numot, String numinv) throws Exception {
 	return executeCompter(aTransaction," select sum(mtlenju)" +

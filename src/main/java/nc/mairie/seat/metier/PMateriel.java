@@ -25,6 +25,7 @@ public class PMateriel extends BasicMetier {
 	public String dachat;
 /**
  * Getter de l'attribut codemarque.
+ * @return String
  */
 public String getCodemarque() {
 	return codemarque;
@@ -32,17 +33,24 @@ public String getCodemarque() {
 /**
  * Setter de l'attribut codemarque.
  */
+/**
+ * @param newCodemarque newCodemarque
+ */
 public void setCodemarque(String newCodemarque) { 
 	codemarque = newCodemarque;
 }
 /**
  * Getter de l'attribut codetypeequip.
+ * @return String
  */
 public String getCodetypeequip() {
 	return codetypeequip;
 }
 /**
  * Setter de l'attribut codetypeequip.
+ */
+/**
+ * @param newCodetypeequip newCodetypeequip
  */
 public void setCodetypeequip(String newCodetypeequip) { 
 	codetypeequip = newCodetypeequip;
@@ -59,7 +67,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : PMateriel.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<PMateriel> listerPMateriel(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	PMateriel unPMateriel = new PMateriel();
@@ -67,7 +77,10 @@ public static ArrayList<PMateriel> listerPMateriel(nc.mairie.technique.Transacti
 }
 /**
  * Retourne un PMateriel.
+ * @param aTransaction Transaction
+ * @param code code
  * @return PMateriel
+ * @throws Exception Exception
  */
 public static PMateriel chercherPMateriel(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	PMateriel unPMateriel = new PMateriel();
@@ -76,6 +89,9 @@ public static PMateriel chercherPMateriel(nc.mairie.technique.Transaction aTrans
 /**
  * Methode supprimerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean supprimerPMateriel(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//Suppression de l'PMateriel
@@ -93,6 +109,7 @@ public PMateriel() {
 }
 /**
  * Getter de l'attribut pminv.
+ * @return String
  */
 public String getPminv() {
 	return pminv;
@@ -100,11 +117,15 @@ public String getPminv() {
 /**
  * Setter de l'attribut pminv.
  */
+/**
+ * @param newPminv newPminv
+ */
 public void setPminv(String newPminv) { 
 	pminv = newPminv;
 }
 /**
  * Getter de l'attribut pmserie.
+ * @return String
  */
 public String getPmserie() {
 	return pmserie;
@@ -112,11 +133,15 @@ public String getPmserie() {
 /**
  * Setter de l'attribut pmserie.
  */
+/**
+ * @param newPmserie newPmserie
+ */
 public void setPmserie(String newPmserie) { 
 	pmserie = newPmserie;
 }
 /**
  * Getter de l'attribut codemodele.
+ * @return String
  */
 public String getCodemodele() {
 	return codemodele;
@@ -124,11 +149,15 @@ public String getCodemodele() {
 /**
  * Setter de l'attribut codemodele.
  */
+/**
+ * @param newCodemodele newCodemodele
+ */
 public void setCodemodele(String newCodemodele) { 
 	codemodele = newCodemodele;
 }
 /**
  * Getter de l'attribut codefre.
+ * @return String
  */
 public String getCodefre() {
 	return codefre;
@@ -136,11 +165,15 @@ public String getCodefre() {
 /**
  * Setter de l'attribut codefre.
  */
+/**
+ * @param newCodefre newCodefre
+ */
 public void setCodefre(String newCodefre) { 
 	codefre = newCodefre;
 }
 /**
  * Getter de l'attribut dgarantie.
+ * @return String
  */
 public String getDgarantie() {
 	return dgarantie;
@@ -148,11 +181,15 @@ public String getDgarantie() {
 /**
  * Setter de l'attribut dgarantie.
  */
+/**
+ * @param newDgarantie newDgarantie
+ */
 public void setDgarantie(String newDgarantie) { 
 	dgarantie = newDgarantie;
 }
 /**
  * Getter de l'attribut reserve.
+ * @return String
  */
 public String getReserve() {
 	return reserve;
@@ -160,11 +197,15 @@ public String getReserve() {
 /**
  * Setter de l'attribut reserve.
  */
+/**
+ * @param newReserve newReserve
+ */
 public void setReserve(String newReserve) { 
 	reserve = newReserve;
 }
 /**
  * Getter de l'attribut dmes.
+ * @return String
  */
 public String getDmes() {
 	return dmes;
@@ -172,11 +213,15 @@ public String getDmes() {
 /**
  * Setter de l'attribut dmes.
  */
+/**
+ * @param newDmes newDmes
+ */
 public void setDmes(String newDmes) { 
 	dmes = newDmes;
 }
 /**
  * Getter de l'attribut dmhs.
+ * @return String
  */
 public String getDmhs() {
 	return dmhs;
@@ -184,11 +229,15 @@ public String getDmhs() {
 /**
  * Setter de l'attribut dmhs.
  */
+/**
+ * @param newDmhs newDmhs
+ */
 public void setDmhs(String newDmhs) { 
 	dmhs = newDmhs;
 }
 /**
  * Getter de l'attribut prix.
+ * @return String
  */
 public String getPrix() {
 	return prix;
@@ -196,17 +245,24 @@ public String getPrix() {
 /**
  * Setter de l'attribut prix.
  */
+/**
+ * @param newPrix newPrix
+ */
 public void setPrix(String newPrix) { 
 	prix = newPrix;
 }
 /**
  * Getter de l'attribut dachat.
+ * @return String
  */
 public String getDachat() {
 	return dachat;
 }
 /**
  * Setter de l'attribut dachat.
+ */
+/**
+ * @param newDachat newDachat
  */
 public void setDachat(String newDachat) { 
 	dachat = newDachat;
@@ -220,6 +276,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected PMaterielBroker getMyPMaterielBroker() {
 	return (PMaterielBroker)getMyBasicBroker();
@@ -227,6 +284,10 @@ protected PMaterielBroker getMyPMaterielBroker() {
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param unPMateriel unPMateriel
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean creerPMateriel(nc.mairie.technique.Transaction aTransaction,PMateriel unPMateriel)  throws Exception {
 //	on controle si null
@@ -294,7 +355,10 @@ return true;
 /**
  * Retourne un booléen.
  * Vérifie si existe
+ * @param aTransaction Transaction
+ * @param param param
  * @return true ou false
+ * @throws Exception Exception
  */
 public boolean existePMateriel(nc.mairie.technique.Transaction aTransaction, String param) throws Exception{
 	PMateriel unPMateriel = new PMateriel();
@@ -303,6 +367,10 @@ public boolean existePMateriel(nc.mairie.technique.Transaction aTransaction, Str
 /**
  * Methode modifierObjetMetier qui retourne
  * true ou false
+ * @param aTransaction Transaction
+ * @param ancienNuminv ancienNuminv
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean modifierPMateriel(nc.mairie.technique.Transaction aTransaction, String ancienNuminv) throws Exception {
 	controleChamps(aTransaction);

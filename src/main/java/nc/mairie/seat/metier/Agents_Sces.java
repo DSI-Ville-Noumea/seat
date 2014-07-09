@@ -23,11 +23,17 @@ public Agents_Sces() {
 /**
  * Getter de l'attribut nomatr.
  */
+/**
+ * @return String
+ */
 public String getNomatr() {
 	return nomatr;
 }
 /**
  * Setter de l'attribut nomatr.
+ */
+/**
+ * @param newNomatr newNomatr
  */
 public void setNomatr(String newNomatr) { 
 	nomatr = newNomatr;
@@ -35,11 +41,17 @@ public void setNomatr(String newNomatr) {
 /**
  * Getter de l'attribut servi.
  */
+/**
+ * @return String
+ */
 public String getServi() {
 	return servi;
 }
 /**
  * Setter de l'attribut servi.
+ */
+/**
+ * @param newServi newServi
  */
 public void setServi(String newServi) { 
 	servi = newServi;
@@ -47,11 +59,17 @@ public void setServi(String newServi) {
 /**
  * Getter de l'attribut refarr.
  */
+/**
+ * @return String
+ */
 public String getRefarr() {
 	return refarr;
 }
 /**
  * Setter de l'attribut refarr.
+ */
+/**
+ * @param newRefarr newRefarr
  */
 public void setRefarr(String newRefarr) { 
 	refarr = newRefarr;
@@ -59,11 +77,17 @@ public void setRefarr(String newRefarr) {
 /**
  * Getter de l'attribut datdeb.
  */
+/**
+ * @return String
+ */
 public String getDatdeb() {
 	return datdeb;
 }
 /**
  * Setter de l'attribut datdeb.
+ */
+/**
+ * @param newDatdeb newDatdeb
  */
 public void setDatdeb(String newDatdeb) { 
 	datdeb = newDatdeb;
@@ -71,11 +95,17 @@ public void setDatdeb(String newDatdeb) {
 /**
  * Getter de l'attribut datfin.
  */
+/**
+ * @return String
+ */
 public String getDatfin() {
 	return datfin;
 }
 /**
  * Setter de l'attribut datfin.
+ */
+/**
+ * @param newDatfin newDatfin
  */
 public void setDatfin(String newDatfin) { 
 	datfin = newDatfin;
@@ -83,11 +113,17 @@ public void setDatfin(String newDatfin) {
 /**
  * Getter de l'attribut cdecol.
  */
+/**
+ * @return String
+ */
 public String getCdecol() {
 	return cdecol;
 }
 /**
  * Setter de l'attribut cdecol.
+ */
+/**
+ * @param newCdecol newCdecol
  */
 public void setCdecol(String newCdecol) { 
 	cdecol = newCdecol;
@@ -101,6 +137,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected Agents_ScesBroker getMyAgents_ScesBroker() {
 	return (Agents_ScesBroker)getMyBasicBroker();
@@ -117,7 +154,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Agents_Sces.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Agents_Sces> listerAgents_Sces(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Agents_Sces unAgents_Sces = new Agents_Sces();
@@ -125,7 +164,10 @@ public static ArrayList<Agents_Sces> listerAgents_Sces(nc.mairie.technique.Trans
 }
 /**
  * Retourne un Agents_Sces.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return Agents_Sces
+ * @throws Exception Exception
  */
 public static Agents_Sces chercherAgents_Sces(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Agents_Sces unAgents_Sces = new Agents_Sces();

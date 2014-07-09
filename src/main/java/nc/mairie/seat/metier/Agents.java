@@ -50,11 +50,17 @@ public Agents() {
 /**
  * Getter de l'attribut idindi.
  */
+/**
+ * @return String
+ */
 public String getIdindi() {
 	return idindi;
 }
 /**
  * Setter de l'attribut idindi.
+ */
+/**
+ * @param newIdindi newIdindi
  */
 public void setIdindi(String newIdindi) { 
 	idindi = newIdindi;
@@ -62,17 +68,24 @@ public void setIdindi(String newIdindi) {
 /**
  * Getter de l'attribut nomatr.
  */
+/**
+ * @return String
+ */
 public String getNomatr() {
 	return nomatr;
 }
 /**
  * Setter de l'attribut nomatr.
  */
+/**
+ * @param newNomatr newNomatr
+ */
 public void setNomatr(String newNomatr) { 
 	nomatr = newNomatr;
 }
 /**
  * Getter de l'attribut nom.
+ * @return String
  */
 public String getNom() {
 	return nom;
@@ -80,11 +93,15 @@ public String getNom() {
 /**
  * Setter de l'attribut nom.
  */
+/**
+ * @param newNom newNom
+ */
 public void setNom(String newNom) { 
 	nom = newNom;
 }
 /**
  * Getter de l'attribut prenom.
+ * @return String
  */
 public String getPrenom() {
 	return prenom;
@@ -92,11 +109,17 @@ public String getPrenom() {
 /**
  * Setter de l'attribut prenom.
  */
+/**
+ * @param newPrenom newPrenom
+ */
 public void setPrenom(String newPrenom) { 
 	prenom = newPrenom;
 }
 /**
  * Getter de l'attribut nomjfi.
+ */
+/**
+ * @return String
  */
 public String getNomjfi() {
 	return nomjfi;
@@ -104,11 +127,17 @@ public String getNomjfi() {
 /**
  * Setter de l'attribut nomjfi.
  */
+/**
+ * @param newNomjfi newNomjfi
+ */
 public void setNomjfi(String newNomjfi) { 
 	nomjfi = newNomjfi;
 }
 /**
  * Getter de l'attribut datnai.
+ */
+/**
+ * @return String
  */
 public String getDatnai() {
 	return datnai;
@@ -116,11 +145,17 @@ public String getDatnai() {
 /**
  * Setter de l'attribut datnai.
  */
+/**
+ * @param newDatnai newDatnai
+ */
 public void setDatnai(String newDatnai) { 
 	datnai = newDatnai;
 }
 /**
  * Getter de l'attribut lieuna.
+ */
+/**
+ * @return String
  */
 public String getLieuna() {
 	return lieuna;
@@ -128,11 +163,17 @@ public String getLieuna() {
 /**
  * Setter de l'attribut lieuna.
  */
+/**
+ * @param newLieuna newLieuna
+ */
 public void setLieuna(String newLieuna) { 
 	lieuna = newLieuna;
 }
 /**
  * Getter de l'attribut cddesi.
+ */
+/**
+ * @return String
  */
 public String getCddesi() {
 	return cddesi;
@@ -140,11 +181,17 @@ public String getCddesi() {
 /**
  * Setter de l'attribut cddesi.
  */
+/**
+ * @param newCddesi newCddesi
+ */
 public void setCddesi(String newCddesi) { 
 	cddesi = newCddesi;
 }
 /**
  * Getter de l'attribut sexe.
+ */
+/**
+ * @return String
  */
 public String getSexe() {
 	return sexe;
@@ -152,11 +199,17 @@ public String getSexe() {
 /**
  * Setter de l'attribut sexe.
  */
+/**
+ * @param newSexe newSexe
+ */
 public void setSexe(String newSexe) { 
 	sexe = newSexe;
 }
 /**
  * Getter de l'attribut nation.
+ */
+/**
+ * @return String
  */
 public String getNation() {
 	return nation;
@@ -164,11 +217,17 @@ public String getNation() {
 /**
  * Setter de l'attribut nation.
  */
+/**
+ * @param newNation newNation
+ */
 public void setNation(String newNation) { 
 	nation = newNation;
 }
 /**
  * Getter de l'attribut cdfami.
+ */
+/**
+ * @return String
  */
 public String getCdfami() {
 	return cdfami;
@@ -176,11 +235,17 @@ public String getCdfami() {
 /**
  * Setter de l'attribut cdfami.
  */
+/**
+ * @param newCdfami newCdfami
+ */
 public void setCdfami(String newCdfami) { 
 	cdfami = newCdfami;
 }
 /**
  * Getter de l'attribut ninsee.
+ */
+/**
+ * @return String
  */
 public String getNinsee() {
 	return ninsee;
@@ -188,11 +253,17 @@ public String getNinsee() {
 /**
  * Setter de l'attribut ninsee.
  */
+/**
+ * @param newNinsee newNinsee
+ */
 public void setNinsee(String newNinsee) { 
 	ninsee = newNinsee;
 }
 /**
  * Getter de l'attribut dattit.
+ */
+/**
+ * @return String
  */
 public String getDattit() {
 	return dattit;
@@ -200,11 +271,17 @@ public String getDattit() {
 /**
  * Setter de l'attribut dattit.
  */
+/**
+ * @param newDattit newDattit
+ */
 public void setDattit(String newDattit) { 
 	dattit = newDattit;
 }
 /**
  * Getter de l'attribut datdec.
+ */
+/**
+ * @return String
  */
 public String getDatdec() {
 	return datdec;
@@ -212,11 +289,17 @@ public String getDatdec() {
 /**
  * Setter de l'attribut datdec.
  */
+/**
+ * @param newDatdec newDatdec
+ */
 public void setDatdec(String newDatdec) { 
 	datdec = newDatdec;
 }
 /**
  * Getter de l'attribut cdregl.
+ */
+/**
+ * @return String
  */
 public String getCdregl() {
 	return cdregl;
@@ -224,11 +307,17 @@ public String getCdregl() {
 /**
  * Setter de l'attribut cdregl.
  */
+/**
+ * @param newCdregl newCdregl
+ */
 public void setCdregl(String newCdregl) { 
 	cdregl = newCdregl;
 }
 /**
  * Getter de l'attribut idadrs.
+ */
+/**
+ * @return String
  */
 public String getIdadrs() {
 	return idadrs;
@@ -236,11 +325,17 @@ public String getIdadrs() {
 /**
  * Setter de l'attribut idadrs.
  */
+/**
+ * @param newIdadrs newIdadrs
+ */
 public void setIdadrs(String newIdadrs) { 
 	idadrs = newIdadrs;
 }
 /**
  * Getter de l'attribut idcpte.
+ */
+/**
+ * @return String
  */
 public String getIdcpte() {
 	return idcpte;
@@ -248,11 +343,17 @@ public String getIdcpte() {
 /**
  * Setter de l'attribut idcpte.
  */
+/**
+ * @param newIdcpte newIdcpte
+ */
 public void setIdcpte(String newIdcpte) { 
 	idcpte = newIdcpte;
 }
 /**
  * Getter de l'attribut teldom.
+ */
+/**
+ * @return String
  */
 public String getTeldom() {
 	return teldom;
@@ -260,11 +361,17 @@ public String getTeldom() {
 /**
  * Setter de l'attribut teldom.
  */
+/**
+ * @param newTeldom newTeldom
+ */
 public void setTeldom(String newTeldom) { 
 	teldom = newTeldom;
 }
 /**
  * Getter de l'attribut noport.
+ */
+/**
+ * @return String
  */
 public String getNoport() {
 	return noport;
@@ -272,11 +379,17 @@ public String getNoport() {
 /**
  * Setter de l'attribut noport.
  */
+/**
+ * @param newNoport newNoport
+ */
 public void setNoport(String newNoport) { 
 	noport = newNoport;
 }
 /**
  * Getter de l'attribut bister.
+ */
+/**
+ * @return String
  */
 public String getBister() {
 	return bister;
@@ -284,11 +397,17 @@ public String getBister() {
 /**
  * Setter de l'attribut bister.
  */
+/**
+ * @param newBister newBister
+ */
 public void setBister(String newBister) { 
 	bister = newBister;
 }
 /**
  * Getter de l'attribut lidopu.
+ */
+/**
+ * @return String
  */
 public String getLidopu() {
 	return lidopu;
@@ -296,11 +415,17 @@ public String getLidopu() {
 /**
  * Setter de l'attribut lidopu.
  */
+/**
+ * @param newLidopu newLidopu
+ */
 public void setLidopu(String newLidopu) { 
 	lidopu = newLidopu;
 }
 /**
  * Getter de l'attribut lirue.
+ */
+/**
+ * @return String
  */
 public String getLirue() {
 	return lirue;
@@ -308,11 +433,17 @@ public String getLirue() {
 /**
  * Setter de l'attribut lirue.
  */
+/**
+ * @param newLirue newLirue
+ */
 public void setLirue(String newLirue) { 
 	lirue = newLirue;
 }
 /**
  * Getter de l'attribut bp.
+ */
+/**
+ * @return String
  */
 public String getBp() {
 	return bp;
@@ -320,11 +451,17 @@ public String getBp() {
 /**
  * Setter de l'attribut bp.
  */
+/**
+ * @param newBp newBp
+ */
 public void setBp(String newBp) { 
 	bp = newBp;
 }
 /**
  * Getter de l'attribut licare.
+ */
+/**
+ * @return String
  */
 public String getLicare() {
 	return licare;
@@ -332,11 +469,17 @@ public String getLicare() {
 /**
  * Setter de l'attribut licare.
  */
+/**
+ * @param newLicare newLicare
+ */
 public void setLicare(String newLicare) { 
 	licare = newLicare;
 }
 /**
  * Getter de l'attribut cdvill.
+ */
+/**
+ * @return String
  */
 public String getCdvill() {
 	return cdvill;
@@ -344,11 +487,17 @@ public String getCdvill() {
 /**
  * Setter de l'attribut cdvill.
  */
+/**
+ * @param newCdvill newCdvill
+ */
 public void setCdvill(String newCdvill) { 
 	cdvill = newCdvill;
 }
 /**
  * Getter de l'attribut livill.
+ */
+/**
+ * @return String
  */
 public String getLivill() {
 	return livill;
@@ -356,11 +505,17 @@ public String getLivill() {
 /**
  * Setter de l'attribut livill.
  */
+/**
+ * @param newLivill newLivill
+ */
 public void setLivill(String newLivill) { 
 	livill = newLivill;
 }
 /**
  * Getter de l'attribut cdbanq.
+ */
+/**
+ * @return String
  */
 public String getCdbanq() {
 	return cdbanq;
@@ -368,11 +523,17 @@ public String getCdbanq() {
 /**
  * Setter de l'attribut cdbanq.
  */
+/**
+ * @param newCdbanq newCdbanq
+ */
 public void setCdbanq(String newCdbanq) { 
 	cdbanq = newCdbanq;
 }
 /**
  * Getter de l'attribut cdguic.
+ */
+/**
+ * @return String
  */
 public String getCdguic() {
 	return cdguic;
@@ -380,11 +541,17 @@ public String getCdguic() {
 /**
  * Setter de l'attribut cdguic.
  */
+/**
+ * @param newCdguic newCdguic
+ */
 public void setCdguic(String newCdguic) { 
 	cdguic = newCdguic;
 }
 /**
  * Getter de l'attribut nocpte.
+ */
+/**
+ * @return String
  */
 public String getNocpte() {
 	return nocpte;
@@ -392,11 +559,17 @@ public String getNocpte() {
 /**
  * Setter de l'attribut nocpte.
  */
+/**
+ * @param newNocpte newNocpte
+ */
 public void setNocpte(String newNocpte) { 
 	nocpte = newNocpte;
 }
 /**
  * Getter de l'attribut clerib.
+ */
+/**
+ * @return String
  */
 public String getClerib() {
 	return clerib;
@@ -404,11 +577,17 @@ public String getClerib() {
 /**
  * Setter de l'attribut clerib.
  */
+/**
+ * @param newClerib newClerib
+ */
 public void setClerib(String newClerib) { 
 	clerib = newClerib;
 }
 /**
  * Getter de l'attribut cdelec.
+ */
+/**
+ * @return String
  */
 public String getCdelec() {
 	return cdelec;
@@ -416,11 +595,17 @@ public String getCdelec() {
 /**
  * Setter de l'attribut cdelec.
  */
+/**
+ * @param newCdelec newCdelec
+ */
 public void setCdelec(String newCdelec) { 
 	cdelec = newCdelec;
 }
 /**
  * Getter de l'attribut datemb.
+ */
+/**
+ * @return String
  */
 public String getDatemb() {
 	return datemb;
@@ -428,17 +613,26 @@ public String getDatemb() {
 /**
  * Setter de l'attribut datemb.
  */
+/**
+ * @param newDatemb newDatemb
+ */
 public void setDatemb(String newDatemb) { 
 	datemb = newDatemb;
 }
 /**
  * Getter de l'attribut cdetud.
  */
+/**
+ * @return String
+ */
 public String getCdetud() {
 	return cdetud;
 }
 /**
  * Setter de l'attribut cdetud.
+ */
+/**
+ * @param newCdetud newCdetud
  */
 public void setCdetud(String newCdetud) { 
 	cdetud = newCdetud;
@@ -452,6 +646,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected AgentsBroker getMyAgentsBroker() {
 	return (AgentsBroker)getMyBasicBroker();
@@ -468,7 +663,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : Agents.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<Agents> listerAgents(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	Agents unAgents = new Agents();
@@ -476,7 +673,10 @@ public static ArrayList<Agents> listerAgents(nc.mairie.technique.Transaction aTr
 }
 /**
  * Retourne un Agents.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return Agents
+ * @throws Exception Exception
  */
 public static Agents chercherAgents(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	Agents unAgents = new Agents();
@@ -484,7 +684,10 @@ public static Agents chercherAgents(nc.mairie.technique.Transaction aTransaction
 }
 /**
  * Retourne un Agents.
+ * @param aTransaction aTransaction
+ * @param nom nom
  * @return Agents
+ * @throws Exception Exception
  */
 public static ArrayList<Agents> listerAgentsNom(nc.mairie.technique.Transaction aTransaction, String nom) throws Exception{
 	Agents unAgents = new Agents();

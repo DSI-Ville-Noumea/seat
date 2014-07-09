@@ -26,7 +26,9 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : AgentAtmRenseignements.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public static ArrayList<AgentAtmRenseignements> listerAgentAtmRenseignements(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	AgentAtmRenseignements unAgentAtmRenseignements = new AgentAtmRenseignements();
@@ -34,7 +36,10 @@ public static ArrayList<AgentAtmRenseignements> listerAgentAtmRenseignements(nc.
 }
 /**
  * Retourne un AgentAtmRenseignements.
+ * @param aTransaction aTransaction
+ * @param code code
  * @return AgentAtmRenseignements
+ * @throws Exception Exception
  */
 public static AgentAtmRenseignements chercherAgentAtmRenseignements(nc.mairie.technique.Transaction aTransaction, String code) throws Exception{
 	AgentAtmRenseignements unAgentAtmRenseignements = new AgentAtmRenseignements();
@@ -54,72 +59,84 @@ public AgentAtmRenseignements() {
 }
 /**
  * Getter de l'attribut nomatr.
+ * @return nomatr
  */
 public String getNomatr() {
 	return nomatr;
 }
 /**
  * Setter de l'attribut nomatr.
+ * @param newNomatr newNomatr
  */
 public void setNomatr(String newNomatr) { 
 	nomatr = newNomatr;
 }
 /**
  * Getter de l'attribut nom.
+ * @return nom
  */
 public String getNom() {
 	return nom;
 }
 /**
  * Setter de l'attribut nom.
+ * @param newNom newNom
  */
 public void setNom(String newNom) { 
 	nom = newNom;
 }
 /**
  * Getter de l'attribut prenom.
+ * @return prenom
  */
 public String getPrenom() {
 	return prenom;
 }
 /**
  * Setter de l'attribut prenom.
+ * @param newPrenom newPrenom
  */
 public void setPrenom(String newPrenom) { 
 	prenom = newPrenom;
 }
 /**
  * Getter de l'attribut codespe.
+ * @return codespe
  */
 public String getCodespe() {
 	return codespe;
 }
 /**
  * Setter de l'attribut codespe.
+ * @param newCodespe newCodespe
  */
 public void setCodespe(String newCodespe) { 
 	codespe = newCodespe;
 }
 /**
  * Getter de l'attribut libellespe.
+ * @return libellespe
  */
 public String getLibellespe() {
 	return libellespe;
 }
 /**
  * Setter de l'attribut libellespe.
+ * @param newLibellespe newLibellespe
  */
 public void setLibellespe(String newLibellespe) { 
 	libellespe = newLibellespe;
 }
 /**
  * Getter de l'attribut estmecanicien.
+ * @return estmecanicien
  */
 public String getEstmecanicien() {
 	return estmecanicien;
 }
 /**
  * Setter de l'attribut estmecanicien.
+ * @param newEstmecanicien newEstmecanicien
  */
 public void setEstmecanicien(String newEstmecanicien) { 
 	estmecanicien = newEstmecanicien;
@@ -133,6 +150,7 @@ protected BasicBroker definirMyBroker() {
 }
 /**
  Methode à définir dans chaque objet Métier pour instancier un Broker 
+* @return BasicBroker
 */
 protected AgentAtmRenseignementsBroker getMyAgentAtmRenseignementsBroker() {
 	return (AgentAtmRenseignementsBroker)getMyBasicBroker();

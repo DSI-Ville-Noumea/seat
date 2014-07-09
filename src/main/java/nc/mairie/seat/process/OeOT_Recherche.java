@@ -133,6 +133,7 @@ public String getJSP() {
  * PB_ANNULER
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
 	return "NOM_PB_ANNULER";
@@ -144,6 +145,9 @@ public java.lang.String getNOM_PB_ANNULER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) throws Exception {
 	equipementInfosCourant = null;
@@ -157,6 +161,7 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * PB_OK
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_OK() {
 	return "NOM_PB_OK";
@@ -168,6 +173,9 @@ public java.lang.String getNOM_PB_OK() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String param = getZone(getNOM_EF_DESIGNATION());
@@ -192,6 +200,7 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
  * PB_OK_EQUIPEMENT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_OK_EQUIPEMENT() {
 	return "NOM_PB_OK_EQUIPEMENT";
@@ -203,6 +212,9 @@ public java.lang.String getNOM_PB_OK_EQUIPEMENT() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_OK_EQUIPEMENT(javax.servlet.http.HttpServletRequest request) throws Exception {
 //	Récup de l'indice sélectionné
@@ -230,6 +242,7 @@ public boolean performPB_OK_EQUIPEMENT(javax.servlet.http.HttpServletRequest req
  * PB_VALIDER
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
 	return "NOM_PB_VALIDER";
@@ -241,6 +254,9 @@ public java.lang.String getNOM_PB_VALIDER() {
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
  */
 public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) throws Exception {
 //	Récup de l'indice sélectionné
@@ -277,6 +293,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * EF_DESIGNATION
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_EF_DESIGNATION() {
 	return "NOM_EF_DESIGNATION";
@@ -286,6 +303,7 @@ public java.lang.String getNOM_EF_DESIGNATION() {
  * EF_DESIGNATION
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_EF_DESIGNATION() {
 	return getZone(getNOM_EF_DESIGNATION());
@@ -315,6 +333,7 @@ private void setLB_OT(java.lang.String[] newLB_OT) {
  * NOM_LB_BPC
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_LB_OT() {
 	return "NOM_LB_OT";
@@ -324,6 +343,7 @@ public java.lang.String getNOM_LB_OT() {
  * NOM_LB_BPC_SELECT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_LB_OT_SELECT() {
 	return "NOM_LB_OT_SELECT";
@@ -334,6 +354,7 @@ public java.lang.String getNOM_LB_OT_SELECT() {
  * LB_BPC
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String [] getVAL_LB_OT() {
 	return getLB_OT();
@@ -344,6 +365,7 @@ public java.lang.String [] getVAL_LB_OT() {
  * LB_BPC
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_LB_OT_SELECT() {
 	return getZone(getNOM_LB_OT_SELECT());
@@ -373,6 +395,7 @@ private void setLB_EQUIPEMENT(java.lang.String[] newLB_EQUIPEMENT) {
  * NOM_LB_EQUIPEMENT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_LB_EQUIPEMENT() {
 	return "NOM_LB_EQUIPEMENT";
@@ -382,6 +405,7 @@ public java.lang.String getNOM_LB_EQUIPEMENT() {
  * NOM_LB_EQUIPEMENT_SELECT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getNOM_LB_EQUIPEMENT_SELECT() {
 	return "NOM_LB_EQUIPEMENT_SELECT";
@@ -392,6 +416,7 @@ public java.lang.String getNOM_LB_EQUIPEMENT_SELECT() {
  * LB_EQUIPEMENT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String [] getVAL_LB_EQUIPEMENT() {
 	return getLB_EQUIPEMENT();
@@ -402,6 +427,7 @@ public java.lang.String [] getVAL_LB_EQUIPEMENT() {
  * LB_EQUIPEMENT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
+ * @return String
  */
 public java.lang.String getVAL_LB_EQUIPEMENT_SELECT() {
 	return getZone(getNOM_LB_EQUIPEMENT_SELECT());
@@ -422,7 +448,8 @@ public void setFocus(String focus) {
 	this.focus = focus;
 }
 /**
- * @param focus focus à définir.
+ * focus focus à définir.
+ * @return focus
  */
 public String getDefaultFocus() {
 	return getNOM_EF_DESIGNATION();
@@ -434,7 +461,7 @@ public String getDefaultFocus() {
 		return OtCourant;
 	}
 	/**
-	 * @param bpcInfosCourant bpcInfosCourant à définir.
+	 * @param otCourant otCourant à définir.
 	 */
 	public void setOtCourant(OT otCourant) {
 		this.OtCourant = otCourant;

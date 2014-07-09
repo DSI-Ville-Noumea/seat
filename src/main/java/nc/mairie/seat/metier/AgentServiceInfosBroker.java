@@ -10,21 +10,29 @@ import nc.mairie.technique.BasicRecord;
 public class AgentServiceInfosBroker extends BasicBroker {
 /**
  * Retourne un ArrayList d'objet métier : AgentServiceInfos.
+ * @param aTransaction Transaction
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AgentServiceInfos> listerAgentServiceInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
 }
 /**
  * Retourne un AgentServiceInfos.
+ * @param aTransaction Transaction
+ * @param nomatr nomatr
  * @return AgentServiceInfos
+ * @throws Exception Exception
  */
 public AgentServiceInfos chercherAgentServiceInfos(nc.mairie.technique.Transaction aTransaction, String nomatr) throws Exception {
 	return (AgentServiceInfos)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+nomatr+" with ur");
 }
 /**
  * Retourne un ArrayList d'objet métier : AgentServiceInfos.
+ * @param aTransaction Transaction
+ * @param param param
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AgentServiceInfos> chercherListAgentServiceInfosSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	String servi = param.substring(0,3); 
@@ -35,7 +43,10 @@ public ArrayList<AgentServiceInfos> chercherListAgentServiceInfosSce(nc.mairie.t
 }
 /**
  * Retourne un ArrayList d'objet métier : AgentServiceInfos.
+ * @param aTransaction Transaction
+ * @param serv serv
  * @return java.util.ArrayList
+ * @throws Exception Exception
  */
 public ArrayList<AgentServiceInfos> listerAgentService(nc.mairie.technique.Transaction aTransaction,String serv) throws Exception {
 	serv = serv.substring(0,3); 
@@ -43,6 +54,7 @@ public ArrayList<AgentServiceInfos> listerAgentService(nc.mairie.technique.Trans
 }
 /**
  * Constructeur AgentServiceInfosBroker.
+ * @param aMetier BasicMetier
  */
 public AgentServiceInfosBroker(AgentServiceInfos aMetier) {
 	super(aMetier);
