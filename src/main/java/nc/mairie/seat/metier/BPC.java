@@ -480,8 +480,6 @@ public BPC() {
 }
 /**
  * Getter de l'attribut numerobpc.
- */
-/**
  * @return String
  */
 public String getNumerobpc() {
@@ -489,8 +487,6 @@ public String getNumerobpc() {
 }
 /**
  * Setter de l'attribut numerobpc.
- */
-/**
  * @param newNumerobpc newNumerobpc
  */
 public void setNumerobpc(String newNumerobpc) { 
@@ -498,8 +494,6 @@ public void setNumerobpc(String newNumerobpc) {
 }
 /**
  * Getter de l'attribut date.
- */
-/**
  * @return String
  */
 public String getDate() {
@@ -507,8 +501,6 @@ public String getDate() {
 }
 /**
  * Setter de l'attribut date.
- */
-/**
  * @param newDate newDate
  */
 public void setDate(String newDate) { 
@@ -516,8 +508,6 @@ public void setDate(String newDate) {
 }
 /**
  * Getter de l'attribut heure.
- */
-/**
  * @return String
  */
 public String getHeure() {
@@ -525,8 +515,6 @@ public String getHeure() {
 }
 /**
  * Setter de l'attribut heure.
- */
-/**
  * @param newHeure newHeure
  */
 public void setHeure(String newHeure) { 
@@ -534,8 +522,6 @@ public void setHeure(String newHeure) {
 }
 /**
  * Getter de l'attribut valeurcompteur.
- */
-/**
  * @return String
  */
 public String getValeurcompteur() {
@@ -543,8 +529,6 @@ public String getValeurcompteur() {
 }
 /**
  * Setter de l'attribut valeurcompteur.
- */
-/**
  * @param newValeurcompteur newValeurcompteur
  */
 public void setValeurcompteur(String newValeurcompteur) { 
@@ -552,8 +536,6 @@ public void setValeurcompteur(String newValeurcompteur) {
 }
 /**
  * Getter de l'attribut numeropompe.
- */
-/**
  * @return String
  */
 public String getNumeropompe() {
@@ -561,8 +543,6 @@ public String getNumeropompe() {
 }
 /**
  * Setter de l'attribut numeropompe.
- */
-/**
  * @param newNumeropompe newNumeropompe
  */
 public void setNumeropompe(String newNumeropompe) { 
@@ -570,8 +550,6 @@ public void setNumeropompe(String newNumeropompe) {
 }
 /**
  * Getter de l'attribut quantite.
- */
-/**
  * @return String
  */
 public String getQuantite() {
@@ -579,8 +557,6 @@ public String getQuantite() {
 }
 /**
  * Setter de l'attribut quantite.
- */
-/**
  * @param newQuantite newQuantite
  */
 public void setQuantite(String newQuantite) { 
@@ -588,8 +564,6 @@ public void setQuantite(String newQuantite) {
 }
 /**
  * Getter de l'attribut modedeprise.
- */
-/**
  * @return String
  */
 public String getModedeprise() {
@@ -597,8 +571,6 @@ public String getModedeprise() {
 }
 /**
  * Setter de l'attribut modedeprise.
- */
-/**
  * @param newModedeprise newModedeprise
  */
 public void setModedeprise(String newModedeprise) { 
@@ -606,8 +578,6 @@ public void setModedeprise(String newModedeprise) {
 }
 /**
  * Getter de l'attribut numeroinventaire.
- */
-/**
  * @return String
  */
 public String getNumeroinventaire() {
@@ -615,8 +585,6 @@ public String getNumeroinventaire() {
 }
 /**
  * Setter de l'attribut numeroinventaire.
- */
-/**
  * @param newNumeroinventaire newNumeroinventaire
  */
 public void setNumeroinventaire(String newNumeroinventaire) { 

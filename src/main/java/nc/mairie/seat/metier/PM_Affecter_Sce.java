@@ -285,8 +285,6 @@ public String getSiserv() {
 }
 /**
  * Setter de l'attribut siserv.
- */
-/**
  * @param newSiserv newSiserv
  */
 public void setSiserv(String newSiserv) { 
@@ -301,8 +299,6 @@ public String getPminv() {
 }
 /**
  * Setter de l'attribut pminv.
- */
-/**
  * @param newPminv newPminv
  */
 public void setPminv(String newPminv) { 
@@ -317,8 +313,6 @@ public String getDdebut() {
 }
 /**
  * Setter de l'attribut ddebut.
- */
-/**
  * @param newDdebut newDdebut
  */
 public void setDdebut(String newDdebut) { 
@@ -333,8 +327,6 @@ public String getDfin() {
 }
 /**
  * Setter de l'attribut dfin.
- */
-/**
  * @param newDfin newDfin
  */
 public void setDfin(String newDfin) { 
@@ -349,8 +341,6 @@ public String getNomatr() {
 }
 /**
  * Setter de l'attribut nomatr.
- */
-/**
  * @param newNomatr newNomatr
  */
 public void setNomatr(String newNomatr) { 

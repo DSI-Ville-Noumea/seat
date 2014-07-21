@@ -22,8 +22,6 @@ public AgentsMunicipaux() {
 }
 /**
  * Getter de l'attribut nomatr.
- */
-/**
  * @return String
  */
 public String getNomatr() {
@@ -31,8 +29,6 @@ public String getNomatr() {
 }
 /**
  * Setter de l'attribut nomatr.
- */
-/**
  * @param newNomatr newNomatr
  */
 public void setNomatr(String newNomatr) { 
@@ -47,8 +43,6 @@ public String getNom() {
 }
 /**
  * Setter de l'attribut nom.
- */
-/**
  * @param newNom newNom
  */
 public void setNom(String newNom) { 
@@ -63,8 +57,6 @@ public String getPrenom() {
 }
 /**
  * Setter de l'attribut prenom.
- */
-/**
  * @param newPrenom newPrenom
  */
 public void setPrenom(String newPrenom) { 
@@ -72,8 +64,6 @@ public void setPrenom(String newPrenom) {
 }
 /**
  * Getter de l'attribut codact.
- */
-/**
  * @return String
  */
 public String getCodact() {
@@ -81,8 +71,6 @@ public String getCodact() {
 }
 /**
  * Setter de l'attribut codact.
- */
-/**
  * @param newCodact newCodact
  */
 public void setCodact(String newCodact) { 
@@ -90,8 +78,6 @@ public void setCodact(String newCodact) {
 }
 /**
  * Getter de l'attribut servi.
- */
-/**
  * @return String
  */
 public String getServi() {
@@ -99,8 +85,6 @@ public String getServi() {
 }
 /**
  * Setter de l'attribut servi.
- */
-/**
  * @param newServi newServi
  */
 public void setServi(String newServi) { 
@@ -108,8 +92,6 @@ public void setServi(String newServi) {
 }
 /**
  * Getter de l'attribut datfin.
- */
-/**
  * @return String
  */
 public String getDatfin() {
@@ -117,8 +99,6 @@ public String getDatfin() {
 }
 /**
  * Setter de l'attribut datfin.
- */
-/**
  * @param newDatfin newDatfin
  */
 public void setDatfin(String newDatfin) { 

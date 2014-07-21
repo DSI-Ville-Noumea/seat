@@ -35,8 +35,6 @@ public String getCodepmpep() {
 }
 /**
  * Setter de l'attribut codepmpep.
- */
-/**
  * @param newCodepmpep newCodepmpep
  */
 public void setCodepmpep(String newCodepmpep) { 
@@ -51,8 +49,6 @@ public String getPminv() {
 }
 /**
  * Setter de l'attribut pminv.
- */
-/**
  * @param newPminv newPminv
  */
 public void setPminv(String newPminv) { 
@@ -67,8 +63,6 @@ public String getNumfiche() {
 }
 /**
  * Setter de l'attribut numfiche.
- */
-/**
  * @param newNumfiche newNumfiche
  */
 public void setNumfiche(String newNumfiche) { 
@@ -97,8 +91,6 @@ public String getDprev() {
 }
 /**
  * Setter de l'attribut dprev.
- */
-/**
  * @param newDprev newDprev
  */
 public void setDprev(String newDprev) { 
@@ -113,8 +105,6 @@ public String getDreal() {
 }
 /**
  * Setter de l'attribut dreal.
- */
-/**
  * @param newDreal newDreal
  */
 public void setDreal(String newDreal) { 
@@ -129,8 +119,6 @@ public String getDuree() {
 }
 /**
  * Setter de l'attribut duree.
- */
-/**
  * @param newDuree newDuree
  */
 public void setDuree(String newDuree) { 
@@ -145,8 +133,6 @@ public String getSinistre() {
 }
 /**
  * Setter de l'attribut sinistre.
- */
-/**
  * @param newSinistre newSinistre
  */
 public void setSinistre(String newSinistre) { 
@@ -161,8 +147,6 @@ public String getCommentaire() {
 }
 /**
  * Setter de l'attribut commentaire.
- */
-/**
  * @param newCommentaire newCommentaire
  */
 public void setCommentaire(String newCommentaire) { 

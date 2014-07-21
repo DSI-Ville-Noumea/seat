@@ -146,8 +146,6 @@ public OeCarburant() {
  * PB_AJOUTER
  * Date de création : (23/05/05 15:29:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_AJOUTER() {
@@ -181,8 +179,6 @@ public boolean performPB_AJOUTER(javax.servlet.http.HttpServletRequest request) 
  * PB_ANNULER
  * Date de création : (23/05/05 15:29:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
@@ -221,8 +217,6 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * PB_MODIFIER
  * Date de création : (23/05/05 15:29:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_MODIFIER() {
@@ -273,8 +267,6 @@ public boolean performPB_MODIFIER(javax.servlet.http.HttpServletRequest request)
  * PB_OK
  * Date de création : (23/05/05 15:29:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_OK() {
@@ -314,8 +306,6 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
  * PB_SUPPRIMER
  * Date de création : (23/05/05 15:29:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_SUPPRIMER() {
@@ -360,8 +350,6 @@ public boolean performPB_SUPPRIMER(javax.servlet.http.HttpServletRequest request
  * ST_TITRE_ACTION
  * Date de création : (23/05/05 15:29:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_TITRE_ACTION() {
@@ -372,8 +360,6 @@ public java.lang.String getNOM_ST_TITRE_ACTION() {
  * ST_TITRE_ACTION
  * Date de création : (23/05/05 15:29:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_TITRE_ACTION() {
@@ -384,8 +370,6 @@ public java.lang.String getVAL_ST_TITRE_ACTION() {
  * EF_DESIGNATION
  * Date de création : (23/05/05 15:29:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_DESIGNATION() {
@@ -396,8 +380,6 @@ public java.lang.String getNOM_EF_DESIGNATION() {
  * EF_DESIGNATION
  * Date de création : (23/05/05 15:29:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_DESIGNATION() {
@@ -428,8 +410,6 @@ private void setLB_CARBURANT(java.lang.String[] newLB_CARBURANT) {
  * NOM_LB_CARBURANT
  * Date de création : (23/05/05 15:29:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_CARBURANT() {
@@ -440,8 +420,6 @@ public java.lang.String getNOM_LB_CARBURANT() {
  * NOM_LB_CARBURANT_SELECT
  * Date de création : (23/05/05 15:29:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_CARBURANT_SELECT() {
@@ -453,8 +431,6 @@ public java.lang.String getNOM_LB_CARBURANT_SELECT() {
  * LB_CARBURANT
  * Date de création : (23/05/05 15:29:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_CARBURANT() {
@@ -466,8 +442,6 @@ public java.lang.String [] getVAL_LB_CARBURANT() {
  * LB_CARBURANT
  * Date de création : (23/05/05 15:29:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_CARBURANT_SELECT() {
@@ -502,8 +476,6 @@ public java.lang.String getVAL_LB_CARBURANT_SELECT() {
  * PB_VALIDER
  * Date de création : (23/05/05 15:44:36)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
@@ -643,8 +615,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * ST_DESIGNATION
  * Date de création : (14/06/05 13:09:48)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_DESIGNATION() {
@@ -655,8 +625,6 @@ public java.lang.String getNOM_ST_DESIGNATION() {
  * ST_DESIGNATION
  * Date de création : (14/06/05 13:09:48)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_DESIGNATION() {
@@ -673,8 +641,6 @@ public java.lang.String getVAL_ST_DESIGNATION() {
  * ST_NUM_POMPE_ATM
  * Date de création : (31/01/06 09:27:58)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_NUM_POMPE_ATM() {
@@ -685,8 +651,6 @@ public java.lang.String getNOM_ST_NUM_POMPE_ATM() {
  * ST_NUM_POMPE_ATM
  * Date de création : (31/01/06 09:27:58)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_NUM_POMPE_ATM() {
@@ -697,8 +661,6 @@ public java.lang.String getVAL_ST_NUM_POMPE_ATM() {
  * EF_NUM_POMPE_ATM
  * Date de création : (31/01/06 09:27:58)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_NUM_POMPE_ATM() {
@@ -709,8 +671,6 @@ public java.lang.String getNOM_EF_NUM_POMPE_ATM() {
  * EF_NUM_POMPE_ATM
  * Date de création : (31/01/06 09:27:58)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_NUM_POMPE_ATM() {
@@ -798,8 +758,6 @@ private void setLB_POMPES(java.lang.String[] newLB_POMPES) {
  * NOM_LB_POMPES
  * Date de création : (31/01/06 09:31:34)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_POMPES() {
@@ -810,8 +768,6 @@ public java.lang.String getNOM_LB_POMPES() {
  * NOM_LB_POMPES_SELECT
  * Date de création : (31/01/06 09:31:34)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_POMPES_SELECT() {
@@ -823,8 +779,6 @@ public java.lang.String getNOM_LB_POMPES_SELECT() {
  * LB_POMPES
  * Date de création : (31/01/06 09:31:34)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_POMPES() {
@@ -836,8 +790,6 @@ public java.lang.String [] getVAL_LB_POMPES() {
  * LB_POMPES
  * Date de création : (31/01/06 09:31:34)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_POMPES_SELECT() {

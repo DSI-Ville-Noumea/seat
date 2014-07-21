@@ -32,8 +32,6 @@ public String getCodemarque() {
 }
 /**
  * Setter de l'attribut codemarque.
- */
-/**
  * @param newCodemarque newCodemarque
  */
 public void setCodemarque(String newCodemarque) { 
@@ -48,8 +46,6 @@ public String getCodetypeequip() {
 }
 /**
  * Setter de l'attribut codetypeequip.
- */
-/**
  * @param newCodetypeequip newCodetypeequip
  */
 public void setCodetypeequip(String newCodetypeequip) { 
@@ -116,8 +112,6 @@ public String getPminv() {
 }
 /**
  * Setter de l'attribut pminv.
- */
-/**
  * @param newPminv newPminv
  */
 public void setPminv(String newPminv) { 
@@ -132,8 +126,6 @@ public String getPmserie() {
 }
 /**
  * Setter de l'attribut pmserie.
- */
-/**
  * @param newPmserie newPmserie
  */
 public void setPmserie(String newPmserie) { 
@@ -148,8 +140,6 @@ public String getCodemodele() {
 }
 /**
  * Setter de l'attribut codemodele.
- */
-/**
  * @param newCodemodele newCodemodele
  */
 public void setCodemodele(String newCodemodele) { 
@@ -164,8 +154,6 @@ public String getCodefre() {
 }
 /**
  * Setter de l'attribut codefre.
- */
-/**
  * @param newCodefre newCodefre
  */
 public void setCodefre(String newCodefre) { 
@@ -180,8 +168,6 @@ public String getDgarantie() {
 }
 /**
  * Setter de l'attribut dgarantie.
- */
-/**
  * @param newDgarantie newDgarantie
  */
 public void setDgarantie(String newDgarantie) { 
@@ -196,8 +182,6 @@ public String getReserve() {
 }
 /**
  * Setter de l'attribut reserve.
- */
-/**
  * @param newReserve newReserve
  */
 public void setReserve(String newReserve) { 
@@ -212,8 +196,6 @@ public String getDmes() {
 }
 /**
  * Setter de l'attribut dmes.
- */
-/**
  * @param newDmes newDmes
  */
 public void setDmes(String newDmes) { 
@@ -228,8 +210,6 @@ public String getDmhs() {
 }
 /**
  * Setter de l'attribut dmhs.
- */
-/**
  * @param newDmhs newDmhs
  */
 public void setDmhs(String newDmhs) { 
@@ -244,8 +224,6 @@ public String getPrix() {
 }
 /**
  * Setter de l'attribut prix.
- */
-/**
  * @param newPrix newPrix
  */
 public void setPrix(String newPrix) { 
@@ -260,8 +238,6 @@ public String getDachat() {
 }
 /**
  * Setter de l'attribut dachat.
- */
-/**
  * @param newDachat newDachat
  */
 public void setDachat(String newDachat) { 

@@ -25,9 +25,6 @@ public String toString() {
 }
 /**
  * Retourne un ArrayList d'objet métier : AActifs.
- * @return java.util.ArrayList
- */
-/**
  * @param aTransaction Transaction
  * @throws Exception Exception
  * @return ArrayList
@@ -38,9 +35,6 @@ public static ArrayList<AActifs> listerAActifs(nc.mairie.technique.Transaction a
 }
 /**
  * Retourne un AActifs.
- * @return AActifs
- */
-/**
  * @param aTransaction Transaction
  * @param code code
  * @return AActifs AActifs
@@ -53,9 +47,6 @@ public static AActifs chercherAActifs(nc.mairie.technique.Transaction aTransacti
 
 /**
  * Retourne un ArrayList d'objet métier : AActifs.
- * @return java.util.ArrayList
- */
-/**
  * @param aTransaction Transaction
  * @param servi servi
  * @return ArrayList ArrayList
@@ -68,9 +59,6 @@ public static ArrayList<AActifs> listerAActifsService(nc.mairie.technique.Transa
 
 /**
  * Retourne un AActifs.
- * @return AActifs
- */
-/**
  * @param aTransaction Transaction
  * @param servi servi
  * @return ArrayList ArrayList
@@ -85,8 +73,6 @@ public static ArrayList<AActifs> chercherListAgentServiceInfosSce(nc.mairie.tech
 
 /**
  * Constructeur AActifs.
- */
-/**
  * 
  */
 public AActifs() {
@@ -94,8 +80,6 @@ public AActifs() {
 }
 /**
  * Getter de l'attribut nomatr.
- */
-/**
  * @return nomatr
  */
 public String getNomatr() {

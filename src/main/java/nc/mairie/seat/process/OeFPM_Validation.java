@@ -199,8 +199,6 @@ public OeFPM_Validation() {
  * PB_AJOUTER
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_AJOUTER() {
@@ -238,8 +236,6 @@ public boolean performPB_AJOUTER(javax.servlet.http.HttpServletRequest request) 
  * PB_ANNULER
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
@@ -265,8 +261,6 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * PB_ENLEVER
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_ENLEVER() {
@@ -304,8 +298,6 @@ public boolean performPB_ENLEVER(javax.servlet.http.HttpServletRequest request) 
  * PB_VALIDER
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
@@ -373,8 +365,6 @@ private void setLB_FPMAVALIDER(java.lang.String[] newLB_FPMAVALIDER) {
  * NOM_LB_FPMAVALIDER
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_FPMAVALIDER() {
@@ -386,8 +376,6 @@ public java.lang.String getNOM_LB_FPMAVALIDER() {
  * NOM_LB_FPMAVALIDER_SELECT
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_FPMAVALIDER_SELECT() {
@@ -399,8 +387,6 @@ public java.lang.String getNOM_LB_FPMAVALIDER_SELECT() {
  * LB_FPMAVALIDER
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_FPMAVALIDER() {
@@ -412,8 +398,6 @@ public java.lang.String [] getVAL_LB_FPMAVALIDER() {
  * LB_FPMAVALIDER
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_FPMAVALIDER_SELECT() {
@@ -444,8 +428,6 @@ private void setLB_FPMENCOURS(java.lang.String[] newLB_FPMENCOURS) {
  * NOM_LB_FPMENCOURS
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_FPMENCOURS() {
@@ -456,8 +438,6 @@ public java.lang.String getNOM_LB_FPMENCOURS() {
  * NOM_LB_FPMENCOURS_SELECT
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_FPMENCOURS_SELECT() {
@@ -469,8 +449,6 @@ public java.lang.String getNOM_LB_FPMENCOURS_SELECT() {
  * LB_FPMENCOURS
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_FPMENCOURS() {
@@ -482,8 +460,6 @@ public java.lang.String [] getVAL_LB_FPMENCOURS() {
  * LB_FPMENCOURS
  * Date de création : (02/08/05 13:40:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_FPMENCOURS_SELECT() {
@@ -525,8 +501,6 @@ public void setestEnregistre(boolean estEnregistre) {
  * PB_OK_VALIDATION
  * Date de création : (03/08/05 07:50:43)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_OK_VALIDATION() {
@@ -564,8 +538,6 @@ public boolean performPB_OK_VALIDATION(javax.servlet.http.HttpServletRequest req
  * ST_COMPTEUR
  * Date de création : (23/08/05 08:57:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_COMPTEUR() {
@@ -576,8 +548,6 @@ public java.lang.String getNOM_ST_COMPTEUR() {
  * ST_COMPTEUR
  * Date de création : (23/08/05 08:57:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_COMPTEUR() {
@@ -588,8 +558,6 @@ public java.lang.String getVAL_ST_COMPTEUR() {
  * PB_MODIFIER
  * Date de création : (03/04/07 08:57:36)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_MODIFIER() {
@@ -636,8 +604,6 @@ public boolean performPB_MODIFIER(javax.servlet.http.HttpServletRequest request)
  * PB_VISUALISER
  * Date de création : (03/04/07 08:57:36)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_VISUALISER() {

@@ -100,8 +100,6 @@ public DeclarationsInfos() {
 }
 /**
  * Getter de l'attribut nom.
- */
-/**
  * @return String
  */
 public String getNom() {
@@ -109,8 +107,6 @@ public String getNom() {
 }
 /**
  * Setter de l'attribut nom.
- */
-/**
  * @param newNom newNom
  */
 public void setNom(String newNom) { 
@@ -118,8 +114,6 @@ public void setNom(String newNom) {
 }
 /**
  * Getter de l'attribut prenom.
- */
-/**
  * @return String
  */
 public String getPrenom() {
@@ -127,8 +121,6 @@ public String getPrenom() {
 }
 /**
  * Setter de l'attribut prenom.
- */
-/**
  * @param newPrenom newPrenom
  */
 public void setPrenom(String newPrenom) { 
@@ -136,8 +128,6 @@ public void setPrenom(String newPrenom) {
 }
 /**
  * Getter de l'attribut dateentree.
- */
-/**
  * @return String
  */
 public String getDateentree() {
@@ -145,8 +135,6 @@ public String getDateentree() {
 }
 /**
  * Setter de l'attribut dateentree.
- */
-/**
  * @param newDateentree newDateentree
  */
 public void setDateentree(String newDateentree) { 
@@ -154,8 +142,6 @@ public void setDateentree(String newDateentree) {
 }
 /**
  * Getter de l'attribut datesortie.
- */
-/**
  * @return String
  */
 public String getDatesortie() {
@@ -163,8 +149,6 @@ public String getDatesortie() {
 }
 /**
  * Setter de l'attribut datesortie.
- */
-/**
  * @param newDatesortie newDatesortie
  */
 public void setDatesortie(String newDatesortie) { 
@@ -172,8 +156,6 @@ public void setDatesortie(String newDatesortie) {
 }
 /**
  * Getter de l'attribut numeroot.
- */
-/**
  * @return String
  */
 public String getNumeroot() {
@@ -181,8 +163,6 @@ public String getNumeroot() {
 }
 /**
  * Setter de l'attribut numeroot.
- */
-/**
  * @param newNumeroot newNumeroot
  */
 public void setNumeroot(String newNumeroot) { 
@@ -190,8 +170,6 @@ public void setNumeroot(String newNumeroot) {
 }
 /**
  * Getter de l'attribut compteur.
- */
-/**
  * @return String
  */
 public String getCompteur() {
@@ -199,8 +177,6 @@ public String getCompteur() {
 }
 /**
  * Setter de l'attribut compteur.
- */
-/**
  * @param newCompteur newCompteur
  */
 public void setCompteur(String newCompteur) { 
@@ -208,8 +184,6 @@ public void setCompteur(String newCompteur) {
 }
 /**
  * Getter de l'attribut valide.
- */
-/**
  * @return String
  */
 public String getValide() {
@@ -217,8 +191,6 @@ public String getValide() {
 }
 /**
  * Setter de l'attribut valide.
- */
-/**
  * @param newValide newValide
  */
 public void setValide(String newValide) { 
@@ -226,8 +198,6 @@ public void setValide(String newValide) {
 }
 /**
  * Getter de l'attribut commentaire.
- */
-/**
  * @return String
  */
 public String getCommentaire() {
@@ -235,8 +205,6 @@ public String getCommentaire() {
 }
 /**
  * Setter de l'attribut commentaire.
- */
-/**
  * @param newCommentaire newCommentaire
  */
 public void setCommentaire(String newCommentaire) { 
@@ -244,8 +212,6 @@ public void setCommentaire(String newCommentaire) {
 }
 /**
  * Getter de l'attribut codedec.
- */
-/**
  * @return String
  */
 public String getCodedec() {
@@ -253,8 +219,6 @@ public String getCodedec() {
 }
 /**
  * Setter de l'attribut codedec.
- */
-/**
  * @param newCodedec newCodedec
  */
 public void setCodedec(String newCodedec) { 
@@ -262,8 +226,6 @@ public void setCodedec(String newCodedec) {
 }
 /**
  * Getter de l'attribut date.
- */
-/**
  * @return String
  */
 public String getDate() {
@@ -271,8 +233,6 @@ public String getDate() {
 }
 /**
  * Setter de l'attribut date.
- */
-/**
  * @param newDate newDate
  */
 public void setDate(String newDate) { 
@@ -280,8 +240,6 @@ public void setDate(String newDate) {
 }
 /**
  * Getter de l'attribut anomalies.
- */
-/**
  * @return String
  */
 public String getAnomalies() {
@@ -289,8 +247,6 @@ public String getAnomalies() {
 }
 /**
  * Setter de l'attribut anomalies.
- */
-/**
  * @param newAnomalies newAnomalies
  */
 public void setAnomalies(String newAnomalies) { 
@@ -298,8 +254,6 @@ public void setAnomalies(String newAnomalies) {
 }
 /**
  * Getter de l'attribut matricule.
- */
-/**
  * @return String
  */
 public String getMatricule() {
@@ -307,8 +261,6 @@ public String getMatricule() {
 }
 /**
  * Setter de l'attribut matricule.
- */
-/**
  * @param newMatricule newMatricule
  */
 public void setMatricule(String newMatricule) { 
@@ -316,8 +268,6 @@ public void setMatricule(String newMatricule) {
 }
 /**
  * Getter de l'attribut numinv.
- */
-/**
  * @return String
  */
 public String getNuminv() {
@@ -325,8 +275,6 @@ public String getNuminv() {
 }
 /**
  * Setter de l'attribut numinv.
- */
-/**
  * @param newNuminv newNuminv
  */
 public void setNuminv(String newNuminv) { 
@@ -334,8 +282,6 @@ public void setNuminv(String newNuminv) {
 }
 /**
  * Getter de l'attribut numeroimmatriculation.
- */
-/**
  * @return String
  */
 public String getNumeroimmatriculation() {
@@ -343,8 +289,6 @@ public String getNumeroimmatriculation() {
 }
 /**
  * Setter de l'attribut numeroimmatriculation.
- */
-/**
  * @param newNumeroimmatriculation newNumeroimmatriculation
  */
 public void setNumeroimmatriculation(String newNumeroimmatriculation) { 
@@ -352,8 +296,6 @@ public void setNumeroimmatriculation(String newNumeroimmatriculation) {
 }
 /**
  * Getter de l'attribut datemiseencirculation.
- */
-/**
  * @return String
  */
 public String getDatemiseencirculation() {
@@ -361,8 +303,6 @@ public String getDatemiseencirculation() {
 }
 /**
  * Setter de l'attribut datemiseencirculation.
- */
-/**
  * @param newDatemiseencirculation newDatemiseencirculation
  */
 public void setDatemiseencirculation(String newDatemiseencirculation) { 
@@ -370,8 +310,6 @@ public void setDatemiseencirculation(String newDatemiseencirculation) {
 }
 /**
  * Getter de l'attribut prixachat.
- */
-/**
  * @return String
  */
 public String getPrixachat() {
@@ -379,8 +317,6 @@ public String getPrixachat() {
 }
 /**
  * Setter de l'attribut prixachat.
- */
-/**
  * @param newPrixachat newPrixachat
  */
 public void setPrixachat(String newPrixachat) { 
@@ -388,8 +324,6 @@ public void setPrixachat(String newPrixachat) {
 }
 /**
  * Getter de l'attribut codemodele.
- */
-/**
  * @return String
  */
 public String getCodemodele() {
@@ -397,8 +331,6 @@ public String getCodemodele() {
 }
 /**
  * Setter de l'attribut codemodele.
- */
-/**
  * @param newCodemodele newCodemodele
  */
 public void setCodemodele(String newCodemodele) { 
@@ -406,8 +338,6 @@ public void setCodemodele(String newCodemodele) {
 }
 /**
  * Getter de l'attribut dureegarantie.
- */
-/**
  * @return String
  */
 public String getDureegarantie() {
@@ -415,8 +345,6 @@ public String getDureegarantie() {
 }
 /**
  * Setter de l'attribut dureegarantie.
- */
-/**
  * @param newDureegarantie newDureegarantie
  */
 public void setDureegarantie(String newDureegarantie) { 
@@ -424,8 +352,6 @@ public void setDureegarantie(String newDureegarantie) {
 }
 /**
  * Getter de l'attribut codeservice.
- */
-/**
  * @return String
  */
 public String getCodeservice() {
@@ -433,8 +359,6 @@ public String getCodeservice() {
 }
 /**
  * Setter de l'attribut codeservice.
- */
-/**
  * @param newCodeservice newCodeservice
  */
 public void setCodeservice(String newCodeservice) { 

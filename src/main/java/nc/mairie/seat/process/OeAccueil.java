@@ -55,8 +55,6 @@ public OeAccueil() {
  * PB_GO
  * Date de création : (28/04/05 13:36:04)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_GO() {
@@ -83,8 +81,6 @@ public boolean performPB_GO(javax.servlet.http.HttpServletRequest request) throw
  * ST_TEXTE_COUCOU
  * Date de création : (28/04/05 13:37:04)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_TEXTE_COUCOU() {
@@ -95,8 +91,6 @@ public java.lang.String getNOM_ST_TEXTE_COUCOU() {
  * ST_TEXTE_COUCOU
  * Date de création : (28/04/05 13:37:04)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_TEXTE_COUCOU() {
@@ -124,8 +118,6 @@ public boolean performPB_PNEU(javax.servlet.http.HttpServletRequest request) thr
  * PB_PNEU
  * Date de création : (02/05/05 09:31:50)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_PNEU() {
@@ -156,8 +148,6 @@ public boolean performPB_BPC(javax.servlet.http.HttpServletRequest request) thro
  * PB_MARQUES
  * Date de création : (04/05/05 13:36:15)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_MARQUES() {
@@ -185,8 +175,6 @@ public boolean performPB_MARQUES(javax.servlet.http.HttpServletRequest request) 
  * PB_TYPEEQUIP
  * Date de création : (04/05/05 15:23:24)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_TYPEEQUIP() {
@@ -219,8 +207,6 @@ public boolean performPB_MODELES(javax.servlet.http.HttpServletRequest request) 
  * PB_MODELES
  * Date de création : (09/05/05 13:35:10)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_MODELES() {
@@ -241,8 +227,6 @@ public java.lang.String getNOM_PB_MODELES() {
  * PB_ENTRETIEN
  * Date de création : (11/05/05 09:12:49)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_ENTRETIEN() {
@@ -269,8 +253,6 @@ public boolean performPB_ENTRETIEN(javax.servlet.http.HttpServletRequest request
  * PB_PIECES
  * Date de création : (13/05/05 13:46:41)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_PIECES() {
@@ -297,8 +279,6 @@ public boolean performPB_PIECES(javax.servlet.http.HttpServletRequest request) t
  * PB_TINTERVALLE
  * Date de création : (20/05/05 07:49:09)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_TINTERVALLE() {
@@ -309,8 +289,6 @@ public java.lang.String getNOM_PB_TINTERVALLE() {
  * PB_COMPTEUR
  * Date de création : (23/05/05 12:26:35)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_COMPTEUR() {
@@ -337,8 +315,6 @@ public boolean performPB_TINTERVALLE(javax.servlet.http.HttpServletRequest reque
  * PB_CARBURANT
  * Date de création : (23/05/05 12:26:35)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_CARBURANT() {
@@ -381,8 +357,6 @@ public boolean performPB_COMPTEUR(javax.servlet.http.HttpServletRequest request)
  * PB_EQUIPEMENT
  * Date de création : (25/05/05 07:21:18)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_EQUIPEMENT() {
@@ -408,8 +382,6 @@ public boolean performPB_EQUIPEMENT(javax.servlet.http.HttpServletRequest reques
  * PB_BPC
  * Date de création : (30/05/05 09:25:09)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_BPC() {

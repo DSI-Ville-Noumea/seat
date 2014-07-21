@@ -928,8 +928,6 @@ public OT() {
 }
 /**
  * Getter de l'attribut numeroot.
- */
-/**
  * @return String
  */
 public String getNumeroot() {
@@ -937,8 +935,6 @@ public String getNumeroot() {
 }
 /**
  * Setter de l'attribut numeroot.
- */
-/**
  * @param newNumeroot newNumeroot
  */
 public void setNumeroot(String newNumeroot) { 
@@ -946,8 +942,6 @@ public void setNumeroot(String newNumeroot) {
 }
 /**
  * Getter de l'attribut dateentree.
- */
-/**
  * @return String
  */
 public String getDateentree() {
@@ -955,8 +949,6 @@ public String getDateentree() {
 }
 /**
  * Setter de l'attribut dateentree.
- */
-/**
  * @param newDateentree newDateentree
  */
 public void setDateentree(String newDateentree) { 
@@ -964,8 +956,6 @@ public void setDateentree(String newDateentree) {
 }
 /**
  * Getter de l'attribut datesortie.
- */
-/**
  * @return String
  */
 public String getDatesortie() {
@@ -973,8 +963,6 @@ public String getDatesortie() {
 }
 /**
  * Setter de l'attribut datesortie.
- */
-/**
  * @param newDatesortie newDatesortie
  */
 public void setDatesortie(String newDatesortie) { 
@@ -982,8 +970,6 @@ public void setDatesortie(String newDatesortie) {
 }
 /**
  * Getter de l'attribut compteur.
- */
-/**
  * @return String
  */
 public String getCompteur() {
@@ -991,8 +977,6 @@ public String getCompteur() {
 }
 /**
  * Setter de l'attribut compteur.
- */
-/**
  * @param newCompteur newCompteur
  */
 public void setCompteur(String newCompteur) { 
@@ -1000,8 +984,6 @@ public void setCompteur(String newCompteur) {
 }
 /**
  * Getter de l'attribut valide.
- */
-/**
  * @return String
  */
 public String getValide() {
@@ -1009,8 +991,6 @@ public String getValide() {
 }
 /**
  * Setter de l'attribut valide.
- */
-/**
  * @param newValide newValide
  */
 public void setValide(String newValide) { 
@@ -1018,8 +998,6 @@ public void setValide(String newValide) {
 }
 /**
  * Getter de l'attribut numerobc.
- */
-/**
  * @return String
  */
 public String getNumerobc() {
@@ -1027,8 +1005,6 @@ public String getNumerobc() {
 }
 /**
  * Setter de l'attribut numerobc.
- */
-/**
  * @param newNumerobc newNumerobc
  */
 public void setNumerobc(String newNumerobc) { 
@@ -1036,8 +1012,6 @@ public void setNumerobc(String newNumerobc) {
 }
 /**
  * Getter de l'attribut commentaire.
- */
-/**
  * @return String
  */
 public String getCommentaire() {
@@ -1045,8 +1019,6 @@ public String getCommentaire() {
 }
 /**
  * Setter de l'attribut commentaire.
- */
-/**
  * @param newCommentaire newCommentaire
  */
 public void setCommentaire(String newCommentaire) { 
@@ -1054,8 +1026,6 @@ public void setCommentaire(String newCommentaire) {
 }
 /**
  * Getter de l'attribut numinv.
- */
-/**
  * @return String
  */
 public String getNuminv() {
@@ -1063,8 +1033,6 @@ public String getNuminv() {
 }
 /**
  * Setter de l'attribut numinv.
- */
-/**
  * @param newNuminv newNuminv
  */
 public void setNuminv(String newNuminv) { 

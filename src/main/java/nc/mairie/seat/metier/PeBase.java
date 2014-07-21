@@ -256,8 +256,6 @@ public boolean existePeBase(nc.mairie.technique.Transaction aTransaction, String
 
 /**
  * Getter de l'attribut codetd.
- */
-/**
  * @return String
  */
 public String getCodetd() {
@@ -265,8 +263,6 @@ public String getCodetd() {
 }
 /**
  * Setter de l'attribut codetd.
- */
-/**
  * @param newCodetd newCodetd
  */
 public void setCodetd(String newCodetd) { 
@@ -321,8 +317,6 @@ public PeBase() {
 }
 /**
  * Getter de l'attribut codemodele.
- */
-/**
  * @return String
  */
 public String getCodemodele() {
@@ -330,8 +324,6 @@ public String getCodemodele() {
 }
 /**
  * Setter de l'attribut codemodele.
- */
-/**
  * @param newCodemodele newCodemodele
  */
 public void setCodemodele(String newCodemodele) { 
@@ -339,8 +331,6 @@ public void setCodemodele(String newCodemodele) {
 }
 /**
  * Getter de l'attribut codeentretien.
- */
-/**
  * @return String
  */
 public String getCodeentretien() {
@@ -348,8 +338,6 @@ public String getCodeentretien() {
 }
 /**
  * Setter de l'attribut codeentretien.
- */
-/**
  * @param newCodeentretien newCodeentretien
  */
 public void setCodeentretien(String newCodeentretien) { 
@@ -357,8 +345,6 @@ public void setCodeentretien(String newCodeentretien) {
 }
 /**
  * Getter de l'attribut codeti.
- */
-/**
  * @return String
  */
 public String getCodeti() {
@@ -366,8 +352,6 @@ public String getCodeti() {
 }
 /**
  * Setter de l'attribut codeti.
- */
-/**
  * @param newCodeti newCodeti
  */
 public void setCodeti(String newCodeti) { 
@@ -375,8 +359,6 @@ public void setCodeti(String newCodeti) {
 }
 /**
  * Getter de l'attribut intervalle.
- */
-/**
  * @return String
  */
 public String getIntervalle() {
@@ -384,8 +366,6 @@ public String getIntervalle() {
 }
 /**
  * Setter de l'attribut intervalle.
- */
-/**
  * @param newIntervalle newIntervalle
  */
 public void setIntervalle(String newIntervalle) { 
@@ -393,8 +373,6 @@ public void setIntervalle(String newIntervalle) {
 }
 /**
  * Getter de l'attribut duree.
- */
-/**
  * @return String
  */
 public String getDuree() {
@@ -402,8 +380,6 @@ public String getDuree() {
 }
 /**
  * Setter de l'attribut duree.
- */
-/**
  * @param newDuree newDuree
  */
 public void setDuree(String newDuree) { 
@@ -411,8 +387,6 @@ public void setDuree(String newDuree) {
 }
 /**
  * Getter de l'attribut commentaire.
- */
-/**
  * @return String
  */
 public String getCommentaire() {
@@ -420,8 +394,6 @@ public String getCommentaire() {
 }
 /**
  * Setter de l'attribut commentaire.
- */
-/**
  * @param newCommentaire newCommentaire
  */
 public void setCommentaire(String newCommentaire) { 
@@ -429,8 +401,6 @@ public void setCommentaire(String newCommentaire) {
 }
 /**
  * Getter de l'attribut desactive.
- */
-/**
  * @return String
  */
 public String getDesactive() {
@@ -438,8 +408,6 @@ public String getDesactive() {
 }
 /**
  * Setter de l'attribut desactive.
- */
-/**
  * @param newDesactive newDesactive
  */
 public void setDesactive(String newDesactive) { 
@@ -447,8 +415,6 @@ public void setDesactive(String newDesactive) {
 }
 /**
  * Getter de l'attribut datedesactivation.
- */
-/**
  * @return String
  */
 public String getDatedesactivation() {
@@ -456,8 +422,6 @@ public String getDatedesactivation() {
 }
 /**
  * Setter de l'attribut datedesactivation.
- */
-/**
  * @param newDatedesactivation newDatedesactivation
  */
 public void setDatedesactivation(String newDatedesactivation) { 

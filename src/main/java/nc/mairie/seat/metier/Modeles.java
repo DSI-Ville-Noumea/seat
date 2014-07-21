@@ -249,8 +249,6 @@ public Modeles() {
 }
 /**
  * Getter de l'attribut codemodele.
- */
-/**
  * @return String
  */
 public String getCodemodele() {
@@ -258,8 +256,6 @@ public String getCodemodele() {
 }
 /**
  * Setter de l'attribut codemodele.
- */
-/**
  * @param newCodemodele newCodemodele
  */
 public void setCodemodele(String newCodemodele) { 
@@ -267,8 +263,6 @@ public void setCodemodele(String newCodemodele) {
 }
 /**
  * Getter de l'attribut nbpneuavant.
- */
-/**
  * @return String
  */
 public String getNbpneuavant() {
@@ -276,8 +270,6 @@ public String getNbpneuavant() {
 }
 /**
  * Setter de l'attribut nbpneuavant.
- */
-/**
  * @param newNbpneuavant newNbpneuavant
  */
 public void setNbpneuavant(String newNbpneuavant) { 
@@ -285,8 +277,6 @@ public void setNbpneuavant(String newNbpneuavant) {
 }
 /**
  * Getter de l'attribut nbpneuarriere.
- */
-/**
  * @return String
  */
 public String getNbpneuarriere() {
@@ -294,8 +284,6 @@ public String getNbpneuarriere() {
 }
 /**
  * Setter de l'attribut nbpneuarriere.
- */
-/**
  * @param newNbpneuarriere newNbpneuarriere
  */
 public void setNbpneuarriere(String newNbpneuarriere) { 
@@ -303,8 +291,6 @@ public void setNbpneuarriere(String newNbpneuarriere) {
 }
 /**
  * Getter de l'attribut nbessieux.
- */
-/**
  * @return String
  */
 public String getNbessieux() {
@@ -312,8 +298,6 @@ public String getNbessieux() {
 }
 /**
  * Setter de l'attribut nbessieux.
- */
-/**
  * @param newNbessieux newNbessieux
  */
 public void setNbessieux(String newNbessieux) { 
@@ -321,8 +305,6 @@ public void setNbessieux(String newNbessieux) {
 }
 /**
  * Getter de l'attribut capacitereservoir.
- */
-/**
  * @return String
  */
 public String getCapacitereservoir() {
@@ -330,8 +312,6 @@ public String getCapacitereservoir() {
 }
 /**
  * Setter de l'attribut capacitereservoir.
- */
-/**
  * @param newCapacitereservoir newCapacitereservoir
  */
 public void setCapacitereservoir(String newCapacitereservoir) { 
@@ -339,8 +319,6 @@ public void setCapacitereservoir(String newCapacitereservoir) {
 }
 /**
  * Getter de l'attribut codemarque.
- */
-/**
  * @return String
  */
 public String getCodemarque() {
@@ -348,8 +326,6 @@ public String getCodemarque() {
 }
 /**
  * Setter de l'attribut codemarque.
- */
-/**
  * @param newCodemarque newCodemarque
  */
 public void setCodemarque(String newCodemarque) { 
@@ -357,8 +333,6 @@ public void setCodemarque(String newCodemarque) {
 }
 /**
  * Getter de l'attribut designationmodele.
- */
-/**
  * @return String
  */
 public String getDesignationmodele() {
@@ -366,8 +340,6 @@ public String getDesignationmodele() {
 }
 /**
  * Setter de l'attribut designationmodele.
- */
-/**
  * @param newDesignationmodele newDesignationmodele
  */
 public void setDesignationmodele(String newDesignationmodele) { 
@@ -375,8 +347,6 @@ public void setDesignationmodele(String newDesignationmodele) {
 }
 /**
  * Getter de l'attribut codepneu.
- */
-/**
  * @return String
  */
 public String getCodepneu() {
@@ -384,8 +354,6 @@ public String getCodepneu() {
 }
 /**
  * Setter de l'attribut codepneu.
- */
-/**
  * @param newCodepneu newCodepneu
  */
 public void setCodepneu(String newCodepneu) { 
@@ -393,8 +361,6 @@ public void setCodepneu(String newCodepneu) {
 }
 /**
  * Getter de l'attribut puissance.
- */
-/**
  * @return String
  */
 public String getPuissance() {
@@ -402,8 +368,6 @@ public String getPuissance() {
 }
 /**
  * Setter de l'attribut puissance.
- */
-/**
  * @param newPuissance newPuissance
  */
 public void setPuissance(String newPuissance) { 
@@ -411,8 +375,6 @@ public void setPuissance(String newPuissance) {
 }
 /**
  * Getter de l'attribut codete.
- */
-/**
  * @return String
  */
 public String getCodete() {
@@ -420,8 +382,6 @@ public String getCodete() {
 }
 /**
  * Setter de l'attribut codete.
- */
-/**
  * @param newCodete newCodete
  */
 public void setCodete(String newCodete) { 
@@ -429,8 +389,6 @@ public void setCodete(String newCodete) {
 }
 /**
  * Getter de l'attribut version.
- */
-/**
  * @return String
  */
 public String getVersion() {
@@ -438,8 +396,6 @@ public String getVersion() {
 }
 /**
  * Setter de l'attribut version.
- */
-/**
  * @param newVersion newVersion
  */
 public void setVersion(String newVersion) { 
@@ -447,8 +403,6 @@ public void setVersion(String newVersion) {
 }
 /**
  * Getter de l'attribut codecarburant.
- */
-/**
  * @return String
  */
 public String getCodecarburant() {
@@ -456,8 +410,6 @@ public String getCodecarburant() {
 }
 /**
  * Setter de l'attribut codecarburant.
- */
-/**
  * @param newCodecarburant newCodecarburant
  */
 public void setCodecarburant(String newCodecarburant) { 
@@ -465,8 +417,6 @@ public void setCodecarburant(String newCodecarburant) {
 }
 /**
  * Getter de l'attribut codecompteur.
- */
-/**
  * @return String
  */
 public String getCodecompteur() {
@@ -474,8 +424,6 @@ public String getCodecompteur() {
 }
 /**
  * Setter de l'attribut codecompteur.
- */
-/**
  * @param newCodecompteur newCodecompteur
  */
 public void setCodecompteur(String newCodecompteur) { 

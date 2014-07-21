@@ -1166,8 +1166,6 @@ public String getMatricule() {
 }
 /**
  * Setter de l'attribut matricule.
- */
-/**
  * @param newMatricule newMatricule
  */
 public void setMatricule(String newMatricule) { 
@@ -1182,8 +1180,6 @@ public String getPminv() {
 }
 /**
  * Setter de l'attribut pminv.
- */
-/**
  * @param newPminv newPminv
  */
 public void setPminv(String newPminv) { 
@@ -1198,8 +1194,6 @@ public String getDdeb() {
 }
 /**
  * Setter de l'attribut ddeb.
- */
-/**
  * @param newDdeb newDdeb
  */
 public void setDdeb(String newDdeb) { 
@@ -1214,8 +1208,6 @@ public String getDfin() {
 }
 /**
  * Setter de l'attribut dfin.
- */
-/**
  * @param newDfin newDfin
  */
 public void setDfin(String newDfin) { 
@@ -1230,8 +1222,6 @@ public String getHdeb() {
 }
 /**
  * Setter de l'attribut hdeb.
- */
-/**
  * @param newHdeb newHdeb
  */
 public void setHdeb(String newHdeb) { 
@@ -1246,8 +1236,6 @@ public String getHfin() {
 }
 /**
  * Setter de l'attribut hfin.
- */
-/**
  * @param newHfin newHfin
  */
 public void setHfin(String newHfin) { 
@@ -1262,8 +1250,6 @@ public String getHdebmn() {
 }
 /**
  * Setter de l'attribut hdebmn.
- */
-/**
  * @param newHdebmn newHdebmn
  */
 public void setHdebmn(String newHdebmn) { 
@@ -1278,8 +1264,6 @@ public String getHfinmn() {
 }
 /**
  * Setter de l'attribut hfinmn.
- */
-/**
  * @param newHfinmn newHfinmn
  */
 public void setHfinmn(String newHfinmn) { 
@@ -1294,8 +1278,6 @@ public String getCodesce() {
 }
 /**
  * Setter de l'attribut codesce.
- */
-/**
  * @param newCodesce newCodesce
  */
 public void setCodesce(String newCodesce) { 

@@ -415,8 +415,6 @@ public FPM() {
 }
 /**
  * Getter de l'attribut numfiche.
- */
-/**
  * @return String
  */
 public String getNumfiche() {
@@ -424,8 +422,6 @@ public String getNumfiche() {
 }
 /**
  * Setter de l'attribut numfiche.
- */
-/**
  * @param newNumfiche newNumfiche
  */
 public void setNumfiche(String newNumfiche) { 
@@ -433,8 +429,6 @@ public void setNumfiche(String newNumfiche) {
 }
 /**
  * Getter de l'attribut pminv.
- */
-/**
  * @return String
  */
 public String getPminv() {
@@ -442,8 +436,6 @@ public String getPminv() {
 }
 /**
  * Setter de l'attribut pminv.
- */
-/**
  * @param newPminv newPminv
  */
 public void setPminv(String newPminv) { 
@@ -451,8 +443,6 @@ public void setPminv(String newPminv) {
 }
 /**
  * Getter de l'attribut dentree.
- */
-/**
  * @return String
  */
 public String getDentree() {
@@ -460,8 +450,6 @@ public String getDentree() {
 }
 /**
  * Setter de l'attribut dentree.
- */
-/**
  * @param newDentree newDentree
  */
 public void setDentree(String newDentree) { 
@@ -469,8 +457,6 @@ public void setDentree(String newDentree) {
 }
 /**
  * Getter de l'attribut dsortie.
- */
-/**
  * @return String
  */
 public String getDsortie() {
@@ -478,8 +464,6 @@ public String getDsortie() {
 }
 /**
  * Setter de l'attribut dsortie.
- */
-/**
  * @param newDsortie newDsortie
  */
 public void setDsortie(String newDsortie) { 
@@ -487,8 +471,6 @@ public void setDsortie(String newDsortie) {
 }
 /**
  * Getter de l'attribut valide.
- */
-/**
  * @return String
  */
 public String getValide() {
@@ -496,8 +478,6 @@ public String getValide() {
 }
 /**
  * Setter de l'attribut valide.
- */
-/**
  * @param newValide newValide
  */
 public void setValide(String newValide) { 
@@ -505,8 +485,6 @@ public void setValide(String newValide) {
 }
 /**
  * Getter de l'attribut commentaire.
- */
-/**
  * @return String
  */
 public String getCommentaire() {
@@ -514,8 +492,6 @@ public String getCommentaire() {
 }
 /**
  * Setter de l'attribut commentaire.
- */
-/**
  * @param newCommentaire newCommentaire
  */
 public void setCommentaire(String newCommentaire) { 

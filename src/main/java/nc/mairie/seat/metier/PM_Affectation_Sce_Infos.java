@@ -37,8 +37,6 @@ public String getCodefre() {
 }
 /**
  * Setter de l'attribut codefre.
- */
-/**
  * @param newCodefre newCodefre
  */
 public void setCodefre(String newCodefre) { 
@@ -53,8 +51,6 @@ public String getDgarantie() {
 }
 /**
  * Setter de l'attribut dgarantie.
- */
-/**
  * @param newDgarantie newDgarantie
  */
 public void setDgarantie(String newDgarantie) { 
@@ -69,8 +65,6 @@ public String getDachat() {
 }
 /**
  * Setter de l'attribut dachat.
- */
-/**
  * @param newDachat newDachat
  */
 public void setDachat(String newDachat) { 
@@ -85,8 +79,6 @@ public String getPrix() {
 }
 /**
  * Setter de l'attribut prix.
- */
-/**
  * @param newPrix newPrix
  */
 public void setPrix(String newPrix) { 
@@ -101,8 +93,6 @@ public String getDmhs() {
 }
 /**
  * Setter de l'attribut dmhs.
- */
-/**
  * @param newDmhs newDmhs
  */
 public void setDmhs(String newDmhs) { 
@@ -117,8 +107,6 @@ public String getReserve() {
 }
 /**
  * Setter de l'attribut reserve.
- */
-/**
  * @param newReserve newReserve
  */
 public void setReserve(String newReserve) { 
@@ -211,8 +199,6 @@ public String getPminv() {
 }
 /**
  * Setter de l'attribut pminv.
- */
-/**
  * @param newPminv newPminv
  */
 public void setPminv(String newPminv) { 
@@ -227,8 +213,6 @@ public String getPmserie() {
 }
 /**
  * Setter de l'attribut pmserie.
- */
-/**
  * @param newPmserie newPmserie
  */
 public void setPmserie(String newPmserie) { 
@@ -243,8 +227,6 @@ public String getDmes() {
 }
 /**
  * Setter de l'attribut dmes.
- */
-/**
  * @param newDmes newDmes
  */
 public void setDmes(String newDmes) { 
@@ -259,8 +241,6 @@ public String getCodemodele() {
 }
 /**
  * Setter de l'attribut codemodele.
- */
-/**
  * @param newCodemodele newCodemodele
  */
 public void setCodemodele(String newCodemodele) { 
@@ -275,8 +255,6 @@ public String getDesignationmodele() {
 }
 /**
  * Setter de l'attribut designationmodele.
- */
-/**
  * @param newDesignationmodele newDesignationmodele
  */
 public void setDesignationmodele(String newDesignationmodele) { 
@@ -291,8 +269,6 @@ public String getDesignationmarque() {
 }
 /**
  * Setter de l'attribut designationmarque.
- */
-/**
  * @param newDesignationmarque newDesignationmarque
  */
 public void setDesignationmarque(String newDesignationmarque) { 
@@ -307,8 +283,6 @@ public String getCodemarque() {
 }
 /**
  * Setter de l'attribut codemarque.
- */
-/**
  * @param newCodemarque newCodemarque
  */
 public void setCodemarque(String newCodemarque) { 
@@ -323,8 +297,6 @@ public String getCodete() {
 }
 /**
  * Setter de l'attribut codete.
- */
-/**
  * @param newCodete newCodete
  */
 public void setCodete(String newCodete) { 
@@ -339,8 +311,6 @@ public String getDesignationtypeequip() {
 }
 /**
  * Setter de l'attribut designationtypeequip.
- */
-/**
  * @param newDesignationtypeequip newDesignationtypeequip
  */
 public void setDesignationtypeequip(String newDesignationtypeequip) { 
@@ -355,8 +325,6 @@ public String getTypete() {
 }
 /**
  * Setter de l'attribut typete.
- */
-/**
  * @param newTypete newTypete
  */
 public void setTypete(String newTypete) { 
@@ -371,8 +339,6 @@ public String getSiserv() {
 }
 /**
  * Setter de l'attribut siserv.
- */
-/**
  * @param newSiserv newSiserv
  */
 public void setSiserv(String newSiserv) { 
@@ -387,8 +353,6 @@ public String getDdebut() {
 }
 /**
  * Setter de l'attribut ddebut.
- */
-/**
  * @param newDdebut newDdebut
  */
 public void setDdebut(String newDdebut) { 
@@ -403,8 +367,6 @@ public String getDfin() {
 }
 /**
  * Setter de l'attribut dfin.
- */
-/**
  * @param newDfin newDfin
  */
 public void setDfin(String newDfin) { 
@@ -419,8 +381,6 @@ public String getNomatr() {
 }
 /**
  * Setter de l'attribut nomatr.
- */
-/**
  * @param newNomatr newNomatr
  */
 public void setNomatr(String newNomatr) { 

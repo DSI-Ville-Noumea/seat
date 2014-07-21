@@ -578,8 +578,6 @@ public Declarations() {
 }
 /**
  * Getter de l'attribut codedec.
- */
-/**
  * @return String
  */
 public String getCodedec() {
@@ -587,8 +585,6 @@ public String getCodedec() {
 }
 /**
  * Setter de l'attribut codedec.
- */
-/**
  * @param newCodedec newCodedec
  */
 public void setCodedec(String newCodedec) { 
@@ -596,8 +592,6 @@ public void setCodedec(String newCodedec) {
 }
 /**
  * Getter de l'attribut date.
- */
-/**
  * @return String
  */
 public String getDate() {
@@ -605,8 +599,6 @@ public String getDate() {
 }
 /**
  * Setter de l'attribut date.
- */
-/**
  * @param newDate newDate
  */
 public void setDate(String newDate) { 
@@ -614,8 +606,6 @@ public void setDate(String newDate) {
 }
 /**
  * Getter de l'attribut anomalies.
- */
-/**
  * @return String
  */
 public String getAnomalies() {
@@ -623,8 +613,6 @@ public String getAnomalies() {
 }
 /**
  * Setter de l'attribut anomalies.
- */
-/**
  * @param newAnomalies newAnomalies
  */
 public void setAnomalies(String newAnomalies) { 
@@ -632,8 +620,6 @@ public void setAnomalies(String newAnomalies) {
 }
 /**
  * Getter de l'attribut matricule.
- */
-/**
  * @return String
  */
 public String getMatricule() {
@@ -641,8 +627,6 @@ public String getMatricule() {
 }
 /**
  * Setter de l'attribut matricule.
- */
-/**
  * @param newMatricule newMatricule
  */
 public void setMatricule(String newMatricule) { 
@@ -650,8 +634,6 @@ public void setMatricule(String newMatricule) {
 }
 /**
  * Getter de l'attribut codeot.
- */
-/**
  * @return String
  */
 public String getCodeot() {
@@ -659,8 +641,6 @@ public String getCodeot() {
 }
 /**
  * Setter de l'attribut codeot.
- */
-/**
  * @param newCodeot newCodeot
  */
 public void setCodeot(String newCodeot) { 
@@ -668,8 +648,6 @@ public void setCodeot(String newCodeot) {
 }
 /**
  * Getter de l'attribut numinv.
- */
-/**
  * @return String
  */
 public String getNuminv() {
@@ -677,8 +655,6 @@ public String getNuminv() {
 }
 /**
  * Setter de l'attribut numinv.
- */
-/**
  * @param newNuminv newNuminv
  */
 public void setNuminv(String newNuminv) { 
@@ -686,8 +662,6 @@ public void setNuminv(String newNuminv) {
 }
 /**
  * Getter de l'attribut codeservice.
- */
-/**
  * @return String
  */
 public String getCodeservice() {
@@ -695,8 +669,6 @@ public String getCodeservice() {
 }
 /**
  * Setter de l'attribut codeservice.
- */
-/**
  * @param newCodeservice newCodeservice
  */
 public void setCodeservice(String newCodeservice) { 

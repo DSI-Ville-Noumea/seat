@@ -148,8 +148,6 @@ public String getNumeroimmatriculation() {
 }
 /**
  * Setter de l'attribut numeroimmatriculation.
- */
-/**
  * @param newNumeroimmatriculation newNumeroimmatriculation
  */
 public void setNumeroimmatriculation(String newNumeroimmatriculation) { 
@@ -157,8 +155,6 @@ public void setNumeroimmatriculation(String newNumeroimmatriculation) {
 }
 /**
  * Getter de l'attribut datemiseencirculation.
- */
-/**
  * @return datemiseencirculation
  */
 public String getDatemiseencirculation() {
@@ -166,8 +162,6 @@ public String getDatemiseencirculation() {
 }
 /**
  * Setter de l'attribut datemiseencirculation.
- */
-/**
  * @param newDatemiseencirculation newDatemiseencirculation
  */
 public void setDatemiseencirculation(String newDatemiseencirculation) { 
@@ -175,8 +169,6 @@ public void setDatemiseencirculation(String newDatemiseencirculation) {
 }
 /**
  * Getter de l'attribut nom.
- */
-/**
  * @return nom
  */
 public String getNom() {
@@ -184,8 +176,6 @@ public String getNom() {
 }
 /**
  * Setter de l'attribut nom.
- */
-/**
  * @param newNom newNom
  */
 public void setNom(String newNom) { 
@@ -193,8 +183,6 @@ public void setNom(String newNom) {
 }
 /**
  * Getter de l'attribut prenom.
- */
-/**
  * @return prenom
  */
 public String getPrenom() {
@@ -202,8 +190,6 @@ public String getPrenom() {
 }
 /**
  * Setter de l'attribut prenom.
- */
-/**
  * @param newPrenom newPrenom
  */
 public void setPrenom(String newPrenom) { 
@@ -211,8 +197,6 @@ public void setPrenom(String newPrenom) {
 }
 /**
  * Getter de l'attribut datedebut.
- */
-/**
  * @return datedebut
  */
 public String getDatedebut() {
@@ -220,8 +204,6 @@ public String getDatedebut() {
 }
 /**
  * Setter de l'attribut datedebut.
- */
-/**
  * @param newDatedebut newDatedebut
  */
 public void setDatedebut(String newDatedebut) { 
@@ -229,8 +211,6 @@ public void setDatedebut(String newDatedebut) {
 }
 /**
  * Getter de l'attribut datefin.
- */
-/**
  * @return datefin
  */
 public String getDatefin() {
@@ -238,8 +218,6 @@ public String getDatefin() {
 }
 /**
  * Setter de l'attribut datefin.
- */
-/**
  * @param newDatefin newDatefin
  */
 public void setDatefin(String newDatefin) { 
@@ -247,8 +225,6 @@ public void setDatefin(String newDatefin) {
 }
 /**
  * Getter de l'attribut hdeb.
- */
-/**
  * @return hdeb
  */
 public String getHdeb() {
@@ -256,8 +232,6 @@ public String getHdeb() {
 }
 /**
  * Setter de l'attribut hdeb.
- */
-/**
  * @param newHdeb newHdeb
  */
 public void setHdeb(String newHdeb) { 
@@ -265,8 +239,6 @@ public void setHdeb(String newHdeb) {
 }
 /**
  * Getter de l'attribut hfin.
- */
-/**
  * @return hfin
  */
 public String getHfin() {
@@ -274,8 +246,6 @@ public String getHfin() {
 }
 /**
  * Setter de l'attribut hfin.
- */
-/**
  * @param newHfin newHfin
  */
 public void setHfin(String newHfin) { 
@@ -283,8 +253,6 @@ public void setHfin(String newHfin) {
 }
 /**
  * Getter de l'attribut hdebmn.
- */
-/**
  * @return hdebmn
  */
 public String getHdebmn() {
@@ -292,8 +260,6 @@ public String getHdebmn() {
 }
 /**
  * Setter de l'attribut hdebmn.
- */
-/**
  * @param newHdebmn newHdebmn
  */
 public void setHdebmn(String newHdebmn) { 
@@ -301,8 +267,6 @@ public void setHdebmn(String newHdebmn) {
 }
 /**
  * Getter de l'attribut hfinmn.
- */
-/**
  * @return hfinmn
  */
 public String getHfinmn() {
@@ -310,8 +274,6 @@ public String getHfinmn() {
 }
 /**
  * Setter de l'attribut hfinmn.
- */
-/**
  * @param newHfinmn newHfinmn
  */
 public void setHfinmn(String newHfinmn) { 
@@ -319,8 +281,6 @@ public void setHfinmn(String newHfinmn) {
 }
 /**
  * Getter de l'attribut matricule.
- */
-/**
  * @return matricule
  */
 public String getMatricule() {
@@ -328,8 +288,6 @@ public String getMatricule() {
 }
 /**
  * Setter de l'attribut matricule.
- */
-/**
  * @param newMatricule newMatricule
  */
 public void setMatricule(String newMatricule) { 
@@ -337,8 +295,6 @@ public void setMatricule(String newMatricule) {
 }
 /**
  * Getter de l'attribut liserv.
- */
-/**
  * @return liserv
  */
 public String getLiserv() {
@@ -346,8 +302,6 @@ public String getLiserv() {
 }
 /**
  * Setter de l'attribut liserv.
- */
-/**
  * @param newLiserv newLiserv
  */
 public void setLiserv(String newLiserv) { 
@@ -355,8 +309,6 @@ public void setLiserv(String newLiserv) {
 }
 /**
  * Getter de l'attribut ddebut.
- */
-/**
  * @return ddebut
  */
 public String getDdebut() {
@@ -364,8 +316,6 @@ public String getDdebut() {
 }
 /**
  * Setter de l'attribut ddebut.
- */
-/**
  * @param newDdebut newDdebut
  */
 public void setDdebut(String newDdebut) { 
@@ -373,8 +323,6 @@ public void setDdebut(String newDdebut) {
 }
 /**
  * Getter de l'attribut dfin.
- */
-/**
  * @return dfin
  */
 public String getDfin() {
@@ -382,8 +330,6 @@ public String getDfin() {
 }
 /**
  * Setter de l'attribut dfin.
- */
-/**
  * @param newDfin newDfin
  */
 public void setDfin(String newDfin) { 
@@ -391,8 +337,6 @@ public void setDfin(String newDfin) {
 }
 /**
  * Getter de l'attribut codeservice.
- */
-/**
  * @return codeservice
  */
 public String getCodeservice() {
@@ -400,8 +344,6 @@ public String getCodeservice() {
 }
 /**
  * Setter de l'attribut codeservice.
- */
-/**
  * @param newCodeservice newCodeservice
  */
 public void setCodeservice(String newCodeservice) { 
@@ -409,8 +351,6 @@ public void setCodeservice(String newCodeservice) {
 }
 /**
  * Getter de l'attribut datdeb.
- */
-/**
  * @return datdeb
  */
 public String getDatdeb() {
@@ -418,8 +358,6 @@ public String getDatdeb() {
 }
 /**
  * Setter de l'attribut datdeb.
- */
-/**
  * @param newDatdeb newDatdeb
  */
 public void setDatdeb(String newDatdeb) { 
@@ -427,8 +365,6 @@ public void setDatdeb(String newDatdeb) {
 }
 /**
  * Getter de l'attribut datfin.
- */
-/**
  * @return datfin
  */
 public String getDatfin() {
@@ -436,8 +372,6 @@ public String getDatfin() {
 }
 /**
  * Setter de l'attribut datfin.
- */
-/**
  * @param newDatfin newDatfin
  */
 public void setDatfin(String newDatfin) { 

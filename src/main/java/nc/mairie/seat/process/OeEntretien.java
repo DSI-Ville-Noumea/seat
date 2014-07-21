@@ -89,8 +89,6 @@ public OeEntretien() {
  * PB_AJOUTER
  * Date de création : (13/05/05 09:16:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_AJOUTER() {
@@ -122,8 +120,6 @@ public boolean performPB_AJOUTER(javax.servlet.http.HttpServletRequest request) 
  * PB_ANNULER
  * Date de création : (13/05/05 09:16:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
@@ -158,8 +154,6 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * PB_MODIFIER
  * Date de création : (13/05/05 09:16:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_MODIFIER() {
@@ -204,8 +198,6 @@ public boolean performPB_MODIFIER(javax.servlet.http.HttpServletRequest request)
  * PB_OK
  * Date de création : (13/05/05 09:16:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_OK() {
@@ -242,8 +234,6 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
  * PB_SUPPRIMER
  * Date de création : (13/05/05 09:16:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_SUPPRIMER() {
@@ -286,8 +276,6 @@ public boolean performPB_SUPPRIMER(javax.servlet.http.HttpServletRequest request
  * PB_VALIDER
  * Date de création : (13/05/05 09:16:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
@@ -388,8 +376,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * ST_TITRE_ACTION
  * Date de création : (13/05/05 09:23:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_TITRE_ACTION() {
@@ -400,8 +386,6 @@ public java.lang.String getNOM_ST_TITRE_ACTION() {
  * ST_TITRE_ACTION
  * Date de création : (13/05/05 09:23:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_TITRE_ACTION() {
@@ -433,8 +417,6 @@ private void setLB_ENTRETIEN(java.lang.String[] newLB_ENTRETIEN) {
  * NOM_LB_ENTRETIEN
  * Date de création : (13/05/05 09:24:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_ENTRETIEN() {
@@ -445,8 +427,6 @@ public java.lang.String getNOM_LB_ENTRETIEN() {
  * NOM_LB_ENTRETIEN_SELECT
  * Date de création : (13/05/05 09:24:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_ENTRETIEN_SELECT() {
@@ -458,8 +438,6 @@ public java.lang.String getNOM_LB_ENTRETIEN_SELECT() {
  * LB_ENTRETIEN
  * Date de création : (13/05/05 09:24:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_ENTRETIEN() {
@@ -471,8 +449,6 @@ public java.lang.String [] getVAL_LB_ENTRETIEN() {
  * LB_ENTRETIEN
  * Date de création : (13/05/05 09:24:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_ENTRETIEN_SELECT() {
@@ -571,8 +547,6 @@ public String getJSP() {
  * ST_DESIGNATION
  * Date de création : (28/06/05 11:52:26)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_DESIGNATION() {
@@ -583,8 +557,6 @@ public java.lang.String getNOM_ST_DESIGNATION() {
  * ST_DESIGNATION
  * Date de création : (28/06/05 11:52:26)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_DESIGNATION() {
@@ -595,8 +567,6 @@ public java.lang.String getVAL_ST_DESIGNATION() {
  * EF_DESIGNATION
  * Date de création : (28/06/05 11:52:26)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_DESIGNATION() {
@@ -607,8 +577,6 @@ public java.lang.String getNOM_EF_DESIGNATION() {
  * EF_DESIGNATION
  * Date de création : (28/06/05 11:52:26)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_DESIGNATION() {

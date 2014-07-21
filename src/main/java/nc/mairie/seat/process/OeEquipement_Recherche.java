@@ -91,8 +91,6 @@ public OeEquipement_Recherche() {
  * PB_ANNULER
  * Date de création : (08/06/05 09:15:54)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
@@ -118,8 +116,6 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * PB_RECHERCHE
  * Date de création : (08/06/05 09:15:54)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_RECHERCHE() {
@@ -171,8 +167,6 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
  * PB_VALIDER
  * Date de création : (08/06/05 09:15:54)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
@@ -217,8 +211,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * EF_RECHERCHE
  * Date de création : (08/06/05 09:15:54)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_RECHERCHE() {
@@ -229,8 +221,6 @@ public java.lang.String getNOM_EF_RECHERCHE() {
  * EF_RECHERCHE
  * Date de création : (08/06/05 09:15:54)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_RECHERCHE() {
@@ -261,8 +251,6 @@ private void setLB_EQUIPEMENTINFOS(java.lang.String[] newLB_EQUIPEMENTINFOS) {
  * NOM_LB_EQUIPEMENTINFOS
  * Date de création : (08/06/05 09:15:54)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_EQUIPEMENTINFOS() {
@@ -273,8 +261,6 @@ public java.lang.String getNOM_LB_EQUIPEMENTINFOS() {
  * NOM_LB_EQUIPEMENT_SELECT
  * Date de création : (08/06/05 09:15:54)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_EQUIPEMENTINFOS_SELECT() {
@@ -286,8 +272,6 @@ public java.lang.String getNOM_LB_EQUIPEMENTINFOS_SELECT() {
  * LB_EQUIPEMENT
  * Date de création : (08/06/05 09:15:54)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_EQUIPEMENTINFOS() {
@@ -299,8 +283,6 @@ public java.lang.String [] getVAL_LB_EQUIPEMENTINFOS() {
  * LB_EQUIPEMENT
  * Date de création : (08/06/05 09:15:54)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_EQUIPEMENTINFOS_SELECT() {
@@ -485,8 +467,6 @@ public boolean recherche_SERVICE(javax.servlet.http.HttpServletRequest request) 
  * EF_AGENT
  * Date de création : (04/04/07 08:19:48)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_AGENT() {
@@ -497,8 +477,6 @@ public java.lang.String getNOM_EF_AGENT() {
  * EF_AGENT
  * Date de création : (04/04/07 08:19:48)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_AGENT() {
@@ -509,8 +487,6 @@ public java.lang.String getVAL_EF_AGENT() {
  * EF_SERVICE
  * Date de création : (04/04/07 08:19:48)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_SERVICE() {
@@ -521,8 +497,6 @@ public java.lang.String getNOM_EF_SERVICE() {
  * EF_SERVICE
  * Date de création : (04/04/07 08:19:48)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_SERVICE() {
@@ -533,8 +507,6 @@ public java.lang.String getVAL_EF_SERVICE() {
  * RG_TRI
  * Date de création : (04/04/07 11:21:34)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_RG_TRI() {
@@ -545,8 +517,6 @@ public java.lang.String getNOM_RG_TRI() {
  * RG_TRI
  * Date de création : (04/04/07 11:21:34)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_RG_TRI() {
@@ -557,8 +527,6 @@ public java.lang.String getVAL_RG_TRI() {
  * RB_TRI_MARQUE
  * Date de création : (04/04/07 11:21:34)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_RB_TRI_MARQUE() {
@@ -569,8 +537,6 @@ public java.lang.String getNOM_RB_TRI_MARQUE() {
  * RB_TRI_MODELE
  * Date de création : (04/04/07 11:21:34)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_RB_TRI_MODELE() {
@@ -581,8 +547,6 @@ public java.lang.String getNOM_RB_TRI_MODELE() {
  * PB_TRI
  * Date de création : (04/04/07 11:26:29)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_TRI() {

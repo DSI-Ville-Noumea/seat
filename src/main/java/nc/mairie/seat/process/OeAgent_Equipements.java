@@ -265,8 +265,6 @@ public OeAgent_Equipements() {
  * PB_AGENT
  * Date de création : (05/04/07 11:28:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_AGENT() {
@@ -466,8 +464,6 @@ public boolean performPB_AGENT(javax.servlet.http.HttpServletRequest request) th
  * PB_VISUALISER
  * Date de création : (05/04/07 11:28:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_VISUALISER() {
@@ -538,8 +534,6 @@ public boolean performPB_VISUALISER(javax.servlet.http.HttpServletRequest reques
  * ST_CODE_SCE
  * Date de création : (05/04/07 11:28:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_CODE_SCE() {
@@ -550,8 +544,6 @@ public java.lang.String getNOM_ST_CODE_SCE() {
  * ST_CODE_SCE
  * Date de création : (05/04/07 11:28:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_CODE_SCE() {
@@ -562,8 +554,6 @@ public java.lang.String getVAL_ST_CODE_SCE() {
  * ST_LIBELLE_SCE
  * Date de création : (05/04/07 11:28:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_LIBELLE_SCE() {
@@ -574,8 +564,6 @@ public java.lang.String getNOM_ST_LIBELLE_SCE() {
  * ST_LIBELLE_SCE
  * Date de création : (05/04/07 11:28:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_LIBELLE_SCE() {
@@ -586,8 +574,6 @@ public java.lang.String getVAL_ST_LIBELLE_SCE() {
  * EF_AGENT
  * Date de création : (05/04/07 11:28:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_AGENT() {
@@ -598,8 +584,6 @@ public java.lang.String getNOM_EF_AGENT() {
  * EF_AGENT
  * Date de création : (05/04/07 11:28:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_AGENT() {
@@ -630,8 +614,6 @@ private void setLB_EQUIP(java.lang.String[] newLB_EQUIP) {
  * NOM_LB_EQUIP
  * Date de création : (05/04/07 11:28:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_EQUIP() {
@@ -642,8 +624,6 @@ public java.lang.String getNOM_LB_EQUIP() {
  * NOM_LB_EQUIP_SELECT
  * Date de création : (05/04/07 11:28:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_EQUIP_SELECT() {
@@ -655,8 +635,6 @@ public java.lang.String getNOM_LB_EQUIP_SELECT() {
  * LB_EQUIP
  * Date de création : (05/04/07 11:28:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_EQUIP() {
@@ -668,8 +646,6 @@ public java.lang.String [] getVAL_LB_EQUIP() {
  * LB_EQUIP
  * Date de création : (05/04/07 11:28:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_EQUIP_SELECT() {
@@ -692,8 +668,6 @@ public void setListEquip(ArrayList<AffectationServiceInfos> listEquip) {
  * EF_SERVICE
  * Date de création : (05/04/07 12:34:50)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_SERVICE() {
@@ -704,8 +678,6 @@ public java.lang.String getNOM_EF_SERVICE() {
  * EF_SERVICE
  * Date de création : (05/04/07 12:34:50)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_SERVICE() {
@@ -737,8 +709,6 @@ private void setLB_AGENTS(java.lang.String[] newLB_AGENTS) {
  * NOM_LB_AGENTS
  * Date de création : (05/04/07 12:46:31)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_AGENTS() {
@@ -749,8 +719,6 @@ public java.lang.String getNOM_LB_AGENTS() {
  * NOM_LB_AGENTS_SELECT
  * Date de création : (05/04/07 12:46:31)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_AGENTS_SELECT() {
@@ -762,8 +730,6 @@ public java.lang.String getNOM_LB_AGENTS_SELECT() {
  * LB_AGENTS
  * Date de création : (05/04/07 12:46:31)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_AGENTS() {
@@ -775,8 +741,6 @@ public java.lang.String [] getVAL_LB_AGENTS() {
  * LB_AGENTS
  * Date de création : (05/04/07 12:46:31)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_AGENTS_SELECT() {
@@ -787,8 +751,6 @@ public java.lang.String getVAL_LB_AGENTS_SELECT() {
  * ST_AGENT
  * Date de création : (06/04/07 09:04:30)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_AGENT() {
@@ -799,8 +761,6 @@ public java.lang.String getNOM_ST_AGENT() {
  * ST_AGENT
  * Date de création : (06/04/07 09:04:30)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_AGENT() {
@@ -823,8 +783,6 @@ public void setFocus(String focus) {
 }
 /**
  * focus focus à définir.
- */
-/**
  * @return String
  */
 public String getDefaultFocus() {
@@ -877,8 +835,6 @@ public String getJSP() {
  * PB_RETOUR
  * Date de création : (31/07/07 09:54:54)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_RETOUR() {
@@ -901,9 +857,6 @@ public boolean performPB_RETOUR(javax.servlet.http.HttpServletRequest request) t
 }
 /**
  * @return Renvoie serviceCourant.
- */
-/**
- * @return String
  */
 public Service getServiceCourant() {
 	return serviceCourant;

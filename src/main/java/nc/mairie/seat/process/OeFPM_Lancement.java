@@ -136,8 +136,6 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * PB_OK_FPM
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_OK_FPM() {
@@ -178,8 +176,6 @@ public boolean performPB_OK_FPM(javax.servlet.http.HttpServletRequest request) t
  * PB_VALIDER
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
@@ -240,8 +236,6 @@ private String [] getLB_ENTRETIENS() {
  * NOM_LB_ENTRETIENS
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_ENTRETIENS() {
@@ -252,8 +246,6 @@ public java.lang.String getNOM_LB_ENTRETIENS() {
  * NOM_LB_ENTRETIENS_SELECT
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_ENTRETIENS_SELECT() {
@@ -265,8 +257,6 @@ public java.lang.String getNOM_LB_ENTRETIENS_SELECT() {
  * LB_ENTRETIENS
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_ENTRETIENS() {
@@ -278,8 +268,6 @@ public java.lang.String [] getVAL_LB_ENTRETIENS() {
  * LB_ENTRETIENS
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_ENTRETIENS_SELECT() {
@@ -310,8 +298,6 @@ private void setLB_Fiche(java.lang.String[] newLB_Fiche) {
  * NOM_LB_Fiche
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_Fiche() {
@@ -322,8 +308,6 @@ public java.lang.String getNOM_LB_Fiche() {
  * NOM_LB_OT_SELECT
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_Fiche_SELECT() {
@@ -335,8 +319,6 @@ public java.lang.String getNOM_LB_Fiche_SELECT() {
  * LB_Fiche
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_Fiche() {
@@ -348,8 +330,6 @@ public java.lang.String [] getVAL_LB_Fiche() {
  * LB_Fiche
  * Date de création : (19/07/05 14:46:20)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_Fiche_SELECT() {
@@ -390,8 +370,6 @@ public void setFocus(String focus) {
  * PB_ANNULER
  * Date de création : (24/08/05 08:57:47)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
@@ -402,8 +380,6 @@ public java.lang.String getNOM_PB_ANNULER() {
  * PB_DETAILS_FPM
  * Date de création : (24/08/05 08:59:45)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_DETAILS_FPM() {
@@ -453,8 +429,6 @@ public boolean performPB_DETAILS_FPM(javax.servlet.http.HttpServletRequest reque
  * PB_RETOUR
  * Date de création : (24/08/05 09:55:42)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_RETOUR() {
@@ -538,8 +512,6 @@ public String getJSP() {
  * PB_MODIFIER_FPM
  * Date de création : (26/10/05 14:08:36)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_MODIFIER_FPM() {

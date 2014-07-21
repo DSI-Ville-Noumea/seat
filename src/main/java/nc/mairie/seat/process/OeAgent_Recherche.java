@@ -126,8 +126,6 @@ public OeAgent_Recherche() {
  * PB_AGENT
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_AGENT() {
@@ -199,8 +197,6 @@ public boolean performPB_AGENT(javax.servlet.http.HttpServletRequest request) th
  * PB_SERVICE
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_SERVICE() {
@@ -226,8 +222,6 @@ public boolean performPB_SERVICE(javax.servlet.http.HttpServletRequest request) 
  * EF_AGENT
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_AGENT() {
@@ -238,8 +232,6 @@ public java.lang.String getNOM_EF_AGENT() {
  * EF_AGENT
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_AGENT() {
@@ -250,8 +242,6 @@ public java.lang.String getVAL_EF_AGENT() {
  * EF_SERVICE
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_SERVICE() {
@@ -262,8 +252,6 @@ public java.lang.String getNOM_EF_SERVICE() {
  * EF_SERVICE
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_SERVICE() {
@@ -294,8 +282,6 @@ private void setLB_AGENT(java.lang.String[] newLB_AGENT) {
  * NOM_LB_AGENT
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_AGENT() {
@@ -306,8 +292,6 @@ public java.lang.String getNOM_LB_AGENT() {
  * NOM_LB_AGENT_SELECT
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_AGENT_SELECT() {
@@ -319,8 +303,6 @@ public java.lang.String getNOM_LB_AGENT_SELECT() {
  * LB_AGENT
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_AGENT() {
@@ -332,8 +314,6 @@ public java.lang.String [] getVAL_LB_AGENT() {
  * LB_AGENT
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_AGENT_SELECT() {
@@ -355,8 +335,6 @@ private String [] getLB_SERVICE() {
  * NOM_LB_SERVICE
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_SERVICE() {
@@ -367,8 +345,6 @@ public java.lang.String getNOM_LB_SERVICE() {
  * NOM_LB_SERVICE_SELECT
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_SERVICE_SELECT() {
@@ -380,8 +356,6 @@ public java.lang.String getNOM_LB_SERVICE_SELECT() {
  * LB_SERVICE
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_SERVICE() {
@@ -393,8 +367,6 @@ public java.lang.String [] getVAL_LB_SERVICE() {
  * LB_SERVICE
  * Date de création : (05/04/07 12:06:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_SERVICE_SELECT() {
@@ -405,8 +377,6 @@ public java.lang.String getVAL_LB_SERVICE_SELECT() {
  * PB_VALIDER
  * Date de création : (05/04/07 12:08:13)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
@@ -562,8 +532,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * PB_ANNULER
  * Date de création : (05/04/07 12:10:38)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
@@ -589,8 +557,6 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * PB_RECHERCHE
  * Date de création : (05/04/07 13:12:45)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_RECHERCHE() {

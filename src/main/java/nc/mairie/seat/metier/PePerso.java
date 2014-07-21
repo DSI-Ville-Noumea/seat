@@ -858,8 +858,6 @@ public String getSinistre() {
 }
 /**
  * Setter de l'attribut sinistre.
- */
-/**
  * @param newSinistre newSinistre
  */
 public void setSinistre(String newSinistre) { 
@@ -874,8 +872,6 @@ public String getDuree() {
 }
 /**
  * Setter de l'attribut duree.
- */
-/**
  * @param newDuree newDuree
  */
 public void setDuree(String newDuree) { 
@@ -890,8 +886,6 @@ public String getCodeot() {
 }
 /**
  * Setter de l'attribut codeot.
- */
-/**
  * @param newCodeot newCodeot
  */
 public void setCodeot(String newCodeot) { 
@@ -906,8 +900,6 @@ public String getCodetypeent() {
 }
 /**
  * Setter de l'attribut codetypeent.
- */
-/**
  * @param newCodetypeent newCodetypeent
  */
 public void setCodetypeent(String newCodetypeent) { 
@@ -922,8 +914,6 @@ public String getCommentairete() {
 }
 /**
  * Setter de l'attribut commentairete.
- */
-/**
  * @param newCommentairete newCommentairete
  */
 public void setCommentairete(String newCommentairete) { 
@@ -938,8 +928,6 @@ public String getCodepep() {
 }
 /**
  * Setter de l'attribut codepep.
- */
-/**
  * @param newCodepep newCodepep
  */
 public void setCodepep(String newCodepep) { 
@@ -954,8 +942,6 @@ public String getCodeti() {
 }
 /**
  * Setter de l'attribut codeti.
- */
-/**
  * @param newCodeti newCodeti
  */
 public void setCodeti(String newCodeti) { 
@@ -970,8 +956,6 @@ public String getIntervallepep() {
 }
 /**
  * Setter de l'attribut intervallepep.
- */
-/**
  * @param newIntervallepep newIntervallepep
  */
 public void setIntervallepep(String newIntervallepep) { 
@@ -986,8 +970,6 @@ public String getDatereal() {
 }
 /**
  * Setter de l'attribut datereal.
- */
-/**
  * @param newDatereal newDatereal
  */
 public void setDatereal(String newDatereal) { 
@@ -1002,8 +984,6 @@ public String getDateprev() {
 }
 /**
  * Setter de l'attribut dateprev.
- */
-/**
  * @param newDateprev newDateprev
  */
 public void setDateprev(String newDateprev) { 

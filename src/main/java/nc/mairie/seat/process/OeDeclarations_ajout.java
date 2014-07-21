@@ -506,8 +506,6 @@ public OeDeclarations_ajout() {
  * ST_MARQUE
  * Date de création : (22/08/05 08:58:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_MARQUE() {
@@ -518,8 +516,6 @@ public java.lang.String getNOM_ST_MARQUE() {
  * ST_MARQUE
  * Date de création : (22/08/05 08:58:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_MARQUE() {
@@ -530,8 +526,6 @@ public java.lang.String getVAL_ST_MARQUE() {
  * ST_MODELE
  * Date de création : (22/08/05 08:58:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_MODELE() {
@@ -542,8 +536,6 @@ public java.lang.String getNOM_ST_MODELE() {
  * ST_MODELE
  * Date de création : (22/08/05 08:58:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_MODELE() {
@@ -554,8 +546,6 @@ public java.lang.String getVAL_ST_MODELE() {
  * ST_NOIMMAT
  * Date de création : (22/08/05 08:58:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_NOIMMAT() {
@@ -566,8 +556,6 @@ public java.lang.String getNOM_ST_NOIMMAT() {
  * ST_NOIMMAT
  * Date de création : (22/08/05 08:58:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_NOIMMAT() {
@@ -578,8 +566,6 @@ public java.lang.String getVAL_ST_NOIMMAT() {
  * ST_NOINV
  * Date de création : (22/08/05 08:58:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_NOINV() {
@@ -590,8 +576,6 @@ public java.lang.String getNOM_ST_NOINV() {
  * ST_NOINV
  * Date de création : (22/08/05 08:58:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_NOINV() {
@@ -602,8 +586,6 @@ public java.lang.String getVAL_ST_NOINV() {
  * ST_SERVICE
  * Date de création : (22/08/05 08:58:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_SERVICE() {
@@ -614,8 +596,6 @@ public java.lang.String getNOM_ST_SERVICE() {
  * ST_SERVICE
  * Date de création : (22/08/05 08:58:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_SERVICE() {
@@ -626,8 +606,6 @@ public java.lang.String getVAL_ST_SERVICE() {
  * ST_TYPE
  * Date de création : (22/08/05 08:58:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_TYPE() {
@@ -638,8 +616,6 @@ public java.lang.String getNOM_ST_TYPE() {
  * ST_TYPE
  * Date de création : (22/08/05 08:58:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_TYPE() {
@@ -650,8 +626,6 @@ public java.lang.String getVAL_ST_TYPE() {
  * EF_COMMENTAIRE
  * Date de création : (22/08/05 08:58:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_COMMENTAIRE() {
@@ -662,8 +636,6 @@ public java.lang.String getNOM_EF_COMMENTAIRE() {
  * EF_COMMENTAIRE
  * Date de création : (22/08/05 08:58:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_COMMENTAIRE() {
@@ -674,8 +646,6 @@ public java.lang.String getVAL_EF_COMMENTAIRE() {
  * EF_DATE
  * Date de création : (22/08/05 08:58:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_DATE() {
@@ -686,8 +656,6 @@ public java.lang.String getNOM_EF_DATE() {
  * EF_DATE
  * Date de création : (22/08/05 08:58:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_DATE() {
@@ -698,8 +666,6 @@ public java.lang.String getVAL_EF_DATE() {
  * PB_RECHERCHE_EQUIP
  * Date de création : (22/08/05 09:00:36)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_RECHERCHE_EQUIP() {
@@ -710,8 +676,6 @@ public java.lang.String getNOM_PB_RECHERCHE_EQUIP() {
  * PB_RECHERCHE_EQUIP
  * Date de création : (22/08/05 09:00:36)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_RECHERCHE_PM() {
@@ -850,8 +814,6 @@ public boolean performPB_RECHERCHE_PM(javax.servlet.http.HttpServletRequest requ
  * EF_RECHERCHE_EQUIP
  * Date de création : (22/08/05 09:00:36)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_RECHERCHE_EQUIP() {
@@ -862,8 +824,6 @@ public java.lang.String getNOM_EF_RECHERCHE_EQUIP() {
  * EF_RECHERCHE_EQUIP
  * Date de création : (22/08/05 09:00:36)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_RECHERCHE_EQUIP() {
@@ -874,8 +834,6 @@ public java.lang.String getVAL_EF_RECHERCHE_EQUIP() {
  * EF_RECHERCHE_PM
  * Date de création : (22/08/05 09:00:36)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_RECHERCHE_PM() {
@@ -886,8 +844,6 @@ public java.lang.String getNOM_EF_RECHERCHE_PM() {
  * EF_RECHERCHE_EQUIP
  * Date de création : (22/08/05 09:00:36)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_RECHERCHE_PM() {
@@ -898,8 +854,6 @@ public java.lang.String getVAL_EF_RECHERCHE_PM() {
  * PB_ANNULER
  * Date de création : (22/08/05 09:01:44)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
@@ -925,8 +879,6 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * PB_VALIDER
  * Date de création : (22/08/05 09:01:44)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
@@ -1016,8 +968,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * PB_RECHERCHER
  * Date de création : (22/08/05 09:08:53)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_RECHERCHER() {
@@ -1090,8 +1040,6 @@ private void setLB_AGENT(java.lang.String[] newLB_AGENT) {
  * NOM_LB_AGENT
  * Date de création : (22/08/05 09:37:34)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_AGENT() {
@@ -1102,8 +1050,6 @@ public java.lang.String getNOM_LB_AGENT() {
  * NOM_LB_AGENT_SELECT
  * Date de création : (22/08/05 09:37:34)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_AGENT_SELECT() {
@@ -1115,8 +1061,6 @@ public java.lang.String getNOM_LB_AGENT_SELECT() {
  * LB_AGENT
  * Date de création : (22/08/05 09:37:34)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_AGENT() {
@@ -1128,8 +1072,6 @@ public java.lang.String [] getVAL_LB_AGENT() {
  * LB_AGENT
  * Date de création : (22/08/05 09:37:34)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_AGENT_SELECT() {
@@ -1160,8 +1102,6 @@ private void setLB_SERVICE(java.lang.String[] newLB_SERVICE) {
  * NOM_LB_SERVICE
  * Date de création : (22/08/05 09:37:34)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_SERVICE() {
@@ -1172,8 +1112,6 @@ public java.lang.String getNOM_LB_SERVICE() {
  * NOM_LB_SERVICE_SELECT
  * Date de création : (22/08/05 09:37:34)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_SERVICE_SELECT() {
@@ -1185,8 +1123,6 @@ public java.lang.String getNOM_LB_SERVICE_SELECT() {
  * LB_SERVICE
  * Date de création : (22/08/05 09:37:34)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_SERVICE() {
@@ -1198,8 +1134,6 @@ public java.lang.String [] getVAL_LB_SERVICE() {
  * LB_SERVICE
  * Date de création : (22/08/05 09:37:34)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_SERVICE_SELECT() {
@@ -1234,8 +1168,6 @@ public java.lang.String getVAL_LB_SERVICE_SELECT() {
  * PB_OK_SCE
  * Date de création : (22/08/05 10:00:10)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_OK_SCE() {
@@ -1299,8 +1231,6 @@ public String getDefaultFocus() {
  * ST_TITRE_ACTION
  * Date de création : (22/08/05 11:40:26)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_TITRE_ACTION() {
@@ -1311,8 +1241,6 @@ public java.lang.String getNOM_ST_TITRE_ACTION() {
  * ST_TITRE_ACTION
  * Date de création : (22/08/05 11:40:26)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_TITRE_ACTION() {
@@ -1639,8 +1567,6 @@ public boolean validationAgentCCAS(javax.servlet.http.HttpServletRequest request
  * PB_RECH_PM
  * Date de création : (18/09/07 14:04:18)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_RECH_PM() {

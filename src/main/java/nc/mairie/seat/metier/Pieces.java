@@ -28,8 +28,6 @@ public String getCodepiece() {
 }
 /**
  * Setter de l'attribut codepiece.
- */
-/**
  * @param newCodepiece newCodepiece
  */
 public void setCodepiece(String newCodepiece) { 
@@ -44,8 +42,6 @@ public String getDesignationpiece() {
 }
 /**
  * Setter de l'attribut designationpiece.
- */
-/**
  * @param newDesignationpiece newDesignationpiece
  */
 public void setDesignationpiece(String newDesignationpiece) { 
@@ -60,8 +56,6 @@ public String getPu() {
 }
 /**
  * Setter de l'attribut pu.
- */
-/**
  * @param newPu newPu
  */
 public void setPu(String newPu) { 

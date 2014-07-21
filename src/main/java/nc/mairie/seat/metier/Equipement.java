@@ -26,8 +26,6 @@ public class Equipement extends BasicMetier {
 	public String dureegarantie;
 /**
  * Getter de l'attribut version.
- */
-/**
  * @return String
  */
 public String getVersion() {
@@ -35,8 +33,6 @@ public String getVersion() {
 }
 /**
  * Setter de l'attribut version.
- */
-/**
  * @param newVersion newVersion
  */
 public void setVersion(String newVersion) { 
@@ -373,8 +369,6 @@ public static ArrayList<Equipement> listerEquipementParam(nc.mairie.technique.Tr
 
 /**
  * Getter de l'attribut datereceptionmateriel.
- */
-/**
  * @return String
  */
 public String getDatereceptionmateriel() {
@@ -382,8 +376,6 @@ public String getDatereceptionmateriel() {
 }
 /**
  * Setter de l'attribut datereceptionmateriel.
- */
-/**
  * @param newDatereceptionmateriel newDatereceptionmateriel
  */
 public void setDatereceptionmateriel(String newDatereceptionmateriel) { 
@@ -397,8 +389,6 @@ public Equipement() {
 }
 /**
  * Getter de l'attribut numeroinventaire.
- */
-/**
  * @return String
  */
 public String getNumeroinventaire() {
@@ -406,8 +396,6 @@ public String getNumeroinventaire() {
 }
 /**
  * Setter de l'attribut numeroinventaire.
- */
-/**
  * @param newNumeroinventaire newNumeroinventaire
  */
 public void setNumeroinventaire(String newNumeroinventaire) { 
@@ -415,8 +403,6 @@ public void setNumeroinventaire(String newNumeroinventaire) {
 }
 /**
  * Getter de l'attribut numeroimmatriculation.
- */
-/**
  * @return String
  */
 public String getNumeroimmatriculation() {
@@ -424,8 +410,6 @@ public String getNumeroimmatriculation() {
 }
 /**
  * Setter de l'attribut numeroimmatriculation.
- */
-/**
  * @param newNumeroimmatriculation newNumeroimmatriculation
  */
 public void setNumeroimmatriculation(String newNumeroimmatriculation) { 
@@ -433,8 +417,6 @@ public void setNumeroimmatriculation(String newNumeroimmatriculation) {
 }
 /**
  * Getter de l'attribut datemiseencirculation.
- */
-/**
  * @return String
  */
 public String getDatemiseencirculation() {
@@ -442,8 +424,6 @@ public String getDatemiseencirculation() {
 }
 /**
  * Setter de l'attribut datemiseencirculation.
- */
-/**
  * @param newDatemiseencirculation newDatemiseencirculation
  */
 public void setDatemiseencirculation(String newDatemiseencirculation) { 
@@ -451,8 +431,6 @@ public void setDatemiseencirculation(String newDatemiseencirculation) {
 }
 /**
  * Getter de l'attribut dateventeoureforme.
- */
-/**
  * @return String
  */
 public String getDateventeoureforme() {
@@ -460,8 +438,6 @@ public String getDateventeoureforme() {
 }
 /**
  * Setter de l'attribut dateventeoureforme.
- */
-/**
  * @param newDateventeoureforme newDateventeoureforme
  */
 public void setDateventeoureforme(String newDateventeoureforme) { 
@@ -469,8 +445,6 @@ public void setDateventeoureforme(String newDateventeoureforme) {
 }
 /**
  * Getter de l'attribut datehorscircuit.
- */
-/**
  * @return String
  */
 public String getDatehorscircuit() {
@@ -478,8 +452,6 @@ public String getDatehorscircuit() {
 }
 /**
  * Setter de l'attribut datehorscircuit.
- */
-/**
  * @param newDatehorscircuit newDatehorscircuit
  */
 public void setDatehorscircuit(String newDatehorscircuit) { 
@@ -487,8 +459,6 @@ public void setDatehorscircuit(String newDatehorscircuit) {
 }
 /**
  * Getter de l'attribut prixachat.
- */
-/**
  * @return String
  */
 public String getPrixachat() {
@@ -496,8 +466,6 @@ public String getPrixachat() {
 }
 /**
  * Setter de l'attribut prixachat.
- */
-/**
  * @param newPrixachat newPrixachat
  */
 public void setPrixachat(String newPrixachat) { 
@@ -505,8 +473,6 @@ public void setPrixachat(String newPrixachat) {
 }
 /**
  * Getter de l'attribut reserve.
- */
-/**
  * @return String
  */
 public String getReserve() {
@@ -514,8 +480,6 @@ public String getReserve() {
 }
 /**
  * Setter de l'attribut reserve.
- */
-/**
  * @param newReserve newReserve
  */
 public void setReserve(String newReserve) { 
@@ -523,8 +487,6 @@ public void setReserve(String newReserve) {
 }
 /**
  * Getter de l'attribut codemodele.
- */
-/**
  * @return String
  */
 public String getCodemodele() {
@@ -532,8 +494,6 @@ public String getCodemodele() {
 }
 /**
  * Setter de l'attribut codemodele.
- */
-/**
  * @param newCodemodele newCodemodele
  */
 public void setCodemodele(String newCodemodele) { 
@@ -541,8 +501,6 @@ public void setCodemodele(String newCodemodele) {
 }
 /**
  * Getter de l'attribut dureegarantie.
- */
-/**
  * @return String
  */
 public String getDureegarantie() {
@@ -550,8 +508,6 @@ public String getDureegarantie() {
 }
 /**
  * Setter de l'attribut dureegarantie.
- */
-/**
  * @param newDureegarantie newDureegarantie
  */
 public void setDureegarantie(String newDureegarantie) { 

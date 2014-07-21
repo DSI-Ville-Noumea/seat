@@ -32,8 +32,6 @@ public BPCPMInfos() {
 }
 /**
  * Getter de l'attribut numerobpc.
- */
-/**
  * @return String
  */
 public String getNumerobpc() {
@@ -41,8 +39,6 @@ public String getNumerobpc() {
 }
 /**
  * Setter de l'attribut numerobpc.
- */
-/**
  * @param newNumerobpc newNumerobpc
  */
 public void setNumerobpc(String newNumerobpc) { 
@@ -50,8 +46,6 @@ public void setNumerobpc(String newNumerobpc) {
 }
 /**
  * Getter de l'attribut date.
- */
-/**
  * @return String
  */
 public String getDate() {
@@ -59,8 +53,6 @@ public String getDate() {
 }
 /**
  * Setter de l'attribut date.
- */
-/**
  * @param newDate newDate
  */
 public void setDate(String newDate) { 
@@ -68,8 +60,6 @@ public void setDate(String newDate) {
 }
 /**
  * Getter de l'attribut heure.
- */
-/**
  * @return String
  */
 public String getHeure() {
@@ -77,8 +67,6 @@ public String getHeure() {
 }
 /**
  * Setter de l'attribut heure.
- */
-/**
  * @param newHeure newHeure
  */
 public void setHeure(String newHeure) { 
@@ -86,8 +74,6 @@ public void setHeure(String newHeure) {
 }
 /**
  * Getter de l'attribut valeurcompteur.
- */
-/**
  * @return String
  */
 public String getValeurcompteur() {
@@ -95,8 +81,6 @@ public String getValeurcompteur() {
 }
 /**
  * Setter de l'attribut valeurcompteur.
- */
-/**
  * @param newValeurcompteur newValeurcompteur
  */
 public void setValeurcompteur(String newValeurcompteur) { 
@@ -104,8 +88,6 @@ public void setValeurcompteur(String newValeurcompteur) {
 }
 /**
  * Getter de l'attribut numeropompe.
- */
-/**
  * @return String
  */
 public String getNumeropompe() {
@@ -113,8 +95,6 @@ public String getNumeropompe() {
 }
 /**
  * Setter de l'attribut numeropompe.
- */
-/**
  * @param newNumeropompe newNumeropompe
  */
 public void setNumeropompe(String newNumeropompe) { 
@@ -122,8 +102,6 @@ public void setNumeropompe(String newNumeropompe) {
 }
 /**
  * Getter de l'attribut quantite.
- */
-/**
  * @return String
  */
 public String getQuantite() {
@@ -131,8 +109,6 @@ public String getQuantite() {
 }
 /**
  * Setter de l'attribut quantite.
- */
-/**
  * @param newQuantite newQuantite
  */
 public void setQuantite(String newQuantite) { 
@@ -140,8 +116,6 @@ public void setQuantite(String newQuantite) {
 }
 /**
  * Getter de l'attribut modedeprise.
- */
-/**
  * @return String
  */
 public String getModedeprise() {
@@ -149,8 +123,6 @@ public String getModedeprise() {
 }
 /**
  * Setter de l'attribut modedeprise.
- */
-/**
  * @param newModedeprise newModedeprise
  */
 public void setModedeprise(String newModedeprise) { 
@@ -158,8 +130,6 @@ public void setModedeprise(String newModedeprise) {
 }
 /**
  * Getter de l'attribut numeroinventaire.
- */
-/**
  * @return String
  */
 public String getNumeroinventaire() {
@@ -167,8 +137,6 @@ public String getNumeroinventaire() {
 }
 /**
  * Setter de l'attribut numeroinventaire.
- */
-/**
  * @param newNumeroinventaire newNumeroinventaire
  */
 public void setNumeroinventaire(String newNumeroinventaire) { 
@@ -176,8 +144,6 @@ public void setNumeroinventaire(String newNumeroinventaire) {
 }
 /**
  * Getter de l'attribut pmserie.
- */
-/**
  * @return String
  */
 public String getPmserie() {
@@ -185,8 +151,6 @@ public String getPmserie() {
 }
 /**
  * Setter de l'attribut pmserie.
- */
-/**
  * @param newPmserie newPmserie
  */
 public void setPmserie(String newPmserie) { 
@@ -194,8 +158,6 @@ public void setPmserie(String newPmserie) {
 }
 /**
  * Getter de l'attribut dmes.
- */
-/**
  * @return String
  */
 public String getDmes() {
@@ -203,8 +165,6 @@ public String getDmes() {
 }
 /**
  * Setter de l'attribut dmes.
- */
-/**
  * @param newDmes newDmes
  */
 public void setDmes(String newDmes) { 
@@ -212,8 +172,6 @@ public void setDmes(String newDmes) {
 }
 /**
  * Getter de l'attribut siserv.
- */
-/**
  * @return String
  */
 public String getSiserv() {
@@ -221,8 +179,6 @@ public String getSiserv() {
 }
 /**
  * Setter de l'attribut siserv.
- */
-/**
  * @param newSiserv newSiserv
  */
 public void setSiserv(String newSiserv) { 
@@ -230,8 +186,6 @@ public void setSiserv(String newSiserv) {
 }
 /**
  * Getter de l'attribut ddebut.
- */
-/**
  * @return String
  */
 public String getDdebut() {
@@ -239,8 +193,6 @@ public String getDdebut() {
 }
 /**
  * Setter de l'attribut ddebut.
- */
-/**
  * @param newDdebut newDdebut
  */
 public void setDdebut(String newDdebut) { 
@@ -248,8 +200,6 @@ public void setDdebut(String newDdebut) {
 }
 /**
  * Getter de l'attribut dfin.
- */
-/**
  * @return String
  */
 public String getDfin() {
@@ -257,8 +207,6 @@ public String getDfin() {
 }
 /**
  * Setter de l'attribut dfin.
- */
-/**
  * @param newDfin newDfin
  */
 public void setDfin(String newDfin) { 
@@ -266,8 +214,6 @@ public void setDfin(String newDfin) {
 }
 /**
  * Getter de l'attribut liserv.
- */
-/**
  * @return String
  */
 public String getLiserv() {
@@ -275,8 +221,6 @@ public String getLiserv() {
 }
 /**
  * Setter de l'attribut liserv.
- */
-/**
  * @param newLiserv newLiserv
  */
 public void setLiserv(String newLiserv) { 
@@ -284,8 +228,6 @@ public void setLiserv(String newLiserv) {
 }
 /**
  * Getter de l'attribut nomatr.
- */
-/**
  * @return String
  */
 public String getNomatr() {
@@ -293,8 +235,6 @@ public String getNomatr() {
 }
 /**
  * Setter de l'attribut nomatr.
- */
-/**
  * @param newNomatr newNomatr
  */
 public void setNomatr(String newNomatr) { 

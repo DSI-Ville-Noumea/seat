@@ -202,8 +202,6 @@ public OeBPC_VisualisationComplete() {
  * PB_EQUIP
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_EQUIP() {
@@ -238,8 +236,6 @@ public boolean performPB_EQUIP(javax.servlet.http.HttpServletRequest request) th
  * PB_RECHE_EQUIP
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_RECHE_EQUIP() {
@@ -294,8 +290,6 @@ public boolean performPB_RECHE_EQUIP(javax.servlet.http.HttpServletRequest reque
  * PB_RECH_SERVICE
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_RECH_SERVICE() {
@@ -338,8 +332,6 @@ public boolean performPB_RECH_SERVICE(javax.servlet.http.HttpServletRequest requ
  * PB_SERVICE
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_SERVICE() {
@@ -373,8 +365,6 @@ public boolean performPB_SERVICE(javax.servlet.http.HttpServletRequest request) 
  * PB_VALIDER
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
@@ -525,8 +515,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * EF_DDEB
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_DDEB() {
@@ -537,8 +525,6 @@ public java.lang.String getNOM_EF_DDEB() {
  * EF_DDEB
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_DDEB() {
@@ -549,8 +535,6 @@ public java.lang.String getVAL_EF_DDEB() {
  * EF_DFIN
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_DFIN() {
@@ -561,8 +545,6 @@ public java.lang.String getNOM_EF_DFIN() {
  * EF_DFIN
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_DFIN() {
@@ -573,8 +555,6 @@ public java.lang.String getVAL_EF_DFIN() {
  * EF_RECHE_EQUIP
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_RECHE_EQUIP() {
@@ -585,8 +565,6 @@ public java.lang.String getNOM_EF_RECHE_EQUIP() {
  * EF_RECHE_EQUIP
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_RECHE_EQUIP() {
@@ -597,8 +575,6 @@ public java.lang.String getVAL_EF_RECHE_EQUIP() {
  * EF_RECH_SERVICE
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_RECH_SERVICE() {
@@ -609,8 +585,6 @@ public java.lang.String getNOM_EF_RECH_SERVICE() {
  * EF_RECH_SERVICE
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_RECH_SERVICE() {
@@ -641,8 +615,6 @@ private void setLB_BPCINFOS(java.lang.String[] newLB_BPCINFOS) {
  * NOM_LB_BPCINFOS
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_BPCINFOS() {
@@ -653,8 +625,6 @@ public java.lang.String getNOM_LB_BPCINFOS() {
  * NOM_LB_BPCINFOS_SELECT
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_BPCINFOS_SELECT() {
@@ -666,8 +636,6 @@ public java.lang.String getNOM_LB_BPCINFOS_SELECT() {
  * LB_BPCINFOS
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_BPCINFOS() {
@@ -679,8 +647,6 @@ public java.lang.String [] getVAL_LB_BPCINFOS() {
  * LB_BPCINFOS
  * Date de création : (25/08/05 11:40:11)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_BPCINFOS_SELECT() {
@@ -736,8 +702,6 @@ public void setListBPCInfos(ArrayList<BPC> listBPCInfos) {
  * ST_SERVICE
  * Date de création : (29/08/05 13:13:30)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_SERVICE() {
@@ -748,8 +712,6 @@ public java.lang.String getNOM_ST_SERVICE() {
  * ST_SERVICE
  * Date de création : (29/08/05 13:13:30)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_SERVICE() {
@@ -760,8 +722,6 @@ public java.lang.String getVAL_ST_SERVICE() {
  * PB_DETAILS
  * Date de création : (29/08/05 13:14:07)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_DETAILS() {
@@ -824,8 +784,6 @@ private void setLB_TOTAUX(java.lang.String[] newLB_TOTAUX) {
  * NOM_LB_TOTAUX
  * Date de création : (02/09/05 10:13:01)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_TOTAUX() {
@@ -836,8 +794,6 @@ public java.lang.String getNOM_LB_TOTAUX() {
  * NOM_LB_TOTAUX_SELECT
  * Date de création : (02/09/05 10:13:01)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_TOTAUX_SELECT() {
@@ -849,8 +805,6 @@ public java.lang.String getNOM_LB_TOTAUX_SELECT() {
  * LB_TOTAUX
  * Date de création : (02/09/05 10:13:01)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_TOTAUX() {
@@ -862,8 +816,6 @@ public java.lang.String [] getVAL_LB_TOTAUX() {
  * LB_TOTAUX
  * Date de création : (02/09/05 10:13:01)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_TOTAUX_SELECT() {
@@ -1335,8 +1287,6 @@ private void setLB_TOTALEQUIP(java.lang.String[] newLB_TOTALEQUIP) {
  * NOM_LB_TOTALEQUIP
  * Date de création : (07/06/07 11:42:05)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_TOTALEQUIP() {
@@ -1347,8 +1297,6 @@ public java.lang.String getNOM_LB_TOTALEQUIP() {
  * NOM_LB_TOTALEQUIP_SELECT
  * Date de création : (07/06/07 11:42:05)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_TOTALEQUIP_SELECT() {
@@ -1360,8 +1308,6 @@ public java.lang.String getNOM_LB_TOTALEQUIP_SELECT() {
  * LB_TOTALEQUIP
  * Date de création : (07/06/07 11:42:05)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_TOTALEQUIP() {
@@ -1373,8 +1319,6 @@ public java.lang.String [] getVAL_LB_TOTALEQUIP() {
  * LB_TOTALEQUIP
  * Date de création : (07/06/07 11:42:05)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_TOTALEQUIP_SELECT() {
@@ -1450,8 +1394,6 @@ public String getJSP() {
  * PB_SEL_PM
  * Date de création : (08/08/07 09:36:27)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_SEL_PM() {
@@ -1489,8 +1431,6 @@ public void setFocus(String focus) {
 }
 /**
  * focus focus à définir.
- */
-/**
  * @return String
  */
 public String getDefaultFocus() {

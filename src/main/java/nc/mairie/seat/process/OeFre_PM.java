@@ -81,8 +81,6 @@ public OeFre_PM() {
  * PB_AJOUTER
  * Date de création : (24/04/07 08:24:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_AJOUTER() {
@@ -117,8 +115,6 @@ public boolean performPB_AJOUTER(javax.servlet.http.HttpServletRequest request) 
  * PB_ANNULER
  * Date de création : (24/04/07 08:24:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
@@ -160,8 +156,6 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * PB_MODIFIER
  * Date de création : (24/04/07 08:24:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_MODIFIER() {
@@ -208,8 +202,6 @@ public boolean performPB_MODIFIER(javax.servlet.http.HttpServletRequest request)
  * PB_SUPPRIMER
  * Date de création : (24/04/07 08:24:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_SUPPRIMER() {
@@ -257,8 +249,6 @@ public boolean performPB_SUPPRIMER(javax.servlet.http.HttpServletRequest request
  * PB_VALIDER
  * Date de création : (24/04/07 08:24:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
@@ -379,8 +369,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * EF_CONTACT
  * Date de création : (24/04/07 08:24:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_CONTACT() {
@@ -391,8 +379,6 @@ public java.lang.String getNOM_EF_CONTACT() {
  * EF_CONTACT
  * Date de création : (24/04/07 08:24:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_CONTACT() {
@@ -403,8 +389,6 @@ public java.lang.String getVAL_EF_CONTACT() {
  * EF_LIBELLE
  * Date de création : (24/04/07 08:24:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_LIBELLE() {
@@ -415,8 +399,6 @@ public java.lang.String getNOM_EF_LIBELLE() {
  * EF_LIBELLE
  * Date de création : (24/04/07 08:24:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_LIBELLE() {
@@ -427,8 +409,6 @@ public java.lang.String getVAL_EF_LIBELLE() {
  * EF_OBSERVATIONS
  * Date de création : (24/04/07 08:24:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_OBSERVATIONS() {
@@ -439,8 +419,6 @@ public java.lang.String getNOM_EF_OBSERVATIONS() {
  * EF_OBSERVATIONS
  * Date de création : (24/04/07 08:24:32)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_OBSERVATIONS() {
@@ -452,8 +430,6 @@ public java.lang.String getVAL_EF_OBSERVATIONS() {
  * ST_TITRE_ACTION
  * Date de création : (24/04/07 08:28:15)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_TITRE_ACTION() {
@@ -464,8 +440,6 @@ public java.lang.String getNOM_ST_TITRE_ACTION() {
  * ST_TITRE_ACTION
  * Date de création : (24/04/07 08:28:15)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_TITRE_ACTION() {
@@ -496,8 +470,6 @@ private void setLB_FOURNISSEURS(java.lang.String[] newLB_FOURNISSEURS) {
  * NOM_LB_FOURNISSEURS
  * Date de création : (24/04/07 08:28:15)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_FOURNISSEURS() {
@@ -508,8 +480,6 @@ public java.lang.String getNOM_LB_FOURNISSEURS() {
  * NOM_LB_FOURNISSEURS_SELECT
  * Date de création : (24/04/07 08:28:15)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_FOURNISSEURS_SELECT() {
@@ -521,8 +491,6 @@ public java.lang.String getNOM_LB_FOURNISSEURS_SELECT() {
  * LB_FOURNISSEURS
  * Date de création : (24/04/07 08:28:15)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_FOURNISSEURS() {
@@ -534,8 +502,6 @@ public java.lang.String [] getVAL_LB_FOURNISSEURS() {
  * LB_FOURNISSEURS
  * Date de création : (24/04/07 08:28:15)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_FOURNISSEURS_SELECT() {
@@ -603,8 +569,6 @@ public String getJSP() {
  * PB_OK
  * Date de création : (24/04/07 08:36:02)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_OK() {
@@ -644,8 +608,6 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
  * ST_CONTACT
  * Date de création : (24/04/07 08:36:02)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_CONTACT() {
@@ -656,8 +618,6 @@ public java.lang.String getNOM_ST_CONTACT() {
  * ST_CONTACT
  * Date de création : (24/04/07 08:36:02)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_CONTACT() {
@@ -668,8 +628,6 @@ public java.lang.String getVAL_ST_CONTACT() {
  * ST_LIBELLE
  * Date de création : (24/04/07 08:36:02)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_LIBELLE() {
@@ -680,8 +638,6 @@ public java.lang.String getNOM_ST_LIBELLE() {
  * ST_LIBELLE
  * Date de création : (24/04/07 08:36:02)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_LIBELLE() {
@@ -692,8 +648,6 @@ public java.lang.String getVAL_ST_LIBELLE() {
  * ST_OBSERVATIONS
  * Date de création : (24/04/07 08:36:02)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_OBSERVATIONS() {
@@ -704,8 +658,6 @@ public java.lang.String getNOM_ST_OBSERVATIONS() {
  * ST_OBSERVATIONS
  * Date de création : (24/04/07 08:36:02)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_OBSERVATIONS() {

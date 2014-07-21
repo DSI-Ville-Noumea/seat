@@ -99,8 +99,6 @@ public String getJSP() {
  * PB_ANNULER
  * Date de création : (16/06/05 09:49:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
@@ -128,8 +126,6 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * PB_OK
  * Date de création : (16/06/05 09:49:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_OK() {
@@ -186,8 +182,6 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
  * PB_OK_SCE
  * Date de création : (16/06/05 09:49:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_OK_SCE() {
@@ -250,8 +244,6 @@ public boolean performPB_OK_SCE(javax.servlet.http.HttpServletRequest request) t
  * PB_RECHERCHER
  * Date de création : (16/06/05 09:49:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_RECHERCHER() {
@@ -311,8 +303,6 @@ public boolean performPB_RECHERCHER(javax.servlet.http.HttpServletRequest reques
  * EF_RECHERCHER
  * Date de création : (16/06/05 09:49:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_RECHERCHER() {
@@ -323,8 +313,6 @@ public java.lang.String getNOM_EF_RECHERCHER() {
  * EF_RECHERCHER
  * Date de création : (16/06/05 09:49:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_RECHERCHER() {
@@ -355,8 +343,6 @@ private void setLB_EQUIPEMENT(java.lang.String[] newLB_EQUIPEMENT) {
  * NOM_LB_EQUIPEMENT
  * Date de création : (16/06/05 09:49:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_EQUIPEMENT() {
@@ -367,8 +353,6 @@ public java.lang.String getNOM_LB_EQUIPEMENT() {
  * NOM_LB_EQUIPEMENT_SELECT
  * Date de création : (16/06/05 09:49:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_EQUIPEMENT_SELECT() {
@@ -380,8 +364,6 @@ public java.lang.String getNOM_LB_EQUIPEMENT_SELECT() {
  * LB_EQUIPEMENT
  * Date de création : (16/06/05 09:49:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_EQUIPEMENT() {
@@ -393,8 +375,6 @@ public java.lang.String [] getVAL_LB_EQUIPEMENT() {
  * LB_EQUIPEMENT
  * Date de création : (16/06/05 09:49:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_EQUIPEMENT_SELECT() {
@@ -425,8 +405,6 @@ private void setLB_SERVICE(java.lang.String[] newLB_SERVICE) {
  * NOM_LB_SERVICE
  * Date de création : (16/06/05 09:49:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_SERVICE() {
@@ -437,8 +415,6 @@ public java.lang.String getNOM_LB_SERVICE() {
  * NOM_LB_SERVICE_SELECT
  * Date de création : (16/06/05 09:49:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_SERVICE_SELECT() {
@@ -450,8 +426,6 @@ public java.lang.String getNOM_LB_SERVICE_SELECT() {
  * LB_SERVICE
  * Date de création : (16/06/05 09:49:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_SERVICE() {
@@ -463,8 +437,6 @@ public java.lang.String [] getVAL_LB_SERVICE() {
  * LB_SERVICE
  * Date de création : (16/06/05 09:49:12)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_SERVICE_SELECT() {

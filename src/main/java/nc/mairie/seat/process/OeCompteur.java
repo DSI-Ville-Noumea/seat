@@ -84,8 +84,6 @@ public OeCompteur() {
  * PB_AJOUTER
  * Date de création : (23/05/05 07:54:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_AJOUTER() {
@@ -119,8 +117,6 @@ public boolean performPB_AJOUTER(javax.servlet.http.HttpServletRequest request) 
  * PB_ANNULER
  * Date de création : (23/05/05 07:54:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
@@ -156,8 +152,6 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * PB_MODIFIER
  * Date de création : (23/05/05 07:54:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_MODIFIER() {
@@ -202,8 +196,6 @@ public boolean performPB_MODIFIER(javax.servlet.http.HttpServletRequest request)
  * PB_OK
  * Date de création : (23/05/05 07:54:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_OK() {
@@ -242,8 +234,6 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
  * PB_SUPPRIMER
  * Date de création : (23/05/05 07:54:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_SUPPRIMER() {
@@ -288,8 +278,6 @@ public boolean performPB_SUPPRIMER(javax.servlet.http.HttpServletRequest request
  * PB_VALIDER
  * Date de création : (23/05/05 07:54:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
@@ -389,8 +377,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * ST_TITRE_ACTION
  * Date de création : (23/05/05 07:54:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_TITRE_ACTION() {
@@ -401,8 +387,6 @@ public java.lang.String getNOM_ST_TITRE_ACTION() {
  * ST_TITRE_ACTION
  * Date de création : (23/05/05 07:54:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_TITRE_ACTION() {
@@ -413,8 +397,6 @@ public java.lang.String getVAL_ST_TITRE_ACTION() {
  * EF_DESIGNATION
  * Date de création : (23/05/05 07:54:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_DESIGNATION() {
@@ -425,8 +407,6 @@ public java.lang.String getNOM_EF_DESIGNATION() {
  * EF_DESIGNATION
  * Date de création : (23/05/05 07:54:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_DESIGNATION() {
@@ -457,8 +437,6 @@ private void setLB_COMPTEUR(java.lang.String[] newLB_COMPTEUR) {
  * NOM_LB_COMPTEUR
  * Date de création : (23/05/05 07:54:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_COMPTEUR() {
@@ -469,8 +447,6 @@ public java.lang.String getNOM_LB_COMPTEUR() {
  * NOM_LB_COMPTEUR_SELECT
  * Date de création : (23/05/05 07:54:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_COMPTEUR_SELECT() {
@@ -482,8 +458,6 @@ public java.lang.String getNOM_LB_COMPTEUR_SELECT() {
  * LB_COMPTEUR
  * Date de création : (23/05/05 07:54:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_COMPTEUR() {
@@ -495,8 +469,6 @@ public java.lang.String [] getVAL_LB_COMPTEUR() {
  * LB_COMPTEUR
  * Date de création : (23/05/05 07:54:40)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_COMPTEUR_SELECT() {
@@ -610,8 +582,6 @@ public String getJSP() {
  * ST_DESIGNATION
  * Date de création : (14/06/05 13:09:39)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_DESIGNATION() {
@@ -622,8 +592,6 @@ public java.lang.String getNOM_ST_DESIGNATION() {
  * ST_DESIGNATION
  * Date de création : (14/06/05 13:09:39)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_DESIGNATION() {

@@ -20,8 +20,6 @@ public Service() {
 }
 /**
  * Getter de l'attribut servi.
- */
-/**
  * @return String
  */
 public String getServi() {
@@ -29,8 +27,6 @@ public String getServi() {
 }
 /**
  * Setter de l'attribut servi.
- */
-/**
  * @param newServi newServi
  */
 public void setServi(String newServi) { 
@@ -38,8 +34,6 @@ public void setServi(String newServi) {
 }
 /**
  * Getter de l'attribut liserv.
- */
-/**
  * @return String
  */
 public String getLiserv() {
@@ -47,8 +41,6 @@ public String getLiserv() {
 }
 /**
  * Setter de l'attribut liserv.
- */
-/**
  * @param newLiserv newLiserv
  */
 public void setLiserv(String newLiserv) { 
@@ -56,8 +48,6 @@ public void setLiserv(String newLiserv) {
 }
 /**
  * Getter de l'attribut li22.
- */
-/**
  * @return String
  */
 public String getLi22() {
@@ -65,8 +55,6 @@ public String getLi22() {
 }
 /**
  * Setter de l'attribut li22.
- */
-/**
  * @param newLi22 newLi22
  */
 public void setLi22(String newLi22) { 
@@ -74,8 +62,6 @@ public void setLi22(String newLi22) {
 }
 /**
  * Getter de l'attribut codact.
- */
-/**
  * @return String
  */
 public String getCodact() {
@@ -83,8 +69,6 @@ public String getCodact() {
 }
 /**
  * Setter de l'attribut codact.
- */
-/**
  * @param newCodact newCodact
  */
 public void setCodact(String newCodact) { 

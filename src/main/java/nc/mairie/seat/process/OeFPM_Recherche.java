@@ -137,8 +137,6 @@ public String getJSP() {
  * PB_ANNULER
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
@@ -167,8 +165,6 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * PB_OK
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_OK() {
@@ -208,8 +204,6 @@ public boolean performPB_OK(javax.servlet.http.HttpServletRequest request) throw
  * PB_OK_EQUIPEMENT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_OK_EQUIPEMENT() {
@@ -252,8 +246,6 @@ public boolean performPB_OK_EQUIPEMENT(javax.servlet.http.HttpServletRequest req
  * PB_VALIDER
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
@@ -295,8 +287,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * EF_DESIGNATION
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_DESIGNATION() {
@@ -307,8 +297,6 @@ public java.lang.String getNOM_EF_DESIGNATION() {
  * EF_DESIGNATION
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_DESIGNATION() {
@@ -339,8 +327,6 @@ private void setLB_FPM(java.lang.String[] newLB_FPM) {
  * NOM_LB_BPC
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_FPM() {
@@ -351,8 +337,6 @@ public java.lang.String getNOM_LB_FPM() {
  * NOM_LB_BPC_SELECT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_FPM_SELECT() {
@@ -364,8 +348,6 @@ public java.lang.String getNOM_LB_FPM_SELECT() {
  * LB_BPC
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_FPM() {
@@ -377,8 +359,6 @@ public java.lang.String [] getVAL_LB_FPM() {
  * LB_BPC
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_FPM_SELECT() {
@@ -409,8 +389,6 @@ private void setLB_PMATERIEL(java.lang.String[] newLB_PMATERIEL) {
  * NOM_LB_EQUIPEMENT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_PMATERIEL() {
@@ -421,8 +399,6 @@ public java.lang.String getNOM_LB_PMATERIEL() {
  * NOM_LB_EQUIPEMENT_SELECT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_PMATERIEL_SELECT() {
@@ -434,8 +410,6 @@ public java.lang.String getNOM_LB_PMATERIEL_SELECT() {
  * LB_EQUIPEMENT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_PMATERIEL() {
@@ -447,8 +421,6 @@ public java.lang.String [] getVAL_LB_PMATERIEL() {
  * LB_EQUIPEMENT
  * Date de création : (09/06/05 08:25:03)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_PMATERIEL_SELECT() {

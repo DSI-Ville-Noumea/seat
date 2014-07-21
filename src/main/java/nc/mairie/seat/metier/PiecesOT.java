@@ -272,8 +272,6 @@ public String getNumot() {
 }
 /**
  * Setter de l'attribut numot.
- */
-/**
  * @param newNumot newNumot
  */
 public void setNumot(String newNumot) { 
@@ -288,8 +286,6 @@ public String getNumpiece() {
 }
 /**
  * Setter de l'attribut numpiece.
- */
-/**
  * @param newNumpiece newNumpiece
  */
 public void setNumpiece(String newNumpiece) { 
@@ -304,8 +300,6 @@ public String getDatesortie() {
 }
 /**
  * Setter de l'attribut datesortie.
- */
-/**
  * @param newDatesortie newDatesortie
  */
 public void setDatesortie(String newDatesortie) { 
@@ -320,8 +314,6 @@ public String getQuantite() {
 }
 /**
  * Setter de l'attribut quantite.
- */
-/**
  * @param newQuantite newQuantite
  */
 public void setQuantite(String newQuantite) { 
@@ -336,8 +328,6 @@ public String getPrix() {
 }
 /**
  * Setter de l'attribut prix.
- */
-/**
  * @param newPrix newPrix
  */
 public void setPrix(String newPrix) { 

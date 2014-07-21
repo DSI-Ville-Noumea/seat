@@ -322,8 +322,6 @@ public OeBPC_VisualisationEquip() {
  * PB_RECHERCHER
  * Date de création : (05/08/05 08:43:16)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_RECHERCHER() {
@@ -351,8 +349,6 @@ public boolean performPB_RECHERCHER(javax.servlet.http.HttpServletRequest reques
  * ST_MARQUE
  * Date de création : (05/08/05 08:43:16)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_MARQUE() {
@@ -363,8 +359,6 @@ public java.lang.String getNOM_ST_MARQUE() {
  * ST_MARQUE
  * Date de création : (05/08/05 08:43:16)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_MARQUE() {
@@ -375,8 +369,6 @@ public java.lang.String getVAL_ST_MARQUE() {
  * ST_MODELE
  * Date de création : (05/08/05 08:43:16)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_MODELE() {
@@ -387,8 +379,6 @@ public java.lang.String getNOM_ST_MODELE() {
  * ST_MODELE
  * Date de création : (05/08/05 08:43:16)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_MODELE() {
@@ -399,8 +389,6 @@ public java.lang.String getVAL_ST_MODELE() {
  * ST_NOIMMAT
  * Date de création : (05/08/05 08:43:16)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_NOIMMAT() {
@@ -411,8 +399,6 @@ public java.lang.String getNOM_ST_NOIMMAT() {
  * ST_NOIMMAT
  * Date de création : (05/08/05 08:43:16)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_NOIMMAT() {
@@ -423,8 +409,6 @@ public java.lang.String getVAL_ST_NOIMMAT() {
  * ST_NOINVENT
  * Date de création : (05/08/05 08:43:16)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_NOINVENT() {
@@ -435,8 +419,6 @@ public java.lang.String getNOM_ST_NOINVENT() {
  * ST_NOINVENT
  * Date de création : (05/08/05 08:43:16)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_NOINVENT() {
@@ -447,8 +429,6 @@ public java.lang.String getVAL_ST_NOINVENT() {
  * ST_TYPE
  * Date de création : (05/08/05 08:43:16)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_TYPE() {
@@ -459,8 +439,6 @@ public java.lang.String getNOM_ST_TYPE() {
  * ST_TYPE
  * Date de création : (05/08/05 08:43:16)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_TYPE() {
@@ -491,8 +469,6 @@ private void setLB_BPC(java.lang.String[] newLB_BPC) {
  * NOM_LB_BPC
  * Date de création : (05/08/05 08:43:16)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_BPC() {
@@ -503,8 +479,6 @@ public java.lang.String getNOM_LB_BPC() {
  * NOM_LB_BPC_SELECT
  * Date de création : (05/08/05 08:43:16)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_BPC_SELECT() {
@@ -516,8 +490,6 @@ public java.lang.String getNOM_LB_BPC_SELECT() {
  * LB_BPC
  * Date de création : (05/08/05 08:43:16)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_BPC() {
@@ -529,8 +501,6 @@ public java.lang.String [] getVAL_LB_BPC() {
  * LB_BPC
  * Date de création : (05/08/05 08:43:16)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_BPC_SELECT() {
@@ -586,8 +556,6 @@ private void setLB_TOTAL(java.lang.String[] newLB_TOTAL) {
  * NOM_LB_TOTAL
  * Date de création : (05/08/05 09:12:48)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_TOTAL() {
@@ -598,8 +566,6 @@ public java.lang.String getNOM_LB_TOTAL() {
  * NOM_LB_TOTAL_SELECT
  * Date de création : (05/08/05 09:12:48)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_LB_TOTAL_SELECT() {
@@ -611,8 +577,6 @@ public java.lang.String getNOM_LB_TOTAL_SELECT() {
  * LB_TOTAL
  * Date de création : (05/08/05 09:12:48)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String [] getVAL_LB_TOTAL() {
@@ -624,8 +588,6 @@ public java.lang.String [] getVAL_LB_TOTAL() {
  * LB_TOTAL
  * Date de création : (05/08/05 09:12:48)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_LB_TOTAL_SELECT() {
@@ -636,8 +598,6 @@ public java.lang.String getVAL_LB_TOTAL_SELECT() {
  * PB_RECHERCHE_EQUIP
  * Date de création : (24/08/05 15:17:55)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_RECHERCHE_EQUIP() {
@@ -723,8 +683,6 @@ public boolean performPB_RECHERCHE_EQUIP(javax.servlet.http.HttpServletRequest r
  * EF_RECHERCHE_EQUIP
  * Date de création : (24/08/05 15:17:55)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_EF_RECHERCHE_EQUIP() {
@@ -735,8 +693,6 @@ public java.lang.String getNOM_EF_RECHERCHE_EQUIP() {
  * EF_RECHERCHE_EQUIP
  * Date de création : (24/08/05 15:17:55)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_EF_RECHERCHE_EQUIP() {
@@ -753,8 +709,6 @@ public java.lang.String getVAL_EF_RECHERCHE_EQUIP() {
  * PB_DETAILS
  * Date de création : (29/08/05 09:04:24)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_DETAILS() {
@@ -795,8 +749,6 @@ public boolean performPB_DETAILS(javax.servlet.http.HttpServletRequest request) 
  * ST_SERVICE
  * Date de création : (24/10/05 11:05:39)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_ST_SERVICE() {
@@ -807,8 +759,6 @@ public java.lang.String getNOM_ST_SERVICE() {
  * ST_SERVICE
  * Date de création : (24/10/05 11:05:39)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getVAL_ST_SERVICE() {
@@ -819,8 +769,6 @@ public java.lang.String getVAL_ST_SERVICE() {
  * PB_IMPRIMER
  * Date de création : (07/06/07 08:43:13)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_IMPRIMER() {
@@ -1042,8 +990,6 @@ public String getJSP() {
  * PB_SEL_PM
  * Date de création : (10/08/07 13:26:07)
  * @author : Générateur de process
- */
-/**
  * @return String
  */
 public java.lang.String getNOM_PB_SEL_PM() {
@@ -1067,8 +1013,6 @@ public void setFocus(String focus) {
 }
 /**
  * focus focus à définir.
- */
-/**
  * @return String
  */
 public String getDefaultFocus() {
