@@ -714,9 +714,12 @@ public boolean modifierOT(nc.mairie.technique.Transaction aTransaction,Equipemen
 			aTransaction.traiterErreur();
 		}
 		if((!getCompteur().equals(""))&&(unBPCSuiv.getNumerobpc()!=null)){
-			if(Integer.parseInt(getCompteur())>Integer.parseInt(unBPCSuiv.getValeurcompteur())){
-				aTransaction.declarerErreur("Le compteur de l'OT doit être inférieur ou égale au compteur du BPC suivant("+unBPCSuiv.getValeurcompteur()+")");
-				return false;
+			// #12069 s'il n'y a pas eu de changement de compteur : valeur compteur du suivant > valaueur compteur precedent
+			if (Integer.parseInt(unBPCSuiv.valeurcompteur) >= Integer.parseInt(unBPCPrec.valeurcompteur)) {
+				if(Integer.parseInt(getCompteur())>Integer.parseInt(unBPCSuiv.getValeurcompteur())){
+					aTransaction.declarerErreur("Le compteur de l'OT doit être inférieur ou égale au compteur du BPC suivant("+unBPCSuiv.getValeurcompteur()+")");
+					return false;
+				}
 			}
 		}
 	}
