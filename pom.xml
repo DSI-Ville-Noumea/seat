@@ -65,11 +65,27 @@
 			<artifactId>framework</artifactId>
 			<version>${framework_version}</version>
 		</dependency>
-
+		<dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.1-901-1.jdbc4</version>
+        </dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
+		
+			<plugin>
+			   <groupId>org.liquibase</groupId>
+			   <artifactId>liquibase-maven-plugin</artifactId>
+			   <version>3.3.0</version>
+			   <configuration>                  
+				  	<propertyFile>liquibase/liquibase.properties</propertyFile>
+					<changeLogFile>liquibase/db.changelog.xml</changeLogFile>
+			   </configuration>                
+			</plugin> 	
+		
+		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>

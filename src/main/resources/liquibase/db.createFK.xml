@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+	<changeSet author="boulu72 (generated)" id="1416367678959-73" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="CODECARBURANT" baseTableName="F_MODELES" constraintName="CODECARBU" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CODECARBU"  referencedTableName="F_CARBURANT" />
+    </changeSet>
+    <changeSet author="boulu72 (generated)" id="1416367678959-74" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="CODECOMPTEUR" baseTableName="F_MODELES" constraintName="CODECOMPTEUR" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CODECOMPTEUR"  referencedTableName="F_COMPTEUR" />
+    </changeSet>
+    <changeSet author="boulu72 (generated)" id="1416367678959-75" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="CODEENTRETIEN" baseTableName="F_PE_PERSO" constraintName="CODEENT" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CODEENTRETIEN"  referencedTableName="F_ENTRETIEN" />
+    </changeSet>
+    <changeSet author="boulu72 (generated)" id="1416367678959-76" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="CODEMARQUE" baseTableName="F_MODELES" constraintName="CODEMARQUE_MODELES" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CODEMARQUE"  referencedTableName="F_MARQUES" />
+    </changeSet>
+    <changeSet author="boulu72 (generated)" id="1416367678959-77" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="CODEMODELE" baseTableName="F_PE_BASE" constraintName="CODEMOD" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CODEMODELE"  referencedTableName="F_MODELES" />
+    </changeSet>
+    <changeSet author="boulu72 (generated)" id="1416367678959-78" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="CODEMODELE" baseTableName="F_EQUIPEMENT" constraintName="CODEMODELE_EQUIPEMENT" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CODEMODELE"  referencedTableName="F_MODELES" />
+    </changeSet>
+    <changeSet author="boulu72 (generated)" id="1416367678959-79" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="MODEDEPRISE" baseTableName="F_BPC" constraintName="CODEMODEPRISE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CODEMODEPRISE"  referencedTableName="F_MODEPRISE" />
+    </changeSet>
+    <changeSet author="boulu72 (generated)" id="1416367678959-80" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="CODEPNEU" baseTableName="F_MODELES" constraintName="CODEPNEU_MODELE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CODEPNEU"  referencedTableName="F_PNEU" />
+    </changeSet>
+    <changeSet author="boulu72 (generated)" id="1416367678959-81" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="CODESPE" baseTableName="F_AGENTSATM" constraintName="CODESPE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CODESPECIALITE"  referencedTableName="F_SPECIALITE" />
+    </changeSet>
+    <changeSet author="boulu72 (generated)" id="1416367678959-82" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="CODETI" baseTableName="F_PE_BASE" constraintName="CODETI" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CODETI"  referencedTableName="F_TYPEINT" />
+    </changeSet>
+    <changeSet author="boulu72 (generated)" id="1416367678959-83" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="CODETI" baseTableName="F_PE_PERSO" constraintName="CODETINT" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CODETI"  referencedTableName="F_TYPEINT" />
+    </changeSet>
+    <changeSet author="boulu72 (generated)" id="1416367678959-84" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="CODETYPEENT" baseTableName="F_PE_PERSO" constraintName="CODETYPEENT" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CODETYPEENT"  referencedTableName="F_TYPEENT" />
+    </changeSet>
+    <changeSet author="boulu72 (generated)" id="1416367678959-85" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="CODEENTRETIEN" baseTableName="F_PE_BASE" constraintName="ENTRETIEN" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="CODEENTRETIEN"  referencedTableName="F_ENTRETIEN" />
+    </changeSet>
+    <changeSet author="boulu72 (generated)" id="1416367678959-86" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="NUMEROINVENTAIRE" baseTableName="F_AFFECTER" constraintName="NUMEROINV" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="NUMEROINVENTAIRE"  referencedTableName="F_EQUIPEMENT" />
+    </changeSet>
+    <changeSet author="boulu72 (generated)" id="1416367678959-87" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="NUMEROOT" baseTableName="F_OT_FRE" constraintName="NUMEROT" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="NUMEROOT"  referencedTableName="F_OT" />
+    </changeSet>
+</databaseChangeLog>
