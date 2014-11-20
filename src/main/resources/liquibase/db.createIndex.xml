@@ -1,89 +1,89 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-    <changeSet author="boulu72 (generated)" id="1416367678959-88" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-88">
         <createIndex indexName="IX_CODECARBU" tableName="F_MODELES" unique="false">
             <column name="CODECARBURANT"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-89" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-89">
         <createIndex indexName="IX_CODECOMPTEUR" tableName="F_MODELES" unique="false">
             <column name="CODECOMPTEUR"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-90" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-90">
         <createIndex indexName="IX_CODEENT" tableName="F_PE_PERSO" unique="false">
             <column name="CODEENTRETIEN"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-91" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-91">
         <createIndex indexName="IX_CODEMARQUE_MODELES" tableName="F_MODELES" unique="false">
             <column name="CODEMARQUE"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-92" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-92">
         <createIndex indexName="IX_CODEMOD" tableName="F_PE_BASE" unique="false">
             <column name="CODEMODELE"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-93" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-93">
         <createIndex indexName="IX_CODEMODELE_EQUIPEMENT" tableName="F_EQUIPEMENT" unique="false">
             <column name="CODEMODELE"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-94" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-94">
         <createIndex indexName="IX_CODEMODEPRISE" tableName="F_BPC" unique="false">
             <column name="MODEDEPRISE"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-95" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-95">
         <createIndex indexName="IX_CODEPNEU_MODELE" tableName="F_MODELES" unique="false">
             <column name="CODEPNEU"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-96" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-96">
         <createIndex indexName="IX_CODESPE" tableName="F_AGENTSATM" unique="false">
             <column name="CODESPE"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-97" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-97">
         <createIndex indexName="IX_CODETI" tableName="F_PE_BASE" unique="false">
             <column name="CODETI"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-98" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-98">
         <createIndex indexName="IX_CODETINT" tableName="F_PE_PERSO" unique="false">
             <column name="CODETI"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-99" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-99">
         <createIndex indexName="IX_CODETYPEENT" tableName="F_PE_PERSO" unique="false">
             <column name="CODETYPEENT"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-100" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-100">
         <createIndex indexName="IX_ENTRETIEN" tableName="F_PE_BASE" unique="false">
             <column name="CODEENTRETIEN"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-101" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-101">
         <createIndex indexName="IX_F_FPM" tableName="F_FPM" unique="true">
             <column name="NUMFICHE"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-102" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-102">
         <createIndex indexName="IX_F_OT_ATM" tableName="F_OT_ATM" unique="true">
             <column name="MATRICULE"/>
             <column name="NUMOT"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-103" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-103">
         <createIndex indexName="IX_F_PIECES_OT" tableName="F_PIECES_OT" unique="true">
             <column name="NUMOT"/>
             <column name="NUMPIECE"/>
             <column name="DATESORTIE"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-104" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-104">
         <createIndex indexName="IX_F_PMAFF_AG" tableName="F_PMAFF_AG" unique="true">
             <column name="MATRICULE"/>
             <column name="PMINV"/>
@@ -91,7 +91,7 @@
             <column name="HDEB"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-105" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-105">
         <createIndex indexName="IX_F_PMAFF_SC" tableName="F_PMAFF_SC" unique="true">
             <column name="SISERV"/>
             <column name="PMINV"/>
@@ -99,32 +99,32 @@
             <column name="NOMATR"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-106" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-106">
         <createIndex indexName="IX_F_PMATERIEL" tableName="F_PMATERIEL" unique="true">
             <column name="PMINV"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-107" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-107">
         <createIndex indexName="IX_F_PMPE_PERSO" tableName="F_PMPE_PERSO" unique="true">
             <column name="CODEPMPEP"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-108" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-108">
         <createIndex indexName="IX_I_F_OT_NUMINV" tableName="F_OT" unique="false">
             <column name="NUMINV"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-109" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-109">
         <createIndex indexName="IX_I_F_OT_VALIDE" tableName="F_OT" unique="false">
             <column name="VALIDE"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-110" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-110">
         <createIndex indexName="IX_NUMEROINV" tableName="F_AFFECTER" unique="false">
             <column name="NUMEROINVENTAIRE"/>
         </createIndex>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-111" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-111">
         <createIndex indexName="IX_NUMEROT" tableName="F_OT_FRE" unique="false">
             <column name="NUMEROOT"/>
         </createIndex>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-    <changeSet author="boulu72 (generated)" id="1416367678959-1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-1">
         <createTable remarks="affectation d'un équipement à un agent" tableName="F_AFFECTER">
             <column name="MATRICULE" type="numeric(5)">
                 <constraints nullable="false"/>
@@ -25,7 +25,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-2" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-2">
         <createTable tableName="F_AFFECTER_SCE_OLD">
             <column defaultValue="" name="CODESERVICE" type="VARCHAR(32)">
                 <constraints nullable="false"/>
@@ -42,7 +42,7 @@
             <column name="NOMATR" type="numeric(5)"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-3" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-3">
         <createTable remarks="affectation d un equipement a un service" tableName="F_AFF_SCE">
             <column defaultValue="NULL" name="CODESERVICE" remarks="code service" type="VARCHAR(32)"/>
             <column defaultValue="NULL" name="NUMEROINVENTAIRE" remarks="clé de f_equipement" type="VARCHAR(32)"/>
@@ -51,7 +51,7 @@
             <column defaultValueComputed="NULL" name="NOMATR" remarks="code de l'agent" type="numeric(5)"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-4" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-4">
         <createTable tableName="F_AFF_SCE_20111020">
             <column defaultValue="" name="CODESERVICE" remarks="code service" type="VARCHAR(32)"/>
             <column defaultValue="" name="NUMEROINVENTAIRE" remarks="clé de f_equipement" type="VARCHAR(32)"/>
@@ -60,7 +60,7 @@
             <column name="NOMATR" remarks="code de l'agent" type="numeric(5)"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-5" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-5">
         <createTable remarks="les agents de l'ATM" tableName="F_AGENTSATM">
             <column name="MATRICULE" type="numeric(5)">
                 <constraints nullable="false"/>
@@ -73,14 +73,14 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-6" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-6">
         <createTable tableName="F_BC">
             <column name="NUMEROBC" type="INTEGER">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-7" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-7">
         <createTable remarks="les bons d'engagement rattachés aux OT" tableName="F_BENGAGEMENT">
             <column name="CODCOL" type="numeric(5)">
                 <constraints nullable="false"/>
@@ -97,7 +97,7 @@
             <column defaultValue="" name="NOENGJ" type="VARCHAR(15)"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-8" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-8">
         <createTable tableName="F_BPC">
             <column name="NUMEROBPC" type="INTEGER">
                 <constraints nullable="false"/>
@@ -125,7 +125,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-9" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-9">
         <createTable remarks="les carburants" tableName="F_CARBURANT">
             <column name="CODECARBU" type="INTEGER">
                 <constraints nullable="false"/>
@@ -136,7 +136,7 @@
             <column defaultValueNumeric="0" name="NUM_POMPE_ATM" type="numeric(5)"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-10" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-10">
         <createTable remarks="les compteurs" tableName="F_COMPTEUR">
             <column name="CODECOMPTEUR" type="INTEGER">
                 <constraints nullable="false"/>
@@ -146,7 +146,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-11" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-11">
         <createTable remarks="les déclarations" tableName="F_DECLARATIONS">
             <column name="CODEDEC" type="numeric(5)">
                 <constraints nullable="false"/>
@@ -167,7 +167,7 @@
             <column defaultValue="NULL" name="CODESERVICE" type="VARCHAR(32)"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-12" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-12">
         <createTable tableName="F_ENJU">
             <column defaultValueComputed="NULL" name="EXERCI" type="INTEGER"/>
             <column defaultValueComputed="NULL" name="IDETBS" type="INTEGER"/>
@@ -178,7 +178,7 @@
             <column defaultValueComputed="NULL" name="MTLENJU" type="INTEGER"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-13" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-13">
         <createTable tableName="F_ENJU_ASTRE">
             <column name="EXERCI" type="INTEGER"/>
             <column name="IDETBS" type="INTEGER"/>
@@ -189,7 +189,7 @@
             <column name="MTLENJU" type="INTEGER"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-14" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-14">
         <createTable remarks="les entretiens" tableName="F_ENTRETIEN">
             <column name="CODEENTRETIEN" type="INTEGER">
                 <constraints nullable="false"/>
@@ -199,7 +199,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-15" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-15">
         <createTable remarks="les équipements" tableName="F_EQUIPEMENT">
             <column defaultValue="" name="NUMEROINVENTAIRE" type="VARCHAR(32)">
                 <constraints nullable="false"/>
@@ -230,7 +230,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-16" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-16">
         <createTable remarks="liste des fournisseurs du petit matériel" tableName="F_FOURNISSEURS">
             <column name="CODEFRE" type="INTEGER">
                 <constraints nullable="false"/>
@@ -246,7 +246,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-17" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-17">
         <createTable remarks="les fiches d'entretiens du petit matériel" tableName="F_FPM">
             <column name="NUMFICHE" type="INTEGER">
                 <constraints nullable="false"/>
@@ -266,7 +266,7 @@
             <column defaultValue="" name="COMMENTAIRE" type="VARCHAR(150)"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-18" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-18">
         <createTable remarks="les entretiens des FPM" tableName="F_FPM_ENTRETIEN">
             <column name="NUMFICHE" type="INTEGER">
                 <constraints nullable="false"/>
@@ -282,7 +282,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-19" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-19">
         <createTable remarks="liste des pièces sorties pour les FPM" tableName="F_FPM_PIE">
             <column defaultValueComputed="NULL" name="NUMFICHE" remarks="numéro de FPM" type="INTEGER"/>
             <column defaultValueComputed="NULL" name="NUMPIECE" remarks="identifiant de la pièce" type="INTEGER"/>
@@ -291,7 +291,7 @@
             <column defaultValueComputed="NULL" name="PRIX" type="numeric(10)"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-20" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-20">
         <createTable remarks="les marques" tableName="F_MARQUES">
             <column name="CODEMARQUE" type="INTEGER">
                 <constraints nullable="false"/>
@@ -301,7 +301,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-21" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-21">
         <createTable remarks="les modèles" tableName="F_MODELES">
             <column name="CODEMODELE" type="INTEGER">
                 <constraints nullable="false"/>
@@ -344,7 +344,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-22" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-22">
         <createTable remarks="les modes de prise de carburant" tableName="F_MODEPRISE">
             <column name="CODEMODEPRISE" type="INTEGER">
                 <constraints nullable="false"/>
@@ -354,7 +354,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-23" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-23">
         <createTable remarks="les ordres de travaux" tableName="F_OT">
             <column name="NUMEROOT" type="numeric(10)">
                 <constraints nullable="false"/>
@@ -374,7 +374,7 @@
             <column defaultValue="NULL" name="NUMINV" type="VARCHAR(32)"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-24" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-24">
         <createTable remarks="liste des agents ayant travaillés sur un OT" tableName="F_OT_ATM">
             <column name="MATRICULE" type="numeric(5)">
                 <constraints nullable="false"/>
@@ -384,7 +384,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-25" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-25">
         <createTable tableName="F_OT_FRE">
             <column name="CODEFOURNISSEUR" type="numeric(5)">
                 <constraints nullable="false"/>
@@ -394,7 +394,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-26" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-26">
         <createTable remarks="les plans d'entretiens de base" tableName="F_PE_BASE">
             <column name="CODEMODELE" type="INTEGER">
                 <constraints nullable="false"/>
@@ -414,7 +414,7 @@
             <column name="DATEDESACTIVATION" type="date"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-27" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-27">
         <createTable remarks="les plans d'entretiens personnalisés" tableName="F_PE_PERSO">
             <column defaultValue="" name="CODEEQUIP" type="VARCHAR(32)">
                 <constraints nullable="false"/>
@@ -444,7 +444,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-28" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-28">
         <createTable remarks="les pieces" tableName="F_PIECES">
             <column name="CODEPIECE" type="INTEGER">
                 <constraints nullable="false"/>
@@ -457,7 +457,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-29" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-29">
         <createTable remarks="liste des pièces sorties pour les OT" tableName="F_PIECES_OT">
             <column name="NUMOT" type="numeric(10)">
                 <constraints nullable="false"/>
@@ -474,7 +474,7 @@
             <column name="PRIX" type="numeric(10)"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-30" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-30">
         <createTable remarks="affectations des petits matériels aux agents" tableName="F_PMAFF_AG">
             <column defaultValueComputed="NULL" name="MATRICULE" type="INTEGER"/>
             <column defaultValue="NULL" name="PMINV" type="VARCHAR(20)"/>
@@ -487,7 +487,7 @@
             <column defaultValue="NULL" name="CODESCE" type="VARCHAR(32)"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-31" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-31">
         <createTable remarks="affectations des petits matériels aux services" tableName="F_PMAFF_SC">
             <column defaultValue="NULL" name="SISERV" type="VARCHAR(32)"/>
             <column defaultValue="NULL" name="PMINV" type="VARCHAR(20)"/>
@@ -496,7 +496,7 @@
             <column defaultValueComputed="NULL" name="NOMATR" type="INTEGER"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-32" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-32">
         <createTable tableName="F_PMAFF_SC_110905">
             <column defaultValue="" name="SISERV" type="VARCHAR(32)"/>
             <column defaultValue="" name="PMINV" type="VARCHAR(20)"/>
@@ -505,7 +505,7 @@
             <column name="NOMATR" type="INTEGER"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-33" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-33">
         <createTable tableName="F_PMAFF_SC_20111020">
             <column defaultValue="" name="SISERV" type="VARCHAR(32)"/>
             <column defaultValue="" name="PMINV" type="VARCHAR(20)"/>
@@ -514,7 +514,7 @@
             <column name="NOMATR" type="INTEGER"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-34" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-34">
         <createTable remarks="les petits matériels" tableName="F_PMATERIEL">
             <column defaultValue="" name="PMINV" type="VARCHAR(20)">
                 <constraints nullable="false"/>
@@ -548,7 +548,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-35" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-35">
         <createTable tableName="F_PMATERIEL_110905">
             <column defaultValue="" name="PMINV" type="VARCHAR(20)">
                 <constraints nullable="false"/>
@@ -582,7 +582,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-36" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-36">
         <createTable remarks="plan d entretiens personnalise du petit materiel" tableName="F_PMPE_PERSO">
             <column name="CODEPMPEP" remarks="identifiant" type="INTEGER">
                 <constraints nullable="false"/>
@@ -601,7 +601,7 @@
             <column defaultValue="NULL" name="COMMENTAIRE" remarks="commentaire" type="VARCHAR(60)"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-37" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-37">
         <createTable tableName="F_PMPE_PERSO_110905">
             <column name="CODEPMPEP" remarks="identifiant" type="INTEGER">
                 <constraints nullable="false"/>
@@ -620,7 +620,7 @@
             <column defaultValue="" name="COMMENTAIRE" remarks="commentaire" type="VARCHAR(60)"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-38" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-38">
         <createTable remarks="liste des agents ayant travaille pour une FPM" tableName="F_PM_ATM">
             <column name="NUMFICHE" type="INTEGER">
                 <constraints nullable="false"/>
@@ -630,7 +630,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-39" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-39">
         <createTable remarks="liste des bons d'engagement pour les FPM" tableName="F_PM_BE">
             <column name="NUMFICHE" type="INTEGER">
                 <constraints nullable="false"/>
@@ -647,7 +647,7 @@
             <column defaultValue="" name="NOENGJ" type="VARCHAR(15)"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-40" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-40">
         <createTable remarks="les types de pneu" tableName="F_PNEU">
             <column name="CODEPNEU" type="INTEGER">
                 <constraints nullable="false"/>
@@ -657,7 +657,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-41" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-41">
         <createTable remarks="les pompes" tableName="F_POMPES">
             <column name="NUM_POMPE" type="numeric(10)"/>
             <column defaultValue="" name="LIBELLE_POMPE" type="VARCHAR(32)">
@@ -666,7 +666,7 @@
             <column defaultValue="" name="COMMENTAIRE_POMPE" type="VARCHAR(50)"/>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-42" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-42">
         <createTable remarks="les spécialités des mécaniciens de l'ATM" tableName="F_SPECIALITE">
             <column name="CODESPECIALITE" type="INTEGER">
                 <constraints nullable="false"/>
@@ -676,7 +676,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-43" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-43">
         <createTable tableName="F_TYPEDUREE">
             <column name="CODETD" type="INTEGER">
                 <constraints nullable="false"/>
@@ -686,7 +686,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-44" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-44">
         <createTable remarks="les types d'entretien" tableName="F_TYPEENT">
             <column name="CODETYPEENT" type="INTEGER">
                 <constraints nullable="false"/>
@@ -696,7 +696,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-45" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-45">
         <createTable remarks="les types d'équipement" tableName="F_TYPEEQUIP">
             <column name="CODETYPEEQUIP" type="INTEGER">
                 <constraints nullable="false"/>
@@ -709,7 +709,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-46" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-46">
         <createTable remarks="les types d'intervalle" tableName="F_TYPEINT">
             <column name="CODETI" type="INTEGER">
                 <constraints nullable="false"/>
@@ -719,82 +719,82 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-47" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-47">
         <addPrimaryKey columnNames="NUMEROOT" constraintName="C0436251" tableName="F_OT"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-48" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-48">
         <addPrimaryKey columnNames="CODEMODEPRISE" constraintName="C1250912" tableName="F_MODEPRISE"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-49" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-49">
         <addPrimaryKey columnNames="NUMEROINVENTAIRE" constraintName="C1362579" tableName="F_EQUIPEMENT"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-50" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-50">
         <addPrimaryKey columnNames="CODEMODELE" constraintName="C2248985" tableName="F_MODELES"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-51" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-51">
         <addPrimaryKey columnNames="CODETD" constraintName="C2270447" tableName="F_TYPEDUREE"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-52" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-52">
         <addPrimaryKey columnNames="MATRICULE" constraintName="C2648127" tableName="F_AGENTSATM"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-53" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-53">
         <addPrimaryKey columnNames="NUMEROBPC" constraintName="C2830272" tableName="F_BPC"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-54" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-54">
         <addPrimaryKey columnNames="CODEPNEU" constraintName="C2941919" tableName="F_PNEU"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-55" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-55">
         <addPrimaryKey columnNames="NUMEROINVENTAIRE, DDEBUT, CODESERVICE" constraintName="C3151194" tableName="F_AFFECTER_SCE_OLD"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-56" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-56">
         <addPrimaryKey columnNames="CODEFOURNISSEUR, NUMEROOT" constraintName="C3795517" tableName="F_OT_FRE"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-57" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-57">
         <addPrimaryKey columnNames="CODETYPEENT" constraintName="C4217239" tableName="F_TYPEENT"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-58" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-58">
         <addPrimaryKey columnNames="CODETI" constraintName="C4252506" tableName="F_TYPEINT"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-59" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-59">
         <addPrimaryKey columnNames="CODEPEP" constraintName="C4825415" tableName="F_PE_PERSO"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-60" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-60">
         <addPrimaryKey columnNames="CODESPECIALITE" constraintName="C4911892" tableName="F_SPECIALITE"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-61" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-61">
         <addPrimaryKey columnNames="CODETYPEEQUIP" constraintName="C5129767" tableName="F_TYPEEQUIP"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-62" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-62">
         <addPrimaryKey columnNames="CODECOMPTEUR" constraintName="C5404797" tableName="F_COMPTEUR"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-63" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-63">
         <addPrimaryKey columnNames="MATRICULE, NUMEROINVENTAIRE, DATEDEBUT" constraintName="C5533856" tableName="F_AFFECTER"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-64" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-64">
         <addPrimaryKey columnNames="CODEFRE" constraintName="C5638229" tableName="F_FOURNISSEURS"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-65" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-65">
         <addPrimaryKey columnNames="CODEDEC" constraintName="C7004989" tableName="F_DECLARATIONS"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-66" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-66">
         <addPrimaryKey columnNames="CODEMARQUE" constraintName="C7063185" tableName="F_MARQUES"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-67" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-67">
         <addPrimaryKey columnNames="CODECARBU" constraintName="C7336019" tableName="F_CARBURANT"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-68" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-68">
         <addPrimaryKey columnNames="CODEMODELE, CODEENTRETIEN" constraintName="C8501865" tableName="F_PE_BASE"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-69" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-69">
         <addPrimaryKey columnNames="CODEENTRETIEN" constraintName="C9207698" tableName="F_ENTRETIEN"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-70" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-70">
         <addPrimaryKey columnNames="CODEPIECE" constraintName="CODEPIECE" tableName="F_PIECES"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-71" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-71">
         <addPrimaryKey columnNames="NUMEROBC" constraintName="NUMEROBONDECOMMANDE" tableName="F_BC"/>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416367678959-72" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416367678959-72">
         <addPrimaryKey columnNames="NUM_POMPE" constraintName="QSYS_F_POMPES_00001" tableName="F_POMPES"/>
     </changeSet>
 

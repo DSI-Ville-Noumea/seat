@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-    <changeSet author="boulu72 (generated)" id="1416453737919-1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416453737919-1">
         <createTable tableName="MAIRCCAS_SPMTSR">
             <column name="NOMATR" remarks="MATRICULE" type="numeric(5)">
                 <constraints nullable="false"/>
@@ -22,7 +22,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416453737919-2" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416453737919-2">
         <createTable tableName="MAIRCCAS_SPPERS">
             <column name="IDINDI" remarks="NUMERO INDIVIDU" type="DECIMAL(7)">
                 <constraints nullable="false"/>
@@ -140,7 +140,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416453737919-3" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416453737919-3">
         <createTable tableName="MAIRCCAS_SPPOST">
             <column name="POANNE" remarks="ANNEE DU POSTE" type="numeric(4)">
                 <constraints nullable="false"/>
@@ -219,7 +219,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416453737919-4" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416453737919-4">
         <createTable tableName="MAIRCDE_SPMTSR">
             <column name="NOMATR" remarks="MATRICULE" type="numeric(5)">
                 <constraints nullable="false"/>
@@ -241,7 +241,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416453737919-5" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416453737919-5">
         <createTable tableName="MAIRCDE_SPPERS">
             <column name="IDINDI" remarks="NUMERO INDIVIDU" type="DECIMAL(7)">
                 <constraints nullable="false"/>
@@ -359,7 +359,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416453737919-6" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416453737919-6">
         <createTable tableName="MAIRCDE_SPPOST">
             <column name="POANNE" remarks="ANNEE DU POSTE" type="numeric(4)">
                 <constraints nullable="false"/>
@@ -429,7 +429,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416453737919-7" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416453737919-7">
         <createTable tableName="MAIRIE_SISERV">
             <column defaultValue="" name="SERVI" remarks="SERVICE" type="CHAR(4)">
                 <constraints nullable="false"/>
@@ -457,7 +457,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416453737919-8" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416453737919-8">
         <createTable tableName="MAIRIE_SPMTSR">
             <column name="NOMATR" remarks="MATRICULE" type="numeric(5)">
                 <constraints nullable="false"/>
@@ -479,7 +479,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416453737919-9" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416453737919-9">
         <createTable tableName="MAIRIE_SPPERS">
             <column name="IDINDI" remarks="NUMERO INDIVIDU" type="DECIMAL(7)">
                 <constraints nullable="false"/>
@@ -597,7 +597,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="boulu72 (generated)" id="1416453737919-10" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+    <changeSet author="boulu72 (generated)" id="1416453737919-10">
         <createTable tableName="MAIRIE_SPPOST">
             <column name="POANNE" remarks="ANNEE DU POSTE" type="numeric(4)">
                 <constraints nullable="false"/>
