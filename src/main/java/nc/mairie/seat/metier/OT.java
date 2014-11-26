@@ -701,25 +701,26 @@ public boolean modifierOT(nc.mairie.technique.Transaction aTransaction,Equipemen
 		if(unBPCPrec.getNumerobpc()==null){
 			aTransaction.traiterErreur();
 		}
-		if((!getCompteur().equals(""))&&(unBPCPrec.getNumerobpc()!=null)){
-			if(Integer.parseInt(getCompteur())<Integer.parseInt(unBPCPrec.getValeurcompteur())){
-				aTransaction.declarerErreur("Le compteur de l'OT doit être supérieur ou égale au compteur du BPC le précédant("+unBPCPrec.getValeurcompteur()+")");
-				return false;
-			}
-		}
 		//BPC Suivant
 		unBPCSuiv = BPC.chercherBPCSuivEquipDate(aTransaction,getDateentree(),unEquipement.getNumeroinventaire());
+		if((!getCompteur().equals(""))&&(unBPCPrec.getNumerobpc()!=null)){
+			// Bug #12211: Impossible de clôturer des fiches OT 	
+			// s'il n'y a pas eu de changement de compteur : valeur compteur du suivant > valaueur compteur precedent
+			if(Integer.parseInt(unBPCSuiv.valeurcompteur) >= Integer.parseInt(unBPCPrec.valeurcompteur)){
+				if(Integer.parseInt(getCompteur())<Integer.parseInt(unBPCPrec.getValeurcompteur())){
+						aTransaction.declarerErreur("Le compteur de l'OT doit être supérieur ou égale au compteur du BPC le précédant("+unBPCPrec.getValeurcompteur()+")");
+						return false;
+				}
+			}
+		}
 		// si pas de BPC trouvé = pas de BPC enregistré pour cet équipement
 		if(unBPCSuiv.getNumerobpc()==null){
 			aTransaction.traiterErreur();
 		}
 		if((!getCompteur().equals(""))&&(unBPCSuiv.getNumerobpc()!=null)){
-			// #12069 s'il n'y a pas eu de changement de compteur : valeur compteur du suivant > valaueur compteur precedent
-			if (Integer.parseInt(unBPCSuiv.valeurcompteur) >= Integer.parseInt(unBPCPrec.valeurcompteur)) {
-				if(Integer.parseInt(getCompteur())>Integer.parseInt(unBPCSuiv.getValeurcompteur())){
-					aTransaction.declarerErreur("Le compteur de l'OT doit être inférieur ou égale au compteur du BPC suivant("+unBPCSuiv.getValeurcompteur()+")");
-					return false;
-				}
+			if(Integer.parseInt(getCompteur())>Integer.parseInt(unBPCSuiv.getValeurcompteur())){
+				aTransaction.declarerErreur("Le compteur de l'OT doit être inférieur ou égale au compteur du BPC suivant("+unBPCSuiv.getValeurcompteur()+")");
+				return false;
 			}
 		}
 	}
