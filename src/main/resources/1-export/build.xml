@@ -1,0 +1,10 @@
+<!DOCTYPE project>
+<project name="VireObjectQuotingStrategy" default="replace" basedir=".">
+    <description>
+        Vire les objectQuotingStrategy
+    </description>
+	<target name="replace" description="VireObjectQuotingStrategy">
+		<replace file="export.xml" token=' objectQuotingStrategy="QUOTE_ALL_OBJECTS"' value="" encoding="UTF-8"/>
+	</target>
+	
+</project>
