@@ -704,12 +704,15 @@ public boolean modifierOT(nc.mairie.technique.Transaction aTransaction,Equipemen
 		//BPC Suivant
 		unBPCSuiv = BPC.chercherBPCSuivEquipDate(aTransaction,getDateentree(),unEquipement.getNumeroinventaire());
 		if((!getCompteur().equals(""))&&(unBPCPrec.getNumerobpc()!=null)){
-			// Bug #12211: Impossible de clôturer des fiches OT 	
-			// s'il n'y a pas eu de changement de compteur : valeur compteur du suivant > valaueur compteur precedent
-			if(Integer.parseInt(unBPCSuiv.valeurcompteur) >= Integer.parseInt(unBPCPrec.valeurcompteur)){
-				if(Integer.parseInt(getCompteur())<Integer.parseInt(unBPCPrec.getValeurcompteur())){
-						aTransaction.declarerErreur("Le compteur de l'OT doit être supérieur ou égale au compteur du BPC le précédant("+unBPCPrec.getValeurcompteur()+")");
-						return false;
+			//Bub # 12304 : s'il a un PBC suivant
+			if (unBPCSuiv.getNumerobpc()!=null) {
+				// Bug #12211: Impossible de clôturer des fiches OT 	
+				// s'il n'y a pas eu de changement de compteur : valeur compteur du suivant > valaueur compteur precedent
+				if(Integer.parseInt(unBPCSuiv.valeurcompteur) >= Integer.parseInt(unBPCPrec.valeurcompteur)){
+					if(Integer.parseInt(getCompteur())<Integer.parseInt(unBPCPrec.getValeurcompteur())){
+							aTransaction.declarerErreur("Le compteur de l'OT doit être supérieur ou égale au compteur du BPC le précédant("+unBPCPrec.getValeurcompteur()+")");
+							return false;
+					}
 				}
 			}
 		}
