@@ -3,8 +3,6 @@
 
 	<include file="liquibase/db.createTable.xml" />
 
-	<include file="liquibase/db.createFK.xml" />
-
 	<include file="liquibase/db.createIndex.xml" />
 
 	<include file="liquibase/db.createFunction.xml" />
@@ -12,5 +10,13 @@
 	<include file="liquibase/db.createTableAnnexe.xml" />
 	
 	<include file="liquibase/db.createView.xml" />
+	
+	<include file="1-export/export.xml" />
 
+	<include file="liquibase/db.patch.xml" />
+
+	<include file="liquibase/db.createFK.xml" />
+
+	<include file="liquibase/db.VACUUM.xml" />
+	
 </databaseChangeLog>
