@@ -1,3 +1,4 @@
+<!DOCTYPE project>
 <project name="VireObjectQuotingStrategy" default="all" basedir=".">
    
 	<loadproperties srcFile="../AS400.properties"/>
