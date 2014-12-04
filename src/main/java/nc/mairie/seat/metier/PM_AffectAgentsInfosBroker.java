@@ -27,7 +27,7 @@ public ArrayList<PM_AffectAgentsInfos> listerPM_AffectAgentInfosScePMatDate(nc.m
 	}else{
 		return new ArrayList<PM_AffectAgentsInfos>();
 	}
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where matricule in(select nomatr from mairie.spmtsr where codesce like '"+servi+"%' and ddeb>='"+date+"' and pminv='"+inv+"')");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where matricule in(select nomatr from mairie_spmtsr where codesce like '"+servi+"%' and ddeb>='"+date+"' and pminv='"+inv+"')");
 }
 /**
  * Retourne un PM_AffectAgentsInfos.
@@ -45,7 +45,7 @@ public ArrayList<PM_AffectAgentsInfos> chercherPM_AffectAgentsInfosSce(nc.mairie
 }
 
 public ArrayList<PM_AffectAgentsInfos> chercherPM_AffectAgentsInfosScePM(nc.mairie.technique.Transaction aTransaction,String inv, String servi) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv='"+inv+"' and matricule in(select nomatr from mairie.spmtsr where servi like '"+servi+"%') order by ddeb desc, dfin");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv='"+inv+"' and matricule in(select nomatr from mairie_spmtsr where servi like '"+servi+"%') order by ddeb desc, dfin");
 }
 
 /**

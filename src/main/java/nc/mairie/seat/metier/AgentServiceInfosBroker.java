@@ -50,7 +50,7 @@ public ArrayList<AgentServiceInfos> chercherListAgentServiceInfosSce(nc.mairie.t
  */
 public ArrayList<AgentServiceInfos> listerAgentService(nc.mairie.technique.Transaction aTransaction,String serv) throws Exception {
 	serv = serv.substring(0,3); 
-	return executeSelectListe(aTransaction,"select * from mairie.sppers sppers, mairie.spmtsr spmtsr, mairie.sppost sppost where sppers.nomatr=spmtsr.nomatr and sppers.nomatr=sppost.pomatr and spmtsr.servi like '"+serv+"%' and codact='A' and podsup=0 and datfin=0 order by nom with ur");
+	return executeSelectListe(aTransaction,"select * from mairie_sppers sppers, mairie_spmtsr spmtsr, mairie_sppost sppost where sppers.nomatr=spmtsr.nomatr and sppers.nomatr=sppost.pomatr and spmtsr.servi like '"+serv+"%' and codact='A' and podsup=0 and datfin=0 order by nom with ur");
 }
 /**
  * Constructeur AgentServiceInfosBroker.
