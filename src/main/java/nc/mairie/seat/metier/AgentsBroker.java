@@ -103,7 +103,7 @@ public Agents chercherAgents(nc.mairie.technique.Transaction aTransaction, Strin
 public ArrayList<Agents> listerAgentsNom(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	String dateDuJour = Services.formateDateInternationale(Services.dateDuJour());
 	dateDuJour = Services.convertitDate(dateDuJour,"yyyy-mm-dd","yyyymmdd");
-	return executeSelectListe(aTransaction,"select * from "+getTable()+",mairie.spmtsr where mairie_spmtsr.nomatr="+getTable()+".nomatr and upper(nom) like '"+param+"%' and mairie_spmtsr.datdeb<="+dateDuJour+" and (mairie.spmtsr.datfin=0 or mairie_spmtsr.datfin>="+dateDuJour+") order by nom with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+",mairie_spmtsr where mairie_spmtsr.nomatr="+getTable()+".nomatr and upper(nom) like '"+param+"%' and mairie_spmtsr.datdeb<="+dateDuJour+" and (mairie_spmtsr.datfin=0 or mairie_spmtsr.datfin>="+dateDuJour+") order by nom with ur");
 }
 
 }
