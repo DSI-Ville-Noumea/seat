@@ -37,9 +37,9 @@ public AgentServiceInfos chercherAgentServiceInfos(nc.mairie.technique.Transacti
 public ArrayList<AgentServiceInfos> chercherListAgentServiceInfosSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	String servi = param.substring(0,3); 
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where servi like '"+servi+"%' and datfin=0 order by nom with ur");
-		//	"SELECT MAIRIE.SPPERS.NOMATR "+
-			//"FROM (MAIRIE.SPPOST INNER JOIN MAIRIE_SPPERS ON MAIRIE.SPPOST.POMATR = MAIRIE.SPPERS.NOMATR) INNER JOIN MAIRIE.SISERV ON MAIRIE.SPPOST.POSERV = MAIRIE.SISERV.SERVI"+
-			//"WHERE (((MAIRIE.SPPOST.PODSUP)=0) AND ((MAIRIE.SPPOST.CODACT)='A') AND ((MAIRIE.SPPOST.POMATR)>1000 And (MAIRIE.SPPOST.POMATR)<9000)))");
+		//	"SELECT MAIRIE_SPPERS.NOMATR "+
+			//"FROM (MAIRIE_SPPOST INNER JOIN MAIRIE_SPPERS ON MAIRIE_SPPOST.POMATR = MAIRIE_SPPERS.NOMATR) INNER JOIN MAIRIE_SISERV ON MAIRIE_SPPOST.POSERV = MAIRIE_SISERV.SERVI"+
+			//"WHERE (((MAIRIE_SPPOST.PODSUP)=0) AND ((MAIRIE_SPPOST.CODACT)='A') AND ((MAIRIE_SPPOST.POMATR)>1000 And (MAIRIE_SPPOST.POMATR)<9000)))");
 }
 /**
  * Retourne un ArrayList d'objet métier : AgentServiceInfos.

@@ -32,7 +32,7 @@ protected Agents getMyAgents() {
  * Retourne le nom de la table.
  */
 protected java.lang.String definirNomTable() {
-	return "MAIRIE.SPPERS";
+	return "MAIRIE_SPPERS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

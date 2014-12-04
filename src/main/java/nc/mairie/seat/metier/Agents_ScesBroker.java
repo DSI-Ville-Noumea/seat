@@ -33,7 +33,7 @@ protected Agents_Sces getMyAgents_Sces() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "MAIRIE.SPMTSR";
+	return "MAIRIE_SPMTSR";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

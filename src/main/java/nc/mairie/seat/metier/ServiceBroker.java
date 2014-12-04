@@ -34,7 +34,7 @@ protected Service getMyService() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "MAIRIE.SISERV";
+	return "MAIRIE_SISERV";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.
@@ -88,7 +88,7 @@ public Service chercherServiceActifAvecAcronyme(nc.mairie.technique.Transaction 
  * @throws Exception Exception
  */
 public ArrayList<Service> chercherListServiceTous(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
-	//return executeSelectListe(aTransaction,"select * from "+getTable()+",MAIRIE.SPMTSR where mairie.siserv.servi=mairie.spmtsr.servi and CODACT<>'I' and upper(liserv) like '"+param.toUpperCase()+"%' or mairie.siserv.servi like'"+param+"%' order by liserv");
+	//return executeSelectListe(aTransaction,"select * from "+getTable()+",MAIRIE_SPMTSR where mairie.siserv.servi=mairie.spmtsr.servi and CODACT<>'I' and upper(liserv) like '"+param.toUpperCase()+"%' or mairie.siserv.servi like'"+param+"%' order by liserv");
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where CODACT<>'I' and (upper(liserv) like '"+param.toUpperCase()+"%' or servi like'"+param+"%') order by liserv with ur");
 }
 /**

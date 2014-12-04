@@ -33,7 +33,7 @@ protected Fournisseurs getMyFournisseurs() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "MAIRIE.SIETBS";
+	return "MAIRIE_SIETBS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

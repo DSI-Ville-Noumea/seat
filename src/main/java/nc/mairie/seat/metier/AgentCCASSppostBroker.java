@@ -31,7 +31,7 @@ protected AgentCCASSppost getMyAgentCCASSppost() {
  * Retourne le nom de la table.
  */
 protected java.lang.String definirNomTable() {
-	return "MAIRCCAS.SPPOST";
+	return "MAIRCCAS_SPPOST";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

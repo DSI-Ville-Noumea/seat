@@ -31,7 +31,7 @@ protected AgentCDESppost getMyAgentCDESppost() {
  * Retourne le nom de la table.
  */
 protected java.lang.String definirNomTable() {
-	return "MAIRCDE.SPPOST";
+	return "MAIRCDE_SPPOST";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

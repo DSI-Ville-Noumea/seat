@@ -32,7 +32,7 @@ protected AgentCCAS getMyAgentCCAS() {
  * Retourne le nom de la table.
  */
 protected java.lang.String definirNomTable() {
-	return "MAIRCCAS.SPPERS";
+	return "MAIRCCAS_SPPERS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.
@@ -81,7 +81,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * @throws Exception Exception
  */
 public ArrayList<AgentCCAS> listerAgentCCAS(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" inner join MAIRCCAS.SPPOST on nomatr = pomatr and codact <> 'I'  order by nom with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" inner join MAIRCCAS_SPPOST on nomatr = pomatr and codact <> 'I'  order by nom with ur");
 }
 /**
  * Retourne un AgentCCAS.
@@ -103,6 +103,6 @@ public AgentCCAS chercherAgentCCAS(nc.mairie.technique.Transaction aTransaction,
 public ArrayList<AgentCCAS> listerAgentCCASNom(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	String dateDuJour = Services.formateDateInternationale(Services.dateDuJour());
 	dateDuJour = Services.convertitDate(dateDuJour,"yyyy-mm-dd","yyyymmdd");
-	return executeSelectListe(aTransaction,"select * from "+getTable()+",MAIRCCAS.spmtsr where upper(nom) like '"+param+"%'and MAIRCCAS.spmtsr.nomatr="+getTable()+".nomatr and MAIRCCAS.spmtsr.datdeb<="+dateDuJour+" and (MAIRCCAS.spmtsr.datfin=0 or MAIRCCAS.spmtsr.datfin>="+dateDuJour+") and servi='5000' with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+",MAIRCCAS_spmtsr where upper(nom) like '"+param+"%'and MAIRCCAS_spmtsr.nomatr="+getTable()+".nomatr and MAIRCCAS_spmtsr.datdeb<="+dateDuJour+" and (MAIRCCAS_spmtsr.datfin=0 or MAIRCCAS_spmtsr.datfin>="+dateDuJour+") and servi='5000' with ur");
 }
 }
