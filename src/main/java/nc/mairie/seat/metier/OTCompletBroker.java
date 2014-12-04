@@ -32,7 +32,7 @@ protected OTComplet getMyOTComplet() {
  */
 protected java.lang.String definirNomTable() {
 	return "SEAT.V_OTCOMPLET";
-	//return "SEAT.F_OT F_OT inner join SEAT.F_EQU00001 F_EQUIPEMENT ON F_OT.NUMINV = F_EQUIPEMENT.NUMEROINVENTAIRE";
+	//return "SEAT.F_OT F_OT inner join SEAT.F_EQUIPEMENT F_EQUIPEMENT ON F_OT.NUMINV = F_EQUIPEMENT.NUMEROINVENTAIRE";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.
