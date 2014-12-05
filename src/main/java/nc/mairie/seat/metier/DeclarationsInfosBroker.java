@@ -17,7 +17,7 @@ public class DeclarationsInfosBroker extends BasicBroker {
  * @throws Exception Exception
  */
 public ArrayList<DeclarationsInfos> listerDeclarationsInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable());
 }
 
 /**
@@ -28,7 +28,7 @@ public ArrayList<DeclarationsInfos> listerDeclarationsInfos(nc.mairie.technique.
  * @throws Exception Exception
  */
 public ArrayList<DeclarationsInfos> listerDeclarationsInfosEquip(nc.mairie.technique.Transaction aTransaction,String inv) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numinv='"+inv+"' with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numinv='"+inv+"'");
 }
 
 /**
@@ -39,7 +39,7 @@ public ArrayList<DeclarationsInfos> listerDeclarationsInfosEquip(nc.mairie.techn
  * @throws Exception Exception
  */
 public ArrayList<DeclarationsInfos> listerDeclarationsInfosOT(nc.mairie.technique.Transaction aTransaction,String numot) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeot="+numot+" with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeot="+numot);
 }
 
 /**
@@ -50,11 +50,11 @@ public ArrayList<DeclarationsInfos> listerDeclarationsInfosOT(nc.mairie.techniqu
  * @throws Exception Exception
  */
 public DeclarationsInfos chercherDeclarationsInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return (DeclarationsInfos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+" with ur");
+	return (DeclarationsInfos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle);
 }
 // recherche des déclarations pour un service et un équipement à partir d'une date
 public ArrayList<DeclarationsInfos> listerDeclarationsInfosSce(nc.mairie.technique.Transaction aTransaction,String sce,String ddeb,String numinv,String dfin) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice = '"+sce+"' and date>='"+Services.formateDateInternationale(ddeb)+"' and numinv='"+numinv+"' and date<='"+Services.formateDateInternationale(dfin)+"' with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice = '"+sce+"' and date>='"+Services.formateDateInternationale(ddeb)+"' and numinv='"+numinv+"' and date<='"+Services.formateDateInternationale(dfin)+"'");
 }
 
 /**

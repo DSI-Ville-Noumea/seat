@@ -15,7 +15,7 @@ public class AgentServiceInfosBroker extends BasicBroker {
  * @throws Exception Exception
  */
 public ArrayList<AgentServiceInfos> listerAgentServiceInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable());
 }
 /**
  * Retourne un AgentServiceInfos.
@@ -25,7 +25,7 @@ public ArrayList<AgentServiceInfos> listerAgentServiceInfos(nc.mairie.technique.
  * @throws Exception Exception
  */
 public AgentServiceInfos chercherAgentServiceInfos(nc.mairie.technique.Transaction aTransaction, String nomatr) throws Exception {
-	return (AgentServiceInfos)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+nomatr+" with ur");
+	return (AgentServiceInfos)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+nomatr);
 }
 /**
  * Retourne un ArrayList d'objet métier : AgentServiceInfos.
@@ -36,7 +36,7 @@ public AgentServiceInfos chercherAgentServiceInfos(nc.mairie.technique.Transacti
  */
 public ArrayList<AgentServiceInfos> chercherListAgentServiceInfosSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	String servi = param.substring(0,3); 
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where servi like '"+servi+"%' and datfin=0 order by nom with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where servi like '"+servi+"%' and datfin=0 order by nom");
 		//	"SELECT MAIRIE_SPPERS.NOMATR "+
 			//"FROM (MAIRIE_SPPOST INNER JOIN MAIRIE_SPPERS ON MAIRIE_SPPOST.POMATR = MAIRIE_SPPERS.NOMATR) INNER JOIN MAIRIE_SISERV ON MAIRIE_SPPOST.POSERV = MAIRIE_SISERV.SERVI"+
 			//"WHERE (((MAIRIE_SPPOST.PODSUP)=0) AND ((MAIRIE_SPPOST.CODACT)='A') AND ((MAIRIE_SPPOST.POMATR)>1000 And (MAIRIE_SPPOST.POMATR)<9000)))");
@@ -50,7 +50,7 @@ public ArrayList<AgentServiceInfos> chercherListAgentServiceInfosSce(nc.mairie.t
  */
 public ArrayList<AgentServiceInfos> listerAgentService(nc.mairie.technique.Transaction aTransaction,String serv) throws Exception {
 	serv = serv.substring(0,3); 
-	return executeSelectListe(aTransaction,"select * from mairie_sppers sppers, mairie_spmtsr spmtsr, mairie_sppost sppost where sppers.nomatr=spmtsr.nomatr and sppers.nomatr=sppost.pomatr and spmtsr.servi like '"+serv+"%' and codact='A' and podsup=0 and datfin=0 order by nom with ur");
+	return executeSelectListe(aTransaction,"select * from mairie_sppers sppers, mairie_spmtsr spmtsr, mairie_sppost sppost where sppers.nomatr=spmtsr.nomatr and sppers.nomatr=sppost.pomatr and spmtsr.servi like '"+serv+"%' and codact='A' and podsup=0 and datfin=0 order by nom");
 }
 /**
  * Constructeur AgentServiceInfosBroker.

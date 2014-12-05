@@ -45,7 +45,7 @@ public boolean supprimerAgentsATM(nc.mairie.technique.Transaction aTransaction) 
  * @throws Exception Exception
  */
 public ArrayList<AgentsATM> listerAgentsATM(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+", MAIRIE_SPPERS where "+getTable()+".matricule=MAIRIE_SPPERS.nomatr order by nom with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+", MAIRIE_SPPERS where "+getTable()+".matricule=MAIRIE_SPPERS.nomatr order by nom");
 }
 /**
  * Retourne un AgentsATM.

@@ -81,7 +81,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * @throws Exception Exception
  */
 public ArrayList<AgentCDE> listerAgentCDE(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" inner join MAIRCDE_SPPOST on nomatr = pomatr and codact <> 'I' order by nom with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" inner join MAIRCDE_SPPOST on nomatr = pomatr and codact <> 'I' order by nom");
 }
 /**
  * Retourne un AgentCDE.
@@ -91,7 +91,7 @@ public ArrayList<AgentCDE> listerAgentCDE(nc.mairie.technique.Transaction aTrans
  * @throws Exception Exception
  */
 public AgentCDE chercherAgentCDE(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return (AgentCDE)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+cle+" with ur");
+	return (AgentCDE)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+cle);
 }
 /**
  * Retourne un AgentCDE.
@@ -103,6 +103,6 @@ public AgentCDE chercherAgentCDE(nc.mairie.technique.Transaction aTransaction, S
 public ArrayList<AgentCDE> listerAgentCDENom(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	String dateDuJour = Services.formateDateInternationale(Services.dateDuJour());
 	dateDuJour = Services.convertitDate(dateDuJour,"yyyy-mm-dd","yyyymmdd");
-	return executeSelectListe(aTransaction,"select * from "+getTable()+",MAIRCDE_SPMTSR where "+getTable()+".nomatr=MAIRCDE_SPMTSR.nomatr and upper(nom) like '"+param+"%' and MAIRCDE_spmtsr.datdeb<="+dateDuJour+" and MAIRCDE_spmtsr.servi='4000' and (MAIRCDE_spmtsr.datfin=0 or MAIRCDE_spmtsr.datfin>="+dateDuJour+") with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+",MAIRCDE_SPMTSR where "+getTable()+".nomatr=MAIRCDE_SPMTSR.nomatr and upper(nom) like '"+param+"%' and MAIRCDE_spmtsr.datdeb<="+dateDuJour+" and MAIRCDE_spmtsr.servi='4000' and (MAIRCDE_spmtsr.datfin=0 or MAIRCDE_spmtsr.datfin>="+dateDuJour+")");
 }
 }

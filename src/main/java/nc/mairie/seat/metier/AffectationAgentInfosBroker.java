@@ -17,7 +17,7 @@ public class AffectationAgentInfosBroker extends BasicBroker {
  * @throws Exception Exception
  */
 public ArrayList<AffectationAgentInfos> listerAffectationAgentInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable());
 }
 /**
  * Retourne un AffectationAgentInfos.
@@ -27,7 +27,7 @@ public ArrayList<AffectationAgentInfos> listerAffectationAgentInfos(nc.mairie.te
  * @throws Exception Exception
  */
 public AffectationAgentInfos chercherAffectationAgentInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return (AffectationAgentInfos)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+cle+" with ur");
+	return (AffectationAgentInfos)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+cle);
 }
 
 /**
@@ -40,7 +40,7 @@ public AffectationAgentInfos chercherAffectationAgentInfos(nc.mairie.technique.T
 public ArrayList<AffectationAgentInfos> chercherListAffectationsSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	// on prend le code du service et pas le code du sous service
 	param = param.substring(0,3);
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where matricule in(select nomatr from mairie_spmtsr where servi like '"+param+"%') order by datedebut desc, datefin desc with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where matricule in(select nomatr from mairie_spmtsr where servi like '"+param+"%') order by datedebut desc, datefin desc");
 }
 
 public ArrayList<AffectationAgentInfos> chercherListAffectationsSce2(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
@@ -49,7 +49,7 @@ public ArrayList<AffectationAgentInfos> chercherListAffectationsSce2(nc.mairie.t
 public ArrayList<AffectationAgentInfos> chercherListAffectationsSceEquip(nc.mairie.technique.Transaction aTransaction,String param,String numinv) throws Exception {
 	// on prend le code du service et pas le code du sous service
 	param = param.substring(0,3);
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire="+numinv+" and matricule in(select nomatr from mairie_spmtsr where servi like '"+param+"%') order by datedebut desc, datefin desc  with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire="+numinv+" and matricule in(select nomatr from mairie_spmtsr where servi like '"+param+"%') order by datedebut desc, datefin desc");
 }
 /**
  * Retourne un ArrayList d'objet métier : AffectationAgentInfos.
@@ -69,7 +69,7 @@ public ArrayList<AffectationAgentInfos> listAffectationsSceEquipDate(nc.mairie.t
 	}else{
 		return new ArrayList<AffectationAgentInfos>();
 	}
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where matricule in(select nomatr from mairie_spmtsr where servi like '"+servi+"%' and datedebut>='"+date+"' and numeroinventaire='"+inv+"') with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where matricule in(select nomatr from mairie_spmtsr where servi like '"+servi+"%' and datedebut>='"+date+"' and numeroinventaire='"+inv+"')");
 }
 
 /**

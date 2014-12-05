@@ -65,7 +65,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * @throws Exception Exception
  */
 public ArrayList<BPCPMInfos> listerBPCPMInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable());
 }
 /**
  * Retourne un BPCPMInfos.
@@ -75,7 +75,7 @@ public ArrayList<BPCPMInfos> listerBPCPMInfos(nc.mairie.technique.Transaction aT
  * @throws Exception Exception
  */
 public BPCPMInfos chercherBPCPMInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return (BPCPMInfos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+" with ur");
+	return (BPCPMInfos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle);
 }
 /**
  * Retourne un ArrayList d'objet métier : BPCInfosCompletes.
@@ -106,6 +106,6 @@ public ArrayList<BPCPMInfos> listerBPCPMInfosParams(nc.mairie.technique.Transact
 		}
 	}
 	
-	return executeSelectListe(aTransaction,"select distinct(numerobpc),date,heure,valeurcompteur, numeropompe, quantite, modedeprise, numeroinventaire, pmserie, siserv, ddebut, dfin, liserv,dmes from "+getTable()+" where "+inv+periode+servi+" order by date with ur");
+	return executeSelectListe(aTransaction,"select distinct(numerobpc),date,heure,valeurcompteur, numeropompe, quantite, modedeprise, numeroinventaire, pmserie, siserv, ddebut, dfin, liserv,dmes from "+getTable()+" where "+inv+periode+servi+" order by date");
 }
 }

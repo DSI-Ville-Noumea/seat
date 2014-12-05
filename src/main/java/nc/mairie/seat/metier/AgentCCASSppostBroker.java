@@ -67,7 +67,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * @throws Exception Exception
  */
 public ArrayList<AgentCCASSppost> listerAgentCCASSppost(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable());
 }
 /**
  * Retourne un AgentCCASSppost.
@@ -77,6 +77,6 @@ public ArrayList<AgentCCASSppost> listerAgentCCASSppost(nc.mairie.technique.Tran
  * @throws Exception Exception
  */
 public AgentCCASSppost chercherAgentCCASSppost(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return (AgentCCASSppost)executeSelect(aTransaction,"select * from "+getTable()+" where pomatr = "+cle+" with ur");
+	return (AgentCCASSppost)executeSelect(aTransaction,"select * from "+getTable()+" where pomatr = "+cle);
 }
 }

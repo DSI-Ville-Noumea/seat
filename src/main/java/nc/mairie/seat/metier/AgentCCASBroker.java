@@ -81,7 +81,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * @throws Exception Exception
  */
 public ArrayList<AgentCCAS> listerAgentCCAS(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" inner join MAIRCCAS_SPPOST on nomatr = pomatr and codact <> 'I'  order by nom with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" inner join MAIRCCAS_SPPOST on nomatr = pomatr and codact <> 'I'  order by nom");
 }
 /**
  * Retourne un AgentCCAS.
@@ -91,7 +91,7 @@ public ArrayList<AgentCCAS> listerAgentCCAS(nc.mairie.technique.Transaction aTra
  * @throws Exception Exception
  */
 public AgentCCAS chercherAgentCCAS(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return (AgentCCAS)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+cle+"  with ur");
+	return (AgentCCAS)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+cle);
 }
 /**
  * Retourne un AgentCCAS.
@@ -103,6 +103,6 @@ public AgentCCAS chercherAgentCCAS(nc.mairie.technique.Transaction aTransaction,
 public ArrayList<AgentCCAS> listerAgentCCASNom(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	String dateDuJour = Services.formateDateInternationale(Services.dateDuJour());
 	dateDuJour = Services.convertitDate(dateDuJour,"yyyy-mm-dd","yyyymmdd");
-	return executeSelectListe(aTransaction,"select * from "+getTable()+",MAIRCCAS_spmtsr where upper(nom) like '"+param+"%'and MAIRCCAS_spmtsr.nomatr="+getTable()+".nomatr and MAIRCCAS_spmtsr.datdeb<="+dateDuJour+" and (MAIRCCAS_spmtsr.datfin=0 or MAIRCCAS_spmtsr.datfin>="+dateDuJour+") and servi='5000' with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+",MAIRCCAS_spmtsr where upper(nom) like '"+param+"%'and MAIRCCAS_spmtsr.nomatr="+getTable()+".nomatr and MAIRCCAS_spmtsr.datdeb<="+dateDuJour+" and (MAIRCCAS_spmtsr.datfin=0 or MAIRCCAS_spmtsr.datfin>="+dateDuJour+") and servi='5000'");
 }
 }

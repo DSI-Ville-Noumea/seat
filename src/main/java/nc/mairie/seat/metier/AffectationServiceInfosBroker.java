@@ -16,7 +16,7 @@ public class AffectationServiceInfosBroker extends BasicBroker {
  * @throws Exception Exception
  */
 public ArrayList<AffectationServiceInfos> listerAffectationServiceInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable());
 }
 /**
  * Retourne un ArrayList d'objet métier : AffectationServiceInfos.
@@ -31,7 +31,7 @@ public ArrayList<AffectationServiceInfos> listerAffectationServiceInfosAgent(nc.
 		ArrayList<AffectationServiceInfos> listVide = new ArrayList<AffectationServiceInfos>();
 		return listVide;
 	}
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where dfin='0001-01-01' and nomatr="+nomatr+" with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where dfin='0001-01-01' and nomatr="+nomatr);
 }
 /**
  * Retourne un AffectationServiceInfos.
@@ -41,7 +41,7 @@ public ArrayList<AffectationServiceInfos> listerAffectationServiceInfosAgent(nc.
  * @throws Exception Exception
  */
 public ArrayList<AffectationServiceInfos> chercherAffectationServiceInfosService(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return  executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice like '"+cle+"%' and dfin = '0001-01-01' with ur");
+	return  executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice like '"+cle+"%' and dfin = '0001-01-01'");
 }
 
 /**
@@ -55,7 +55,7 @@ public ArrayList<AffectationServiceInfos> chercherAffectationServiceInfosService
 public AffectationServiceInfos chercherAffectationServiceInfosCourantEquip(nc.mairie.technique.Transaction aTransaction, String inv,String date) throws Exception {
 	//return  (AffectationServiceInfos)executeSelect(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+inv+"' and dfin = '0001-01-01' and ddebut <= '"+date+"'");
 	//return  (AffectationServiceInfos)executeSelect(aTransaction, "select * from "+getTable()+" where numeroinventaire = '"+inv+"' and ddebut<='"+date+"' and numeroinventaire in (select max(numeroinventaire)from F_AFFECTER_SCE where ddebut<='"+date+"' and numeroinventaire='"+inv+"' )");                               
-	return  (AffectationServiceInfos)executeSelect(aTransaction, "select * from "+getTable()+" where numeroinventaire = '"+inv+"' and ddebut in (select max(ddebut)from F_AFF_SCE where ddebut<='"+date+"' and numeroinventaire='"+inv+"' ) with ur");
+	return  (AffectationServiceInfos)executeSelect(aTransaction, "select * from "+getTable()+" where numeroinventaire = '"+inv+"' and ddebut in (select max(ddebut)from F_AFF_SCE where ddebut<='"+date+"' and numeroinventaire='"+inv+"' )");
 }
 
 /**
@@ -66,7 +66,7 @@ public AffectationServiceInfos chercherAffectationServiceInfosCourantEquip(nc.ma
  * @throws Exception Exception
  */
 public ArrayList<AffectationServiceInfos> chercherAffectationServiceInfosEquip(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return  executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+cle+"' with ur");
+	return  executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+cle+"'");
 }
 /**
  * Retourne un ArrayList d'objet métier : AffectationServiceInfos.
@@ -76,7 +76,7 @@ public ArrayList<AffectationServiceInfos> chercherAffectationServiceInfosEquip(n
  * @throws Exception Exception
  */
 public ArrayList<AffectationServiceInfos> chercherListAffectationServiceInfosEquip(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+param+"' order by ddebut desc,dfin with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+param+"' order by ddebut desc,dfin");
 }
 
 /**

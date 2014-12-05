@@ -81,7 +81,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * @throws Exception Exception
  */
 public ArrayList<Agents> listerAgents(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable());
 }
 /**
  * Retourne un Agents.
@@ -91,7 +91,7 @@ public ArrayList<Agents> listerAgents(nc.mairie.technique.Transaction aTransacti
  * @throws Exception Exception
  */
 public Agents chercherAgents(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return (Agents)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+cle+" with ur");
+	return (Agents)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+cle);
 }
 /**
  * Retourne un Agents.
@@ -103,7 +103,7 @@ public Agents chercherAgents(nc.mairie.technique.Transaction aTransaction, Strin
 public ArrayList<Agents> listerAgentsNom(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
 	String dateDuJour = Services.formateDateInternationale(Services.dateDuJour());
 	dateDuJour = Services.convertitDate(dateDuJour,"yyyy-mm-dd","yyyymmdd");
-	return executeSelectListe(aTransaction,"select * from "+getTable()+",mairie_spmtsr where mairie_spmtsr.nomatr="+getTable()+".nomatr and upper(nom) like '"+param+"%' and mairie_spmtsr.datdeb<="+dateDuJour+" and (mairie_spmtsr.datfin=0 or mairie_spmtsr.datfin>="+dateDuJour+") order by nom with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+",mairie_spmtsr where mairie_spmtsr.nomatr="+getTable()+".nomatr and upper(nom) like '"+param+"%' and mairie_spmtsr.datdeb<="+dateDuJour+" and (mairie_spmtsr.datfin=0 or mairie_spmtsr.datfin>="+dateDuJour+") order by nom");
 }
 
 }

@@ -15,7 +15,7 @@ public class AgentsATMInfosBroker extends BasicBroker {
  * @throws Exception Exception
  */
 public ArrayList<AgentsATMInfos> listerAgentsATMInfos(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by nom with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by nom");
 }
 /**
  * Retourne un AgentsATMInfos.
@@ -25,7 +25,7 @@ public ArrayList<AgentsATMInfos> listerAgentsATMInfos(nc.mairie.technique.Transa
  * @throws Exception Exception
  */
 public AgentsATMInfos chercherAgentsATMInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return (AgentsATMInfos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+" with ur");
+	return (AgentsATMInfos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle);
 }
 /**
  * Constructeur AgentsATMInfosBroker.

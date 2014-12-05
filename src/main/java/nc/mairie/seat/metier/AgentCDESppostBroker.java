@@ -67,7 +67,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * @throws Exception Exception
  */
 public ArrayList<AgentCDESppost> listerAgentCDESppost(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable());
 }
 /**
  * Retourne un AgentCDESppost.
@@ -77,6 +77,6 @@ public ArrayList<AgentCDESppost> listerAgentCDESppost(nc.mairie.technique.Transa
  * @throws Exception Exception
  */
 public AgentCDESppost chercherAgentCDESppost(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return (AgentCDESppost)executeSelect(aTransaction,"select * from "+getTable()+" where pomatr = "+cle+" with ur");
+	return (AgentCDESppost)executeSelect(aTransaction,"select * from "+getTable()+" where pomatr = "+cle);
 }
 }

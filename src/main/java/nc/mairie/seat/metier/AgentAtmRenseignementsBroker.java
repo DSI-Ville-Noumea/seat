@@ -16,7 +16,7 @@ public class AgentAtmRenseignementsBroker extends BasicBroker {
  * @throws Exception Exception
  */
 public ArrayList<AgentAtmRenseignements> listerAgentAtmRenseignements(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by nom  with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by nom");
 }
 /**
  * Retourne un AgentAtmRenseignements.
@@ -26,7 +26,7 @@ public ArrayList<AgentAtmRenseignements> listerAgentAtmRenseignements(nc.mairie.
  * @throws Exception Exception
  */
 public AgentAtmRenseignements chercherAgentAtmRenseignements(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return (AgentAtmRenseignements)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+" with ur");
+	return (AgentAtmRenseignements)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle);
 }
 
 /**
@@ -38,7 +38,7 @@ public AgentAtmRenseignements chercherAgentAtmRenseignements(nc.mairie.technique
  * @throws Exception Exception
  */
 public boolean existeMecanicien(nc.mairie.technique.Transaction aTransaction, String nomatr) throws Exception {
-	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where nomatr = "+nomatr+" with ur");
+	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where nomatr = "+nomatr);
 }
 
 /**

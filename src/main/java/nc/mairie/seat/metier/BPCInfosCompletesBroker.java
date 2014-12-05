@@ -15,7 +15,7 @@ public class BPCInfosCompletesBroker extends BasicBroker {
  * @throws Exception exception 
  */
 public ArrayList<BPCInfosCompletes> listerBPCInfosCompletes(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable());
 }
 
 /**
@@ -47,7 +47,7 @@ public ArrayList<BPCInfosCompletes> listerBPCInfosCompletesParams(nc.mairie.tech
 		}
 	}
 	
-	return executeSelectListe(aTransaction,"select distinct(numerobpc),date,heure,valeurcompteur, numeropompe, quantite, modedeprise, numeroinventaire, numeroimmatriculation, codeservice, ddebut, dfin, liserv,datemiseencirculation from "+getTable()+" where "+inv+periode+servi+" order by date with ur");
+	return executeSelectListe(aTransaction,"select distinct(numerobpc),date,heure,valeurcompteur, numeropompe, quantite, modedeprise, numeroinventaire, numeroimmatriculation, codeservice, ddebut, dfin, liserv,datemiseencirculation from "+getTable()+" where "+inv+periode+servi+" order by date");
 }
 
 /**
@@ -58,7 +58,7 @@ public ArrayList<BPCInfosCompletes> listerBPCInfosCompletesParams(nc.mairie.tech
  * @throws Exception exception 
  */
 public BPCInfosCompletes chercherBPCInfosCompletes(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return (BPCInfosCompletes)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+" with ur");
+	return (BPCInfosCompletes)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle);
 }
 /**
  * Constructeur BPCInfosCompletesBroker.

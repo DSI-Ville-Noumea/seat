@@ -61,7 +61,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * @throws Exception Exception
  */
 public ArrayList<Fournisseurs> listerFournisseurs(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable());
 }
 
 /**
@@ -72,7 +72,7 @@ public ArrayList<Fournisseurs> listerFournisseurs(nc.mairie.technique.Transactio
  * @throws Exception Exception
  */
 public ArrayList<Fournisseurs> listerFournisseursNom(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where upper(enscom) like '"+param.toUpperCase()+"%' with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where upper(enscom) like '"+param.toUpperCase()+"%'");
 }
 
 /**
@@ -83,6 +83,6 @@ public ArrayList<Fournisseurs> listerFournisseursNom(nc.mairie.technique.Transac
  * @throws Exception Exception
  */
 public Fournisseurs chercherFournisseurs(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return (Fournisseurs)executeSelect(aTransaction,"select * from "+getTable()+" where IDETBS = "+cle+" with ur");
+	return (Fournisseurs)executeSelect(aTransaction,"select * from "+getTable()+" where IDETBS = "+cle);
 }
 }

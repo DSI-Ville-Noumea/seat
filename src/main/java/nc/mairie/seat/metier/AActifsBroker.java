@@ -15,7 +15,7 @@ public class AActifsBroker extends BasicBroker {
  * @throws Exception Exception
  */
 public ArrayList<AActifs> listerAActifs(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable());
 }
 /**
  * Retourne un AActifs.
@@ -25,7 +25,7 @@ public ArrayList<AActifs> listerAActifs(nc.mairie.technique.Transaction aTransac
  * @throws Exception Exception
  */
 public AActifs chercherAActifs(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return (AActifs)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+cle+"  with ur");
+	return (AActifs)executeSelect(aTransaction,"select * from "+getTable()+" where nomatr = "+cle);
 }
 
 /**
@@ -39,7 +39,7 @@ public ArrayList<AActifs> listerAActifsService(nc.mairie.technique.Transaction a
 	if (!servi.substring(0,1).equals("A")){
 		servi = servi.substring(0,3);
 	}
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where servi like '"+servi+"%' order by nom  with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where servi like '"+servi+"%' order by nom");
 }
 
 /**
@@ -51,7 +51,7 @@ public ArrayList<AActifs> listerAActifsService(nc.mairie.technique.Transaction a
  */
 public ArrayList<AActifs> chercherListAgentServiceInfosSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	String servi = param.substring(0,3); 
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where servi like '"+servi+"%' order by nom  with ur");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where servi like '"+servi+"%' order by nom");
 }
 
 
