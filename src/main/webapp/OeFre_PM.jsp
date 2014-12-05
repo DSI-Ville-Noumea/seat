@@ -50,7 +50,7 @@ if (document.formu.elements[nom] != null)
 				<TR>
 					<TD>
 						<SELECT size="5" name="<%= process.getNOM_LB_FOURNISSEURS() %>"
-					class="sigp2-liste" onclick='executeBouton("<%= process.getNOM_PB_OK()%>")' style="text-transform: uppercase; width: 100%">
+					class="sigp2-liste" onchange='executeBouton("<%= process.getNOM_PB_OK()%>")' style="text-transform: uppercase; width: 100%">
 					<%= process.forComboHTML(process.getVAL_LB_FOURNISSEURS(),process.getVAL_LB_FOURNISSEURS_SELECT()) %>
 				</SELECT><INPUT type="submit" name="<%= process.getNOM_PB_OK()%>" value="OK" style="visibility : hidden;"></TD>
 				</TR>
