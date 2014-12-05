@@ -209,6 +209,10 @@ public java.lang.String getNOM_PB_RECHERCHE() {
  * @throws Exception Exception
  */
 public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request) throws Exception {
+	
+	//#12438 
+	addZone(getNOM_EF_RECHERCHE_EQUIP(), "");
+	
 	VariableActivite.ajouter(this,"MODE","VISUALISER");
 	setStatut(STATUT_RECHERCHE,true);
 	return true;
