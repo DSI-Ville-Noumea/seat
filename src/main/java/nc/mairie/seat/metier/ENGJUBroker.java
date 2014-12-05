@@ -31,7 +31,7 @@ protected ENGJU getMyENGJU() {
  * Retourne le nom de la table.
  */
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_ENJU";
+	return "V_ENJU";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.
@@ -99,7 +99,7 @@ public ArrayList<ENGJU> listerENGJU(nc.mairie.technique.Transaction aTransaction
  */
 public ArrayList<ENGJU> listerENGJUGroupByCdepNoengjIdetbs(nc.mairie.technique.Transaction aTransaction, String numOt, String cddep) throws Exception{
 	return executeSelectListe(aTransaction,
-		"  select min(be.exerci) as exerci, idetbs, enscom, be.noengj, max(nlengju) as nlengju,cddep,    sum(mtlenju) as mtlenju from SEAT.F_BENGAGEMENT  be"+
+		"  select min(be.exerci) as exerci, idetbs, enscom, be.noengj, max(nlengju) as nlengju,cddep,    sum(mtlenju) as mtlenju from F_BENGAGEMENT  be"+
 		"  inner join "+getTable()+" enju on enju.noengj = be.noengj  "+
 		"  where numot='"+numOt+"'"+
 		"  and cddep like '%"+cddep+"%'"+

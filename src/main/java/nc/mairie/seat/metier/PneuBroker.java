@@ -105,7 +105,7 @@ protected Pneu getMyPneu() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_PNEU";
+	return "F_PNEU";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

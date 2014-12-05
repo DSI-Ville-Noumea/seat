@@ -103,7 +103,7 @@ protected Compteur getMyCompteur() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_COMPTEUR";
+	return "F_COMPTEUR";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

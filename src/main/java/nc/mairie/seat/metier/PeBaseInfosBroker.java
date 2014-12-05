@@ -53,7 +53,7 @@ protected PeBaseInfos getMyPeBaseInfos() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_PEBASEINFOS";
+	return "V_PEBASEINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

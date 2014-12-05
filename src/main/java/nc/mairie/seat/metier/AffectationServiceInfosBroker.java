@@ -54,8 +54,8 @@ public ArrayList<AffectationServiceInfos> chercherAffectationServiceInfosService
  */
 public AffectationServiceInfos chercherAffectationServiceInfosCourantEquip(nc.mairie.technique.Transaction aTransaction, String inv,String date) throws Exception {
 	//return  (AffectationServiceInfos)executeSelect(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+inv+"' and dfin = '0001-01-01' and ddebut <= '"+date+"'");
-	//return  (AffectationServiceInfos)executeSelect(aTransaction, "select * from "+getTable()+" where numeroinventaire = '"+inv+"' and ddebut<='"+date+"' and numeroinventaire in (select max(numeroinventaire)from SEAT.F_AFFECTER_SCE where ddebut<='"+date+"' and numeroinventaire='"+inv+"' )");                               
-	return  (AffectationServiceInfos)executeSelect(aTransaction, "select * from "+getTable()+" where numeroinventaire = '"+inv+"' and ddebut in (select max(ddebut)from SEAT.F_AFF_SCE where ddebut<='"+date+"' and numeroinventaire='"+inv+"' ) with ur");
+	//return  (AffectationServiceInfos)executeSelect(aTransaction, "select * from "+getTable()+" where numeroinventaire = '"+inv+"' and ddebut<='"+date+"' and numeroinventaire in (select max(numeroinventaire)from F_AFFECTER_SCE where ddebut<='"+date+"' and numeroinventaire='"+inv+"' )");                               
+	return  (AffectationServiceInfos)executeSelect(aTransaction, "select * from "+getTable()+" where numeroinventaire = '"+inv+"' and ddebut in (select max(ddebut)from F_AFF_SCE where ddebut<='"+date+"' and numeroinventaire='"+inv+"' ) with ur");
 }
 
 /**
@@ -104,7 +104,7 @@ protected AffectationServiceInfos getMyAffectationServiceInfos() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_AFF_SCE_INFOS";
+	return "V_AFF_SCE_INFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

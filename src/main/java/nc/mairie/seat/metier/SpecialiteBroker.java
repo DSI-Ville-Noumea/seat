@@ -33,7 +33,7 @@ protected Specialite getMySpecialite() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_SPECIALITE";
+	return "F_SPECIALITE";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

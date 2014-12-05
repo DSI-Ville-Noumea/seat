@@ -52,7 +52,7 @@ protected AgentsATMInfos getMyAgentsATMInfos() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_AGENTINFOSATM";
+	return "V_AGENTINFOSATM";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

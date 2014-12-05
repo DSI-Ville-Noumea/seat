@@ -97,7 +97,7 @@ protected AffectationAgentInfos getMyAffectationAgentInfos() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_AFFECTATIONSAGENTINFOS";
+	return "V_AFFECTATIONSAGENTINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

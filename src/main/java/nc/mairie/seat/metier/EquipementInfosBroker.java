@@ -52,7 +52,7 @@ public ArrayList<EquipementInfos> listerEquipementInfosInactifs(nc.mairie.techni
 //	on cherche la date du jour
 	String datedujour = Services.dateDuJour();
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where dateventeoureforme <> '0001-01-01' and dateventeoureforme <='"+Services.formateDateInternationale(datedujour)+"' order by "+tri );
-	//return executeSelectListe(aTransaction,"select * from SEAT.testluc where ladate <> '0001-01-01' and ladate <'"+datedujour+"'"  );
+	//return executeSelectListe(aTransaction,"select * from testluc where ladate <> '0001-01-01' and ladate <'"+datedujour+"'"  );
 }
 /**
  * Retourne un EquipementInfos.
@@ -134,7 +134,7 @@ protected EquipementInfos getMyEquipementInfos() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_EQUIPEMENTINFOS";
+	return "V_EQUIPEMENTINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

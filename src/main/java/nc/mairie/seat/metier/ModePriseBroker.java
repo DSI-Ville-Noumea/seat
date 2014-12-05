@@ -105,7 +105,7 @@ protected ModePrise getMyModePrise() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_MODEPRISE";
+	return "F_MODEPRISE";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

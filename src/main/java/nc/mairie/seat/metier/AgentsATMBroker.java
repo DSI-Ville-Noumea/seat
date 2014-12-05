@@ -92,7 +92,7 @@ protected AgentsATM getMyAgentsATM() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_AGENTSATM";
+	return "F_AGENTSATM";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

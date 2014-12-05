@@ -125,7 +125,7 @@ protected PiecesOT getMyPiecesOT() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_PIECES_OT";
+	return "F_PIECES_OT";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

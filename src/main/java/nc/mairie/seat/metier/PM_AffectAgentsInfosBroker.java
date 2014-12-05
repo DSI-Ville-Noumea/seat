@@ -73,7 +73,7 @@ protected PM_AffectAgentsInfos getMyPM_AffectAgentsInfos() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_PM_AFFAGENTSINFOS";
+	return "V_PM_AFFAGENTSINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

@@ -187,7 +187,7 @@ protected BPC getMyBPC() {
  * Retourne le nom de la table.
  */
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_BPC";
+	return "F_BPC";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

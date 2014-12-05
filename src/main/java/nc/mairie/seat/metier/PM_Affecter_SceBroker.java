@@ -95,7 +95,7 @@ protected PM_Affecter_Sce getMyPM_Affecter_Sce() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_PMAFF_SC";
+	return "F_PMAFF_SC";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

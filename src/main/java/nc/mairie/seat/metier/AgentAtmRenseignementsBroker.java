@@ -66,7 +66,7 @@ protected AgentAtmRenseignements getMyAgentAtmRenseignements() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_AGENTSATMRENSEIGNEMENTS";
+	return "V_AGENTSATMRENSEIGNEMENTS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

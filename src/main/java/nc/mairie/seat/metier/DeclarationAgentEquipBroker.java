@@ -31,7 +31,7 @@ protected DeclarationAgentEquip getMyDeclarationAgentEquip() {
  * Retourne le nom de la table.
  */
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_DECLARATION_AGENT_EQUIP";
+	return "V_DECLARATION_AGENT_EQUIP";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

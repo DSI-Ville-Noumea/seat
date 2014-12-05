@@ -123,7 +123,7 @@ protected Carburant getMyCarburant() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_CARBURANT";
+	return "F_CARBURANT";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

@@ -76,11 +76,11 @@ public Marques chercherMarques(nc.mairie.technique.Transaction aTransaction, Str
  * @throws Exception Exception
  */
 public ArrayList<Marques> listerMarquesModele(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemarque in (select codemarque from SEAT.f_modeles) order by designationmarque");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemarque in (select codemarque from f_modeles) order by designationmarque");
 }
 
 public ArrayList<Marques> listerMarquesModeleMT(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemarque in (select codemarque from SEAT.f_modeles, SEAT.f_typeequip where SEAT.f_modeles.codete=SEAT.f_typeequip.codetypeequip and SEAT.f_typeequip.typete='MT') order by designationmarque");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemarque in (select codemarque from f_modeles, f_typeequip where f_modeles.codete=SEAT.f_typeequip.codetypeequip and f_typeequip.typete='MT') order by designationmarque");
 }
 
 /**
@@ -120,7 +120,7 @@ protected Marques getMyMarques() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_MARQUES";
+	return "F_MARQUES";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

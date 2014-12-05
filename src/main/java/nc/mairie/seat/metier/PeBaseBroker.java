@@ -133,7 +133,7 @@ protected PeBase getMyPeBase() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_PE_BASE";
+	return "F_PE_BASE";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

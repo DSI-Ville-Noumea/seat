@@ -31,8 +31,8 @@ protected OTComplet getMyOTComplet() {
  * Retourne le nom de la table.
  */
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_OTCOMPLET";
-	//return "SEAT.F_OT F_OT inner join SEAT.F_EQUIPEMENT F_EQUIPEMENT ON F_OT.NUMINV = F_EQUIPEMENT.NUMEROINVENTAIRE";
+	return "V_OTCOMPLET";
+	//return "F_OT F_OT inner join F_EQUIPEMENT F_EQUIPEMENT ON F_OT.NUMINV = F_EQUIPEMENT.NUMEROINVENTAIRE";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.
@@ -128,7 +128,7 @@ public ArrayList<OTComplet> listerOTCompletEncours(nc.mairie.technique.Transacti
  * @throws Exception Exception
  */
 public ArrayList<OTComplet> listerOTCompletDeclarationsEncours(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='F' and numeroot in(select codeot from SEAT.f_declarations)");                                      
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='F' and numeroot in(select codeot from f_declarations)");                                      
 }
 /**
  * Retourne un ArrayList d'objet métier : OT.
@@ -137,7 +137,7 @@ public ArrayList<OTComplet> listerOTCompletDeclarationsEncours(nc.mairie.techniq
  * @throws Exception Exception
  */
 public ArrayList<OTComplet> listerOTCompletDeclarationsValide(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='T' and numeroot in(select codeot from SEAT.f_declarations)");                                      
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='T' and numeroot in(select codeot from f_declarations)");                                      
 }
 
 }

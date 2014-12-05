@@ -138,7 +138,7 @@ protected Declarations getMyDeclarations() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_DECLARATIONS";
+	return "F_DECLARATIONS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

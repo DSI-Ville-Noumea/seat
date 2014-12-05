@@ -33,7 +33,7 @@ protected PM_BE getMyPM_BE() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_PM_BE";
+	return "F_PM_BE";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

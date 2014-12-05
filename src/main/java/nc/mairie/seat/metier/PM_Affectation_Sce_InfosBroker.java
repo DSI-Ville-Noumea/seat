@@ -77,7 +77,7 @@ protected PM_Affectation_Sce_Infos getMyPM_Affectation_Sce_Infos() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_PM_AFF_SCE_INFOS";
+	return "V_PM_AFF_SCE_INFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

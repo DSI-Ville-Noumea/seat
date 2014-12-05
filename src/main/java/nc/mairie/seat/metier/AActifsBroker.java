@@ -80,7 +80,7 @@ protected AActifs getMyAActifs() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_AGENTACTIFS";
+	return "V_AGENTACTIFS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

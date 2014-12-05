@@ -50,7 +50,7 @@ public boolean supprimerBE(nc.mairie.technique.Transaction aTransaction) throws 
 public ArrayList<BE> listerBEOTNumInv(nc.mairie.technique.Transaction aTransaction,String numot, String numInv) throws Exception {
 	return executeSelectListe(aTransaction,
 			" select * from "+getTable()+" be "+
-			" inner join SEAT.V_ENJU enju on enju.noengj = be.noengj "+
+			" inner join V_ENJU enju on enju.noengj = be.noengj "+
 			" where numot='"+numot+"' "+
 			" and cddep like '%"+numInv+"%'");
 }
@@ -113,7 +113,7 @@ protected BE getMyBE() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_BENGAGEMENT";
+	return "F_BENGAGEMENT";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

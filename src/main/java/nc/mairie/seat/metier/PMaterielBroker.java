@@ -65,7 +65,7 @@ protected PMateriel getMyPMateriel() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_PMATERIEL";
+	return "F_PMATERIEL";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

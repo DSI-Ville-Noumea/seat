@@ -91,8 +91,8 @@ public int chercherEquipementImmat(nc.mairie.technique.Transaction aTransaction,
  * @throws Exception Exception
  */
 public ArrayList<Equipement> listerEquipementTri(nc.mairie.technique.Transaction aTransaction, String tri) throws Exception {
-	//return executeSelectListe(aTransaction,"select * from "+getTable()+", SEAT.F_MODELES, SEAT.F_MARQUES, SEAT.F_TYPEEQUIP where F_MARQUES.CODEMARQUE=F_MODELES.CODEMARQUE and F_MODELES.CODETE=F_TYPEEQUIP.CODETYPEEQUIP and F_MODELES.CODEMODELE=F_EQUIPEMENT.CODEMODELE order by "+tri+"");
-	return executeSelectListe(aTransaction,"select * from "+getTable()+", SEAT.F_MODELES, SEAT.F_MARQUES, SEAT.F_TYPEEQUIP where SEAT.F_MARQUES.CODEMARQUE=SEAT.F_MODELES.CODEMARQUE and SEAT.F_MODELES.CODETE=SEAT.F_TYPEEQUIP.CODETYPEEQUIP and SEAT.F_MODELES.CODEMODELE=SEAT.F_EQUIPEMENT.CODEMODELE order by "+tri+"");
+	//return executeSelectListe(aTransaction,"select * from "+getTable()+", F_MODELES, F_MARQUES, F_TYPEEQUIP where F_MARQUES.CODEMARQUE=F_MODELES.CODEMARQUE and F_MODELES.CODETE=F_TYPEEQUIP.CODETYPEEQUIP and F_MODELES.CODEMODELE=F_EQUIPEMENT.CODEMODELE order by "+tri+"");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+", F_MODELES, F_MARQUES, F_TYPEEQUIP where F_MARQUES.CODEMARQUE=SEAT.F_MODELES.CODEMARQUE and F_MODELES.CODETE=SEAT.F_TYPEEQUIP.CODETYPEEQUIP and F_MODELES.CODEMODELE=SEAT.F_EQUIPEMENT.CODEMODELE order by "+tri+"");
 }
 
 /**
@@ -145,7 +145,7 @@ protected Equipement getMyEquipement() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_EQUIPEMENT";
+	return "F_EQUIPEMENT";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

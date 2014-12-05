@@ -34,7 +34,7 @@ protected PM_PePerso getMyPM_PePerso() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_PMPE_PERSO";
+	return "F_PMPE_PERSO";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

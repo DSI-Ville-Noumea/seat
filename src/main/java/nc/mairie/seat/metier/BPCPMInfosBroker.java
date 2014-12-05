@@ -33,7 +33,7 @@ protected BPCPMInfos getMyBPCPMInfos() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_BPCPMINFOS";
+	return "V_BPCPMINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

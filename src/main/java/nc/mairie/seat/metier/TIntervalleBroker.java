@@ -93,7 +93,7 @@ protected TIntervalle getMyTIntervalle() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_TYPEINT";
+	return "F_TYPEINT";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

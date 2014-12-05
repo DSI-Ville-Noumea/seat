@@ -33,7 +33,7 @@ protected TypeEntretien getMyTypeEntretien() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_TYPEENT";
+	return "F_TYPEENT";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

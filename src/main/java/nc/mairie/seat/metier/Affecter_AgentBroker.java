@@ -117,7 +117,7 @@ protected Affecter_Agent getMyAffecter_Agent() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_AFFECTER";
+	return "F_AFFECTER";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

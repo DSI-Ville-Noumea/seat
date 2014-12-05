@@ -34,7 +34,7 @@ protected AgentsMunicipaux getMyAgentsMunicipaux() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_AGENTS";
+	return "V_AGENTS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

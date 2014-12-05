@@ -33,7 +33,7 @@ protected Pm_PePersoInfos getMyPm_PePersoInfos() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_PM_PEPERSOINFOS";
+	return "V_PM_PEPERSOINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

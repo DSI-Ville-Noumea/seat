@@ -108,7 +108,7 @@ protected AffectationInfos getMyAffectationInfos() {
  * Retourne le nom de la table.
  */
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_AFFECTATIONEQUIPINFOS";
+	return "V_AFFECTATIONEQUIPINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

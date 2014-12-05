@@ -33,7 +33,7 @@ protected TDuree getMyTDuree() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_TYPEDUREE";
+	return "F_TYPEDUREE";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

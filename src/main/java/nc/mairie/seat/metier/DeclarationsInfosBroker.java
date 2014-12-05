@@ -80,7 +80,7 @@ protected DeclarationsInfos getMyDeclarationsInfos() {
  * Retourne le nom de la table.
  */
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_DECLINFOS";
+	return "V_DECLINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

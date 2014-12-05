@@ -33,7 +33,7 @@ protected OT_ATM getMyOT_ATM() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_OT_ATM";
+	return "F_OT_ATM";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

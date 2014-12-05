@@ -116,7 +116,7 @@ public ArrayList<Planning> listerPlanningEnCoursAvecOTValideDifferentT(nc.mairie
 	}else{
 		codeot = Integer.parseInt(numot)-1;
 	}
-	return executeSelectListe(aTransaction,"select "+getTable()+".* from "+getTable()+" inner join seat.F_OT on seat.F_OT.numeroot = codeot  where  datereal = '0001-01-01' and codeot>"+codeot+" and codeot is not null  and valide <> 'T' order by numeroimmatriculation");
+	return executeSelectListe(aTransaction,"select "+getTable()+".* from "+getTable()+" inner join F_OT on F_OT.numeroot = codeot  where  datereal = '0001-01-01' and codeot>"+codeot+" and codeot is not null  and valide <> 'T' order by numeroimmatriculation");
 }
 
 /**
@@ -159,7 +159,7 @@ protected Planning getMyPlanning() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_PLANNING";
+	return "V_PLANNING";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

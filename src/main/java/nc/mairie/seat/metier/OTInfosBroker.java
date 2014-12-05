@@ -33,7 +33,7 @@ protected OTInfos getMyOTInfos() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_OTINFOS";
+	return "V_OTINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

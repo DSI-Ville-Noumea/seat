@@ -58,8 +58,8 @@ public ArrayList<PMatInfos> listerPMatInfos(nc.mairie.technique.Transaction aTra
 public ArrayList<PMatInfos> listerPMatInfosSansEntretienPlanifie(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"" +
 			" where dmes < current date - 1 year" +
-			" and not exists (select pminv from SEAT.F_PMPE_PERSO" +
-			" where SEAT.V_PMATINFOS.pminv = SEAT.F_PMPE_PERSO.pminv and dprev between current date - 1 year and current date + 1 day)");
+			" and not exists (select pminv from F_PMPE_PERSO" +
+			" where V_PMATINFOS.pminv = F_PMPE_PERSO.pminv and dprev between current date - 1 year and current date + 1 day)");
 }
 /**
  * Retourne un ArrayList d'objet métier : PMatInfos.
@@ -140,7 +140,7 @@ protected PMatInfos getMyPMatInfos() {
  * Retourne le nom de la table.
  */
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_PMATINFOS";
+	return "V_PMATINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

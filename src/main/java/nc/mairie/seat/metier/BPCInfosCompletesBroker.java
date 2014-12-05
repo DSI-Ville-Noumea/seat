@@ -85,7 +85,7 @@ protected BPCInfosCompletes getMyBPCInfosCompletes() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_BPCEQUIPINFOS";
+	return "V_BPCEQUIPINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

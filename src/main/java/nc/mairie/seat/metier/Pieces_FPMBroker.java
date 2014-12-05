@@ -102,7 +102,7 @@ protected Pieces_FPM getMyPieces_FPM() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_FPM_PIE";
+	return "F_FPM_PIE";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

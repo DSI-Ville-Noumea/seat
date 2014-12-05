@@ -93,7 +93,7 @@ protected Entretien getMyEntretien() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_ENTRETIEN";
+	return "F_ENTRETIEN";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

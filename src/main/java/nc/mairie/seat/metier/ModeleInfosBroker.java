@@ -64,7 +64,7 @@ protected ModeleInfos getMyModeleInfos() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_MODELEINFOS";
+	return "V_MODELEINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

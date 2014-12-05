@@ -32,7 +32,7 @@ protected FPM getMyFPM() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_FPM";
+	return "F_FPM";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

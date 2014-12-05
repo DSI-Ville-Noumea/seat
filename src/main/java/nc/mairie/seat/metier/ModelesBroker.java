@@ -90,7 +90,7 @@ public ArrayList<Modeles> listerModelesMarque(nc.mairie.technique.Transaction aT
 }
 
 public ArrayList<Modeles> listerModelesMarqueMT(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemarque = "+cle+" and codete in(select * from SEAT.f_typeequip where typete='MT') order by designationmodele");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemarque = "+cle+" and codete in(select * from f_typeequip where typete='MT') order by designationmodele");
 }
 
 public ArrayList<Modeles> listerModelesLib(nc.mairie.technique.Transaction aTransaction, String modele) throws Exception {
@@ -135,7 +135,7 @@ protected Modeles getMyModeles() {
  * Retourne le nom de la table.
  */
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_MODELES";
+	return "F_MODELES";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

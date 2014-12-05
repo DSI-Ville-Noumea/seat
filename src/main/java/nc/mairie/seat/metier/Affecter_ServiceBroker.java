@@ -110,7 +110,7 @@ protected Affecter_Service getMyAffecter_Service() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_AFF_SCE";
+	return "F_AFF_SCE";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

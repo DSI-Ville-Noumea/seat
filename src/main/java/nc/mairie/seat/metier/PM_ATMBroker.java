@@ -33,7 +33,7 @@ protected PM_ATM getMyPM_ATM() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_PM_ATM";
+	return "F_PM_ATM";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

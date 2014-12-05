@@ -33,7 +33,7 @@ protected PiecesFpmInfos getMyPiecesFpmInfos() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_PIECESFPMINFOS";
+	return "V_PIECESFPMINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

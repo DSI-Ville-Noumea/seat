@@ -33,7 +33,7 @@ protected Fre_PM getMyFre_PM() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_FOURNISSEURS";
+	return "F_FOURNISSEURS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

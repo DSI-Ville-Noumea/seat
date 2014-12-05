@@ -45,7 +45,7 @@ public boolean supprimerOT(nc.mairie.technique.Transaction aTransaction) throws 
  * @throws Exception Exception
  */
 public ArrayList<OT> listerOT(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" ot, SEAT.f_equipement equipement where equipement.NUMEROINVENTAIRE = ot.NUMINV");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" ot, f_equipement equipement where equipement.NUMEROINVENTAIRE = ot.NUMINV");
 }
 
 /**
@@ -67,7 +67,7 @@ public ArrayList<OT> listerOTEquip(nc.mairie.technique.Transaction aTransaction,
  * @throws Exception Exception
  */
 public ArrayList<OT> listerOTValide(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" ot, SEAT.f_equipement equipement where equipement.NUMEROINVENTAIRE = ot.NUMINV and valide='T'");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" ot, f_equipement equipement where equipement.NUMEROINVENTAIRE = ot.NUMINV and valide='T'");
 }
 /**
  * Retourne un ArrayList d'objet métier : OT.
@@ -85,7 +85,7 @@ public ArrayList<OT> listerOTAValider(nc.mairie.technique.Transaction aTransacti
  * @throws Exception Exception
  */
 public ArrayList<OT> listerOTEncours(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" ot, SEAT.f_equipement equipement where equipement.NUMEROINVENTAIRE = ot.NUMINV and valide='F' ");//and numeroot in(select codeot from SEAT.f_pe_perso)");                                      
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" ot, f_equipement equipement where equipement.NUMEROINVENTAIRE = ot.NUMINV and valide='F' ");//and numeroot in(select codeot from f_pe_perso)");                                      
 }
 
 /**
@@ -95,7 +95,7 @@ public ArrayList<OT> listerOTEncours(nc.mairie.technique.Transaction aTransactio
  * @throws Exception Exception
  */
 public ArrayList<OT> listerOTDeclarationsEncours(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='F' and numeroot in(select codeot from SEAT.f_declarations)");                                      
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='F' and numeroot in(select codeot from f_declarations)");                                      
 }
 /**
  * Retourne un ArrayList d'objet métier : OT.
@@ -104,7 +104,7 @@ public ArrayList<OT> listerOTDeclarationsEncours(nc.mairie.technique.Transaction
  * @throws Exception Exception
  */
 public ArrayList<OT> listerOTDeclarationsValide(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='T' and numeroot in(select codeot from SEAT.f_declarations)");                                      
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where valide='T' and numeroot in(select codeot from f_declarations)");                                      
 }
 
 /**
@@ -172,7 +172,7 @@ protected OT getMyOT() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_OT";
+	return "F_OT";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

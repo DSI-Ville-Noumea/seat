@@ -32,7 +32,7 @@ protected Equip getMyEquip() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_EQUIP";
+	return "F_EQUIP";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

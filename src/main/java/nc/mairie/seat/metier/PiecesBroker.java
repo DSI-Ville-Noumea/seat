@@ -34,7 +34,7 @@ protected Pieces getMyPieces() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_PIECES";
+	return "F_PIECES";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

@@ -108,7 +108,7 @@ protected Fre_OT getMyFre_OT() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_OT_FRE";
+	return "F_OT_FRE";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

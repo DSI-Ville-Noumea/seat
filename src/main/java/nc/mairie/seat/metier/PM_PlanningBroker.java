@@ -34,7 +34,7 @@ protected PM_Planning getMyPM_Planning() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_PMPLANNING";
+	return "V_PMPLANNING";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.
@@ -108,7 +108,7 @@ public ArrayList<PM_Planning> listerPlanningEnCoursAvecFPMValideDiffetentT(nc.ma
 	}else{
 		codefiche = Integer.parseInt(numfiche)-1;
 	}
-	return executeSelectListe(aTransaction,"select distinct "+getTable()+".* from "+getTable()+" inner join SEAT.F_FPM on "+getTable()+".numfiche = SEAT.F_FPM.numfiche where  dreal = '0001-01-01' and "+getTable()+".numfiche>"+codefiche+" and "+getTable()+".numfiche is not null and valide <> 'T' order by pmserie");
+	return executeSelectListe(aTransaction,"select distinct "+getTable()+".* from "+getTable()+" inner join F_FPM on "+getTable()+".numfiche = F_FPM.numfiche where  dreal = '0001-01-01' and "+getTable()+".numfiche>"+codefiche+" and "+getTable()+".numfiche is not null and valide <> 'T' order by pmserie");
 }
 
 // liste des afaire

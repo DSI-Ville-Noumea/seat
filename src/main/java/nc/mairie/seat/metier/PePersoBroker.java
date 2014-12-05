@@ -86,7 +86,7 @@ public ArrayList<PePerso> listerPePersoKm(nc.mairie.technique.Transaction aTrans
  */
 //UNUSED: comment by OFONTENEAU 20090313
 //public ArrayList<PePerso> listerPePersoAFaireKm(nc.mairie.technique.Transaction aTransaction,String mod,String inv) throws Exception {
-//	return executeSelectListe(aTransaction,"select * from SEAT.F_PE_BASE where codemodele = '"+mod+"' and codeti=1 and codeentretien<>2 and codemodele not in(select codeentretien from  "+getTable()+" where codeequip='"+inv+"')");
+//	return executeSelectListe(aTransaction,"select * from F_PE_BASE where codemodele = '"+mod+"' and codeti=1 and codeentretien<>2 and codemodele not in(select codeentretien from  "+getTable()+" where codeequip='"+inv+"')");
 //}
 
 /*renvoi un arrayList 
@@ -254,7 +254,7 @@ protected PePerso getMyPePerso() {
  * Retourne le nom de la table.
  */
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_PE_PERSO";
+	return "F_PE_PERSO";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

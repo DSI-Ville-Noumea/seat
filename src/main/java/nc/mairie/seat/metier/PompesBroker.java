@@ -33,7 +33,7 @@ protected Pompes getMyPompes() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_POMPES";
+	return "F_POMPES";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

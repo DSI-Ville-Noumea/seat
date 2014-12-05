@@ -75,7 +75,7 @@ protected PiecesOtInfos getMyPiecesOtInfos() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_PIECESOTINFOS";
+	return "V_PIECESOTINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

@@ -106,7 +106,7 @@ protected TYPEEQUIP getMyTYPEEQUIP() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_TYPEEQUIP";
+	return "F_TYPEEQUIP";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

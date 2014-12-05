@@ -64,7 +64,7 @@ protected FPMComplete getMyFPMComplete() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_FPMCOMPLETE";
+	return "V_FPMCOMPLETE";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

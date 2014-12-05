@@ -77,7 +77,7 @@ protected AgentServiceInfos getMyAgentServiceInfos() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_AGENTSSERVICEINFOS";
+	return "V_AGENTSSERVICEINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

@@ -101,7 +101,7 @@ protected PM_Affecter_Agent getMyPM_Affecter_Agent() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_PMAFF_AG";
+	return "F_PMAFF_AG";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

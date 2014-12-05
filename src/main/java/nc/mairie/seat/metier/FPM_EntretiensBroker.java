@@ -33,7 +33,7 @@ protected FPM_Entretiens getMyFPM_Entretiens() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.F_FPM_ENTRETIEN";
+	return "F_FPM_ENTRETIEN";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

@@ -112,7 +112,7 @@ protected PePersoInfos getMyPePersoInfos() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_PEPERSOINFOS";
+	return "V_PEPERSOINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.

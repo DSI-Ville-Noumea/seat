@@ -33,7 +33,7 @@ protected BeOtInfos getMyBeOtInfos() {
  */
 @Override
 protected java.lang.String definirNomTable() {
-	return "SEAT.V_BEOTINFOS";
+	return "V_BEOTINFOS";
 }
 /**
  * Retourne le mappage de chaque colonne de la table.
@@ -94,7 +94,7 @@ public ArrayList<BeOtInfos> listerBeOtInfosOT(nc.mairie.technique.Transaction aT
 public int cumuleMontantPiecesOtInfosBE(nc.mairie.technique.Transaction aTransaction,String numot, String numinv) throws Exception {
 	return executeCompter(aTransaction," select sum(mtlenju)" +
 			" from "+getTable()+" be " +
-			" inner join SEAT.V_ENJU enju on enju.noengj = be.noengj " +
+			" inner join V_ENJU enju on enju.noengj = be.noengj " +
 			" where numeroot="+numot+" " +
 			" and cddep like '%"+numinv+"%'");
 }
