@@ -62,8 +62,8 @@ public ArrayList<EquipementInfos> listerEquipementInfosInactifs(nc.mairie.techni
  * @throws Exception Exception
  */
 public ArrayList<EquipementInfos> chercherListEquipementInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	//return executeSelectListe(aTransaction,"select * from "+getTable()+" where dateventeoureforme='0001-01-01' and char(NUMEROINVENTAIRE) like '"+cle+"%' OR char(NUMEROIMMATRICULATION)  like '"+cle+"%'");
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where char(numeroinventaire) like '"+cle+"%' OR char(numeroimmatriculation)  like '"+cle+"%' order by numeroimmatriculation");
+	//return executeSelectListe(aTransaction,"select * from "+getTable()+" where dateventeoureforme='0001-01-01' and NUMEROINVENTAIRE like '"+cle+"%' OR NUMEROIMMATRICULATION  like '"+cle+"%'");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire like '"+cle+"%' OR numeroimmatriculation  like '"+cle+"%' order by numeroimmatriculation");
 }
 /**
  * Retourne un EquipementInfos.
@@ -83,7 +83,7 @@ public EquipementInfos chercherEquipementInfos(nc.mairie.technique.Transaction a
  * @throws Exception Exception
  */
 public ArrayList<EquipementInfos> chercherListEquipementInfosTous(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where char(NUMEROINVENTAIRE) like '"+cle+"%' OR char(NUMEROIMMATRICULATION)  like '"+cle+"%'");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where NUMEROINVENTAIRE like '"+cle+"%' OR NUMEROIMMATRICULATION  like '"+cle+"%'");
 }
 
 /**
@@ -94,7 +94,7 @@ public ArrayList<EquipementInfos> chercherListEquipementInfosTous(nc.mairie.tech
  * @throws Exception Exception
  */
 public EquipementInfos chercherEquipementInfosInvOuImmat(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return (EquipementInfos)executeSelect(aTransaction,"select * from "+getTable()+" where char(NUMEROINVENTAIRE) = '"+cle+"' OR char(NUMEROIMMATRICULATION)  = '"+cle+"'");
+	return (EquipementInfos)executeSelect(aTransaction,"select * from "+getTable()+" where NUMEROINVENTAIRE = '"+cle+"' OR NUMEROIMMATRICULATION  = '"+cle+"'");
 }
 
 /**

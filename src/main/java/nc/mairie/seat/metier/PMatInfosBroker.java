@@ -80,7 +80,7 @@ public ArrayList<PMatInfos> listerPMatInfosRecherche(nc.mairie.technique.Transac
  * @throws Exception Exception
  */
 public PMatInfos chercherPMatInfos(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return (PMatInfos)executeSelect(aTransaction,"select * from "+getTable()+" where char(pminv) = '"+cle+"'");
+	return (PMatInfos)executeSelect(aTransaction,"select * from "+getTable()+" where pminv = '"+cle+"'");
 }
 
 /**
@@ -173,7 +173,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 }
 
 public ArrayList<PMatInfos> chercherListPMatInfosTous(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where char(pminv) like '"+cle+"%' OR char(pmserie)  like '"+cle+"%'");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv like '"+cle+"%' OR pmserie  like '"+cle+"%'");
 }
 
 
