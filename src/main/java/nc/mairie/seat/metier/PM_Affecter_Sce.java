@@ -222,7 +222,7 @@ public boolean affecter_serviceModif(nc.mairie.technique.Transaction aTransactio
 	// on teste la date début >= date fin de l'affectation précédente
 	if (null != unPM_Affecter_Sce2.getPminv()){
 		setDdebut(Services.formateDate(getDdebut()));
-		int controle = Services.compareDates(unPM_Affecter_Sce2.getDdebut(),getDdebut());
+		int controle = Services.compareDates(unPM_Affecter_Sce2.getDfin(),getDdebut());
 		if (controle==-1){
 			aTransaction.declarerErreur("La date de début d'affectation doit être supérieur ou égale à la date de début de l'affectation précédente. ("+unPM_Affecter_Sce2.getDdebut()+")");
 			return false;
