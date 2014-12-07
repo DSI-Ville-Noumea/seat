@@ -202,7 +202,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		addZone(getNOM_ST_SERVICE(),"");
 	}
 	setFocus(getNOM_EF_EQUIP());
-	if(!first&&getListeAffectation().size()>0){
+	if(!first&&getListeAffectation()!=null&&getListeAffectation().size()>0){
 		int indice  = (Services.estNumerique(getVAL_LB_AFFECTATION_SELECT()) ? Integer.parseInt(getVAL_LB_AFFECTATION_SELECT()): -1);
 		if(indice==-1){
 			addZone(getNOM_LB_AFFECTATION_SELECT(),"0");
