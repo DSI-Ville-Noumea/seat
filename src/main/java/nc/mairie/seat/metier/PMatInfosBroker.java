@@ -57,9 +57,9 @@ public ArrayList<PMatInfos> listerPMatInfos(nc.mairie.technique.Transaction aTra
  */
 public ArrayList<PMatInfos> listerPMatInfosSansEntretienPlanifie(nc.mairie.technique.Transaction aTransaction) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+"" +
-			" where dmes < current_date - 1 year" +
+			" where dmes < current_date - interval '1 year'" +
 			" and not exists (select pminv from F_PMPE_PERSO" +
-			" where V_PMATINFOS.pminv = F_PMPE_PERSO.pminv and dprev between current_date - 1 year and current_date + 1 day)");
+			" where V_PMATINFOS.pminv = F_PMPE_PERSO.pminv and dprev between current_date - interval '1 year' and current_date + interval '1 day')");
 }
 /**
  * Retourne un ArrayList d'objet métier : PMatInfos.
