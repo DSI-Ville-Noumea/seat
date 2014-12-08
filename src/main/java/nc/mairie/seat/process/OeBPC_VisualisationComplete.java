@@ -67,6 +67,9 @@ public class OeBPC_VisualisationComplete extends nc.mairie.technique.BasicProces
  * @author : Générateur de process
  */
 public void initialiseZones(javax.servlet.http.HttpServletRequest request) throws Exception{
+	//#12457
+	if (getTransaction().isErreur()) return;	
+	
 	//récupération des variables
 	if((first)||(etatStatut()==STATUT_EQUIP)){
 		EquipementInfos unEquipementInfos = (EquipementInfos)VariableGlobale.recuperer(request,"EQUIPEMENTINFOS");
