@@ -73,7 +73,7 @@ public ArrayList<PM_Affecter_Agent> chercherListerPmAffecter_AgentPM(nc.mairie.t
 }
 
 public ArrayList<PM_Affecter_Agent> chercherListerPmAffecter_AgentEquipSceEnCours(nc.mairie.technique.Transaction aTransaction,String param,String inv,String date) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codesce like '"+param+"%' and pminv='"+inv+"' and ddeb>='"+date+"' and dfin='0001-01-01' order by ddeb desc,hdeb desc,hfin desc,hdebmn desc");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codesce like '"+param+"%' and pminv='"+inv+"' and ddeb>='"+date+"' order by ddeb desc,hdeb desc,hfin desc,hdebmn desc");
 }
 
 /**
