@@ -45,7 +45,7 @@ public boolean supprimerDeclarations(nc.mairie.technique.Transaction aTransactio
  * @throws Exception exception
  */
 public ArrayList<Declarations> listerDeclarations(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by  \"DATE\" desc, codedec desc");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by  DATE desc, codedec desc");
 }
 /**
  * Retourne un ArrayList d'objet métier : Declarations.

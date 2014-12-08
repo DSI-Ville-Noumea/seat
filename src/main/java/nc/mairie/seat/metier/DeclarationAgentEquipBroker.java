@@ -53,6 +53,6 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  * @throws Exception Exception
  */
 public ArrayList<DeclarationAgentEquip> listerDeclarationAgentEquip(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by \"DATE\" desc, codedec desc");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" order by DATE desc, codedec desc");
 }
 }
