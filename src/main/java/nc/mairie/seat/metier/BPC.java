@@ -650,7 +650,7 @@ public boolean existeBPCPompes(nc.mairie.technique.Transaction aTransaction, Str
 	BPC unBPC = new BPC();
 	return unBPC.getMyBPCBroker().existeBPCPompe(aTransaction,numPompe);
 }
-public static ArrayList<BPC> listerBPCParams(nc.mairie.technique.Transaction aTransaction,String inv,String ddeb,String dfin) throws Exception{
+public static ArrayList<BPC> listerBPCParams(nc.mairie.technique.Transaction aTransaction,String inv,String ddeb,String dfin, String servi) throws Exception{
 	String periode = "";
 	if(inv.equals("")){
 		inv="";
@@ -675,7 +675,7 @@ public static ArrayList<BPC> listerBPCParams(nc.mairie.technique.Transaction aTr
 	}
 	
 	BPC unBPC = new BPC();
-	return unBPC.getMyBPCBroker().listerBPCParams(aTransaction,inv,periode);
+	return unBPC.getMyBPCBroker().listerBPCParams(aTransaction,inv,periode,servi.trim());
 }
 
 }

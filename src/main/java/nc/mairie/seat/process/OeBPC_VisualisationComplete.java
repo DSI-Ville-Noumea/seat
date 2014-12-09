@@ -385,13 +385,11 @@ public java.lang.String getNOM_PB_VALIDER() {
  * @throws Exception Exception
  */
 public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) throws Exception {
-	int compare;
 	//on efface st_service
 	addZone(getNOM_ST_SERVICE(),"");
 	//on récupère les 4 paramètres qui vont permettre de chercher les BPC
 	//1er paramètre
 	String servi = getZone(getNOM_EF_RECH_SERVICE());
-	String codeService = "";
 	String inv = getZone(getNOM_EF_RECHE_EQUIP());
 	String ddeb = getZone(getNOM_EF_DDEB());
 	String dfin = getZone(getNOM_EF_DFIN());
@@ -438,73 +436,9 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 	if(getTransaction().isErreur()){
 		return false;
 	}
-	//OFONTENEAU:  AFAIRE regarder les temps de réponse ICI
-	ArrayList<BPC> inter = BPC.listerBPCParams(getTransaction(),inv,ddeb,dfin);
-	ArrayList<BPC> resultat = new ArrayList<BPC>();
-	if(servi.equals("")){
-		resultat = inter;
-	}else{
-		if(servi.length()>3 && servi.substring(3,4).equals("A")){
-			servi = servi.substring(0,3);
-		}
-		// on épure la liste inter
-		for (int i=0; i<inter.size();i++){
-			BPC unBPC = (BPC)inter.get(i);
-			// recherche de l'affectation à la date du BPC
-			AffectationServiceInfos unASI = AffectationServiceInfos.chercherAffectationServiceInfosCourantEquip(getTransaction(),unBPC.getNumeroinventaire(),unBPC.getDate());
-			if(getTransaction().isErreur()){
-				// soit PM soit pas affecté
-				getTransaction().traiterErreur();
-			}
-			if(unASI!=null){
-				if(unASI.getNumeroinventaire()!=null){
-					codeService = unASI.getCodeservice();
-					if(servi.length()==3){
-						codeService = codeService.substring(0,3);
-					}
-					
-					if(servi.equals(codeService)){
-						compare = Services.compareDates(unBPC.getDate(),unASI.getDdebut());
-						if(compare>-1){
-							resultat.add(unBPC);
-							inter.remove(i);
-							i--;
-						}
-						
-					}
-				}else{
-					PM_Affectation_Sce_Infos unPMASI = PM_Affectation_Sce_Infos.chercherPM_Affectation_Sce_InfosCourantPm(getTransaction(),unBPC.getNumeroinventaire(),unBPC.getDate());
-					if(getTransaction().isErreur()){
-						// pas affecté
-						getTransaction().traiterErreur();
-					}
-					if(unPMASI!=null){
-						if(unPMASI.getPminv()!=null){
-							codeService = unPMASI.getSiserv();
-							if(servi.length()==3){
-								codeService = codeService.substring(0,3);
-							}
-							if(servi.equals(codeService)){
-								if(servi.equals(codeService)){
-									compare = Services.compareDates(unBPC.getDate(),unPMASI.getDdebut());
-									if(compare>-1){
-										resultat.add(unBPC);
-										inter.remove(i);
-										i--;
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-//	if(!isMateriel){
-//		resultat = BPCInfosCompletes.listerBPCInfosCompletesParams(getTransaction(),inv,servi,ddeb,dfin);
-//	}else{
-//		resultat = BPCPMInfos.listerBPCPMInfosParams(getTransaction(),inv,servi,ddeb,dfin);
-//	}
+	
+	ArrayList<BPC> resultat = BPC.listerBPCParams(getTransaction(),inv,ddeb,dfin,servi);
+	
 	if(getTransaction().isErreur()){
 		return false;
 	}

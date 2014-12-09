@@ -228,21 +228,30 @@ public boolean existeBPCPompe(nc.mairie.technique.Transaction aTransaction, Stri
  * @param aTransaction Transaction
  * @param inv inv
  * @param periode periode
+ * @param servi servi
  * @return java.util.ArrayList
  * @throws Exception Exception
  */
-public ArrayList<BPC> listerBPCParams(nc.mairie.technique.Transaction aTransaction,String inv,String periode) throws Exception {
-	if(!inv.equals("")){
-		inv = "where "+inv;
-		if(!periode.equals("")){
-			periode = "and "+periode;
-		}
-	}else{
-		if(!periode.equals("")){
-			periode = "where "+periode;
-		}
+public ArrayList<BPC> listerBPCParams(nc.mairie.technique.Transaction aTransaction,String inv,String periode, String servi) throws Exception {
+	
+	String where = "";
+	if (!"".equals(servi)) {
+		where+=	"left join f_aff_sce aff_sce on aff_sce.numeroinventaire = bpc.numeroinventaire and codeservice = '"+servi+"' and date >= aff_sce.ddebut and (date < aff_sce.dfin or aff_sce.dfin = '0001-01-01')"+
+				"left join f_pmaff_sc pmaff_sc on pmaff_sc.pminv = bpc.numeroinventaire and siserv = '"+servi+"' and date >= pmaff_sc.ddebut and (date < pmaff_sc.dfin or pmaff_sc.dfin = '0001-01-01')";
+		where+="where not (aff_sce is null and pmaff_sc.siserv is null)";
 	}
 	
-	return executeSelectListe(aTransaction,"select numerobpc,date,heure,valeurcompteur, numeropompe, quantite, modedeprise, numeroinventaire from "+getTable()+" "+inv+periode+" order by date desc");
+	if(!inv.equals("")){
+		where+=" and bpc."+inv;
+	}
+	
+	if(!periode.equals("")){
+		where += " and "+periode;
+	}
+	
+	if (where.startsWith(" and"))
+		where = " where "+where.substring(4);
+
+	return executeSelectListe(aTransaction,"select bpc.* from "+getTable()+" bpc "+where+" order by date desc");
 }
 }
