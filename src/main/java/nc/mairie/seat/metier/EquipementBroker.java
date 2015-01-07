@@ -92,7 +92,7 @@ public int chercherEquipementImmat(nc.mairie.technique.Transaction aTransaction,
  */
 public ArrayList<Equipement> listerEquipementTri(nc.mairie.technique.Transaction aTransaction, String tri) throws Exception {
 	//return executeSelectListe(aTransaction,"select * from "+getTable()+", F_MODELES, F_MARQUES, F_TYPEEQUIP where F_MARQUES.CODEMARQUE=F_MODELES.CODEMARQUE and F_MODELES.CODETE=F_TYPEEQUIP.CODETYPEEQUIP and F_MODELES.CODEMODELE=F_EQUIPEMENT.CODEMODELE order by "+tri+"");
-	return executeSelectListe(aTransaction,"select * from "+getTable()+", F_MODELES, F_MARQUES, F_TYPEEQUIP where F_MARQUES.CODEMARQUE=SEAT.F_MODELES.CODEMARQUE and F_MODELES.CODETE=SEAT.F_TYPEEQUIP.CODETYPEEQUIP and F_MODELES.CODEMODELE=SEAT.F_EQUIPEMENT.CODEMODELE order by "+tri+"");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+", F_MODELES, F_MARQUES, F_TYPEEQUIP where F_MARQUES.CODEMARQUE=F_MODELES.CODEMARQUE and F_MODELES.CODETE=F_TYPEEQUIP.CODETYPEEQUIP and F_MODELES.CODEMODELE=F_EQUIPEMENT.CODEMODELE order by "+tri+"");
 }
 
 /**

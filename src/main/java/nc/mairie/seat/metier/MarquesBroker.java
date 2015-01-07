@@ -80,7 +80,7 @@ public ArrayList<Marques> listerMarquesModele(nc.mairie.technique.Transaction aT
 }
 
 public ArrayList<Marques> listerMarquesModeleMT(nc.mairie.technique.Transaction aTransaction) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemarque in (select codemarque from f_modeles, f_typeequip where f_modeles.codete=SEAT.f_typeequip.codetypeequip and f_typeequip.typete='MT') order by designationmarque");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codemarque in (select codemarque from f_modeles, f_typeequip where f_modeles.codete=f_typeequip.codetypeequip and f_typeequip.typete='MT') order by designationmarque");
 }
 
 /**
