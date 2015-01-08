@@ -44,7 +44,13 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	}
 //	on met la date du jour par défaut
 	String datedujour = Services.dateDuJour(); 
-	addZone(getNOM_EF_DATEVENTEOUR(),datedujour);
+	if (getZone(getNOM_EF_DATEVENTEOUR()).length() == 0) {
+		addZone(getNOM_EF_DATEVENTEOUR(),datedujour);
+	}
+	if (getZone(getNOM_EF_DATEHORSCIRCUIT()).length() == 0) {
+		addZone(getNOM_EF_DATEHORSCIRCUIT(),datedujour);
+	}
+	
 //	Si liste des équipements est vide
 	if (getLB_EQUIPEMENTINFOS() == LBVide || etatStatut() != STATUT_MEME_PROCESS) {
 		
@@ -603,7 +609,19 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 		setStatut(STATUT_MEME_PROCESS, true, MairieMessages.getMessage("ERR996"));//"Vous ne pouvez pas valider, il n'y a pas d'action en cours."
 		return false;
 	}
-		
+
+//	on récupère la zone DateHorsCircuit
+	String newDateHorsCircuit = getZone(getNOM_EF_DATEHORSCIRCUIT());
+	if(!newDateHorsCircuit.equals("")){
+		if(!Services.estUneDate(newDateHorsCircuit)){
+			getTransaction().declarerErreur("La date de mise hors circuit n'est pas correcte.");
+			setFocus(getNOM_EF_DATEHORSCIRCUIT());
+			return false;
+		}
+	}
+	newDateHorsCircuit = Services.formateDate(newDateHorsCircuit);
+
+	
 //	on récupère la zone DateHorsCircuit
 	String newDateVouR = getZone(getNOM_EF_DATEVENTEOUR());
 	if(!newDateVouR.equals("")){
@@ -614,11 +632,19 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 		}
 	}
 	newDateVouR = Services.formateDate(newDateVouR);
+	
+	//La date de vente ou réforme doit être > dae mise hors circuit
+	if (Services.compareDates(newDateVouR, newDateHorsCircuit) < 0) {
+		getTransaction().declarerErreur("La date de vente ou réforme doit être >= à la date hors circuit.");
+		return false;
+	}
+	
 	//Suppression d'un équipement signifie qu'il est inactif
 	//on compare la date hors circuit avec la date de mise en circulation
 	int controle = Services.compareDates(newDateVouR,equipementCourant.getDatemiseencirculation());
 	if (controle>-1){
 		getEquipementCourant().setDateventeoureforme(newDateVouR);
+		getEquipementCourant().setDatehorscircuit(newDateHorsCircuit);
 		equipementCourant.modifierEquipement(getTransaction(),getEquipementCourant().getNumeroinventaire());
 	}else if (controle==-1){
 		getTransaction().declarerErreur("La date hors circuit doit être supérieure à la date de mise en circulation.");

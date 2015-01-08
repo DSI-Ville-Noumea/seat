@@ -208,6 +208,13 @@ document.formu.elements[nom].focus();
 									</tr>
 								</TABLE><TABLE border="0" class="sigp2" align="center">
 								<tr>
+									<td>Date de mise hors circulation</td>
+									<td width="5"></td>
+									<td><INPUT type="text" name="<%=process.getNOM_EF_DATEHORSCIRCUIT() %>" value="<%=process.getVAL_EF_DATEHORSCIRCUIT() %>" class="sigp2-saisie"></td>
+									<td><IMG src="images/calendrier.gif"
+							onclick="return showCalendar('<%=process.getNOM_EF_DATEHORSCIRCUIT()%>', 'dd/mm/y');"></td>
+								</tr>
+								<tr>
 									<td>Date de vente ou réforme</td>
 									<td width="5"></td>
 									<td><INPUT type="text" name="<%=process.getNOM_EF_DATEVENTEOUR() %>" value="<%=process.getVAL_EF_DATEVENTEOUR() %>" class="sigp2-saisie"></td>
