@@ -46,10 +46,9 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	if(first){
 		String datedujour = Services.dateDuJour(); 
 		addZone(getNOM_EF_DATEMISEENCIRCULATION(),datedujour);
+		//on met le focus sur le libellé du modèle
+		setFocus(getNOM_EF_NOINVENTAIRE());
 	}
-	
-//	 on met le focus sur le libellé du modèle
-	setFocus(getNOM_EF_NOINVENTAIRE());
 	
 	//on initialise la liste des marques
 	if(first){
