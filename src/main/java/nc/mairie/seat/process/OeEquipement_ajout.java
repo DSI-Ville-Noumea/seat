@@ -307,6 +307,15 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 		setFocus(getNOM_EF_PRIX());
 		return false;
 	}
+	
+	//deb #12771 Bug dans saisie d'un inventaire si la durée de garantie n'est pas saisie
+	if (newGarantie.length() == 0) {
+		getTransaction().declarerErreur("La durée de garantie est obligatoire");
+		setFocus(getNOM_EF_GARANTIE());
+		return false;
+	}
+	//fin #12771 
+	
 	//	Si lib datemiseencirculation non saisit
 	if (newDateMiseEnCirculation.length() == 0) {
 		getTransaction().declarerErreur("La date de mise en circulation est obligatoire");
