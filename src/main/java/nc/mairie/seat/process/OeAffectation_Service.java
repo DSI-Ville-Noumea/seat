@@ -1616,7 +1616,10 @@ public boolean performPB_RESPONSABLE(javax.servlet.http.HttpServletRequest reque
 	}else{
 		AgentsMunicipaux unAgent = AgentsMunicipaux.chercherAgentsMunicipauxService(getTransaction(),unService.getNomatr(),unService.getCodeservice());
 		if(getTransaction().isErreur()){
-			return false;
+			getTransaction().traiterErreur();
+			//getTransaction().declarerErreur("Agent non trouvé ou sans fiche de poste");
+			addZone(getNOM_ST_AGENT(),"Agent non trouvé ou sans fiche de poste");
+			return true;
 		}
 		addZone(getNOM_ST_AGENT(),unAgent.getNom().trim()+" "+unAgent.getPrenom().trim());
 	}
