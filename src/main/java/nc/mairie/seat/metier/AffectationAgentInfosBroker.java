@@ -49,7 +49,7 @@ public ArrayList<AffectationAgentInfos> chercherListAffectationsSce2(nc.mairie.t
 public ArrayList<AffectationAgentInfos> chercherListAffectationsSceEquip(nc.mairie.technique.Transaction aTransaction,String param,String numinv) throws Exception {
 	// on prend le code du service et pas le code du sous service
 	param = param.substring(0,3);
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire="+numinv+" and matricule in(select nomatr from mairie_spmtsr where servi like '"+param+"%') order by datedebut desc, datefin desc");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire='"+numinv+"' and matricule in(select nomatr from mairie_spmtsr where servi like '"+param+"%') order by datedebut desc, datefin desc");
 }
 /**
  * Retourne un ArrayList d'objet métier : AffectationAgentInfos.
