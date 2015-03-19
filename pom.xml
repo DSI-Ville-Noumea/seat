@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nc.mairie</groupId>
 	<artifactId>seat</artifactId>
-	<version>3.2</version>
+	<version>3.3-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<organization>
 		<name>Mairie de Nouméa</name>
@@ -299,6 +299,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<svnurl>https://svn.ville-noumea.nc/sed/seat</svnurl>
 		<java.version>1.7</java.version>
-		<framework_version>2.2</framework_version>
+		<framework_version>2.3</framework_version>
 	</properties>
 </project>
