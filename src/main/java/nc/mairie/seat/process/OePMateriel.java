@@ -68,7 +68,7 @@ public void trier(ArrayList<PMatInfos> a,String colonne) throws Exception{
 	
 //	Si au moins un bpc
 	if (a.size() !=0 ) {
-		int [] tailles = {5,20,10,20,15};
+		int [] tailles = {6,20,10,20,15};
 		String [] padding = {"G","G","G","G","G"};
 		setLB_PMAT_Couleurs(new String[a.size()]);
 		setLB_PMAT_FCouleurs(new String[a.size()]);
