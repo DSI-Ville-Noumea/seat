@@ -1268,7 +1268,10 @@ public void setSelectionService(boolean isSelectionService) {
 public boolean validationAgent(javax.servlet.http.HttpServletRequest request,int indice,Equipement unEquipement,PMateriel unPmateriel) throws Exception{
 	String numot = "";
 	//AgentsMunicipaux unAgentM = (AgentsMunicipaux)getListAgent().get(indice);
-	Agents unAgent = Agents.chercherAgents(getTransaction(),"1");
+	//Debut Anomalie  #14927
+	//Agents unAgent = Agents.chercherAgents(getTransaction(),"1");
+	Agents unAgent = new Agents();
+	//Fin Anomalie  #14927
 	if (null!=getListAgent()&&getListAgent().size()!=0){
 		AActifs unAgentM = (AActifs)getListAgent().get(indice);
 		unAgent = Agents.chercherAgents(getTransaction(),unAgentM.getNomatr());
