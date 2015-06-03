@@ -7,7 +7,7 @@
 <TITLE>Main</TITLE>
 <SCRIPT language="javascript" src="js/GestionBoutonDroit.js"></SCRIPT>
 <SCRIPT language="javascript" src="js/GestionMenu.js"> </SCRIPT></HEAD>
-<BODY onload='changerTitre(window.parent.frames("Titre").defaultTitre);'>
+<BODY onload='changerTitre(window.parent.frames["Titre"].defaultTitre);'>
 <P><IMG src="images/SEAT_equipements_fond.jpg" border="0"></P>
 <DIV style="width : 399px;height : 432px;top : 50px;left : 50px;
   position : absolute;

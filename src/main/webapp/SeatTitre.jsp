@@ -8,29 +8,9 @@
 <META name="GENERATOR" content="IBM WebSphere Page Designer V3.5.3 for Windows">
 <META http-equiv="Content-Style-Type" content="text/css">
 
-<script language="javascript">
-var defaultTitre = "Gestion des équipements de l'atelier municipal";
-var titre = defaultTitre;
-
-function init()
-{
-  B.setExpression("innerText","titre.toString()");
-}
-
-	
-function changerTitre(chaine) {
-	titre=chaine;
-//	document.write(titre)
-	document.recalc();
-}
-
-</script>
-
-
-
 </head>
-<!--<BODY background="file:///X:/TestLuc/images/fond_titre.jpg" onload="init();">-->
-<BODY background="images/fond_titre.jpg" onload="init();">
+<!--<BODY background="file:///X:/TestLuc/images/fond_titre.jpg">-->
+<BODY background="images/fond_titre.jpg">
 <DIV style="width : 639px;height : 38px;top : 0px;left : 1px;
   position : absolute;
   z-index : 1;
@@ -49,5 +29,16 @@ function changerTitre(chaine) {
 
 </TABLE>
 </DIV>
+<script language="javascript">
+var defaultTitre = "SEAT - Gestion des équipements de l'atelier municipal";
+var titre = defaultTitre;
+
+function changerTitre(chaine) {
+	titre=chaine;
+	window.parent.frames["Titre"].window.document.getElementById("B").innerHTML=titre;
+}
+
+</script>
+
 </BODY>
 </html>

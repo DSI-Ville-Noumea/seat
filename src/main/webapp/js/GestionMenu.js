@@ -174,5 +174,5 @@ function envoieFormulaire(lien) {
 
 //Change le titre de la barre des titres
 function changerTitre(titre) {
-	window.parent.frames("Titre").changerTitre(titre);
+	window.parent.frames["Titre"].changerTitre(titre);
 }
