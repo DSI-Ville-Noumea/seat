@@ -185,7 +185,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		addZone(getNOM_ST_NOIMMAT(),"");
 		addZone(getNOM_ST_NOMEQUIP(),"");
 	}
-	if (null!=getServiceCourant()){
+	if (null!=getServiceCourant() && null != getServiceCourant().getServi()){
 		//on remplit la liste des agents du service
 		if(getServiceCourant().getServi().equals("4000")){
 			ArrayList<AgentCDE> a = AgentCDE.listerAgentCDE(getTransaction());
@@ -281,6 +281,7 @@ private void initialiseListeAffectation(javax.servlet.http.HttpServletRequest re
 			setListeAffectation(a);
 			trier(a);
 		}else{
+			setListeAffectation(null);
 			setLB_AFFECTATION(null);
 			setIsVide(a.size());
 		}
