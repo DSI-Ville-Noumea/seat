@@ -1,3 +1,4 @@
+<%@page import="java.util.Calendar"%>
 <%@page contentType="text/html;charset=UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
@@ -178,7 +179,11 @@ document.formu.elements[nom].focus();
 			</TD>
 		</TR>
 	</TABLE>
-</FIELDSET><FIELDSET><LEGEND class="sigp2Fieldset">Historiques</LEGEND>
+</FIELDSET>
+
+<%String annee = String.valueOf(Calendar.getInstance().get(Calendar.YEAR)); %>
+
+<FIELDSET><LEGEND class="sigp2Fieldset">Historiques</LEGEND>
 <!-- ------------------------------------ -->
 <% if (process.onglet.equals("ONGLET1")) {%>
 <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -193,7 +198,7 @@ document.formu.elements[nom].focus();
               <TBODY>
                 <TR>
                   <TD class="OngletActifG"></TD>
-                  <TD class="OngletActifC">BPC</TD>
+                  <TD class="OngletActifC">BPC (<%=annee%>)</TD>
                   <TD class="OngletActifD"></TD>
                 </TR>
               </TBODY>
@@ -322,7 +327,7 @@ document.formu.elements[nom].focus();
               <TBODY>
                 <TR>
                   <TD class="OngletInactifG"></TD>
-                  <TD class="OngletInactifC">BPC</TD>
+                  <TD class="OngletInactifC">BPC (<%=annee%>)</TD>
                   <TD class="OngletInactifD"></TD>
                 </TR>
               </TBODY>
@@ -442,7 +447,7 @@ document.formu.elements[nom].focus();
               <TBODY>
                 <TR>
                   <TD class="OngletInactifG"></TD>
-                  <TD class="OngletInactifC">BPC</TD>
+                  <TD class="OngletInactifC">BPC (<%=annee%>)</TD>
                   <TD class="OngletInactifD"></TD>
                 </TR>
               </TBODY>
@@ -557,7 +562,7 @@ document.formu.elements[nom].focus();
               <TBODY>
                 <TR>
                   <TD class="OngletInactifG"></TD>
-                  <TD class="OngletInactifC">BPC</TD>
+                  <TD class="OngletInactifC">BPC (<%=annee%>)</TD>
                   <TD class="OngletInactifD"></TD>
                 </TR>
               </TBODY>
@@ -680,7 +685,7 @@ document.formu.elements[nom].focus();
               <TBODY>
                 <TR>
                   <TD class="OngletInactifG"></TD>
-                  <TD class="OngletInactifC">BPC</TD>
+                  <TD class="OngletInactifC">BPC (<%=annee%>)</TD>
                   <TD class="OngletInactifD"></TD>
                 </TR>
               </TBODY>
