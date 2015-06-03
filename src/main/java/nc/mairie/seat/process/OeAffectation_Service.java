@@ -93,6 +93,10 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		addZone(getNOM_ST_NOIMMAT(),"");
 		addZone(getNOM_ST_NOMEQUIP(),"");
 	}
+	
+	//Affichage du responsable s'il y eb a 1
+	afficheResponsable();
+	
 	if ((null!=(serviceCourant))&&(null!=serviceCourant.getServi())){
 		addZone(getNOM_ST_SERVICE(),getServiceCourant().getLiserv());
 		//on remplit la liste des agents du service
@@ -1593,6 +1597,30 @@ public String getJSP() {
 public java.lang.String getNOM_PB_RESPONSABLE() {
 	return "NOM_PB_RESPONSABLE";
 }
+
+public void afficheResponsable() throws Exception {
+	
+	int indice  = (Services.estNumerique(getVAL_LB_AFFECTATION_SELECT()) ? Integer.parseInt(getVAL_LB_AFFECTATION_SELECT()): -1);
+	if (indice == -1) {
+		addZone(getNOM_ST_AGENT(),"");
+		return;
+	}
+	
+	AffectationServiceInfos unService = (AffectationServiceInfos)getListeAffectation().get(indice);
+	if("0".equals(unService.getNomatr())){
+		addZone(getNOM_ST_AGENT(),"Aucun");
+	}else{
+		AgentsMunicipaux unAgent = AgentsMunicipaux.chercherAgentsMunicipauxService(getTransaction(),unService.getNomatr(),unService.getCodeservice());
+		if(getTransaction().isErreur()){
+			getTransaction().traiterErreur();
+			//getTransaction().declarerErreur("Agent non trouvé ou sans fiche de poste");
+			addZone(getNOM_ST_AGENT(),"Agent non trouvé ou sans fiche de poste");
+			return;
+		}
+		addZone(getNOM_ST_AGENT(),unAgent.getNom().trim()+" "+unAgent.getPrenom().trim());
+	}
+}
+
 /**
  * - Traite et affecte les zones saisies dans la JSP.
  * - Implémente les règles de gestion du process
@@ -1610,19 +1638,8 @@ public boolean performPB_RESPONSABLE(javax.servlet.http.HttpServletRequest reque
 		getTransaction().declarerErreur(MairieMessages.getMessage("ERR997","AFFECTATIONS"));
 		return false;
 	}
-	AffectationServiceInfos unService = (AffectationServiceInfos)getListeAffectation().get(indice);
-	if("0".equals(unService.getNomatr())){
-		addZone(getNOM_ST_AGENT(),"Aucun");
-	}else{
-		AgentsMunicipaux unAgent = AgentsMunicipaux.chercherAgentsMunicipauxService(getTransaction(),unService.getNomatr(),unService.getCodeservice());
-		if(getTransaction().isErreur()){
-			getTransaction().traiterErreur();
-			//getTransaction().declarerErreur("Agent non trouvé ou sans fiche de poste");
-			addZone(getNOM_ST_AGENT(),"Agent non trouvé ou sans fiche de poste");
-			return true;
-		}
-		addZone(getNOM_ST_AGENT(),unAgent.getNom().trim()+" "+unAgent.getPrenom().trim());
-	}
+	
+	afficheResponsable();
 	
 	return true;
 }
