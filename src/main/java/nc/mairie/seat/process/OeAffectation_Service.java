@@ -95,7 +95,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	}
 	
 	//Affichage du responsable s'il y eb a 1
-	if ("".equals(getVAL_ST_TITRE_ACTION())) {
+	if ("".equals(getVAL_ST_TITRE_ACTION()) && ! getTransaction().isErreur()) {
 		afficheResponsable();
 	}
 	
@@ -468,7 +468,7 @@ public boolean performPB_SUPPRIMER(javax.servlet.http.HttpServletRequest request
 	}
 	if(listAffectationAgent.size()>0){
 		addZone(getNOM_ST_TITRE_ACTION(),"");
-		getTransaction().declarerErreur("Des agents ont été affectés à cet équipement, vous devez d'abord supprimer les affectations des agents.");
+		getTransaction().declarerErreur("Erreur : Des agents ont été affectés ponctuellement à cet équipement. Suppression impossible");
 		return false;
 	}
 	
@@ -561,6 +561,12 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 		if(getVAL_CK_AGENT().equals(getCHECKED_ON())){
 			newAgent = "0";
 		}else{
+			
+			if (getServiceCourant()== null || getServiceCourant().getServi() == null) {
+				getTransaction().declarerErreur(MairieMessages.getMessage("ERR997","Services"));
+				return false;
+			}
+			
 	//		on enregistre l'agent sélectionné
 			int numligne = (Services.estNumerique(getZone(getNOM_LB_AGENT_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_AGENT_SELECT())) : -1);
 			if (numligne == -1 || getListeAgent().size() == 0 || numligne > getListeAgent().size() -1 ) {
