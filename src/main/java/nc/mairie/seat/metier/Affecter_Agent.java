@@ -3,8 +3,9 @@ package nc.mairie.seat.metier;
 import java.util.ArrayList;
 
 import nc.mairie.technique.Services;
-import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicBroker;
 import nc.mairie.technique.BasicMetier;
+import nc.mairie.technique.Transaction;
 
 /**
  * Objet métier Affecter_Agent
@@ -1460,4 +1461,44 @@ public boolean existeAffecter_Agent(nc.mairie.technique.Transaction aTransaction
 	}
 	return unAffecter_Agent.getMyAffecter_AgentBroker().existeAffecter_Agent(aTransaction, inv,nomatr,datedeb,hdeb);
 }
+
+/**
+ * Retourne un booléen.
+ * Vérifie si existe
+ * @return true ou false
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param datedeb datedeb
+ * @throws Exception Exception
+ */
+public static boolean existeAffecter_AgentAvantDate(Transaction aTransaction, String inv,String datedeb) throws Exception{
+	Affecter_Agent unAffecter_Agent = new Affecter_Agent();
+	if(!Services.estUneDate(datedeb)){
+		aTransaction.declarerErreur("La date de début n'est pas une date valide");
+	}
+	return unAffecter_Agent.getMyAffecter_AgentBroker().existeAffecter_AgentAvantDate(aTransaction, inv,datedeb);
+}
+
+/**
+ * Retourne un booléen.
+ * Vérifie si existe
+ * @return true ou false
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param datedeb datedeb
+ * @param datefin datefin
+ * @throws Exception Exception
+ */
+public static boolean existeAffecter_AgentEntreDate(Transaction aTransaction, String inv,String datedeb, String datefin) throws Exception{
+	Affecter_Agent unAffecter_Agent = new Affecter_Agent();
+	if(!Services.estUneDate(datedeb)){
+		aTransaction.declarerErreur("La date de début n'est pas une date valide");
+	}
+	if(!Services.estUneDate(datefin)){
+		aTransaction.declarerErreur("La date de fin n'est pas une date valide");
+	}
+	return unAffecter_Agent.getMyAffecter_AgentBroker().existeAffecter_AgentEntreDate(aTransaction, inv,datedeb, datefin);
+}
+
+
 }

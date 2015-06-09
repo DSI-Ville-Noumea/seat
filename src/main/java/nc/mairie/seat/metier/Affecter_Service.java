@@ -116,6 +116,15 @@ public boolean affecter_service(nc.mairie.technique.Transaction aTransaction,Equ
 			return false;
 		}
 	}
+	
+	//#15920 on vérifie que l'équipement n'est pas affecter ponctuellement à un agent
+	if (null != unAffecter_Service.getNumeroinventaire()){
+		if (Affecter_Agent.existeAffecter_AgentAvantDate(aTransaction, unEquipement.getNumeroinventaire() , getDdebut())) {
+			aTransaction.declarerErreur("Erreur : Cet equipement a une affectation ponctuelle à un agent. Modifiez la date de fin ou adaptez la date de début d'affectation au service.");
+			return false;
+		}
+	}
+	
 //	 modification de l'affectation précédente
 	if (null != unAffecter_Service.getNumeroinventaire()){
 		//on met à jour la date de fin de l'affectation précédente
@@ -178,19 +187,32 @@ public boolean affecter_serviceModif(nc.mairie.technique.Transaction aTransactio
 		aTransaction.declarerErreur(nc.mairie.technique.MairieMessages.getMessage("ERR999","une affectation à un service"));
 		return false;
 	}
-	/*if (null == unAffecter_Service2.getNumeroinventaire()){
-		aTransaction.declarerErreur(nc.mairie.technique.MairieMessages.getMessage("ERR999","une affectation à un service"));
-		return false;
-	}*/
-	// on teste si des agents ont été affectés à cette affectation
-	ArrayList<AffectationAgentInfos> uneListAgent = AffectationAgentInfos.chercherListAffectationsSceEquip(aTransaction,unAffecter_Service1.getCodeservice(),getNumeroinventaire());
-	if (uneListAgent.size()>0){
-		AffectationAgentInfos unAAI = (AffectationAgentInfos)uneListAgent.get(0);
-		if(!unAAI.getCodeservice().substring(0,3).equals(getCodeservice().substring(0,3))){
-			aTransaction.declarerErreur("Modification impossible.Des agents ont été affectés à cet équipement, vous devez d'abord supprimer les affectations des agents.");
-			return false;
-		}
+
+	//#15920 on vérifie que l'équipement n'est pas affecter ponctuellement à un agent
+	//recherche du dernier AffecterService
+	Affecter_Service dernierAffSvc = Affecter_Service.chercherDernierAffecter_Service(aTransaction, unEquipement.getNumeroinventaire());
+	if (aTransaction.isErreur()) {
+		aTransaction.traiterErreur();
+	} else {
 		
+		//si changement date deb ou service
+		if ( ! (getCodeservice().equals(dernierAffSvc.getCodeservice()) && getDdebut().equals(dernierAffSvc.getDdebut()))) {	
+			
+			//si on ne change pas de service
+			if (getCodeservice().equals(dernierAffSvc.getCodeservice())) {
+				//on vérifi que pour l'ancien service il n'y avait pas d'affectation
+				if (Affecter_Agent.existeAffecter_AgentEntreDate(aTransaction, unEquipement.getNumeroinventaire() , dernierAffSvc.getDdebut(), getDdebut())){
+					aTransaction.declarerErreur("Erreur : Cet equipement a une affectation ponctuelle à un agent entre "+dernierAffSvc.getDdebut()+" et "+ getDdebut()+". Modification impossible");
+					return false;
+				}
+			} else {
+				//on vérifi que pour l'ancien service il n'y avait pas d'affectation
+				if (Affecter_Agent.existeAffecter_AgentAvantDate(aTransaction, unEquipement.getNumeroinventaire() , dernierAffSvc.getDdebut())) {
+					aTransaction.declarerErreur("Erreur : Cet equipement a une affectation ponctuelle à un agent avant "+dernierAffSvc.getDdebut()+". Modification impossible");
+					return false;
+				}
+			}
+		}
 	}
 	
 	// on regarde s'il y a eu des déclarations
@@ -258,6 +280,14 @@ public boolean affecter_serviceSupp(nc.mairie.technique.Transaction aTransaction
 		//aTransaction.declarerErreur(nc.mairie.technique.MairieMessages.getMessage("ERR999","une affectation à un service"));
 		//return false;
 	}
+	
+	//#15920 on vérifie que l'équipement n'est pas affecter ponctuellement à un agent
+	if (Affecter_Agent.existeAffecter_AgentAvantDate(aTransaction, unEquipement.getNumeroinventaire() , getDdebut())) {
+		aTransaction.declarerErreur("Erreur : Cet equipement a une affectation ponctuelle à un agent. Suppression impossible");
+		return false;
+	}
+	
+	
 //	 modification de l'affectation précédente
 	if (null != unAffecter_Service.getNumeroinventaire()){
 		//on met à jour la date de fin de l'affectation précédente
@@ -294,6 +324,18 @@ public static ArrayList<Affecter_Service> chercherListAffecter_ServiceEquip(nc.m
 public static Affecter_Service chercherListAffecter_ServiceEquipSce(nc.mairie.technique.Transaction aTransaction, String inv,String servi) throws Exception{
 	Affecter_Service unAffecter_Service = new Affecter_Service();
 	return unAffecter_Service.getMyAffecter_ServiceBroker().chercherListerAffecter_ServiceEquipSce(aTransaction, inv,servi);
+}
+
+/**
+ * Retourne un Affecter_Service.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @return Affecter_Service
+ * @throws Exception Exception
+ */
+public static Affecter_Service chercherDernierAffecter_Service(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception{
+	Affecter_Service unAffecter_Service = new Affecter_Service();
+	return unAffecter_Service.getMyAffecter_ServiceBroker().chercherDernierAffecter_Service(aTransaction, inv);
 }
 
 	

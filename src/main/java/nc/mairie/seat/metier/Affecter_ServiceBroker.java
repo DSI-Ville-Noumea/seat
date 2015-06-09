@@ -86,6 +86,17 @@ public Affecter_Service chercherListerAffecter_ServiceEquipSce(nc.mairie.techniq
 }
 
 /**
+ * Retourne un ArrayList d'objet métier : Affecter_Service.
+ * @param aTransaction Transaction
+ * @param inventaire inventaire
+ * @return java.util.ArrayList
+ * @throws Exception Exception
+ */
+public Affecter_Service chercherDernierAffecter_Service(nc.mairie.technique.Transaction aTransaction,String inventaire) throws Exception {
+	return (Affecter_Service)executeSelect(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+inventaire+"' and dfin = '0001-01-01'");
+}
+
+/**
  * Constructeur Affecter_ServiceBroker.
  * @param aMetier BasicMetier
  */

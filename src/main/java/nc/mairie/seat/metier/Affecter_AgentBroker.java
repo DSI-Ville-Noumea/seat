@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
-import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.Transaction;
 
 /**
  * Broker de l'Objet métier Affecter_Agent
@@ -153,4 +154,38 @@ public boolean existeAffecter_Agent(nc.mairie.technique.Transaction aTransaction
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numeroinventaire='"+inv+"' and matricule="+nomatr+" and datedebut='"+datedeb+"' and hdeb = "+Hdeb);
 }
 
+/**
+ * Retourne un booléen.
+ * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param datedeb datedeb
+ * @return true ou false
+ * @throws Exception Exception
+ */
+public boolean existeAffecter_AgentAvantDate(Transaction aTransaction, String inv,String datedeb) throws Exception {
+	datedeb = Services.formateDateInternationale(datedeb);
+	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numeroinventaire='"+inv+"' and (datefin >=  '"+datedeb+"' or datefin = '0001-01-01')");
+}
+
+/**
+ * Retourne un booléen.
+ * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param datedeb datedeb
+ * @param datefin datefin
+ * @return true ou false
+ * @throws Exception Exception
+ */
+public boolean existeAffecter_AgentEntreDate(Transaction aTransaction, String inv,String datedeb, String datefin) throws Exception {
+	datedeb = Services.formateDateInternationale(datedeb);
+	datefin = Services.formateDateInternationale(datefin);
+	if (datedeb.compareTo(datefin) < 0 ) {
+		return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numeroinventaire='"+inv+"' and ((datedebut between '"+datedeb+"' and '"+datefin+"') or (datefin between '"+datedeb+"' and '"+datefin+"'))");
+	} else {
+		return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numeroinventaire='"+inv+"' and ((datedebut between '"+datefin+"' and '"+datedeb+"') or (datefin between '"+datefin+"' and '"+datedeb+"'))");
+	}
+		
+}
 }
