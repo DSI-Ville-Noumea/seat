@@ -95,7 +95,9 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	}
 	
 	//Affichage du responsable s'il y eb a 1
-	afficheResponsable();
+	if ("".equals(getVAL_ST_TITRE_ACTION())) {
+		afficheResponsable();
+	}
 	
 	if ((null!=(serviceCourant))&&(null!=serviceCourant.getServi())){
 		addZone(getNOM_ST_SERVICE(),getServiceCourant().getLiserv());
