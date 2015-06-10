@@ -548,6 +548,13 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 		if(getVAL_CK_AGENT().equals(getCHECKED_ON())){
 			newAgent = "0";
 		}else{
+			
+			// #16010 Mauvais message d'erreur si on ne sélectionne pas un service dans l'affectation d'un PM à un service
+			if (getServiceCourant() == null || getServiceCourant().getServi() ==  null) {
+				getTransaction().declarerErreur(MairieMessages.getMessage("ERR997","Services"));
+				return false;
+			}
+			
 	//		on enregistre l'agent sélectionné
 			int numligne = (Services.estNumerique(getZone(getNOM_LB_AGENT_SELECT())) ? Integer.parseInt(getZone(getNOM_LB_AGENT_SELECT())) : -1);
 			if (numligne == -1 || getListeAgent().size() == 0 || numligne > getListeAgent().size() -1 ) {
