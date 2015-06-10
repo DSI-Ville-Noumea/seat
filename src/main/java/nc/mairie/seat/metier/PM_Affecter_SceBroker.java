@@ -110,4 +110,16 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 	mappage.put("NOMATR", new BasicRecord("NOMATR", "INTEGER", getMyPM_Affecter_Sce().getClass().getField("nomatr"), "STRING"));
 	return mappage;
 }
+
+/**
+ * Retourne un objet métier : PM_Affecter_Sce.
+ * @param aTransaction Transaction
+ * @param inventaire inventaire
+ * @return java.util.ArrayList
+ * @throws Exception Exception
+ */
+public PM_Affecter_Sce chercherDernierPM_Affecter_Sce(nc.mairie.technique.Transaction aTransaction,String inventaire) throws Exception {
+	return (PM_Affecter_Sce)executeSelect(aTransaction,"select * from "+getTable()+" where pminv = '"+inventaire+"' and dfin = '0001-01-01'");
+}
+
 }

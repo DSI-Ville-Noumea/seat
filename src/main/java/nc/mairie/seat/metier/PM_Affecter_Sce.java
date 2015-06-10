@@ -3,8 +3,9 @@ package nc.mairie.seat.metier;
 import java.util.ArrayList;
 
 import nc.mairie.technique.Services;
-import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicBroker;
 import nc.mairie.technique.BasicMetier;
+import nc.mairie.technique.Transaction;
 
 /**
  * Objet métier PM_Affecter_Sce
@@ -126,12 +127,19 @@ public boolean supprimerPM_Affecter_Sce(nc.mairie.technique.Transaction aTransac
 }
 
 //si suppression alors datefin de l'affectation précédent à blanc
-public boolean pmAffecter_serviceSupp(nc.mairie.technique.Transaction aTransaction,PMateriel unPMateriel,PM_Affecter_Sce unPmAffecter_Service) throws Exception{
+public boolean affecter_serviceSupp(nc.mairie.technique.Transaction aTransaction,PMateriel unPMateriel,PM_Affecter_Sce unPmAffecter_Service) throws Exception{
 //	on vérifie ques les paramètres ne sont pas null
 	if (null == unPmAffecter_Service.getPminv()){
 		//aTransaction.declarerErreur(nc.mairie.technique.MairieMessages.getMessage("ERR999","une affectation à un service"));
 		//return false;
 	}
+
+	//#15962 Empecher une affectation d'un petit matériel à un service (C U D) si affectation ponctuelle à un agent en cours.
+	if (PM_Affecter_Agent.existePM_Affecter_AgentAvantDate(aTransaction, unPMateriel.getPminv() , getDdebut())) {
+		aTransaction.declarerErreur("Erreur : Ce petit matériel a une affectation ponctuelle à un agent. Suppression impossible");
+		return false;
+	}
+	
 //	 modification de l'affectation précédente
 	if (null != unPmAffecter_Service.getPminv()){
 		//on met à jour la date de fin de l'affectation précédente
@@ -178,6 +186,15 @@ public boolean affecter_service(nc.mairie.technique.Transaction aTransaction,PMa
 			return false;
 		}
 	}
+	
+	//#15962 Empecher une affectation d'un petit matériel à un service (C U D) si affectation ponctuelle à un agent en cours.
+	if (null != unPM_Affecter_Sce.getPminv()) {
+		if (PM_Affecter_Agent.existePM_Affecter_AgentAvantDate(aTransaction, unPMateriel.getPminv() , getDdebut())) {
+			aTransaction.declarerErreur("Erreur : Ce petit matériel a une affectation ponctuelle à un agent. Modifiez la date ou l'a date de l'affectation ponctuelle.");
+			return false;
+		}
+	}
+
 		
 	// ajout de l'affectation
 	creerPM_Affecter_Sce(aTransaction,unPMateriel,unService);
@@ -198,19 +215,36 @@ public boolean affecter_serviceModif(nc.mairie.technique.Transaction aTransactio
 		aTransaction.declarerErreur(nc.mairie.technique.MairieMessages.getMessage("ERR999","une affectation à un service"));
 		return false;
 	}
-	/*if (null == unAffecter_Service2.getNumeroinventaire()){
-		aTransaction.declarerErreur(nc.mairie.technique.MairieMessages.getMessage("ERR999","une affectation à un service"));
-		return false;
-	}*/
-	// on teste si des agents ont été affectés à cette affectation
-	ArrayList<PM_AffectAgentsInfos> uneListAgent = PM_AffectAgentsInfos.chercherPM_AffectAgentsInfosScePM(aTransaction,unPM_Affecter_Sce.getPminv(),unPM_Affecter_Sce.getSiserv());
-	if (uneListAgent.size()>0){
-		PM_AffectAgentsInfos unAAI = (PM_AffectAgentsInfos)uneListAgent.get(0);
-		if(!unAAI.getCodesce().substring(0,3).equals(getSiserv().substring(0,3))){
-			aTransaction.declarerErreur("Modification impossible.Des agents ont été affectés à ce petit matériel, vous devez d'abord supprimer les affectations des agents.");
-			return false;
+	
+
+	//#15962 Empecher une affectation d'un petit matériel à un service (C U D) si affectation ponctuelle à un agent en cours.
+	//recherche du dernier AffecterService
+	PM_Affecter_Sce dernierAffSvc = PM_Affecter_Sce.chercherDernierPM_Affecter_Sce(aTransaction, unPMateriel.getPminv());
+	if (aTransaction.isErreur()) {
+		aTransaction.traiterErreur();
+	} else {
+		
+		//si changement date deb ou service
+		if ( ! (getSiserv().equals(dernierAffSvc.getSiserv()) && getDdebut().equals(dernierAffSvc.getDdebut()))) {	
+			
+			//si on ne change pas de service
+			if (getSiserv().equals(dernierAffSvc.getSiserv())) {
+				//on vérifi que pour l'ancien service il n'y avait pas d'affectation
+				if (PM_Affecter_Agent.existePM_Affecter_AgentEntreDate(aTransaction, unPMateriel.getPminv() , Services.ajouteJours(dernierAffSvc.getDdebut(),1), getDdebut())){
+					aTransaction.declarerErreur("Erreur : Ce petit matériel a une affectation ponctuelle à un agent entre "+dernierAffSvc.getDdebut()+" et "+ getDdebut()+". Modification impossible");
+					return false;
+				}
+			} else {
+				//on vérifi que pour l'ancien service il n'y avait pas d'affectation
+				if (PM_Affecter_Agent.existePM_Affecter_AgentAvantDate(aTransaction, unPMateriel.getPminv() , dernierAffSvc.getDdebut())) {
+					aTransaction.declarerErreur("Erreur : Ce petit matériel a une affectation ponctuelle à un agent avant "+dernierAffSvc.getDdebut()+". Modification impossible");
+					return false;
+				}
+			}
 		}
 	}
+
+	
 //	 modification de l'affectation précédente
 	if (null != unPM_Affecter_Sce2.getPminv()){
 		//on met à jour la date de fin de l'affectation précédente
@@ -237,26 +271,6 @@ public boolean affecter_serviceModif(nc.mairie.technique.Transaction aTransactio
 	if(aTransaction.isErreur()){
 		return false;
 	}
-	return true;
-}
-
-//si suppression alors datefin de l'affectation précédent à blanc
-public boolean affecter_serviceSupp(nc.mairie.technique.Transaction aTransaction,PMateriel unPMateriel,PM_Affecter_Sce unPM_Affecter_Sce) throws Exception{
-//	on vérifie ques les paramètres ne sont pas null
-	if (null == unPM_Affecter_Sce.getPminv()){
-		//aTransaction.declarerErreur(nc.mairie.technique.MairieMessages.getMessage("ERR999","une affectation à un service"));
-		//return false;
-	}
-//	 modification de l'affectation précédente
-	if (null != unPM_Affecter_Sce.getPminv()){
-		//on met à jour la date de fin de l'affectation précédente
-		unPM_Affecter_Sce.modifierPM_Affecter_Sce(aTransaction,unPMateriel);
-		if (aTransaction.isErreur()){
-			return false;
-		}
-	}
-	// suppression de l'affectation
-	supprimerPM_Affecter_Sce(aTransaction);
 	return true;
 }
 
@@ -360,4 +374,55 @@ protected BasicBroker definirMyBroker() {
 protected PM_Affecter_SceBroker getMyPM_Affecter_SceBroker() {
 	return (PM_Affecter_SceBroker)getMyBasicBroker();
 }
+
+/**
+ * Retourne un booléen.
+ * Vérifie si existe
+ * @return true ou false
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param datedeb datedeb
+ * @throws Exception Exception
+ */
+public static boolean existePM_Affecter_AgentAvantDate(Transaction aTransaction, String inv,String datedeb) throws Exception{
+	PM_Affecter_Agent unPM_Affecter_Agent = new PM_Affecter_Agent();
+	if(!Services.estUneDate(datedeb)){
+		aTransaction.declarerErreur("La date de début n'est pas une date valide");
+	}
+	return unPM_Affecter_Agent.getMyPM_Affecter_AgentBroker().existePM_Affecter_AgentAvantDate(aTransaction, inv,datedeb);
+}
+/**
+ * Retourne un booléen.
+ * Vérifie si existe
+ * @return true ou false
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param datedeb datedeb
+ * @param datefin datefin
+ * @throws Exception Exception
+ */
+public static boolean existePM_Affecter_AgentEntreDate(Transaction aTransaction, String inv,String datedeb, String datefin) throws Exception{
+	PM_Affecter_Agent unPM_Affecter_Agent = new PM_Affecter_Agent();
+	if(!Services.estUneDate(datedeb)){
+		aTransaction.declarerErreur("La date de début n'est pas une date valide");
+	}
+	if(!Services.estUneDate(datefin)){
+		aTransaction.declarerErreur("La date de fin n'est pas une date valide");
+	}
+	return unPM_Affecter_Agent.getMyPM_Affecter_AgentBroker().existePM_Affecter_AgentEntreDate(aTransaction, inv,datedeb, datefin);
+}
+
+/**
+ * Retourne un PM_Affecter_Svc.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @return PM_Affecter_Sce
+ * @throws Exception Exception
+ */
+public static PM_Affecter_Sce chercherDernierPM_Affecter_Sce(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception{
+	PM_Affecter_Sce unPM_Affecter_Sce = new PM_Affecter_Sce();
+	return unPM_Affecter_Sce.getMyPM_Affecter_SceBroker().chercherDernierPM_Affecter_Sce(aTransaction, inv);
+}
+
+
 }

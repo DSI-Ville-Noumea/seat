@@ -1,9 +1,11 @@
 package nc.mairie.seat.metier;
 
 import java.util.ArrayList;
+
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
-import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.Transaction;
 
 /**
  * Broker de l'Objet métier PM_Affecter_Agent
@@ -120,4 +122,40 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
 	mappage.put("CODESCE", new BasicRecord("CODESCE", "VARCHAR", getMyPM_Affecter_Agent().getClass().getField("codesce"), "STRING"));
 	return mappage;
 }
+
+
+/**
+ * Retourne un booléen.
+ * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param datedeb datedeb
+ * @return true ou false
+ * @throws Exception Exception
+ */
+public boolean existePM_Affecter_AgentAvantDate(Transaction aTransaction, String inv,String datedeb) throws Exception {
+	datedeb = Services.formateDateInternationale(datedeb);
+	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where pminv='"+inv+"' and (dfin >=  '"+datedeb+"' or dfin = '0001-01-01')");
+}
+/**
+ * Retourne un booléen.
+ * Vérifie si  existe déjà
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param datedeb datedeb
+ * @param datefin datefin
+ * @return true ou false
+ * @throws Exception Exception
+ */
+public boolean existePM_Affecter_AgentEntreDate(Transaction aTransaction, String inv,String datedeb, String datefin) throws Exception {
+	datedeb = Services.formateDateInternationale(datedeb);
+	datefin = Services.formateDateInternationale(datefin);
+	if (datedeb.compareTo(datefin) < 0 ) {
+		return executeTesteExiste(aTransaction,"select * from "+getTable()+" where pminv='"+inv+"' and ((ddeb between '"+datedeb+"' and '"+datefin+"') or (dfin between '"+datedeb+"' and '"+datefin+"'))");
+	} else {
+		return executeTesteExiste(aTransaction,"select * from "+getTable()+" where pminv='"+inv+"' and ((ddeb between '"+datefin+"' and '"+datedeb+"') or (dfin between '"+datefin+"' and '"+datedeb+"'))");
+	}
+}
+
+
 }
