@@ -228,7 +228,6 @@ private void initialiseListeAffectation(javax.servlet.http.HttpServletRequest re
 //	Recherche des affectations des petits matériels aux services
 	ArrayList<PM_Affectation_Sce_Infos> a = PM_Affectation_Sce_Infos.chercherListPM_Affectation_Sce_InfosPm(getTransaction(),getPMatInfosCourant().getPminv());
 	if(getTransaction().isErreur()){
-		System.out.println("Erreur dans chercherListPM_Affectation_Sce_InfosPm");
 		return ;
 	}
 	//java.util.ArrayList a = AActifs.chercherListAffectationServiceInfosEquip(getTransaction(),equipementInfosCourant.getNumeroinventaire());
@@ -589,7 +588,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 		}
 		//suppression de la dernière affectation
 		try{
-			getPmAffecterServiceCourant().pmAffecter_serviceSupp(getTransaction(),unPMateriel,monPmASPrec);
+			getPmAffecterServiceCourant().affecter_serviceSupp(getTransaction(),unPMateriel,monPmASPrec);
 			if (getTransaction().isErreur()){
 				return false;
 			}
