@@ -230,7 +230,7 @@ public boolean affecter_serviceModif(nc.mairie.technique.Transaction aTransactio
 			//si on ne change pas de service
 			if (getSiserv().equals(dernierAffSvc.getSiserv())) {
 				//on vérifi que pour l'ancien service il n'y avait pas d'affectation
-				if (PM_Affecter_Agent.existePM_Affecter_AgentEntreDate(aTransaction, unPMateriel.getPminv() , Services.ajouteJours(dernierAffSvc.getDdebut(),1), getDdebut())){
+				if (PM_Affecter_Agent.existePM_Affecter_AgentEntreDate(aTransaction, unPMateriel.getPminv() , dernierAffSvc.getDdebut(), Services.ajouteJours(getDdebut(),-1))){
 					aTransaction.declarerErreur("Erreur : Ce petit matériel a une affectation ponctuelle à un agent entre "+dernierAffSvc.getDdebut()+" et "+ getDdebut()+". Modification impossible");
 					return false;
 				}
