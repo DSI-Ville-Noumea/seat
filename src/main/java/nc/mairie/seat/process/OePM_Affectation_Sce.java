@@ -93,7 +93,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		addZone(getNOM_ST_NOIMMAT(),"");
 		addZone(getNOM_ST_NOMEQUIP(),"");
 	}
-	if (null!=(serviceCourant)){
+	if (null!=(serviceCourant) && serviceCourant.getServi() != null){
 		addZone(getNOM_ST_SERVICE(),getServiceCourant().getLiserv());
 		//on remplit la liste des agents du service
 		//java.util.ArrayList a = AgentServiceInfos.chercherListAgentServiceInfosSce(getTransaction(),serviceCourant.getServi());
