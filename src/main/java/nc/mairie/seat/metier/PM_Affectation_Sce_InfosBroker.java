@@ -32,7 +32,8 @@ public ArrayList<PM_Affectation_Sce_Infos> chercherListPM_Affectation_Sce_InfosP
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv = '"+param+"' order by ddebut desc, (case when dfin = '0001-01-01' then '9999-12-31' else dfin end) desc");
 }
 public PM_Affectation_Sce_Infos chercherPM_Affectation_Sce_InfosCourantPm(nc.mairie.technique.Transaction aTransaction, String inv,String date) throws Exception {
-	return  (PM_Affectation_Sce_Infos)executeSelect(aTransaction, "select * from "+getTable()+" where pminv = '"+inv+"' and ddebut<='"+date+"' and dfin='0001-01-01'");
+	//Bug #16022 Quand on affecte un PM à un service dans le futur, message d'erreur sur les affectation d'un agent
+	return  (PM_Affectation_Sce_Infos)executeSelect(aTransaction, "select * from "+getTable()+" where pminv = '"+inv+"' and ddebut in (select max(ddebut) from "+getTable()+" where pminv = '"+inv+"' and ddebut<='"+date+"')");
 }
 
 public PM_Affectation_Sce_Infos chercherPM_Affectation_Sce_InfosCourantPmEnCours(nc.mairie.technique.Transaction aTransaction, String inv) throws Exception {
