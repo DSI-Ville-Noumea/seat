@@ -232,7 +232,32 @@ private void initialiseListeAffectation(javax.servlet.http.HttpServletRequest re
 	}
 	//java.util.ArrayList a = AActifs.chercherListAffectationServiceInfosEquip(getTransaction(),equipementInfosCourant.getNumeroinventaire());
 	setListeAffectation(a);
-	trier(a);
+	if (a.size() !=0 ) {
+		int tailles [] = {5,55,10,10};
+		String[] padding = {"G","G","C","C"};
+		FormateListe aFormat = new FormateListe(tailles,padding,false);
+		for (ListIterator<PM_Affectation_Sce_Infos> list = a.listIterator(); list.hasNext(); ) {
+			PM_Affectation_Sce_Infos aPM_Affectation_Sce_Infos = (PM_Affectation_Sce_Infos)list.next();
+			String datefin = "";
+			if (!aPM_Affectation_Sce_Infos.getDfin().equals("01/01/0001")){
+				datefin = aPM_Affectation_Sce_Infos.getDfin();
+			}
+			// 
+			Service unService = Service.chercherService(getTransaction(),aPM_Affectation_Sce_Infos.getSiserv());
+			if(getTransaction().isErreur()){
+				getTransaction().traiterErreur();
+				getTransaction().declarerErreur("Erreur, le service "+aPM_Affectation_Sce_Infos.getSiserv()+" n'existe pas");
+				return ;
+			}
+			String ligne [] = { aPM_Affectation_Sce_Infos.getSiserv(),unService.getLiserv(),aPM_Affectation_Sce_Infos.getDdebut(),datefin};
+			aFormat.ajouteLigne(ligne);
+		}
+	
+		setLB_AFFECTATION(aFormat.getListeFormatee());
+	} else {
+		setLB_AFFECTATION(null);
+	}
+	setIsVide(a.size());
 	return ;		
 }
 /**
@@ -1211,42 +1236,6 @@ public boolean performPB_AFFICH_AGENT(javax.servlet.http.HttpServletRequest requ
 		setLB_AGENT(null);
 	}
 	return true;
-}
-
-public void trier(ArrayList<PM_Affectation_Sce_Infos> a) throws Exception{
-	String[] colonnes = {"ddebut","dfin"};
-	//ordre croissant
-	boolean[] ordres = {false,true};
-	
-//	Si au moins une affectation
-	if (a.size() !=0 ) {
-		ArrayList<PM_Affectation_Sce_Infos> aTrier = Services.trier(a,colonnes,ordres);
-		setListeAffectation(aTrier);
-		int tailles [] = {5,55,10,10};
-		String[] padding = {"G","G","C","C"};
-		FormateListe aFormat = new FormateListe(tailles,padding,false);
-		for (ListIterator<PM_Affectation_Sce_Infos> list = aTrier.listIterator(); list.hasNext(); ) {
-			PM_Affectation_Sce_Infos aPM_Affectation_Sce_Infos = (PM_Affectation_Sce_Infos)list.next();
-			String datefin = "";
-			if (!aPM_Affectation_Sce_Infos.getDfin().equals("01/01/0001")){
-				datefin = aPM_Affectation_Sce_Infos.getDfin();
-			}
-			// 
-			Service unService = Service.chercherService(getTransaction(),aPM_Affectation_Sce_Infos.getSiserv());
-			if(getTransaction().isErreur()){
-				System.out.println("ERREUR dans le tri");
-				return ;
-			}
-			String ligne [] = { aPM_Affectation_Sce_Infos.getSiserv(),unService.getLiserv(),aPM_Affectation_Sce_Infos.getDdebut(),datefin};
-			aFormat.ajouteLigne(ligne);
-		}
-	
-		setLB_AFFECTATION(aFormat.getListeFormatee());
-	} else {
-		setLB_AFFECTATION(null);
-	}
-	setIsVide(a.size());
-	return ;
 }
 
 /**

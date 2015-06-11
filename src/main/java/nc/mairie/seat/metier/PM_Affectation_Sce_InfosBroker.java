@@ -29,7 +29,7 @@ public PM_Affectation_Sce_Infos chercherPM_Affectation_Sce_Infos(nc.mairie.techn
 	return (PM_Affectation_Sce_Infos)executeSelect(aTransaction,"select * from "+getTable()+" where CODE = "+cle+"");
 }
 public ArrayList<PM_Affectation_Sce_Infos> chercherListPM_Affectation_Sce_InfosPm(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv = '"+param+"'");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv = '"+param+"' order by ddebut desc, (case when dfin = '0001-01-01' then '9999-12-31' else dfin end) desc");
 }
 public PM_Affectation_Sce_Infos chercherPM_Affectation_Sce_InfosCourantPm(nc.mairie.technique.Transaction aTransaction, String inv,String date) throws Exception {
 	return  (PM_Affectation_Sce_Infos)executeSelect(aTransaction, "select * from "+getTable()+" where pminv = '"+inv+"' and ddebut<='"+date+"' and dfin='0001-01-01'");
