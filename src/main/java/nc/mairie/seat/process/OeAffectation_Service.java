@@ -227,7 +227,26 @@ private void initialiseListeAffectation(javax.servlet.http.HttpServletRequest re
 	//java.util.ArrayList a = AActifs.chercherListAffectationServiceInfosEquip(getTransaction(),equipementInfosCourant.getNumeroinventaire());
 
 	setListeAffectation(a);
-	trier(a);
+	//Si au moins une affectation
+	if (a.size() !=0 ) {
+		int tailles [] = {60,10,10};
+		String[] padding = {"G","C","C"};
+		FormateListe aFormat = new FormateListe(tailles,padding,false);
+		for (ListIterator<AffectationServiceInfos> list = a.listIterator(); list.hasNext(); ) {
+			AffectationServiceInfos aAffectationServiceInfos = (AffectationServiceInfos)list.next();
+			String datefin = "";
+			if (!aAffectationServiceInfos.getDfin().equals("01/01/0001")){
+				datefin = aAffectationServiceInfos.getDfin();
+			}
+			String ligne [] = { aAffectationServiceInfos.getLiserv(),aAffectationServiceInfos.getDdebut(),datefin};
+			aFormat.ajouteLigne(ligne);
+		}
+	
+		setLB_AFFECTATION(aFormat.getListeFormatee());
+	} else {
+		setLB_AFFECTATION(null);
+	}
+	setIsVide(a.size());
 	return ;		
 }
 /**
@@ -1240,41 +1259,6 @@ public boolean performPB_AFFICH_AGENT(javax.servlet.http.HttpServletRequest requ
 		setLB_AGENT(null);
 	}
 	return true;
-}
-
-public void trier(ArrayList<AffectationServiceInfos> a) throws Exception{
-	String[] colonnes = {"ddebut","dfin"};
-	//ordre croissant
-	boolean[] ordres = {false,true};
-	
-//	Si au moins une affectation
-	if (a.size() !=0 ) {
-		ArrayList<AffectationServiceInfos> aTrier = Services.trier(a,colonnes,ordres);
-		setListeAffectation(aTrier);
-		int tailles [] = {60,10,10};
-		String[] padding = {"G","C","C"};
-		FormateListe aFormat = new FormateListe(tailles,padding,false);
-		for (ListIterator<AffectationServiceInfos> list = aTrier.listIterator(); list.hasNext(); ) {
-			AffectationServiceInfos aAffectationServiceInfos = (AffectationServiceInfos)list.next();
-			/*String responsable = "";
-			if(!aAffectationServiceInfos.getNomatr().equals("0")){
-				AgentServiceInfos unAgentServiceInfos = AgentServiceInfos.chercherAgentServiceInfos(getTransaction(),aAffectationServiceInfos.getNomatr());
-				responsable = unAgentServiceInfos.getNom()+" "+unAgentServiceInfos.getPrenom();
-			}*/
-			String datefin = "";
-			if (!aAffectationServiceInfos.getDfin().equals("01/01/0001")){
-				datefin = aAffectationServiceInfos.getDfin();
-			}
-			String ligne [] = { aAffectationServiceInfos.getLiserv(),aAffectationServiceInfos.getDdebut(),datefin};
-			aFormat.ajouteLigne(ligne);
-		}
-	
-		setLB_AFFECTATION(aFormat.getListeFormatee());
-	} else {
-		setLB_AFFECTATION(null);
-	}
-	setIsVide(a.size());
-	return ;
 }
 
 /**

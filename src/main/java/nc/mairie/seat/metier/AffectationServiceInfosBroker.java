@@ -76,7 +76,7 @@ public ArrayList<AffectationServiceInfos> chercherAffectationServiceInfosEquip(n
  * @throws Exception Exception
  */
 public ArrayList<AffectationServiceInfos> chercherListAffectationServiceInfosEquip(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+param+"' order by ddebut desc,dfin");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+param+"' order by ddebut desc,(case when dfin = '0001-01-01' then '9999-12-31' else dfin end) desc");
 }
 
 /**
