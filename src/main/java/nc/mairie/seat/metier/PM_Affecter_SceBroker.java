@@ -63,7 +63,7 @@ public PM_Affecter_Sce chercherPM_Affecter_Sce(nc.mairie.technique.Transaction a
 }
 
 public PM_Affecter_Sce chercherListerPmAffecter_ServicePmSce(nc.mairie.technique.Transaction aTransaction,String param,String servi) throws Exception {
-	return (PM_Affecter_Sce)executeSelect(aTransaction,"select * from "+getTable()+" where pminv = '"+param+"' and siserv = '"+servi+"' and dfin = '0001-01-01'");
+	return (PM_Affecter_Sce)executeSelect(aTransaction,"select * from "+getTable()+" where pminv = '"+param+"' and siserv = '"+servi+"' and ddebut = (select max(ddebut) from "+getTable()+" where pminv = '"+param+"' and siserv = '"+servi+"')");
 }
 
 public ArrayList<PM_Affecter_Sce> chercherListerPmAffecter_ServicePm(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
