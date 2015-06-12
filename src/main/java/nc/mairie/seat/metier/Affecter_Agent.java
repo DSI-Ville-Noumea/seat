@@ -956,7 +956,7 @@ public boolean affecter_agentModif(nc.mairie.technique.Transaction aTransaction,
 			aTransaction.declarerErreur("L'affectation est impossible car la date de début ne correspond pas à l'intervalle d'affectation au service."+unAffecter_Service.getDdebut()+"->"+unAffecter_Service.getDfin());
 			return false;
 		}
-		// pour la date de fin <= date de fin de l'affectation au service
+		// pour la date de fin <= date de début de l'affectation au service
 		controle = Services.compareDates(getDatefin(),unAffecter_Service.getDdebut());
 		if (controle<0){
 			aTransaction.declarerErreur("L'affectation est impossible car la date de fin ne correspond pas à l'intervalle d'affectation au service."+unAffecter_Service.getDdebut()+"->"+unAffecter_Service.getDfin());
