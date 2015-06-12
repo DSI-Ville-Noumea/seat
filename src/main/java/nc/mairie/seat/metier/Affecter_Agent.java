@@ -927,7 +927,7 @@ public boolean affecter_agentModif(nc.mairie.technique.Transaction aTransaction,
 		return false;
 	}
 	//Comparaison avec la date de fin de l'affectation au service
-	if ((unAffecter_Service.getDfin()!=null)&&(!unAffecter_Service.getDfin().equals("01/01/0001"))&&(!unAffecter_Agent.getDatefin().equals(""))){
+	if ((unAffecter_Service.getDfin()!=null)&&(!unAffecter_Service.getDfin().equals("01/01/0001"))&&(!unAffecter_Service.getDfin().equals(""))){
 		// pour la date de début <= date de fin de l'affectation
 		controle = Services.compareDates(getDatedebut(),unAffecter_Service.getDfin());
 		if (controle==-9999){
