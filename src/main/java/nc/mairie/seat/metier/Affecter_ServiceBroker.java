@@ -82,7 +82,7 @@ public ArrayList<Affecter_Service> chercherListerAffecter_ServiceEquip(nc.mairie
  * @throws Exception Exception
  */
 public Affecter_Service chercherListerAffecter_ServiceEquipSce(nc.mairie.technique.Transaction aTransaction,String param,String servi) throws Exception {
-	return (Affecter_Service)executeSelect(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+param+"' and codeservice = '"+servi+"' and dfin = '0001-01-01'");
+	return (Affecter_Service)executeSelect(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+param+"' and codeservice = '"+servi+"' and ddebut = (select max(ddebut) from "+getTable()+" where numeroinventaire = '"+param+"' and codeservice = '"+servi+"')");
 }
 
 /**
