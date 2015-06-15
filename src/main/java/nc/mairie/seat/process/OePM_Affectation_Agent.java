@@ -296,7 +296,7 @@ public boolean performPB_AJOUTER(javax.servlet.http.HttpServletRequest request) 
 	//	on met la date du jour par défaut
 	DateFormat datedujour = DateFormat.getDateInstance(DateFormat.SHORT, Locale.FRANCE); 
 	addZone(getNOM_EF_DATE(),datedujour.format(new Date()));
-	addZone(getNOM_EF_DATEFIN(),datedujour.format(new Date()));
+	addZone(getNOM_EF_DATEFIN(),"");
 	
 	addZone(getNOM_ST_TITRE_ACTION(),ACTION_CREATION);
 	addZone(getNOM_LB_AGENT_SELECT(),"0");
@@ -613,11 +613,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 			setFocus(getNOM_EF_DATE());
 			return false;
 		}
-		if (getZone(getNOM_EF_DATEFIN()).equals("")){
-			getTransaction().declarerErreur("La date de fin doit être renseignée.");
-			setFocus(getNOM_EF_DATEFIN());
-			return false;
-		}
 	}
 	
 	// si l'action n'est pas une suppression
@@ -772,7 +767,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 			setFocus(getNOM_EF_DATE());
 			return false;
 		}
-		if (!Services.estUneDate(getZone(getNOM_EF_DATEFIN()))){
+		if (!"".equals(getZone(getNOM_EF_DATEFIN())) && !Services.estUneDate(getZone(getNOM_EF_DATEFIN()))){
 			getTransaction().declarerErreur("La date de fin est incorrecte.");
 			setFocus(getNOM_EF_DATEFIN());
 			return false;
@@ -826,7 +821,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 			setFocus(getNOM_EF_DATE());
 			return false;
 		}
-		if (!Services.estUneDate(getZone(getNOM_EF_DATEFIN()))){
+		if (! "".equals(getZone(getNOM_EF_DATEFIN())) && !Services.estUneDate(getZone(getNOM_EF_DATEFIN()))){
 			getTransaction().declarerErreur("La date de fin est incorrecte.");
 			setFocus(getNOM_EF_DATEFIN());
 			return false;

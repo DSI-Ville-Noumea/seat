@@ -89,7 +89,7 @@ public boolean creerPm_Affecter_Agent(nc.mairie.technique.Transaction aTransacti
 	}
 //	on controle que la date soit supérieur ou égale à la date de début
 	int controle = 0;
-	if (null!=getDfin()){
+	if (null!=getDfin()  && !"".equals(getDfin())){
 		controle = Services.compareDates(getDfin(),getDdeb());
 		if (controle==-1){
 			aTransaction.declarerErreur("La date de fin doit être supérieur ou égale à la date de début d'affectation ");
@@ -125,7 +125,7 @@ public boolean creerPm_Affecter_Agent(nc.mairie.technique.Transaction aTransacti
 		return false;
 	}
 	//controle de la date de fin
-	if ((!"01/01/0001".equals(getDfin())&&(null!=getDfin()))){
+	if ((!"01/01/0001".equals(getDfin())&&(null!=getDfin()) &&(!"".equals(getDfin())))){
 		controle = Services.compareDates(getDfin(),getDdeb());
 		if (controle==-1){
 			aTransaction.declarerErreur("La date de fin doit être supérieur ou égale à la date de début de l'affectation.");
@@ -220,9 +220,6 @@ public boolean affecter_agent(nc.mairie.technique.Transaction aTransaction,PMate
 		}else{
 			setDfin(Services.formateDate(getDfin()));
 		}
-	}else{
-		aTransaction.declarerErreur("La date de fin doit être renseignée.");
-		return false;
 	}
 	//RG : on controle les dates de fin et date de début par rapport à la date d'affectation au Service
 	PM_Affecter_Sce unPmAffecter_Service = PM_Affecter_Sce.chercherListPmAffecter_ScePmSce(aTransaction,unPMateriel.getPminv(),unService.getServi());
@@ -260,46 +257,48 @@ public boolean affecter_agent(nc.mairie.technique.Transaction aTransaction,PMate
 				}
 			}
 		}
-	}else{
-		// si null c'est fonctionnellement normal : il n'y a pas de BPC précédent;
-		aTransaction.traiterErreur();
 	}
 	
+	String debAffAgent = "".equals(getDdeb()) ? "01/01/0001" : getDdeb(); 
+	String finAffAgent = "".equals(getDfin()) || "01/01/0001".equals(getDfin()) ? "31/12/9999" : getDfin(); 
+
 	//Comparaison avec la date de fin de l'affectation au service
 	if ((unPmAffecter_Service.getDfin()!=null)&&(!unPmAffecter_Service.getDfin().equals("01/01/0001"))&&(!unPmAffecter_Service.getDfin().equals(""))){
 		// pour la date de début <= date de fin de l'affectation
-		controle = Services.compareDates(unPmAffecter_Service.getDfin(),getDdeb());
+		controle = Services.compareDates(debAffAgent,unPmAffecter_Service.getDfin());
 		if (controle==-9999){
+			aTransaction.declarerErreur("Un problème est survenu avec les dates.");
 			return false;
-		}else if (controle==-1){
-			aTransaction.declarerErreur("L'affectation est impossible car la date de début ne correspond pas à l'intervalle d'affectation au service.");
+		}else if (controle>0){
+			aTransaction.declarerErreur("L'affectation est impossible car la date de début ne correspond pas à l'intervalle d'affectation au service."+unPmAffecter_Service.getDdebut()+"->"+unPmAffecter_Service.getDfin());
 			return false;
 		}
 		// pour la date de fin <= date de fin de l'affectation au service
-		controle = Services.compareDates(unPmAffecter_Service.getDfin(),getDfin());
+		controle = Services.compareDates(finAffAgent,unPmAffecter_Service.getDfin());
 		if (controle==-9999){
 			return false;
-		}else if (controle==-1){
-			aTransaction.declarerErreur("L'affectation est impossible car la date de fin ne correspond pas à l'intervalle d'affectation au service.");
+		}else if (controle>0){
+			aTransaction.declarerErreur("L'affectation est impossible car la date de fin ne correspond pas à l'intervalle d'affectation au service."+unPmAffecter_Service.getDdebut()+"->"+unPmAffecter_Service.getDfin());
 			return false;
 		}
 	}
-//	Comparaison avec la date de début de l'affectation au service
+	
+	//Comparaison avec la date de début de l'affectation au service
 	if ((unPmAffecter_Service.getDdebut()!=null)&&(!unPmAffecter_Service.getDdebut().equals("01/01/0001"))){
-		// pour la date de début >= date de début de l'affectation
-		controle = Services.compareDates(getDdeb(),unPmAffecter_Service.getDdebut());
+		// pour la date de début de l'affectation < date DEBUT
+		controle = Services.compareDates(debAffAgent,unPmAffecter_Service.getDdebut());
 		if (controle==-9999){
 			return false;
-		}else if (controle==-1){
-			aTransaction.declarerErreur("L'affectation est impossible car la date de début ne correspond pas à l'intervalle d'affectation au service.");
+		}else if (controle<0){
+			aTransaction.declarerErreur("L'affectation est impossible car la date de début ne correspond pas à l'intervalle d'affectation au service."+unPmAffecter_Service.getDdebut()+"->"+unPmAffecter_Service.getDfin());
 			return false;
 		}
-		// pour la date de fin >= date de début de l'affectation au service
-		controle = Services.compareDates(getDfin(),unPmAffecter_Service.getDdebut());
-		if (controle==-9999){
-			return false;
-		}else if (controle==-1){
-			aTransaction.declarerErreur("L'affectation est impossible car la date de fin ne correspond pas à l'intervalle d'affectation au service.");
+		// pour la date de fin <= date de début de l'affectation au service
+		controle = Services.compareDates(finAffAgent,unPmAffecter_Service.getDdebut());
+
+
+		if (controle<0){
+			aTransaction.declarerErreur("L'affectation est impossible car la date de fin ne correspond pas à l'intervalle d'affectation au service."+unPmAffecter_Service.getDdebut()+"->"+unPmAffecter_Service.getDfin());
 			return false;
 		}
 	}
@@ -345,6 +344,9 @@ public boolean affecter_agentCCAS(nc.mairie.technique.Transaction aTransaction,P
 		}else{
 			setDdeb(Services.formateDate(getDdeb()));
 		}
+	}else{
+		aTransaction.declarerErreur("La date de début doit être renseignée.");
+		return false;
 	}
 	if((getDfin()!=null)&&(!getDfin().equals(""))){
 		if(!Services.estUneDate(getDfin())){
@@ -362,74 +364,79 @@ public boolean affecter_agentCCAS(nc.mairie.technique.Transaction aTransaction,P
 	}
 	
 //	 on controle par rapport à l'affectation précédente
-	if(null != unPmAffecterAgentPrec.getPminv()){
-		controle = Services.compareDates(getDdeb(),unPmAffecterAgentPrec.getDfin());
-		if (controle==-9999){
-			return false;
-		}
-		if(controle==-1){
-			aTransaction.declarerErreur("La date de début d'affectation doit être supérieur ou égale à la date de fin de l'affectation précédente.");
-			return false;
-		}
-		if(controle==0){
-			// on controle par rapport aux heures
-			if (!unPmAffecterAgentPrec.getHfin().equals("0")){
-				if(Integer.parseInt(unPmAffecterAgentPrec.getHfin())>Integer.parseInt(getHdeb())){
-					aTransaction.declarerErreur("L'heure de début doit être supérieur ou égale à l'heure de fin de l'affectation précédente");
-					return false;
-				}
-				if(Integer.parseInt(unPmAffecterAgentPrec.getHfin())==Integer.parseInt(getHdeb())){
-					if(Integer.parseInt(unPmAffecterAgentPrec.getHfinmn())>Integer.parseInt(getHdebmn())){
+//	 on controle par rapport à l'affectation précédente
+	if(null != unPmAffecter_Service.getPminv()){
+		if ((unPmAffecterAgentPrec.getDfin()!=null)&&(!unPmAffecterAgentPrec.getDfin().equals("")&&(getDdeb()!=null)&&(!getDdeb().equals("")))){
+			controle = Services.compareDates(getDdeb(),unPmAffecterAgentPrec.getDfin());
+			if (controle==-9999){
+				return false;
+			}
+			if(controle==-1){
+				aTransaction.declarerErreur("La date de début d'affectation doit être supérieur ou égale à la date de fin de l'affectation précédente.");
+				return false;
+			}
+			if(controle==0){
+				// on controle par rapport aux heures
+				if (!unPmAffecterAgentPrec.getHfin().equals("0")){
+					if(Integer.parseInt(unPmAffecterAgentPrec.getHfin())>Integer.parseInt(getHdeb())){
 						aTransaction.declarerErreur("L'heure de début doit être supérieur ou égale à l'heure de fin de l'affectation précédente");
 						return false;
 					}
+					if(Integer.parseInt(unPmAffecterAgentPrec.getHfin())==Integer.parseInt(getHdeb())){
+						if(Integer.parseInt(unPmAffecterAgentPrec.getHfinmn())>Integer.parseInt(getHdebmn())){
+							aTransaction.declarerErreur("L'heure de début doit être supérieur ou égale à l'heure de fin de l'affectation précédente");
+							return false;
+						}
+					}
+				}else{
+					aTransaction.declarerErreur("La date du début de l'affectation doit être supérieur à la date de fin de l'affectation précédente.");
+					return false;
 				}
-			}else{
-				aTransaction.declarerErreur("La date du début de l'affectation doit être supérieur à la date de fin de l'affectation précédente.");
-				return false;
 			}
+			
 		}
-		
-	}else{
-		// si null c'est fonctionnellement normal : il n'y a pas de BPC précédent;
-		aTransaction.traiterErreur();
 	}
 	
+	String debAffAgent = "".equals(getDdeb()) ? "01/01/0001" : getDdeb(); 
+	String finAffAgent = "".equals(getDfin()) || "01/01/0001".equals(getDfin()) ? "31/12/9999" : getDfin(); 
+
 	//Comparaison avec la date de fin de l'affectation au service
-	if ((unPmAffecter_Service.getDfin()!=null)&&(!unPmAffecter_Service.getDfin().equals("01/01/0001"))){
+	if ((unPmAffecter_Service.getDfin()!=null)&&(!unPmAffecter_Service.getDfin().equals("01/01/0001"))&&(!unPmAffecter_Service.getDfin().equals(""))){
 		// pour la date de début <= date de fin de l'affectation
-		controle = Services.compareDates(unPmAffecter_Service.getDfin(),getDdeb());
+		controle = Services.compareDates(debAffAgent,unPmAffecter_Service.getDfin());
 		if (controle==-9999){
+			aTransaction.declarerErreur("Un problème est survenu avec les dates.");
 			return false;
-		}else if (controle==-1){
-			aTransaction.declarerErreur("L'affectation est impossible car la date de début ne correspond pas à l'intervalle d'affectation au service.");
+		}else if (controle>0){
+			aTransaction.declarerErreur("L'affectation est impossible car la date de début ne correspond pas à l'intervalle d'affectation au service."+unPmAffecter_Service.getDdebut()+"->"+unPmAffecter_Service.getDfin());
 			return false;
 		}
 		// pour la date de fin <= date de fin de l'affectation au service
-		controle = Services.compareDates(unPmAffecter_Service.getDfin(),getDfin());
+		controle = Services.compareDates(finAffAgent,unPmAffecter_Service.getDfin());
 		if (controle==-9999){
 			return false;
-		}else if (controle==-1){
-			aTransaction.declarerErreur("L'affectation est impossible car la date de fin ne correspond pas à l'intervalle d'affectation au service.");
+		}else if (controle>0){
+			aTransaction.declarerErreur("L'affectation est impossible car la date de fin ne correspond pas à l'intervalle d'affectation au service."+unPmAffecter_Service.getDdebut()+"->"+unPmAffecter_Service.getDfin());
 			return false;
 		}
 	}
-//	Comparaison avec la date de début de l'affectation au service
+	
+	//Comparaison avec la date de début de l'affectation au service
 	if ((unPmAffecter_Service.getDdebut()!=null)&&(!unPmAffecter_Service.getDdebut().equals("01/01/0001"))){
-		// pour la date de début >= date de début de l'affectation
-		controle = Services.compareDates(getDdeb(),unPmAffecter_Service.getDdebut());
+		// pour la date de début de l'affectation < date DEBUT
+		controle = Services.compareDates(debAffAgent,unPmAffecter_Service.getDdebut());
 		if (controle==-9999){
 			return false;
-		}else if (controle==-1){
-			aTransaction.declarerErreur("L'affectation est impossible car la date de début ne correspond pas à l'intervalle d'affectation au service.");
+		}else if (controle<0){
+			aTransaction.declarerErreur("L'affectation est impossible car la date de début ne correspond pas à l'intervalle d'affectation au service."+unPmAffecter_Service.getDdebut()+"->"+unPmAffecter_Service.getDfin());
 			return false;
 		}
-		// pour la date de fin >= date de début de l'affectation au service
-		controle = Services.compareDates(getDfin(),unPmAffecter_Service.getDdebut());
-		if (controle==-9999){
-			return false;
-		}else if (controle==-1){
-			aTransaction.declarerErreur("L'affectation est impossible car la date de fin ne correspond pas à l'intervalle d'affectation au service.");
+		// pour la date de fin <= date de début de l'affectation au service
+		controle = Services.compareDates(finAffAgent,unPmAffecter_Service.getDdebut());
+
+
+		if (controle<0){
+			aTransaction.declarerErreur("L'affectation est impossible car la date de fin ne correspond pas à l'intervalle d'affectation au service."+unPmAffecter_Service.getDdebut()+"->"+unPmAffecter_Service.getDfin());
 			return false;
 		}
 	}
@@ -571,6 +578,9 @@ public boolean affecter_agentCDE(nc.mairie.technique.Transaction aTransaction,PM
 		}else{
 			setDdeb(Services.formateDate(getDdeb()));
 		}
+	}else{
+		aTransaction.declarerErreur("La date de début doit être renseignée.");
+		return false;
 	}
 	if((getDfin()!=null)&&(!getDfin().equals(""))){
 		if(!Services.estUneDate(getDfin())){
@@ -588,74 +598,79 @@ public boolean affecter_agentCDE(nc.mairie.technique.Transaction aTransaction,PM
 	}
 	
 //	 on controle par rapport à l'affectation précédente
-	if(null != unPmAffecterAgentPrec.getPminv()){
-		controle = Services.compareDates(getDdeb(),unPmAffecterAgentPrec.getDfin());
-		if (controle==-9999){
-			return false;
-		}
-		if(controle==-1){
-			aTransaction.declarerErreur("La date de début d'affectation doit être supérieur ou égale à la date de fin de l'affectation précédente.");
-			return false;
-		}
-		if(controle==0){
-			// on controle par rapport aux heures
-			if (!unPmAffecterAgentPrec.getHfin().equals("0")){
-				if(Integer.parseInt(unPmAffecterAgentPrec.getHfin())>Integer.parseInt(getHdeb())){
-					aTransaction.declarerErreur("L'heure de début doit être supérieur ou égale à l'heure de fin de l'affectation précédente");
-					return false;
-				}
-				if(Integer.parseInt(unPmAffecterAgentPrec.getHfin())==Integer.parseInt(getHdeb())){
-					if(Integer.parseInt(unPmAffecterAgentPrec.getHfinmn())>Integer.parseInt(getHdebmn())){
+	if(null != unPMAffecter_Service.getPminv()){
+		if ((unPmAffecterAgentPrec.getDfin()!=null)&&(!unPmAffecterAgentPrec.getDfin().equals("")&&(getDdeb()!=null)&&(!getDdeb().equals("")))){
+
+			controle = Services.compareDates(getDdeb(),unPmAffecterAgentPrec.getDfin());
+			if (controle==-9999){
+				return false;
+			}
+			if(controle==-1){
+				aTransaction.declarerErreur("La date de début d'affectation doit être supérieur ou égale à la date de fin de l'affectation précédente.");
+				return false;
+			}
+			if(controle==0){
+				// on controle par rapport aux heures
+				if (!unPmAffecterAgentPrec.getHfin().equals("0")){
+					if(Integer.parseInt(unPmAffecterAgentPrec.getHfin())>Integer.parseInt(getHdeb())){
 						aTransaction.declarerErreur("L'heure de début doit être supérieur ou égale à l'heure de fin de l'affectation précédente");
 						return false;
 					}
+					if(Integer.parseInt(unPmAffecterAgentPrec.getHfin())==Integer.parseInt(getHdeb())){
+						if(Integer.parseInt(unPmAffecterAgentPrec.getHfinmn())>Integer.parseInt(getHdebmn())){
+							aTransaction.declarerErreur("L'heure de début doit être supérieur ou égale à l'heure de fin de l'affectation précédente");
+							return false;
+						}
+					}
+				}else{
+					aTransaction.declarerErreur("La date du début de l'affectation doit être supérieur à la date de fin de l'affectation précédente.");
+					return false;
 				}
-			}else{
-				aTransaction.declarerErreur("La date du début de l'affectation doit être supérieur à la date de fin de l'affectation précédente.");
-				return false;
 			}
+			
 		}
-		
-	}else{
-		// si null c'est fonctionnellement normal : il n'y a pas de BPC précédent;
-		aTransaction.traiterErreur();
 	}
 	
+	String debAffAgent = "".equals(getDdeb()) ? "01/01/0001" : getDdeb(); 
+	String finAffAgent = "".equals(getDfin()) || "01/01/0001".equals(getDfin()) ? "31/12/9999" : getDfin(); 
+
 	//Comparaison avec la date de fin de l'affectation au service
-	if ((unPMAffecter_Service.getDfin()!=null)&&(!unPMAffecter_Service.getDfin().equals("01/01/0001"))){
+	if ((unPMAffecter_Service.getDfin()!=null)&&(!unPMAffecter_Service.getDfin().equals("01/01/0001"))&&(!unPMAffecter_Service.getDfin().equals(""))){
 		// pour la date de début <= date de fin de l'affectation
-		controle = Services.compareDates(unPMAffecter_Service.getDfin(),getDdeb());
+		controle = Services.compareDates(debAffAgent,unPMAffecter_Service.getDfin());
 		if (controle==-9999){
+			aTransaction.declarerErreur("Un problème est survenu avec les dates.");
 			return false;
-		}else if (controle==-1){
-			aTransaction.declarerErreur("L'affectation est impossible car la date de début ne correspond pas à l'intervalle d'affectation au service.");
+		}else if (controle>0){
+			aTransaction.declarerErreur("L'affectation est impossible car la date de début ne correspond pas à l'intervalle d'affectation au service."+unPMAffecter_Service.getDdebut()+"->"+unPMAffecter_Service.getDfin());
 			return false;
 		}
 		// pour la date de fin <= date de fin de l'affectation au service
-		controle = Services.compareDates(unPMAffecter_Service.getDfin(),getDfin());
+		controle = Services.compareDates(finAffAgent,unPMAffecter_Service.getDfin());
 		if (controle==-9999){
 			return false;
-		}else if (controle==-1){
-			aTransaction.declarerErreur("L'affectation est impossible car la date de fin ne correspond pas à l'intervalle d'affectation au service.");
+		}else if (controle>0){
+			aTransaction.declarerErreur("L'affectation est impossible car la date de fin ne correspond pas à l'intervalle d'affectation au service."+unPMAffecter_Service.getDdebut()+"->"+unPMAffecter_Service.getDfin());
 			return false;
 		}
 	}
-//	Comparaison avec la date de début de l'affectation au service
+	
+	//Comparaison avec la date de début de l'affectation au service
 	if ((unPMAffecter_Service.getDdebut()!=null)&&(!unPMAffecter_Service.getDdebut().equals("01/01/0001"))){
-		// pour la date de début >= date de début de l'affectation
-		controle = Services.compareDates(getDdeb(),unPMAffecter_Service.getDdebut());
+		// pour la date de début de l'affectation < date DEBUT
+		controle = Services.compareDates(debAffAgent,unPMAffecter_Service.getDdebut());
 		if (controle==-9999){
 			return false;
-		}else if (controle==-1){
-			aTransaction.declarerErreur("L'affectation est impossible car la date de début ne correspond pas à l'intervalle d'affectation au service.");
+		}else if (controle<0){
+			aTransaction.declarerErreur("L'affectation est impossible car la date de début ne correspond pas à l'intervalle d'affectation au service."+unPMAffecter_Service.getDdebut()+"->"+unPMAffecter_Service.getDfin());
 			return false;
 		}
-		// pour la date de fin >= date de début de l'affectation au service
-		controle = Services.compareDates(getDfin(),unPMAffecter_Service.getDdebut());
-		if (controle==-9999){
-			return false;
-		}else if (controle==-1){
-			aTransaction.declarerErreur("L'affectation est impossible car la date de fin ne correspond pas à l'intervalle d'affectation au service.");
+		// pour la date de fin <= date de début de l'affectation au service
+		controle = Services.compareDates(finAffAgent,unPMAffecter_Service.getDdebut());
+
+
+		if (controle<0){
+			aTransaction.declarerErreur("L'affectation est impossible car la date de fin ne correspond pas à l'intervalle d'affectation au service."+unPMAffecter_Service.getDdebut()+"->"+unPMAffecter_Service.getDfin());
 			return false;
 		}
 	}
