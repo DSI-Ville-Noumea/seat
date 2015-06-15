@@ -189,7 +189,7 @@ public boolean affecter_service(nc.mairie.technique.Transaction aTransaction,PMa
 	
 	//#15962 Empecher une affectation d'un petit matériel à un service (C U D) si affectation ponctuelle à un agent en cours.
 	if (null != unPM_Affecter_Sce.getPminv()) {
-		if (PM_Affecter_Agent.existePM_Affecter_AgentAvantDate(aTransaction, unPMateriel.getPminv() , getDdebut())) {
+		if (PM_Affecter_Agent.existePM_Affecter_AgentAvantDate(aTransaction, unPMateriel.getPminv() , Services.ajouteJours(getDdebut(),-1))) {
 			aTransaction.declarerErreur("Erreur : Ce petit matériel a une affectation ponctuelle à un agent. Modifiez la date ou l'a date de l'affectation ponctuelle.");
 			return false;
 		}
