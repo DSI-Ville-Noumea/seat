@@ -239,7 +239,7 @@ public boolean creerAffecter_AgentCCAS(nc.mairie.technique.Transaction aTransact
 	}
 //	on controle que la date soit supérieur ou égale à la date de début
 	int controle = 0;
-	if (null!=getDatefin()){
+	if((getDatefin()!=null)&&(!getDatefin().equals(""))){
 		controle = Services.compareDates(getDatefin(),getDatedebut());
 		if (controle==-1){
 			aTransaction.declarerErreur("La date doit être supérieur ou égale à la date de début d'affectation ");
@@ -275,7 +275,7 @@ public boolean creerAffecter_AgentCCAS(nc.mairie.technique.Transaction aTransact
 		return false;
 	}
 	//controle de la date de fin
-	if ((!"01/01/0001".equals(getDatefin())&&(null!=getDatefin()))){
+	if ((!"01/01/0001".equals(getDatefin())&&(null!=getDatefin()))&&(!"".equals(getDatefin()))){
 		controle = Services.compareDates(getDatefin(),getDatedebut());
 		if (controle==-1){
 			aTransaction.declarerErreur("La date de fin doit être supérieur ou égale à la date de début de l'affectation.");
@@ -342,7 +342,7 @@ public boolean creerAffecter_AgentCDE(nc.mairie.technique.Transaction aTransacti
 	}
 //	on controle que la date soit supérieur ou égale à la date de début
 	int controle = 0;
-	if (null!=getDatefin()){
+	if((getDatefin()!=null)&&(!getDatefin().equals(""))){
 		controle = Services.compareDates(getDatefin(),getDatedebut());
 		if (controle==-1){
 			aTransaction.declarerErreur("La date doit être supérieur ou égale à la date de début d'affectation ");
@@ -378,7 +378,7 @@ public boolean creerAffecter_AgentCDE(nc.mairie.technique.Transaction aTransacti
 		return false;
 	}
 	//controle de la date de fin
-	if ((!"01/01/0001".equals(getDatefin())&&(null!=getDatefin()))){
+	if ((!"01/01/0001".equals(getDatefin())&&(null!=getDatefin()))&&(!"".equals(getDatefin()))){
 		controle = Services.compareDates(getDatefin(),getDatedebut());
 		if (controle==-1){
 			aTransaction.declarerErreur("La date de fin doit être supérieur ou égale à la date de début de l'affectation.");
@@ -439,6 +439,9 @@ public boolean affecter_agentCCAS(nc.mairie.technique.Transaction aTransaction,E
 		}else{
 			setDatedebut(Services.formateDate(getDatedebut()));
 		}
+	}else{
+		aTransaction.declarerErreur("La date de début doit être renseignée.");
+		return false;
 	}
 	if((getDatefin()!=null)&&(!getDatefin().equals(""))){
 		if(!Services.estUneDate(getDatefin())){
@@ -571,6 +574,9 @@ public boolean affecter_agentCDE(nc.mairie.technique.Transaction aTransaction,Eq
 		}else{
 			setDatedebut(Services.formateDate(getDatedebut()));
 		}
+	}else{
+		aTransaction.declarerErreur("La date de début doit être renseignée.");
+		return false;
 	}
 	if((getDatefin()!=null)&&(!getDatefin().equals(""))){
 		if(!Services.estUneDate(getDatefin())){
