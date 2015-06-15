@@ -632,13 +632,6 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 		}
 	}
 	
-	/*if(getServiceCourant().getServi().equals("4000")){
-		AgentCDE monAActifs = new AgentCDE();
-	}else if (getServiceCourant().getServi().equals("5000")){
-		AgentCCAS monAActifs = new AgentCCAS();
-	}else{
-		AActifs monAActifs = new AActifs();
-	}*/
 	// si l'action n'est pas une suppression
 	if (!getVAL_ST_TITRE_ACTION().equals(ACTION_SUPPRESSION)){
 	//	Test si ligne sélectionnée
