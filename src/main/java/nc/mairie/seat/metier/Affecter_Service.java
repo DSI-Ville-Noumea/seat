@@ -119,7 +119,7 @@ public boolean affecter_service(nc.mairie.technique.Transaction aTransaction,Equ
 	
 	//#15920 on vérifie que l'équipement n'est pas affecter ponctuellement à un agent
 	if (null != unAffecter_Service.getNumeroinventaire()){
-		if (Affecter_Agent.existeAffecter_AgentAvantDate(aTransaction, unEquipement.getNumeroinventaire() , getDdebut())) {
+		if (Affecter_Agent.existeAffecter_AgentEntreDate(aTransaction, unEquipement.getNumeroinventaire() , getDdebut(), getDfin())) {
 			aTransaction.declarerErreur("Erreur : Cet equipement a une affectation ponctuelle à un agent. Modifiez la date de fin ou adaptez la date de début d'affectation au service.");
 			return false;
 		}

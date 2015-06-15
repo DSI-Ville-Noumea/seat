@@ -49,7 +49,7 @@ public ArrayList<Affecter_Agent> chercherListerAffecter_AgentEquipSce(nc.mairie.
 }
 
 public ArrayList<Affecter_Agent> chercherListerAffecter_AgentEquipSceEnCours(nc.mairie.technique.Transaction aTransaction,String inv,String param,String date) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice like '"+param+"%' and numeroinventaire='"+inv+"' and datedebut>='"+date+"'");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice like '"+param+"%' and numeroinventaire='"+inv+"' and datedebut>='"+date+"' order by datedebut desc");
 }
 
 /**
@@ -165,7 +165,7 @@ public boolean existeAffecter_Agent(nc.mairie.technique.Transaction aTransaction
  */
 public boolean existeAffecter_AgentAvantDate(Transaction aTransaction, String inv,String datedeb) throws Exception {
 	datedeb = Services.formateDateInternationale(datedeb);
-	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numeroinventaire='"+inv+"' and (datefin >=  '"+datedeb+"' or datefin = '0001-01-01')");
+	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numeroinventaire='"+inv+"' and (datefin >  '"+datedeb+"' or datefin = '0001-01-01')");
 }
 
 /**
@@ -180,12 +180,23 @@ public boolean existeAffecter_AgentAvantDate(Transaction aTransaction, String in
  */
 public boolean existeAffecter_AgentEntreDate(Transaction aTransaction, String inv,String datedeb, String datefin) throws Exception {
 	datedeb = Services.formateDateInternationale(datedeb);
-	datefin = Services.formateDateInternationale(datefin);
-	if (datedeb.compareTo(datefin) < 0 ) {
-		return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numeroinventaire='"+inv+"' and ((datedebut between '"+datedeb+"' and '"+datefin+"') or (datefin between '"+datedeb+"' and '"+datefin+"'))");
-	} else {
-		return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numeroinventaire='"+inv+"' and ((datedebut between '"+datefin+"' and '"+datedeb+"') or (datefin between '"+datefin+"' and '"+datedeb+"'))");
+	datefin = datefin == null ? "9999-12-31" : Services.formateDateInternationale(datefin);
+	
+	datefin = "0001-01-01".equals(datefin) ? "9999-12-21" : datefin;
+	
+	if (datefin.compareTo(datedeb) < 0) {
+		String temp = datedeb;
+		datedeb = datefin;
+		datefin = temp;
 	}
-		
+	
+	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where numeroinventaire='"+inv+"' and ("
+			+ "(datedebut between '"+datedeb+"' and '"+datefin+"') or "
+			+ "(datefin between '"+datedeb+"' and '"+datefin+"') or "
+			+ "('"+datedeb+"' between datedebut and (case when datefin='0001-01-01' then '9999-12-31' else datefin end) ) or "
+			+ "('"+datefin+"' between datedebut and (case when datefin='0001-01-01' then '9999-12-31' else datefin end) ) )");
+
 }
+
+
 }

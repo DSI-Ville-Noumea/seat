@@ -135,7 +135,7 @@ protected java.util.Hashtable<String, BasicRecord> definirMappageTable() throws 
  */
 public boolean existePM_Affecter_AgentAvantDate(Transaction aTransaction, String inv,String datedeb) throws Exception {
 	datedeb = Services.formateDateInternationale(datedeb);
-	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where pminv='"+inv+"' and (dfin >=  '"+datedeb+"' or dfin = '0001-01-01')");
+	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where pminv='"+inv+"' and (dfin >  '"+datedeb+"' or dfin = '0001-01-01')");
 }
 /**
  * Retourne un booléen.
