@@ -149,7 +149,16 @@ public boolean existePM_Affecter_AgentAvantDate(Transaction aTransaction, String
  */
 public boolean existePM_Affecter_AgentEntreDate(Transaction aTransaction, String inv,String datedeb, String datefin) throws Exception {
 	datedeb = Services.formateDateInternationale(datedeb);
-	datefin = Services.formateDateInternationale(datefin);
+	datefin = datefin == null || "".equals(datefin) ? "9999-12-31" : Services.formateDateInternationale(datefin);
+	
+	datefin = "0001-01-01".equals(datefin) ? "9999-12-21" : datefin;
+	
+	if (datefin.compareTo(datedeb) < 0) {
+		String temp = datedeb;
+		datedeb = datefin;
+		datefin = temp;
+	}
+	
 	if (datedeb.compareTo(datefin) < 0 ) {
 		return executeTesteExiste(aTransaction,"select * from "+getTable()+" where pminv='"+inv+"' and ((ddeb between '"+datedeb+"' and '"+datefin+"') or (dfin between '"+datedeb+"' and '"+datefin+"'))");
 	} else {
