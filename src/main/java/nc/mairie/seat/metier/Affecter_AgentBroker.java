@@ -180,7 +180,7 @@ public boolean existeAffecter_AgentAvantDate(Transaction aTransaction, String in
  */
 public boolean existeAffecter_AgentEntreDate(Transaction aTransaction, String inv,String datedeb, String datefin) throws Exception {
 	datedeb = Services.formateDateInternationale(datedeb);
-	datefin = datefin == null ? "9999-12-31" : Services.formateDateInternationale(datefin);
+	datefin = datefin == null || "".equals(datefin) ? "9999-12-31" : Services.formateDateInternationale(datefin);
 	
 	datefin = "0001-01-01".equals(datefin) ? "9999-12-21" : datefin;
 	
