@@ -406,7 +406,7 @@ public static boolean existePM_Affecter_AgentEntreDate(Transaction aTransaction,
 	if(!Services.estUneDate(datedeb)){
 		aTransaction.declarerErreur("La date de début n'est pas une date valide");
 	}
-	if(!Services.estUneDate(datefin)){
+	if(datefin != null && !"".equals(datefin) && !Services.estUneDate(datefin)){
 		aTransaction.declarerErreur("La date de fin n'est pas une date valide");
 	}
 	return unPM_Affecter_Agent.getMyPM_Affecter_AgentBroker().existePM_Affecter_AgentEntreDate(aTransaction, inv,datedeb, datefin);
