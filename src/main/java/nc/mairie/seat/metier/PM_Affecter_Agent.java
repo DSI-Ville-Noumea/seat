@@ -93,6 +93,7 @@ public boolean creerPm_Affecter_Agent(nc.mairie.technique.Transaction aTransacti
 		controle = Services.compareDates(getDfin(),getDdeb());
 		if (controle==-1){
 			aTransaction.declarerErreur("La date de fin doit être supérieur ou égale à la date de début d'affectation ");
+			return false;
 		}else if(controle==-9999){
 			return false;
 		}else if (controle==0){
