@@ -862,9 +862,9 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 		
 		//Création
 		if(getServiceCourant().getServi().equals("4000")){
-			getPmAffecterAgentCourant().affecter_agentCDE(getTransaction(),getPMaterielCourant(),getAgentCDECourant(),monAG,getServiceCourant(),newDate,monAG);
+			getPmAffecterAgentCourant().affecter_agent(getTransaction(),getPMaterielCourant(),getAgentCDECourant(),monAG,getServiceCourant(),newDate,monAG);
 		}else if(getServiceCourant().getServi().equals("5000")){
-			getPmAffecterAgentCourant().affecter_agentCCAS(getTransaction(),getPMaterielCourant(),getAgentCCASCourant(),monAG,getServiceCourant(),newDate,monAG);
+			getPmAffecterAgentCourant().affecter_agent(getTransaction(),getPMaterielCourant(),getAgentCCASCourant(),monAG,getServiceCourant(),newDate,monAG);
 		}else{
 			getPmAffecterAgentCourant().affecter_agent(getTransaction(),getPMaterielCourant(),getAgentCourant(),getPmAffecterAgentCourant(),getServiceCourant(),newDate,monAG);
 		}

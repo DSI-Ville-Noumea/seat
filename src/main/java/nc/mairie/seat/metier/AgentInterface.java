@@ -11,7 +11,7 @@ package nc.mairie.seat.metier;
  */
 public interface AgentInterface {
 	
-	
+	public String getNomatr();
 	public String getNom();
 	public String getPrenom();
 

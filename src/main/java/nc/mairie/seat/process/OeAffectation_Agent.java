@@ -806,10 +806,10 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 		
 		if(getServiceCourant().getServi().equals("4000")){
 			getAffecterAgentCourant().setMatricule(agentCDECourant.getNomatr());
-			getAffecterAgentCourant().affecter_agentModifCDE(getTransaction(),getEquipementCourant(),getAgentCDECourant(),getAffecterAgentCourant(),getServiceCourant(),getAffecterAgentPrecedent());
+			getAffecterAgentCourant().affecter_agentModif(getTransaction(),getEquipementCourant(),getAgentCDECourant(),getAffecterAgentCourant(),getServiceCourant(),getAffecterAgentPrecedent());
 		}else if(getServiceCourant().getServi().equals("5000")){
 			getAffecterAgentCourant().setMatricule(agentCCASCourant.getNomatr());
-			getAffecterAgentCourant().affecter_agentModifCCAS(getTransaction(),getEquipementCourant(),getAgentCCASCourant(),getAffecterAgentCourant(),getServiceCourant(),getAffecterAgentPrecedent());
+			getAffecterAgentCourant().affecter_agentModif(getTransaction(),getEquipementCourant(),getAgentCCASCourant(),getAffecterAgentCourant(),getServiceCourant(),getAffecterAgentPrecedent());
 		}else{
 			getAffecterAgentCourant().setMatricule(agentCourant.getNomatr());
 			getAffecterAgentCourant().affecter_agentModif(getTransaction(),getEquipementCourant(),getAgentCourant(),getAffecterAgentCourant(),getServiceCourant(),getAffecterAgentPrecedent());
@@ -861,9 +861,9 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 		
 		//Création
 		if(getServiceCourant().getServi().equals("4000")){
-			getAffecterAgentCourant().affecter_agentCDE(getTransaction(),getEquipementCourant(),getAgentCDECourant(),monAG,getServiceCourant(),newDate,monAG);
+			getAffecterAgentCourant().affecter_agent(getTransaction(),getEquipementCourant(),getAgentCDECourant(),monAG,getServiceCourant(),newDate,monAG);
 		}else if(getServiceCourant().getServi().equals("5000")){
-			getAffecterAgentCourant().affecter_agentCCAS(getTransaction(),getEquipementCourant(),getAgentCCASCourant(),monAG,getServiceCourant(),newDate,monAG);
+			getAffecterAgentCourant().affecter_agent(getTransaction(),getEquipementCourant(),getAgentCCASCourant(),monAG,getServiceCourant(),newDate,monAG);
 		}else{
 			getAffecterAgentCourant().affecter_agent(getTransaction(),getEquipementCourant(),getAgentCourant(),monAG,getServiceCourant(),newDate,monAG);
 		}
