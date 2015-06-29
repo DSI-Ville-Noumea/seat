@@ -360,7 +360,7 @@ public boolean affecter_agentModif(nc.mairie.technique.Transaction aTransaction,
 	// on controle par rapport à l'affectation précédente
 	if(null!=unPmAffecter_AgentPrec){
 		if(null != unPmAffecter_AgentPrec.getPminv()){
-			controle = Services.compareDates(unPmAffecter_AgentPrec.getDfin(),getDdeb());
+			controle = Services.compareDates(getDdeb(),unPmAffecter_AgentPrec.getDfin());
 			if (controle==-9999){
 				return false;
 			}
