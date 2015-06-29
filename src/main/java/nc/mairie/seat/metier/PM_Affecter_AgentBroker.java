@@ -159,11 +159,11 @@ public boolean existePM_Affecter_AgentEntreDate(Transaction aTransaction, String
 		datefin = temp;
 	}
 	
-	if (datedeb.compareTo(datefin) < 0 ) {
-		return executeTesteExiste(aTransaction,"select * from "+getTable()+" where pminv='"+inv+"' and ((ddeb between '"+datedeb+"' and '"+datefin+"') or (dfin between '"+datedeb+"' and '"+datefin+"'))");
-	} else {
-		return executeTesteExiste(aTransaction,"select * from "+getTable()+" where pminv='"+inv+"' and ((ddeb between '"+datefin+"' and '"+datedeb+"') or (dfin between '"+datefin+"' and '"+datedeb+"'))");
-	}
+	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where pminv='"+inv+"' and ("
+			+ "(ddeb between '"+datedeb+"' and '"+datefin+"') or "
+			+ "(dfin between '"+datedeb+"' and '"+datefin+"') or "
+			+ "('"+datedeb+"' between ddeb and (case when dfin='0001-01-01' then '9999-12-31' else dfin end) ) or "
+			+ "('"+datefin+"' between ddeb and (case when dfin='0001-01-01' then '9999-12-31' else dfin end) ) )");
 }
 
 

@@ -153,6 +153,14 @@ public boolean creerPm_Affecter_Agent(nc.mairie.technique.Transaction aTransacti
 		aTransaction.declarerErreur("L'affectation de cet agent pour ce petit matériel est déjà enregistré pour cette date.");
 		return false;
 	}
+	
+	//On vérifie que le véhicule n'est pas déjà affecté 
+	if (existePM_Affecter_AgentEntreDate(aTransaction,getPminv(), getDdeb(), getDfin())){
+		aTransaction.declarerErreur("Des affectations existent déjà pour cette période.");
+		return false;
+	}
+		
+	
 	//Creation du PM_Affecter_Agent
 	return getMyPM_Affecter_AgentBroker().creerPM_Affecter_Agent(aTransaction);
 }
