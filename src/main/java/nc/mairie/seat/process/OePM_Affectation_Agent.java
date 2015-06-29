@@ -801,15 +801,18 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 //		}
 		//Modification
 		
+		//RG : on controle les dates de fin et date de début par rapport à la date d'affectation au Service
+		PM_Affecter_Agent unPmAffecter_Agent_Precedent =  getListeAffectation().size()>1 ? getListeAffectation().get(1) : null; 
+		
 		if(getServiceCourant().getServi().equals("4000")){
 			getPmAffecterAgentCourant().setMatricule(agentCDECourant.getNomatr());
-			getPmAffecterAgentCourant().affecter_agentModifCDE(getTransaction(),getPMaterielCourant(),getAgentCDECourant(),getPmAffecterAgentCourant(),getServiceCourant(),getPmAffecterAgentPrecedent());
+			getPmAffecterAgentCourant().affecter_agentModif(getTransaction(),getPMaterielCourant(),getAgentCDECourant(),getPmAffecterAgentCourant(),getServiceCourant(),unPmAffecter_Agent_Precedent);
 		}else if(getServiceCourant().getServi().equals("5000")){
 			getPmAffecterAgentCourant().setMatricule(agentCCASCourant.getNomatr());
-			getPmAffecterAgentCourant().affecter_agentModifCCAS(getTransaction(),getPMaterielCourant(),getAgentCCASCourant(),getPmAffecterAgentCourant(),getServiceCourant(),getPmAffecterAgentPrecedent());
+			getPmAffecterAgentCourant().affecter_agentModif(getTransaction(),getPMaterielCourant(),getAgentCCASCourant(),getPmAffecterAgentCourant(),getServiceCourant(),unPmAffecter_Agent_Precedent);
 		}else{
 			getPmAffecterAgentCourant().setMatricule(agentCourant.getNomatr());
-			getPmAffecterAgentCourant().affecter_agentModif(getTransaction(),getPMaterielCourant(),getAgentCourant(),getPmAffecterAgentCourant(),getServiceCourant(),getPmAffecterAgentPrecedent());
+			getPmAffecterAgentCourant().affecter_agentModif(getTransaction(),getPMaterielCourant(),getAgentCourant(),getPmAffecterAgentCourant(),getServiceCourant(),unPmAffecter_Agent_Precedent);
 		}
 		if (getTransaction().isErreur())
 			return false;
