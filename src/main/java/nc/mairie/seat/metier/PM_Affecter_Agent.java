@@ -236,24 +236,24 @@ public boolean affecter_agent(nc.mairie.technique.Transaction aTransaction,PMate
 				return false;
 			}
 			if(controle==-1){
-				aTransaction.declarerErreur("La date de début d'affectation doit être supérieur ou égale à la date de fin de l'affectation précédente.");
+				aTransaction.declarerErreur("La date de début d'affectation doit être supérieur ou égale à la date de fin de l'affectation précédente."+"("+unPmAffecterAgentPrec.getDfin()+")");
 				return false;
 			}
 			if(controle==0){
 				// on controle par rapport aux heures
 				if (!unPmAffecterAgentPrec.getHfin().equals("0")){
 					if(Integer.parseInt(unPmAffecterAgentPrec.getHfin())>Integer.parseInt(getHdeb())){
-						aTransaction.declarerErreur("L'heure de début doit être supérieur ou égale à l'heure de fin de l'affectation précédente");
+						aTransaction.declarerErreur("L'heure de début doit être supérieur ou égale à l'heure de fin de l'affectation précédente"+"("+unPmAffecterAgentPrec.getHfin()+")");
 						return false;
 					}
 					if(Integer.parseInt(unPmAffecterAgentPrec.getHfin())==Integer.parseInt(getHdeb())){
 						if(Integer.parseInt(unPmAffecterAgentPrec.getHfinmn())>Integer.parseInt(getHdebmn())){
-							aTransaction.declarerErreur("L'heure de début doit être supérieur ou égale à l'heure de fin de l'affectation précédente");
+							aTransaction.declarerErreur("L'heure de début doit être supérieur ou égale à l'heure de fin de l'affectation précédente"+"("+unPmAffecterAgentPrec.getHfinmn()+")");
 							return false;
 						}
 					}
 				}else{
-					aTransaction.declarerErreur("La date du début de l'affectation doit être supérieur à la date de fin de l'affectation précédente.");
+					aTransaction.declarerErreur("La date du début de l'affectation doit être supérieur à la date de fin de l'affectation précédente."+"("+unPmAffecterAgentPrec.getDfin()+")");
 					return false;
 				}
 			}
@@ -365,18 +365,18 @@ public boolean affecter_agentModif(nc.mairie.technique.Transaction aTransaction,
 				return false;
 			}
 			if(controle==-1){
-				aTransaction.declarerErreur("La date de début d'affectation doit être supérieur ou égale à la date de fin de l'affectation précédente.");
+				aTransaction.declarerErreur("La date de début d'affectation doit être supérieur ou égale à la date de fin de l'affectation précédente."+"("+unPmAffecter_AgentPrec.getDfin()+")");
 				return false;
 			}
 			if(controle==0){
 				// on controle par rapport aux minutes
 				if(Integer.parseInt(unPmAffecter_AgentPrec.getHfin())>Integer.parseInt(getHdeb())){
-					aTransaction.declarerErreur("L'heure de début doit être supérieur ou égale à l'heure de fin de l'affectation précédente");
+					aTransaction.declarerErreur("L'heure de début doit être supérieur ou égale à l'heure de fin de l'affectation précédente"+"("+unPmAffecter_AgentPrec.getHfin()+")");
 					return false;
 				}
 				if(Integer.parseInt(unPmAffecter_AgentPrec.getHfin())==Integer.parseInt(getHdeb())){
 					if(Integer.parseInt(unPmAffecter_AgentPrec.getHfinmn())>Integer.parseInt(getHdebmn())){
-						aTransaction.declarerErreur("L'heure de début doit être supérieur ou égale à l'heure de fin de l'affectation précédente");
+						aTransaction.declarerErreur("L'heure de début doit être supérieur ou égale à l'heure de fin de l'affectation précédente"+"("+unPmAffecter_AgentPrec.getHfinmn()+")");
 						return false;
 					}
 				}
