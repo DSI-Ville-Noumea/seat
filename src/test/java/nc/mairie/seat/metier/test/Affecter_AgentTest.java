@@ -13,7 +13,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AffecterAgentTest {
+public class Affecter_AgentTest {
 
 	Service unService = null;
 	Agents agent = null;
