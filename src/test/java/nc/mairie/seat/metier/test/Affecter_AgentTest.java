@@ -198,7 +198,7 @@ public class Affecter_AgentTest {
 		
 		//test OK mais KO par rapport au service (pas de fin)
 		affecter_Agent2 = prepareAffecterAgent("11/07/2015", "", "DCAA");
-		affecter_Agent.affecter_agent(aTransaction, unEquipement, unAgent, affecter_Agent2, unService, affecter_Agent.getDatedebut(), affecter_Agent);
+		affecter_Agent2.affecter_agent(aTransaction, unEquipement, unAgent, affecter_Agent2, unService, affecter_Agent.getDatedebut(), affecter_Agent);
 		assertTrue(aTransaction.getMessageErreur(), aTransaction.isErreur());
 		aTransaction.traiterErreur();
 
@@ -212,8 +212,8 @@ public class Affecter_AgentTest {
 		unAgent = Agents.chercherAgents(aTransaction, "4118");
 		assertFalse(aTransaction.isErreur());
 		
-		affecter_Agent = prepareAffecterAgent("01/08/2015", "10/08/2015", "DCAA");
-		affecter_Agent.affecter_agent(aTransaction, unEquipement, unAgent, affecter_Agent, unService, affecter_Agent.getDatedebut(), affecter_Agent);
+		affecter_Agent2 = prepareAffecterAgent("01/08/2015", "10/08/2015", "DCAA");
+		affecter_Agent2.affecter_agent(aTransaction, unEquipement, unAgent, affecter_Agent2, unService, affecter_Agent2.getDatedebut(), affecter_Agent);
 		assertFalse(aTransaction.getMessageErreur(), aTransaction.isErreur());
 
 
