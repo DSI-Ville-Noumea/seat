@@ -1,3 +1,4 @@
+<%@page import="java.util.Calendar"%>
 <%@page contentType="text/html;charset=UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
@@ -152,7 +153,11 @@ document.formu.elements[nom].focus();
 			</TD>
 		</TR>
 	</TABLE>
-</FIELDSET><FIELDSET><LEGEND class="sigp2Fieldset">Historiques</LEGEND>
+</FIELDSET>
+
+<%String annee = String.valueOf(Calendar.getInstance().get(Calendar.YEAR)); %>
+
+<FIELDSET><LEGEND class="sigp2Fieldset">Historiques</LEGEND>
 <% if (process.onglet.equals("ONGLET1")) {%>
 <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
   <TBODY>
@@ -161,23 +166,23 @@ document.formu.elements[nom].focus();
       <TABLE border="0" cellpadding="0" cellspacing="0" >
         <TBODY>
           <TR>
-			<TD onclick="afficheOnglet('ONGLET1')">
+            <TD onclick="afficheOnglet('ONGLET1')">
             <TABLE cellpadding="0" cellspacing="0" width="100%">
               <TBODY>
                 <TR>
                   <TD class="OngletActifG"></TD>
-                  <TD class="OngletActifC">Fiches</TD>
+                  <TD class="OngletActifC">BPC (<%=annee%>)</TD>
                   <TD class="OngletActifD"></TD>
                 </TR>
               </TBODY>
             </TABLE>
             </TD>
-			<TD onclick="afficheOnglet('ONGLET2')">
+            <TD onclick="afficheOnglet('ONGLET2')">
             <TABLE cellpadding="0" cellspacing="0" width="100%">
               <TBODY>
                 <TR>
                   <TD class="OngletInactifG"></TD>
-                  <TD class="OngletInactifC">Entretiens</TD>
+                  <TD class="OngletInactifC">Fiches</TD>
                   <TD class="OngletInactifD"></TD>
                 </TR>
               </TBODY>
@@ -188,13 +193,153 @@ document.formu.elements[nom].focus();
               <TBODY>
                 <TR>
                   <TD class="OngletInactifG"></TD>
-                  <TD class="OngletInactifC">Affectations</TD>
+                  <TD class="OngletInactifC">Entretiens</TD>
                   <TD class="OngletInactifD"></TD>
                 </TR>
               </TBODY>
             </TABLE>
             </TD>
 			<TD onclick="afficheOnglet('ONGLET4')">
+            <TABLE cellpadding="0" cellspacing="0" width="100%">
+              <TBODY>
+                <TR>
+                  <TD class="OngletInactifG"></TD>
+                  <TD class="OngletInactifC">Affectations</TD>
+                  <TD class="OngletInactifD"></TD>
+                </TR>
+              </TBODY>
+            </TABLE>
+            </TD>
+			<TD onclick="afficheOnglet('ONGLET5')">
+            <TABLE cellpadding="0" cellspacing="0" width="100%">
+              <TBODY>
+                <TR>
+                  <TD class="OngletInactifG"></TD>
+                  <TD class="OngletInactifC">D&eacute;clarations</TD>
+                  <TD class="OngletInactifD"></TD>
+                </TR>
+              </TBODY>
+            </TABLE>
+            </TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      </TD>
+    </TR>
+    <TR>
+      <TD height="2" bgcolor="#669999" nowrap></TD>
+    </TR>
+    <TR>
+      <TD>
+      <TABLE border="0" cellpadding="0" cellspacing="0" height="100" width="100%">
+        <TBODY>
+          <TR>
+            <TD width="2" bgcolor="#669999" nowrap></TD>
+            <TD valign="top" align="left" width="100%" class="OngletCorps"><TABLE class="sigp2">
+					<TR>
+						<TD>
+							<TABLE border="1">
+								<TBODY>
+									<TR>
+										<TD class="sigp2-titre-liste">N°BPC      Date       Compteur   Quanti Km
+										parcouru Moyenne   </TD>
+									</TR>
+								</TBODY>
+							</TABLE>
+						</TD>
+					</TR>
+					<TR>
+						<TD>
+							<SELECT size="5" name="<%= process.getNOM_LB_BPC() %>"
+									class="sigp2-liste"
+									style="text-transform: uppercase; width: 100%" ondblclick='executeBouton("<%= process.getNOM_PB_DETAILSBPC()%>")'>
+									<%= process.forComboHTML(process.getVAL_LB_BPC(),process.getVAL_LB_BPC_SELECT()) %>
+							</SELECT>
+						</TD>
+					</TR>
+									<TR>
+										<TD><SELECT size="2" name="<%= process.getNOM_LB_BPC_TOTAL() %>"
+											class="sigp2-liste"
+											style="text-transform: uppercase; width: 100%">
+											<OPTION>Total</OPTION>
+											<%= process.forComboHTML(process.getVAL_LB_BPC_TOTAL(),process.getVAL_LB_BPC_TOTAL_SELECT()) %>
+										</SELECT></TD>
+									</TR>
+									<TR>
+						<TD align="center">
+<%if(process.isVideBPC){ %>
+							<INPUT type="submit"
+					name="<%= process.getNOM_PB_DETAILSBPC() %>" value="Détails du BPC"
+					class="sigp2-Bouton-100">
+<%} %>
+						</TD>
+					</TR>
+				</TABLE>			
+			</TD>
+            <TD width="2" bgcolor="#669999" nowrap></TD>
+          </TR>
+        </TBODY>
+      </TABLE>
+      </TD>
+    </TR>
+    <TR>
+      <TD height="2" bgcolor="#669999" nowrap></TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<%}%><% if (process.onglet.equals("ONGLET2")) {%>
+<TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+  <TBODY>
+    <TR>
+      <TD>
+      <TABLE border="0" cellpadding="0" cellspacing="0" >
+        <TBODY>
+          <TR>
+	        <TD onclick="afficheOnglet('ONGLET1')">
+            <TABLE cellpadding="0" cellspacing="0" width="100%">
+              <TBODY>
+                <TR>
+                  <TD class="OngletInactifG"></TD>
+                  <TD class="OngletInactifC">BPC (<%=annee%>)</TD>
+                  <TD class="OngletInactifD"></TD>
+                </TR>
+              </TBODY>
+            </TABLE>
+            </TD>
+			<TD onclick="afficheOnglet('ONGLET2')">
+            <TABLE cellpadding="0" cellspacing="0" width="100%">
+              <TBODY>
+                <TR>
+                  <TD class="OngletActifG"></TD>
+                  <TD class="OngletActifC">Fiches</TD>
+                  <TD class="OngletActifD"></TD>
+                </TR>
+              </TBODY>
+            </TABLE>
+            </TD>
+			<TD onclick="afficheOnglet('ONGLET3')">
+            <TABLE cellpadding="0" cellspacing="0" width="100%">
+              <TBODY>
+                <TR>
+                  <TD class="OngletInactifG"></TD>
+                  <TD class="OngletInactifC">Entretiens</TD>
+                  <TD class="OngletInactifD"></TD>
+                </TR>
+              </TBODY>
+            </TABLE>
+            </TD>
+			<TD onclick="afficheOnglet('ONGLET4')">
+            <TABLE cellpadding="0" cellspacing="0" width="100%">
+              <TBODY>
+                <TR>
+                  <TD class="OngletInactifG"></TD>
+                  <TD class="OngletInactifC">Affectations</TD>
+                  <TD class="OngletInactifD"></TD>
+                </TR>
+              </TBODY>
+            </TABLE>
+            </TD>
+			<TD onclick="afficheOnglet('ONGLET5')">
             <TABLE cellpadding="0" cellspacing="0" width="100%">
               <TBODY>
                 <TR>
@@ -262,7 +407,7 @@ document.formu.elements[nom].focus();
     </TR>
   </TBODY>
 </TABLE>
-<%}%><% if (process.onglet.equals("ONGLET2")) {%>
+<%}%><% if (process.onglet.equals("ONGLET3")) {%>
 <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
   <TBODY>
     <TR>
@@ -275,13 +420,24 @@ document.formu.elements[nom].focus();
               <TBODY>
                 <TR>
                   <TD class="OngletInactifG"></TD>
-                  <TD class="OngletInactifC">Fiches</TD>
+                  <TD class="OngletInactifC">BPC (<%=annee%>)</TD>
                   <TD class="OngletInactifD"></TD>
                 </TR>
               </TBODY>
             </TABLE>
             </TD>
 			<TD onclick="afficheOnglet('ONGLET2')">
+            <TABLE cellpadding="0" cellspacing="0" width="100%">
+              <TBODY>
+                <TR>
+                  <TD class="OngletInactifG"></TD>
+                  <TD class="OngletInactifC">Fiches</TD>
+                  <TD class="OngletInactifD"></TD>
+                </TR>
+              </TBODY>
+            </TABLE>
+            </TD>
+			<TD onclick="afficheOnglet('ONGLET3')">
             <TABLE cellpadding="0" cellspacing="0" width="100%">
               <TBODY>
                 <TR>
@@ -292,7 +448,7 @@ document.formu.elements[nom].focus();
               </TBODY>
             </TABLE>
             </TD>
-			<TD onclick="afficheOnglet('ONGLET3')">
+			<TD onclick="afficheOnglet('ONGLET4')">
             <TABLE cellpadding="0" cellspacing="0" width="100%">
               <TBODY>
                 <TR>
@@ -303,7 +459,7 @@ document.formu.elements[nom].focus();
               </TBODY>
             </TABLE>
             </TD>
-			<TD onclick="afficheOnglet('ONGLET4')">
+			<TD onclick="afficheOnglet('ONGLET5')">
             <TABLE cellpadding="0" cellspacing="0" width="100%">
               <TBODY>
                 <TR>
@@ -367,7 +523,7 @@ document.formu.elements[nom].focus();
     </TR>
   </TBODY>
 </TABLE>
-<%}%><% if (process.onglet.equals("ONGLET3")) {%>
+<%}%><% if (process.onglet.equals("ONGLET4")) {%>
 <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
   <TBODY>
     <TR>
@@ -380,13 +536,24 @@ document.formu.elements[nom].focus();
               <TBODY>
                 <TR>
                   <TD class="OngletInactifG"></TD>
+                  <TD class="OngletInactifC">BPC (<%=annee%>)</TD>
+                  <TD class="OngletInactifD"></TD>
+                </TR>
+              </TBODY>
+            </TABLE>
+            </TD>
+            <TD onclick="afficheOnglet('ONGLET2')">
+            <TABLE cellpadding="0" cellspacing="0" width="100%">
+              <TBODY>
+                <TR>
+                  <TD class="OngletInactifG"></TD>
                   <TD class="OngletInactifC">Fiches</TD>
                   <TD class="OngletInactifD"></TD>
                 </TR>
               </TBODY>
             </TABLE>
             </TD>
-			<TD onclick="afficheOnglet('ONGLET2')">
+			<TD onclick="afficheOnglet('ONGLET3')">
             <TABLE cellpadding="0" cellspacing="0" width="100%">
               <TBODY>
                 <TR>
@@ -397,7 +564,7 @@ document.formu.elements[nom].focus();
               </TBODY>
             </TABLE>
             </TD>
-			<TD onclick="afficheOnglet('ONGLET3')">
+			<TD onclick="afficheOnglet('ONGLET4')">
             <TABLE cellpadding="0" cellspacing="0" width="100%">
               <TBODY>
                 <TR>
@@ -408,7 +575,7 @@ document.formu.elements[nom].focus();
               </TBODY>
             </TABLE>
             </TD>
-			<TD onclick="afficheOnglet('ONGLET4')">
+			<TD onclick="afficheOnglet('ONGLET5')">
             <TABLE cellpadding="0" cellspacing="0" width="100%">
               <TBODY>
                 <TR>
@@ -480,7 +647,7 @@ document.formu.elements[nom].focus();
     </TR>
   </TBODY>
 </TABLE>
-<%}%><% if (process.onglet.equals("ONGLET4")) {%>
+<%}%><% if (process.onglet.equals("ONGLET5")) {%>
 <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
   <TBODY>
     <TR>
@@ -493,18 +660,18 @@ document.formu.elements[nom].focus();
               <TBODY>
                 <TR>
                   <TD class="OngletInactifG"></TD>
-                  <TD class="OngletInactifC">Fiches</TD>
+                  <TD class="OngletInactifC">BPC (<%=annee%>)</TD>
                   <TD class="OngletInactifD"></TD>
                 </TR>
               </TBODY>
             </TABLE>
             </TD>
-			<TD onclick="afficheOnglet('ONGLET2')">
+            <TD onclick="afficheOnglet('ONGLET2')">
             <TABLE cellpadding="0" cellspacing="0" width="100%">
               <TBODY>
                 <TR>
                   <TD class="OngletInactifG"></TD>
-                  <TD class="OngletInactifC">Entretiens</TD>
+                  <TD class="OngletInactifC">Fiches</TD>
                   <TD class="OngletInactifD"></TD>
                 </TR>
               </TBODY>
@@ -515,13 +682,24 @@ document.formu.elements[nom].focus();
               <TBODY>
                 <TR>
                   <TD class="OngletInactifG"></TD>
-                  <TD class="OngletInactifC">Affectations</TD>
+                  <TD class="OngletInactifC">Entretiens</TD>
                   <TD class="OngletInactifD"></TD>
                 </TR>
               </TBODY>
             </TABLE>
             </TD>
 			<TD onclick="afficheOnglet('ONGLET4')">
+            <TABLE cellpadding="0" cellspacing="0" width="100%">
+              <TBODY>
+                <TR>
+                  <TD class="OngletInactifG"></TD>
+                  <TD class="OngletInactifC">Affectations</TD>
+                  <TD class="OngletInactifD"></TD>
+                </TR>
+              </TBODY>
+            </TABLE>
+            </TD>
+			<TD onclick="afficheOnglet('ONGLET5')">
             <TABLE cellpadding="0" cellspacing="0" width="100%">
               <TBODY>
                 <TR>

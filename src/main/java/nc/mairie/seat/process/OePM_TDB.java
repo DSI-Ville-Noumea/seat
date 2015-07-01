@@ -1,6 +1,9 @@
 package nc.mairie.seat.process;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.ListIterator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +12,7 @@ import nc.mairie.seat.metier.AActifs;
 import nc.mairie.seat.metier.AgentCCAS;
 import nc.mairie.seat.metier.AgentCDE;
 import nc.mairie.seat.metier.AgentsMunicipaux;
+import nc.mairie.seat.metier.BPC;
 import nc.mairie.seat.metier.Declarations;
 import nc.mairie.seat.metier.ENGJU;
 import nc.mairie.seat.metier.FPM;
@@ -37,12 +41,16 @@ public class OePM_TDB extends nc.mairie.technique.BasicProcess {
 	 * 
 	 */
 	private static final long serialVersionUID = 8969073696303928259L;
-	public static final int STATUT_DECLARATIONS = 5;
-	public static final int STATUT_SELECTION = 4;
-	public static final int STATUT_FPM = 3;
-	public static final int STATUT_AGENT = 2;
+	public static final int STATUT_DECLARATIONS = 6;
+	public static final int STATUT_SELECTION = 5;
+	public static final int STATUT_FPM = 4;
+	public static final int STATUT_AGENT = 3;
+	public static final int STATUT_BPC = 2;
 	public static final int STATUT_RECHERCHER = 1;
 	private java.lang.String[] LB_SERVICES;
+	private java.lang.String[] LB_BPC;
+	private java.lang.String[] LB_BPC_TOTAL;
+	private ArrayList<BPC> listBPC;
 	private PMateriel pMaterielCourant;
 	private PMatInfos pMatInfosCourant;
 	private ArrayList<PM_PePerso> listEntretiens;
@@ -50,9 +58,14 @@ public class OePM_TDB extends nc.mairie.technique.BasicProcess {
 	private ArrayList<Declarations> listDeclarations;
 	private ArrayList<FPM> listFpm;
 	private boolean first = true;
+	private String totalQte ;
+	private String nbBPC;
+	private String kmParcouru;
+	private String moyenne;
 	public String messageInfo;
 	public boolean isVideFpm;
 	public boolean isVideDec;
+	public boolean isVideBPC;
 	private String focus = null;
 	public boolean isDebranche = false;
 	public String reserve = "";
@@ -204,6 +217,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 				}
 			}
 	//		 initialisation des listes
+			initialiseListBPC(request);
 			initialiseListEntretiens(request);
 			initialiseListServices(request);
 			initialiseListFpm(request);
@@ -274,6 +288,118 @@ public void initialiseListServices(javax.servlet.http.HttpServletRequest request
 	trierServices(a);
 	return ;	
 }
+
+/*
+ * initialisation de la liste des BPC
+ * Date : 18/08/05
+ * autheur : CN
+ */
+public boolean initialiseListBPC(javax.servlet.http.HttpServletRequest request) throws Exception{
+	if(getTransaction().isErreur()){
+		return false;
+	}
+	// on veut les BPC de l'année en cours
+	String annee = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
+	ArrayList<BPC> listBPC = BPC.listeBPCEquipAnnee(getTransaction(),getPMatInfosCourant().getPminv(),annee);
+	if(getTransaction().isErreur()){
+		return false;
+	}
+	setListBPC(listBPC);
+	if(getListBPC().size()>0){
+		trierBPC(listBPC);
+	}else{
+		setListBPC(new ArrayList<BPC>());
+	}
+	//si liste des BPC est vide le bouton Détails n'apparait pas
+	if(getListBPC().size()>0){
+		isVideBPC = true;
+	}else{
+		isVideBPC = false;
+	}
+	initialiseListeTotal(request);
+	return true;
+}
+
+public void initialiseListeTotal(javax.servlet.http.HttpServletRequest request) throws Exception{
+	if(getListBPC()!=null){
+		if(getListBPC().size()>0){
+			int tailles [] = {10,10,10,6,11,8};
+			String[] padding = {"D","C","D","D","D","D"};
+			FormateListe aFormat = new FormateListe(tailles,padding,false);
+			String ligne [] = { nbBPC,"","",totalQte,kmParcouru,moyenne};
+			aFormat.ajouteLigne(ligne);
+			setLB_BPC_TOTAL(aFormat.getListeFormatee());
+		} else {
+			setLB_BPC_TOTAL(null);
+		}
+	}
+}
+
+public void trierBPC(ArrayList<BPC> a) throws Exception{
+	String[] colonnes = {"date","valeurcompteur"};
+	//ordre croissant
+	boolean[] ordres = {false,false};
+	
+//	Si au moins un bpc
+	if (a.size() !=0 ) {
+		ArrayList<BPC> aTrier = Services.trier(a,colonnes,ordres);
+		setListBPC(aTrier);
+		int tailles [] = {10,10,10,6,11,8};
+		String[] padding = {"D","C","D","D","D","D"};
+		FormateListe aFormat = new FormateListe(tailles,padding,false);
+		int quantiteTotal = 0;
+		int kmParcourusTotal = 0;
+		
+		for (int i = 0; i < a.size() ; i++) {
+			BPC aBPC = (BPC)aTrier.get(i);
+			BPC bpcAvant = null;
+			try {
+				bpcAvant = (BPC) aTrier.get(i+1);	
+			} catch (Exception e) {
+				bpcAvant = null;
+			}
+			
+			//setBpcCourant(aBPC);
+			// Calcul des km parcourus et moyenne au 100
+			int kmParcourus =0 ;
+			double moyennecalcul = 0;
+			String moyenneL = "";
+			// calcul des totaux
+			quantiteTotal = quantiteTotal + Integer.parseInt(aBPC.getQuantite()); 
+			//kmParcourusTotal = kmParcourusTotal + Integer.parseInt(aBPC.get)
+			
+			if (null != bpcAvant){
+				
+				kmParcourus =  Integer.parseInt(aBPC.getValeurcompteur())-Integer.parseInt(bpcAvant.getValeurcompteur());
+				int qte = Integer.parseInt(aBPC.getQuantite());
+				//moyennecalcul = (double)qteAvant/(double)kmParcourus*100;
+				//moyennecalcul = (double)qte/(double)kmParcourus*100;
+				moyennecalcul = (double)qte/(double)kmParcourus;
+				if (("KILOMETRIQUE").equals(getPMatInfosCourant().getDesignationcompteur())){
+					moyennecalcul = moyennecalcul*100;
+				}
+				NumberFormat moyenneFormat = new DecimalFormat("0.00");
+				moyenneL = moyenneFormat.format(moyennecalcul);
+			}
+			String ligne [] = { aBPC.getNumerobpc(),aBPC.getDate(),aBPC.getValeurcompteur(),aBPC.getQuantite(),String.valueOf(kmParcourus),moyenneL};
+			aFormat.ajouteLigne(ligne);
+			kmParcourusTotal = kmParcourusTotal+ kmParcourus;//Integer.parseInt(aBPC.getValeurcompteur());
+		}
+		// calcul pour les totaux
+		NumberFormat moyenneTotalFormat = new DecimalFormat("0.00");
+		double moyenneTotal = (double)quantiteTotal/(double)kmParcourusTotal*100;
+		nbBPC = String.valueOf(getListBPC().size());
+		kmParcouru = String.valueOf(kmParcourusTotal);
+		totalQte = String.valueOf(quantiteTotal);
+		moyenne = moyenneTotalFormat.format(moyenneTotal);
+		setLB_BPC(aFormat.getListeFormatee());
+	} else {
+		setLB_BPC(null);
+	}
+	
+	//return ;
+}
+
 public void trierServices(ArrayList<PM_Affectation_Sce_Infos> a) throws Exception{
 	String[] colonnes = {"ddebut","dfin"};
 	//ordre croissant
@@ -1597,6 +1723,16 @@ public ArrayList<Declarations> getListDeclarations() {
 	}
 	return listDeclarations;
 }
+public ArrayList<BPC> getListBPC() {
+	if(listBPC==null){
+		listBPC = new ArrayList<BPC>();
+	}
+	return listBPC;
+}
+public void setListBPC(ArrayList<BPC> listBPC) {
+	this.listBPC = listBPC;
+}
+
 /**
  * Méthode appelée par la servlet qui aiguille le traitement : 
  * en fonction du bouton de la JSP 
@@ -1636,6 +1772,10 @@ public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) th
 		//Si clic sur le bouton PB_SELECTION
 		if (testerParametre(request, getNOM_PB_SELECTION())) {
 			return performPB_SELECTION(request);
+		}
+		//Si clic sur le bouton PB_DETAILSBPC
+		if (testerParametre(request, getNOM_PB_DETAILSBPC())) {
+			return performPB_DETAILSBPC(request);
 		}
 
 	}
@@ -1686,4 +1826,176 @@ public boolean performPB_DETAILSDEC(javax.servlet.http.HttpServletRequest reques
 	setStatut(STATUT_DECLARATIONS,true);
 	return true;
 }
+
+/**
+ * Getter de la liste avec un lazy initialize :
+ * LB_BPC
+ * Date de création : (17/08/05 14:02:45)
+ * @author : Générateur de process
+ */
+private String [] getLB_BPC() {
+	if (LB_BPC == null)
+		LB_BPC = initialiseLazyLB();
+	return LB_BPC;
+}
+/**
+ * Setter de la liste:
+ * LB_BPC
+ * Date de création : (17/08/05 14:02:45)
+ * @author : Générateur de process
+ */
+private void setLB_BPC(java.lang.String[] newLB_BPC) {
+	LB_BPC = newLB_BPC;
+}
+/**
+ * Retourne le nom de la zone pour la JSP :
+ * NOM_LB_BPC
+ * Date de création : (17/08/05 14:02:45)
+ * @author : Générateur de process
+ * @return String
+ */
+public java.lang.String getNOM_LB_BPC() {
+	return "NOM_LB_BPC";
+}
+/**
+ * Retourne le nom de la zone de la ligne sélectionnée pour la JSP :
+ * NOM_LB_BPC_SELECT
+ * Date de création : (17/08/05 14:02:45)
+ * @author : Générateur de process
+ * @return String
+ */
+public java.lang.String getNOM_LB_BPC_SELECT() {
+	return "NOM_LB_BPC_SELECT";
+}
+/**
+ * Méthode à personnaliser
+ * Retourne la valeur à afficher pour la zone de la JSP :
+ * LB_BPC
+ * Date de création : (17/08/05 14:02:45)
+ * @author : Générateur de process
+ * @return String
+ */
+public java.lang.String [] getVAL_LB_BPC() {
+	return getLB_BPC();
+}
+/**
+ * Méthode à personnaliser
+ * Retourne l'indice à sélectionner pour la zone de la JSP :
+ * LB_BPC
+ * Date de création : (17/08/05 14:02:45)
+ * @author : Générateur de process
+ * @return String
+ */
+public java.lang.String getVAL_LB_BPC_SELECT() {
+	return getZone(getNOM_LB_BPC_SELECT());
+}
+
+/**
+ * Retourne le nom d'un bouton pour la JSP :
+ * PB_DETAILSBPC
+ * Date de création : (17/08/05 14:02:45)
+ * @author : Générateur de process
+ * @return String
+ */
+public java.lang.String getNOM_PB_DETAILSBPC() {
+	return "NOM_PB_DETAILSBPC";
+}
+/**
+ * Getter de la liste avec un lazy initialize :
+ * LB_BPC_TOTAL
+ * Date de création : (24/08/05 14:17:33)
+ * @author : Générateur de process
+ */
+private String [] getLB_BPC_TOTAL() {
+	if (LB_BPC_TOTAL == null)
+		LB_BPC_TOTAL = initialiseLazyLB();
+	return LB_BPC_TOTAL;
+}
+/**
+ * Setter de la liste:
+ * LB_BPC_TOTAL
+ * Date de création : (24/08/05 14:17:33)
+ * @author : Générateur de process
+ */
+private void setLB_BPC_TOTAL(java.lang.String[] newLB_BPC_TOTAL) {
+	LB_BPC_TOTAL = newLB_BPC_TOTAL;
+}
+/**
+ * Retourne le nom de la zone pour la JSP :
+ * NOM_LB_BPC_TOTAL
+ * Date de création : (24/08/05 14:17:33)
+ * @author : Générateur de process
+ * @return String
+ */
+public java.lang.String getNOM_LB_BPC_TOTAL() {
+	return "NOM_LB_BPC_TOTAL";
+}
+/**
+ * Retourne le nom de la zone de la ligne sélectionnée pour la JSP :
+ * NOM_LB_BPC_TOTAL_SELECT
+ * Date de création : (24/08/05 14:17:33)
+ * @author : Générateur de process
+ * @return String
+ */
+public java.lang.String getNOM_LB_BPC_TOTAL_SELECT() {
+	return "NOM_LB_BPC_TOTAL_SELECT";
+}
+/**
+ * Méthode à personnaliser
+ * Retourne la valeur à afficher pour la zone de la JSP :
+ * LB_BPC_TOTAL
+ * Date de création : (24/08/05 14:17:33)
+ * @author : Générateur de process
+ * @return String
+ */
+public java.lang.String [] getVAL_LB_BPC_TOTAL() {
+	return getLB_BPC_TOTAL();
+}
+/**
+ * Méthode à personnaliser
+ * Retourne l'indice à sélectionner pour la zone de la JSP :
+ * LB_BPC_TOTAL
+ * Date de création : (24/08/05 14:17:33)
+ * @author : Générateur de process
+ * @return String
+ */
+public java.lang.String getVAL_LB_BPC_TOTAL_SELECT() {
+	return getZone(getNOM_LB_BPC_TOTAL_SELECT());
+}
+/**
+ * Retourne le nom d'un bouton pour la JSP :
+ * PB_RECHERCHE_EQUIP
+ * Date de création : (25/08/05 08:47:47)
+ * @author : Générateur de process
+ * @return String
+ */
+
+/**
+ * - Traite et affecte les zones saisies dans la JSP.
+ * - Implémente les règles de gestion du process
+ * - Positionne un statut en fonction de ces règles :
+ *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
+ * Date de création : (17/08/05 14:02:45)
+ * @author : Générateur de process
+ * @param request request
+ * @return boolean
+ * @throws Exception Exception
+ */
+public boolean performPB_DETAILSBPC(javax.servlet.http.HttpServletRequest request) throws Exception {
+	// on envoie le BPC sélectionné
+	int indice  = (Services.estNumerique(getVAL_LB_BPC_SELECT()) ? Integer.parseInt(getVAL_LB_BPC_SELECT()): -1);
+	if (indice == -1 || getListBPC().size() == 0 || indice > getListBPC().size() -1) {
+		getTransaction().declarerErreur(MairieMessages.getMessage("ERR997","BPC"));
+		return false;
+	}
+	BPC unBPC = (BPC)getListBPC().get(indice);
+	// on envoie le BPC à la fenetre de visualisation d'un BPC
+	VariableGlobale.ajouter(request,"BPC",unBPC);
+	VariableActivite.ajouter(this,"DEBRANCHE","TRUE");
+	//VariableActivite.ajouter(this,"EQUIPEMENTINFOS",getEquipementInfosCourant());
+	setStatut(STATUT_BPC,true);
+	return true;
+}
+
+
 }

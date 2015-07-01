@@ -419,6 +419,7 @@ public class RobotSeat extends Robot {
 		
 		//OePM_TDB
 		nav.put(OePM_TDB.class.getName()+ OePM_TDB.STATUT_RECHERCHER, OePMateriel_Recherche.class.getName());
+		nav.put(OePM_TDB.class.getName()+ OePM_TDB.STATUT_BPC, OeBPC_Visualisation.class.getName());
 		nav.put(OePM_TDB.class.getName()+ OePM_TDB.STATUT_AGENT, OeAgent_Recherche.class.getName());
 		nav.put(OePM_TDB.class.getName()+ OePM_TDB.STATUT_FPM, OeFPM_Visualisation.class.getName());
 		nav.put(OePM_TDB.class.getName()+ OePM_TDB.STATUT_SELECTION, OeAgent_PMateriel.class.getName());
