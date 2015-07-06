@@ -190,7 +190,7 @@ public boolean supprimerPieces(nc.mairie.technique.Transaction aTransaction) thr
 }
 
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
- * @author : Coralie NICOLAS
+ * author : Coralie NICOLAS
  */
 public int nouvPieces(nc.mairie.technique.Transaction aTransaction) throws Exception{
 

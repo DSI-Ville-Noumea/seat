@@ -8,7 +8,7 @@ import nc.mairie.technique.*;
 /**
  * Process OeModele_Recherche
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
 */
 public class OeModele_Recherche extends nc.mairie.technique.BasicProcess {
 	/**
@@ -28,7 +28,7 @@ public class OeModele_Recherche extends nc.mairie.technique.BasicProcess {
  * ATTENTION : Les Objets dans la liste doivent avoir les Fields PUBLIC
  * Utilisation de la méthode addZone(getNOMxxx, String);
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  */
 @Override
 public void initialiseZones(javax.servlet.http.HttpServletRequest request) throws Exception{
@@ -51,7 +51,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 /**
  * Constructeur du process OeModele_Recherche.
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  */
 public OeModele_Recherche() {
 	super();
@@ -60,7 +60,7 @@ public OeModele_Recherche() {
  * Retourne le nom d'un bouton pour la JSP :
  * PB_ANNULER
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
@@ -72,7 +72,7 @@ public java.lang.String getNOM_PB_ANNULER() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  * @param request request
  * @return boolean
  * @throws Exception Exception
@@ -85,7 +85,7 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * Retourne le nom d'un bouton pour la JSP :
  * PB_RECHERCHE
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_PB_RECHERCHE() {
@@ -97,7 +97,7 @@ public java.lang.String getNOM_PB_RECHERCHE() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  * @param request request
  * @return boolean
  * @throws Exception Exception
@@ -124,7 +124,7 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
  * Retourne le nom d'un bouton pour la JSP :
  * PB_VALIDER
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
@@ -136,7 +136,7 @@ public java.lang.String getNOM_PB_VALIDER() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  * @param request request
  * @return boolean
  * @throws Exception Exception
@@ -169,7 +169,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * Retourne le nom d'une zone de saisie pour la JSP :
  * EF_RECHERCHE
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_EF_RECHERCHE() {
@@ -179,7 +179,7 @@ public java.lang.String getNOM_EF_RECHERCHE() {
  * Retourne la valeur à afficher par la JSP pour la zone de saisie  :
  * EF_RECHERCHE
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getVAL_EF_RECHERCHE() {
@@ -189,7 +189,7 @@ public java.lang.String getVAL_EF_RECHERCHE() {
  * Getter de la liste avec un lazy initialize :
  * LB_MODELE
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  */
 private String [] getLB_MODELE() {
 	if (LB_MODELE == null)
@@ -200,7 +200,7 @@ private String [] getLB_MODELE() {
  * Setter de la liste:
  * LB_MODELE
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  */
 private void setLB_MODELE(java.lang.String[] newLB_MODELE) {
 	LB_MODELE = newLB_MODELE;
@@ -209,7 +209,7 @@ private void setLB_MODELE(java.lang.String[] newLB_MODELE) {
  * Retourne le nom de la zone pour la JSP :
  * NOM_LB_MODELE
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_LB_MODELE() {
@@ -219,7 +219,7 @@ public java.lang.String getNOM_LB_MODELE() {
  * Retourne le nom de la zone de la ligne sélectionnée pour la JSP :
  * NOM_LB_MODELE_SELECT
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_LB_MODELE_SELECT() {
@@ -230,7 +230,7 @@ public java.lang.String getNOM_LB_MODELE_SELECT() {
  * Retourne la valeur à afficher pour la zone de la JSP :
  * LB_MODELE
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String [] getVAL_LB_MODELE() {
@@ -241,7 +241,7 @@ public java.lang.String [] getVAL_LB_MODELE() {
  * Retourne l'indice à sélectionner pour la zone de la JSP :
  * LB_MODELE
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getVAL_LB_MODELE_SELECT() {
@@ -309,7 +309,7 @@ public String getFocus() {
  * Méthode appelée par la servlet qui aiguille le traitement : 
  * en fonction du bouton de la JSP 
  * Date de création : (10/06/05 10:56:49)
- * @author : Générateur de process
+ * author : Générateur de process
  */
 @Override
 public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) throws Exception{
@@ -341,7 +341,7 @@ public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) th
  * Retourne le nom de la JSP du process
  * Zone à utiliser dans un champ caché dans chaque formulaire de la JSP.
  * Date de création : (17/06/05 15:28:55)
- * @author : Générateur de process
+ * author : Générateur de process
  */
 @Override
 public String getJSP() {
@@ -351,7 +351,7 @@ public String getJSP() {
  * Retourne pour la JSP le nom de la zone statique :
  * ST_ENTREE
  * Date de création : (17/06/05 15:28:55)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_ST_ENTREE() {
@@ -361,7 +361,7 @@ public java.lang.String getNOM_ST_ENTREE() {
  * Retourne la valeur à afficher par la JSP  pour la zone :
  * ST_ENTREE
  * Date de création : (17/06/05 15:28:55)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getVAL_ST_ENTREE() {

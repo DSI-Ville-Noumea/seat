@@ -9,7 +9,7 @@ import nc.mairie.seat.robot.RobotSeat;
 import nc.mairie.servlets.Frontale;
 
 /**
- * @author ssi
+ * author ssi
  *
  */
 public class ServletSeat extends Frontale {

@@ -3,7 +3,7 @@ package nc.mairie.seat.robot;
 /**
  * Insérez la description du type ici.
  * Date de création : (10/01/2003 09:39:40)
- * @author: 
+ * author: 
  */
 public class SeatMain extends nc.mairie.technique.BasicProcess {
 /**

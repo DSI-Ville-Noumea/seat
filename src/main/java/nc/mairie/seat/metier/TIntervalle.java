@@ -97,7 +97,7 @@ public boolean supprimerTIntervalle(nc.mairie.technique.Transaction aTransaction
 }
 
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
- * @author : Coralie NICOLAS
+ * author : Coralie NICOLAS
  */
 public int nouvTintervalle(nc.mairie.technique.Transaction aTransaction) throws Exception{
 

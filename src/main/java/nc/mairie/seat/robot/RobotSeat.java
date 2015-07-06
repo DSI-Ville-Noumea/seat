@@ -94,7 +94,7 @@ import nc.mairie.seat.process.OePieces;
 import nc.mairie.technique.BasicProcess;
 
 /**
- * @author ssi
+ * author ssi
  *
  */
 public class RobotSeat extends Robot {

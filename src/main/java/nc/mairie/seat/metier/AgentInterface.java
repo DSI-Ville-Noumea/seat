@@ -5,7 +5,7 @@
 package nc.mairie.seat.metier;
 
 /**
- * @author nicco81
+ * author nicco81
  *
  * Fenêtre - Préférences - Java - Style de code - Modèles de code
  */

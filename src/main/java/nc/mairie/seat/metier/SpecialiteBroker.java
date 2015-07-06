@@ -108,7 +108,7 @@ public boolean existeSpecialite(nc.mairie.technique.Transaction aTransaction, St
 }
 
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
- * @author : Coralie NICOLAS
+ * author : Coralie NICOLAS
  */
 public int nouvCodeSpec(nc.mairie.technique.Transaction aTransaction) throws Exception{
 	//	recherche du dernier code

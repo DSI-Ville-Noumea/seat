@@ -98,7 +98,7 @@ public boolean supprimerMarques(nc.mairie.technique.Transaction aTransaction) th
 }
 
 /* On recherche le code max pour pouvoir l'incrémenter lors de la création d'un objet
- * @author : Coralie NICOLAS
+ * author : Coralie NICOLAS
  */
 public int nouvMarques(nc.mairie.technique.Transaction aTransaction) throws Exception{
 

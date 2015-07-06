@@ -11,7 +11,7 @@ import nc.mairie.technique.*;
 /**
  * Process OeOT_Validation
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
 */
 public class OeOT_Validation extends nc.mairie.technique.BasicProcess {
 	/**
@@ -39,7 +39,7 @@ public class OeOT_Validation extends nc.mairie.technique.BasicProcess {
  * ATTENTION : Les Objets dans la liste doivent avoir les Fields PUBLIC 
  * Utilisation de la méthode addZone(getNOMxxx, String);
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  */
 @Override
 public void initialiseZones(javax.servlet.http.HttpServletRequest request) throws Exception{
@@ -182,7 +182,7 @@ public void initialiseListOTAValider(javax.servlet.http.HttpServletRequest reque
 /**
  * Constructeur du process OeOT_Validation.
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  */
 public OeOT_Validation() {
 	super();
@@ -191,7 +191,7 @@ public OeOT_Validation() {
  * Retourne le nom d'un bouton pour la JSP :
  * PB_AJOUTER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_PB_AJOUTER() {
@@ -203,7 +203,7 @@ public java.lang.String getNOM_PB_AJOUTER() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @param request request
  * @return boolean
  * @throws Exception Exception
@@ -228,7 +228,7 @@ public boolean performPB_AJOUTER(javax.servlet.http.HttpServletRequest request) 
  * Retourne le nom d'un bouton pour la JSP :
  * PB_ANNULER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_PB_ANNULER() {
@@ -240,7 +240,7 @@ public java.lang.String getNOM_PB_ANNULER() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @param request request
  * @return boolean
  * @throws Exception Exception
@@ -253,7 +253,7 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
  * Retourne le nom d'un bouton pour la JSP :
  * PB_ENLEVER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_PB_ENLEVER() {
@@ -265,7 +265,7 @@ public java.lang.String getNOM_PB_ENLEVER() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @param request request
  * @return boolean
  * @throws Exception Exception
@@ -290,7 +290,7 @@ public boolean performPB_ENLEVER(javax.servlet.http.HttpServletRequest request) 
  * Retourne le nom d'un bouton pour la JSP :
  * PB_VALIDER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_PB_VALIDER() {
@@ -302,7 +302,7 @@ public java.lang.String getNOM_PB_VALIDER() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @param request request
  * @return boolean
  * @throws Exception Exception
@@ -357,7 +357,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
  * Getter de la liste avec un lazy initialize :
  * LB_OTAVALIDER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  */
 private String [] getLB_OTAVALIDER() {
 	if (LB_OTAVALIDER == null)
@@ -368,7 +368,7 @@ private String [] getLB_OTAVALIDER() {
  * Setter de la liste:
  * LB_OTAVALIDER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  */
 private void setLB_OTAVALIDER(java.lang.String[] newLB_OTAVALIDER) {
 	LB_OTAVALIDER = newLB_OTAVALIDER;
@@ -377,7 +377,7 @@ private void setLB_OTAVALIDER(java.lang.String[] newLB_OTAVALIDER) {
  * Retourne le nom de la zone pour la JSP :
  * NOM_LB_OTAVALIDER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_LB_OTAVALIDER() {
@@ -387,7 +387,7 @@ public java.lang.String getNOM_LB_OTAVALIDER() {
  * Retourne le nom de la zone de la ligne sélectionnée pour la JSP :
  * NOM_LB_OTAVALIDER_SELECT
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_LB_OTAVALIDER_SELECT() {
@@ -398,7 +398,7 @@ public java.lang.String getNOM_LB_OTAVALIDER_SELECT() {
  * Retourne la valeur à afficher pour la zone de la JSP :
  * LB_OTAVALIDER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String [] getVAL_LB_OTAVALIDER() {
@@ -409,7 +409,7 @@ public java.lang.String [] getVAL_LB_OTAVALIDER() {
  * Retourne l'indice à sélectionner pour la zone de la JSP :
  * LB_OTAVALIDER
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getVAL_LB_OTAVALIDER_SELECT() {
@@ -419,7 +419,7 @@ public java.lang.String getVAL_LB_OTAVALIDER_SELECT() {
  * Getter de la liste avec un lazy initialize :
  * LB_OTENCOURS
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  */
 private String [] getLB_OTENCOURS() {
 	if (LB_OTENCOURS == null)
@@ -430,7 +430,7 @@ private String [] getLB_OTENCOURS() {
  * Setter de la liste:
  * LB_OTENCOURS
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  */
 private void setLB_OTENCOURS(java.lang.String[] newLB_OTENCOURS) {
 	LB_OTENCOURS = newLB_OTENCOURS;
@@ -439,7 +439,7 @@ private void setLB_OTENCOURS(java.lang.String[] newLB_OTENCOURS) {
  * Retourne le nom de la zone pour la JSP :
  * NOM_LB_OTENCOURS
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_LB_OTENCOURS() {
@@ -449,7 +449,7 @@ public java.lang.String getNOM_LB_OTENCOURS() {
  * Retourne le nom de la zone de la ligne sélectionnée pour la JSP :
  * NOM_LB_OTENCOURS_SELECT
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_LB_OTENCOURS_SELECT() {
@@ -460,7 +460,7 @@ public java.lang.String getNOM_LB_OTENCOURS_SELECT() {
  * Retourne la valeur à afficher pour la zone de la JSP :
  * LB_OTENCOURS
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String [] getVAL_LB_OTENCOURS() {
@@ -471,7 +471,7 @@ public java.lang.String [] getVAL_LB_OTENCOURS() {
  * Retourne l'indice à sélectionner pour la zone de la JSP :
  * LB_OTENCOURS
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getVAL_LB_OTENCOURS_SELECT() {
@@ -512,7 +512,7 @@ public void setEstEnregistre(boolean estEnregistre) {
  * Retourne le nom d'un bouton pour la JSP :
  * PB_OK_VALIDATION
  * Date de création : (03/08/05 07:50:43)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_PB_OK_VALIDATION() {
@@ -524,7 +524,7 @@ public java.lang.String getNOM_PB_OK_VALIDATION() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (03/08/05 07:50:43)
- * @author : Générateur de process
+ * author : Générateur de process
  * @param request request
  * @return boolean
  * @throws Exception Exception
@@ -549,7 +549,7 @@ public boolean performPB_OK_VALIDATION(javax.servlet.http.HttpServletRequest req
  * Retourne pour la JSP le nom de la zone statique :
  * ST_COMPTEUR
  * Date de création : (23/08/05 08:57:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_ST_COMPTEUR() {
@@ -559,7 +559,7 @@ public java.lang.String getNOM_ST_COMPTEUR() {
  * Retourne la valeur à afficher par la JSP  pour la zone :
  * ST_COMPTEUR
  * Date de création : (23/08/05 08:57:12)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getVAL_ST_COMPTEUR() {
@@ -569,7 +569,7 @@ public java.lang.String getVAL_ST_COMPTEUR() {
  * Retourne le nom d'un bouton pour la JSP :
  * PB_MODIFIER
  * Date de création : (03/04/07 08:57:36)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_PB_MODIFIER() {
@@ -581,7 +581,7 @@ public java.lang.String getNOM_PB_MODIFIER() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (03/04/07 08:57:36)
- * @author : Générateur de process
+ * author : Générateur de process
  * @param request request
  * @return boolean
  * @throws Exception Exception
@@ -615,7 +615,7 @@ public boolean performPB_MODIFIER(javax.servlet.http.HttpServletRequest request)
  * Retourne le nom d'un bouton pour la JSP :
  * PB_VISUALISER
  * Date de création : (03/04/07 08:57:36)
- * @author : Générateur de process
+ * author : Générateur de process
  * @return String
  */
 public java.lang.String getNOM_PB_VISUALISER() {
@@ -627,7 +627,7 @@ public java.lang.String getNOM_PB_VISUALISER() {
  * - Positionne un statut en fonction de ces règles :
  *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
  * Date de création : (03/04/07 08:57:36)
- * @author : Générateur de process
+ * author : Générateur de process
  * @param request request
  * @return boolean
  * @throws Exception Exception
@@ -671,7 +671,7 @@ public void setOtCourant(OT otCourant) {
  * Méthode appelée par la servlet qui aiguille le traitement : 
  * en fonction du bouton de la JSP 
  * Date de création : (02/08/05 13:40:12)
- * @author : Générateur de process
+ * author : Générateur de process
  */
 @Override
 public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) throws Exception{
@@ -723,7 +723,7 @@ public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) th
  * Retourne le nom de la JSP du process
  * Zone à utiliser dans un champ caché dans chaque formulaire de la JSP.
  * Date de création : (03/04/07 09:12:12)
- * @author : Générateur de process
+ * author : Générateur de process
  */
 @Override
 public String getJSP() {

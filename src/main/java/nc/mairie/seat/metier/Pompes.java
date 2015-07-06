@@ -192,7 +192,7 @@ public int nouvCodePompe(nc.mairie.technique.Transaction aTransaction) throws Ex
 
 /*
  * vérifie que la pompe n'existe pas
- * @author nicco81
+ * author nicco81
  *
  */
 public boolean existePompes(nc.mairie.technique.Transaction aTransaction,String libelle) throws Exception{
