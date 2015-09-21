@@ -40,6 +40,8 @@ public class OeEquipement_Recherche extends nc.mairie.technique.BasicProcess {
 public void initialiseZones(javax.servlet.http.HttpServletRequest request) throws Exception{
 	
 	if((first)||(etatStatut()==1)){
+		//#18605 bug sur la recherche d'inventaire
+		setFirst(false);
 		String param = (String)VariableActivite.recuperer(this,"PARAM");
 		mode = (String) VariableActivite.recuperer(this,"MODE");
 		VariableActivite.enlever(this,"MODE");
