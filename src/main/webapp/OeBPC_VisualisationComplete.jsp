@@ -34,7 +34,8 @@ if (document.formu.elements[nom] != null)
 <%@ include file="BanniereErreur.jsp" %>
     <TR>
       <TD style="text-align : center;">
-			<FORM name="formu" method="POST"><FIELDSET style="borderColor='blue'"><LEGEND class="sigp2Fieldset" align="left">Critères de recherche</LEGEND><%if(!process.isVide()) {%>
+			<FORM name="formu" method="POST"><FIELDSET style="borderColor='blue'"><LEGEND class="sigp2Fieldset" align="left">Critères de recherche</LEGEND>
+		<%if(process.isImprimable()) {%>
 		<TABLE border="0" align="right">
 			<TR>
 				<TD><INPUT type="image" name="<%= process.getNOM_PB_IMPRIMER() %>"

@@ -50,7 +50,7 @@ public class OeBPC_VisualisationComplete extends nc.mairie.technique.BasicProces
 	private String nbBPC;
 	private String totalQte;
 	private String script;
-	public boolean isVide = true;
+	public boolean isImprimable = true;
 	public int kmParcourusTotal = 0;
 	public String kmParcouru ;
 	public int quantiteTotal = 0;
@@ -121,9 +121,13 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 setFirst(false);
 }
 public void initialiseListeTotal(javax.servlet.http.HttpServletRequest request) throws Exception{
+	setImprimable(false);
 	if(getListBPCInfos()!=null){
 		if(getListBPCInfos().size()>0){
-			setVide(false);
+			if ((getEquipementCourant() != null && getEquipementCourant().getNumeroinventaire() != null) || 
+				(getPMaterielCourant() != null && getPMaterielCourant().getPminv() != null)	) {
+				setImprimable(true);
+			}	
 			int tailles [] = {9,10,10,10,10};
 			String[] padding = {"C","C","D","D","D"};
 			FormateListe aFormat = new FormateListe(tailles,padding,false);
@@ -132,7 +136,6 @@ public void initialiseListeTotal(javax.servlet.http.HttpServletRequest request) 
 			setLB_TOTAUX(aFormat.getListeFormatee());
 		} else {
 			setLB_TOTAUX(null);
-			setVide(true);
 		}
 	}
 }
@@ -385,6 +388,9 @@ public java.lang.String getNOM_PB_VALIDER() {
  * @throws Exception Exception
  */
 public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) throws Exception {
+	//on cache le bouton impression
+	setImprimable(false);
+	
 	//on efface st_service
 	addZone(getNOM_ST_SERVICE(),"");
 	//on récupère les 4 paramètres qui vont permettre de chercher les BPC
@@ -432,6 +438,10 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 				}
 			}
 		}
+	} else {
+		setEquipementCourant(null);
+		setPMaterielCourant(null);
+		inv="";
 	}
 	if(getTransaction().isErreur()){
 		return false;
@@ -1192,11 +1202,11 @@ public String afficheScript() {
 	setScript(null);
 	return res;
 }
-public boolean isVide() {
-	return isVide;
+public boolean isImprimable() {
+	return isImprimable;
 }
-public void setVide(boolean isVide) {
-	this.isVide = isVide;
+public void setImprimable(boolean isImprimable) {
+	this.isImprimable = isImprimable;
 }
 	private java.lang.String[] LB_TOTALEQUIP;
 /**
