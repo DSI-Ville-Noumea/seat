@@ -30,7 +30,7 @@ public class Affecter_AgentTest {
 		//Creation Equipement
 		unEquipement = new Equipement();
 		unEquipement.setNumeroinventaire("TEST");
-		unEquipement.setNumeroimmatriculation("999999");
+		unEquipement.setNumeroimmatriculation("987654");
 		unEquipement.setDatemiseencirculation("13/06/1990");
 		unEquipement.setDatemiseencirculation("06/11/2008");
 		unEquipement.setDatehorscircuit("01/01/0001");
