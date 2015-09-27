@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nc.mairie</groupId>
 	<artifactId>seat</artifactId>
-	<version>3.6-SNAPSHOT</version>
+	<version>3.6</version>
 	<packaging>war</packaging>
 	<organization>
 		<name>Mairie de Nouméa</name>
