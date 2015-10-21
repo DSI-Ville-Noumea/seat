@@ -128,14 +128,14 @@ if (document.formu.elements[nom] != null)
 									<TD class="sigp2-titre-liste">
 									<TABLE>
 										<TR>
-											<TD height="29" width="28">
+											<TD height="29" width="150">
 											<TABLE border="0" class="sigp2">
 												<TR>
 													<TD class="sigp2-titre-liste">Sce</TD>
 												</TR>
 											</TABLE>
 											</TD>
-											<TD height="29" width="279">
+											<TD height="29" width="249">
 											<TABLE border="0" class="sigp2">
 												<TR>
 													<TD><INPUT type="radio"
