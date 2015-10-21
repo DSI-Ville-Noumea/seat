@@ -9,7 +9,11 @@ import nc.mairie.seat.metier.Agents;
 import nc.mairie.seat.metier.PM_Affectation_Sce_Infos;
 import nc.mairie.seat.metier.PMatInfos;
 import nc.mairie.seat.metier.Service;
-import nc.mairie.technique.*;
+import nc.mairie.technique.FormateListe;
+import nc.mairie.technique.MairieMessages;
+import nc.mairie.technique.Services;
+import nc.mairie.technique.VariableActivite;
+import nc.mairie.technique.VariableGlobale;
 /**
  * Process OeService_Equipements
  * Date de création : (04/04/07 14:38:26)
@@ -171,10 +175,17 @@ public java.lang.String getNOM_PB_SERVICE() {
 public boolean performPB_SERVICE(javax.servlet.http.HttpServletRequest request) throws Exception {
 	String recherche = getZone(getNOM_EF_SERVICE());
 	addZone(getNOM_EF_SERVICE(),"");
+	
 	Service unService = Service.chercherService(getTransaction(),recherche);
 	if(getTransaction().isErreur()){
-		getTransaction().declarerErreur("Le service recherché "+recherche+" n'a pas été trouvé.");
-		return false;
+		getTransaction().traiterErreur();
+		
+		unService = Service.chercherService(getTransaction(), Services.rpad(recherche, 16, "A"));
+		
+		if(getTransaction().isErreur()){
+			getTransaction().declarerErreur("Le service recherché "+recherche+" n'a pas été trouvé.");
+			return false;
+		}
 	}
 	if(unService!=null){
 		if(unService.getServi()==null){
