@@ -102,7 +102,7 @@ if (document.formu.elements[nom] != null)
 					<TD align="left"><TABLE width="100%" border="1">
 					<TBODY>
 						<TR>
-							<TD class="sigp2-titre-liste">Service                                                      Début      Fin        </TD>
+							<TD class="sigp2-titre-liste">Service                                                                   Début      Fin        </TD>
 						</TR>
 					</TBODY>
 				</TABLE>

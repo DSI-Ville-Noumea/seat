@@ -233,7 +233,7 @@ private void initialiseListeAffectation(javax.servlet.http.HttpServletRequest re
 	//java.util.ArrayList a = AActifs.chercherListAffectationServiceInfosEquip(getTransaction(),equipementInfosCourant.getNumeroinventaire());
 	setListeAffectation(a);
 	if (a.size() !=0 ) {
-		int tailles [] = {5,55,10,10};
+		int tailles [] = {17,55,10,10};
 		String[] padding = {"G","G","C","C"};
 		FormateListe aFormat = new FormateListe(tailles,padding,false);
 		for (ListIterator<PM_Affectation_Sce_Infos> list = a.listIterator(); list.hasNext(); ) {
