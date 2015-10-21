@@ -68,24 +68,6 @@ public static ArrayList<Affecter_Agent> chercherListAffecter_AgentEquip(nc.mairi
 	return unAffecter_Agent.getMyAffecter_AgentBroker().chercherListerAffecter_AgentEquip(aTransaction, code);
 }
 
-/**
- * Retourne un Affecter_Agent.
- * @return Affecter_Agent
- * @param aTransaction Transaction
- * @param servi servi
- * @throws Exception Exception
- */
-public static ArrayList<Affecter_Agent> chercherListAffecter_AgentSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception{
-	Affecter_Agent unAffecter_Agent = new Affecter_Agent();
-	String param = servi;
-	if (param.trim().length()==4){
-		if(param.substring(3,4).equals("0")){
-			param=servi.substring(0,3);
-		}
-	}
-	return unAffecter_Agent.getMyAffecter_AgentBroker().chercherListerAffecter_AgentEquip(aTransaction, param);
-}
-
 public static ArrayList<Affecter_Agent> chercherListAffecter_AgentEquipSce(nc.mairie.technique.Transaction aTransaction,String inv, String servi,String date) throws Exception{
 	Affecter_Agent unAffecter_Agent = new Affecter_Agent();
 	return unAffecter_Agent.getMyAffecter_AgentBroker().chercherListerAffecter_AgentEquipSce(aTransaction, inv, servi, date);

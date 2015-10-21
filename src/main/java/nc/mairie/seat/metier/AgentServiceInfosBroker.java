@@ -35,7 +35,7 @@ public AgentServiceInfos chercherAgentServiceInfos(nc.mairie.technique.Transacti
  * @throws Exception Exception
  */
 public ArrayList<AgentServiceInfos> chercherListAgentServiceInfosSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
-	String servi = param.substring(0,3); 
+	String servi = param.substring(0,3); //OK
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where servi like '"+servi+"%' and datfin=0 order by nom");
 }
 /**
@@ -46,7 +46,7 @@ public ArrayList<AgentServiceInfos> chercherListAgentServiceInfosSce(nc.mairie.t
  * @throws Exception Exception
  */
 public ArrayList<AgentServiceInfos> listerAgentService(nc.mairie.technique.Transaction aTransaction,String serv) throws Exception {
-	serv = serv.substring(0,3); 
+	serv = serv.substring(0,3); //OK
 	return executeSelectListe(aTransaction,"select * from mairie_sppers sppers, mairie_spmtsr spmtsr, mairie_sppost sppost where sppers.nomatr=spmtsr.nomatr and sppers.nomatr=sppost.pomatr and spmtsr.servi like '"+serv+"%' and codact='A' and podsup=0 and datfin=0 order by nom");
 }
 /**

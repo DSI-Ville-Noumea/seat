@@ -21,7 +21,7 @@ public ArrayList<PM_AffectAgentsInfos> listerPM_AffectAgentsInfos(nc.mairie.tech
 }
 public ArrayList<PM_AffectAgentsInfos> listerPM_AffectAgentInfosScePMatDate(nc.mairie.technique.Transaction aTransaction,String servi,String inv, String date)throws Exception {
 //	 on prend le code du service et pas le code du sous service
-	servi = servi.substring(0,3);
+	servi = servi.substring(0,3); //OK
 	if(Services.estUneDate(date)){
 		date = Services.formateDateInternationale(date);
 	}else{

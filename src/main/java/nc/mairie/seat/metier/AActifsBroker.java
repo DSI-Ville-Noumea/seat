@@ -37,7 +37,7 @@ public AActifs chercherAActifs(nc.mairie.technique.Transaction aTransaction, Str
  */
 public ArrayList<AActifs> listerAActifsService(nc.mairie.technique.Transaction aTransaction,String servi) throws Exception {
 	if (!servi.substring(0,1).equals("A")){
-		servi = servi.substring(0,3);
+		servi = servi.substring(0,3); //OK
 	}
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where servi like '"+servi+"%' order by nom");
 }
@@ -50,7 +50,7 @@ public ArrayList<AActifs> listerAActifsService(nc.mairie.technique.Transaction a
  * @throws Exception Exception
  */
 public ArrayList<AActifs> chercherListAgentServiceInfosSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
-	String servi = param.substring(0,3); 
+	String servi = param.substring(0,3); //OK
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where servi like '"+servi+"%' order by nom");
 }
 

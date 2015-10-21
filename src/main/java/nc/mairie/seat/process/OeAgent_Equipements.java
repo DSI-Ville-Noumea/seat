@@ -73,7 +73,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 				setServiceCourant(unService);
 				if(!codeservice.equals("")){
 					if((null!=getServiceCourant())&&(null!=getServiceCourant().getServi())){
-						if(!getServiceCourant().getServi().substring(0,3).equals(codeservice.substring(0,3))){
+						if(!getServiceCourant().getServi().substring(0,3).equals(codeservice.substring(0,3))){//OK
 							getTransaction().declarerErreur("L'agent ne fait pas partie du service.");
 							return;
 						}
@@ -83,19 +83,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		}else{
 			menuService = false;
 		}
-		
-//		if(menuService){
-//			Service unService = (Service)VariableGlobale.recuperer(request,"SERVICE");
-//			setServiceCourant(unService);
-//			if(!codeservice.equals("")){
-//				if((null!=getServiceCourant())&&(null!=getServiceCourant().getServi())){
-//					if(!getServiceCourant().getServi().substring(0,3).equals(codeservice.substring(0,3))){
-//						getTransaction().declarerErreur("L'agent ne fait pas partie du service.");
-//						return;
-//					}
-//				}
-//			}
-//		}
 		
 		addZone(getNOM_ST_AGENT(),"");
 		addZone(getNOM_ST_CODE_SCE(),"");
@@ -191,7 +178,7 @@ public boolean initialiseInfos(javax.servlet.http.HttpServletRequest request) th
 	}
 	if(menuService){
 		if(null!=getServiceCourant()){
-			if(!codeservice.substring(0,3).equals(getServiceCourant().getServi().substring(0,3))){
+			if(!codeservice.substring(0,3).equals(getServiceCourant().getServi().substring(0,3))){//OK
 				getTransaction().declarerErreur("L'agent n'appartient pas au service.");
 				return false;
 			}

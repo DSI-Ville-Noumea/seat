@@ -64,7 +64,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 				VariableGlobale.ajouter(request,"SERVICE",unService);
 				setServiceCourant(unService);
 				if(!codeservice.equals("")){
-					if(!unService.getServi().substring(0,3).equals(codeservice.substring(0,3))){
+					if(!unService.getServi().substring(0,3).equals(codeservice.substring(0,3))){//OK
 						getTransaction().declarerErreur("L'agent ne fait pas partie du service.");
 						return;
 					}
@@ -74,16 +74,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			menuService = false;
 		}
 	}
-//		if(menuService){
-//			Service unService = (Service)VariableGlobale.recuperer(request,"SERVICE");
-//			setServiceCourant(unService);
-//			if(!codeservice.equals("")){
-//				if(!unService.getServi().substring(0,3).equals(codeservice.substring(0,3))){
-//					getTransaction().declarerErreur("L'agent ne fait pas partie du service.");
-//					return;
-//				}
-//			}
-//		}
 
 	matricule = (String)VariableActivite.recuperer(this,"NOMATR");
 	origine = (String)VariableActivite.recuperer(this,"ORIGINE");
@@ -174,7 +164,7 @@ public boolean initialiseInfos(javax.servlet.http.HttpServletRequest request) th
 //		}
 		if(menuService){
 			if(null!=getServiceCourant()){
-				if(!codeservice.substring(0,3).equals(getServiceCourant().getServi().substring(0,3))){
+				if(!codeservice.substring(0,3).equals(getServiceCourant().getServi().substring(0,3))){//OK
 					getTransaction().declarerErreur("L'agent n'appartient pas au service.");
 					return false;
 				}

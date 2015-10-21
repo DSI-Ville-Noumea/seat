@@ -121,7 +121,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		dateAff = unASI == null ? null : unASI.getDdebut();
 		if(menuService){
 			if(null!=getServiceCourant()){
-				if(!getServiceCourant().getServi().substring(0,3).equals(unASI.getSiserv().substring(0,3))){
+				if(!getServiceCourant().getServi().substring(0,3).equals(unASI.getSiserv().substring(0,3))){ //OK
 					getTransaction().declarerErreur("Le petit matériel n'appartient pas au service.");
 					return;
 				}

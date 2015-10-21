@@ -39,16 +39,13 @@ public AffectationAgentInfos chercherAffectationAgentInfos(nc.mairie.technique.T
  */
 public ArrayList<AffectationAgentInfos> chercherListAffectationsSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	// on prend le code du service et pas le code du sous service
-	param = param.substring(0,3);
+	param = param.substring(0,3); //OK
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where matricule in(select nomatr from mairie_spmtsr where servi like '"+param+"%') order by datedebut desc, datefin desc");
 }
 
-public ArrayList<AffectationAgentInfos> chercherListAffectationsSce2(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where matricule in(select nomatr from mairie_spmtsr where servi like '"+param+"%')");
-}
 public ArrayList<AffectationAgentInfos> chercherListAffectationsSceEquip(nc.mairie.technique.Transaction aTransaction,String param,String numinv) throws Exception {
 	// on prend le code du service et pas le code du sous service
-	param = param.substring(0,3);
+	param = param.substring(0,3); //OK
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where numeroinventaire='"+numinv+"' and matricule in(select nomatr from mairie_spmtsr where servi like '"+param+"%') order by datedebut desc, datefin desc");
 }
 /**
@@ -63,7 +60,7 @@ public ArrayList<AffectationAgentInfos> chercherListAffectationsSceEquip(nc.mair
  */
 public ArrayList<AffectationAgentInfos> listAffectationsSceEquipDate(nc.mairie.technique.Transaction aTransaction,String servi,String inv, String date) throws Exception {
 	// on prend le code du service et pas le code du sous service
-	servi = servi.substring(0,3);
+	servi = servi.substring(0,3); //OK
 	if(Services.estUneDate(date)){
 		date = Services.formateDateInternationale(date);
 	}else{

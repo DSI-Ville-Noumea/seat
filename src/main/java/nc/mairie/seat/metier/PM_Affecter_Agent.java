@@ -451,16 +451,6 @@ public boolean affecter_agentModif(nc.mairie.technique.Transaction aTransaction,
 	return true;
 }
 
-public static ArrayList<PM_Affecter_Agent> chercherListPmAffecter_AgentSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception{
-	PM_Affecter_Agent unPM_Affecter_Agent = new PM_Affecter_Agent();
-	String param = servi;
-	if (param.trim().length()==4){
-		if(param.substring(3,4).equals("0")){
-			param=servi.substring(0,3);
-		}
-	}
-	return unPM_Affecter_Agent.getMyPM_Affecter_AgentBroker().chercherListerPmAffecter_AgentSce(aTransaction, param);
-}
 
 public static ArrayList<PM_Affecter_Agent> chercherListPmAffecter_AgentPM(nc.mairie.technique.Transaction aTransaction, String pminv) throws Exception{
 	PM_Affecter_Agent unPM_Affecter_Agent = new PM_Affecter_Agent();
@@ -472,7 +462,7 @@ public static ArrayList<PM_Affecter_Agent> chercherListPmAffecter_AgentEquipSceE
 	String param = servi;
 	if (param.trim().length()==4){
 		if(param.substring(3,4).equals("0")){
-			param=servi.substring(0,3);
+			param=servi.substring(0,3);//OK
 		}
 	}
 	return unPM_Affecter_Agent.getMyPM_Affecter_AgentBroker().chercherListerPmAffecter_AgentEquipSceEnCours(aTransaction, param,inv,date);

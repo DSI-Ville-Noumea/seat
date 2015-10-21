@@ -162,7 +162,7 @@ public static ArrayList<AgentsMunicipaux> listerAgentsMunicipauxNom(nc.mairie.te
 
 public static ArrayList<AgentsMunicipaux> listerAgentsMunicipauxNomServi(nc.mairie.technique.Transaction aTransaction,String nom,String servi) throws Exception{
 	if(servi.length()>3){
-		servi = servi.substring(0,3);
+		servi = servi.substring(0,3); //OK
 	}
 	AgentsMunicipaux unAgentsMunicipaux = new AgentsMunicipaux();
 	return unAgentsMunicipaux.getMyAgentsMunicipauxBroker().listerAgentsMunicipauxNomServi(aTransaction,nom,servi);
@@ -170,7 +170,7 @@ public static ArrayList<AgentsMunicipaux> listerAgentsMunicipauxNomServi(nc.mair
 
 public static ArrayList<AgentsMunicipaux> listerAgentsMunicipauxServi(nc.mairie.technique.Transaction aTransaction,String servi) throws Exception{
 	if(servi.length()>3){
-		servi = servi.substring(0,3);
+		servi = servi.substring(0,3); //OK
 	}
 	AgentsMunicipaux unAgentsMunicipaux = new AgentsMunicipaux();
 	return unAgentsMunicipaux.getMyAgentsMunicipauxBroker().listerAgentsMunicipauxServi(aTransaction,servi);

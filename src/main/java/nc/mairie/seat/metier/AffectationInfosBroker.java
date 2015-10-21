@@ -69,7 +69,7 @@ public ArrayList<AffectationInfos> chercherListAffectationInfosEquip(nc.mairie.t
  * @throws Exception Exception
  */
 public ArrayList<AffectationInfos> chercherListAffectationInfosSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
-	String codeservice = param.substring(0,3);
+	String codeservice = param.substring(0,3);//OK
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice like '"+codeservice+"%'");
 }
 
@@ -81,7 +81,7 @@ public ArrayList<AffectationInfos> chercherListAffectationInfosSce(nc.mairie.tec
  * @throws Exception Exception
  */
 public ArrayList<AffectationInfos> chercherListAgentEquipSce(nc.mairie.technique.Transaction aTransaction, String servi) throws Exception {
-	String param = servi.substring(0,3);	
+	String param = servi.substring(0,3);//OK	
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codeservice like '"+param+"%'");
 }
 

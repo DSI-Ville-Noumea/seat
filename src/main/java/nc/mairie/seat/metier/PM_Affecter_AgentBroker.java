@@ -66,9 +66,6 @@ public boolean existePmAffecter_Agent(nc.mairie.technique.Transaction aTransacti
 	return executeTesteExiste(aTransaction,"select * from "+getTable()+" where pminv='"+inv+"' and matricule="+nomatr+" and ddeb='"+datedeb+"' and hdeb = "+Hdeb);
 }
 
-public ArrayList<PM_Affecter_Agent> chercherListerPmAffecter_AgentSce(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where codesce like '"+param+"%' order by ddeb desc,hdeb desc,hfin desc,hdebmn desc");
-}
 
 public ArrayList<PM_Affecter_Agent> chercherListerPmAffecter_AgentPM(nc.mairie.technique.Transaction aTransaction,String param) throws Exception {
 	return executeSelectListe(aTransaction,"select * from "+getTable()+" where pminv like '"+param+"%'");

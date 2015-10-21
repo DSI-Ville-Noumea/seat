@@ -64,7 +64,7 @@ public static ArrayList<AffectationAgentInfos> chercherListAffectationsSce(nc.ma
 	String param = servi;
 	if (param.trim().length()==4){
 		if(param.substring(3,4).equals("0")){
-			param=servi.substring(0,3);
+			param=servi.substring(0,3);//OK
 		}
 	}
 	return unAffectationAgentInfos.getMyAffectationAgentInfosBroker().chercherListAffectationsSce(aTransaction,param);
@@ -94,7 +94,7 @@ public static ArrayList<AffectationAgentInfos> chercherListAffectationsSceEquip(
 	String param = servi;
 	if (param.trim().length()==4){
 		if(param.substring(3,4).equals("0")){
-			param=servi.substring(0,3);
+			param=servi.substring(0,3);//OK
 		}
 	}
 	return unAffectationAgentInfos.getMyAffectationAgentInfosBroker().chercherListAffectationsSceEquip(aTransaction,param,numinv);
