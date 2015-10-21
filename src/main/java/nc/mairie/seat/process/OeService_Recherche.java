@@ -129,7 +129,7 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
 	int i = 0;
 	if(resultat.size()>0){
 		//les élèments de la liste 
-		int [] tailles = {5,120};
+		int [] tailles = {17,120};
 		//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
 		String [] padding = {"G","G"};
 		FormateListe aFormat = new FormateListe(tailles,padding, false);
