@@ -88,7 +88,7 @@ public Service chercherServiceActifAvecAcronyme(nc.mairie.technique.Transaction 
  * @throws Exception Exception
  */
 public ArrayList<Service> chercherListServiceTous(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where CODACT<>'I' and (upper(liserv) like '"+param.toUpperCase()+"%' or servi like'"+param+"%') order by liserv");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where CODACT<>'I' and (upper(liserv) like '"+param.toUpperCase()+"%' or servi like'"+param.toUpperCase()+"%') order by liserv");
 }
 /**
  * Retourne un arrayList Service.
