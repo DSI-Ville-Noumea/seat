@@ -173,7 +173,7 @@ public java.lang.String getNOM_PB_SERVICE() {
  * @throws Exception Exception
  */
 public boolean performPB_SERVICE(javax.servlet.http.HttpServletRequest request) throws Exception {
-	String recherche = getZone(getNOM_EF_SERVICE());
+	String recherche = getZone(getNOM_EF_SERVICE()).toUpperCase();
 	addZone(getNOM_EF_SERVICE(),"");
 	
 	Service unService = Service.chercherService(getTransaction(),recherche);
