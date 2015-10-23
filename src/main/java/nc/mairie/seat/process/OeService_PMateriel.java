@@ -178,11 +178,12 @@ public boolean performPB_SERVICE(javax.servlet.http.HttpServletRequest request) 
 	
 	Service unService = Service.chercherService(getTransaction(),recherche);
 	if(getTransaction().isErreur()){
+		//on teste en complétant avec de AAA
 		getTransaction().traiterErreur();
-		
-		unService = Service.chercherService(getTransaction(), Services.rpad(recherche, 16, "A"));
+		unService = Service.chercherService(getTransaction(),Services.rpad(recherche, 16, "A"));
 		
 		if(getTransaction().isErreur()){
+			getTransaction().traiterErreur();
 			getTransaction().declarerErreur("Le service recherché "+recherche+" n'a pas été trouvé.");
 			return false;
 		}
