@@ -3,6 +3,7 @@ package nc.mairie.seat.process;
 import java.util.ArrayList;
 
 
+
 import nc.mairie.seat.metier.AffectationServiceInfos;
 import nc.mairie.seat.metier.AgentCCAS;
 import nc.mairie.seat.metier.AgentCDE;
@@ -160,8 +161,17 @@ public boolean performPB_SERVICE(javax.servlet.http.HttpServletRequest request) 
 	addZone(getNOM_EF_SERVICE(),"");
 	Service unService = Service.chercherService(getTransaction(),recherche);
 	if(getTransaction().isErreur()){
-		getTransaction().declarerErreur(getTransaction().traiterErreur()+"Le service n'a pas été trouvé.");
-		return false;
+		
+		//on teste en complétant avec de AAA
+		getTransaction().traiterErreur();
+		unService = Service.chercherService(getTransaction(),Services.rpad(recherche, 16, "A"));
+		
+		if(getTransaction().isErreur()){
+			getTransaction().traiterErreur();
+			getTransaction().declarerErreur("Le service recherché "+recherche+" n'a pas été trouvé.");
+			return false;
+		}
+		
 	}
 	if(unService!=null){
 		if(unService.getServi()==null){
