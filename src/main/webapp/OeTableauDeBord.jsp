@@ -757,7 +757,7 @@ document.formu.elements[nom].focus();
 										<TABLE width="100%" border="1">
 											<TBODY>
 												<TR>
-													<TD class="sigp2-titre-liste">Date       Déclarant                                             OT      Service  </TD>
+													<TD class="sigp2-titre-liste">Date       Déclarant                                             OT      Service      </TD>
 												</TR>
 											</TBODY>
 										</TABLE>

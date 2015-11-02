@@ -383,7 +383,7 @@ public boolean initialiseListDec (javax.servlet.http.HttpServletRequest request)
 public void initialiseListeTotal(javax.servlet.http.HttpServletRequest request) throws Exception{
 	if(getListBPC()!=null){
 		if(getListBPC().size()>0){
-			int tailles [] = {10,10,10,6,11,8};
+			int tailles [] = {10,10,10,6,11,16};
 			String[] padding = {"D","C","D","D","D","D"};
 			FormateListe aFormat = new FormateListe(tailles,padding,false);
 			String ligne [] = { nbBPC,"","",totalQte,kmParcouru,moyenne};
