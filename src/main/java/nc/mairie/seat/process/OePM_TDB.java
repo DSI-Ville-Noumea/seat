@@ -1457,7 +1457,7 @@ public boolean trierDecl(ArrayList<Declarations> a) throws Exception{
 	if (a.size() !=0 ) {
 		ArrayList<Declarations> aTrier = Services.trier(a,colonnes,ordres);
 		setListDeclarations(aTrier);
-		int tailles [] = {10,49,10,10};
+		int tailles [] = {10,49,10,17};
 		String[] padding = {"C","G","C","C"};
 		FormateListe aFormat = new FormateListe(tailles,padding,false);
 		for (ListIterator<Declarations> list = aTrier.listIterator(); list.hasNext(); ) {
