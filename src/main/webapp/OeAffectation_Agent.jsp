@@ -127,7 +127,7 @@ if (document.formu.elements[nom] != null)
 									<TD class="sigp2-titre-liste">
 									<TABLE>
 										<TR>
-											<TD height="29" width="28">
+											<TD height="29" width="188">
 											<TABLE border="0" class="sigp2">
 												<TR>
 													<TD class="sigp2-titre-liste">Sce</TD>

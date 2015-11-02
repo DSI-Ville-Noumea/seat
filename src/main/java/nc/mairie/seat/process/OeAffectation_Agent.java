@@ -1200,7 +1200,7 @@ public void trier(ArrayList<Affecter_Agent> a) throws Exception{
 //			aTrier = Services.trier(a,colonnes,ordres);
 //		}
 		setListeAffectation(aTrier);
-		int tailles [] = {5,35,10,5,10,5};
+		int tailles [] = {17,35,10,5,10,5};
 		String[] padding = {"C","G","C","C","C","C"};
 		FormateListe aFormat = new FormateListe(tailles,padding,false);
 		for (ListIterator<Affecter_Agent> list = aTrier.listIterator(); list.hasNext(); ) {
