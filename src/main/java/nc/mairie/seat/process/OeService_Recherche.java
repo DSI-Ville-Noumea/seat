@@ -161,6 +161,7 @@ public boolean performPB_RECHERCHE(javax.servlet.http.HttpServletRequest request
 	}
 	setListeServiceEpuree(resultatEpure);
 	if(listeServiceEpuree.size()==1){
+		addZone(getNOM_LB_SERVICE_SELECT(), "0");
 		performPB_VALIDER(request);
 	}
 	return true;
