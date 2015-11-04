@@ -58,7 +58,7 @@ public void initialiseListeDeclarations(javax.servlet.http.HttpServletRequest re
 	
 		setListeDeclarationsAgentEquip(arr);
 		
-		int tailles [] = {10,10,37,10,6};
+		int tailles [] = {10,10,37,10,16};
 		String[] padding = {"C","G","G","D","G"};
 		String[] attr = {"date","immat","declarant","codeot","codeservice"};
 		FormateListe aFormat = new FormateListe(tailles,arr,attr,padding,false);
