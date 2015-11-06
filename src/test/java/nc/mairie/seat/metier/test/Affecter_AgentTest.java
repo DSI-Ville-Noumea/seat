@@ -48,7 +48,7 @@ public class Affecter_AgentTest {
 		aTransaction.traiterErreur();
 
 		//Recupération d'un serviceDSI DCAA
-		unService=Service.chercherService(aTransaction, "DCAA");
+		unService=Service.chercherService(aTransaction, "DCAAAAAAAAAAAAAA");
 		assertFalse(aTransaction.isErreur());
 		
 	}
