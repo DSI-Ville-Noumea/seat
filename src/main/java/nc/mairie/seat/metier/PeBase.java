@@ -70,6 +70,11 @@ public boolean controleChamps(nc.mairie.technique.Transaction aTransaction )  th
 			return false;
 		}
 	}
+	//#20017 si annee (codeti = 2) alors intervalle doit être < 5 
+	if ("2".equals(getCodeti()) && Integer.valueOf(getIntervalle()) >= 5 ) {
+		aTransaction.declarerErreur("Erreur : Si intervalle est ANNEE, l'intervalle doit être inférieure à 5.");
+		return false;
+	}
 	return true;
 }
 /*selon le compteur du modèle on autorise ou pas certains type d'intervalle pour un entretien.
@@ -127,11 +132,6 @@ public boolean creerPeBase(nc.mairie.technique.Transaction aTransaction,Modeles 
 		aTransaction.declarerErreur(nc.mairie.technique.MairieMessages.getMessage("ERR999","TIntervalle"));
 		return false;
 	}
-	//RG : controle des champs
-	controleChamps(aTransaction);
-	if(aTransaction.isErreur()){
-		return false;
-	}
 	// RG : controle du type d'intervalle pour le compteur
 	if(!verifCompteur(aTransaction,unModele,unTIntervalle)){
 		return false;
@@ -140,6 +140,13 @@ public boolean creerPeBase(nc.mairie.technique.Transaction aTransaction,Modeles 
 	setCodemodele(unModele.getCodemodele());
 	setCodeti(unTIntervalle.getCodeti());
 	setCodeentretien(unEntretien.getCodeentretien());
+	
+	//RG : controle des champs
+	controleChamps(aTransaction);
+	if(aTransaction.isErreur()){
+		return false;
+	}
+	
 	// si déjà enregistré
 	if (!existePeBase(aTransaction,unModele.getCodemodele(),unEntretien.getCodeentretien())){
 		//Creation du PeBase
