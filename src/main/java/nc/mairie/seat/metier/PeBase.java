@@ -69,11 +69,12 @@ public boolean controleChamps(nc.mairie.technique.Transaction aTransaction )  th
 			aTransaction.declarerErreur("Vous devez saisir des chiffres pour l'intervalle.");
 			return false;
 		}
-	}
-	//#20017 si annee (codeti = 2) alors intervalle doit être < 5 
-	if ("2".equals(getCodeti()) && Integer.valueOf(getIntervalle()) >= 5 ) {
-		aTransaction.declarerErreur("Erreur : Si intervalle est ANNEE, l'intervalle doit être inférieure à 5.");
-		return false;
+		//#20017 si annee (codeti = 2) alors intervalle doit être < 5 
+		//#21086 Bug en creation d'un entretien pour un OT (regression #20017)
+		if ("2".equals(getCodeti()) && Integer.valueOf(getIntervalle()) >= 5 ) {
+			aTransaction.declarerErreur("Erreur : Si intervalle est ANNEE, l'intervalle doit être inférieure à 5.");
+			return false;
+		}
 	}
 	return true;
 }
