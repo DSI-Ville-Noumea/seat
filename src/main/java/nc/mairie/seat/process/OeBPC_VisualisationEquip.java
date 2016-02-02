@@ -822,7 +822,7 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 	
 	// recherche de l'agent responsable
 	if(!agentResponsable.equals("0")){
-		if(codeService.equals("EAAA")){
+		if(codeService.startsWith("EAAA")){
 			AgentCDE unAgentCde = AgentCDE.chercherAgentCDE(getTransaction(),agentResponsable);
 			if(getTransaction().isErreur()){
 				return false;

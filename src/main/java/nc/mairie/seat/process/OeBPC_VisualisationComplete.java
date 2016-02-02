@@ -1027,7 +1027,7 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 				double moyennecalcul = 0;
 				// recherche de l'agent responsable
 				if ((nomatr!=null)&&(!nomatr.equals("0"))&&(nomatr!="")){
-					if(codeService.equals("EAAA")){
+					if(codeService.startsWith("EAAA")){
 						AgentCDE unAgentCde = AgentCDE.chercherAgentCDE(getTransaction(),nomatr);
 						if(getTransaction().isErreur()){
 							return false;
