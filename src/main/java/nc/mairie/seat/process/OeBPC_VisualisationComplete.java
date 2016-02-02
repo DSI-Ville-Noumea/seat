@@ -48,7 +48,8 @@ public class OeBPC_VisualisationComplete extends nc.mairie.technique.BasicProces
 	private PMateriel pMaterielCourant = new PMateriel();
 	private boolean first;
 	private String nbBPC;
-	private String totalQte;
+	private String totalQteEssence;
+	private String totalQteDiesel;
 	private String script;
 	public boolean isImprimable = true;
 	public int kmParcourusTotal = 0;
@@ -128,10 +129,10 @@ public void initialiseListeTotal(javax.servlet.http.HttpServletRequest request) 
 				(getPMaterielCourant() != null && getPMaterielCourant().getPminv() != null)	) {
 				setImprimable(true);
 			}	
-			int tailles [] = {9,10,10,10,10};
-			String[] padding = {"C","C","D","D","D"};
+			int tailles [] = {9,10,10,10,10,8};
+			String[] padding = {"C","C","D","D","D","D"};
 			FormateListe aFormat = new FormateListe(tailles,padding,false);
-			String ligne [] = { nbBPC,"","","",totalQte+" L"};
+			String ligne [] = { nbBPC,"","","",totalQteEssence+" L",totalQteDiesel+" L"};
 			aFormat.ajouteLigne(ligne);
 			setLB_TOTAUX(aFormat.getListeFormatee());
 		} else {
@@ -146,11 +147,12 @@ public void initialiseListBPCInfos(javax.servlet.http.HttpServletRequest request
 	String date;
 	String compteur;
 	int totalBPC = 0;
-	int totalQuantite = 0;
+	int totalQuantiteEssence = 0;
+	int totalQuantiteDiesel = 0;
 	//addZone(getNOM_ST_SERVICE(),"");
 	if(getListBPCInfos().size()>0){
-		int tailles [] = {9,10,10,10,10};
-		String[] padding = {"D","G","C","D","D"};
+		int tailles [] = {9,10,10,10,8,8};
+		String[] padding = {"D","G","C","D","D","D"};
 		FormateListe aFormat = new FormateListe(tailles,padding,false);
 		for (int i = 0; i < getListBPCInfos().size() ; i++) {
 			
@@ -158,17 +160,17 @@ public void initialiseListBPCInfos(javax.servlet.http.HttpServletRequest request
 			BPC unBPCIC = (BPC)getListBPCInfos().get(i);
 			quantite = Integer.parseInt(unBPCIC.getQuantite());
 			numBPC = unBPCIC.getNumerobpc();
-			Equipement unEquipement = Equipement.chercherEquipement(getTransaction(),unBPCIC.getNumeroinventaire());
+			EquipementInfos unEquipementInfos = EquipementInfos .chercherEquipementInfos(getTransaction(),unBPCIC.getNumeroinventaire()); 
 			if(getTransaction().isErreur()){
 				getTransaction().traiterErreur();
 			}
-			if(unEquipement!=null){
-				if(unEquipement.getNumeroinventaire()!=null){
-					immat = unEquipement.getNumeroimmatriculation();
+			if(unEquipementInfos!=null){
+				if(unEquipementInfos.getNumeroinventaire()!=null){
+					immat = unEquipementInfos.getNumeroimmatriculation();
 				}else{
 					PMateriel unPMat = PMateriel.chercherPMateriel(getTransaction(),unBPCIC.getNumeroinventaire());
 					if(getTransaction().isErreur()){
-						getTransaction().declarerErreur("L'équipement correspondant au BPC n°"+unBPCIC.getNumerobpc()+" n'a pas été trouvé.");
+						getTransaction().declarerErreur("L'équipement correspondant au BPC n°"+unBPCIC.getNumerobpc()+" n'a pas été trouvé.<BR>"+getTransaction().traiterErreur());
 						return ;
 					}
 					if(unPMat!=null){
@@ -181,14 +183,29 @@ public void initialiseListBPCInfos(javax.servlet.http.HttpServletRequest request
 			date = unBPCIC.getDate();
 			compteur = unBPCIC.getValeurcompteur();
 			
-			totalQuantite = totalQuantite + quantite;
-			String ligne [] = { numBPC,immat,date,compteur,String.valueOf(quantite)};
-			aFormat.ajouteLigne(ligne);
+			//Si essence
+			if ("ESSENCE".equals(unEquipementInfos.getDesignationcarbu())) {
+				totalQuantiteEssence += quantite;
+				String ligne [] = { numBPC,immat,date,compteur, String.valueOf(quantite), ""};
+				aFormat.ajouteLigne(ligne);
+			//sinon diesel
+			} else if ("GASOIL".equals(unEquipementInfos.getDesignationcarbu())) {
+				totalQuantiteDiesel += quantite;
+				String ligne [] = { numBPC,immat,date,compteur, "", String.valueOf(quantite)};
+				aFormat.ajouteLigne(ligne);
+			//ni gasoil, ni essence
+			} else {
+				String ligne [] = { numBPC,immat,date,compteur, "", ""};
+				aFormat.ajouteLigne(ligne);
+			}
+			
+			
 		}
 		setLB_BPCINFOS(aFormat.getListeFormatee());
 		totalBPC = getLB_BPCINFOS().length;
 		nbBPC = String.valueOf(totalBPC);
-		totalQte = String.valueOf(totalQuantite);
+		totalQteEssence = String.valueOf(totalQuantiteEssence);
+		totalQteDiesel = String.valueOf(totalQuantiteDiesel);
 	} else {
 		setLB_BPCINFOS(null);
 	}
