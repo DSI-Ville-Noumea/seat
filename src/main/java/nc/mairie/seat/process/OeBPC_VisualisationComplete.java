@@ -1108,7 +1108,8 @@ public boolean performPB_IMPRIMER(javax.servlet.http.HttpServletRequest request)
 					//moyennecalcul = (double)qteAvant/(double)kmParcourus*100;
 					//moyennecalcul = (double)qte/(double)kmParcourus*100;
 					moyennecalcul = (double)qte/(double)kmParcourus*100;
-					if (("KILOMETRIQUE").equals(unMI.getDesignationcompteur())){
+					//#28244
+					if ( ! ("KILOMETRIQUE").equals(unMI.getDesignationcompteur())){
 						moyennecalcul = moyennecalcul*100;
 					}
 					NumberFormat moyenneFormat = new DecimalFormat("0.00");
