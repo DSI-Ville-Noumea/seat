@@ -116,7 +116,7 @@ if (document.formu.elements[nom] != null)
 				<TABLE width="100%" border="1">
 					<TBODY>
 						<TR>
-							<TD class="sigp2-titre-liste">N°BPC     Immat      Date          Compteur   Essence   Gasoil       </TD>
+							<TD class="sigp2-titre-liste">N°BPC     Immat      Date          Compteur   Essence     Gasoil     </TD>
 						</TR>
 					</TBODY>
 				</TABLE>
