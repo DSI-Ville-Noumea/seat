@@ -5,8 +5,9 @@ import java.util.Calendar;
 
 import nc.mairie.seat.process.Outils;
 import nc.mairie.technique.Services;
-import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicBroker;
 import nc.mairie.technique.BasicMetier;
+import nc.mairie.technique.Transaction;
 
 /**
  * Objet métier BPC
@@ -140,6 +141,55 @@ public boolean controleChamps(nc.mairie.technique.Transaction aTransaction )  th
 	}
 	return true;
 }
+public boolean controleBPCIMaterielParRapportPrecedentSuivant(Transaction aTransaction, IMateriel unIMateriel, boolean razCompteur) throws Exception {
+
+	//recherch du précédent BPC
+	BPC bpcAvant = chercherBPCPrecEquipNumBPC(aTransaction,unIMateriel.getNumeroinventaire(), getNumerobpc());
+	if(aTransaction.isErreur()){
+		aTransaction.traiterErreur();
+		bpcAvant = null;
+	}
+	
+	//recherche du suivant
+	BPC bpcSuiv = chercherBPCSuivEquipNumBPC(aTransaction,unIMateriel.getNumeroinventaire(), getNumerobpc());
+	if(aTransaction.isErreur()){
+		aTransaction.traiterErreur();
+		bpcSuiv = null;
+	}
+	
+	// si bpc avant existe
+	if (bpcAvant != null) {
+		//Si pas de RAZ compteur, on contrôle le compteur
+		if (! razCompteur) {
+			//on contrôle que la valeur du compteur est bien supérieur à la valeur précédente
+			if (Integer.parseInt(getValeurcompteur())<=Integer.parseInt(bpcAvant.getValeurcompteur())){
+				aTransaction.declarerErreur("Attention. La valeur du compteur doit être supérieure à la valeur du BPC précédent ("+bpcAvant.getValeurcompteur()+").");
+				return false;
+			}
+		}
+		//la date doit être supérieure à la précédente
+		if (Services.compareDates(getDate(), bpcAvant.getDate()) < 1){
+			aTransaction.declarerErreur("Attention. La date doit être supérieure à la date du BPC précédent ("+bpcAvant.getDate()+").");
+			return false;
+		}
+	}
+	
+	if (bpcSuiv != null) {
+		//	on contrôle que la valeur du compteur est bien inférieur à la valeur suivante
+		if (Integer.parseInt(getValeurcompteur())>=Integer.parseInt(bpcSuiv.getValeurcompteur())){
+			aTransaction.declarerErreur("Attention. La valeur du compteur doit être inférieure à la valeur du BPC suivant ("+bpcSuiv.getValeurcompteur()+").");
+			return false;
+		}
+		//la date doit être inférieure à la suivante
+		if (Services.compareDates(getDate(), bpcSuiv.getDate()) > -1){
+			aTransaction.declarerErreur("Attention. La date doit être inférieure à la date du BPC suivant ("+bpcSuiv.getDate()+").");
+			return false;
+		}
+	}
+	
+	return true;
+}
+
 /**
  * Methode creerObjetMetier qui retourne
  * true ou false
@@ -196,38 +246,9 @@ public boolean creerBPC(nc.mairie.technique.Transaction aTransaction,Equipement 
 		return false;
 	}
 	
-	// si pas de RAZ compteur
-		if (! razCompteur) {
-		// on cherche le bpc précédent pour controler la valeur du compteur
-		BPC bpcAvant = chercherBPCPrecEquipDate(aTransaction,getDate(),unEquipement.getNumeroinventaire());
-		if(aTransaction.isErreur()){
-			aTransaction.traiterErreur();
-		}else{
-	//		 RG : si on a un bpc précédent
-			if(bpcAvant!=null){
-				//	on contrôle que la valeur du compteur est bien supérieur à la valeur précédente
-				if (Integer.parseInt(getValeurcompteur())<Integer.parseInt(bpcAvant.getValeurcompteur())){
-					aTransaction.declarerErreur("Attention. La valeur du compteur est inférieur à la valeur précédente ("+bpcAvant.getValeurcompteur()+").");
-					return false;
-				}
-			}
-		}
-	
-		//	 on vérifie qu'on a un bpc suivant pour controler la valeur du compteur
-		BPC bpcSuiv = chercherBPCSuivEquipDate(aTransaction,getDate(),unEquipement.getNumeroinventaire());
-		if(aTransaction.isErreur()){
-			aTransaction.traiterErreur();
-		}else{
-			// RG : si on a un bpc suivant
-			if(bpcSuiv!=null){
-				//	on contrôle que la valeur du compteur est bien inférieur à la valeur suivante
-				if (Integer.parseInt(getValeurcompteur())>Integer.parseInt(bpcSuiv.getValeurcompteur())){
-					aTransaction.declarerErreur("Attention. La valeur du compteur est supérieure à la valeur suivante ("+bpcSuiv.getValeurcompteur()+").");
-					return false;
-				}
-			}
-		}
-	}
+	//on contrôle par rapport au précédent et au suivant
+	if (!controleBPCIMaterielParRapportPrecedentSuivant(aTransaction, unEquipement, razCompteur))
+		return false;
 	
 	// on controle si la quantité prise est supérieur au max du modèle
 	int quantite = Integer.parseInt(getQuantite());
@@ -247,7 +268,7 @@ public boolean creerBPC(nc.mairie.technique.Transaction aTransaction,Equipement 
 /*
  * méthode pour la création avec PMateriel
  */
-public boolean creerBPC(nc.mairie.technique.Transaction aTransaction,PMateriel unPMateriel,Modeles unModeles)  throws Exception {
+public boolean creerBPC(nc.mairie.technique.Transaction aTransaction,PMateriel unPMateriel,Modeles unModeles,  boolean razCompteur)  throws Exception {
 	// on controle si null
 	if (null == unPMateriel.getPminv()){
 		aTransaction.declarerErreur(nc.mairie.technique.MairieMessages.getMessage("ERR999","Petit matériel"));
@@ -293,6 +314,10 @@ public boolean creerBPC(nc.mairie.technique.Transaction aTransaction,PMateriel u
 		return false;
 	}
 	
+	//on contrôle par rapport au précédent et au suivant
+	if (!controleBPCIMaterielParRapportPrecedentSuivant(aTransaction, unPMateriel, razCompteur))
+			return false;
+	
 	// on controle si la quantité prise est supérieur au max du modèle
 	int quantite = Integer.parseInt(getQuantite());
 	int capacite = Integer.parseInt(unModeles.getCapacitereservoir());
@@ -313,13 +338,12 @@ public boolean creerBPC(nc.mairie.technique.Transaction aTransaction,PMateriel u
  * true ou false
  * @param aTransaction Transaction
  * @param unEquipement unEquipement
- * @param bpcAvant bpcAvant
  * @param unModeles unModeles
  * @param raz raz
  * @return boolean 
  * @throws Exception Exception
  */
-public boolean modifierBPC(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement,BPC bpcAvant,Modeles unModeles, boolean raz)  throws Exception {
+public boolean modifierBPC(nc.mairie.technique.Transaction aTransaction,Equipement unEquipement,Modeles unModeles, boolean raz)  throws Exception {
 //	 on controle si null
 	if (null == unEquipement.getNumeroinventaire()){
 		aTransaction.declarerErreur(nc.mairie.technique.MairieMessages.getMessage("ERR999","Equipement"));
@@ -359,14 +383,10 @@ public boolean modifierBPC(nc.mairie.technique.Transaction aTransaction,Equipeme
 	}else if (controle==-9999){
 		return false;
 	}
-	
-	if (null!=bpcAvant && !raz){
-		// on contrôle que la valeur du compteur est bien supérieur à la valeur précédente
-		if (Integer.parseInt(getValeurcompteur())<Integer.parseInt(bpcAvant.getValeurcompteur())){
-			aTransaction.declarerErreur("Attention. La valeur du compteur est inférieur à la valeur précédente ("+bpcAvant.getValeurcompteur()+").");
-			return false;
-		}		
-	}
+
+	//on contrôle par rapport au précédent et au suivant
+	if (!controleBPCIMaterielParRapportPrecedentSuivant(aTransaction, unEquipement, raz))
+		return false;
 	
 	// on controle si la quantité prise est supérieur au max du modèle
 	int quantite = Integer.parseInt(getQuantite());
@@ -378,7 +398,7 @@ public boolean modifierBPC(nc.mairie.technique.Transaction aTransaction,Equipeme
 	return getMyBPCBroker().modifierBPC(aTransaction);
 }
 
-public boolean modifierBPC(nc.mairie.technique.Transaction aTransaction,PMateriel unPMateriel,BPC bpcAvant,Modeles unModeles)  throws Exception {
+public boolean modifierBPC(nc.mairie.technique.Transaction aTransaction,PMateriel unPMateriel,Modeles unModeles, boolean raz)  throws Exception {
 //	 on controle si null
 	if (null == unPMateriel.getPminv()){
 		aTransaction.declarerErreur(nc.mairie.technique.MairieMessages.getMessage("ERR999","Petit matériel"));
@@ -418,6 +438,10 @@ public boolean modifierBPC(nc.mairie.technique.Transaction aTransaction,PMaterie
 	}else if (controle==-9999){
 		return false;
 	}
+	
+	//on contrôle par rapport au précédent et au suivant
+	if (!controleBPCIMaterielParRapportPrecedentSuivant(aTransaction, unPMateriel, raz))
+		return false;
 		
 	// on controle si la quantité prise est supérieur au max du modèle
 	int quantite = Integer.parseInt(getQuantite());
@@ -650,6 +674,30 @@ public boolean existeBPCPompes(nc.mairie.technique.Transaction aTransaction, Str
 	BPC unBPC = new BPC();
 	return unBPC.getMyBPCBroker().existeBPCPompe(aTransaction,numPompe);
 }
+/**
+ * Retourne un BPC.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param numBPC numBPC
+ * @return BPC
+ * @throws Exception Exception
+ */
+public static BPC chercherBPCPrecEquipNumBPC(nc.mairie.technique.Transaction aTransaction,String inv, String numBPC) throws Exception{
+	BPC unBPC = new BPC();
+	return unBPC.getMyBPCBroker().chercherBPCPrecEquipNumBPC(aTransaction, inv, numBPC);
+}
+/**
+ * Retourne un BPC.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param numBPC numBPC
+ * @return BPC
+ * @throws Exception Exception
+ */
+public static BPC chercherBPCSuivEquipNumBPC(nc.mairie.technique.Transaction aTransaction, String inv, String numBPC) throws Exception{
+	BPC unBPC = new BPC();
+	return unBPC.getMyBPCBroker().chercherBPCSuivEquipNumBPC(aTransaction, inv, numBPC);
+}
 public static ArrayList<BPC> listerBPCParams(nc.mairie.technique.Transaction aTransaction,String inv,String ddeb,String dfin, String servi) throws Exception{
 	String periode = "";
 	if(inv.equals("")){
@@ -677,5 +725,6 @@ public static ArrayList<BPC> listerBPCParams(nc.mairie.technique.Transaction aTr
 	BPC unBPC = new BPC();
 	return unBPC.getMyBPCBroker().listerBPCParams(aTransaction,inv,periode,servi.trim());
 }
+
 
 }

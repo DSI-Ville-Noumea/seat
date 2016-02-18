@@ -12,7 +12,7 @@ import nc.mairie.technique.BasicMetier;
 /**
  * Objet métier Equipement
  */
-public class Equipement extends BasicMetier {
+public class Equipement extends BasicMetier implements IMateriel {
 	public String numeroinventaire;
 	public String numeroimmatriculation;
 	public String datemiseencirculation;

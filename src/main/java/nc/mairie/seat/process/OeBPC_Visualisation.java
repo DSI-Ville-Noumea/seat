@@ -28,6 +28,7 @@ public class OeBPC_Visualisation extends nc.mairie.technique.BasicProcess {
 	private PMatInfos pMatInfosCourant;
 	private BPC bpcCourant;
 	public static final int STATUT_RECHERCHE= 1 ;
+	public static final int STATUT_MODIFIER= 2 ;
 	public boolean isDebranche = false;
 	private boolean isMateriel = false;
 /**
@@ -242,6 +243,16 @@ public OeBPC_Visualisation() {
  */
 public java.lang.String getNOM_PB_RECHERCHE() {
 	return "NOM_PB_RECHERCHE";
+}
+/**
+ * Retourne le nom d'un bouton pour la JSP :
+ * PB_MODIFIER
+ * Date de création : (09/06/05 10:50:41)
+ * author : Générateur de process
+ * @return String
+ */
+public java.lang.String getNOM_PB_MODIFIER() {
+	return "NOM_PB_MODIFIER";
 }
 /**
  * - Traite et affecte les zones saisies dans la JSP.
@@ -619,6 +630,31 @@ public boolean performPB_ANNULER(javax.servlet.http.HttpServletRequest request) 
 	return true;
 }
 /**
+ * - Traite et affecte les zones saisies dans la JSP.
+ * - Implémente les règles de gestion du process
+ * - Positionne un statut en fonction de ces règles :
+ *   setStatut(STATUT, boolean veutRetour) ou setStatut(STATUT,Message d'erreur)
+ * Date de création : (18/08/05 09:47:06)
+ * author : Générateur de process
+ * @param request request
+ * @return boolean 
+ * @throws Exception Exception
+ */
+public boolean performPB_MODIFIER(javax.servlet.http.HttpServletRequest request) throws Exception {
+	
+	if(!isMateriel){
+		VariableGlobale.ajouter(request, "EQUIPEMENTINFOS", getEquipementInfosCourant());
+		VariableGlobale.ajouter(request, "PMATINFOS", new PMatInfos());
+	}else{
+		VariableGlobale.ajouter(request, "EQUIPEMENTINFOS", new EquipementInfos());
+		VariableGlobale.ajouter(request, "PMATINFOS", getPMatInfosCourant());
+	}
+	VariableGlobale.ajouter(request, "BPC", getBpcCourant());
+	
+	setStatut(STATUT_MODIFIER, true);
+	return true;
+}
+/**
  * Retourne pour la JSP le nom de la zone statique :
  * ST_TCOMPTEUR
  * Date de création : (23/08/05 08:23:27)
@@ -663,6 +699,11 @@ public boolean recupererStatut(javax.servlet.http.HttpServletRequest request) th
 		//Si clic sur le bouton PB_RECHERCHE
 		if (testerParametre(request, getNOM_PB_RECHERCHE())) {
 			return performPB_RECHERCHE(request);
+		}
+
+		//Si clic sur le bouton PB_MODIFIER
+		if (testerParametre(request, getNOM_PB_MODIFIER())) {
+			return performPB_MODIFIER(request);
 		}
 
 	}

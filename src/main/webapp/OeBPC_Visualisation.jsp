@@ -166,6 +166,11 @@ if (document.formu.elements[nom] != null)
 						</TD>
 						<TD width="10"></TD>
 					</TR>
+					<% if (process.getBpcCourant() != null && process.getBpcCourant().getNumerobpc() != null) {%>
+					<tr>
+					<td colspan="3" align="center"><INPUT type="submit" name="<%= process.getNOM_PB_MODIFIER() %>" value="Modifier" class="sigp2-Bouton-100"></td>
+					</tr>
+					<%} %>
 				</TABLE>
 				</td>
 		</tr>

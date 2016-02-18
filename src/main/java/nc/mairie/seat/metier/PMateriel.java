@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import nc.mairie.seat.process.Outils;
 import nc.mairie.technique.Services;
-import nc.mairie.technique.BasicBroker;
+import nc.mairie.technique.BasicBroker;
 import nc.mairie.technique.BasicMetier;
 
 /**
  * Objet métier PMateriel
  */
-public class PMateriel extends BasicMetier {
+public class PMateriel extends BasicMetier implements IMateriel{
 	public String pminv;
 	public String pmserie;
 	public String codemodele;
@@ -504,5 +504,8 @@ public static int chercherPMSerie(nc.mairie.technique.Transaction aTransaction, 
 	PMateriel unPMateriel = new PMateriel();
 	return unPMateriel.getMyPMaterielBroker().chercherPmSerie(aTransaction, serie,inv);
 }
-
+@Override
+public String getNumeroinventaire() {
+	return getPminv();
+}
 }

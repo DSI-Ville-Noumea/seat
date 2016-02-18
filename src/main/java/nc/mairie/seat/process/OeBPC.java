@@ -260,7 +260,6 @@ public boolean performPB_AJOUTER(javax.servlet.http.HttpServletRequest request) 
 		//int numdernier = listeBPC.size()-1;
 		BPC monBPC = (BPC)getListeBPC().get(0);
 		setBpcCourant(monBPC);
-		VariableActivite.ajouter(this, "BPCAVANT",getBpcCourant());
 	}
 	//	On met les variables activités
 	// modif du 13/08/08 : si c'est un petit matériel je n'envoie que PMATINFOS et je précise dans une variable activité la nature de l'équipement
@@ -331,26 +330,17 @@ public boolean performPB_MODIFIER(javax.servlet.http.HttpServletRequest request)
 	
 	BPC monBPC = (BPC)getListeBPC().get(numligne);
 	setBpcCourant(monBPC);
-	if (numligne == 0){
-	//	On met la variable activité
-		if (1!=getLB_BPC().length){
-			BPC unBPC = (BPC)getListeBPC().get(numligne+1);
-			VariableActivite.ajouter(this, "BPCAVANT", unBPC);
-		}
-		if(!isMateriel){
-			VariableGlobale.ajouter(request, "EQUIPEMENTINFOS", getEquipementInfosCourant());
-			VariableGlobale.ajouter(request, "PMATINFOS", new PMatInfos());
-		}else{
-			VariableGlobale.ajouter(request, "EQUIPEMENTINFOS", new EquipementInfos());
-			VariableGlobale.ajouter(request, "PMATINFOS", getPMatInfosCourant());
-		}
-		VariableGlobale.ajouter(request, "BPC", getBpcCourant());
-		setStatut(STATUT_AJOUTER,false);
-		setStatut(STATUT_RECHERCHE,false);
-		setStatut(STATUT_MODIFIER,true);
+	if(!isMateriel){
+		VariableGlobale.ajouter(request, "EQUIPEMENTINFOS", getEquipementInfosCourant());
+		VariableGlobale.ajouter(request, "PMATINFOS", new PMatInfos());
 	}else{
-		getTransaction().declarerErreur("Seule la dernière prise de carburant peut être supprimée ou modifiée.");
+		VariableGlobale.ajouter(request, "EQUIPEMENTINFOS", new EquipementInfos());
+		VariableGlobale.ajouter(request, "PMATINFOS", getPMatInfosCourant());
 	}
+	VariableGlobale.ajouter(request, "BPC", getBpcCourant());
+	setStatut(STATUT_AJOUTER,false);
+	setStatut(STATUT_RECHERCHE,false);
+	setStatut(STATUT_MODIFIER,true);
 	return true;
 }
 /**

@@ -279,6 +279,7 @@ public class RobotSeat extends Robot {
 		
 		//	OeBPC_Visualisation
 		nav.put(OeBPC_Visualisation.class.getName()+ OeBPC_Visualisation.STATUT_RECHERCHE, OeBPC_Recherche.class.getName());
+		nav.put(OeBPC_Visualisation.class.getName()+ OeBPC_Visualisation.STATUT_MODIFIER, OeBPC_modifier.class.getName());
 		
 		//	OeAffectation_Service
 		nav.put(OeAffectation_Service.class.getName()+ OeAffectation_Service.STATUT_RECHERCHEREQUIPEMENT, OeEquipement_Recherche.class.getName());

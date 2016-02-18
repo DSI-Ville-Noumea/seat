@@ -3,7 +3,8 @@ package nc.mairie.seat.metier;
 import java.util.ArrayList;
 import nc.mairie.technique.BasicRecord;
 import nc.mairie.technique.Services;
-import nc.mairie.technique.BasicBroker;
+
+import nc.mairie.technique.BasicBroker;
 
 /**
  * Broker de l'Objet métier BPC
@@ -253,5 +254,27 @@ public ArrayList<BPC> listerBPCParams(nc.mairie.technique.Transaction aTransacti
 		where = " where "+where.substring(4);
 
 	return executeSelectListe(aTransaction,"select bpc.* from "+getTable()+" bpc "+where+" order by date desc");
+}
+/**
+ * Retourne un BPC.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param numBPC numBPC
+ * @return BPC
+ * @throws Exception Exception
+ */
+public BPC chercherBPCPrecEquipNumBPC(nc.mairie.technique.Transaction aTransaction,String inv, String numBPC) throws Exception {
+	return (BPC)executeSelect(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+inv+"' and numerobpc = (select max(numerobpc) from "+getTable()+" where numeroinventaire = '"+inv+"' and numerobpc < "+numBPC+")");
+}
+/**
+ * Retourne un BPC.
+ * @param aTransaction Transaction
+ * @param inv inv
+ * @param numBPC numBPC
+ * @return BPC
+ * @throws Exception Exception
+ */
+public BPC chercherBPCSuivEquipNumBPC(nc.mairie.technique.Transaction aTransaction, String inv, String numBPC) throws Exception {
+	return (BPC)executeSelect(aTransaction,"select * from "+getTable()+" where numeroinventaire = '"+inv+"' and numerobpc = (select min(numerobpc) from "+getTable()+" where numeroinventaire = '"+inv+"' and numerobpc > "+numBPC+")");
 }
 }

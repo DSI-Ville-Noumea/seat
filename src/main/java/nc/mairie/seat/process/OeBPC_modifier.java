@@ -28,7 +28,6 @@ public class OeBPC_modifier extends nc.mairie.technique.BasicProcess {
 	 */
 	private static final long serialVersionUID = 7546397421936678246L;
 	private java.lang.String[] LB_IMMAT;
-	private java.lang.String[] LB_INVENTAIRE;
 	private java.lang.String[] LB_MODEPRISE;
 	private java.lang.String[] LB_POMPE;
 //	private ArrayList listeCarbu;
@@ -36,7 +35,6 @@ public class OeBPC_modifier extends nc.mairie.technique.BasicProcess {
 	private ArrayList<Equipement> listeEquipement;
 	private Modeles modeleCourant;
 	private BPC bpcCourant;
-	private BPC bpcAvant;
 	private Equipement equipementCourant;
 	private EquipementInfos equipementInfosCourant;
 	private PMatInfos pMatInfosCourant;
@@ -93,8 +91,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 //		indicePompe = String.valueOf(Integer.parseInt(getBpcCourant().getNumeropompe())-1);
 		newQte = getBpcCourant().getQuantite();
 		
-		BPC monBPC = (BPC)VariableActivite.recuperer(this, "BPCAVANT");
-		setBpcAvant(monBPC);
 		// On récupère l'objet Equipement pour avoir les infos pour les modèles et marques
 		if(!isMateriel){
 			if(null!=getEquipementInfosCourant()){
@@ -200,47 +196,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 			
 			setLB_MODEPRISE(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
 		}
-			
-//		 Si liste des inventaires et immatriculation est vide
-		if (getLB_INVENTAIRE() == LBVide) {
-			ArrayList<Equipement> a = Equipement.listerEquipement(getTransaction());
-			setListeEquipement(a);
-			//les élèments de la liste 
-			int [] tailles = {13};
-			String [] champs = {"numeroinventaire"};
-			String [] champs2 = {"numeroimmatriculation"};
-			//Liste possibles de padding : G(Gauche) C(Centre) D(Droite)
-			String [] padding = {"D"};
-			String [] padding2 = {"D"};
-			
-			setLB_INVENTAIRE(new FormateListe(tailles,a,champs,padding,false).getListeFormatee());
-			setLB_IMMAT(new FormateListe(tailles,a,champs2,padding2,false).getListeFormatee());
-			
-			//recherche de l'équipement courant
-			addZone(getNOM_LB_INVENTAIRE_SELECT(),String.valueOf(-1));
-			for (int i = 0; i < getListeEquipement().size(); i++) {
-				Equipement eq = (Equipement)getListeEquipement().get(i);
-				if (eq.getNumeroinventaire().equals(getEquipementInfosCourant().getNumeroinventaire())) {
-					addZone(getNOM_LB_INVENTAIRE_SELECT(),String.valueOf(i));
-					addZone(getNOM_LB_IMMAT_SELECT(),String.valueOf(i));
-					break;
-				}
-			}
-		}
-//		sélectionner le bon inventaire
-		for (int i = 0; i<getLB_INVENTAIRE().length;i++){
-			if(!isMateriel){
-				if (getEquipementInfosCourant().getNumeroinventaire().equals(LB_INVENTAIRE[i].trim())){
-					addZone(getNOM_LB_INVENTAIRE_SELECT(),String.valueOf(i));
-					addZone(getNOM_LB_IMMAT_SELECT(),String.valueOf(i));
-				}
-			}else{
-				if (getPMatInfosCourant().getPminv().equals(LB_INVENTAIRE[i].trim())){
-					addZone(getNOM_LB_INVENTAIRE_SELECT(),String.valueOf(i));
-					addZone(getNOM_LB_IMMAT_SELECT(),String.valueOf(i));
-				}
-			}
-		}	
 		
 		// on initialise les infos concernant l'équipement
 		Modeles monModele = Modeles.chercherModeles(getTransaction(),codeModele);
@@ -801,7 +756,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 			return false;
 		}
 		setModeleCourant(unModele);
-		getBpcCourant().modifierBPC(getTransaction(),getEquipementCourant(),getBpcAvant(),getModeleCourant(), getVAL_CK_CHG_COMPTEUR().equals(getCHECKED_ON()));
+		getBpcCourant().modifierBPC(getTransaction(),getEquipementCourant(),getModeleCourant(), getVAL_CK_CHG_COMPTEUR().equals(getCHECKED_ON()));
 		if(getTransaction().isErreur()){
 			return false;
 		}
@@ -815,7 +770,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 			return false;
 		}
 		setModeleCourant(unModele);
-		getBpcCourant().modifierBPC(getTransaction(),unPMateriel,getBpcAvant(),getModeleCourant());
+		getBpcCourant().modifierBPC(getTransaction(),unPMateriel,getModeleCourant(), getVAL_CK_CHG_COMPTEUR().equals(getCHECKED_ON()));
 		if(getTransaction().isErreur()){
 			return false;
 		}
@@ -1023,15 +978,6 @@ private String [] getLB_IMMAT() {
 	return LB_IMMAT;
 }
 /**
- * Setter de la liste:
- * LB_IMMAT
- * Date de création : (02/06/05 14:41:58)
- * author : Générateur de process
- */
-private void setLB_IMMAT(java.lang.String[] newLB_IMMAT) {
-	LB_IMMAT = newLB_IMMAT;
-}
-/**
  * Retourne le nom de la zone pour la JSP :
  * NOM_LB_IMMAT
  * Date de création : (02/06/05 14:41:58)
@@ -1074,26 +1020,6 @@ public java.lang.String getVAL_LB_IMMAT_SELECT() {
 	return getZone(getNOM_LB_IMMAT_SELECT());
 }
 /**
- * Getter de la liste avec un lazy initialize :
- * LB_INVENTAIRE
- * Date de création : (02/06/05 14:41:58)
- * author : Générateur de process
- */
-private String [] getLB_INVENTAIRE() {
-	if (LB_INVENTAIRE == null)
-		LB_INVENTAIRE = initialiseLazyLB();
-	return LB_INVENTAIRE;
-}
-/**
- * Setter de la liste:
- * LB_INVENTAIRE
- * Date de création : (02/06/05 14:41:58)
- * author : Générateur de process
- */
-private void setLB_INVENTAIRE(java.lang.String[] newLB_INVENTAIRE) {
-	LB_INVENTAIRE = newLB_INVENTAIRE;
-}
-/**
  * Retourne le nom de la zone pour la JSP :
  * NOM_LB_INVENTAIRE
  * Date de création : (02/06/05 14:41:58)
@@ -1112,17 +1038,6 @@ public java.lang.String getNOM_LB_INVENTAIRE() {
  */
 public java.lang.String getNOM_LB_INVENTAIRE_SELECT() {
 	return "NOM_LB_INVENTAIRE_SELECT";
-}
-/**
- * Méthode à personnaliser
- * Retourne la valeur à afficher pour la zone de la JSP :
- * LB_INVENTAIRE
- * Date de création : (02/06/05 14:41:58)
- * author : Générateur de process
- * @return String
- */
-public java.lang.String [] getVAL_LB_INVENTAIRE() {
-	return getLB_INVENTAIRE();
 }
 /**
  * Méthode à personnaliser
@@ -1376,24 +1291,6 @@ public java.lang.String getVAL_LB_POMPE_SELECT() {
 		return listeEquipement;
 	}
 	/**
-	 * @param listeEquipement listeEquipement à définir.
-	 */
-	private void setListeEquipement(ArrayList<Equipement> listeEquipement) {
-		this.listeEquipement = listeEquipement;
-	}
-//	/**
-//	 * @return Renvoie listeEquipementInfos.
-//	 */
-//	private ArrayList getListeEquipementInfos() {
-//		return listeEquipementInfos;
-//	}
-//	/**
-//	 * @param listeEquipementInfos listeEquipementInfos à définir.
-//	 */
-//	private void setListeEquipementInfos(ArrayList listeEquipementInfos) {
-//		this.listeEquipementInfos = listeEquipementInfos;
-//	}
-	/**
 	 * @return Renvoie listePompe.
 	 */
 	private ArrayList<Pompes> getListePompe() {
@@ -1428,18 +1325,6 @@ public java.lang.String getVAL_LB_POMPE_SELECT() {
 	 */
 	public String getDefaultFocus() {
 		return getNOM_EF_BPC();
-	}
-	/**
-	 * @return Renvoie bpcAvant.
-	 */
-	public BPC getBpcAvant() {
-		return bpcAvant;
-	}
-	/**
-	 * @param bpcAvant bpcAvant à définir.
-	 */
-	public void setBpcAvant(BPC bpcAvant) {
-		this.bpcAvant = bpcAvant;
 	}
 	/**
 	 * @return Renvoie modeleCourant.

@@ -121,7 +121,7 @@ if (document.formu.elements[nom] != null)
 								<TABLE border="0" class="sigp2">
 									<TR>
 										<TD>Numéro du BPC</TD>
-										<TD><INPUT type="text" size="7"
+										<TD><INPUT type="text" size="7" disabled="disabled"
 											name="<%=process.getNOM_EF_BPC() %>"
 											value="<%=process.getVAL_EF_BPC() %>"
 											class="sigp2-saisiemajuscule" maxlength="30"

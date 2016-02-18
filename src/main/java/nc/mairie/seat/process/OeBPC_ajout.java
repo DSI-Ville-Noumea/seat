@@ -105,8 +105,6 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		if(etatStatut()==STATUT_RECH_EQUIP){
 			EquipementInfos unEquipementInfos = (EquipementInfos)VariableGlobale.recuperer(request, "EQUIPEMENTINFOS");
 			setEquipementInfosCourant(unEquipementInfos);
-			//BPC unBPC = (BPC)VariableActivite.recuperer(this,"BPCAVANT");
-			//setBpcAvant(unBPC);	
 			// On récupère l'objet Equipement pour avoir les infos pour les modèles et marques
 			if (null!=getEquipementInfosCourant()){
 				if(null!=getEquipementInfosCourant().getNumeroinventaire()){
@@ -887,7 +885,7 @@ public boolean performPB_VALIDER(javax.servlet.http.HttpServletRequest request) 
 		if(!isMateriel){
 			getBpcCourant().creerBPC(getTransaction(),getEquipementCourant(),getModeleCourant(), getVAL_CK_CHG_COMPTEUR().equals(getCHECKED_ON()));
 		}else{
-			getBpcCourant().creerBPC(getTransaction(),getPMaterielCourant(),getModeleCourant());
+			getBpcCourant().creerBPC(getTransaction(),getPMaterielCourant(),getModeleCourant(), getVAL_CK_CHG_COMPTEUR().equals(getCHECKED_ON()));
 		}
 		if(getTransaction().isErreur()){
 			return false;
