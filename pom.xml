@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nc.mairie</groupId>
 	<artifactId>seat</artifactId>
-	<version>4.0.3</version>
+	<version>4.0.4-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<organization>
 		<name>Mairie de Nouméa</name>
@@ -61,10 +61,11 @@
 			<version>${framework_version}</version>
 		</dependency>
 		<dependency>
-            <groupId>postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.1-901-1.jdbc4</version>
-        </dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4.1208</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
