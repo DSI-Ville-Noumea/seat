@@ -144,14 +144,14 @@ public boolean controleChamps(nc.mairie.technique.Transaction aTransaction )  th
 public boolean controleBPCIMaterielParRapportPrecedentSuivant(Transaction aTransaction, IMateriel unIMateriel, boolean razCompteur) throws Exception {
 
 	//recherch du précédent BPC
-	BPC bpcAvant = chercherBPCPrecEquipNumBPC(aTransaction,unIMateriel.getNumeroinventaire(), getNumerobpc());
+	BPC bpcAvant = chercherBPCPrecEquipDate(aTransaction, getDate(), unIMateriel.getNumeroinventaire());
 	if(aTransaction.isErreur()){
 		aTransaction.traiterErreur();
 		bpcAvant = null;
 	}
 	
 	//recherche du suivant
-	BPC bpcSuiv = chercherBPCSuivEquipNumBPC(aTransaction,unIMateriel.getNumeroinventaire(), getNumerobpc());
+	BPC bpcSuiv = chercherBPCSuivEquipDate(aTransaction, getDate(), unIMateriel.getNumeroinventaire());
 	if(aTransaction.isErreur()){
 		aTransaction.traiterErreur();
 		bpcSuiv = null;
@@ -673,30 +673,6 @@ public static BPC chercherBPC(nc.mairie.technique.Transaction aTransaction, Stri
 public boolean existeBPCPompes(nc.mairie.technique.Transaction aTransaction, String numPompe) throws Exception{
 	BPC unBPC = new BPC();
 	return unBPC.getMyBPCBroker().existeBPCPompe(aTransaction,numPompe);
-}
-/**
- * Retourne un BPC.
- * @param aTransaction Transaction
- * @param inv inv
- * @param numBPC numBPC
- * @return BPC
- * @throws Exception Exception
- */
-public static BPC chercherBPCPrecEquipNumBPC(nc.mairie.technique.Transaction aTransaction,String inv, String numBPC) throws Exception{
-	BPC unBPC = new BPC();
-	return unBPC.getMyBPCBroker().chercherBPCPrecEquipNumBPC(aTransaction, inv, numBPC);
-}
-/**
- * Retourne un BPC.
- * @param aTransaction Transaction
- * @param inv inv
- * @param numBPC numBPC
- * @return BPC
- * @throws Exception Exception
- */
-public static BPC chercherBPCSuivEquipNumBPC(nc.mairie.technique.Transaction aTransaction, String inv, String numBPC) throws Exception{
-	BPC unBPC = new BPC();
-	return unBPC.getMyBPCBroker().chercherBPCSuivEquipNumBPC(aTransaction, inv, numBPC);
 }
 public static ArrayList<BPC> listerBPCParams(nc.mairie.technique.Transaction aTransaction,String inv,String ddeb,String dfin, String servi) throws Exception{
 	String periode = "";
