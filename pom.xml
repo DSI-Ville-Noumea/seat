@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nc.mairie</groupId>
 	<artifactId>seat</artifactId>
-	<version>4.0.4</version>
+	<version>4.0.5-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<organization>
 		<name>Mairie de Nouméa</name>
@@ -69,6 +69,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>${project.artifactId}##${project.version}</finalName>
 		<plugins>
 		
 			<plugin>
@@ -136,11 +137,7 @@
 						<phase>package</phase>
 						<configuration>
 							<tasks>
-								<copy file="${project.build.directory}/${project.build.finalName}.${project.packaging}" tofile="src/site/resources/${project.packaging}/${project.version}/${project.artifactId}##${project.version}.${project.packaging}">
-								</copy>
-								<copy file="${project.build.directory}/${project.build.finalName}.${project.packaging}" tofile="${project.build.directory}/${project.artifactId}##${project.version}.${project.packaging}">
-								</copy>
-								<delete file="${project.build.directory}/${project.build.finalName}.${project.packaging}"/>
+								<copy file="${project.build.directory}/${project.build.finalName}.${project.packaging}" tofile="src/site/resources/${project.packaging}/${project.version}/${project.artifactId}##${project.version}.${project.packaging}"/>
 								<checksum algorithm="md5">
 									<fileset dir="src/site/resources/${project.packaging}/${project.version}">
 										<include name="*.war"/>
