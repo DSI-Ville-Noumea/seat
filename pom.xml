@@ -31,6 +31,13 @@
 		<maven>2.2.1</maven>
 	</prerequisites>
 
+	<repositories>
+    	<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+
 	<scm>
 		<connection>scm:svn:${svnurl}/trunk</connection>
 		<developerConnection>scm:svn:${svnurl}/trunk</developerConnection>
@@ -56,7 +63,7 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>nc.mairie</groupId>
+			<groupId>com.github.DSI-Ville-Noumea</groupId>
 			<artifactId>framework</artifactId>
 			<version>${framework_version}</version>
 		</dependency>
@@ -302,6 +309,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<svnurl>https://svn.ville-noumea.nc/sed/seat</svnurl>
 		<java.version>1.8</java.version>
-		<framework_version>2.3</framework_version>
+		<framework_version>framework-2.5</framework_version>
 	</properties>
 </project>
