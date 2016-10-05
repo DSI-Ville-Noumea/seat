@@ -3,7 +3,11 @@ jdk:
 - oraclejdk8
 cache:
   directories:
-  - ".autoconf" 
+  - ".autoconf"
   - "$HOME/.m2"
 install: true
 script: mvn clean install -DskipTests=true
+notifications:
+  slack:
+    rooms:
+      secure: mY6kUfb4mEyw2voR55HK7iz7RV84kJAUOHVQfizJMqCyYrryuMmDEiCPQ5ZParxLhLCfiY1AeVg2kzQBW3DMbrfR0FdP4eTOeMsiwcnDVSu2f8fHLJpThgEKVe3D+OM/tTf2gv2w+8BhPp68SRyc5ZdphOHcfmGF9wuUxwykj9poPI+j0CR47RH+8ZEO/krP+f8nF9VBc9lpoDALeTgT1DhqpNaN8JYUMjqzH/szfnLbz4RRrccnRbvCJUoivOP2ccTHuzGMHiWjMIiMUEHrpYnGdvnXjrbusVHmikxHrwDkPiy2YPn4ILc6k/WIGHCpK53W8LcYPi9vChFy2+fnDiD2PNiHrGJDwtbnv15SVsd4QNfJrmREfRnuTjqIIxxvYs7MQZOEcba6CGM+GliOTcn8rdv15NdKLkOY88XF11JtMjxgNFRllVKKmduVPaSiHP3VwVNlLRGYwKoPP+1JGc9T+E/zILj961J/YWgUyxCrYonnYBfbCkOq3qZgKGX3HtdBz1Bq1QRW8JSq1oQ5U0mIADLb2sDJ1Xjf30ginSnhejqUzY7fdUmCujFFcDo7CJp1KUp5aSDTyePlh32X4dajOxTFTQi/zK2ctTNLrS3wZswh0WLgwqslYDb4PDJO4rWSPFB2MiQuxLp2gKCYZp9+GKWuH5tmt7XhzdARsFY=
