@@ -78,7 +78,15 @@
 	<build>
 		<finalName>${project.artifactId}##${project.version}</finalName>
 		<plugins>
-		
+			<plugin>
+				<groupId>com.versioneye</groupId>
+				<artifactId>versioneye-maven-plugin</artifactId>
+				<version>${versioneye-maven-plugin.version}</version>
+				<configuration>
+					<apiKey>${versioneye-maven-plugin.apiKey}</apiKey>
+					<projectId>${versioneye-maven-plugin.projectId}</projectId>
+				</configuration>
+			</plugin>
 			<plugin>
 			   <groupId>org.liquibase</groupId>
 			   <artifactId>liquibase-maven-plugin</artifactId>
@@ -144,7 +152,7 @@
 						<phase>package</phase>
 						<configuration>
 							<tasks>
-								<copy file="${project.build.directory}/${project.build.finalName}.${project.packaging}" tofile="src/site/resources/${project.packaging}/${project.version}/${project.artifactId}##${project.version}.${project.packaging}"/>
+								<copy file="${project.build.directory}/${project.build.finalName}.${project.packaging}" tofile="src/site/resources/${project.packaging}/${project.version}/ROOT##${project.artifactId}-${project.version}.${project.packaging}"/>
 								<checksum algorithm="md5">
 									<fileset dir="src/site/resources/${project.packaging}/${project.version}">
 										<include name="*.war"/>
@@ -304,6 +312,9 @@
 	</reporting>
 	
 	<properties>
+		<versioneye-maven-plugin.version>3.10.2</versioneye-maven-plugin.version>
+		<versioneye-maven-plugin.apiKey>${env.VERSIONEYE_APIKEY}</versioneye-maven-plugin.apiKey>
+		<versioneye-maven-plugin.projectId>${env.VERSIONEYE_PROJECTID}</versioneye-maven-plugin.projectId>
 		<artifactId>${project.artifactId}</artifactId>
 		<version>${project.version}</version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
