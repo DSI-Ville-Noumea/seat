@@ -96,7 +96,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 }
 
 public void initialiseListeMecaniciens(javax.servlet.http.HttpServletRequest request) throws Exception{
-	//initialisation avec les mécaniciens de l'ATM
+	//initialisation avec les mécaniciens du SMG
 	if(getListeMecaniciens()==null){
 		ArrayList<AgentsATM> listATM = AgentsATM.listerAgentsATM(getTransaction());
 		if(getTransaction().isErreur()){

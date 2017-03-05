@@ -77,7 +77,7 @@ public Service chercherService(nc.mairie.technique.Transaction aTransaction, Str
  * @throws Exception Exception
  */
 public Service chercherServiceActifAvecAcronyme(nc.mairie.technique.Transaction aTransaction, String cle) throws Exception {
-	return (Service)executeSelect(aTransaction,"select * from "+getTable()+" where SIGLE = '"+cle+"' and codact <> 'I'");
+	return (Service)executeSelect(aTransaction,"select * from "+getTable()+" where SIGLE like '%"+cle+"%' and codact <> 'I'");
 }
 
 /**
@@ -88,7 +88,7 @@ public Service chercherServiceActifAvecAcronyme(nc.mairie.technique.Transaction 
  * @throws Exception Exception
  */
 public ArrayList<Service> chercherListServiceTous(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where CODACT<>'I' and (upper(liserv) like '"+param.toUpperCase()+"%' or servi like'"+param.toUpperCase()+"%') order by liserv");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where CODACT<>'I' and (upper(liserv) like '%"+param.toUpperCase()+"%' or servi like'%"+param.toUpperCase()+"%') order by liserv");
 }
 /**
  * Retourne un arrayList Service.
@@ -98,11 +98,11 @@ public ArrayList<Service> chercherListServiceTous(nc.mairie.technique.Transactio
  * @throws Exception Exception
  */
 public ArrayList<Service> chercherListServiceEquip(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
-	return executeSelectListe(aTransaction,"select distinct(liserv),servi from "+getTable()+", f_aff_sce where servi = codeservice and dfin ='0001-01-01' and codact<>'I' and (upper(liserv) like '"+param.toUpperCase()+"%' or codeservice like '"+param.toUpperCase()+"%') order by liserv");
+	return executeSelectListe(aTransaction,"select distinct(liserv),servi from "+getTable()+", f_aff_sce where servi = codeservice and dfin ='0001-01-01' and codact<>'I' and (upper(liserv) like '%"+param.toUpperCase()+"%' or codeservice like '%"+param.toUpperCase()+"%') order by liserv");
 }
 
 public ArrayList<Service> chercherListServiceAccro(nc.mairie.technique.Transaction aTransaction, String param) throws Exception {
-	return executeSelectListe(aTransaction,"select * from "+getTable()+" where upper(sigle) like '"+param.toUpperCase()+"%' order by servi");
+	return executeSelectListe(aTransaction,"select * from "+getTable()+" where upper(sigle) like '%"+param.toUpperCase()+"%' order by servi");
 }
 
 }

@@ -61,7 +61,7 @@
         </createTable>
     </changeSet>
     <changeSet author="boulu72 (generated)" id="1416367678959-5">
-        <createTable remarks="les agents de l'ATM" tableName="F_AGENTSATM">
+        <createTable remarks="les agents du SMG" tableName="F_AGENTSATM">
             <column name="MATRICULE" type="numeric(5)">
                 <constraints nullable="false"/>
             </column>
@@ -667,7 +667,7 @@
         </createTable>
     </changeSet>
     <changeSet author="boulu72 (generated)" id="1416367678959-42">
-        <createTable remarks="les spécialités des mécaniciens de l'ATM" tableName="F_SPECIALITE">
+        <createTable remarks="les spécialités des mécaniciens du SMG" tableName="F_SPECIALITE">
             <column name="CODESPECIALITE" type="INTEGER">
                 <constraints nullable="false"/>
             </column>

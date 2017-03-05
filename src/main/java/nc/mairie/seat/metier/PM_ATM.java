@@ -105,7 +105,7 @@ public boolean creerPM_ATM(nc.mairie.technique.Transaction aTransaction, FPM unP
 		return false;
 	}
 	if (null==unAgentATM){
-		aTransaction.declarerErreur(nc.mairie.technique.MairieMessages.getMessage("ERR999","un agent de l'ATM"));
+		aTransaction.declarerErreur(nc.mairie.technique.MairieMessages.getMessage("ERR999","un agent du SMG"));
 		return false;
 	}
 	//on vérifie que l'agent n'est pas déjà enregistré pour cet FPM

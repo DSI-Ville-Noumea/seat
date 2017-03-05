@@ -57,9 +57,9 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 	if (mustReload) {
 		mustReload = false;
 		//LB le 14/02/12
-		Service aService = Service.chercherServiceActifAvecAcronyme(getTransaction(), "ATM");
+		Service aService = Service.chercherServiceActifAvecAcronyme(getTransaction(), "SMG");
 		
-		// initialisation de la liste des agents du service de l'ATM
+		// initialisation de la liste des agents du service du SMG
 		ArrayList<AActifs> listeAgents = AActifs.chercherListAgentServiceInfosSce(getTransaction(),aService.getServi());
 		//ArrayList listeAgents = AgentServiceInfos.chercherListAgentServiceInfosSce(getTransaction(),"2030");
 		if(getTransaction().isErreur()){
@@ -91,7 +91,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 		}else{
 			setSuppression(false);
 		}
-		// on compare les listes des agents de l'ATM et des mécaniciens
+		// on compare les listes des agents du SMG et des mécaniciens
 		// si l'agent est enregistré comme mécanicien on l'enlève de la liste des agents
 		if((getListeAgents().size()>0)&&(getListeMecaniciens().size()>0)){
 			//parcours de la liste des agents
@@ -127,7 +127,7 @@ public void initialiseZones(javax.servlet.http.HttpServletRequest request) throw
 
 public void initialiseListeAgents(javax.servlet.http.HttpServletRequest request) throws Exception{
 	ArrayList<AActifs> listAgentEpure = new ArrayList<AActifs>();
-	//initialisation de la liste des agents de l'ATM
+	//initialisation de la liste des agents du SMG
 	if(getListeAgents().size()>0){
 		//	les élèments de la liste 
 		int [] tailles = {30,30};

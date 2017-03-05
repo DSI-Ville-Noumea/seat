@@ -47,7 +47,7 @@ droits.add("ImprimerOT");
 droits.add("ValiderOT");
 droits.add("GestionPieces");
 droits.add("GestionSpecialite");
-droits.add("GestionATM");
+droits.add("GestionSMG");
 droits.add("GestionExterieurs");
 droits.add("VisualisationBPCs");
 droits.add("TableauDeBord");
@@ -171,7 +171,7 @@ var Module_parametres = new Dossier("Module_parametres", "Paramètres");
 //*               Le module Intervenant
 //***************************************************************
 	var Module_Intervenant = new Dossier("Module_Intervenant", "Intervenants");
-		Module_Intervenant.ajouterFils(new Lien("GestionATM", "ATM", "Gestion des intervenants de l'ATM", true));
+		Module_Intervenant.ajouterFils(new Lien("GestionSMG", "SMG", "Gestion des intervenants du SMG", true));
 		Module_Intervenant.ajouterFils(new Lien("GestionExterieur", "Extérieurs", "Gestion des intervenants extérieurs", true));
 
 	Module_parametres.ajouterFils(Module_Intervenant);
@@ -331,17 +331,17 @@ menu.ajouterFils(new Lien("ZZZTESTEUR", "Testeur de process", "Testeur de proces
 <%}%>
 <% 
 if(aUser.getUserName().equals("boulu72")||aUser.getUserName().equals("fonol77")){
-	dpt = "ATM";
+	dpt = "SMG";
 }
-//if ((aUser.getUserName().equals("nicco81"))||(!process.dpt.equals("ATM"))) {
+//if ((aUser.getUserName().equals("nicco81"))||(!process.dpt.equals("SMG"))) {
 if ((dpt!=null)&&(!dpt.equals(""))){
 
 	//LB 12/01/12 changement suite à modif departmentnumber dans l'AD
-	if (dpt.toUpperCase().startsWith("ATM")) {
-		dpt="ATM";
+	if (dpt.toUpperCase().startsWith("SMG")) {
+		dpt="SMG";
 	}
 
-	if(!dpt.equals("ATM")) {
+	if(!dpt.equals("SMG")) {
 	%>
 		document.write(menuService.afficher());
 	<% nc.mairie.technique.VariableGlobale.ajouter(request,"MENU","menuService");

@@ -96,7 +96,7 @@ if (document.formu.elements[nom] != null)
 							</TD>
 						</TR>
 					<TR align="center">
-						<TD align="left">N° de pompe de l'ATM</TD>
+						<TD align="left">N° de pompe du SMG</TD>
 						<TD class="sigp2-saisie"
 							style="text-transform: uppercase; font-variant: normal"><SELECT
 							size="1" name="<%= process.getNOM_LB_POMPES() %>"
@@ -113,7 +113,7 @@ if (document.formu.elements[nom] != null)
 							style="text-transform: uppercase; font-variant: normal"><%=process.getVAL_ST_DESIGNATION() %></TD>
 					</TR>
 					<TR align="center">
-						<TD align="left">N° de pompe de l'ATM</TD>
+						<TD align="left">N° de pompe du SMG</TD>
 						<TD class="sigp2-saisie"
 							style="text-transform: uppercase; font-variant: normal"><%=process.getVAL_ST_NUM_POMPE_ATM() %></TD>
 					</TR>

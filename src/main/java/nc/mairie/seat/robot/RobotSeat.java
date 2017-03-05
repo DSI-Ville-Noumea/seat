@@ -174,7 +174,7 @@ public class RobotSeat extends Robot {
 			return new OeSpecialite();
 		else if ("VisualisationOT".equals(arg0)) 
 			return new OeOT_Visualisation();
-		else if ("GestionATM".equals(arg0)) 
+		else if ("GestionSMG".equals(arg0)) 
 			return new OeAgentsATM();
 		else if ("TableauDeBord".equals(arg0)) 
 			return new OeTableauDeBord();

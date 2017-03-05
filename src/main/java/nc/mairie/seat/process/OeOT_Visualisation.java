@@ -254,7 +254,7 @@ public int montantBE(javax.servlet.http.HttpServletRequest request,ENJU unEnju) 
 }
 */
 public void initialiseListIntervenants(javax.servlet.http.HttpServletRequest request) throws Exception{
-	//on initialise la liste des intervenants de l'ATM
+	//on initialise la liste des intervenants du SMG
 	if(getOtCourant().getNumeroot()!=null){
 		ArrayList<OT_ATM> listAgents = OT_ATM.listerOT_ATMOT(getTransaction(),getOtCourant().getNumeroot());
 		if(getTransaction().isErreur()){

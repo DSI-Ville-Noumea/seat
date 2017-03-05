@@ -293,7 +293,7 @@ public int montantBE(javax.servlet.http.HttpServletRequest request,ENGJU unEnju)
 }
 */
 public void initialiseListIntervenants(javax.servlet.http.HttpServletRequest request) throws Exception{
-	//on initialise la liste des intervenants de l'ATM
+	//on initialise la liste des intervenants du SMG
 	if(getFpmCourant().getNumfiche()!=null){
 		ArrayList<PM_ATM> listAgents = PM_ATM.listerPM_ATM_FPM(getTransaction(),getFpmCourant().getNumfiche());
 		if(getTransaction().isErreur()){

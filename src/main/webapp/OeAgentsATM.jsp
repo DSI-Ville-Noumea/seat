@@ -34,7 +34,7 @@ document.formu.elements[nom].focus();
       <TD style="text-align : center;">
 			<FORM name="formu" method="POST">
 <%if(!process.isModif()){ %>
-				<FIELDSET><LEGEND class="sigp2Fieldset" align="left">Agents de l'ATM</LEGEND>
+				<FIELDSET><LEGEND class="sigp2Fieldset" align="left">Agents du SMG</LEGEND>
 					<TABLE border="0" class="sigp2">
 							<TR align="center">
 								<TD align="left" height="35">

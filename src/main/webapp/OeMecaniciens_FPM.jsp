@@ -81,7 +81,7 @@ if (document.formu.elements[nom] != null)
 <br>
 			<TABLE class="sigp2">
 				<TR>
-					<TD><!-- Mécaniciens de l'ATM -->
+					<TD><!-- Mécaniciens du SMG -->
 						<FIELDSET><LEGEND class="sigp2Fieldset" align="left">Mécaniciens</LEGEND>
 						<TABLE border="0" class="sigp2">
 							<TR align="center">
