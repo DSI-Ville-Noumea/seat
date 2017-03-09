@@ -337,7 +337,7 @@ if(aUser.getUserName().equals("boulu72")||aUser.getUserName().equals("fonol77"))
 if ((dpt!=null)&&(!dpt.equals(""))){
 
 	//LB 12/01/12 changement suite à modif departmentnumber dans l'AD
-	if (dpt.toUpperCase().startsWith("SMG")) {
+	if (dpt.toUpperCase().contains("SMG")) {
 		dpt="SMG";
 	}
 
