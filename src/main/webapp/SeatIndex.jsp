@@ -324,7 +324,7 @@ menuService.ajouterFils(Module_SPMateriel);
 <%
 
 	//Recuperation dans le contexte du service Habilité
-	String service_habilite = request.getParameter("SERVICE_HABILITE");
+	String service_habilite = nc.mairie.servlets.Frontale.getMesParametres().get("SERVICE_HABILITE");
 
 	java.util.Hashtable<Object, Object> h = nc.mairie.technique.MairieLDAP.chercherUserLDAPAttributs(aUser.getUserName());
 	String dpt = (String)h.get("department");
@@ -362,15 +362,11 @@ if ((dpt!=null)&&(!dpt.equals(""))){
 <%
 }
 %>
-
-	//document.write(menu.afficher());
-</script><BR>
-<BR>
-<BR>
-<BR>
-<BR>
-</nobr>
-</FORM>
+				//document.write(menu.afficher());
+			</script>
+			<BR> <BR> <BR> <BR> <BR>
+		</nobr>
+	</FORM>
 
 </BODY>
 </HTML>
