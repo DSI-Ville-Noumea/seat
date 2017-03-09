@@ -322,26 +322,30 @@ menuService.ajouterFils(Module_SPMateriel);
 //menu.ajouterFils(new Lien("GestionMarques", "Marques", "Gestion d'une marque", true));
 //menu.ajouterFils(new Lien("GestionBPC", "BPC", "Gestion des BPC", true));
 <%
+
+	//Recuperation dans le contexte du service Habilité
+	String service_habilite = request.getParameter("SERVICE_HABILITE");
+
 	java.util.Hashtable<Object, Object> h = nc.mairie.technique.MairieLDAP.chercherUserLDAPAttributs(aUser.getUserName());
 	String dpt = (String)h.get("department");
 %>
 
-<% if (aUser.getUserName().equals("boulu72") || aUser.getUserName().equals("peymi67")) {%>
+<% if (aUser.getUserName().equals("boulu72")) {%>
 menu.ajouterFils(new Lien("ZZZTESTEUR", "Testeur de process", "Testeur de process", true));
 <%}%>
 <% 
-if(aUser.getUserName().equals("boulu72")||aUser.getUserName().equals("fonol77")){
-	dpt = "SMG";
+if(aUser.getUserName().equals("boulu72")){
+	dpt = service_habilite;
 }
 //if ((aUser.getUserName().equals("nicco81"))||(!process.dpt.equals("SMG"))) {
 if ((dpt!=null)&&(!dpt.equals(""))){
 
 	//LB 12/01/12 changement suite à modif departmentnumber dans l'AD
-	if (dpt.toUpperCase().contains("SMG")) {
-		dpt="SMG";
+	if (dpt.toUpperCase().contains(service_habilite)) {
+		dpt=service_habilite;
 	}
 
-	if(!dpt.equals("SMG")) {
+	if(!dpt.equals(service_habilite)) {
 	%>
 		document.write(menuService.afficher());
 	<% nc.mairie.technique.VariableGlobale.ajouter(request,"MENU","menuService");
