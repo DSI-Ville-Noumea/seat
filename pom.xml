@@ -38,10 +38,10 @@
 		<servlet-api.version>6.0.53</servlet-api.version>
 		<postgresql.version>42.1.4</postgresql.version>
 		<maven-site-plugin.version>3.6</maven-site-plugin.version>
-		<maven-compiler-plugin.version>3.6.2</maven-compiler-plugin.version>
+		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
 		<maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
 		<maven-war-plugin.version>3.1.0</maven-war-plugin.version>
-		<maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
+		<maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version>
 	</properties>
 
 	<prerequisites>
@@ -93,7 +93,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>${project.artifactId}##${project.version}</finalName>
+		<finalName>ROOT##${project.artifactId}-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>com.versioneye</groupId>
@@ -139,7 +139,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>${maven-war-plugin.version}</version>
 				<configuration>
-					<packagingExcludes>**/liquibase/**,**/liquibase.properties</packagingExcludes>
+					<packagingExcludes>**/liquibase/**,**/liquibase.properties,META-INF/context.xml</packagingExcludes>
 					<webResources>
 						<resource>
 							<directory>src/main/java</directory>
@@ -167,7 +167,7 @@
 				<executions>
 					<execution>
 						<phase>package</phase>
-						<configuration>
+						<!-- On supprime la recopie auto du WAR dans le site maven <configuration>
 							<tasks>
 								<copy file="${project.build.directory}/${project.build.finalName}.${project.packaging}" tofile="src/site/resources/${project.packaging}/${project.version}/ROOT##${project.artifactId}-${project.version}.${project.packaging}"/>
 								<checksum algorithm="md5">
@@ -177,7 +177,7 @@
 									</fileset>
 								</checksum>
 							</tasks>
-						</configuration>
+						</configuration> -->
 						<goals>
 							<goal>run</goal>
 						</goals>
