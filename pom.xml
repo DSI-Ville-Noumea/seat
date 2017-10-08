@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nc.mairie</groupId>
 	<artifactId>seat</artifactId>
-	<version>4.0.9-SNAPSHOT</version>
+	<version>4.0.9</version>
 	<packaging>war</packaging>
 	<organization>
 		<name>Mairie de Nouméa</name>
@@ -105,16 +105,6 @@
 				</configuration>
 			</plugin>
 			<plugin>
-			   <groupId>org.liquibase</groupId>
-			   <artifactId>liquibase-maven-plugin</artifactId>
-			   <version>3.5.3</version>
-			   <configuration>                  
-				  	<propertyFile>liquibase.properties</propertyFile>
-			   </configuration>                
-			</plugin> 	
-		
-		
-			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.0.0</version>
@@ -139,7 +129,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>${maven-war-plugin.version}</version>
 				<configuration>
-					<packagingExcludes>**/liquibase/**,**/liquibase.properties,META-INF/context.xml</packagingExcludes>
+					<packagingExcludes>META-INF/context.xml</packagingExcludes>
 					<webResources>
 						<resource>
 							<directory>src/main/java</directory>
