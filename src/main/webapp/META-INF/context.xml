@@ -4,15 +4,21 @@
 
     <WatchedResource>WEB-INF/web.xml</WatchedResource>
 
-	<Resource name="jdbc/DS" auth="Container" type="javax.sql.DataSource"
-		factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory"
-		testWhileIdle="true" testOnBorrow="true" testOnReturn="false"
-		validationQuery="select version();" validationInterval="30000"
-		timeBetweenEvictionRunsMillis="30000" maxActive="300" maxIdle="30"
-		maxWait="30000" initialSize="10" removeAbandonedTimeout="500"
-		removeAbandoned="true" logAbandoned="true" minEvictableIdleTimeMillis="30000"
-		jmxEnabled="true" username="seat_adm" password="seat"
-		driverClassName="org.postgresql.Driver" url="jdbc:postgresql://mi2526:5432/seatdev" />
+	<Resource name="jdbc/DS" 
+		auth="Container" 
+		type="javax.sql.DataSource"
+		description="Base de données de SEAT"
+		maxActive="100" 
+		maxIdle="30" 
+		minIdle="0" 
+		validationQuery="select version();"
+		maxWait="10000" 
+		initialSize="1" 
+		username="seat_adm" 
+		password="changeme"
+		driverClassName="org.postgresql.Driver" 
+		url="jdbc:postgresql://localhost:5432/seat"
+		poolPreparedStatements="true" />
 	
 	<Parameter name="HOST_SGBD" value="DS" description="Hôte SGBD"	override="false" />
 	<Parameter name="HOST_SGBD_ADMIN" value="**REMOVED**" override="false" />
@@ -24,11 +30,11 @@
 	<Parameter name="HOST_LDAP_PASSWORD" value="**REMOVED**" override="false" />
 	<Parameter name="BASE_LDAP" value="dc=site-mairie,dc=noumea,dc=nc"	override="false" />
 	<Parameter name="APPLICATION" description="Nom de l'application déclarée SIDRAP pour connaitre les droits" override="false" value="Seat" />
-	<Parameter name="STARJET_MODE" description="Environnement starjet (DVLP, TEST ou PROD)" override="false" value="DVLP" />
+	<Parameter name="STARJET_MODE" description="Environnement starjet (QUAL, TEST ou PROD)" override="false" value="TEST" />
 	<!-- Version 2.3-->
-	<Parameter name="STARJET_SERVER" description="Serveur starjet (nom du serveur)" override="false" value="//starjet/edition$/" />
+	<Parameter name="STARJET_SERVER" description="Serveur starjet (nom du serveur)" override="false" value="//svpstarjet/edition$/" />
 	<Parameter name="STARJET_PROJET" description="Répertoire du projet sur le serveur Starjet" override="false" value="SEAT" />
-	<Parameter name="STARJET_DISPLAYPDF_URL"  description="URL de l'ASP displayPDF.asp" value="http://starjet/DVLP/cgi/displayPDF.asp" override="false" />
+	<Parameter name="STARJET_DISPLAYPDF_URL"  description="URL de l'ASP displayPDF.asp" value="http://svpstarjet/TEST/cgi/displayPDF.asp" override="false" />
 	<!--Version 4.0.7-->
 	<Parameter name="SERVICE_HABILITE" description="Acronyme du service ayant droit" override="false" value="SMG" />
 </Context>
