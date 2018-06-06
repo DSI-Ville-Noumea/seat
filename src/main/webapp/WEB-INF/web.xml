@@ -3,6 +3,8 @@
 <web-app id="WebApp_ID">
 	<display-name>SEAT</display-name>
 
+	<distributable/>
+
 	<filter>
 		<filter-name>SetCharacterEncoding</filter-name>
 		<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>

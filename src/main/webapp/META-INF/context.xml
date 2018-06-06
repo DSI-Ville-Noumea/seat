@@ -5,14 +5,15 @@
     <WatchedResource>WEB-INF/web.xml</WatchedResource>
 
 	<Resource name="jdbc/DS" auth="Container" type="javax.sql.DataSource"
-		factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory"
+		factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
 		testWhileIdle="true" testOnBorrow="true" testOnReturn="false"
-		validationQuery="select version();" validationInterval="30000"
+		validationQuery="select 1" validationInterval="30000"
 		timeBetweenEvictionRunsMillis="30000" maxActive="300" maxIdle="30"
 		maxWait="30000" initialSize="10" removeAbandonedTimeout="500"
 		removeAbandoned="true" logAbandoned="true" minEvictableIdleTimeMillis="30000"
-		jmxEnabled="true" username="seat_adm" password="seat"
-		driverClassName="org.postgresql.Driver" url="jdbc:postgresql://mi2526:5432/seatdev" />
+		jmxEnabled="true" username="seat_usr" password="changeme"
+		onnectionProperties="currentSchema=seat_adm,seat_qrtz_adm"
+		driverClassName="org.postgresql.Driver" url="jdbc:postgresql://localhost:5432/seatdev" />
 	
 	<Parameter name="HOST_SGBD" value="DS" description="Hôte SGBD"	override="false" />
 	<Parameter name="HOST_SGBD_ADMIN" value="**REMOVED**" override="false" />
